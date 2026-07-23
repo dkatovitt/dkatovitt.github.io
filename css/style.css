@@ -1,5 +1,5 @@
 /* ======================================================
-   DK ATOVITT - VERSION 8 COMPLETE CSS
+   DK ATOVITT - VERSION 8 COMPLETE CSS (UPDATED FIXES)
    FILE: css/style.css
 ====================================================== */
 
@@ -122,7 +122,7 @@ SIDE MENU (HAMBURGER DRAWER)
 .side-menu {
   position: fixed;
   top: 0;
-  left: -320px; /* Hidden by default */
+  left: -320px;
   width: 300px;
   height: 100vh;
   background: #0a0a0a;
@@ -136,7 +136,7 @@ SIDE MENU (HAMBURGER DRAWER)
 }
 
 .side-menu.active {
-  left: 0; /* Slide in when active */
+  left: 0;
 }
 
 .menu-header {
@@ -326,6 +326,7 @@ HERO SECTION
   font-size: 18px;
   letter-spacing: 6px;
   color: #fff;
+  white-space: nowrap; /* Taki yeh text kabhi break na ho */
 }
 
 .yakshini-tagline {
@@ -761,6 +762,10 @@ MOBILE RESPONSIVE
   }
   .yakshini-english span {
     font-size: 14px;
+    letter-spacing: 4px;
+  }
+  .yakshini-english .line {
+    width: 40px;
   }
   .yakshini-tagline {
     font-size: 16px;
@@ -803,18 +808,15 @@ MOBILE RESPONSIVE
   .side-menu {
     width: 260px;
   }
-}
-
-/* Fix for Yakshini text breaking on mobile */
-.yakshini-english span {
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
+  /* Extreme fix for Yakshini text on very small screens */
+  .yakshini-english {
+    gap: 8px; 
+  }
   .yakshini-english .line {
-    width: 35px; /* Mobile par line thodi chhoti kar di */
+    width: 20px; 
   }
   .yakshini-english span {
-    letter-spacing: 4px; /* Mobile par spacing thodi balance kar di */
+    font-size: 13px; 
+    letter-spacing: 2px;
   }
 }
