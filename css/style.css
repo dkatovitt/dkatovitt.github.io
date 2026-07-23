@@ -4,6 +4,10 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Arial,sans-serif;
 background:#000;
@@ -11,16 +15,22 @@ color:#fff;
 display:flex;
 flex-direction:column;
 min-height:100vh;
+line-height:1.6;
 }
+
+/* Header */
 
 header{
 background:#050505;
-padding:20px 40px;
+padding:18px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:2px solid #d4af37;
 flex-wrap:wrap;
+border-bottom:2px solid #d4af37;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .logo h1{
@@ -30,17 +40,19 @@ font-size:32px;
 
 .logo p{
 color:#cfcfcf;
+font-size:15px;
 margin-top:5px;
 }
 
 nav{
-margin-top:10px;
+display:flex;
+flex-wrap:wrap;
+gap:15px;
 }
 
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:18px;
 font-weight:bold;
 transition:.3s;
 }
@@ -49,6 +61,8 @@ nav a:hover{
 color:#d4af37;
 }
 
+/* Hero */
+
 .hero{
 min-height:90vh;
 display:flex;
@@ -56,7 +70,7 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:40px 20px;
-background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88));
+background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85));
 }
 
 .hero-content{
@@ -64,52 +78,50 @@ max-width:900px;
 }
 
 .yakshini-title{
-font-size:72px;
+font-size:75px;
 color:#d4af37;
-letter-spacing:2px;
 margin-bottom:20px;
+text-shadow:0 0 15px rgba(212,175,55,.5);
 }
 
 .english-title{
 display:flex;
 align-items:center;
 justify-content:center;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .english-title span{
-width:140px;
 height:2px;
+width:150px;
 background:#d4af37;
 }
 
 .english-title p{
 margin:0 15px;
-letter-spacing:10px;
+letter-spacing:8px;
 font-size:22px;
-color:#ffffff;
 }
 
 .tagline{
-font-size:40px;
-color:#ffffff;
-margin-bottom:25px;
+font-size:38px;
 font-weight:bold;
+margin-bottom:25px;
 }
 
 .welcome{
 font-size:20px;
-color:#cccccc;
+color:#d0d0d0;
 margin-bottom:35px;
 }
 
 .hero-buttons{
-margin-top:20px;
+margin-top:25px;
 }
 
 .btn{
 display:inline-block;
-padding:15px 30px;
+padding:15px 28px;
 margin:10px;
 background:#d4af37;
 color:#000;
@@ -120,42 +132,67 @@ transition:.3s;
 }
 
 .btn:hover{
-background:#ffffff;
-transform:translateY(-3px);
+background:#fff;
+transform:scale(1.05);
 }
 
+/* Logo Video */
+
+.intro-video{
+padding:80px 20px;
+text-align:center;
+background:#090909;
+}
+
+.intro-video h2{
+font-size:40px;
+color:#d4af37;
+margin-bottom:30px;
+}
+
+.intro-video video{
+width:90%;
+max-width:900px;
+border-radius:15px;
+border:3px solid #d4af37;
+box-shadow:0 0 30px rgba(212,175,55,.5);
+}
+
+/* Latest Release */
+
 .latest-release{
+padding:80px 20px;
 background:#111;
-padding:70px 20px;
 text-align:center;
 }
 
 .latest-release h2{
-color:#d4af37;
 font-size:42px;
+color:#d4af37;
 margin-bottom:40px;
 }
 
 .movie-card{
-max-width:700px;
+max-width:800px;
 margin:auto;
-background:#1b1b1b;
-border:2px solid #d4af37;
+padding:35px;
+background:#1a1a1a;
 border-radius:15px;
-padding:30px;
+border:2px solid #d4af37;
 }
 
 .movie-card h3{
-font-size:42px;
+font-size:60px;
 color:#d4af37;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
 .movie-card p{
-font-size:18px;
+font-size:20px;
 margin-bottom:15px;
-color:#dddddd;
 }
+
+/* Footer */
 
 footer{
 background:#050505;
@@ -165,24 +202,22 @@ margin-top:auto;
 border-top:2px solid #d4af37;
 }
 
+/* Mobile */
+
 @media(max-width:768px){
 
 header{
 flex-direction:column;
+text-align:center;
 }
 
 nav{
-text-align:center;
+justify-content:center;
 margin-top:20px;
 }
 
-nav a{
-display:inline-block;
-margin:8px;
-}
-
 .yakshini-title{
-font-size:46px;
+font-size:45px;
 }
 
 .english-title span{
@@ -190,12 +225,12 @@ width:60px;
 }
 
 .english-title p{
-letter-spacing:5px;
 font-size:16px;
+letter-spacing:4px;
 }
 
 .tagline{
-font-size:24px;
+font-size:22px;
 }
 
 .welcome{
@@ -204,15 +239,19 @@ font-size:16px;
 
 .btn{
 display:block;
-width:260px;
+width:250px;
 margin:15px auto;
 }
 
-.latest-release h2{
-font-size:30px;
+.movie-card h3{
+font-size:38px;
 }
 
-.movie-card h3{
+.movie-card p{
+font-size:17px;
+}
+
+.intro-video h2{
 font-size:30px;
 }
 
