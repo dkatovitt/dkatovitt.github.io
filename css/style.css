@@ -1,3 +1,7 @@
+/* ===========================
+   DK ATOVITT WEBSITE V5.0
+=========================== */
+
 *{
 margin:0;
 padding:0;
@@ -9,45 +13,44 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 background:#000;
 color:#fff;
-display:flex;
-flex-direction:column;
-min-height:100vh;
 line-height:1.6;
 }
 
-/* Header */
+/* ===========================
+   HEADER
+=========================== */
 
 header{
+position:sticky;
+top:0;
+z-index:999;
 background:#050505;
+border-bottom:2px solid #d4af37;
 padding:18px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
-border-bottom:2px solid #d4af37;
-position:sticky;
-top:0;
-z-index:999;
 }
 
 .logo h1{
+font-size:34px;
 color:#d4af37;
-font-size:32px;
 }
 
 .logo p{
-color:#cfcfcf;
-font-size:15px;
 margin-top:5px;
+color:#ccc;
+font-size:15px;
 }
 
 nav{
 display:flex;
 flex-wrap:wrap;
-gap:15px;
+gap:18px;
 }
 
 nav a{
@@ -61,93 +64,109 @@ nav a:hover{
 color:#d4af37;
 }
 
-/* Hero */
+/* ===========================
+ HERO
+=========================== */
 
 .hero{
-min-height:90vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
 padding:40px 20px;
-background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85));
+background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88));
 }
 
 .hero-content{
-max-width:900px;
+max-width:950px;
 }
 
+/* ===========================
+YAKSHINI TITLE
+=========================== */
+
 .yakshini-title{
-font-size:75px;
+font-size:90px;
+font-weight:bold;
 color:#d4af37;
-margin-bottom:20px;
-text-shadow:0 0 15px rgba(212,175,55,.5);
+text-shadow:
+0 0 10px rgba(212,175,55,.5),
+0 0 25px rgba(212,175,55,.3);
+margin-bottom:15px;
 }
 
 .english-title{
 display:flex;
-align-items:center;
 justify-content:center;
-margin-bottom:20px;
-}
-
-.english-title span{
-height:2px;
-width:150px;
-background:#d4af37;
-}
-
-.english-title p{
-margin:0 15px;
-letter-spacing:8px;
-font-size:22px;
-}
-
-.tagline{
-font-size:38px;
-font-weight:bold;
+align-items:center;
 margin-bottom:25px;
 }
 
+.english-title span{
+width:180px;
+height:2px;
+background:#d4af37;
+}
+
+.english-title h3{
+margin:0 18px;
+font-size:22px;
+letter-spacing:10px;
+font-weight:normal;
+}
+
+.tagline{
+font-size:42px;
+margin-bottom:25px;
+font-weight:bold;
+}
+
 .welcome{
-font-size:20px;
+font-size:22px;
 color:#d0d0d0;
 margin-bottom:35px;
 }
 
+/* ===========================
+BUTTON
+=========================== */
+
 .hero-buttons{
-margin-top:25px;
+margin-top:20px;
 }
 
 .btn{
 display:inline-block;
-padding:15px 28px;
+padding:15px 35px;
 margin:10px;
 background:#d4af37;
 color:#000;
-text-decoration:none;
 font-weight:bold;
+text-decoration:none;
 border-radius:8px;
 transition:.3s;
 }
 
 .btn:hover{
 background:#fff;
-transform:scale(1.05);
+transform:translateY(-4px);
 }
 
-/* Logo Video */
+/* ===========================
+LOGO VIDEO
+=========================== */
 
 .intro-video{
-padding:80px 20px;
-text-align:center;
+padding:90px 20px;
 background:#090909;
+text-align:center;
 }
 
 .intro-video h2{
 font-size:40px;
-color:#d4af37;
 margin-bottom:30px;
+color:#d4af37;
 }
 
 .intro-video video{
@@ -155,54 +174,121 @@ width:90%;
 max-width:900px;
 border-radius:15px;
 border:3px solid #d4af37;
-box-shadow:0 0 30px rgba(212,175,55,.5);
+box-shadow:0 0 30px rgba(212,175,55,.4);
 }
 
-/* Latest Release */
+/* ===========================
+LATEST RELEASE
+=========================== */
 
 .latest-release{
-padding:80px 20px;
+padding:90px 20px;
 background:#111;
 text-align:center;
 }
 
 .latest-release h2{
-font-size:42px;
-color:#d4af37;
+font-size:44px;
 margin-bottom:40px;
+color:#d4af37;
 }
 
 .movie-card{
-max-width:800px;
+max-width:900px;
 margin:auto;
-padding:35px;
 background:#1a1a1a;
-border-radius:15px;
+padding:40px;
+border-radius:18px;
 border:2px solid #d4af37;
-}
-
-.movie-card h3{
-font-size:60px;
-color:#d4af37;
-margin-bottom:20px;
 }
 
 .movie-card p{
 font-size:20px;
+margin:18px 0;
+}
+
+/* ===========================
+FEATURED
+=========================== */
+
+.featured{
+padding:90px 20px;
+text-align:center;
+background:#000;
+}
+
+.featured h2{
+font-size:44px;
+margin-bottom:45px;
+color:#d4af37;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+background:#181818;
+border:2px solid #d4af37;
+border-radius:15px;
+padding:30px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px rgba(212,175,55,.35);
+}
+
+.card h3{
+color:#d4af37;
 margin-bottom:15px;
 }
 
-/* Footer */
+.card p{
+color:#ddd;
+margin-bottom:20px;
+}
+
+/* ===========================
+CONTACT
+=========================== */
+
+.contact-home{
+padding:90px 20px;
+text-align:center;
+background:#101010;
+}
+
+.contact-home h2{
+font-size:42px;
+margin-bottom:25px;
+color:#d4af37;
+}
+
+.contact-home p{
+font-size:20px;
+margin:10px 0;
+}
+
+/* ===========================
+FOOTER
+=========================== */
 
 footer{
 background:#050505;
-padding:20px;
+padding:25px;
 text-align:center;
-margin-top:auto;
 border-top:2px solid #d4af37;
 }
 
-/* Mobile */
+/* ===========================
+RESPONSIVE
+=========================== */
 
 @media(max-width:768px){
 
@@ -217,42 +303,46 @@ margin-top:20px;
 }
 
 .yakshini-title{
-font-size:45px;
+font-size:50px;
 }
 
 .english-title span{
 width:60px;
 }
 
-.english-title p{
+.english-title h3{
 font-size:16px;
-letter-spacing:4px;
+letter-spacing:5px;
 }
 
 .tagline{
-font-size:22px;
+font-size:24px;
 }
 
 .welcome{
-font-size:16px;
+font-size:17px;
 }
 
 .btn{
 display:block;
-width:250px;
+width:260px;
 margin:15px auto;
 }
 
-.movie-card h3{
-font-size:38px;
+.movie-card{
+padding:25px;
 }
 
 .movie-card p{
 font-size:17px;
 }
 
-.intro-video h2{
-font-size:30px;
+.contact-home h2{
+font-size:32px;
+}
+
+.contact-home p{
+font-size:16px;
 }
 
 }
