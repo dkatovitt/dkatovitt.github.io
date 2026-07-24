@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #d4af37; /* Gold */
+    --primary-color: #d4af37;
     --bg-color: #0b0b0b;
     --card-bg: #141414;
     --text-color: #ffffff;
@@ -28,9 +28,9 @@ html, body {
     width: 100%;
 }
 
-/* ========================================= */
-/* HEADER SETTINGS (MENU LEFT, LOGO BADA)    */
-/* ========================================= */
+/* ================================== */
+/* HEADER SETTING (MENU AUR LOGO)     */
+/* ================================== */
 .header {
     background: #000;
     border-bottom: 2px solid var(--primary-color);
@@ -46,11 +46,11 @@ html, body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding-left: 55px; /* MENU BUTTON KE LIYE KHALI JAGAH (LEFT) */
+    padding-left: 60px; /* Menu Button ke liye left mein jagah */
 }
 
-/* MENU BUTTON (SABSE LEFT MEIN FIX KIYA) */
-#menuBtn {
+/* MENU BUTTON (LEFT MEIN FIX) */
+.header-icons button:first-child, #menuBtn {
     position: absolute;
     left: 15px;
     top: 50%;
@@ -64,11 +64,7 @@ html, body {
     z-index: 100;
 }
 
-#menuBtn:hover {
-    color: var(--primary-color);
-}
-
-/* LOGO KO SURAKSHIT KIYA */
+/* LOGO (BADA AUR FIX) */
 .logo {
     display: flex;
     align-items: center;
@@ -78,7 +74,7 @@ html, body {
 }
 
 .logo img {
-    height: 85px !important; /* LOGO BADA AUR FIX */
+    height: 85px !important; 
     width: auto !important;
     flex-shrink: 0;
 }
@@ -104,35 +100,21 @@ html, body {
     color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
-    line-height: 1.3;
+    white-space: nowrap;
 }
 
-/* SEARCH BUTTON (RIGHT MEIN) */
-.header-icons {
-    display: flex;
-    align-items: center;
-}
+/* SEARCH BUTTON (RIGHT) */
+.header-icons { display: flex; align-items: center; }
+.header-icons button { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 5px; }
 
-#searchBtn {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
-    padding: 5px;
-}
-
-#searchBtn:hover {
-    color: var(--primary-color);
-}
-
-/* ========================================= */
-/* SIDE MENU (LEFT SE KHULEGA AB)            */
-/* ========================================= */
+/* ================================== */
+/* SIDE MENU (LEFT SE KHULEGA)        */
+/* ================================== */
 .side-menu {
     position: fixed;
     top: 0;
-    left: -300px; /* LEFT SIDE MEIN CHHUPA HAI */
+    left: -300px;
+    right: auto;
     width: 280px;
     height: 100%;
     background: #111;
@@ -140,384 +122,74 @@ html, body {
     transition: 0.4s ease-in-out;
     padding: 20px;
     box-shadow: 5px 0 15px rgba(0,0,0,0.9);
-    border-right: 2px solid var(--primary-color); /* RIGHT BORDER LAGA DIYA */
+    border-right: 2px solid var(--primary-color);
 }
 
-.side-menu.active {
-    left: 0; /* CLICK KARNE PAR LEFT SE BAAHAR AAYEGA */
-}
+.side-menu.active { left: 0; }
+.menu-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+.menu-header h2 { color: var(--primary-color); font-size: 20px; }
+#closeMenu { background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; }
+.side-menu a { display: block; color: #fff; text-decoration: none; padding: 12px 0; font-size: 16px; border-bottom: 1px solid #222; }
 
-.menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
+/* MODAL & NEWS */
+.search-modal { position: fixed; top: -100px; left: 0; width: 100%; background: #111; z-index: 2000; padding: 20px; transition: 0.4s; border-bottom: 2px solid var(--primary-color); }
+.search-modal.active { top: 0; }
+.search-box-container { max-width: 800px; margin: 0 auto; display: flex; position: relative; }
+.search-box-container input { width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; font-size: 16px; border-radius: 5px; outline: none; }
+#closeSearch { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 24px; }
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; }
+#overlay.active { display: block; }
 
-.menu-header h2 {
-    color: var(--primary-color);
-    font-size: 20px;
-}
+.news-bar { background: var(--primary-color); color: #000; font-weight: bold; padding: 8px 0; overflow: hidden; width: 100%; }
+.news-track { display: inline-block; white-space: nowrap; animation: marquee 20s linear infinite; }
+.news-track span { margin-right: 50px; font-size: 14px; }
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-#closeMenu {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 28px;
-    cursor: pointer;
-}
+/* HERO SECTION */
+.hero { height: 65vh; background: url('../images/movies/yakshini-poster.png') no-repeat center top/cover; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5)); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+.studio { font-size: 12px; letter-spacing: 3px; color: var(--primary-color); margin-bottom: 10px; font-weight: bold; }
+.yakshini-title { font-size: 45px; color: var(--primary-color); font-weight: bold; margin-bottom: 5px; }
+.yakshini-english { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: #ccc; font-size: 16px; letter-spacing: 2px; }
+.yakshini-english .line { width: 40px; height: 1px; background: var(--primary-color); }
+.yakshini-tagline { font-size: 16px; color: #ff4d4d; margin-bottom: 10px; font-weight: bold; }
+.hero-text { font-size: 14px; color: #aaa; margin-bottom: 25px; }
+.btn { display: inline-block; background: var(--primary-color); color: #000; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 14px; transition: 0.3s; }
 
-.side-menu a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 0;
-    font-size: 16px;
-    border-bottom: 1px solid #222;
-}
+/* SECTIONS & MOVIES */
+section { padding: 50px 0; width: 100%; overflow: hidden; }
+.container h2 { font-size: 24px; color: var(--primary-color); margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
 
-.side-menu a:hover {
-    color: var(--primary-color);
-}
+.featured-movie { background: #111; }
+.movie-flex { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
+.movie-poster { flex: 1; min-width: 250px; text-align: center; }
+.movie-poster img { width: 100%; max-width: 300px; border-radius: 10px; border: 2px solid var(--primary-color); }
+.movie-info { flex: 2; min-width: 250px; }
+.movie-info h2 { text-align: left; margin-bottom: 15px; }
+.movie-story { font-size: 14px; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
+.movie-meta { list-style: none; margin-bottom: 25px; }
+.movie-meta li { margin-bottom: 8px; color: #aaa; font-size: 13px; }
 
-/* ========================================= */
-/* BAAKI SAB NORMAL (HERO, MOVIES, ETC.)     */
-/* ========================================= */
-.search-modal {
-    position: fixed;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    background: #111;
-    z-index: 2000;
-    padding: 20px;
-    transition: 0.4s;
-    border-bottom: 2px solid var(--primary-color);
-}
+/* AUTO SLIDER */
+.poster-slider-section { background: #000; padding: 30px 0; width: 100%; overflow: hidden; }
+.slider-container { width: 100%; overflow: hidden; }
+.poster-track { display: flex; gap: 15px; width: max-content; animation: scrollPosters 15s linear infinite; }
+.poster-track img { width: 160px; height: 230px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
+@keyframes scrollPosters { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-160px * 5 - 15px * 5)); } }
 
-.search-modal.active {
-    top: 0;
-}
+/* TRAILERS & GALLERY */
+.trailer-section { background: #0b0b0b; }
+.video-wrapper { background: var(--card-bg); border: 1px solid #222; border-radius: 10px; padding: 15px; width: 100%; max-width: 800px; margin: 0 auto; text-align: center; }
+.video-thumbnail { position: relative; display: block; width: 100%; height: 220px; border-radius: 8px; overflow: hidden; }
+.video-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
+.play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--primary-color); color: #000; border: none; width: 55px; height: 55px; border-radius: 50%; font-size: 20px; box-shadow: 0 0 15px rgba(0,0,0,0.8); }
+.trailer-title { margin-top: 15px; font-size: 16px; color: #fff; }
 
-.search-box-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    position: relative;
-}
-
-.search-box-container input {
-    width: 100%;
-    padding: 12px;
-    background: #222;
-    border: 1px solid #444;
-    color: #fff;
-    font-size: 16px;
-    border-radius: 5px;
-    outline: none;
-}
-
-#closeSearch {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-}
-
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 1500;
-    display: none;
-}
-
-#overlay.active {
-    display: block;
-}
-
-/* News Bar */
-.news-bar {
-    background: var(--primary-color);
-    color: #000;
-    font-weight: bold;
-    padding: 8px 0;
-    overflow: hidden;
-    width: 100%;
-}
-
-.news-track {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee 20s linear infinite;
-}
-
-.news-track span {
-    margin-right: 50px;
-    font-size: 14px;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-/* Hero Section */
-.hero {
-    height: 65vh;
-    background: url('../images/movies/yakshini-poster.png') no-repeat center top/cover;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.5));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.studio {
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.yakshini-title {
-    font-size: 45px;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.yakshini-english {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    color: #ccc;
-    font-size: 16px;
-    letter-spacing: 2px;
-}
-
-.yakshini-english .line {
-    width: 40px;
-    height: 1px;
-    background: var(--primary-color);
-}
-
-.yakshini-tagline {
-    font-size: 16px;
-    color: #ff4d4d;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.hero-text {
-    font-size: 14px;
-    color: #aaa;
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--primary-color);
-    color: #000;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #fff;
-    box-shadow: 0 0 15px var(--primary-color);
-}
-
-/* Sections */
-section {
-    padding: 50px 0;
-    width: 100%;
-    overflow: hidden;
-}
-
-.container h2 {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Featured Movie */
-.featured-movie {
-    background: #111;
-}
-
-.movie-flex {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.movie-poster {
-    flex: 1;
-    min-width: 250px;
-    text-align: center;
-}
-
-.movie-poster img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    border: 2px solid var(--primary-color);
-}
-
-.movie-info {
-    flex: 2;
-    min-width: 250px;
-}
-
-.movie-info h2 {
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.movie-story {
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.movie-meta {
-    list-style: none;
-    margin-bottom: 25px;
-}
-
-.movie-meta li {
-    margin-bottom: 8px;
-    color: #aaa;
-    font-size: 13px;
-}
-
-/* Slider Section */
-.poster-slider-section {
-    background: #000;
-    padding: 30px 0;
-    width: 100%;
-    overflow: hidden; 
-}
-
-.slider-container {
-    width: 100%;
-    overflow: hidden;
-}
-
-.poster-track {
-    display: flex;
-    gap: 15px;
-    width: max-content;
-    animation: scrollPosters 15s linear infinite;
-}
-
-.poster-track img {
-    width: 160px;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #333;
-}
-
-@keyframes scrollPosters {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-160px * 5 - 15px * 5)); }
-}
-
-/* Trailer & Songs Section */
-.trailer-section {
-    background: #0b0b0b;
-}
-
-.video-wrapper {
-    background: var(--card-bg);
-    border: 1px solid #222;
-    border-radius: 10px;
-    padding: 15px;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.video-thumbnail {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 220px; 
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.video-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.play-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--primary-color);
-    color: #000;
-    border: none;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    font-size: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.8);
-}
-
-.trailer-title {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #fff;
-}
-
-/* Gallery & Partners */
 .gallery-preview { background: #111; }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
 .gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
 
+/* PARTNERS & FOOTER */
 .partners-auditions { background: #0b0b0b; }
 .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
 .partner-card { background: var(--card-bg); border: 1px solid #222; padding: 20px; text-align: center; border-radius: 10px; }
@@ -528,7 +200,6 @@ section {
 .audition-box h2 { margin-bottom: 10px; }
 .audition-box p { color: #ccc; font-size: 14px; margin-bottom: 20px; }
 
-/* Footer */
 .main-footer { background: #000; border-top: 2px solid var(--primary-color); padding: 40px 0 20px 0; }
 .footer-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px; text-align: center; }
 .footer-column h3 { color: var(--primary-color); font-size: 16px; margin-bottom: 10px; }
@@ -540,9 +211,9 @@ section {
 .footer-social a { color: #fff; text-decoration: none; font-size: 14px; }
 .copyright { text-align: center; color: #777; font-size: 12px; }
 
-/* Desktop Screens */
+/* DESKTOP (PC) VIEW */
 @media (min-width: 768px) {
-    .logo-text h1 { font-size: 24px; } 
+    .logo-text h1 { font-size: 24px; white-space: normal; } 
     .video-thumbnail { height: 400px; }
     .hero { height: 85vh; }
     .yakshini-title { font-size: 60px; }
