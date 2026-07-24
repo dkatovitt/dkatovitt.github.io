@@ -58,6 +58,7 @@ body {
     color: var(--primary-color);
     letter-spacing: 2px;
     text-transform: uppercase;
+    white-space: nowrap; /* DK ATOVITT ko ek line me rakhega */
 }
 
 .logo-text p {
@@ -390,38 +391,6 @@ section {
     color: #fff;
 }
 
-/* Slider Section */
-.poster-slider-section {
-    background: #000;
-    padding: 30px 0;
-    overflow: hidden;
-}
-
-.slider-container {
-    width: 100%;
-    overflow: hidden;
-}
-
-.poster-track {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scrollPosters 20s linear infinite;
-}
-
-.poster-track img {
-    width: 200px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #333;
-}
-
-@keyframes scrollPosters {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-200px * 5 - 20px * 5)); }
-}
-
 /* Trailer & Songs Section */
 .trailer-section {
     background: #0b0b0b;
@@ -632,4 +601,34 @@ section {
     text-align: center;
     color: #777;
     font-size: 13px;
+}
+
+/* ========================================= */
+/* 📱 MOBILE RESPONSIVENESS (Fixes)          */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* 1. Logo text ko ek line me fit karne ke liye */
+    .logo img {
+        height: 50px !important; /* Mobile me thoda chota */
+    }
+    .logo-text h1 {
+        font-size: 16px; 
+    }
+    .logo-text p {
+        font-size: 9px;
+    }
+    
+    /* 2. Poster ko theek karne ke liye (Zoom kam kiya) */
+    .hero {
+        height: 60vh; /* Mobile par height thodi kam ki */
+        background-position: top center !important; /* Chehre katein na */
+    }
+    .yakshini-title {
+        font-size: 45px;
+    }
+    
+    /* 3. Gaano ke thumbnail mobile par */
+    .video-thumbnail {
+        height: 220px;
+    }
 }
