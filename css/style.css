@@ -6,23 +6,25 @@
     --text-muted: #aaaaaa;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
+/* ========================================= */
+/* FIX: Website ko idhar-udhar bhagne se rokna */
+/* ========================================= */
+html, body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    overflow-x: hidden;
+    overflow-x: hidden !important; /* Strictly lock horizontal scroll */
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 15px;
+    width: 100%;
 }
 
 /* Header */
@@ -32,7 +34,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .header .container {
@@ -44,43 +47,43 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .logo img {
-    height: 90px !important;
+    height: 90px !important; /* Aapka Logo Bada Hi Rahega */
     max-height: none !important;
     width: auto !important;
 }
 
 .logo-text h1 {
-    font-size: 24px;
+    font-size: 22px;
     color: var(--primary-color);
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    white-space: nowrap; /* DK ATOVITT ko ek line me rakhega */
+    line-height: 1.1;
 }
 
 .logo-text p {
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: 3px;
 }
 
 .header-icons {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .header-icons button {
     background: none;
     border: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
-    padding: 8px;
-    transition: 0.3s;
+    padding: 5px;
 }
 
 .header-icons button:hover {
@@ -92,7 +95,7 @@ body {
     position: fixed;
     top: 0;
     right: -300px;
-    width: 300px;
+    width: 280px;
     height: 100%;
     background: #111;
     z-index: 2000;
@@ -135,12 +138,6 @@ body {
     padding: 12px 0;
     font-size: 16px;
     border-bottom: 1px solid #222;
-    transition: 0.3s;
-}
-
-.side-menu a:hover {
-    color: var(--primary-color);
-    padding-left: 5px;
 }
 
 /* Search Modal */
@@ -152,7 +149,6 @@ body {
     background: #111;
     z-index: 2000;
     padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.8);
     transition: 0.4s;
     border-bottom: 2px solid var(--primary-color);
 }
@@ -170,7 +166,7 @@ body {
 
 .search-box-container input {
     width: 100%;
-    padding: 15px 20px;
+    padding: 12px;
     background: #222;
     border: 1px solid #444;
     color: #fff;
@@ -188,7 +184,6 @@ body {
     border: none;
     color: #fff;
     font-size: 24px;
-    cursor: pointer;
 }
 
 #overlay {
@@ -213,12 +208,13 @@ body {
     font-weight: bold;
     padding: 8px 0;
     overflow: hidden;
-    white-space: nowrap;
+    width: 100%;
 }
 
 .news-track {
     display: inline-block;
-    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
 }
 
 .news-track span {
@@ -233,13 +229,14 @@ body {
 
 /* Hero Section */
 .hero {
-    height: 85vh;
-    background: url('../images/movies/yakshini-poster.png') no-repeat center center/cover;
+    height: 70vh;
+    background: url('../images/movies/yakshini-poster.png') no-repeat center top/cover;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 100%;
 }
 
 .hero-overlay {
@@ -257,15 +254,15 @@ body {
 }
 
 .studio {
-    font-size: 14px;
-    letter-spacing: 4px;
+    font-size: 12px;
+    letter-spacing: 3px;
     color: var(--primary-color);
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .yakshini-title {
-    font-size: 60px;
+    font-size: 50px;
     color: var(--primary-color);
     font-weight: bold;
     margin-bottom: 5px;
@@ -274,60 +271,55 @@ body {
 .yakshini-english {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     margin-bottom: 15px;
     color: #ccc;
-    font-size: 18px;
-    letter-spacing: 3px;
+    font-size: 16px;
+    letter-spacing: 2px;
 }
 
 .yakshini-english .line {
-    width: 50px;
+    width: 40px;
     height: 1px;
     background: var(--primary-color);
 }
 
 .yakshini-tagline {
-    font-size: 18px;
+    font-size: 16px;
     color: #ff4d4d;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .hero-text {
-    font-size: 15px;
+    font-size: 14px;
     color: #aaa;
     margin-bottom: 25px;
 }
 
-/* Buttons */
 .btn {
     display: inline-block;
     background: var(--primary-color);
     color: #000;
-    padding: 12px 30px;
+    padding: 12px 25px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
     text-transform: uppercase;
     font-size: 14px;
 }
 
-.btn:hover {
-    background: #fff;
-    box-shadow: 0 0 15px var(--primary-color);
-}
-
 /* Sections */
 section {
-    padding: 60px 0;
+    padding: 50px 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 .container h2 {
-    font-size: 28px;
+    font-size: 24px;
     color: var(--primary-color);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -340,28 +332,27 @@ section {
 
 .movie-flex {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .movie-poster {
     flex: 1;
-    min-width: 280px;
+    min-width: 250px;
     text-align: center;
 }
 
 .movie-poster img {
     width: 100%;
-    max-width: 350px;
+    max-width: 300px;
     border-radius: 10px;
     border: 2px solid var(--primary-color);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .movie-info {
     flex: 2;
-    min-width: 280px;
+    min-width: 250px;
 }
 
 .movie-info h2 {
@@ -370,10 +361,10 @@ section {
 }
 
 .movie-story {
-    font-size: 15px;
+    font-size: 14px;
     color: #ccc;
     margin-bottom: 20px;
-    line-height: 1.8;
+    line-height: 1.6;
 }
 
 .movie-meta {
@@ -384,11 +375,40 @@ section {
 .movie-meta li {
     margin-bottom: 8px;
     color: #aaa;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-.movie-meta strong {
-    color: #fff;
+/* Slider Section (Fixed Mobile width issue) */
+.poster-slider-section {
+    background: #000;
+    padding: 30px 0;
+    width: 100%;
+    overflow: hidden; /* Prevent screen breakout */
+}
+
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.poster-track {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+    animation: scrollPosters 15s linear infinite;
+}
+
+.poster-track img {
+    width: 160px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+@keyframes scrollPosters {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-160px * 5 - 15px * 5)); }
 }
 
 /* Trailer & Songs Section */
@@ -400,18 +420,18 @@ section {
     background: var(--card-bg);
     border: 1px solid #222;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 .video-thumbnail {
     position: relative;
     display: block;
     width: 100%;
-    height: 400px;
+    height: 220px; /* Adjusted for mobile */
     border-radius: 8px;
     overflow: hidden;
 }
@@ -420,11 +440,6 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.4s;
-}
-
-.video-thumbnail:hover img {
-    transform: scale(1.03);
 }
 
 .play-btn {
@@ -435,23 +450,16 @@ section {
     background: var(--primary-color);
     color: #000;
     border: none;
-    width: 65px;
-    height: 65px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    transition: 0.3s;
-}
-
-.video-thumbnail:hover .play-btn {
-    background: #fff;
-    transform: translate(-50%, -50%) scale(1.1);
+    font-size: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
 }
 
 .trailer-title {
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
 }
 
@@ -462,22 +470,16 @@ section {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     border: 1px solid #333;
-    transition: 0.3s;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.03);
-    border-color: var(--primary-color);
 }
 
 /* Partners & Auditions */
@@ -487,148 +489,117 @@ section {
 
 .partner-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-bottom: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .partner-card {
     background: var(--card-bg);
     border: 1px solid #222;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     border-radius: 10px;
-    transition: 0.3s;
-}
-
-.partner-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
 }
 
 .partner-card img {
-    height: 70px;
+    height: 50px;
     object-fit: contain;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .partner-card h3 {
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .audition-box {
     background: linear-gradient(135deg, #141414, #222);
     border: 2px solid var(--primary-color);
-    padding: 40px;
+    padding: 30px 15px;
     text-align: center;
     border-radius: 10px;
 }
 
 .audition-box h2 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .audition-box p {
     color: #ccc;
-    max-width: 700px;
-    margin: 0 auto 25px auto;
-    font-size: 15px;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 /* Footer */
 .main-footer {
     background: #000;
     border-top: 2px solid var(--primary-color);
-    padding: 60px 0 20px 0;
+    padding: 40px 0 20px 0;
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .footer-column h3 {
     color: var(--primary-color);
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .footer-column p, .footer-column ul {
     color: #aaa;
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 13px;
 }
 
 .footer-column ul {
     list-style: none;
 }
 
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
 .footer-column ul li a {
     color: #aaa;
     text-decoration: none;
-    transition: 0.3s;
-}
-
-.footer-column ul li a:hover {
-    color: var(--primary-color);
 }
 
 .footer-social {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 15px;
+    margin-bottom: 20px;
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 
 .footer-social a {
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
-    transition: 0.3s;
-}
-
-.footer-social a:hover {
-    color: var(--primary-color);
+    font-size: 14px;
 }
 
 .copyright {
     text-align: center;
     color: #777;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 /* ========================================= */
-/* 📱 MOBILE RESPONSIVENESS (Fixes)          */
+/* 📱 MOBILE SPECIFIC TWEAKS                 */
 /* ========================================= */
-@media (max-width: 768px) {
-    /* 1. Logo text ko ek line me fit karne ke liye */
-    .logo img {
-        height: 50px !important; /* Mobile me thoda chota */
-    }
-    .logo-text h1 {
-        font-size: 16px; 
-    }
-    .logo-text p {
-        font-size: 9px;
-    }
-    
-    /* 2. Poster ko theek karne ke liye (Zoom kam kiya) */
-    .hero {
-        height: 60vh; /* Mobile par height thodi kam ki */
-        background-position: top center !important; /* Chehre katein na */
-    }
-    .yakshini-title {
-        font-size: 45px;
-    }
-    
-    /* 3. Gaano ke thumbnail mobile par */
-    .video-thumbnail {
-        height: 220px;
-    }
+@media (min-width: 768px) {
+    .video-thumbnail { height: 400px; }
+    .hero { height: 85vh; }
+    .yakshini-title { font-size: 60px; }
+    .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
+    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .partner-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
 }
