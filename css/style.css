@@ -6,15 +6,19 @@
     --text-muted: #aaaaaa;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 html, body {
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden !important;
     width: 100%;
     max-width: 100vw;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
@@ -24,7 +28,9 @@ html, body {
     width: 100%;
 }
 
-/* Header */
+/* ========================================= */
+/* HEADER SETTINGS (MENU LEFT, LOGO BADA)    */
+/* ========================================= */
 .header {
     background: #000;
     border-bottom: 2px solid var(--primary-color);
@@ -39,83 +45,106 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    padding-left: 55px; /* MENU BUTTON KE LIYE KHALI JAGAH (LEFT) */
 }
 
-/* LOGO AUR MENU KI SETTING */
+/* MENU BUTTON (SABSE LEFT MEIN FIX KIYA) */
+#menuBtn {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 100;
+}
+
+#menuBtn:hover {
+    color: var(--primary-color);
+}
+
+/* LOGO KO SURAKSHIT KIYA */
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex: 1; 
-    min-width: 0;
+    flex: 1;
+    overflow: hidden;
 }
 
 .logo img {
-    height: 85px !important; /* Logo Bada Hi Rahega */
+    height: 85px !important; /* LOGO BADA AUR FIX */
     width: auto !important;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .logo-text {
-    flex: 1;
-    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .logo-text h1 {
-    font-size: 20px;
+    font-size: 19px;
     color: var(--primary-color);
     letter-spacing: 1px;
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 2px;
-    white-space: nowrap; /* DK ATOVITT ko ek line me rakhega */
-    text-overflow: ellipsis;
-}
-
-.logo-text p {
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
-.header-icons {
-    display: flex;
-    gap: 15px;
-    flex-shrink: 0; /* Menu ko screen ke bahar nahi jane dega */
+.logo-text p {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.3;
 }
 
-.header-icons button {
+/* SEARCH BUTTON (RIGHT MEIN) */
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+#searchBtn {
     background: none;
     border: none;
     color: #fff;
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
     padding: 5px;
 }
 
-.header-icons button:hover {
+#searchBtn:hover {
     color: var(--primary-color);
 }
 
-/* Side Menu */
+/* ========================================= */
+/* SIDE MENU (LEFT SE KHULEGA AB)            */
+/* ========================================= */
 .side-menu {
     position: fixed;
     top: 0;
-    right: -300px;
+    left: -300px; /* LEFT SIDE MEIN CHHUPA HAI */
     width: 280px;
     height: 100%;
     background: #111;
     z-index: 2000;
     transition: 0.4s ease-in-out;
     padding: 20px;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.8);
-    border-left: 2px solid var(--primary-color);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.9);
+    border-right: 2px solid var(--primary-color); /* RIGHT BORDER LAGA DIYA */
 }
 
 .side-menu.active {
-    right: 0;
+    left: 0; /* CLICK KARNE PAR LEFT SE BAAHAR AAYEGA */
 }
 
 .menu-header {
@@ -149,7 +178,13 @@ html, body {
     border-bottom: 1px solid #222;
 }
 
-/* Search Modal */
+.side-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* ========================================= */
+/* BAAKI SAB NORMAL (HERO, MOVIES, ETC.)     */
+/* ========================================= */
 .search-modal {
     position: fixed;
     top: -100px;
@@ -238,7 +273,7 @@ html, body {
 
 /* Hero Section */
 .hero {
-    height: 60vh;
+    height: 65vh;
     background: url('../images/movies/yakshini-poster.png') no-repeat center top/cover;
     position: relative;
     display: flex;
@@ -478,140 +513,36 @@ section {
     color: #fff;
 }
 
-/* Gallery */
-.gallery-preview {
-    background: #111;
-}
+/* Gallery & Partners */
+.gallery-preview { background: #111; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+.gallery-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; border: 1px solid #333; }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-}
+.partners-auditions { background: #0b0b0b; }
+.partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-bottom: 40px; }
+.partner-card { background: var(--card-bg); border: 1px solid #222; padding: 20px; text-align: center; border-radius: 10px; }
+.partner-card img { height: 50px; object-fit: contain; margin-bottom: 10px; }
+.partner-card h3 { color: #fff; font-size: 14px; }
 
-.gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #333;
-}
-
-/* Partners & Auditions */
-.partners-auditions {
-    background: #0b0b0b;
-}
-
-.partner-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.partner-card {
-    background: var(--card-bg);
-    border: 1px solid #222;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.partner-card img {
-    height: 50px;
-    object-fit: contain;
-    margin-bottom: 10px;
-}
-
-.partner-card h3 {
-    color: #fff;
-    font-size: 14px;
-}
-
-.audition-box {
-    background: linear-gradient(135deg, #141414, #222);
-    border: 2px solid var(--primary-color);
-    padding: 30px 15px;
-    text-align: center;
-    border-radius: 10px;
-}
-
-.audition-box h2 {
-    margin-bottom: 10px;
-}
-
-.audition-box p {
-    color: #ccc;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
+.audition-box { background: linear-gradient(135deg, #141414, #222); border: 2px solid var(--primary-color); padding: 30px 15px; text-align: center; border-radius: 10px; }
+.audition-box h2 { margin-bottom: 10px; }
+.audition-box p { color: #ccc; font-size: 14px; margin-bottom: 20px; }
 
 /* Footer */
-.main-footer {
-    background: #000;
-    border-top: 2px solid var(--primary-color);
-    padding: 40px 0 20px 0;
-}
+.main-footer { background: #000; border-top: 2px solid var(--primary-color); padding: 40px 0 20px 0; }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px; text-align: center; }
+.footer-column h3 { color: var(--primary-color); font-size: 16px; margin-bottom: 10px; }
+.footer-column p, .footer-column ul { color: #aaa; font-size: 13px; }
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 5px; }
+.footer-column ul li a { color: #aaa; text-decoration: none; }
+.footer-social { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 15px 0; }
+.footer-social a { color: #fff; text-decoration: none; font-size: 14px; }
+.copyright { text-align: center; color: #777; font-size: 12px; }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.footer-column h3 {
-    color: var(--primary-color);
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.footer-column p, .footer-column ul {
-    color: #aaa;
-    font-size: 13px;
-}
-
-.footer-column ul {
-    list-style: none;
-}
-
-.footer-column ul li {
-    margin-bottom: 5px;
-}
-
-.footer-column ul li a {
-    color: #aaa;
-    text-decoration: none;
-}
-
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
-    padding: 15px 0;
-}
-
-.footer-social a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.copyright {
-    text-align: center;
-    color: #777;
-    font-size: 12px;
-}
-
-/* ========================================= */
-/* 📱 DESKTOP & RESPONSIVE TWEAKS            */
-/* ========================================= */
+/* Desktop Screens */
 @media (min-width: 768px) {
-    .logo-text h1 { font-size: 24px; white-space: normal; } 
+    .logo-text h1 { font-size: 24px; } 
     .video-thumbnail { height: 400px; }
     .hero { height: 85vh; }
     .yakshini-title { font-size: 60px; }
