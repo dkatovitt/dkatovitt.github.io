@@ -3,252 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK Atovitt - Official Movie Production House</title>
+    <title>DK Atovitt - Official Film Production House</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header Section -->
     <header class="header">
         <div class="container">
+            <!-- Menu Button (Left Side) -->
+            <button id="menuBtn"><i class="fas fa-bars"></i></button>
+
+            <!-- Logo & Title -->
             <div class="logo">
                 <img src="images/logo/logo.png" alt="DK Atovitt Logo">
                 <div class="logo-text">
                     <h1>DK ATOVITT</h1>
-                    <p>Official Movie Production House</p>
+                    <p>Official Film Production House</p>
                 </div>
             </div>
+
+            <!-- Search Button (Right Side) -->
             <div class="header-icons">
-                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
-                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Side Menu Drawer -->
-    <div class="side-menu" id="sideMenu">
+    <!-- Side Menu (Left Side Drawer) -->
+    <nav class="side-menu" id="sideMenu">
         <div class="menu-header">
-            <h2>MENU</h2>
-            <button id="closeMenu">&times;</button>
+            <h2>DK ATOVITT</h2>
+            <button id="closeMenu"><i class="fas fa-times"></i></button>
         </div>
-        <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
-        <a href="#movies"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</a>
-        <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
-        <a href="#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
-        <a href="#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="#auditions"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
-        <a href="#auditions"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
-        <a href="#news"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="#advertise"><i class="fas fa-bullhorn" style="color:var(--primary-color); margin-right:12px;"></i> Advertise</a>
-        <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact</a>
-    </div>
+        <a href="index.html">Home</a>
+        <a href="#about">About Founder</a>
+        <a href="#services">Our Services</a>
+        <a href="#articles">Production Work</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
 
-    <!-- Search Modal Box -->
+    <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
         <div class="search-box-container">
-            <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
-            <button id="closeSearch">&times;</button>
+            <input type="text" placeholder="Search movies, songs, services...">
+            <button id="closeSearch"><i class="fas fa-times"></i></button>
         </div>
     </div>
-
     <div id="overlay"></div>
 
-    <!-- News Bar -->
+    <!-- Breaking News / Ticker Bar -->
     <div class="news-bar">
         <div class="news-track">
-            <span>🔥 Welcome to DK Atovitt Official Website</span>
-            <span>🎬 Upcoming Horror Movie "Yakshini" Coming Soon</span>
-            <span>⭐ Stay tuned for exclusive trailers and songs</span>
+            <span>🔥 Welcome to DK Atovitt Official Production House</span>
+            <span>🎬 Now Booking for Upcoming Movie Projects & Brand Commercials</span>
+            <span>🤖 Next-Gen AI Video Generation & Professional Shooting Services Available</span>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/logo/logo.png') center/cover no-repeat;">
         <div class="hero-overlay">
-            <div class="studio">DK ATOVITT PRESENTS</div>
-            <h1 class="yakshini-title">यक्षिणी</h1>
+            <div class="studio">DK ATOVITT PRODUCTIONS</div>
+            <h1 class="yakshini-title" style="font-size: 40px;">CREATING CINEMATIC MAGIC</h1>
             <div class="yakshini-english">
-                <div class="line"></div>
-                <span>Y a k s h i n i</span>
-                <div class="line"></div>
+                <span class="line"></span>
+                <span>VISION • INNOVATION • ENTERTAINMENT</span>
+                <span class="line"></span>
             </div>
-            <p class="yakshini-tagline">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
-            <p class="hero-text">An Upcoming Bollywood Horror Romance Film</p>
-            <a href="#trailer" class="btn"><i class="fas fa-play"></i> Watch Trailer</a>
+            <p class="yakshini-tagline">Empowering stories through world-class film production and futuristic AI technology.</p>
+            <a href="#services" class="btn">Explore Our Services</a>
         </div>
     </section>
 
-    <!-- Featured Movie Section -->
-    <section class="featured-movie" id="movies">
+    <!-- About Creator / CEO Section -->
+    <section id="about" style="background: #141414; padding: 60px 0;">
         <div class="container">
-            <h2>Featured Movie</h2>
+            <h2>Meet The Creator & CEO</h2>
             <div class="movie-flex">
                 <div class="movie-poster">
-                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
+                    <img src="images/logo/logo.png" alt="Mr. Dipak Kumar Gupta">
                 </div>
                 <div class="movie-info">
-                    <h2>Yakshini</h2>
-                    <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
-                    <ul class="movie-meta">
-                        <li><strong>Genre:</strong> Horror / Romance / Mystery</li>
-                        <li><strong>Language:</strong> Hindi</li>
-                        <li><strong>Director:</strong> DK Sir</li>
-                        <li><strong>Production House:</strong> DK Atovitt</li>
-                    </ul>
-                    <a href="#trailer" class="btn">Watch Trailer Now</a>
+                    <h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 10px;">Mr. Dipak Kumar Gupta</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px;">Founder, Creator, MD & CEO | From Kolkata</p>
+                    <p class="movie-story">
+                        Mr. Dipak Kumar Gupta is a visionary entrepreneur and creative leader from Kolkata who established **DK Atovitt** with a singular mission: to redefine modern entertainment. Under his dynamic leadership, the production house has grown into a powerhouse encompassing full-scale movie production, commercial video direction, cutting-edge AI video generation, and comprehensive shooting services. His passion for meaningful cinema and technological innovation continues to drive the company to new heights.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Auto Poster Slider Section -->
-    <section class="poster-slider-section">
-        <div class="slider-container">
-            <div class="poster-track">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 1">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 2">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 3">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 4">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 5">
-            </div>
-        </div>
-    </section>
-
-    <!-- Official Trailer Section -->
-    <section class="trailer-section" id="trailer">
+    <!-- Services & Articles Section -->
+    <section id="services" style="background: #0b0b0b; padding: 60px 0;">
         <div class="container">
-            <h2>Official Trailer</h2>
-            <div class="video-wrapper">
-                <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <!-- Absolute Path for Trailer -->
-                    <img src="https://dkatovitt.github.io/images/banners/new-trailer-thumb.jpg?v=final3" alt="Trailer Thumbnail" style="object-fit: contain; background: #000;">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">Yakshini Yakshini</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Yakshini Movie Song's Section -->
-    <section class="trailer-section" id="songs">
-        <div class="container">
-            <h2>Yakshini Movie Song's</h2>
+            <h2>Our Core Services & Expertise</h2>
             
-            <!-- Song 1 -->
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
-                    <!-- NEW NAME for Song 1 (gaana1.jpg) -->
-                    <img src="https://dkatovitt.github.io/images/banners/gaana1.jpg?v=final3" alt="Song 1 Thumbnail">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">Aaj ke Saam hai Khushiyon Ke Naam</h3>
-            </div>
-
-            <!-- Song 2 -->
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
-                    <!-- NEW NAME for Song 2 (gaana2.jpg) -->
-                    <img src="https://dkatovitt.github.io/images/banners/gaana2.jpg?v=final3" alt="Song 2 Thumbnail">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha</h3>
-            </div>
-
-            <!-- Song 3 -->
-            <div class="video-wrapper">
-                <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
-                    <!-- Absolute Path for Song 3 -->
-                    <img src="https://dkatovitt.github.io/images/banners/song3-thumb.jpg?v=final3" alt="Song 3 Thumbnail">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">Saam dhale jab Pani dole</h3>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery-preview" id="gallery">
-        <div class="container">
-            <h2>Movie Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 1"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 2"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 3"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 4"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners & Auditions -->
-    <section class="partners-auditions" id="auditions">
-        <div class="container">
-            <h2>Our Partners</h2>
-            <div class="partner-grid">
-                <div class="partner-card">
-                    <img src="images/partners/earn-logo.png" alt="Earn with DK Sir">
-                    <h3>Earn with DK Sir</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;" id="articles">
+                
+                <!-- Service 1: Movie Production -->
+                <div style="background: var(--card-bg); border: 1px solid #222; border-radius: 10px; overflow: hidden;">
+                    <img src="images/logo/logo.png" alt="Movie Production" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-color);">
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">1. Professional Movie Production</h3>
+                        <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                            We bring compelling scripts to life on the silver screen. From pre-production planning, scriptwriting, and casting to high-end direction and post-production editing, DK Atovitt delivers cinematic excellence for regional and Bollywood cinema.
+                        </p>
+                    </div>
                 </div>
-                <div class="partner-card">
-                    <img src="images/partners/atvt-logo.jpg" alt="ATVT">
-                    <h3>ATVT</h3>
-                </div>
-                <div class="partner-card">
-                    <img src="images/partners/kalpamrit-logo.jpg" alt="Kalpamrit">
-                    <h3>Kalpamrit</h3>
-                </div>
-            </div>
 
-            <div class="audition-box">
-                <h2>Join Our Upcoming Projects</h2>
-                <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
-                <a href="#" class="btn">Apply For Audition</a>
+                <!-- Service 2: Video Songs -->
+                <div style="background: var(--card-bg); border: 1px solid #222; border-radius: 10px; overflow: hidden;">
+                    <img src="images/logo/logo.png" alt="Video Songs" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-color);">
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">2. Music & Video Songs Creation</h3>
+                        <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                            Music is the heartbeat of entertainment. We conceptualize, shoot, and produce chartbusting music videos, soulful romantic tracks, and regional chartbusters with top-tier audio-visual quality.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3: Shooting Services -->
+                <div style="background: var(--card-bg); border: 1px solid #222; border-radius: 10px; overflow: hidden;">
+                    <img src="images/logo/logo.png" alt="Shooting Services" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-color);">
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">3. Complete Shooting Services</h3>
+                        <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                            Looking for professional shooting management? We offer end-to-end shooting line production, camera crews, high-grade cinematic equipment rentals, and seamless on-location execution.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 4: AI Video Generation -->
+                <div style="background: var(--card-bg); border: 1px solid #222; border-radius: 10px; overflow: hidden;">
+                    <img src="images/logo/logo.png" alt="AI Video Generation" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-color);">
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">4. Next-Gen AI Video Generation</h3>
+                        <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                            Embracing the future of media, DK Atovitt specializes in cutting-edge AI-generated video content, hyper-realistic CGI concepts, and futuristic visual effects that give your projects an unmatched edge.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 5: Brand & Commercial Videos -->
+                <div style="background: var(--card-bg); border: 1px solid #222; border-radius: 10px; overflow: hidden; grid-column: span auto;">
+                    <img src="images/logo/logo.png" alt="Brand Commercials" style="width: 100%; height: 200px; object-fit: cover; border-bottom: 2px solid var(--primary-color);">
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary-color); font-size: 18px; margin-bottom: 10px;">5. Brand & Product Commercials</h3>
+                        <p style="color: #ccc; font-size: 14px; line-height: 1.6;">
+                            Elevate your brand with premium commercial videos. We create high-impact promotional films, product advertisements, and corporate video campaigns designed to capture audiences and drive brand growth.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
+    <!-- Footer -->
     <footer class="main-footer" id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>DK ATOVITT</h3>
-                    <p>Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+                    <h3>DK ATOVITT PRODUCTIONS</h3>
+                    <p>Led by Mr. Dipak Kumar Gupta (Kolkata). Creating benchmark entertainment across movies, music videos, AI media, and brand commercials.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#movies">Movies</a></li>
-                        <li><a href="#trailer">Trailer</a></li>
-                        <li><a href="#auditions">Auditions</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About CEO</a></li>
+                        <li><a href="#services">Our Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p>Email: contact@dkatovitt.com</p>
-                    <p>Location: India</p>
+                    <h3>Get In Touch</h3>
+                    <p>Partner with DK Atovitt for your next film, song, or brand commercial project.</p>
+                    <p style="margin-top: 10px; color: var(--primary-color);">Email: contact@dkatovitt.com</p>
                 </div>
             </div>
             <div class="footer-social">
-                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
                 <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
             </div>
-            <p class="copyright">&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>Copyright © 2026 DK Atovitt Productions Pvt. Ltd. All Rights Reserved. | Created in Kolkata.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Interactions -->
+    <!-- JavaScript for Menu & Search functionality -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
         const closeMenu = document.getElementById('closeMenu');
-        const overlay = document.getElementById('overlay');
         const searchBtn = document.getElementById('searchBtn');
         const searchModal = document.getElementById('searchModal');
         const closeSearch = document.getElementById('closeSearch');
+        const overlay = document.getElementById('overlay');
 
         menuBtn.addEventListener('click', () => {
             sideMenu.classList.add('active');
@@ -260,19 +216,15 @@
             overlay.classList.remove('active');
         });
 
-        if(searchBtn) {
-            searchBtn.addEventListener('click', () => {
-                searchModal.classList.add('active');
-                overlay.classList.add('active');
-            });
-        }
+        searchBtn.addEventListener('click', () => {
+            searchModal.classList.add('active');
+            overlay.classList.add('active');
+        });
 
-        if(closeSearch) {
-            closeSearch.addEventListener('click', () => {
-                searchModal.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        }
+        closeSearch.addEventListener('click', () => {
+            searchModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
 
         overlay.addEventListener('click', () => {
             sideMenu.classList.remove('active');
