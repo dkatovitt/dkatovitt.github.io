@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - DK Atovitt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0b0b0b; color: #fff; font-family: Arial, sans-serif; margin: 0; }
+        .dash-header { background: #141414; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e6c875; }
+        .dash-header img { height: 40px; }
+        .dash-header .user-info { display: flex; align-items: center; gap: 10px; color: #e6c875; font-weight: bold; }
+        .logout-btn { color: #ff4d4d; text-decoration: none; font-size: 14px; margin-left: 20px; border: 1px solid #ff4d4d; padding: 5px 10px; border-radius: 4px; transition: 0.3s; }
+        .logout-btn:hover { background-color: #ff4d4d; color: #fff; }
+        
+        .dash-container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        .welcome-box { background: #1f1f1f; padding: 20px; border-radius: 8px; border-left: 5px solid #e6c875; margin-bottom: 30px; }
+        .welcome-box h2 { margin: 0 0 10px 0; color: #fff; }
+        
+        .form-card { background: #141414; padding: 30px; border-radius: 12px; border: 1px solid #333; }
+        .form-card h3 { color: #e6c875; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; color: #aaa; margin-bottom: 8px; font-weight: bold; }
+        .input-group select, .input-group input, .input-group textarea { width: 100%; padding: 12px; background: #1f1f1f; border: 1px solid #333; border-radius: 6px; color: #fff; box-sizing: border-box; font-size: 15px; }
+        .input-group select:focus, .input-group input:focus { border-color: #e6c875; outline: none; }
+        
+        .submit-btn { background-color: #e6c875; color: #000; padding: 15px; width: 100%; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; margin-top: 10px; }
+        .submit-btn:hover { background-color: #d4b563; }
+        
+        #hiddenForm { display: none; margin-top: 20px; animation: fadeIn 0.5s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dashboard Header -->
+    <header class="dash-header">
+        <img src="images/logo/logo.png" alt="DK Atovitt">
+        <div class="user-info">
+            <i class="fas fa-user-circle" style="font-size: 24px;"></i> My Profile
+            <a href="auth.html" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <div class="dash-container">
+        
+        <!-- Welcome Message -->
+        <div class="welcome-box">
+            <h2>Welcome to your Dashboard! 🎬</h2>
+            <p style="color: #aaa; margin: 0;">Aapka account DK Atovitt portal par ban chuka hai. Niche form bharkar apna audition submit karein.</p>
+        </div>
+
+        <!-- Audition Form -->
+        <div class="form-card">
+            <h3>Apply For Audition</h3>
+            
+            <form onsubmit="submitForm(event)">
+                <!-- 1. Category Selection -->
+                <div class="input-group">
+                    <label>Form किस लिए fill किया जा रहा है? (Select Category)</label>
+                    <select id="categorySelect" required onchange="showRestOfForm()">
+                        <option value="">-- Please Select --</option>
+                        <option value="Acting">Acting / Acting Lead</option>
+                        <option value="Dance">Dancing / Choreography</option>
+                        <option value="Comedy">Comedy / Standup</option>
+                        <option value="Singing">Singing / Voice Over</option>
+                        <option value="Modeling">Modeling / Fashion</option>
+                        <option value="Other">Other Category</option>
+                    </select>
+                </div>
+
+                <!-- 2. Hidden details (Category select hone ke baad automatic dikhega) -->
+                <div id="hiddenForm">
+                    <div class="input-group">
+                        <label>Age (उम्र)</label>
+                        <input type="number" required placeholder="Enter your age">
+                    </div>
+                    <div class="input-group">
+                        <label>City (शहर)</label>
+                        <input type="text" required placeholder="Where do you live?">
+                    </div>
+                    <div class="input-group">
+                        <label>Experience Level (अनुभव)</label>
+                        <select required>
+                            <option value="">-- Select Experience --</option>
+                            <option value="Fresher">Fresher (नया हूँ)</option>
+                            <option value="Some Experience">Some Experience (थोड़ा अनुभव)</option>
+                            <option value="Professional">Professional (प्रोफेशनल)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Audition Media Link (YouTube / Drive Link)</label>
+                        <input type="url" required placeholder="Paste link of your video or photos">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Audition Details</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        // Category select karne par form ka baaki hissa dikhayega
+        function showRestOfForm() {
+            let cat = document.getElementById('categorySelect').value;
+            let formDetails = document.getElementById('hiddenForm');
+            if(cat !== "") {
+                formDetails.style.display = "block";
+            } else {
+                formDetails.style.display = "none";
+            }
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            alert("Congratulations! Aapka Audition Form successfully submit ho gaya hai. Humari team jald hi aapse contact karegi.");
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
