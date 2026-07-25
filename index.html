@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design, Cast Colors, Auth Buttons & BADA LOGO FIX -->
     <style>
         /* Header Fix */
         .header .container {
@@ -39,21 +38,14 @@
             color: #000;
         }
 
-        /* 📱 MOBILE SCREEN HEADER FIX (Bada Logo + Production HOUSE Text) */
+        /* 📱 MOBILE SCREEN HEADER FIX */
         @media (max-width: 768px) {
             .header .container { padding-left: 5px !important; padding-right: 5px !important; }
             .logo { gap: 8px !important; justify-content: flex-start !important; flex: 1 !important; min-width: 0 !important; }
-            
-            /* Logo Bada Kiya Mobile Par */
             .logo img { height: 55px !important; width: auto !important; flex-shrink: 0 !important; } 
-            
             .logo-text { min-width: 0 !important; }
-            /* DK ATOVITT text bada kiya */
             .logo-text h1 { font-size: 17px !important; margin-bottom: 2px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; font-weight: 900 !important; }
-            
-            /* Official Movie Production HOUSE text bada aur clear kiya */
             .logo-text p { display: block !important; font-size: 8.5px !important; letter-spacing: 0px !important; white-space: nowrap !important; } 
-            
             .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
             .header-icons { gap: 8px !important; flex-shrink: 0 !important; }
             #menuBtn { font-size: 20px !important; }
@@ -183,12 +175,9 @@
         <div class="container">
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
             <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; flex: 1; overflow: hidden;">
-                <!-- Desktop par bhi Logo Bada Kiya (65px) -->
                 <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 65px; width: auto; flex-shrink: 0;">
                 <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
                     <h1 style="font-size: 22px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-weight: 900;">DK ATOVITT</h1>
-                    
-                    <!-- YAHAN "HOUSE" ADD KIYA HAI -->
                     <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production House</p>
                 </div>
             </div>
@@ -213,8 +202,10 @@
         <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         <a href="#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
         <a href="#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="#auditions"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
-        <a href="#auditions"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        
+        <a href="auth.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        
+        <a href="#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
         <a href="#news"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
         <a href="#advertise"><i class="fas fa-bullhorn" style="color:var(--primary-color); margin-right:12px;"></i> Advertise</a>
         <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact</a>
@@ -417,7 +408,7 @@
     </section>
 
     <!-- Partners & Auditions -->
-    <section class="partners-auditions" id="auditions">
+    <section class="partners-auditions" id="partners">
         <div class="container">
             <h2>Our Partners</h2>
             <div class="partner-grid">
@@ -442,7 +433,10 @@
             <div class="audition-box">
                 <h2>Join Our Upcoming Projects</h2>
                 <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
-                <a href="auth.html" class="btn">Apply For Audition</a>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 15px;">
+                    <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 50px;">
+                    <a href="auth.html" class="btn" style="margin: 0;">Apply For Audition</a>
+                </div>
             </div>
         </div>
     </section>
@@ -452,7 +446,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>DK ATOVITT</h3>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+                        <h3 style="margin: 0;">DK ATOVITT Official Movie Production House</h3>
+                        <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 40px;">
+                    </div>
                     <p>Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
                 </div>
                 <div class="footer-column">
@@ -461,7 +458,8 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#movies">Movies</a></li>
                         <li><a href="#trailer">Trailer</a></li>
-                        <li><a href="#auditions">Auditions</a></li>
+                        
+                        <li><a href="auth.html">Auditions</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -522,7 +520,6 @@
         // Double Auto-Slider Logic
         window.addEventListener('load', () => {
             
-            // 1. Poster Auto Slider (Right to Left Scrolling)
             const track1 = document.getElementById('autoSlider');
             if(track1) {
                 const imgCount = track1.querySelectorAll('img').length;
@@ -543,7 +540,6 @@
                 document.head.appendChild(style1);
             }
 
-            // 2. Movie Gallery Auto Slider (Left to Right Scrolling)
             const track2 = document.getElementById('gallerySlider');
             if(track2) {
                 const imgCount = track2.querySelectorAll('img').length;
