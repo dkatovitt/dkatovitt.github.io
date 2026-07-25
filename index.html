@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Slider aur Partner Logos ka design code -->
+    <!-- FIXES: Menu, Smart Sliders aur Partner Logos ka design code -->
     <style>
         /* Header Fix */
         .header .container {
@@ -24,7 +24,7 @@
             top: auto !important;
         }
 
-        /* Smart Slider Base - PHOTO CROP FIX HUA YAHAN */
+        /* 1. Poster Slider Base */
         .poster-track {
             display: flex;
             gap: 15px;
@@ -32,10 +32,26 @@
             align-items: center;
         }
         .poster-track img {
-            height: 280px !important; /* Lamba kar diya taaki lamba poster aaye */
+            height: 280px !important; 
             width: 160px !important;
-            object-fit: contain !important; /* YEH HAI FIX - Ab photo bilkul nahi kategi */
+            object-fit: contain !important; 
             border-radius: 8px;
+        }
+
+        /* 2. Movie Gallery 16:9 Slider Base */
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            align-items: center;
+        }
+        .gallery-track img {
+            height: 200px !important;
+            aspect-ratio: 16 / 9 !important;
+            object-fit: cover !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
+            border: 1px solid #333 !important;
         }
 
         /* Partner Logos Bada Karne Ka Fix */
@@ -153,7 +169,7 @@
         </div>
     </section>
 
-    <!-- Auto Poster Slider Section (18 Photos - SAB .PNG HAIN) -->
+    <!-- 1. Auto Poster Slider Section (18 Photos - slide1 to slide18) -->
     <section class="poster-slider-section">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -248,15 +264,30 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-preview" id="gallery">
-        <div class="container">
-            <h2>Movie Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 1"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 2"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 3"></div>
-                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 4"></div>
+    <!-- 2. MOVIE GALLERY SECTION (SLIDER MODE - 17 Photos gallery1 to gallery17) -->
+    <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
+        <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
+            <h2 style="padding-left: 20px;">Movie Gallery</h2>
+            <div style="overflow: hidden; padding: 10px 20px;">
+                <div class="gallery-track" id="gallerySlider">
+                    <img src="images/movies/gallery1.png" alt="Gallery 1">
+                    <img src="images/movies/gallery2.png" alt="Gallery 2">
+                    <img src="images/movies/gallery3.png" alt="Gallery 3">
+                    <img src="images/movies/gallery4.png" alt="Gallery 4">
+                    <img src="images/movies/gallery5.png" alt="Gallery 5">
+                    <img src="images/movies/gallery6.png" alt="Gallery 6">
+                    <img src="images/movies/gallery7.png" alt="Gallery 7">
+                    <img src="images/movies/gallery8.png" alt="Gallery 8">
+                    <img src="images/movies/gallery9.png" alt="Gallery 9">
+                    <img src="images/movies/gallery10.png" alt="Gallery 10">
+                    <img src="images/movies/gallery11.png" alt="Gallery 11">
+                    <img src="images/movies/gallery12.png" alt="Gallery 12">
+                    <img src="images/movies/gallery13.png" alt="Gallery 13">
+                    <img src="images/movies/gallery14.png" alt="Gallery 14">
+                    <img src="images/movies/gallery15.png" alt="Gallery 15">
+                    <img src="images/movies/gallery16.png" alt="Gallery 16">
+                    <img src="images/movies/gallery17.png" alt="Gallery 17">
+                </div>
             </div>
         </div>
     </section>
@@ -324,7 +355,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactions & Smart Slider -->
+    <!-- JavaScript for Interactions & Smart Sliders -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
@@ -364,27 +395,50 @@
             overlay.classList.remove('active');
         });
 
-        // Smart Slider Infinite Loop Script
+        // Double Auto-Slider Logic
         window.addEventListener('load', () => {
-            const track = document.getElementById('autoSlider');
-            if(track) {
-                const imageCount = track.querySelectorAll('img').length;
+            
+            // 1. Poster Auto Slider (Left to Right Scrolling as usual)
+            const track1 = document.getElementById('autoSlider');
+            if(track1) {
+                const imgCount = track1.querySelectorAll('img').length;
                 const slideWidth = 160 + 15; // 160px width + 15px gap
-                const totalScroll = slideWidth * imageCount;
+                const totalScroll = slideWidth * imgCount;
+                track1.innerHTML += track1.innerHTML; // Loop trick
                 
-                track.innerHTML += track.innerHTML; // Duplicate for infinite scroll
-                
-                const style = document.createElement('style');
-                style.innerHTML = `
-                    @keyframes smartScroll {
+                const style1 = document.createElement('style');
+                style1.innerHTML = `
+                    @keyframes smartScroll1 {
                         0% { transform: translateX(0); }
                         100% { transform: translateX(-${totalScroll}px); }
                     }
-                    .poster-track {
-                        animation: smartScroll ${imageCount * 2.5}s linear infinite !important;
+                    #autoSlider {
+                        animation: smartScroll1 ${imgCount * 2.5}s linear infinite !important;
                     }
                 `;
-                document.head.appendChild(style);
+                document.head.appendChild(style1);
+            }
+
+            // 2. Movie Gallery Auto Slider (REVERSE DIRECTION: Left-to-Right moving rightwards)
+            const track2 = document.getElementById('gallerySlider');
+            if(track2) {
+                const imgCount = track2.querySelectorAll('img').length;
+                // Height is 200px. 16:9 ratio means width is ~356px + 20px gap
+                const slideWidth = 376; 
+                const totalScroll = slideWidth * imgCount;
+                track2.innerHTML += track2.innerHTML; // Loop trick
+                
+                const style2 = document.createElement('style');
+                style2.innerHTML = `
+                    @keyframes smartScroll2 {
+                        0% { transform: translateX(-${totalScroll}px); }
+                        100% { transform: translateX(0); }
+                    }
+                    #gallerySlider {
+                        animation: smartScroll2 ${imgCount * 3.5}s linear infinite !important;
+                    }
+                `;
+                document.head.appendChild(style2);
             }
         });
     </script>
