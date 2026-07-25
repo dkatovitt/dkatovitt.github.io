@@ -166,10 +166,101 @@
         .partner-card h3 {
             font-size: 16px !important;
         }
+
+        /* 🌟 T-SERIES STYLE MEGA FOOTER DESIGN */
+        .tseries-footer {
+            background-color: #111;
+            color: #aaa;
+            padding: 40px 20px 20px 20px;
+            border-top: 2px solid #333;
+            font-family: Arial, sans-serif;
+        }
+        .tseries-footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #222;
+        }
+        @media (max-width: 900px) {
+            .tseries-footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .tseries-footer-brand {
+                grid-column: span 2;
+            }
+        }
+        .tseries-footer-brand img {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        .tseries-footer-brand h3 {
+            color: #e6c875;
+            font-size: 18px;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+        }
+        .tseries-footer-brand p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #888;
+        }
+        .tseries-footer-col h4 {
+            color: #e6c875;
+            font-size: 15px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .tseries-footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tseries-footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .tseries-footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .tseries-footer-col ul li a:hover {
+            color: #e6c875;
+            padding-left: 5px;
+        }
+        .tseries-footer-bottom {
+            max-width: 1200px;
+            margin: 20px auto 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: #777;
+        }
+        .tseries-footer-socials {
+            display: flex;
+            gap: 15px;
+        }
+        .tseries-footer-socials a {
+            color: #aaa;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .tseries-footer-socials a:hover {
+            color: #e6c875;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
@@ -188,6 +279,7 @@
         </div>
     </header>
 
+    <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>MENU</h2>
@@ -199,15 +291,14 @@
         <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         <a href="#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
         <a href="#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
         <a href="#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
-        
         <a href="#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
         <a href="#news"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
         <a href="#advertise"><i class="fas fa-bullhorn" style="color:var(--primary-color); margin-right:12px;"></i> Advertise</a>
         <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact</a>
     </div>
 
+    <!-- Search Modal Box -->
     <div class="search-modal" id="searchModal">
         <div class="search-box-container">
             <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
@@ -217,6 +308,7 @@
 
     <div id="overlay"></div>
 
+    <!-- News Bar -->
     <div class="news-bar">
         <div class="news-track">
             <span>🔥 Welcome to DK Atovitt Official Website</span>
@@ -225,6 +317,7 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="studio">DK ATOVITT PRESENTS</div>
@@ -240,6 +333,7 @@
         </div>
     </section>
 
+    <!-- Featured Movie Section -->
     <section class="featured-movie" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -277,6 +371,7 @@
         </div>
     </section>
 
+    <!-- 1. Auto Poster Slider Section -->
     <section class="poster-slider-section">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -302,6 +397,7 @@
         </div>
     </section>
 
+    <!-- Official Trailer Section -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
@@ -315,6 +411,7 @@
         </div>
     </section>
 
+    <!-- Yakshini Movie Song's Section -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -369,6 +466,7 @@
         </div>
     </section>
 
+    <!-- 2. MOVIE GALLERY SECTION -->
     <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
@@ -396,6 +494,7 @@
         </div>
     </section>
 
+    <!-- Partners & Auditions -->
     <section class="partners-auditions" id="partners">
         <div class="container">
             <h2>Media Partners</h2>
@@ -429,45 +528,72 @@
         </div>
     </section>
 
-    <footer class="main-footer" id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column" style="text-align: center;">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <h3 style="margin: 0; font-size: 26px; color: #e6c875;">DK ATOVITT</h3>
-                            <p style="margin: 4px 0 0 0; font-size: 12px; font-weight: bold; color: #e6c875; text-transform: uppercase;">Official Movie Production House</p>
-                        </div>
-                        <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 100px; object-fit: contain;">
-                    </div>
-                    <p style="margin-top: 10px;">Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
-                </div>
+    <!-- 🌟 T-SERIES STYLE PROFESSIONAL MEGA FOOTER -->
+    <footer class="tseries-footer" id="contact">
+        <div class="tseries-footer-container">
+            <!-- Brand Column -->
+            <div class="tseries-footer-brand">
+                <img src="images/logo/logo.png" alt="DK Atovitt Logo">
+                <h3>DK ATOVITT</h3>
+                <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+            </div>
 
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#movies">Movies</a></li>
-                        <li><a href="#trailer">Trailer</a></li>
-                        
-                        <li><a href="#audition-section">Auditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p>Email: contact@dkatovitt.com</p>
-                    <p>Location: India</p>
-                </div>
+            <!-- Movies & Media -->
+            <div class="tseries-footer-col">
+                <h4>Movies & Media</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#movies">Featured Movie</a></li>
+                    <li><a href="#trailer">Official Trailer</a></li>
+                    <li><a href="#songs">Movie Songs</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
             </div>
-            <div class="footer-social">
-                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+
+            <!-- Opportunities -->
+            <div class="tseries-footer-col">
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="#audition-section">Auditions</a></li>
+                    <li><a href="#partners">Media Partners</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
             </div>
-            <p class="copyright">&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+
+            <!-- About Us -->
+            <div class="tseries-footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">News & Updates</a></li>
+                    <li><a href="#">Ecosystem</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal & Help -->
+            <div class="tseries-footer-col">
+                <h4>Legal & Help</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Public Notice</a></li>
+                    <li><a href="#">Help / FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="tseries-footer-bottom">
+            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+            <div class="tseries-footer-socials">
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript for Interactions & Smart Sliders -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
