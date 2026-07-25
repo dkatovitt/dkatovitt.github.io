@@ -1,9 +1,188 @@
-    <!-- Yakshini Movie Song's Section -->
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Atovitt - Official Movie Production House</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- FIXES: Menu aur Slider ko theek karne ka code -->
+    <style>
+        /* Header Fix */
+        .header .container {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+        }
+        #menuBtn, .header-icons button, .header-icons button:first-child {
+            position: static !important;
+            transform: none !important;
+            left: auto !important;
+            top: auto !important;
+        }
+
+        /* 10 Photo Slider Fix */
+        @keyframes scroll10Photos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-160px * 10 - 15px * 10)); }
+        }
+        .poster-track {
+            animation: scroll10Photos 25s linear infinite !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- MENU BUTTON (LEFT) -->
+            <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
+            
+            <!-- LOGO (CENTER) -->
+            <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: center; flex: 1; overflow: hidden;">
+                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 60px; width: auto;">
+                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h1 style="font-size: 19px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap;">DK ATOVITT</h1>
+                    <p style="font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production</p>
+                </div>
+            </div>
+
+            <!-- SEARCH BUTTON (RIGHT) -->
+            <div class="header-icons">
+                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Menu Drawer -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h2>MENU</h2>
+            <button id="closeMenu">&times;</button>
+        </div>
+        <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="#movies"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</a>
+        <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        <a href="#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
+        <a href="#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="#auditions"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        <a href="#auditions"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        <a href="#news"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="#advertise"><i class="fas fa-bullhorn" style="color:var(--primary-color); margin-right:12px;"></i> Advertise</a>
+        <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact</a>
+    </div>
+
+    <!-- Search Modal Box -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-box-container">
+            <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
+            <button id="closeSearch">&times;</button>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <!-- News Bar -->
+    <div class="news-bar">
+        <div class="news-track">
+            <span>🔥 Welcome to DK Atovitt Official Website</span>
+            <span>🎬 Upcoming Horror Movie "Yakshini" Coming Soon</span>
+            <span>⭐ Stay tuned for exclusive trailers and songs</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay">
+            <div class="studio">DK ATOVITT PRESENTS</div>
+            <h1 class="yakshini-title">यक्षिणी</h1>
+            <div class="yakshini-english">
+                <div class="line"></div>
+                <span>Y a k s h i n i</span>
+                <div class="line"></div>
+            </div>
+            <p class="yakshini-tagline">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
+            <p class="hero-text">An Upcoming Bollywood Horror Romance Film</p>
+            <a href="#trailer" class="btn"><i class="fas fa-play"></i> Watch Trailer</a>
+        </div>
+    </section>
+
+    <!-- Featured Movie Section -->
+    <section class="featured-movie" id="movies">
+        <div class="container">
+            <h2>Featured Movie</h2>
+            <div class="movie-flex">
+                <div class="movie-poster">
+                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
+                </div>
+                <div class="movie-info">
+                    <h2>Yakshini</h2>
+                    <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
+                    <ul class="movie-meta">
+                        <li><strong>Genre:</strong> Horror / Romance / Mystery</li>
+                        <li><strong>Language:</strong> Hindi</li>
+                        <li><strong>Director:</strong> DK Sir</li>
+                        <li><strong>Production House:</strong> DK Atovitt</li>
+                    </ul>
+                    <a href="#trailer" class="btn">Watch Trailer Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto Poster Slider Section (10 Photos) -->
+    <section class="poster-slider-section">
+        <div class="slider-container">
+            <div class="poster-track">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 1">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 2">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 3">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 4">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 5">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 6">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 7">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 8">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 9">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 10">
+                <!-- Loop -->
+                <img src="images/movies/yakshini-poster.png" alt="Poster 1 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 2 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 3 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 4 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 5 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 6 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 7 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 8 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 9 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 10 Loop">
+            </div>
+        </div>
+    </section>
+
+    <!-- Official Trailer Section -->
+    <section class="trailer-section" id="trailer">
+        <div class="container">
+            <h2>Official Trailer</h2>
+            <div class="video-wrapper">
+                <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
+                    <img src="https://dkatovitt.github.io/images/banners/new-trailer-thumb.jpg?v=final3" alt="Trailer Thumbnail" style="object-fit: contain; background: #000;">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </a>
+                <h3 class="trailer-title">Yakshini Yakshini</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yakshini Movie Song's Section (All 6 Auto-Update Thumbnails) -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             
-            <!-- Song 1 (Auto YouTube Thumbnail) -->
+            <!-- Song 1 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Aaj ke Saam hai Khushiyon Ke Naam">
@@ -12,7 +191,7 @@
                 <h3 class="trailer-title">Aaj ke Saam hai Khushiyon Ke Naam</h3>
             </div>
 
-            <!-- Song 2 (Auto YouTube Thumbnail) -->
+            <!-- Song 2 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha">
@@ -21,7 +200,7 @@
                 <h3 class="trailer-title">Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha</h3>
             </div>
 
-            <!-- Song 3 (Auto YouTube Thumbnail) -->
+            <!-- Song 3 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Saam dhale jab Pani dole">
@@ -59,3 +238,118 @@
 
         </div>
     </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-preview" id="gallery">
+        <div class="container">
+            <h2>Movie Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 1"></div>
+                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 2"></div>
+                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 3"></div>
+                <div class="gallery-item"><img src="images/movies/yakshini-poster.png" alt="Gallery 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Auditions -->
+    <section class="partners-auditions" id="auditions">
+        <div class="container">
+            <h2>Our Partners</h2>
+            <div class="partner-grid">
+                <div class="partner-card">
+                    <img src="images/partners/earn-logo.png" alt="Earn with DK Sir">
+                    <h3>Earn with DK Sir</h3>
+                </div>
+                <div class="partner-card">
+                    <img src="images/partners/atvt-logo.jpg" alt="ATVT">
+                    <h3>ATVT</h3>
+                </div>
+                <div class="partner-card">
+                    <img src="images/partners/kalpamrit-logo.jpg" alt="Kalpamrit">
+                    <h3>Kalpamrit</h3>
+                </div>
+            </div>
+
+            <div class="audition-box">
+                <h2>Join Our Upcoming Projects</h2>
+                <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
+                <a href="#" class="btn">Apply For Audition</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>DK ATOVITT</h3>
+                    <p>Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#movies">Movies</a></li>
+                        <li><a href="#trailer">Trailer</a></li>
+                        <li><a href="#auditions">Auditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p>Email: contact@dkatovitt.com</p>
+                    <p>Location: India</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <p class="copyright">&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactions -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.getElementById('closeSearch');
+
+        menuBtn.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        if(searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                searchModal.classList.add('active');
+                overlay.classList.add('active');
+            });
+        }
+
+        if(closeSearch) {
+            closeSearch.addEventListener('click', () => {
+                searchModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        }
+
+        overlay.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+            searchModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
