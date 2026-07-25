@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders, Partner Logos aur Yakshini Title Design -->
+    <!-- FIXES: Menu, Smart Sliders, Partner Logos aur Yakshini Center Title Design -->
     <style>
         /* Header Fix */
         .header .container {
@@ -24,37 +24,51 @@
             top: auto !important;
         }
 
-        /* Yakshini Custom Title Design (Naya Code) */
+        /* Yakshini Center Title Design (NAYA CODE) */
         .yakshini-title-box {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Sab kuch center karne ke liye */
+            text-align: center;
+            margin-bottom: 25px;
+            width: 100%;
         }
         .yakshini-main-title {
-            font-size: 42px !important;
+            font-size: 65px !important; /* Bada Font */
             color: #e6c875 !important; /* Golden Color */
             margin: 0 !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
             letter-spacing: 2px;
+            line-height: 1;
         }
         .yakshini-sub-title {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            color: #e6c875;
-            font-size: 18px;
-            margin: 5px 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            justify-content: center;
+            width: 100%;
+            max-width: 280px; /* Line ko control karne ke liye */
+            margin: 10px 0;
         }
         .yakshini-sub-title .line {
+            flex-grow: 1; /* Yeh line ko automatic lamba karega */
             height: 1px;
             background-color: #e6c875;
-            width: 40px;
+        }
+        .yakshini-sub-title .text {
+            padding: 0 15px;
+            color: #e6c875;
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
         .yakshini-tagline-small {
-            font-size: 16px;
-            color: #ff4d4d; /* Reddish Danger Color */
+            font-size: 15px;
+            color: #ff4d4d; /* Red Danger Color */
             font-weight: bold;
             margin: 0 0 15px 0;
+            width: 100%;
+            max-width: 290px; /* Title ki chaurai (width) ke barabar fix */
+            letter-spacing: 0.5px;
         }
         .movie-meta li {
             margin-bottom: 12px !important;
@@ -184,7 +198,7 @@
         </div>
     </section>
 
-    <!-- Featured Movie Section (NAYA YAKSHINI DESIGN + DETAILS) -->
+    <!-- Featured Movie Section (CENTERED YAKSHINI TITLE) -->
     <section class="featured-movie" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -194,7 +208,7 @@
                 </div>
                 <div class="movie-info">
                     
-                    <!-- Naya Title Style -->
+                    <!-- Naya Center Aligned Title Box -->
                     <div class="yakshini-title-box">
                         <h2 class="yakshini-main-title">यक्षिणी</h2>
                         <div class="yakshini-sub-title">
@@ -207,7 +221,7 @@
 
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                     
-                    <!-- Naye Cast & Crew Details -->
+                    <!-- Cast & Crew Details -->
                     <ul class="movie-meta">
                         <li><strong>Production House:</strong> DK ATOVITT <img src="images/logo/logo.png" alt="DK Logo" style="height: 25px; vertical-align: middle; margin-left: 8px;"></li>
                         <li><strong>Producer:</strong> Mr. Dipak Kumar Gupta ( D K SIR )</li>
