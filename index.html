@@ -33,20 +33,23 @@
             animation: scroll10Photos 25s linear infinite !important;
         }
 
-        /* Partner Logos Bada Karne Ka Fix */
+        /* Partner Logos Bada Karne Ka Fix (SUPER SIZED) */
         .partner-card {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px 15px !important;
+            padding: 15px !important; /* Padding kam ki taaki photo ke liye jagah mile */
         }
         .partner-card img {
             width: 100% !important;
-            height: 110px !important; /* Size bada kiya */
-            max-width: 160px !important;
-            object-fit: contain !important; /* Ekdam perfect fit hoga bina kate */
+            height: 160px !important; /* Size aur bada kiya (Pehle 110 tha) */
+            max-width: 240px !important; /* Max width aur badhai (Pehle 160 tha) */
+            object-fit: contain !important; 
             margin-bottom: 15px !important;
+        }
+        .partner-card h3 {
+            font-size: 16px !important; /* Text bhi thoda clearly dikhega */
         }
     </style>
 </head>
@@ -55,10 +58,7 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <!-- MENU BUTTON (LEFT) -->
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
-            
-            <!-- LOGO (CENTER) -->
             <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: center; flex: 1; overflow: hidden;">
                 <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 60px; width: auto;">
                 <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
@@ -66,8 +66,6 @@
                     <p style="font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production</p>
                 </div>
             </div>
-
-            <!-- SEARCH BUTTON (RIGHT) -->
             <div class="header-icons">
                 <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
@@ -150,7 +148,7 @@
         </div>
     </section>
 
-    <!-- Auto Poster Slider Section (10 Photos) -->
+    <!-- Auto Poster Slider Section -->
     <section class="poster-slider-section">
         <div class="slider-container">
             <div class="poster-track">
@@ -179,13 +177,12 @@
         </div>
     </section>
 
-    <!-- Official Trailer Section (Auto YouTube Sync) -->
+    <!-- Official Trailer Section -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <!-- Ab Trailer ka photo bhi direct YouTube se aayega -->
                     <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Official Trailer Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
@@ -194,12 +191,11 @@
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section (All 6 Auto YouTube Sync) -->
+    <!-- Yakshini Movie Song's Section -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             
-            <!-- Song 1 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Aaj ke Saam hai Khushiyon Ke Naam">
@@ -208,7 +204,6 @@
                 <h3 class="trailer-title">Aaj ke Saam hai Khushiyon Ke Naam</h3>
             </div>
 
-            <!-- Song 2 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha">
@@ -217,7 +212,6 @@
                 <h3 class="trailer-title">Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha</h3>
             </div>
 
-            <!-- Song 3 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Saam dhale jab Pani dole">
@@ -226,7 +220,6 @@
                 <h3 class="trailer-title">Saam dhale jab Pani dole</h3>
             </div>
 
-            <!-- Song 4 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="दीपक और रवि -एक ही जान">
@@ -235,7 +228,6 @@
                 <h3 class="trailer-title">दीपक और रवि -एक ही जान</h3>
             </div>
 
-            <!-- Song 5 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Tere Naam Se Meri subah">
@@ -244,13 +236,12 @@
                 <h3 class="trailer-title">Tere Naam Se Meri subah</h3>
             </div>
 
-            <!-- Song 6 -->
             <div class="video-wrapper">
                 <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail">
                     <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Happy birthday Harshi meri bitiya">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Happy birthday Harshi meri bitiya</h3>
+                <h3 class="trailer-title">Happy birthday Harshi্বা Harshi meri bitiya</h3>
             </div>
 
         </div>
@@ -269,7 +260,7 @@
         </div>
     </section>
 
-    <!-- Partners & Auditions (WITH BADE LOGOS & NAYA 4th PARTNER) -->
+    <!-- Partners & Auditions -->
     <section class="partners-auditions" id="auditions">
         <div class="container">
             <h2>Our Partners</h2>
@@ -287,7 +278,7 @@
                     <h3>Kalpamrit</h3>
                 </div>
                 
-                <!-- Naya 4th Partner Logo Yahan Add Kiya Gaya Hai -->
+                <!-- Naya 4th Partner -->
                 <div class="partner-card">
                     <img src="images/partners/1001079909.png" alt="DK Atovitt Ecosystem">
                     <h3>Ecosystem</h3>
