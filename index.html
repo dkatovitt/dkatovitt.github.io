@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIX: Menu aur Search ko alag karne ka pakka ilaj -->
+    <!-- FIXES: Menu aur Slider ko theek karne ka code -->
     <style>
+        /* Header Fix */
         .header .container {
             padding-left: 15px !important;
             padding-right: 15px !important;
@@ -22,6 +23,15 @@
             left: auto !important;
             top: auto !important;
         }
+
+        /* 10 Photo Slider Fix */
+        @keyframes scroll10Photos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-160px * 10 - 15px * 10)); } /* 10 photo ki width */
+        }
+        .poster-track {
+            animation: scroll10Photos 25s linear infinite !important; /* 25s smooth speed */
+        }
     </style>
 </head>
 <body>
@@ -29,7 +39,6 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            
             <!-- MENU BUTTON (LEFT) -->
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
             
@@ -46,7 +55,6 @@
             <div class="header-icons">
                 <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
-
         </div>
     </header>
 
@@ -126,15 +134,35 @@
         </div>
     </section>
 
-    <!-- Auto Poster Slider Section -->
+    <!-- Auto Poster Slider Section (10 Photos) -->
     <section class="poster-slider-section">
         <div class="slider-container">
             <div class="poster-track">
+                
+                <!-- MAIN 10 PHOTOS (Yahan apni 10 alag-alag photos lagayein) -->
                 <img src="images/movies/yakshini-poster.png" alt="Poster 1">
                 <img src="images/movies/yakshini-poster.png" alt="Poster 2">
                 <img src="images/movies/yakshini-poster.png" alt="Poster 3">
                 <img src="images/movies/yakshini-poster.png" alt="Poster 4">
                 <img src="images/movies/yakshini-poster.png" alt="Poster 5">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 6">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 7">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 8">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 9">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 10">
+
+                <!-- DUPLICATE 10 PHOTOS (Smooth Scrolling Loop ke liye inko same rakhna) -->
+                <img src="images/movies/yakshini-poster.png" alt="Poster 1 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 2 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 3 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 4 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 5 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 6 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 7 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 8 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 9 Loop">
+                <img src="images/movies/yakshini-poster.png" alt="Poster 10 Loop">
+
             </div>
         </div>
     </section>
