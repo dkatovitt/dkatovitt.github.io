@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders, Partner Logos aur Yakshini Center Title Design -->
+    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design & Cast Colors -->
     <style>
         /* Header Fix */
         .header .container {
@@ -70,10 +70,24 @@
             max-width: 290px; 
             letter-spacing: 0.5px;
         }
+        
+        /* Cast & Crew Custom Colors (NAYA CODE) */
+        .movie-meta {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
         .movie-meta li {
-            margin-bottom: 15px !important; /* Space thoda badhaya */
+            margin-bottom: 15px !important; 
             line-height: 1.6;
             font-size: 15px;
+            color: #ffffff !important; /* Naam ka color: Bright White */
+        }
+        .movie-meta li strong {
+            color: #e6c875 !important; /* Label ka color: Golden */
+            font-weight: bold;
+            margin-right: 5px;
+            letter-spacing: 0.5px;
         }
 
         /* 1. Poster Slider Base */
@@ -198,7 +212,7 @@
         </div>
     </section>
 
-    <!-- Featured Movie Section (CENTERED YAKSHINI TITLE & BIG LOGO) -->
+    <!-- Featured Movie Section -->
     <section class="featured-movie" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -221,9 +235,8 @@
 
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                     
-                    <!-- Cast & Crew Details with BIG LOGO -->
+                    <!-- Cast & Crew Details with NEW COLORS -->
                     <ul class="movie-meta">
-                        <!-- Yahan Logo bada kar diya gaya hai (height: 60px) aur proper center align kiya hai -->
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                             <strong>Production House:</strong> DK ATOVITT 
                             <img src="images/logo/logo.png" alt="DK Logo" style="height: 60px; object-fit: contain;">
@@ -472,9 +485,9 @@
             const track1 = document.getElementById('autoSlider');
             if(track1) {
                 const imgCount = track1.querySelectorAll('img').length;
-                const slideWidth = 160 + 15; // 160px width + 15px gap
+                const slideWidth = 160 + 15; 
                 const totalScroll = slideWidth * imgCount;
-                track1.innerHTML += track1.innerHTML; // Loop trick
+                track1.innerHTML += track1.innerHTML; 
                 
                 const style1 = document.createElement('style');
                 style1.innerHTML = `
@@ -495,7 +508,7 @@
                 const imgCount = track2.querySelectorAll('img').length;
                 const slideWidth = 376; 
                 const totalScroll = slideWidth * imgCount;
-                track2.innerHTML += track2.innerHTML; // Loop trick
+                track2.innerHTML += track2.innerHTML; 
                 
                 const style2 = document.createElement('style');
                 style2.innerHTML = `
