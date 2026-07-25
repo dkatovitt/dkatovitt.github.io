@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Slider aur Partner Logos ko theek karne ka code -->
+    <!-- FIXES: Menu, Smart Slider aur Partner Logos ka design code -->
     <style>
         /* Header Fix */
         .header .container {
@@ -24,32 +24,36 @@
             top: auto !important;
         }
 
-        /* 10 Photo Slider Fix */
-        @keyframes scroll10Photos {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-160px * 10 - 15px * 10)); }
-        }
+        /* Smart Slider Base */
         .poster-track {
-            animation: scroll10Photos 25s linear infinite !important;
+            display: flex;
+            gap: 15px;
+            width: max-content;
+        }
+        .poster-track img {
+            height: 250px;
+            width: 160px;
+            object-fit: cover;
+            border-radius: 8px;
         }
 
-        /* Partner Logos Bada Karne Ka Fix (SUPER SIZED) */
+        /* Partner Logos Bada Karne Ka Fix */
         .partner-card {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px !important; /* Padding kam ki taaki photo ke liye jagah mile */
+            padding: 15px !important;
         }
         .partner-card img {
             width: 100% !important;
-            height: 160px !important; /* Size aur bada kiya (Pehle 110 tha) */
-            max-width: 240px !important; /* Max width aur badhai (Pehle 160 tha) */
+            height: 160px !important;
+            max-width: 240px !important;
             object-fit: contain !important; 
             margin-bottom: 15px !important;
         }
         .partner-card h3 {
-            font-size: 16px !important; /* Text bhi thoda clearly dikhega */
+            font-size: 16px !important;
         }
     </style>
 </head>
@@ -148,36 +152,32 @@
         </div>
     </section>
 
-    <!-- Auto Poster Slider Section -->
+    <!-- Auto Poster Slider Section (17 Photos - slide1 to slide17) -->
     <section class="poster-slider-section">
-        <div class="slider-container">
-            <div class="poster-track">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 1">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 2">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 3">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 4">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 5">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 6">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 7">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 8">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 9">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 10">
-                <!-- Loop -->
-                <img src="images/movies/yakshini-poster.png" alt="Poster 1 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 2 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 3 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 4 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 5 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 6 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 7 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 8 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 9 Loop">
-                <img src="images/movies/yakshini-poster.png" alt="Poster 10 Loop">
+        <div class="slider-container" style="overflow: hidden;">
+            <div class="poster-track" id="autoSlider">
+                <img src="images/movies/slide1.jpg" alt="Slide 1">
+                <img src="images/movies/slide2.jpg" alt="Slide 2">
+                <img src="images/movies/slide3.jpg" alt="Slide 3">
+                <img src="images/movies/slide4.jpg" alt="Slide 4">
+                <img src="images/movies/slide5.jpg" alt="Slide 5">
+                <img src="images/movies/slide6.jpg" alt="Slide 6">
+                <img src="images/movies/slide7.jpg" alt="Slide 7">
+                <img src="images/movies/slide8.jpg" alt="Slide 8">
+                <img src="images/movies/slide9.jpg" alt="Slide 9">
+                <img src="images/movies/slide10.jpg" alt="Slide 10">
+                <img src="images/movies/slide11.jpg" alt="Slide 11">
+                <img src="images/movies/slide12.jpg" alt="Slide 12">
+                <img src="images/movies/slide13.jpg" alt="Slide 13">
+                <img src="images/movies/slide14.jpg" alt="Slide 14">
+                <img src="images/movies/slide15.jpg" alt="Slide 15">
+                <img src="images/movies/slide16.jpg" alt="Slide 16">
+                <img src="images/movies/slide17.jpg" alt="Slide 17">
             </div>
         </div>
     </section>
 
-    <!-- Official Trailer Section -->
+    <!-- Official Trailer Section (Auto YouTube Sync) -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
@@ -191,7 +191,7 @@
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section -->
+    <!-- Yakshini Movie Song's Section (Auto YouTube Sync) -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -241,9 +241,8 @@
                     <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Happy birthday Harshi meri bitiya">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Happy birthday Harshi্বা Harshi meri bitiya</h3>
+                <h3 class="trailer-title">Happy birthday Harshi meri bitiya</h3>
             </div>
-
         </div>
     </section>
 
@@ -277,8 +276,6 @@
                     <img src="images/partners/kalpamrit-logo.jpg" alt="Kalpamrit">
                     <h3>Kalpamrit</h3>
                 </div>
-                
-                <!-- Naya 4th Partner -->
                 <div class="partner-card">
                     <img src="images/partners/1001079909.png" alt="DK Atovitt Ecosystem">
                     <h3>Ecosystem</h3>
@@ -325,7 +322,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactions -->
+    <!-- JavaScript for Interactions & Smart Slider -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
@@ -363,6 +360,30 @@
             sideMenu.classList.remove('active');
             searchModal.classList.remove('active');
             overlay.classList.remove('active');
+        });
+
+        // Smart Slider Infinite Loop Script
+        window.addEventListener('load', () => {
+            const track = document.getElementById('autoSlider');
+            if(track) {
+                const imageCount = track.querySelectorAll('img').length;
+                const slideWidth = 160 + 15; // 160px width + 15px gap
+                const totalScroll = slideWidth * imageCount;
+                
+                track.innerHTML += track.innerHTML; // Duplicate for infinite scroll
+                
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes smartScroll {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-${totalScroll}px); }
+                    }
+                    .poster-track {
+                        animation: smartScroll ${imageCount * 2.5}s linear infinite !important;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         });
     </script>
 </body>
