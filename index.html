@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design, Cast Colors & Auth Buttons -->
+    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design, Cast Colors, Auth Buttons & MOBILE HEADER FIX -->
     <style>
         /* Header Fix */
         .header .container {
@@ -37,6 +37,18 @@
         .login-btn-header:hover {
             background-color: #e6c875;
             color: #000;
+        }
+
+        /* 📱 MOBILE SCREEN HEADER FIX (Yeh naya add kiya hai) */
+        @media (max-width: 768px) {
+            .header .container { padding-left: 10px !important; padding-right: 10px !important; }
+            .logo { gap: 6px !important; justify-content: flex-start !important; }
+            .logo img { height: 38px !important; flex-shrink: 0 !important; } /* Logo dabe nahi */
+            .logo-text h1 { font-size: 14px !important; }
+            .logo-text p { display: none !important; } /* Mobile me jagah bachane ke liye hide */
+            .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
+            .header-icons { gap: 8px !important; }
+            #menuBtn { font-size: 20px !important; }
         }
 
         /* Yakshini Center Title Design */
@@ -161,16 +173,17 @@
     <header class="header">
         <div class="container">
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
-            <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: center; flex: 1; overflow: hidden;">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 60px; width: auto;">
+            <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; flex: 1; overflow: hidden;">
+                <!-- flex-shrink: 0 add kiya taaki logo dabe nahi -->
+                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 60px; width: auto; flex-shrink: 0;">
                 <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h1 style="font-size: 19px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap;">DK ATOVITT</h1>
+                    <h1 style="font-size: 19px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">DK ATOVITT</h1>
                     <p style="font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production</p>
                 </div>
             </div>
             
-            <!-- LOGIN BUTTON ADDED HERE -->
-            <div class="header-icons" style="display: flex; gap: 12px; align-items: center;">
+            <!-- LOGIN BUTTON -->
+            <div class="header-icons" style="display: flex; gap: 12px; align-items: center; flex-shrink: 0;">
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
                 <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
@@ -183,7 +196,6 @@
             <h2>MENU</h2>
             <button id="closeMenu">&times;</button>
         </div>
-        <!-- Menu me bhi login button add kar diya -->
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         <a href="#movies"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</a>
@@ -419,7 +431,6 @@
             <div class="audition-box">
                 <h2>Join Our Upcoming Projects</h2>
                 <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
-                <!-- YAHAN BHI LINK AUTH.HTML MEIN BADAL DIYA HAI -->
                 <a href="auth.html" class="btn">Apply For Audition</a>
             </div>
         </div>
