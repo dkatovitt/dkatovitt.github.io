@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu aur Slider ko theek karne ka code -->
+    <!-- FIXES: Menu, Slider aur Partner Logos ko theek karne ka code -->
     <style>
         /* Header Fix */
         .header .container {
@@ -31,6 +31,22 @@
         }
         .poster-track {
             animation: scroll10Photos 25s linear infinite !important;
+        }
+
+        /* Partner Logos Bada Karne Ka Fix */
+        .partner-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 15px !important;
+        }
+        .partner-card img {
+            width: 100% !important;
+            height: 110px !important; /* Size bada kiya */
+            max-width: 160px !important;
+            object-fit: contain !important; /* Ekdam perfect fit hoga bina kate */
+            margin-bottom: 15px !important;
         }
     </style>
 </head>
@@ -163,13 +179,13 @@
         </div>
     </section>
 
-        <!-- Official Trailer Section (Auto-Synced with YouTube) -->
+    <!-- Official Trailer Section (Auto YouTube Sync) -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <!-- YouTube se direct live thumbnail aayega -->
+                    <!-- Ab Trailer ka photo bhi direct YouTube se aayega -->
                     <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Official Trailer Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
@@ -178,8 +194,7 @@
         </div>
     </section>
 
-
-    <!-- Yakshini Movie Song's Section (All 6 Auto-Update Thumbnails) -->
+    <!-- Yakshini Movie Song's Section (All 6 Auto YouTube Sync) -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -254,7 +269,7 @@
         </div>
     </section>
 
-    <!-- Partners & Auditions -->
+    <!-- Partners & Auditions (WITH BADE LOGOS & NAYA 4th PARTNER) -->
     <section class="partners-auditions" id="auditions">
         <div class="container">
             <h2>Our Partners</h2>
@@ -270,6 +285,12 @@
                 <div class="partner-card">
                     <img src="images/partners/kalpamrit-logo.jpg" alt="Kalpamrit">
                     <h3>Kalpamrit</h3>
+                </div>
+                
+                <!-- Naya 4th Partner Logo Yahan Add Kiya Gaya Hai -->
+                <div class="partner-card">
+                    <img src="images/partners/1001079909.png" alt="DK Atovitt Ecosystem">
+                    <h3>Ecosystem</h3>
                 </div>
             </div>
 
