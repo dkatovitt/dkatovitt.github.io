@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders aur Partner Logos ka design code -->
+    <!-- FIXES: Menu, Smart Sliders, Partner Logos aur Yakshini Title Design -->
     <style>
         /* Header Fix */
         .header .container {
@@ -22,6 +22,44 @@
             transform: none !important;
             left: auto !important;
             top: auto !important;
+        }
+
+        /* Yakshini Custom Title Design (Naya Code) */
+        .yakshini-title-box {
+            margin-bottom: 20px;
+        }
+        .yakshini-main-title {
+            font-size: 42px !important;
+            color: #e6c875 !important; /* Golden Color */
+            margin: 0 !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+        .yakshini-sub-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #e6c875;
+            font-size: 18px;
+            margin: 5px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .yakshini-sub-title .line {
+            height: 1px;
+            background-color: #e6c875;
+            width: 40px;
+        }
+        .yakshini-tagline-small {
+            font-size: 16px;
+            color: #ff4d4d; /* Reddish Danger Color */
+            font-weight: bold;
+            margin: 0 0 15px 0;
+        }
+        .movie-meta li {
+            margin-bottom: 12px !important;
+            line-height: 1.6;
+            font-size: 15px;
         }
 
         /* 1. Poster Slider Base */
@@ -146,7 +184,7 @@
         </div>
     </section>
 
-    <!-- Featured Movie Section -->
+    <!-- Featured Movie Section (NAYA YAKSHINI DESIGN + DETAILS) -->
     <section class="featured-movie" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -155,14 +193,28 @@
                     <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
                 </div>
                 <div class="movie-info">
-                    <h2>Yakshini</h2>
+                    
+                    <!-- Naya Title Style -->
+                    <div class="yakshini-title-box">
+                        <h2 class="yakshini-main-title">यक्षिणी</h2>
+                        <div class="yakshini-sub-title">
+                            <span class="line"></span>
+                            <span class="text">Yakshini</span>
+                            <span class="line"></span>
+                        </div>
+                        <p class="yakshini-tagline-small">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
+                    </div>
+
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
+                    
+                    <!-- Naye Cast & Crew Details -->
                     <ul class="movie-meta">
-                        <li><strong>Genre:</strong> Horror / Romance / Mystery</li>
-                        <li><strong>Language:</strong> Hindi</li>
-                        <li><strong>Director:</strong> DK Sir</li>
-                        <li><strong>Production House:</strong> DK Atovitt</li>
+                        <li><strong>Production House:</strong> DK ATOVITT <img src="images/logo/logo.png" alt="DK Logo" style="height: 25px; vertical-align: middle; margin-left: 8px;"></li>
+                        <li><strong>Producer:</strong> Mr. Dipak Kumar Gupta ( D K SIR )</li>
+                        <li><strong>Director:</strong> Mr. Arudipta Dasgupta.</li>
+                        <li><strong>Actors:</strong> Mr. Dipak, Mrs. Puja, Mrs. Sarita, Mr. Ravi, Mr. Dharamveer, Mr. H P Gupta, Mr. Sanjay, Mr. Sanjeev, Mr. Santosh, Mr. Satyanarayan, Mr. Jai Ram.</li>
                     </ul>
+                    
                     <a href="#trailer" class="btn">Watch Trailer Now</a>
                 </div>
             </div>
@@ -195,7 +247,7 @@
         </div>
     </section>
 
-    <!-- Official Trailer Section (Auto YouTube Sync) -->
+    <!-- Official Trailer Section -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
@@ -209,7 +261,7 @@
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section (Auto YouTube Sync) -->
+    <!-- Yakshini Movie Song's Section -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -264,7 +316,7 @@
         </div>
     </section>
 
-    <!-- 2. MOVIE GALLERY SECTION (SLIDER MODE - 17 Photos gallery1 to gallery17) -->
+    <!-- 2. MOVIE GALLERY SECTION (SLIDER MODE - REVERSE Left-to-Right) -->
     <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
@@ -398,7 +450,7 @@
         // Double Auto-Slider Logic
         window.addEventListener('load', () => {
             
-            // 1. Poster Auto Slider (Left to Right Scrolling as usual)
+            // 1. Poster Auto Slider (Right to Left Scrolling)
             const track1 = document.getElementById('autoSlider');
             if(track1) {
                 const imgCount = track1.querySelectorAll('img').length;
@@ -419,11 +471,10 @@
                 document.head.appendChild(style1);
             }
 
-            // 2. Movie Gallery Auto Slider (REVERSE DIRECTION: Left-to-Right moving rightwards)
+            // 2. Movie Gallery Auto Slider (Left to Right Scrolling)
             const track2 = document.getElementById('gallerySlider');
             if(track2) {
                 const imgCount = track2.querySelectorAll('img').length;
-                // Height is 200px. 16:9 ratio means width is ~356px + 20px gap
                 const slideWidth = 376; 
                 const totalScroll = slideWidth * imgCount;
                 track2.innerHTML += track2.innerHTML; // Loop trick
