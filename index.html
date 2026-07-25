@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design & Cast Colors -->
+    <!-- FIXES: Menu, Smart Sliders, Partner Logos, Title Design, Cast Colors & Auth Buttons -->
     <style>
         /* Header Fix */
         .header .container {
@@ -22,6 +22,21 @@
             transform: none !important;
             left: auto !important;
             top: auto !important;
+        }
+        .login-btn-header {
+            color: #e6c875;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #e6c875;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        .login-btn-header:hover {
+            background-color: #e6c875;
+            color: #000;
         }
 
         /* Yakshini Center Title Design */
@@ -71,7 +86,7 @@
             letter-spacing: 0.5px;
         }
         
-        /* Cast & Crew Custom Colors (NAYA CODE) */
+        /* Cast & Crew Custom Colors */
         .movie-meta {
             list-style: none;
             padding: 0;
@@ -81,10 +96,10 @@
             margin-bottom: 15px !important; 
             line-height: 1.6;
             font-size: 15px;
-            color: #ffffff !important; /* Naam ka color: Bright White */
+            color: #ffffff !important; 
         }
         .movie-meta li strong {
-            color: #e6c875 !important; /* Label ka color: Golden */
+            color: #e6c875 !important; 
             font-weight: bold;
             margin-right: 5px;
             letter-spacing: 0.5px;
@@ -153,8 +168,11 @@
                     <p style="font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production</p>
                 </div>
             </div>
-            <div class="header-icons">
-                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
+            
+            <!-- LOGIN BUTTON ADDED HERE -->
+            <div class="header-icons" style="display: flex; gap: 12px; align-items: center;">
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
+                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
@@ -165,6 +183,8 @@
             <h2>MENU</h2>
             <button id="closeMenu">&times;</button>
         </div>
+        <!-- Menu me bhi login button add kar diya -->
+        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         <a href="#movies"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</a>
         <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
@@ -222,7 +242,6 @@
                 </div>
                 <div class="movie-info">
                     
-                    <!-- Naya Center Aligned Title Box -->
                     <div class="yakshini-title-box">
                         <h2 class="yakshini-main-title">यक्षिणी</h2>
                         <div class="yakshini-sub-title">
@@ -235,7 +254,6 @@
 
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                     
-                    <!-- Cast & Crew Details with NEW COLORS -->
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                             <strong>Production House:</strong> DK ATOVITT 
@@ -252,7 +270,7 @@
         </div>
     </section>
 
-    <!-- 1. Auto Poster Slider Section (18 Photos - slide1 to slide18) -->
+    <!-- 1. Auto Poster Slider Section -->
     <section class="poster-slider-section">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -347,7 +365,7 @@
         </div>
     </section>
 
-    <!-- 2. MOVIE GALLERY SECTION (SLIDER MODE - REVERSE Left-to-Right) -->
+    <!-- 2. MOVIE GALLERY SECTION -->
     <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
@@ -401,7 +419,8 @@
             <div class="audition-box">
                 <h2>Join Our Upcoming Projects</h2>
                 <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
-                <a href="#" class="btn">Apply For Audition</a>
+                <!-- YAHAN BHI LINK AUTH.HTML MEIN BADAL DIYA HAI -->
+                <a href="auth.html" class="btn">Apply For Audition</a>
             </div>
         </div>
     </section>
