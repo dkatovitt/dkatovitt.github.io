@@ -9,20 +9,27 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header (Fixed: Menu Left, Logo Center, Search Right) -->
     <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo">
-                <div class="logo-text">
-                    <h1>DK ATOVITT</h1>
-                    <p>Official Movie Production House</p>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            
+            <!-- MENU BUTTON (LEFT) -->
+            <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
+            
+            <!-- LOGO (CENTER) -->
+            <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: center; flex: 1; overflow: hidden;">
+                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 60px; width: auto;">
+                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h1 style="font-size: 19px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap;">DK ATOVITT</h1>
+                    <p style="font-size: 9px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production</p>
                 </div>
             </div>
-            <div class="header-icons">
-                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
-                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+
+            <!-- SEARCH BUTTON (RIGHT) -->
+            <div class="header-icons" style="display: flex; align-items: center;">
+                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
+
         </div>
     </header>
 
@@ -121,7 +128,6 @@
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <!-- Absolute Path for Trailer -->
                     <img src="https://dkatovitt.github.io/images/banners/new-trailer-thumb.jpg?v=final3" alt="Trailer Thumbnail" style="object-fit: contain; background: #000;">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
@@ -138,7 +144,6 @@
             <!-- Song 1 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
-                    <!-- NEW NAME for Song 1 (gaana1.jpg) -->
                     <img src="https://dkatovitt.github.io/images/banners/gaana1.jpg?v=final3" alt="Song 1 Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
@@ -148,7 +153,6 @@
             <!-- Song 2 -->
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
-                    <!-- NEW NAME for Song 2 (gaana2.jpg) -->
                     <img src="https://dkatovitt.github.io/images/banners/gaana2.jpg?v=final3" alt="Song 2 Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
@@ -156,13 +160,39 @@
             </div>
 
             <!-- Song 3 -->
-            <div class="video-wrapper">
+            <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
-                    <!-- Absolute Path for Song 3 -->
                     <img src="https://dkatovitt.github.io/images/banners/song3-thumb.jpg?v=final3" alt="Song 3 Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
                 <h3 class="trailer-title">Saam dhale jab Pani dole</h3>
+            </div>
+
+            <!-- Song 4 (Naya Add Kiya) -->
+            <div class="video-wrapper" style="margin-bottom: 40px;">
+                <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="दीपक और रवि -एक ही जान">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </a>
+                <h3 class="trailer-title">दीपक और रवि -एक ही जान</h3>
+            </div>
+
+            <!-- Song 5 (Naya Add Kiya) -->
+            <div class="video-wrapper" style="margin-bottom: 40px;">
+                <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Tere Naam Se Meri subah">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </a>
+                <h3 class="trailer-title">Tere Naam Se Meri subah</h3>
+            </div>
+
+            <!-- Song 6 (Naya Add Kiya) -->
+            <div class="video-wrapper">
+                <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail">
+                    <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Happy birthday Harshi meri bitiya">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </a>
+                <h3 class="trailer-title">Happy birthday Harshi meri bitiya</h3>
             </div>
 
         </div>
