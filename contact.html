@@ -8,19 +8,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Header Fix */
-        .header .container { padding-left: 15px !important; padding-right: 15px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
-        .login-btn-header { color: #e6c875; text-decoration: none; font-size: 13px; font-weight: bold; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; transition: 0.3s; white-space: nowrap; }
-        .login-btn-header:hover { background-color: #e6c875; color: #000; }
+        /* 🌟 HEADER FIX FOR LAPTOP & MOBILE */
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        
+        /* 🌟 VIDEO LOGO GLOBAL CLASSES */
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; }
+        
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
+
         @media (max-width: 768px) {
-            .header .container { padding-left: 5px !important; padding-right: 5px !important; }
-            .logo img { height: 55px !important; }
-            .logo-text h1 { font-size: 17px !important; margin-bottom: 2px !important; font-weight: 900 !important; }
-            .logo-text p { font-size: 8.5px !important; }
-            .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 45px !important; }
+            .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 8px !important; letter-spacing: 0px !important; display: block !important; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            .search-btn { font-size: 18px !important; }
+            .header-icons { gap: 10px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
         }
 
-        /* Contact Page Style */
+        /* 🌟 SCROLL ANIMATION (REVEAL EFFECT) */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 🌟 WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; text-decoration: none;
+            transition: 0.3s; animation: pulse-whatsapp 2s infinite;
+        }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @media (max-width: 768px) {
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
+        }
+
+        /* 🌟 CONTACT PAGE STYLE */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
         .contact-section { padding: 120px 20px 60px 20px; }
         .contact-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
@@ -45,10 +86,9 @@
         .submit-btn:hover { background: #d4b561; }
 
         /* Mega Footer */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; }
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand img { height: 60px; margin-bottom: 15px; }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -67,25 +107,65 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; text-decoration: none;">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 65px;">
-                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h1 style="font-size: 22px; color: #e6c875; letter-spacing: 1px; text-transform: uppercase; margin: 0; font-weight: 900;">DK ATOVITT</h1>
-                    <p style="font-size: 11px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin: 0;">Official Movie Production House</p>
-                </div>
-            </a>
-            <div class="header-icons" style="display: flex; gap: 12px; align-items: center;">
-                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <!-- 🎬 VIDEO LOGO HEADER -->
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <a href="auth.html" class="login-btn-header">
+                    <i class="fas fa-user"></i> 
+                    <span class="hide-on-mobile">Login / Signup</span>
+                    <span class="show-on-mobile">Login</span>
+                </a>
             </div>
         </div>
     </header>
 
+    <!-- Side Menu Drawer -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h2>MENU</h2>
+            <button id="closeMenu">&times;</button>
+        </div>
+        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="about.html"><i class="fas fa-id-card" style="color:var(--primary-color); margin-right:12px;"></i> About CEO & Company</a>
+        <a href="index.html#movies"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</a>
+        <a href="index.html#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        <a href="index.html#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
+        <a href="index.html#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="index.html#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        <a href="index.html#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
+        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+    </div>
+
+    <!-- Search Modal Box -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-box-container">
+            <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
+            <button id="closeSearch">&times;</button>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+
     <!-- Content Section -->
-    <section class="contact-section">
+    <section class="contact-section reveal">
         <div class="contact-container">
             
             <div style="text-align: center; margin-bottom: -15px;">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 120px; object-fit: contain; filter: drop-shadow(0px 4px 10px rgba(230, 200, 117, 0.2));">
+                <!-- 🎬 VIDEO LOGO MAIN SECTION -->
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 120px; filter: drop-shadow(0px 4px 10px rgba(230, 200, 117, 0.2));"></video>
             </div>
 
             <h1 class="contact-title" style="margin-top: 0;">Contact Us & Inquiry</h1>
@@ -142,10 +222,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="tseries-footer" id="contact">
+    <footer class="tseries-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo">
+                <!-- 🎬 VIDEO LOGO FOOTER -->
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="footer-video-logo"></video>
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
@@ -170,6 +251,7 @@
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
+                    <li><a href="about.html">About CEO & Company</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
                     <li><a href="ecosystem.html">Ecosystem</a></li>
@@ -186,7 +268,7 @@
             </div>
         </div>
         <div class="tseries-footer-bottom">
-            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved. | <a href="mailto:dipakatovitt@gmail.com" style="color: #e6c875; text-decoration: none;">dipakatovitt@gmail.com</a></p>
+            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
             <div class="tseries-footer-socials">
                 <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -195,5 +277,43 @@
         </div>
     </footer>
 
+    <!-- 🌟 NEW: WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        const searchBtn = document.getElementById('searchBtn');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.getElementById('closeSearch');
+
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); });
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+        document.querySelectorAll('.side-menu a').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        
+        if(searchBtn) { searchBtn.addEventListener('click', () => { searchModal.classList.add('active'); overlay.classList.add('active'); }); }
+        if(closeSearch) { closeSearch.addEventListener('click', () => { searchModal.classList.remove('active'); overlay.classList.remove('active'); }); }
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); searchModal.classList.remove('active'); overlay.classList.remove('active'); });
+
+        /* 🌟 SCROLL REVEAL ANIMATION SCRIPT */
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal(); 
+    </script>
 </body>
 </html>
