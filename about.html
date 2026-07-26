@@ -12,7 +12,12 @@
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
-        .desktop-logo-img { height: 80px !important; width: auto !important; }
+        
+        /* 🌟 VIDEO LOGO GLOBAL CLASSES */
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; }
+        
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
@@ -44,13 +49,9 @@
 
         /* CEO Box */
         .ceo-box { background: #111; border: 1px solid #333; border-radius: 15px; padding: 40px; display: flex; align-items: center; gap: 40px; margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        
-        /* 🔥 NEW PHOTO STYLE: Professional Portrait Frame */
         .ceo-image { flex-shrink: 0; width: 220px; height: 280px; border-radius: 15px; border: 3px solid #e6c875; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #222; box-shadow: 0 0 20px rgba(230,200,117,0.3); }
         .ceo-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
         .ceo-image i { font-size: 100px; color: #555; } 
-
-        /* 🔥 NEW NAME STYLE: Title Case & 1 Line */
         .ceo-content h2 { color: #e6c875; font-size: 28px; margin-bottom: 5px; letter-spacing: 1px; white-space: nowrap; }
         .ceo-content h4 { color: #fff; font-size: 16px; margin-bottom: 20px; font-weight: normal; letter-spacing: 2px; text-transform: uppercase; }
         .ceo-content p { color: #bbb; font-size: 16px; text-align: justify; margin-bottom: 15px; line-height: 1.8; white-space: normal; }
@@ -67,28 +68,20 @@
         .vision-item h3 { color: #fff; font-size: 18px; margin-bottom: 10px; }
         .vision-item p { color: #888; font-size: 13px; }
 
-        /* 📱 MOBILE RESPONSIVE TWEAKS */
         @media (max-width: 900px) {
             .ceo-box { flex-direction: column; text-align: center; padding: 25px; }
-            /* Mobile par photo choti */
             .ceo-image { width: 170px; height: 220px; margin: 0 auto; }
-            /* Mobile par naam ek line me fit karne ke liye */
             .ceo-content h2 { font-size: 21px; }
             .ceo-content h4 { font-size: 13px; }
             .vision-grid { grid-template-columns: 1fr; }
             .ceo-content p { text-align: center; }
         }
-        
-        /* Extra small phones */
-        @media (max-width: 380px) {
-            .ceo-content h2 { font-size: 18px; }
-        }
+        @media (max-width: 380px) { .ceo-content h2 { font-size: 18px; } }
 
         /* Mega Footer */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand img { height: 60px; margin-bottom: 15px; }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -109,9 +102,9 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                
                 <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                    <img src="images/logo/logo.png" alt="DK Atovitt Logo" class="desktop-logo-img">
+                    <!-- 🎬 VIDEO LOGO HEADER -->
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text">DK ATOVITT</h1>
                         <p class="desktop-logo-sub">Official Movie Production House</p>
@@ -173,7 +166,6 @@
                     <i class="fas fa-user-tie" style="display: none;"></i>
                 </div>
                 <div class="ceo-content">
-                    <!-- ✅ Corrected Name Format -->
                     <h2>Mr. Dipak Kumar Gupta</h2>
                     <h4>Founder & CEO ( DK SIR )</h4>
                     <p>With a profound passion for storytelling, cinema, and soulful music, Mr. Dipak Kumar Gupta (affectionately known as DK Sir) established DK ATOVITT with a singular, powerful vision: <strong>to bring fresh, engaging, and high-quality entertainment to the global audience.</strong></p>
@@ -215,7 +207,8 @@
     <footer class="tseries-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo">
+                <!-- 🎬 VIDEO LOGO IN FOOTER -->
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="footer-video-logo"></video>
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
@@ -276,43 +269,13 @@
         const searchModal = document.getElementById('searchModal');
         const closeSearch = document.getElementById('closeSearch');
 
-        menuBtn.addEventListener('click', () => {
-            sideMenu.classList.add('active');
-            overlay.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        const menuLinks = document.querySelectorAll('.side-menu a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        });
-
-        if(searchBtn) {
-            searchBtn.addEventListener('click', () => {
-                searchModal.classList.add('active');
-                overlay.classList.add('active');
-            });
-        }
-
-        if(closeSearch) {
-            closeSearch.addEventListener('click', () => {
-                searchModal.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        }
-
-        overlay.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-            searchModal.classList.remove('active');
-            overlay.classList.remove('active');
-        });
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); });
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+        document.querySelectorAll('.side-menu a').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        
+        if(searchBtn) { searchBtn.addEventListener('click', () => { searchModal.classList.add('active'); overlay.classList.add('active'); }); }
+        if(closeSearch) { closeSearch.addEventListener('click', () => { searchModal.classList.remove('active'); overlay.classList.remove('active'); }); }
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); searchModal.classList.remove('active'); overlay.classList.remove('active'); });
     </script>
 </body>
 </html>
