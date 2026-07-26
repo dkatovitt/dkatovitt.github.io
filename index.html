@@ -13,10 +13,10 @@
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         
-        /* 🌟 VIDEO LOGO GLOBAL CLASSES */
+        /* 🔥 HEADER LOGO BIG ZOOM FIX */
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
-        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; } 
-        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
         
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
@@ -28,9 +28,10 @@
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 45px !important; }
-            .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 8px !important; letter-spacing: 0px !important; display: block !important; }
+            /* 🔥 MOBILE LOGO SUPER ZOOM */
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
             .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
             .search-btn { font-size: 18px !important; }
@@ -62,9 +63,7 @@
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
-        @media (max-width: 768px) {
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
-        }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
 
         /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
         .songs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
@@ -89,7 +88,7 @@
         .gallery-track { display: flex; gap: 20px; width: max-content; align-items: center; }
         .gallery-track img { height: 200px !important; aspect-ratio: 16 / 9 !important; object-fit: cover !important; border-radius: 12px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; border: 1px solid #333 !important; }
 
-        /* 🔥 PARTNERS LOGO BIG SIZE FIX */
+        /* Partners Logo Fix */
         .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .partner-card { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px !important; background: #0a0a0a; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
         .partner-card video, .partner-card img { width: 100% !important; height: 160px !important; object-fit: contain !important; margin-bottom: 10px !important; mix-blend-mode: screen; transform: scale(1.3); transition: 0.3s; }
@@ -99,7 +98,7 @@
         @media (max-width: 768px) {
             .partner-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .partner-card { padding: 10px 5px !important; }
-            .partner-card video, .partner-card img { height: 140px !important; transform: scale(1.5); } /* 🔥 Mobile Zoom Effect */
+            .partner-card video, .partner-card img { height: 140px !important; transform: scale(1.5); } 
             .partner-card h3 { font-size: 13px !important; }
         }
 
@@ -154,13 +153,8 @@
                     </div>
                 </a>
             </div>
-            
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
-                <a href="auth.html" class="login-btn-header">
-                    <i class="fas fa-user"></i> 
-                    <span class="hide-on-mobile">Login / Signup</span>
-                    <span class="show-on-mobile">Login</span>
-                </a>
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
                 <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
         </div>
@@ -168,10 +162,7 @@
 
     <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
-        <div class="menu-header">
-            <h2>MENU</h2>
-            <button id="closeMenu">&times;</button>
-        </div>
+        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         <a href="about.html"><i class="fas fa-id-card" style="color:var(--primary-color); margin-right:12px;"></i> About CEO & Company</a>
@@ -183,26 +174,19 @@
         <a href="#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
         <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
-        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+        <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
 
     <!-- Search Modal Box -->
     <div class="search-modal" id="searchModal">
-        <div class="search-box-container">
-            <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
-            <button id="closeSearch">&times;</button>
-        </div>
+        <div class="search-box-container"><input type="text" placeholder="Search movies, songs, trailers..." id="searchInput"><button id="closeSearch">&times;</button></div>
     </div>
 
     <div id="overlay"></div>
 
     <!-- News Bar -->
     <div class="news-bar">
-        <div class="news-track">
-            <span>🔥 Welcome to DK Atovitt Official Website</span>
-            <span>🎬 Upcoming Horror Movie "Yakshini" Coming Soon</span>
-            <span>⭐ Stay tuned for exclusive trailers and songs</span>
-        </div>
+        <div class="news-track"><span>🔥 Welcome to DK Atovitt Official Website</span><span>🎬 Upcoming Horror Movie "Yakshini" Coming Soon</span><span>⭐ Stay tuned for exclusive trailers and songs</span></div>
     </div>
 
     <!-- Hero Section -->
@@ -210,11 +194,7 @@
         <div class="hero-overlay">
             <div class="studio">DK ATOVITT PRESENTS</div>
             <h1 class="yakshini-title">यक्षिणी</h1>
-            <div class="yakshini-english">
-                <div class="line"></div>
-                <span>Y a k s h i n i</span>
-                <div class="line"></div>
-            </div>
+            <div class="yakshini-english"><div class="line"></div><span>Y a k s h i n i</span><div class="line"></div></div>
             <p class="yakshini-tagline">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
             <p class="hero-text">An Upcoming Bollywood Horror Romance Film</p>
             <a href="#trailer" class="btn"><i class="fas fa-play"></i> Watch Trailer</a>
@@ -226,20 +206,14 @@
         <div class="container">
             <h2>Featured Movie</h2>
             <div class="movie-flex">
-                <div class="movie-poster">
-                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
-                </div>
+                <div class="movie-poster"><img src="images/movies/yakshini-poster.png" alt="Yakshini Poster"></div>
                 <div class="movie-info">
                     <div class="yakshini-title-box">
                         <h2 class="yakshini-main-title">यक्षिणी</h2>
-                        <div class="yakshini-sub-title">
-                            <span class="line"></span><span class="text">Yakshini</span><span class="line"></span>
-                        </div>
+                        <div class="yakshini-sub-title"><span class="line"></span><span class="text">Yakshini</span><span class="line"></span></div>
                         <p class="yakshini-tagline-small">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
                     </div>
-
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
-                    
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                             <strong>Production House:</strong> DK ATOVITT 
@@ -249,7 +223,6 @@
                         <li><strong>Director:</strong> Mr. Arudipta Dasgupta.</li>
                         <li><strong>Actors:</strong> Mr. Dipak, Mrs. Puja, Mrs. Sarita, Mr. Ravi, Mr. Dharamveer, Mr. H P Gupta, Mr. Sanjay, Mr. Sanjeev, Mr. Santosh, Mr. Satyanarayan, Mr. Jai Ram.</li>
                     </ul>
-                    
                     <a href="#trailer" class="btn">Watch Trailer Now</a>
                 </div>
             </div>
@@ -260,7 +233,7 @@
     <section class="poster-slider-section reveal">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
-                <img src="images/movies/slide1.png" alt="Slide 1"><img src="images/movies/slide2.png" alt="Slide 2"><img src="images/movies/slide3.png" alt="Slide 3"><img src="images/movies/slide4.png" alt="Slide 4"><img src="images/movies/slide5.png" alt="Slide 5"><img src="images/movies/slide6.png" alt="Slide 6"><img src="images/movies/slide7.png" alt="Slide 7"><img src="images/movies/slide8.png" alt="Slide 8"><img src="images/movies/slide9.png" alt="Slide 9"><img src="images/movies/slide10.png" alt="Slide 10"><img src="images/movies/slide11.png" alt="Slide 11"><img src="images/movies/slide12.png" alt="Slide 12"><img src="images/movies/slide13.png" alt="Slide 13"><img src="images/movies/slide14.png" alt="Slide 14"><img src="images/movies/slide15.png" alt="Slide 15"><img src="images/movies/slide16.png" alt="Slide 16"><img src="images/movies/slide17.png" alt="Slide 17"><img src="images/movies/slide18.png" alt="Slide 18">
+                <img src="images/movies/slide1.png" alt="Slide"><img src="images/movies/slide2.png" alt="Slide"><img src="images/movies/slide3.png" alt="Slide"><img src="images/movies/slide4.png" alt="Slide"><img src="images/movies/slide5.png" alt="Slide"><img src="images/movies/slide6.png" alt="Slide"><img src="images/movies/slide7.png" alt="Slide"><img src="images/movies/slide8.png" alt="Slide"><img src="images/movies/slide9.png" alt="Slide"><img src="images/movies/slide10.png" alt="Slide"><img src="images/movies/slide11.png" alt="Slide"><img src="images/movies/slide12.png" alt="Slide"><img src="images/movies/slide13.png" alt="Slide"><img src="images/movies/slide14.png" alt="Slide"><img src="images/movies/slide15.png" alt="Slide"><img src="images/movies/slide16.png" alt="Slide"><img src="images/movies/slide17.png" alt="Slide"><img src="images/movies/slide18.png" alt="Slide">
             </div>
         </div>
     </section>
@@ -271,8 +244,7 @@
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙 | Horror Movie 2026 | DK ATOVITT | 4K">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                    <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer"><button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
                 <h3 class="trailer-title">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙 | Horror Movie 2026 | DK ATOVITT | 4K</h3>
             </div>
@@ -284,34 +256,13 @@
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             <div class="songs-grid">
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️ | DK ATOVITT Official | 4K</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song 2026</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song</h3>
-                </div>
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/OqYiYRsg9rQ?si=jBfZ30uySR_RHBEl" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song | Official Music Video |</h3>
-                </div>
+                <div class="video-wrapper"><a href="https://youtu.be/32FIP1DQU5w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/jq3fKMww5_M" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/eTYetclIVbM" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song</h3></div>
+                <div class="video-wrapper"><a href="https://youtu.be/OqYiYRsg9rQ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a><h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song</h3></div>
             </div>
         </div>
     </section>
@@ -328,27 +279,15 @@
         </div>
     </section>
 
-    <!-- 🔥 UPDATED PARTNERS & AUDITIONS WITH BIG VIDEO LOGOS -->
+    <!-- Media Partners -->
     <section class="partners-auditions reveal" id="partners">
         <div class="container">
             <h2>Media Partners</h2>
             <div class="partner-grid">
-                <div class="partner-card">
-                    <video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline></video>
-                    <h3>Earn with DK Sir</h3>
-                </div>
-                <div class="partner-card">
-                    <video src="images/partners/atvt-logo.mp4" autoplay loop muted playsinline></video>
-                    <h3>ATVT</h3>
-                </div>
-                <div class="partner-card">
-                    <video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video>
-                    <h3>Kalpamrit</h3>
-                </div>
-                <div class="partner-card">
-                    <video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video>
-                    <h3>Ecosystem</h3>
-                </div>
+                <div class="partner-card"><video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline></video><h3>Earn with DK Sir</h3></div>
+                <div class="partner-card"><video src="images/partners/atvt-logo.mp4" autoplay loop muted playsinline></video><h3>ATVT</h3></div>
+                <div class="partner-card"><video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video><h3>Kalpamrit</h3></div>
+                <div class="partner-card"><video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video><h3>Ecosystem</h3></div>
             </div>
 
             <div class="audition-box" id="audition-section" style="scroll-margin-top: 100px;">
@@ -362,38 +301,31 @@
         </div>
     </section>
 
-    <!-- Contact & Inquiry Section -->
+    <!-- Contact Section -->
     <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
-            
             <div style="text-align: center; margin-bottom: -10px;">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 100px;"></video>
             </div>
-
             <h2 style="color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; margin-top: 0;">Contact Us & Inquiry</h2>
-            
             <div class="contact-grid">
                 <div class="inquiry-form">
                     <h3>Send Inquiry / Message</h3>
                     <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');">
-                        <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" placeholder="Enter your full name" required></div>
-                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="Enter your email" required></div>
-                        <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="Enter your phone number" required></div>
+                        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your full name" required></div>
+                        <div class="form-group"><label>Email Address</label><input type="email" placeholder="Enter your email" required></div>
+                        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Enter your phone number" required></div>
                         <div class="form-group">
-                            <label for="category">Inquiry Category</label>
-                            <select id="category" required>
+                            <label>Inquiry Category</label>
+                            <select required>
                                 <option value="" disabled selected>Select Category</option>
-                                <option value="Our Media">Our Media</option>
-                                <option value="Auditions">Auditions & Casting</option>
-                                <option value="General Inquiry">General Inquiry</option>
-                                <option value="Business Partnership">Business Partnership</option>
+                                <option>Our Media</option><option>Auditions & Casting</option><option>General Inquiry</option><option>Business Partnership</option>
                             </select>
                         </div>
-                        <div class="form-group"><label for="message">Your Message / Details</label><textarea id="message" placeholder="Write your message or audition query here..." required></textarea></div>
+                        <div class="form-group"><label>Your Message / Details</label><textarea placeholder="Write your message or audition query here..." required></textarea></div>
                         <button type="submit" class="submit-btn">Submit Inquiry</button>
                     </form>
                 </div>
-
                 <div class="contact-info-box">
                     <h3>DK ATOVITT</h3>
                     <p><i class="fas fa-film" style="color:#e6c875;"></i> <span><strong>Official Movie Production House</strong></span></p>
@@ -415,110 +347,37 @@
             </div>
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#movies">Featured Movie</a></li>
-                    <li><a href="#trailer">Official Trailer</a></li>
-                    <li><a href="#songs">Movie Songs</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                </ul>
+                <ul><li><a href="#home">Home</a></li><li><a href="#movies">Featured Movie</a></li><li><a href="#trailer">Official Trailer</a></li><li><a href="#songs">Movie Songs</a></li><li><a href="#gallery">Gallery</a></li></ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>Join Us</h4>
-                <ul>
-                    <li><a href="#audition-section">Auditions</a></li>
-                    <li><a href="#partners">Media Partners</a></li>
-                    <li><a href="auth.html">Login / Signup</a></li>
-                </ul>
+                <ul><li><a href="#audition-section">Auditions</a></li><li><a href="#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
-                <ul>
-                    <li><a href="about.html">About CEO & Company</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
-                    <li><a href="ecosystem.html">Ecosystem</a></li>
-                </ul>
+                <ul><li><a href="about.html">About CEO & Company</a></li><li><a href="#contact">Contact Us</a></li><li><a href="news.html">News & Updates</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>Legal & Help</h4>
-                <ul>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="notice.html">Public Notice</a></li>
-                    <li><a href="faq.html">Help / FAQs</a></li>
-                </ul>
+                <ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
             </div>
         </div>
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
-            <div class="tseries-footer-socials">
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
+            <div class="tseries-footer-socials"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a><a href="#" target="_blank"><i class="fab fa-facebook"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></div>
         </div>
     </footer>
 
-    <!-- 🌟 NEW: WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- JavaScript -->
     <script>
-        const menuBtn = document.getElementById('menuBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        const overlay = document.getElementById('overlay');
-        const searchBtn = document.getElementById('searchBtn');
-        const searchModal = document.getElementById('searchModal');
-        const closeSearch = document.getElementById('closeSearch');
-
-        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); });
-        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
-        document.querySelectorAll('.side-menu a').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
-        
-        if(searchBtn) { searchBtn.addEventListener('click', () => { searchModal.classList.add('active'); overlay.classList.add('active'); }); }
-        if(closeSearch) { closeSearch.addEventListener('click', () => { searchModal.classList.remove('active'); overlay.classList.remove('active'); }); }
-        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); searchModal.classList.remove('active'); overlay.classList.remove('active'); });
-
-        /* 🌟 SCROLL REVEAL ANIMATION SCRIPT */
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-        window.addEventListener('scroll', reveal);
-        reveal(); 
-
+        const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay'); const searchBtn = document.getElementById('searchBtn'); const searchModal = document.getElementById('searchModal'); const closeSearch = document.getElementById('closeSearch');
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); document.querySelectorAll('.side-menu a').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        if(searchBtn) { searchBtn.addEventListener('click', () => { searchModal.classList.add('active'); overlay.classList.add('active'); }); } if(closeSearch) { closeSearch.addEventListener('click', () => { searchModal.classList.remove('active'); overlay.classList.remove('active'); }); } overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); searchModal.classList.remove('active'); overlay.classList.remove('active'); });
+        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal); reveal(); 
         window.addEventListener('load', () => {
-            const track1 = document.getElementById('autoSlider');
-            if(track1) {
-                const imgCount = track1.querySelectorAll('img').length;
-                const slideWidth = 160 + 15; 
-                const totalScroll = slideWidth * imgCount;
-                track1.innerHTML += track1.innerHTML; 
-                const style1 = document.createElement('style');
-                style1.innerHTML = `@keyframes smartScroll1 { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } } #autoSlider { animation: smartScroll1 ${imgCount * 2.5}s linear infinite !important; }`;
-                document.head.appendChild(style1);
-            }
-            const track2 = document.getElementById('gallerySlider');
-            if(track2) {
-                const imgCount = track2.querySelectorAll('img').length;
-                const slideWidth = 376; 
-                const totalScroll = slideWidth * imgCount;
-                track2.innerHTML += track2.innerHTML; 
-                const style2 = document.createElement('style');
-                style2.innerHTML = `@keyframes smartScroll2 { 0% { transform: translateX(-${totalScroll}px); } 100% { transform: translateX(0); } } #gallerySlider { animation: smartScroll2 ${imgCount * 3.5}s linear infinite !important; }`;
-                document.head.appendChild(style2);
-            }
+            const track1 = document.getElementById('autoSlider'); if(track1) { const imgCount = track1.querySelectorAll('img').length; const slideWidth = 175; const totalScroll = slideWidth * imgCount; track1.innerHTML += track1.innerHTML; const style1 = document.createElement('style'); style1.innerHTML = `@keyframes smartScroll1 { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } } #autoSlider { animation: smartScroll1 ${imgCount * 2.5}s linear infinite !important; }`; document.head.appendChild(style1); }
+            const track2 = document.getElementById('gallerySlider'); if(track2) { const imgCount = track2.querySelectorAll('img').length; const slideWidth = 376; const totalScroll = slideWidth * imgCount; track2.innerHTML += track2.innerHTML; const style2 = document.createElement('style'); style2.innerHTML = `@keyframes smartScroll2 { 0% { transform: translateX(-${totalScroll}px); } 100% { transform: translateX(0); } } #gallerySlider { animation: smartScroll2 ${imgCount * 3.5}s linear infinite !important; }`; document.head.appendChild(style2); }
         });
     </script>
 </body>
