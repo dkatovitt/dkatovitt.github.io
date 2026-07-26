@@ -166,10 +166,20 @@
         .partner-card h3 {
             font-size: 16px !important;
         }
+        
+        /* Loading Title Animation (Optional) */
+        .loading-title {
+            opacity: 0.5;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .loaded-title {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
@@ -188,6 +198,7 @@
         </div>
     </header>
 
+    <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>MENU</h2>
@@ -208,6 +219,7 @@
         <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact</a>
     </div>
 
+    <!-- Search Modal Box -->
     <div class="search-modal" id="searchModal">
         <div class="search-box-container">
             <input type="text" placeholder="Search movies, songs, trailers..." id="searchInput">
@@ -217,6 +229,7 @@
 
     <div id="overlay"></div>
 
+    <!-- News Bar -->
     <div class="news-bar">
         <div class="news-track">
             <span>🔥 Welcome to DK Atovitt Official Website</span>
@@ -225,6 +238,7 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="studio">DK ATOVITT PRESENTS</div>
@@ -240,6 +254,7 @@
         </div>
     </section>
 
+    <!-- Featured Movie Section -->
     <section class="featured-movie" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -277,6 +292,7 @@
         </div>
     </section>
 
+    <!-- 1. Auto Poster Slider Section -->
     <section class="poster-slider-section">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -302,6 +318,7 @@
         </div>
     </section>
 
+    <!-- Official Trailer Section -->
     <section class="trailer-section" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
@@ -310,65 +327,67 @@
                     <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Official Trailer Thumbnail">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Yakshini Yakshini</h3>
+                <h3 class="trailer-title loading-title">Yakshini Yakshini</h3>
             </div>
         </div>
     </section>
 
+    <!-- Yakshini Movie Song's Section -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT">
+                    <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
 
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha">
+                    <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Kalpamrit Ke Raho Me Chand Bhi khoya Sa tha</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
 
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Saam dhale jab Pani dole">
+                    <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Saam dhale jab Pani dole</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
 
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="दीपक और रवि -एक ही जान">
+                    <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">दीपक और रवि -एक ही जान</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
 
             <div class="video-wrapper" style="margin-bottom: 40px;">
                 <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Tere Naam Se Meri subah">
+                    <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">Tere Naam Se Meri subah</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
 
             <div class="video-wrapper">
                 <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song">
+                    <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Loading...">
                     <button class="play-btn"><i class="fas fa-play"></i></button>
                 </a>
-                <h3 class="trailer-title">🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song</h3>
+                <h3 class="trailer-title loading-title">Loading title...</h3>
             </div>
         </div>
     </section>
 
+    <!-- 2. MOVIE GALLERY SECTION -->
     <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
@@ -391,13 +410,13 @@
                     <img src="images/movies/gallery15.png" alt="Gallery 15">
                     <img src="images/movies/gallery16.png" alt="Gallery 16">
                     <img src="images/movies/gallery17.png" alt="Gallery 17">
-                    
                     <img src="images/movies/gallery18.png" alt="Gallery 18">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Partners & Auditions -->
     <section class="partners-auditions" id="partners">
         <div class="container">
             <h2>Media Partners</h2>
@@ -431,6 +450,7 @@
         </div>
     </section>
 
+    <!-- Footer / Contact -->
     <footer class="main-footer" id="contact">
         <div class="container">
             <div class="footer-grid">
@@ -469,6 +489,7 @@
         </div>
     </footer>
 
+    <!-- JavaScript for Interactions & Smart Sliders -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
@@ -510,6 +531,44 @@
 
         window.addEventListener('load', () => {
             
+            // 🔥 SMART YOUTUBE TITLE AUTO-FETCHER 🔥
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            videoWrappers.forEach(wrapper => {
+                const linkTag = wrapper.querySelector('a.video-thumbnail');
+                const titleTag = wrapper.querySelector('.trailer-title');
+                
+                if (linkTag && titleTag) {
+                    const url = linkTag.getAttribute('href');
+                    let videoId = '';
+                    
+                    // Extract Video ID
+                    if (url.includes('youtu.be/')) {
+                        videoId = url.split('youtu.be/')[1].split('?')[0];
+                    } else if (url.includes('youtube.com/watch')) {
+                        videoId = url.split('v=')[1].split('&')[0];
+                    }
+                    
+                    if (videoId) {
+                        // Fetch Title from YouTube (via NoEmbed API)
+                        fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.title) {
+                                    titleTag.innerHTML = data.title;
+                                    titleTag.classList.remove('loading-title');
+                                    titleTag.classList.add('loaded-title');
+                                    
+                                    // Update img alt tag too
+                                    const imgTag = wrapper.querySelector('img');
+                                    if(imgTag) imgTag.alt = data.title;
+                                }
+                            })
+                            .catch(err => console.log('Error fetching YouTube title:', err));
+                    }
+                }
+            });
+
+            // Sliders Animations
             const track1 = document.getElementById('autoSlider');
             if(track1) {
                 const imgCount = track1.querySelectorAll('img').length;
