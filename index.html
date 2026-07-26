@@ -8,176 +8,89 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Header Fix */
+        /* 🌟 HEADER FIX FOR LAPTOP & MOBILE */
         .header .container {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
             display: flex !important;
             justify-content: space-between !important;
             align-items: center !important;
         }
-        #menuBtn, .header-icons button, .header-icons button:first-child {
-            position: static !important;
-            transform: none !important;
-            left: auto !important;
-            top: auto !important;
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 25px; /* Menu aur Logo ke beech ka gap */
         }
-        .login-btn-header {
-            color: #e6c875;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: bold;
-            border: 1px solid #e6c875;
-            padding: 6px 12px;
-            border-radius: 20px;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .login-btn-header:hover {
-            background-color: #e6c875;
-            color: #000;
-        }
+
+        /* Desktop Logo Size */
+        .desktop-logo-img { height: 80px; width: auto; }
+        .desktop-logo-text { font-size: 30px; color: #e6c875; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; font-weight: 900; }
+        .desktop-logo-sub { font-size: 13px; color: #aaa; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
+        #menuBtn { font-size: 28px; cursor: pointer; color: #fff; background: none; border: none; }
+
+        .login-btn-header { color: #e6c875; text-decoration: none; font-size: 14px; font-weight: bold; border: 1px solid #e6c875; padding: 8px 16px; border-radius: 20px; transition: 0.3s; white-space: nowrap; }
+        .login-btn-header:hover { background-color: #e6c875; color: #000; }
 
         /* 📱 MOBILE SCREEN HEADER FIX */
         @media (max-width: 768px) {
-            .header .container { padding-left: 5px !important; padding-right: 5px !important; }
-            .logo { gap: 8px !important; justify-content: flex-start !important; flex: 1 !important; min-width: 0 !important; }
-            .logo img { height: 55px !important; width: auto !important; flex-shrink: 0 !important; } 
-            .logo-text { min-width: 0 !important; }
-            .logo-text h1 { font-size: 17px !important; margin-bottom: 2px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; font-weight: 900 !important; }
-            .logo-text p { display: block !important; font-size: 8.5px !important; letter-spacing: 0px !important; white-space: nowrap !important; } 
-            .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
-            .header-icons { gap: 8px !important; flex-shrink: 0 !important; }
-            #menuBtn { font-size: 20px !important; }
+            .header .container { padding-left: 10px !important; padding-right: 10px !important; }
+            .header-left { gap: 12px; }
+            .desktop-logo-img { height: 50px !important; }
+            .desktop-logo-text { font-size: 18px !important; }
+            .desktop-logo-sub { font-size: 9px !important; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 6px 10px !important; }
             .search-btn { font-size: 18px !important; }
         }
 
+        /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        /* Mobile ke liye wapas 1-column */
+        @media (max-width: 768px) {
+            .songs-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
         /* Yakshini Center Title Design */
-        .yakshini-title-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
-            text-align: center;
-            margin-bottom: 25px;
-            width: 100%;
-        }
-        .yakshini-main-title {
-            font-size: 65px !important; 
-            color: #e6c875 !important; 
-            margin: 0 !important;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-        .yakshini-sub-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 280px; 
-            margin: 10px 0;
-        }
-        .yakshini-sub-title .line {
-            flex-grow: 1; 
-            height: 1px;
-            background-color: #e6c875;
-        }
-        .yakshini-sub-title .text {
-            padding: 0 15px;
-            color: #e6c875;
-            font-size: 16px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        .yakshini-tagline-small {
-            font-size: 15px;
-            color: #ff4d4d; 
-            font-weight: bold;
-            margin: 0 0 15px 0;
-            width: 100%;
-            max-width: 290px; 
-            letter-spacing: 0.5px;
-        }
+        .yakshini-title-box { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 25px; width: 100%; }
+        .yakshini-main-title { font-size: 65px !important; color: #e6c875 !important; margin: 0 !important; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); letter-spacing: 2px; line-height: 1; }
+        .yakshini-sub-title { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 280px; margin: 10px 0; }
+        .yakshini-sub-title .line { flex-grow: 1; height: 1px; background-color: #e6c875; }
+        .yakshini-sub-title .text { padding: 0 15px; color: #e6c875; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; }
+        .yakshini-tagline-small { font-size: 15px; color: #ff4d4d; font-weight: bold; margin: 0 0 15px 0; width: 100%; max-width: 290px; letter-spacing: 0.5px; }
         
         /* Cast & Crew Custom Colors */
-        .movie-meta {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-        }
-        .movie-meta li {
-            margin-bottom: 15px !important; 
-            line-height: 1.6;
-            font-size: 15px;
-            color: #ffffff !important; 
-        }
-        .movie-meta li strong {
-            color: #e6c875 !important; 
-            font-weight: bold;
-            margin-right: 5px;
-            letter-spacing: 0.5px;
-        }
+        .movie-meta { list-style: none; padding: 0; margin: 0 0 20px 0; }
+        .movie-meta li { margin-bottom: 15px !important; line-height: 1.6; font-size: 15px; color: #ffffff !important; }
+        .movie-meta li strong { color: #e6c875 !important; font-weight: bold; margin-right: 5px; letter-spacing: 0.5px; }
 
-        /* 1. Poster Slider Base */
-        .poster-track {
-            display: flex;
-            gap: 15px;
-            width: max-content;
-            align-items: center;
-        }
-        .poster-track img {
-            height: 280px !important; 
-            width: 160px !important;
-            object-fit: contain !important; 
-            border-radius: 8px;
-        }
-
-        /* 2. Movie Gallery 16:9 Slider Base */
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            align-items: center;
-        }
-        .gallery-track img {
-            height: 200px !important;
-            aspect-ratio: 16 / 9 !important;
-            object-fit: cover !important;
-            border-radius: 12px !important;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important;
-            border: 1px solid #333 !important;
-        }
+        /* Sliders Base */
+        .poster-track { display: flex; gap: 15px; width: max-content; align-items: center; }
+        .poster-track img { height: 280px !important; width: 160px !important; object-fit: contain !important; border-radius: 8px; }
+        .gallery-track { display: flex; gap: 20px; width: max-content; align-items: center; }
+        .gallery-track img { height: 200px !important; aspect-ratio: 16 / 9 !important; object-fit: cover !important; border-radius: 12px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; border: 1px solid #333 !important; }
 
         /* Partner Logos Fix */
-        .partner-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 15px !important;
-        }
-        .partner-card img {
-            width: 100% !important;
-            height: 160px !important;
-            max-width: 240px !important;
-            object-fit: contain !important; 
-            margin-bottom: 15px !important;
-        }
-        .partner-card h3 {
-            font-size: 16px !important;
-        }
+        .partner-card { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px !important; }
+        .partner-card img { width: 100% !important; height: 160px !important; max-width: 240px !important; object-fit: contain !important; margin-bottom: 15px !important; }
+        .partner-card h3 { font-size: 16px !important; }
 
-        /* 🌟 NEW CONTACT & INQUIRY SECTION CSS */
+        /* Contact Section */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
-        
         .contact-info-box { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
         .contact-info-box h3 { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .contact-info-box p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
         .contact-info-box i { color: #e6c875; margin-top: 4px; font-size: 16px; }
         .contact-info-box a { color: #bbb; text-decoration: none; transition: 0.3s; }
         .contact-info-box a:hover { color: #e6c875; }
-
         .inquiry-form { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
         .inquiry-form h3 { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .form-group { margin-bottom: 15px; text-align: left; }
@@ -189,118 +102,50 @@
         .submit-btn:hover { background: #d4b561; }
         
         /* Mega Footer */
-        .tseries-footer {
-            background-color: #111;
-            color: #aaa;
-            padding: 40px 20px 20px 20px;
-            border-top: 2px solid #333;
-            font-family: Arial, sans-serif;
-        }
-        .tseries-footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #222;
-        }
-        @media (max-width: 900px) {
-            .tseries-footer-container {
-                grid-template-columns: 1fr 1fr;
-            }
-            .tseries-footer-brand {
-                grid-column: span 2;
-            }
-        }
-        .tseries-footer-brand img {
-            height: 60px;
-            margin-bottom: 15px;
-        }
-        .tseries-footer-brand h3 {
-            color: #e6c875;
-            font-size: 18px;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-        }
-        .tseries-footer-brand p {
-            font-size: 13px;
-            line-height: 1.5;
-            color: #888;
-        }
-        .tseries-footer-col h4 {
-            color: #e6c875;
-            font-size: 15px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .tseries-footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .tseries-footer-col ul li {
-            margin-bottom: 10px;
-        }
-        .tseries-footer-col ul li a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 13px;
-            transition: 0.3s;
-        }
-        .tseries-footer-col ul li a:hover {
-            color: #e6c875;
-            padding-left: 5px;
-        }
-        .tseries-footer-bottom {
-            max-width: 1200px;
-            margin: 20px auto 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 13px;
-            color: #777;
-        }
-        .tseries-footer-socials {
-            display: flex;
-            gap: 15px;
-        }
-        .tseries-footer-socials a {
-            color: #aaa;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-        .tseries-footer-socials a:hover {
-            color: #e6c875;
-        }
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand img { height: 60px; margin-bottom: 15px; }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tseries-footer-col ul li { margin-bottom: 10px; }
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; }
+        .tseries-footer-col ul li a:hover { color: #e6c875; padding-left: 5px; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
+        .tseries-footer-socials { display: flex; gap: 15px; }
+        .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
+        .tseries-footer-socials a:hover { color: #e6c875; }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header (✅ Updated Left Alignment & Bigger Logo for Laptop) -->
     <header class="header">
         <div class="container">
-            <button class="menu-btn" id="menuBtn" style="background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;"><i class="fas fa-bars"></i></button>
-            <div class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; flex: 1; overflow: hidden;">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 65px; width: auto; flex-shrink: 0;">
-                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center; min-width: 0;">
-                    <h1 style="font-size: 22px; color: var(--primary-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-weight: 900;">DK ATOVITT</h1>
-                    <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; margin: 0;">Official Movie Production House</p>
-                </div>
+            <!-- Left Side: Menu + Logo Grouped Together -->
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <img src="images/logo/logo.png" alt="DK Atovitt Logo" class="desktop-logo-img">
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
             </div>
             
-            <div class="header-icons" style="display: flex; gap: 12px; align-items: center; flex-shrink: 0;">
+            <!-- Right Side: Login & Search -->
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
-                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 20px; cursor: pointer;"><i class="fas fa-search"></i></button>
+                <button class="search-btn" id="searchBtn" style="background: none; border: none; color: #fff; font-size: 22px; cursor: pointer;"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Side Menu Drawer (✅ Updated Contact Link to Scroll down) -->
+    <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>MENU</h2>
@@ -432,65 +277,67 @@
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section -->
+    <!-- Yakshini Movie Song's Section (✅ Updated to 2-Column Grid for Laptop) -->
     <section class="trailer-section" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT</h3>
-            </div>
+            <div class="songs-grid">
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/32FIP1DQU5w?si=oGtIWVEZmE_Gt3YL" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Yakshini Movie Song | Official Romantic Song 2026 | DK ATOVITT</h3>
+                </div>
 
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️ | DK ATOVITT Official | 4K">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️ | DK ATOVITT Official | 4K</h3>
-            </div>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/jq3fKMww5_M?si=L7SF1kLzkCtk3_Zf" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️ | DK ATOVITT Official | 4K">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">🌙 Kalpamrit Ke Rahon Mein 👻 | Yakshini Movie Horror Romantic Song ❤️ | DK ATOVITT Official | 4K</h3>
+                </div>
 
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT</h3>
-            </div>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/7qFB_8WtAxE?si=YU0slYBCqAnJUtOJ" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT</h3>
+                </div>
 
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song 2026">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song 2026</h3>
-            </div>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/eTYetclIVbM?si=W5ihhQAEDUUEznkf" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song 2026">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song 2026</h3>
+                </div>
 
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3>
-            </div>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/-08OXkmPFcs?si=t1F1noiTaGdRblAa" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3>
+                </div>
 
-            <div class="video-wrapper" style="margin-bottom: 40px;">
-                <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song</h3>
-            </div>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/GBXiOsFb77w?si=02b17zupe3Xwptv6" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">🎉 Happy 19th Birthday Harshika ❤️ | Papa Ki Taraf Se Special Birthday Song | Emotional Father Daughter Song</h3>
+                </div>
 
-            <div class="video-wrapper">
-                <a href="https://youtu.be/OqYiYRsg9rQ?si=jBfZ30uySR_RHBEl" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song | Official Music Video |">
-                    <button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
-                <h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song | Official Music Video |</h3>
+                <div class="video-wrapper">
+                    <a href="https://youtu.be/OqYiYRsg9rQ?si=jBfZ30uySR_RHBEl" target="_blank" class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song | Official Music Video |">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </a>
+                    <h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song | Official Music Video |</h3>
+                </div>
             </div>
         </div>
     </section>
@@ -558,7 +405,7 @@
         </div>
     </section>
 
-    <!-- 🌟 NEW CONTACT & INQUIRY SECTION (Right below Auditions) -->
+    <!-- Contact & Inquiry Section -->
     <section class="contact-section" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
             
@@ -570,7 +417,6 @@
             
             <div class="contact-grid">
                 
-                <!-- 1. Inquiry Form -->
                 <div class="inquiry-form">
                     <h3>Send Inquiry / Message</h3>
                     <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');">
@@ -604,7 +450,6 @@
                     </form>
                 </div>
 
-                <!-- 2. Company Info -->
                 <div class="contact-info-box">
                     <h3>DK ATOVITT</h3>
                     <p><i class="fas fa-film" style="color:#e6c875;"></i> <span><strong>Official Movie Production House</strong></span></p>
@@ -656,7 +501,6 @@
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
-                    <!-- ✅ Contact Link updated to scroll to new section -->
                     <li><a href="#contact">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
                     <li><a href="ecosystem.html">Ecosystem</a></li>
@@ -686,7 +530,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactions & Smart Sliders -->
+    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn');
         const sideMenu = document.getElementById('sideMenu');
@@ -706,7 +550,6 @@
             overlay.classList.remove('active');
         });
 
-        /* 🔥 Menus me kisi link par click karne par menu auto-close ho jayega */
         const menuLinks = document.querySelectorAll('.side-menu a');
         menuLinks.forEach(link => {
             link.addEventListener('click', () => {
