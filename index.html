@@ -9,42 +9,17 @@
     
     <style>
         /* 🌟 HEADER FIX FOR LAPTOP & MOBILE */
-        .header .container {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-        }
-        
-        .header-left {
-            display: flex !important;
-            align-items: center !important;
-            gap: 20px !important; 
-        }
-
-        #menuBtn, .header-icons button, .search-btn {
-            position: static !important;
-            transform: none !important;
-            left: auto !important;
-            top: auto !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        /* Desktop Logo Size */
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .desktop-logo-img { height: 80px !important; width: auto !important; }
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
-
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
-        
-        /* 🌟 SMART LOGIN BUTTON TEXT */
         .show-on-mobile { display: none; }
 
-        /* 📱 MOBILE SCREEN HEADER FIX */
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
@@ -57,6 +32,53 @@
             .header-icons { gap: 10px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
+        }
+
+        /* 🌟 SCROLL ANIMATION (REVEAL EFFECT) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 🌟 HOVER EFFECT ON VIDEOS & IMAGES */
+        .video-wrapper { overflow: hidden; border-radius: 8px; }
+        .video-thumbnail img { transition: transform 0.5s ease; }
+        .video-wrapper:hover .video-thumbnail img { transform: scale(1.05); }
+
+        /* 🌟 WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+            animation: pulse-whatsapp 2s infinite;
+        }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @media (max-width: 768px) {
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
         }
 
         /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
@@ -152,7 +174,7 @@
         </div>
     </header>
 
-    <!-- Side Menu Drawer (✅ Added About Us Link) -->
+    <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>MENU</h2>
@@ -207,8 +229,8 @@
         </div>
     </section>
 
-    <!-- Featured Movie Section -->
-    <section class="featured-movie" id="movies">
+    <!-- Featured Movie Section (Added Reveal) -->
+    <section class="featured-movie reveal" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
             <div class="movie-flex">
@@ -245,8 +267,8 @@
         </div>
     </section>
 
-    <!-- 1. Auto Poster Slider Section -->
-    <section class="poster-slider-section">
+    <!-- 1. Auto Poster Slider Section (Added Reveal) -->
+    <section class="poster-slider-section reveal">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
                 <img src="images/movies/slide1.png" alt="Slide 1">
@@ -271,8 +293,8 @@
         </div>
     </section>
 
-    <!-- Official Trailer Section -->
-    <section class="trailer-section" id="trailer">
+    <!-- Official Trailer Section (Added Reveal) -->
+    <section class="trailer-section reveal" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
@@ -285,8 +307,8 @@
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section -->
-    <section class="trailer-section" id="songs">
+    <!-- Yakshini Movie Song's Section (Added Reveal) -->
+    <section class="trailer-section reveal" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             
@@ -312,7 +334,7 @@
                         <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT">
                         <button class="play-btn"><i class="fas fa-play"></i></button>
                     </a>
-                    <h3 class="trailer-title">🌙 शाम ढले যখন पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT</h3>
+                    <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Yakshini Movie Song | Hindi Horror Song 2026 | DK ATOVITT</h3>
                 </div>
 
                 <div class="video-wrapper">
@@ -350,8 +372,8 @@
         </div>
     </section>
 
-    <!-- 2. MOVIE GALLERY SECTION -->
-    <section class="gallery-preview" id="gallery" style="margin-top: 20px;">
+    <!-- 2. MOVIE GALLERY SECTION (Added Reveal) -->
+    <section class="gallery-preview reveal" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
             <div style="overflow: hidden; padding: 10px 20px;">
@@ -379,8 +401,8 @@
         </div>
     </section>
 
-    <!-- Partners & Auditions -->
-    <section class="partners-auditions" id="partners">
+    <!-- Partners & Auditions (Added Reveal) -->
+    <section class="partners-auditions reveal" id="partners">
         <div class="container">
             <h2>Media Partners</h2>
             <div class="partner-grid">
@@ -413,8 +435,8 @@
         </div>
     </section>
 
-    <!-- Contact & Inquiry Section -->
-    <section class="contact-section" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
+    <!-- Contact & Inquiry Section (Added Reveal) -->
+    <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
             
             <div style="text-align: center; margin-bottom: -15px;">
@@ -473,17 +495,14 @@
         </div>
     </section>
 
-    <!-- Footer (✅ Added About Us Link) -->
+    <!-- Footer -->
     <footer class="tseries-footer">
         <div class="tseries-footer-container">
-            <!-- Brand Column -->
             <div class="tseries-footer-brand">
                 <img src="images/logo/logo.png" alt="DK Atovitt Logo">
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
-
-            <!-- Movies & Media -->
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
                 <ul>
@@ -494,8 +513,6 @@
                     <li><a href="#gallery">Gallery</a></li>
                 </ul>
             </div>
-
-            <!-- Opportunities -->
             <div class="tseries-footer-col">
                 <h4>Join Us</h4>
                 <ul>
@@ -504,8 +521,6 @@
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
             </div>
-
-            <!-- About Us -->
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
@@ -515,8 +530,6 @@
                     <li><a href="ecosystem.html">Ecosystem</a></li>
                 </ul>
             </div>
-
-            <!-- Legal & Help -->
             <div class="tseries-footer-col">
                 <h4>Legal & Help</h4>
                 <ul>
@@ -527,8 +540,6 @@
                 </ul>
             </div>
         </div>
-
-        <!-- Bottom Bar -->
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
             <div class="tseries-footer-socials">
@@ -538,6 +549,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- 🌟 NEW: WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- JavaScript -->
     <script>
@@ -586,6 +602,21 @@
             searchModal.classList.remove('active');
             overlay.classList.remove('active');
         });
+
+        /* 🌟 NEW: SCROLL REVEAL ANIMATION SCRIPT */
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal(); // Trigger once on load
 
         window.addEventListener('load', () => {
             const track1 = document.getElementById('autoSlider');
