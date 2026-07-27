@@ -76,13 +76,26 @@
         .trailer-info h3 { color: #fff; font-size: 14px; margin: 0 0 5px 0; text-transform: uppercase; }
         .trailer-info p { color: #e6c875; font-size: 11px; margin: 0; font-weight: bold; }
 
-        /* 🔥 GALLERY SLIDER CSS (RIGHT TO LEFT ANIMATION) */
+        /* 🔥 GALLERY SLIDER CSS (FIXED WIDTH + RIGHT TO LEFT) */
         .trailer-gallery-section { padding: 50px 0 70px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         .slider-track { display: inline-block; animation: scroll-right 30s linear infinite; }
         .slider-track:hover { animation-play-state: paused; }
-        .slider-track img { height: 250px; width: auto; margin: 0 15px; border-radius: 10px; border: 2px solid #222; transition: 0.3s; object-fit: cover; background: #111; cursor: pointer; }
+        
+        /* Fixed Width applied here! */
+        .slider-track img { 
+            height: 250px; 
+            width: 380px; 
+            margin: 0 15px; 
+            border-radius: 10px; 
+            border: 2px solid #333; 
+            transition: 0.3s; 
+            object-fit: cover; 
+            background: #1a1a1a; 
+            cursor: pointer;
+            color: #e6c875;
+        }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
         
         @keyframes scroll-right { 
@@ -91,7 +104,7 @@
         }
         
         @media (max-width: 768px) {
-            .slider-track img { height: 180px; margin: 0 10px; }
+            .slider-track img { height: 180px; width: 280px; margin: 0 10px; }
         }
 
         /* Reveal Anim */
