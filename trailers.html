@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🌟 GLOBAL FIXES & HEADER */
+        /* 🌟 HEADER FIXES */
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
@@ -34,7 +34,7 @@
             .show-on-mobile { display: inline !important; }
         }
         
-        /* 🔥 SIDE MENU DROPDOWN CSS */
+        /* 🔥 SIDE MENU CSS */
         .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
@@ -81,11 +81,11 @@
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         
-        /* 🔥 RIGHT TO LEFT ANIMATION (Moving towards left) */
+        /* Moving Right to Left */
         .slider-track { display: inline-flex; animation: scroll-right-to-left 30s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
-        /* 🔥 PORTRAIT SIZE (Lamba Poster) EXACTLY LIKE HOMEPAGE */
+        /* Tall (Portrait) Image Style */
         .slider-track img { 
             height: 380px; 
             width: 250px; 
@@ -100,7 +100,6 @@
         }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
         
-        /* This makes items appear from Right and slide to Left */
         @keyframes scroll-right-to-left { 
             0% { transform: translateX(0); } 
             100% { transform: translateX(-50%); } 
@@ -157,7 +156,6 @@
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
-        <!-- 🔥 About Us Dropdown -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
             <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
             <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
@@ -167,7 +165,6 @@
             <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
         </div>
 
-        <!-- 🔥 Movies Dropdown -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesSub')">
             <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
             <i class="fas fa-chevron-down dropdown-icon" id="moviesIcon"></i>
@@ -261,17 +258,23 @@
         </div>
     </section>
 
-    <!-- 🔥 MOVIE GALLERY SLIDER (HOMEPAGE STYLE PORTRAIT POSTERS) -->
+    <!-- 🔥 MOVIE GALLERY SLIDER (HOMEPAGE STYLE) -->
     <section class="trailer-gallery-section reveal">
-        <!-- Name perfectly matches homepage -->
         <h2 class="section-heading" style="max-width: 1100px; margin: 0 auto 30px auto; border: none; padding-left: 0; text-align: center;">MOVIE GALLERY</h2>
         <div class="slider-container">
-            <div class="slider-track" id="gallery-track">
+            <div class="slider-track">
                 
-                <!-- Temporary Placeholders (These will vanish the moment the JS below kicks in) -->
-                <img src="images/movies/yakshini-poster.png" alt="Loading...">
-                <img src="images/movies/yakshini-poster.png" alt="Loading...">
-                <img src="images/movies/yakshini-poster.png" alt="Loading...">
+                <!-- GROUP 1: (Replace src links with your exact homepage poster links) -->
+                <img src="images/movies/p1.jpg" alt="Poster 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+1'">
+                <img src="images/movies/p2.jpg" alt="Poster 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+2'">
+                <img src="images/movies/p3.jpg" alt="Poster 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+3'">
+                <img src="images/movies/p4.jpg" alt="Poster 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+4'">
+                
+                <!-- GROUP 2: (Duplicate for smooth loop) -->
+                <img src="images/movies/p1.jpg" alt="Poster 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+1'">
+                <img src="images/movies/p2.jpg" alt="Poster 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+2'">
+                <img src="images/movies/p3.jpg" alt="Poster 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+3'">
+                <img src="images/movies/p4.jpg" alt="Poster 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+4'">
 
             </div>
         </div>
@@ -304,47 +307,6 @@
     </footer>
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-
-    <!-- 🔥 THE MAGIC SCRIPT: AUTOMATICALLY COPIES IMAGES FROM HOMEPAGE 🔥 -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('index.html')
-                .then(response => response.text())
-                .then(html => {
-                    let parser = new DOMParser();
-                    let doc = parser.parseFromString(html, 'text/html');
-                    
-                    let sections = doc.querySelectorAll('section');
-                    let targetTrack = null;
-                    
-                    // Search for the section that has the heading "MOVIE GALLERY"
-                    sections.forEach(sec => {
-                        if (sec.textContent.toUpperCase().includes('MOVIE GALLERY')) {
-                            let track = sec.querySelector('.slider-track');
-                            if (track && !targetTrack) targetTrack = track;
-                        }
-                    });
-
-                    if (targetTrack) {
-                        let imgs = targetTrack.querySelectorAll('img');
-                        if (imgs.length > 0) {
-                            let myTrack = document.getElementById('gallery-track');
-                            myTrack.innerHTML = ''; // Clear temporary loading images
-                            
-                            // Paste images twice so the slider loops smoothly
-                            for (let i = 0; i < 2; i++) {
-                                imgs.forEach(img => {
-                                    let newImg = document.createElement('img');
-                                    newImg.src = img.getAttribute('src');
-                                    myTrack.appendChild(newImg);
-                                });
-                            }
-                        }
-                    }
-                })
-                .catch(err => console.error('Error auto-loading homepage gallery:', err));
-        });
-    </script>
 
     <script>
         const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
