@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Company - DK Atovitt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🌟 GLOBAL FIXES & HEADER */
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
+        @media (max-width: 768px) {
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+        }
+        
+        /* 🔥 SIDE MENU DROPDOWN CSS */
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
+        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
+        .sub-menu a:hover { color: #fff !important; }
+        .dropdown-icon { transition: transform 0.3s; font-size: 14px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 🌟 COMPANY PAGE CSS */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
+        
+        .company-hero { padding: 160px 20px 100px 20px; text-align: center; background: url('images/movies/gallery1.png') center/cover no-repeat; position: relative; border-bottom: 2px solid #e6c875; }
+        .company-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.9); z-index: 1; }
+        
+        .company-header-content { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; }
+        .company-header-content video { height: 150px; mix-blend-mode: screen; margin-bottom: 10px; filter: drop-shadow(0px 0px 20px rgba(230,200,117,0.4)); }
+        .company-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; letter-spacing: 3px; text-transform: uppercase; text-shadow: 2px 2px 10px rgba(0,0,0,0.9); }
+        .company-tagline { font-size: 18px; color: #fff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 30px; font-weight: bold; }
+        
+        .about-section { padding: 60px 20px; background: #0a0a0a; }
+        .about-container { max-width: 1000px; margin: -80px auto 0 auto; background: #111; padding: 50px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 15px 50px rgba(0,0,0,0.9); position: relative; z-index: 20; text-align: center; }
+        .about-container h2 { color: #e6c875; font-size: 32px; margin-top: 0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 2px solid #222; padding-bottom: 15px; display: inline-block; }
+        .about-container p { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
+
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; }
+        @media (max-width: 768px) { 
+            .company-title { font-size: 32px; }
+            .company-tagline { font-size: 13px; letter-spacing: 2px; }
+            .about-container { padding: 30px 20px; margin-top: -50px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        .service-card { background: #161616; border: 1px solid #222; padding: 30px; border-radius: 12px; text-align: center; transition: 0.4s; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; transition: 0.4s; }
+        .service-card:hover { transform: translateY(-10px); border-color: #e6c875; box-shadow: 0 10px 30px rgba(230,200,117,0.1); }
+        .service-card:hover::before { width: 100%; opacity: 0.05; }
+        .service-card i { font-size: 45px; color: #e6c875; margin-bottom: 20px; }
+        .service-card h3 { color: #fff; font-size: 22px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .service-card p { color: #999; font-size: 15px; line-height: 1.6; }
+
+        /* Reveal Anim */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Footer */
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tseries-footer-col ul li { margin-bottom: 10px; }
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; }
+        .tseries-footer-col ul li a:hover { color: #e6c875; padding-left: 5px; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
+        .tseries-footer-socials { display: flex; gap: 15px; }
+        .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
+        .tseries-footer-socials a:hover { color: #e6c875; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
+        
+        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        
+        <!-- 🔥 About Us Dropdown -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
+            <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
+        </a>
+        <div class="sub-menu" id="aboutSub">
+            <a href="ceo.html"><i class="fas fa-user-tie" style="color:var(--primary-color); margin-right:8px;"></i> CEO</a>
+            <a href="company.html" style="color: #e6c875 !important;"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
+        </div>
+
+        <!-- 🔥 Movies Dropdown -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesSub')">
+            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="moviesIcon"></i>
+        </a>
+        <div class="sub-menu" id="moviesSub">
+            <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
+        </div>
+
+        <a href="index.html#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        <a href="index.html#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
+        <a href="index.html#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="index.html#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        <a href="index.html#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
+        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+    </div>
+    <div id="overlay"></div>
+
+    <section class="company-hero">
+        <div class="company-header-content reveal">
+            <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            <h1 class="company-title">DK ATOVITT</h1>
+            <p class="company-tagline">Official Movie Production House</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-container reveal">
+            <h2>Who We Are</h2>
+            <p><strong>DK ATOVITT</strong> is a premier Movie Production House based in Kolkata, dedicated to creating cinematic masterpieces that leave a lasting impact. Founded by visionary entrepreneur Mr. Dipak Kumar Gupta, our studio specializes in producing high-end 4K feature films, web series, and original music tracks.</p>
+            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
+            
+            <div class="services-grid">
+                
+                <div class="service-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Film Production</h3>
+                    <p>Creating Hollywood-standard 4K cinematic movies with gripping storylines, VFX, and extraordinary direction.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Music & Audio</h3>
+                    <p>Producing original soundtracks, background scores, and soulful music videos under our exclusive music label.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Talent Discovery</h3>
+                    <p>Conducting open auditions to find raw talent. We believe in giving fresh faces the spotlight they deserve.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Ecosystem</h3>
+                    <p>Partnering with brands like Kalpamrit and ATVT to create a unique blend of Entertainment, Wellness, and Digital Finance.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="tseries-footer">
+        <div class="tseries-footer-container">
+            <div class="tseries-footer-brand">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="footer-video-logo"></video>
+                <h3>DK ATOVITT</h3>
+                <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Movies & Media</h4><ul><li><a href="index.html#home">Home</a></li><li><a href="index.html#movies-section">Featured Movie</a></li><li><a href="index.html#trailer">Official Trailer</a></li><li><a href="index.html#songs">Movie Songs</a></li><li><a href="index.html#gallery">Gallery</a></li></ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Join Us</h4><ul><li><a href="index.html#audition-section">Auditions</a></li><li><a href="index.html#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>About Us</h4><ul><li><a href="ceo.html">About CEO</a></li><li><a href="company.html">About Company</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Legal & Help</h4><ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
+            </div>
+        </div>
+        <div class="tseries-footer-bottom">
+            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+            <div class="tseries-footer-socials"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a><a href="#" target="_blank"><i class="fab fa-facebook"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+        
+        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal); reveal(); 
+
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
+        function toggleSubMenu(id) {
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu.classList.contains('active')) {
+                subMenu.classList.remove('active');
+                icon.classList.remove('rotate');
+            } else {
+                document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
+                document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                subMenu.classList.add('active');
+                icon.classList.add('rotate');
+            }
+        }
+    </script>
+</body>
+</html>
