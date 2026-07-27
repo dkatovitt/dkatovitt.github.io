@@ -90,16 +90,15 @@
         .cast-name { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase; }
         .cast-role { color: #e6c875; font-size: 12px; margin: 0; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* 🔥 MOVIE GALLERY SLIDER CSS (NEVER COLLAPSING, LEFT TO RIGHT) */
+        /* 🔥 MOVIE GALLERY SLIDER CSS (EXACTLY LEFT TO RIGHT LIKE HOMEPAGE) */
         .yakshini-gallery-section { padding: 60px 0 80px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; text-align: center; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         
-        /* Flexbox and Left-to-Right animation */
+        /* 🔥 CORRECTED: scroll-left animation moves items from right to left, creating LEFT-TO-RIGHT flow */
         .slider-track { display: inline-flex; animation: scroll-left 30s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
-        /* 🔥 FIXED WIDTH: 400px! This guarantees it will NEVER shrink into lines */
         .slider-track img { 
             height: 250px; 
             width: 400px; 
@@ -110,11 +109,14 @@
             object-fit: cover; 
             background: #111; 
             cursor: pointer;
-            flex-shrink: 0; /* Important: stops browser from squeezing it */
+            flex-shrink: 0;
         }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
         
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scroll-left { 
+            0% { transform: translateX(-50%); } 
+            100% { transform: translateX(0); } 
+        }
         
         @media (max-width: 768px) {
             .slider-track img { height: 180px; width: 300px; margin: 0 10px; }
@@ -327,7 +329,7 @@
         </div>
     </section>
 
-    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER (LEFT TO RIGHT) -->
+    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER (LEFT TO RIGHT FIXED) -->
     <section class="yakshini-gallery-section reveal">
         <h2 class="section-title">Movie Stills & Gallery</h2>
         <div class="slider-container">
