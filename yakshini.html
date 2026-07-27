@@ -90,19 +90,34 @@
         .cast-name { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase; }
         .cast-role { color: #e6c875; font-size: 12px; margin: 0; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* 🔥 MOVIE GALLERY SLIDER CSS (SAME AS HOMEPAGE) */
+        /* 🔥 MOVIE GALLERY SLIDER CSS (FIXED FOR MOBILE) */
         .yakshini-gallery-section { padding: 60px 0 80px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
+        
+        /* Moving Left to Right just like the homepage */
         .slider-track { display: inline-block; animation: scroll-left 30s linear infinite; }
         .slider-track:hover { animation-play-state: paused; }
-        .slider-track img { height: 250px; width: auto; margin: 0 15px; border-radius: 10px; border: 2px solid #222; transition: 0.3s; object-fit: cover; background: #111; cursor: pointer; }
+        
+        /* Fixed Width applied here so it never collapses into lines! */
+        .slider-track img { 
+            height: 250px; 
+            width: 380px; 
+            margin: 0 15px; 
+            border-radius: 10px; 
+            border: 2px solid #333; 
+            transition: 0.3s; 
+            object-fit: cover; 
+            background: #1a1a1a; 
+            cursor: pointer;
+            color: #e6c875;
+        }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
         
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
         @media (max-width: 768px) {
-            .slider-track img { height: 180px; margin: 0 10px; }
+            .slider-track img { height: 180px; width: 280px; margin: 0 10px; }
         }
 
         /* Reveal Anim */
@@ -219,14 +234,14 @@
             
             <!-- Crew -->
             <div class="cast-card">
-                <img src="images/ceo.jpg" alt="Producer" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/ceo.jpg" alt="Producer" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Dipak Kumar Gupta</p>
                     <p class="cast-role">Producer (DK SIR)</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/director.jpg" alt="Director" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/director.jpg" alt="Director" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Arudipta Dasgupta</p>
                     <p class="cast-role">Director</p>
@@ -235,77 +250,77 @@
 
             <!-- Actors -->
             <div class="cast-card">
-                <img src="images/cast/dipak.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/dipak.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Dipak</p>
                     <p class="cast-role">Lead Actor</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/puja.jpg" alt="Actress" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/puja.jpg" alt="Actress" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Puja</p>
                     <p class="cast-role">Lead Actress</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/sarita.jpg" alt="Actress" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/sarita.jpg" alt="Actress" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Sarita</p>
                     <p class="cast-role">Supporting Actress</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/ravi.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/ravi.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Ravi</p>
                     <p class="cast-role">Supporting Actor</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/dharamveer.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/dharamveer.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Dharamveer</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/hpgupta.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/hpgupta.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">H P Gupta</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/sanjay.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/sanjay.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Sanjay</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/sanjeev.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/sanjeev.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Sanjeev</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/santosh.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/santosh.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Santosh</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/satyanarayan.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/satyanarayan.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Satyanarayan</p>
                     <p class="cast-role">Key Role</p>
                 </div>
             </div>
             <div class="cast-card">
-                <img src="images/cast/jairam.jpg" alt="Actor" class="cast-image" onerror="this.src='https://via.placeholder.com/300x400/111/e6c875?text=Photo+Soon'">
+                <img src="images/cast/jairam.jpg" alt="Actor" class="cast-image">
                 <div class="cast-info">
                     <p class="cast-name">Jai Ram</p>
                     <p class="cast-role">Key Role</p>
@@ -314,26 +329,26 @@
         </div>
     </section>
 
-    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER (USING HOMEPAGE IMAGES) -->
+    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER -->
     <section class="yakshini-gallery-section reveal">
         <h2 class="section-title">Movie Stills & Gallery</h2>
         <div class="slider-container">
             <div class="slider-track">
                 <!-- Group 1 -->
-                <img src="images/gallery/1.jpg" alt="Gallery 1" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+1'">
-                <img src="images/gallery/2.jpg" alt="Gallery 2" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+2'">
-                <img src="images/gallery/3.jpg" alt="Gallery 3" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+3'">
-                <img src="images/gallery/4.jpg" alt="Gallery 4" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+4'">
-                <img src="images/gallery/5.jpg" alt="Gallery 5" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+5'">
-                <img src="images/gallery/6.jpg" alt="Gallery 6" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+6'">
+                <img src="images/gallery/1.jpg" alt="Gallery 1">
+                <img src="images/gallery/2.jpg" alt="Gallery 2">
+                <img src="images/gallery/3.jpg" alt="Gallery 3">
+                <img src="images/gallery/4.jpg" alt="Gallery 4">
+                <img src="images/gallery/5.jpg" alt="Gallery 5">
+                <img src="images/gallery/6.jpg" alt="Gallery 6">
                 
                 <!-- Group 2 (Duplicate for infinite loop effect) -->
-                <img src="images/gallery/1.jpg" alt="Gallery 1" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+1'">
-                <img src="images/gallery/2.jpg" alt="Gallery 2" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+2'">
-                <img src="images/gallery/3.jpg" alt="Gallery 3" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+3'">
-                <img src="images/gallery/4.jpg" alt="Gallery 4" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+4'">
-                <img src="images/gallery/5.jpg" alt="Gallery 5" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+5'">
-                <img src="images/gallery/6.jpg" alt="Gallery 6" onerror="this.src='https://via.placeholder.com/400x250/111/e6c875?text=Gallery+6'">
+                <img src="images/gallery/1.jpg" alt="Gallery 1">
+                <img src="images/gallery/2.jpg" alt="Gallery 2">
+                <img src="images/gallery/3.jpg" alt="Gallery 3">
+                <img src="images/gallery/4.jpg" alt="Gallery 4">
+                <img src="images/gallery/5.jpg" alt="Gallery 5">
+                <img src="images/gallery/6.jpg" alt="Gallery 6">
             </div>
         </div>
     </section>
