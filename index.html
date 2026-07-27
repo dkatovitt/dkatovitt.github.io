@@ -28,7 +28,6 @@
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
-            /* 🔥 MOBILE LOGO SUPER ZOOM */
             .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
@@ -40,7 +39,7 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🌟 SCROLL ANIMATION (REVEAL EFFECT) */
+        /* 🌟 SCROLL ANIMATION */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -49,20 +48,10 @@
         .video-thumbnail img { transition: transform 0.5s ease; }
         .video-wrapper:hover .video-thumbnail img { transform: scale(1.05); }
 
-        /* 🌟 WHATSAPP FLOATING BUTTON */
-        .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
-            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
-            font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000;
-            display: flex; align-items: center; justify-content: center; text-decoration: none;
-            transition: 0.3s; animation: pulse-whatsapp 2s infinite;
-        }
+        /* 🌟 WHATSAPP BUTTON */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
 
         /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
@@ -77,18 +66,21 @@
         .yakshini-sub-title .text { padding: 0 15px; color: #e6c875; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; }
         .yakshini-tagline-small { font-size: 15px; color: #ff4d4d; font-weight: bold; margin: 0 0 15px 0; width: 100%; max-width: 290px; letter-spacing: 0.5px; }
         
-        /* Cast & Crew Custom Colors */
+        /* 🔥 AI SPECIAL NOTE BOX */
+        .ai-notice { background: rgba(230, 200, 117, 0.08); border-left: 4px solid #e6c875; padding: 15px; margin: 20px 0; border-radius: 5px; font-size: 14px; }
+        .ai-notice p { margin: 0; line-height: 1.6; color: #ccc; }
+        .ai-notice .highlight { color: #ff4d4d; font-weight: bold; margin-top: 10px; display: block; font-size: 15px; letter-spacing: 0.5px; }
+        .ai-notice strong { color: #e6c875; }
+
         .movie-meta { list-style: none; padding: 0; margin: 0 0 20px 0; }
         .movie-meta li { margin-bottom: 15px !important; line-height: 1.6; font-size: 15px; color: #ffffff !important; }
         .movie-meta li strong { color: #e6c875 !important; font-weight: bold; margin-right: 5px; letter-spacing: 0.5px; }
 
-        /* Sliders Base */
         .poster-track { display: flex; gap: 15px; width: max-content; align-items: center; }
         .poster-track img { height: 280px !important; width: 160px !important; object-fit: contain !important; border-radius: 8px; }
         .gallery-track { display: flex; gap: 20px; width: max-content; align-items: center; }
         .gallery-track img { height: 200px !important; aspect-ratio: 16 / 9 !important; object-fit: cover !important; border-radius: 12px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; border: 1px solid #333 !important; }
 
-        /* Partners Logo Fix */
         .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .partner-card { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px !important; background: #0a0a0a; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
         .partner-card video, .partner-card img { width: 100% !important; height: 160px !important; object-fit: contain !important; margin-bottom: 10px !important; mix-blend-mode: screen; transform: scale(1.3); transition: 0.3s; }
@@ -102,11 +94,9 @@
             .partner-card h3 { font-size: 13px !important; }
         }
 
-        /* Contact Section */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
         .contact-info-box { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
-        .contact-info-box h3 { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .contact-info-box p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
         .contact-info-box i { color: #e6c875; margin-top: 4px; font-size: 16px; }
         .contact-info-box a { color: #bbb; text-decoration: none; transition: 0.3s; }
@@ -121,7 +111,6 @@
         .submit-btn { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .submit-btn:hover { background: #d4b561; }
         
-        /* Mega Footer */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -140,7 +129,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -160,7 +148,6 @@
         </div>
     </header>
 
-    <!-- Side Menu Drawer -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
@@ -174,22 +161,18 @@
         <a href="#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
         <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
-        <a href="#contact"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
 
-    <!-- Search Modal Box -->
     <div class="search-modal" id="searchModal">
         <div class="search-box-container"><input type="text" placeholder="Search movies, songs, trailers..." id="searchInput"><button id="closeSearch">&times;</button></div>
     </div>
-
     <div id="overlay"></div>
 
-    <!-- News Bar -->
     <div class="news-bar">
         <div class="news-track"><span>🔥 Welcome to DK Atovitt Official Website</span><span>🎬 Upcoming Horror Movie "Yakshini" Coming Soon</span><span>⭐ Stay tuned for exclusive trailers and songs</span></div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="studio">DK ATOVITT PRESENTS</div>
@@ -213,7 +196,15 @@
                         <div class="yakshini-sub-title"><span class="line"></span><span class="text">Yakshini</span><span class="line"></span></div>
                         <p class="yakshini-tagline-small">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
                     </div>
+                    
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
+                    
+                    <!-- 🔥 NEW: AI SPECIAL NOTE -->
+                    <div class="ai-notice">
+                        <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है।</p>
+                        <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span></span>
+                    </div>
+
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                             <strong>Production House:</strong> DK ATOVITT 
@@ -238,20 +229,16 @@
         </div>
     </section>
 
-    <!-- Official Trailer Section -->
     <section class="trailer-section reveal" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
-                <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail">
-                    <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer"><button class="play-btn"><i class="fas fa-play"></i></button>
-                </a>
+                <a href="https://youtu.be/Mek5HNkypTQ?si=EzKOrFGqpj4ppe1E" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                 <h3 class="trailer-title">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙 | Horror Movie 2026 | DK ATOVITT | 4K</h3>
             </div>
         </div>
     </section>
 
-    <!-- Yakshini Movie Song's Section -->
     <section class="trailer-section reveal" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -267,7 +254,6 @@
         </div>
     </section>
 
-    <!-- 2. MOVIE GALLERY SECTION -->
     <section class="gallery-preview reveal" id="gallery" style="margin-top: 20px;">
         <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
@@ -279,7 +265,6 @@
         </div>
     </section>
 
-    <!-- Media Partners -->
     <section class="partners-auditions reveal" id="partners">
         <div class="container">
             <h2>Media Partners</h2>
@@ -289,7 +274,6 @@
                 <div class="partner-card"><video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video><h3>Kalpamrit</h3></div>
                 <div class="partner-card"><video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video><h3>Ecosystem</h3></div>
             </div>
-
             <div class="audition-box" id="audition-section" style="scroll-margin-top: 100px;">
                 <h2>Join Our Upcoming Projects</h2>
                 <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
@@ -304,10 +288,12 @@
     <!-- Contact Section -->
     <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
+            
             <div style="text-align: center; margin-bottom: -10px;">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 100px;"></video>
             </div>
             <h2 style="color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; margin-top: 0;">Contact Us & Inquiry</h2>
+            
             <div class="contact-grid">
                 <div class="inquiry-form">
                     <h3>Send Inquiry / Message</h3>
@@ -315,25 +301,25 @@
                         <div class="form-group"><label>Your Name</label><input type="text" placeholder="Enter your full name" required></div>
                         <div class="form-group"><label>Email Address</label><input type="email" placeholder="Enter your email" required></div>
                         <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="Enter your phone number" required></div>
-                        <div class="form-group">
-                            <label>Inquiry Category</label>
-                            <select required>
-                                <option value="" disabled selected>Select Category</option>
-                                <option>Our Media</option><option>Auditions & Casting</option><option>General Inquiry</option><option>Business Partnership</option>
-                            </select>
-                        </div>
+                        <div class="form-group"><label>Inquiry Category</label><select required><option value="" disabled selected>Select Category</option><option>Our Media</option><option>Auditions & Casting</option><option>General Inquiry</option><option>Business Partnership</option></select></div>
                         <div class="form-group"><label>Your Message / Details</label><textarea placeholder="Write your message or audition query here..." required></textarea></div>
                         <button type="submit" class="submit-btn">Submit Inquiry</button>
                     </form>
                 </div>
+                
+                <!-- 🔥 UPDATED CONTACT INFO BOX WITH VIDEO LOGO -->
                 <div class="contact-info-box">
-                    <h3>DK ATOVITT</h3>
+                    <div style="text-align: center; padding-bottom: 15px; border-bottom: 1px solid #333; margin-bottom: 20px;">
+                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 60px; transform: scale(1.4); margin-bottom: 5px;"></video>
+                        <h3 style="margin: 0; font-size: 22px;">DK ATOVITT</h3>
+                    </div>
                     <p><i class="fas fa-film" style="color:#e6c875;"></i> <span><strong>Official Movie Production House</strong></span></p>
                     <p><i class="fas fa-map-marker-alt"></i> <span>M. G. ROAD, KOLKATA- 700119</span></p>
                     <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
                     <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakatovitt@gmail.com">dipakatovitt@gmail.com</a><br><a href="mailto:dkatovitt@gmail.com">dkatovitt@gmail.com</a></span></p>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -346,20 +332,16 @@
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
-                <h4>Movies & Media</h4>
-                <ul><li><a href="#home">Home</a></li><li><a href="#movies">Featured Movie</a></li><li><a href="#trailer">Official Trailer</a></li><li><a href="#songs">Movie Songs</a></li><li><a href="#gallery">Gallery</a></li></ul>
+                <h4>Movies & Media</h4><ul><li><a href="#home">Home</a></li><li><a href="#movies">Featured Movie</a></li><li><a href="#trailer">Official Trailer</a></li><li><a href="#songs">Movie Songs</a></li><li><a href="#gallery">Gallery</a></li></ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Join Us</h4>
-                <ul><li><a href="#audition-section">Auditions</a></li><li><a href="#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
+                <h4>Join Us</h4><ul><li><a href="#audition-section">Auditions</a></li><li><a href="#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>About Us</h4>
-                <ul><li><a href="about.html">About CEO & Company</a></li><li><a href="#contact">Contact Us</a></li><li><a href="news.html">News & Updates</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
+                <h4>About Us</h4><ul><li><a href="about.html">About CEO & Company</a></li><li><a href="#contact">Contact Us</a></li><li><a href="news.html">News & Updates</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Legal & Help</h4>
-                <ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
+                <h4>Legal & Help</h4><ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
             </div>
         </div>
         <div class="tseries-footer-bottom">
