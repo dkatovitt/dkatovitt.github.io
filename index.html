@@ -48,9 +48,12 @@
         .video-thumbnail img { transition: transform 0.5s ease; width: 100%; display: block; }
         .video-wrapper:hover .video-thumbnail img { transform: scale(1.05); }
 
-        /* 🔥 NEW: PLAY AUDIO BUTTON CSS */
-        .play-audio-btn { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; display: inline-block; margin-top: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        /* 🔥 PLAY & DOWNLOAD BUTTONS CSS */
+        .btn-group { display: flex; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; padding: 0 10px; }
+        .play-audio-btn { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; }
         .play-audio-btn:hover { background: #e6c875; color: #000; box-shadow: 0 0 10px rgba(230, 200, 117, 0.5); transform: translateY(-2px); }
+        .download-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; display: inline-block; }
+        .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); transform: translateY(-2px); }
 
         /* 🌟 WHATSAPP BUTTON */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
@@ -205,7 +208,6 @@
         </div>
     </section>
 
-    <!-- Featured Movie Section -->
     <section class="featured-movie reveal" id="movies">
         <div class="container">
             <h2>Featured Movie</h2>
@@ -239,7 +241,6 @@
         </div>
     </section>
 
-    <!-- 1. Auto Poster Slider Section -->
     <section class="poster-slider-section reveal">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -248,19 +249,21 @@
         </div>
     </section>
 
-    <!-- 🎬 TRAILER SECTION -->
     <section class="trailer-section reveal" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                 <h3 class="trailer-title" style="padding: 0 15px;">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙</h3>
-                <button class="play-audio-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')"><i class="fas fa-music"></i> Play Audio</button>
+                
+                <div class="btn-group">
+                    <button class="play-audio-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')"><i class="fas fa-music"></i> Play Audio</button>
+                    <a href="yakshini-title-track.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 🎵 SONGS SECTION WITH PLAY BUTTONS -->
     <section class="trailer-section reveal" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -269,43 +272,64 @@
                 <div class="video-wrapper">
                     <a href="https://youtu.be/32FIP1DQU5w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">❤️ आज की शाम है खुशियों के नाम | Official Romantic Song</h3>
-                    <button class="play-audio-btn" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')"><i class="fas fa-music"></i> Play</button>
+                        <a href="aaj-ki-shaam.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/jq3fKMww5_M" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">🌙 Kalpamrit Ke Rahon Mein 👻 | Horror Romantic Song</h3>
-                    <button class="play-audio-btn" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')"><i class="fas fa-music"></i> Play</button>
+                        <a href="kalpamrit-ke-rahon-mein.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
-                    <button class="play-audio-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')"><i class="fas fa-music"></i> Play</button>
+                        <a href="shaam-dhale.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/eTYetclIVbM" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad</h3>
-                    <button class="play-audio-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')"><i class="fas fa-music"></i> Play</button>
+                        <a href="dipak-aur-ravi-dosti.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Love Story</h3>
-                    <button class="play-audio-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')"><i class="fas fa-music"></i> Play</button>
+                        <a href="tere-naam-se-meri-subah.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">🎉 Happy 19th Birthday Harshika ❤️ | Emotional Song</h3>
-                    <button class="play-audio-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy 19th Birthday Harshika')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy 19th Birthday Harshika')"><i class="fas fa-music"></i> Play</button>
+                        <a href="happy-birthday-harshika.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
                 <div class="video-wrapper">
                     <a href="https://youtu.be/OqYiYRsg9rQ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
                     <h3 class="trailer-title" style="padding: 0 15px;">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Love Song</h3>
-                    <button class="play-audio-btn" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')"><i class="fas fa-music"></i> Play Audio</button>
+                    <div class="btn-group">
+                        <button class="play-audio-btn" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')"><i class="fas fa-music"></i> Play</button>
+                        <a href="teri-roshni-mein.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    </div>
                 </div>
                 
             </div>
@@ -343,10 +367,8 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
-            
             <div style="text-align: center; margin-bottom: -10px;">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 100px;"></video>
             </div>
@@ -376,11 +398,9 @@
                     <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakatovitt@gmail.com">dipakatovitt@gmail.com</a><br><a href="mailto:dkatovitt@gmail.com">dkatovitt@gmail.com</a></span></p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="tseries-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -407,10 +427,8 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER -->
     <div class="music-player">
         <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
         <div class="track-info">
@@ -422,7 +440,6 @@
         </audio>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay'); const searchBtn = document.getElementById('searchBtn'); const searchModal = document.getElementById('searchModal'); const closeSearch = document.getElementById('closeSearch');
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); document.querySelectorAll('.side-menu a').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
@@ -441,7 +458,6 @@
         const trackNameElement = document.getElementById('trackName');
         const audioSource = document.getElementById('audioSource');
 
-        // Function to load and play a specific song when button is clicked
         function playSong(fileName, songTitle) {
             audioSource.src = fileName;
             audio.load();
@@ -450,7 +466,6 @@
             playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
         }
 
-        // Play/Pause button logic for floating player
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
