@@ -76,18 +76,19 @@
         .trailer-info h3 { color: #fff; font-size: 14px; margin: 0 0 5px 0; text-transform: uppercase; }
         .trailer-info p { color: #e6c875; font-size: 11px; margin: 0; font-weight: bold; }
 
-        /* 🔥 GALLERY SLIDER CSS (RIGHT TO LEFT & FIXED WIDTH) */
+        /* 🔥 MOVIE GALLERY SLIDER CSS (PORTRAIT SIZE + RIGHT TO LEFT) */
         .trailer-gallery-section { padding: 50px 0 70px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; text-align: center; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         
-        /* 🔥 RIGHT TO LEFT ANIMATION (Corrected for Trailers page) */
-        .slider-track { display: inline-flex; animation: scroll-right 30s linear infinite; align-items: center; }
+        /* Animation moving items towards the left (appearing from right) */
+        .slider-track { display: inline-flex; animation: scroll-left 30s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
+        /* 🔥 PORTRAIT SIZE (Lamba Poster) EXACTLY LIKE HOMEPAGE */
         .slider-track img { 
-            height: 250px; 
-            width: 400px; 
+            height: 380px; 
+            width: 250px; 
             margin: 0 15px; 
             border-radius: 10px; 
             border: 2px solid #333; 
@@ -99,14 +100,13 @@
         }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
         
-        /* Keyframes for Right to Left */
-        @keyframes scroll-right { 
+        @keyframes scroll-left { 
             0% { transform: translateX(0); } 
             100% { transform: translateX(-50%); } 
         }
         
         @media (max-width: 768px) {
-            .slider-track img { height: 180px; width: 300px; margin: 0 10px; }
+            .slider-track img { height: 280px; width: 180px; margin: 0 10px; }
         }
 
         /* Reveal Anim */
@@ -260,26 +260,27 @@
         </div>
     </section>
 
-    <!-- 🔥 PRODUCTION GALLERY SLIDER (RIGHT TO LEFT) -->
+    <!-- 🔥 MOVIE GALLERY SLIDER (HOMEPAGE STYLE PORTRAIT POSTERS) -->
     <section class="trailer-gallery-section reveal">
-        <h2 class="section-heading" style="max-width: 1100px; margin: 0 auto 30px auto; padding-left: 15px;">Production Gallery</h2>
+        <!-- Name changed to MOVIE GALLERY exactly like homepage -->
+        <h2 class="section-heading" style="max-width: 1100px; margin: 0 auto 30px auto; border: none; padding-left: 0; text-align: center;">MOVIE GALLERY</h2>
         <div class="slider-container" id="gallery-container">
             <div class="slider-track" id="gallery-track">
-                <!-- Group 1 -->
-                <img src="images/movies/gallery1.png" alt="Gallery 1" onerror="this.onerror=null; this.src='images/movies/yakshini-poster.png'">
-                <img src="images/movies/gallery2.png" alt="Gallery 2" onerror="this.onerror=null; this.src='images/cast/dipak.jpg'">
-                <img src="images/movies/gallery3.png" alt="Gallery 3" onerror="this.onerror=null; this.src='images/cast/puja.jpg'">
-                <img src="images/movies/gallery4.png" alt="Gallery 4" onerror="this.onerror=null; this.src='images/cast/director.jpg'">
-                <img src="images/movies/gallery5.png" alt="Gallery 5" onerror="this.onerror=null; this.src='images/cast/ravi.jpg'">
-                <img src="images/movies/gallery6.png" alt="Gallery 6" onerror="this.onerror=null; this.src='images/movies/sarita.jpg'">
                 
-                <!-- Group 2 (Duplicate for loop) -->
-                <img src="images/movies/gallery1.png" alt="Gallery 1" onerror="this.onerror=null; this.src='images/movies/yakshini-poster.png'">
-                <img src="images/movies/gallery2.png" alt="Gallery 2" onerror="this.onerror=null; this.src='images/cast/dipak.jpg'">
-                <img src="images/movies/gallery3.png" alt="Gallery 3" onerror="this.onerror=null; this.src='images/cast/puja.jpg'">
-                <img src="images/movies/gallery4.png" alt="Gallery 4" onerror="this.onerror=null; this.src='images/cast/director.jpg'">
-                <img src="images/movies/gallery5.png" alt="Gallery 5" onerror="this.onerror=null; this.src='images/cast/ravi.jpg'">
-                <img src="images/movies/gallery6.png" alt="Gallery 6" onerror="this.onerror=null; this.src='images/movies/sarita.jpg'">
+                <!-- Group 1 -->
+                <img src="images/movies/poster1.png" alt="Poster 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+1'">
+                <img src="images/movies/poster2.png" alt="Poster 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+2'">
+                <img src="images/movies/poster3.png" alt="Poster 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+3'">
+                <img src="images/movies/poster4.png" alt="Poster 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+4'">
+                <img src="images/movies/poster5.png" alt="Poster 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+5'">
+                
+                <!-- Group 2 (Duplicate for smooth loop) -->
+                <img src="images/movies/poster1.png" alt="Poster 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+1'">
+                <img src="images/movies/poster2.png" alt="Poster 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+2'">
+                <img src="images/movies/poster3.png" alt="Poster 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+3'">
+                <img src="images/movies/poster4.png" alt="Poster 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+4'">
+                <img src="images/movies/poster5.png" alt="Poster 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Poster+5'">
+
             </div>
         </div>
     </section>
@@ -311,45 +312,6 @@
     </footer>
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-
-    <!-- 🔥 SCRIPT TO FETCH IMAGES FROM HOMEPAGE (IF MISSING) -->
-    <script>
-        // Fallback script to grab images from index.html if the local ones are wrong
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('index.html')
-                .then(response => response.text())
-                .then(html => {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = html;
-                    const homeGalleryTrack = tempDiv.querySelector('#gallery .slider-track');
-                    
-                    if(homeGalleryTrack) {
-                        const images = homeGalleryTrack.querySelectorAll('img');
-                        if(images.length > 0) {
-                            const track = document.getElementById('gallery-track');
-                            track.innerHTML = ''; // Clear old broken images
-                            
-                            // Group 1
-                            images.forEach(img => {
-                                const newImg = document.createElement('img');
-                                newImg.src = img.getAttribute('src');
-                                newImg.alt = "Gallery Photo";
-                                track.appendChild(newImg);
-                            });
-                            
-                            // Group 2 (Duplicate for loop)
-                            images.forEach(img => {
-                                const newImg = document.createElement('img');
-                                newImg.src = img.getAttribute('src');
-                                newImg.alt = "Gallery Photo";
-                                track.appendChild(newImg);
-                            });
-                        }
-                    }
-                })
-                .catch(err => console.log('Error fetching homepage gallery:', err));
-        });
-    </script>
 
     <script>
         const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
