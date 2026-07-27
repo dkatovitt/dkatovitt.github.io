@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Auditions - DK Atovitt</title>
+    <title>Login & Sign Up - DK Atovitt</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -44,16 +44,20 @@
         .auth-container { background: #111; width: 100%; max-width: 500px; padding: 40px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 40px rgba(0,0,0,0.9); position: relative; overflow: hidden; }
         .auth-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
         
-        .auth-header { text-align: center; margin-bottom: 30px; }
+        .auth-header { text-align: center; margin-bottom: 25px; }
         .auth-header video { height: 90px; filter: drop-shadow(0px 4px 10px rgba(230, 200, 117, 0.15)); margin-bottom: 5px; }
         .auth-header h2 { color: #e6c875; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
         .auth-header p { color: #888; font-size: 13px; margin-top: 5px; }
 
-        /* Tabs */
+        /* 🌟 3 TABS DESIGN */
         .auth-tabs { display: flex; margin-bottom: 30px; border-bottom: 1px solid #333; }
-        .auth-tab { flex: 1; text-align: center; padding: 12px; cursor: pointer; color: #888; font-weight: bold; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; transition: 0.3s; border-bottom: 3px solid transparent; }
+        .auth-tab { flex: 1; text-align: center; padding: 12px 5px; cursor: pointer; color: #888; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; transition: 0.3s; border-bottom: 3px solid transparent; }
         .auth-tab.active { color: #e6c875; border-bottom-color: #e6c875; }
         .auth-tab:hover:not(.active) { color: #fff; }
+
+        @media (max-width: 480px) {
+            .auth-tab { font-size: 11px; padding: 10px 2px; letter-spacing: 0px; }
+        }
 
         /* Forms */
         .form-box { display: none; animation: fadeIn 0.5s ease; }
@@ -61,15 +65,19 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; color: #aaa; font-size: 13px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group label { display: block; color: #aaa; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select { width: 100%; padding: 14px; background: #1a1a1a; border: 1px solid #333; color: #fff; border-radius: 6px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus { border-color: #e6c875; background: #222; }
         
-        .submit-btn { width: 100%; background: #e6c875; color: #000; padding: 15px; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; }
+        /* OTP Button */
+        .otp-btn { background: #e6c875; color: #000; border: none; border-radius: 6px; padding: 0 15px; font-weight: bold; cursor: pointer; font-size: 12px; text-transform: uppercase; transition: 0.3s; }
+        .otp-btn:hover { background: #fff; }
+
+        .submit-btn { width: 100%; background: #e6c875; color: #000; padding: 15px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 5px; }
         .submit-btn:hover { background: #d4b561; box-shadow: 0 0 15px rgba(230,200,117,0.4); transform: translateY(-2px); }
 
         .auth-footer { text-align: center; margin-top: 20px; font-size: 13px; color: #666; }
-        .auth-footer a { color: #e6c875; text-decoration: none; }
+        .auth-footer a { color: #e6c875; text-decoration: none; cursor: pointer; }
         .auth-footer a:hover { text-decoration: underline; }
 
         @media (max-width: 480px) { .auth-container { padding: 25px 20px; } .auth-header h2 { font-size: 20px; } }
@@ -136,13 +144,64 @@
                 <p>Gateway to your cinematic journey.</p>
             </div>
 
+            <!-- 🔥 NEW 3 TABS -->
             <div class="auth-tabs">
-                <div class="auth-tab active" id="tabRegister" onclick="switchTab('register')">Apply For Audition</div>
-                <div class="auth-tab" id="tabLogin" onclick="switchTab('login')">Member Login</div>
+                <div class="auth-tab" id="tabSignup" onclick="switchTab('signup')">Sign Up</div>
+                <div class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Login</div>
+                <div class="auth-tab" id="tabAudition" onclick="switchTab('audition')">Audition</div>
             </div>
 
-            <!-- REGISTER / AUDITION FORM -->
-            <div class="form-box active" id="formRegister">
+            <!-- 1. SIGN UP FORM (WITH OTP) -->
+            <div class="form-box" id="formSignup">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Account Created Successfully! Welcome to DK Atovitt Family.'); switchTab('login');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="email" placeholder="Enter email address" required style="flex: 1;">
+                            <button type="button" class="otp-btn" onclick="alert('OTP has been sent to your email address!')">Get OTP</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Verification (OTP)</label>
+                        <input type="text" placeholder="Enter 6-digit OTP" required maxlength="6">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Create Password</label>
+                        <input type="password" placeholder="Create a strong password" required>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-user-plus"></i> Create Account</button>
+                    <p class="auth-footer">Already have an account? <a onclick="switchTab('login')">Login here</a>.</p>
+                </form>
+            </div>
+
+            <!-- 2. LOGIN FORM -->
+            <div class="form-box active" id="formLogin">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login feature is currently in demo mode. Registration is required first.');">
+                    <div class="form-group">
+                        <label>Email Address or Phone</label>
+                        <input type="text" placeholder="Enter registered email or phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter your password" required>
+                    </div>
+                    <div style="text-align: right; margin-top: -10px; margin-bottom: 20px;">
+                        <a href="#" style="color: #888; font-size: 12px; text-decoration: none;">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-sign-in-alt"></i> Login Now</button>
+                    <p class="auth-footer">Don't have an account? <a onclick="switchTab('signup')">Sign Up Here</a>.</p>
+                </form>
+            </div>
+
+            <!-- 3. AUDITION FORM -->
+            <div class="form-box" id="formAudition">
                 <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Application Submitted Successfully! Our casting team will review your profile and contact you soon.');">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -159,7 +218,7 @@
                         </div>
                         <div class="form-group" style="flex: 1;">
                             <label>City / State</label>
-                            <input type="text" placeholder="e.g. Kolkata, WB" required>
+                            <input type="text" placeholder="e.g. Kolkata" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -173,26 +232,6 @@
                         </select>
                     </div>
                     <button type="submit" class="submit-btn"><i class="fas fa-theater-masks"></i> Submit Application</button>
-                    <p class="auth-footer">By applying, you agree to our <a href="terms.html">Terms & Conditions</a>.</p>
-                </form>
-            </div>
-
-            <!-- LOGIN FORM -->
-            <div class="form-box" id="formLogin">
-                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Login feature is currently in demo mode. Registration is required first.');">
-                    <div class="form-group">
-                        <label>Email Address or Phone</label>
-                        <input type="text" placeholder="Enter registered email or phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Enter your password" required>
-                    </div>
-                    <div style="text-align: right; margin-top: -10px; margin-bottom: 20px;">
-                        <a href="#" style="color: #888; font-size: 12px; text-decoration: none;">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="submit-btn"><i class="fas fa-sign-in-alt"></i> Login Now</button>
-                    <p class="auth-footer">Don't have an account? <a href="#" onclick="switchTab('register')">Apply for Audition</a>.</p>
                 </form>
             </div>
 
@@ -233,17 +272,20 @@
         
         /* 🌟 TAB SWITCHING SCRIPT */
         function switchTab(tabName) {
-            document.getElementById('tabRegister').classList.remove('active');
-            document.getElementById('tabLogin').classList.remove('active');
-            document.getElementById('formRegister').classList.remove('active');
-            document.getElementById('formLogin').classList.remove('active');
+            // Remove active classes from all tabs and forms
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.form-box').forEach(f => f.classList.remove('active'));
             
-            if(tabName === 'register') {
-                document.getElementById('tabRegister').classList.add('active');
-                document.getElementById('formRegister').classList.add('active');
-            } else {
+            // Add active class to selected tab and form
+            if(tabName === 'signup') {
+                document.getElementById('tabSignup').classList.add('active');
+                document.getElementById('formSignup').classList.add('active');
+            } else if(tabName === 'login') {
                 document.getElementById('tabLogin').classList.add('active');
                 document.getElementById('formLogin').classList.add('active');
+            } else if(tabName === 'audition') {
+                document.getElementById('tabAudition').classList.add('active');
+                document.getElementById('formAudition').classList.add('active');
             }
         }
     </script>
