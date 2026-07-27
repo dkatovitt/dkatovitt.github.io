@@ -53,26 +53,29 @@
 
         /* 🔥 MAIN PREMIERE VIDEO */
         .main-premiere-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .main-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ background: #000; border-radius: 15px; overflow: hidden; border: 2px solid #333; box-shadow: 0 15px 40px rgba(230,200,117,0.15); margin-bottom: 25px; }
+        .main-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 15px; overflow: hidden; border: 2px solid #333; box-shadow: 0 15px 40px rgba(230,200,117,0.15); margin-bottom: 25px; }
         .main-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         .main-trailer-title { color: #fff; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
         .main-trailer-desc { color: #888; font-size: 15px; max-width: 800px; margin: 0 auto; }
 
-        /* 🔥 MORE PROMOS & TEASERS GRID */
+        /* 🔥 MORE PROMOS & TEASERS GRID (MODIFIED FOR SHORTS) */
         .more-trailers-section { padding: 40px 20px 80px 20px; max-width: 1100px; margin: 0 auto; border-top: 1px solid #222; }
         .section-heading { color: #e6c875; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-left: 4px solid #e6c875; padding-left: 15px; }
         
-        .trailer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        @media (max-width: 900px) { .trailer-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .trailer-grid { grid-template-columns: 1fr; } .page-title { font-size: 35px; } .main-trailer-title { font-size: 22px; } }
+        .trailer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+        @media (max-width: 900px) { .trailer-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .trailer-grid { grid-template-columns: repeat(2, 1fr); } .page-title { font-size: 35px; } .main-trailer-title { font-size: 22px; } }
 
-        .trailer-card { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: 0.3s; }
+        .trailer-card { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .trailer-card:hover { border-color: #e6c875; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
-        .small-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; }
-        .small-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .trailer-info { padding: 15px; }
-        .trailer-info h3 { color: #fff; font-size: 16px; margin: 0 0 5px 0; }
-        .trailer-info p { color: #777; font-size: 13px; margin: 0; }
+        
+        /* SHORTS VIDEO WRAPPER (9:16 Aspect Ratio) */
+        .shorts-video-wrapper { position: relative; width: 100%; padding-bottom: 177.77%; background: #000; }
+        .shorts-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        .trailer-info { padding: 15px 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .trailer-info h3 { color: #fff; font-size: 14px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .trailer-info p { color: #e6c875; font-size: 11px; margin: 0; font-weight: bold; }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -161,55 +164,72 @@
     <!-- 🎬 MAIN PREMIERE -->
     <section class="main-premiere-section reveal">
         <div class="main-video-wrapper">
-            <!-- Default Yakshini Trailer for now -->
+            <!-- Default Yakshini Trailer -->
             <iframe src="https://www.youtube.com/embed/Mek5HNkypTQ?rel=0&modestbranding=1" title="Yakshini Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <h2 class="main-trailer-title">यक्षिणी (Yakshini) - Official Movie Trailer</h2>
         <p class="main-trailer-desc">An upcoming Bollywood Horror-Romance masterpiece produced by DK Atovitt Production House. Watch the chilling mysteries unfold.</p>
     </section>
 
-    <!-- 🎬 MORE PROMOS & TEASERS (Placeholders ready for your links!) -->
+    <!-- 🎬 YOUTUBE SHORTS GRID -->
     <section class="more-trailers-section reveal">
-        <h2 class="section-heading">More Promos & Highlights</h2>
-        <div class="cast-grid trailer-grid">
+        <h2 class="section-heading">Yakshini - Teasers & Promos</h2>
+        <div class="trailer-grid">
             
             <!-- Video Box 1 -->
             <div class="trailer-card">
-                <div class="small-video-wrapper">
-                    <!-- YouTube link will go here -->
-                    <iframe src="https://www.youtube.com/embed/32FIP1DQU5w?rel=0" title="Promo 1" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/5PXJLvRFFqE?rel=0" title="Kalpamrit Jungle Mystery" allowfullscreen></iframe>
                 </div>
                 <div class="trailer-info">
-                    <h3>Aaj Ki Shaam - Promo</h3>
-                    <p>Official Romantic Track</p>
+                    <h3>Kalpamrit Mystery</h3>
+                    <p>Official Short Promo</p>
                 </div>
             </div>
 
             <!-- Video Box 2 -->
             <div class="trailer-card">
-                <div class="small-video-wrapper">
-                    <!-- YouTube link will go here -->
-                    <iframe src="https://www.youtube.com/embed/jq3fKMww5_M?rel=0" title="Promo 2" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/j_OF3Y3DKIc?rel=0" title="Yakshini Teaser 1" allowfullscreen></iframe>
                 </div>
                 <div class="trailer-info">
-                    <h3>Kalpamrit Ke Rahon Mein</h3>
-                    <p>Horror Romantic Song</p>
+                    <h3>Yakshini Teaser 1</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
 
             <!-- Video Box 3 -->
             <div class="trailer-card">
-                <div class="small-video-wrapper">
-                    <!-- YouTube link will go here -->
-                    <iframe src="https://www.youtube.com/embed/7qFB_8WtAxE?rel=0" title="Promo 3" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/LHahM_4XCbQ?rel=0" title="Yakshini Teaser 2" allowfullscreen></iframe>
                 </div>
                 <div class="trailer-info">
-                    <h3>Shaam Dhale Jab</h3>
-                    <p>Hindi Horror Song Teaser</p>
+                    <h3>Yakshini Teaser 2</h3>
+                    <p>Coming Soon</p>
                 </div>
             </div>
             
-            <!-- You can add more boxes here later! -->
+            <!-- Video Box 4 -->
+            <div class="trailer-card">
+                <div class="shorts-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/AJkHkmUw9tI?rel=0" title="Yakshini Teaser 3" allowfullscreen></iframe>
+                </div>
+                <div class="trailer-info">
+                    <h3>Yakshini Teaser 3</h3>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+            
+            <!-- Video Box 5 -->
+            <div class="trailer-card">
+                <div class="shorts-video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/AdP6cAnyDec?rel=0" title="Yakshini Teaser 4" allowfullscreen></iframe>
+                </div>
+                <div class="trailer-info">
+                    <h3>Yakshini Teaser 4</h3>
+                    <p>Coming Soon</p>
+                </div>
+            </div>
 
         </div>
     </section>
