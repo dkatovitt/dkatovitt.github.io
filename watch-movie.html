@@ -48,9 +48,30 @@
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
         
         .coming-soon-section { padding: 140px 20px 80px 20px; text-align: center; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a0505 0%, #050505 100%); }
-        .coming-soon-title { color: #e6c875; font-size: 55px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; letter-spacing: 5px; text-shadow: 2px 2px 15px rgba(0,0,0,0.9); text-transform: uppercase; }
         
-        /* 🔥 NEW STYLIZED TITLE BLOCK (SCREENSHOT 2) */
+        /* 🔥 THE FLICKER ANIMATION FOR "COMING SOON" 🔥 */
+        .coming-soon-title { 
+            color: #e6c875; 
+            font-size: 55px; 
+            font-family: 'Playfair Display', serif; 
+            margin: 0 0 20px 0; 
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            animation: text-flicker 2.5s infinite; /* Adds the flicker effect */
+        }
+
+        @keyframes text-flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+                text-shadow: 0 0 15px rgba(230,200,117,0.8), 2px 2px 15px rgba(0,0,0,0.9);
+            }
+            20%, 24%, 55% {
+                opacity: 0.3;
+                text-shadow: none;
+            }
+        }
+        
+        /* 🔥 STYLIZED TITLE BLOCK */
         .stylized-title-block { margin-bottom: 30px; }
         .yakshini-hindi-title { font-size: 85px; color: #e6c875; margin: 0; text-shadow: 2px 5px 15px rgba(0, 0, 0, 0.9); line-height: 1.1; font-weight: 900; letter-spacing: 2px; }
         .yakshini-english-subtitle { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 450px; margin: 15px auto 25px auto; }
@@ -155,9 +176,9 @@
     <div id="overlay"></div>
 
     <section class="coming-soon-section">
+        <!-- 🔥 This text will now flicker like a cinematic neon sign 🔥 -->
         <h1 class="coming-soon-title">COMING SOON</h1>
         
-        <!-- 🔥 THE NEW STYLIZED TITLE BLOCK 🔥 -->
         <div class="stylized-title-block">
             <h2 class="yakshini-hindi-title">यक्षिणी</h2>
             <div class="yakshini-english-subtitle">
@@ -168,7 +189,6 @@
             <p class="yakshini-red-tagline">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
         </div>
         
-        <!-- Note: This image will display whatever you saved as yakshini-poster.png in your movies folder -->
         <img src="images/movies/yakshini-poster.png" alt="Yakshini Coming Soon" class="coming-soon-poster">
         
         <div>
