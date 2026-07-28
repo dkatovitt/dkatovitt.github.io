@@ -90,12 +90,11 @@
         .cast-name { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 5px 0; text-transform: uppercase; }
         .cast-role { color: #e6c875; font-size: 12px; margin: 0; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* 🔥 MOVIE GALLERY SLIDER CSS (EXACTLY LEFT TO RIGHT LIKE HOMEPAGE) */
+        /* 🔥 MOVIE GALLERY SLIDER CSS */
         .yakshini-gallery-section { padding: 60px 0 80px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; text-align: center; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         
-        /* 🔥 CORRECTED: scroll-left animation moves items from right to left, creating LEFT-TO-RIGHT flow */
         .slider-track { display: inline-flex; animation: scroll-left 30s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
@@ -169,7 +168,6 @@
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
-        <!-- 🔥 About Us Dropdown -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
             <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
             <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
@@ -179,17 +177,26 @@
             <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
         </div>
 
-        <!-- 🔥 Movies Dropdown -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesSub')">
-            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="moviesIcon"></i>
+            <span style="color: #e6c875 !important;"><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
+            <i class="fas fa-chevron-down dropdown-icon rotate" id="moviesIcon" style="color: #e6c875;"></i>
         </a>
-        <div class="sub-menu" id="moviesSub">
+        <div class="sub-menu active" id="moviesSub">
             <a href="yakshini.html" style="color: #e6c875 !important;"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
         </div>
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
-        <a href="index.html#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
+        
+        <!-- 🔥 NEW SONGS DROPDOWN MENU ADDED HERE TOO -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+        </a>
+        <div class="sub-menu" id="songsSub">
+            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
+            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
+        </div>
+
         <a href="index.html#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         <a href="index.html#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         <a href="index.html#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
@@ -221,9 +228,11 @@
                     <span class="highlight">🎬 Mega Announcement: बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span>
                 </div>
                 
+                <!-- 🔥 BUTTONS UPDATED HERE 🔥 -->
                 <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="trailers.html" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important;"><i class="fas fa-play-circle"></i> Watch Trailer</a>
-                    <a href="index.html#songs" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important; background: transparent; color: #fff !important; border-color: #fff !important;"><i class="fas fa-music"></i> Listen Songs</a>
+                    <a href="watch-movie.html" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important;"><i class="fas fa-play-circle"></i> Watch Movie</a>
+                    
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important; background: transparent; color: #fff !important; border-color: #fff !important;"><i class="fas fa-music"></i> Listen Movie</a>
                 </div>
             </div>
         </div>
@@ -329,7 +338,7 @@
         </div>
     </section>
 
-    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER (LEFT TO RIGHT FIXED) -->
+    <!-- 🔥 YAKSHINI MOVIE GALLERY SLIDER -->
     <section class="yakshini-gallery-section reveal">
         <h2 class="section-title">Movie Stills & Gallery</h2>
         <div class="slider-container">
@@ -363,7 +372,7 @@
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
-                <h4>Movies & Media</h4><ul><li><a href="index.html#home">Home</a></li><li><a href="index.html#movies-section">Featured Movie</a></li><li><a href="trailers.html">Official Trailer</a></li><li><a href="index.html#songs">Movie Songs</a></li><li><a href="index.html#gallery">Gallery</a></li></ul>
+                <h4>Movies & Media</h4><ul><li><a href="index.html#home">Home</a></li><li><a href="index.html#movies-section">Featured Movie</a></li><li><a href="trailers.html">Official Trailer</a></li><li><a href="movie-songs.html">Movie Songs</a></li><li><a href="index.html#gallery">Gallery</a></li></ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>Join Us</h4><ul><li><a href="index.html#audition-section">Auditions</a></li><li><a href="index.html#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
