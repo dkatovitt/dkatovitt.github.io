@@ -177,7 +177,6 @@
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
-                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </header>
@@ -186,9 +185,8 @@
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
-        <a href="#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
-        <!-- 🔥 1. About Us Dropdown -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
             <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
             <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
@@ -198,24 +196,35 @@
             <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
         </div>
 
-        <!-- 🔥 2. Movies Dropdown -->
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesSub')">
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
             <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="moviesIcon"></i>
+            <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
         </a>
-        <div class="sub-menu" id="moviesSub">
+        <div class="sub-menu" id="moviesMenuSub">
             <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
         </div>
 
-        <a href="#trailer"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
-        <a href="#songs"><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</a>
-        <a href="#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
-        <a href="#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        
+        <!-- 🔥 YAHAN HAI NAYA SONGS DROPDOWN 🔥 -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+        </a>
+        <div class="sub-menu" id="songsSub">
+            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
+            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
+        </div>
+
+        <a href="index.html#gallery"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="index.html#audition-section"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        <a href="index.html#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
         <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
         <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
+    <div id="overlay"></div>
+
 
     <div class="search-modal" id="searchModal">
         <div class="search-box-container"><input type="text" placeholder="Search movies, songs, trailers..." id="searchInput"><button id="closeSearch">&times;</button></div>
