@@ -62,7 +62,7 @@
         .page-header h1 { color: #e6c875; font-size: 45px; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
         .page-header p { color: #aaa; font-size: 16px; margin-top: 10px; max-width: 700px; margin-left: auto; margin-right: auto; }
         
-        .partner-section { padding: 80px 20px; border-bottom: 1px solid #222; }
+        .partner-section { padding: 80px 20px; border-bottom: 1px solid #222; display: none; /* 🔥 छिपे रहेंगे जब तक क्लिक न हो */ min-height: 50vh; }
         .partner-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .partner-container.reverse { flex-direction: row-reverse; }
         
@@ -167,9 +167,9 @@
             <i class="fas fa-chevron-down dropdown-icon rotate" id="partnersIcon"></i>
         </a>
         <div class="sub-menu active" id="partnersSub">
-            <a href="media-partners.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="media-partners.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="media-partners.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+            <a href="#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -185,7 +185,7 @@
     </div>
 
     <!-- 🔥 1. EARN WITH DK SIR -->
-    <section class="partner-section reveal" id="earn-with-dk-sir" style="scroll-margin-top: 100px;">
+    <section class="partner-section reveal" id="earn-with-dk-sir">
         <div class="partner-container">
             <div class="partner-visual">
                 <video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline></video>
@@ -202,7 +202,7 @@
     </section>
 
     <!-- 🔥 2. ATVT -->
-    <section class="partner-section reveal" id="atvt" style="background: #0a0a0a; scroll-margin-top: 100px;">
+    <section class="partner-section reveal" id="atvt">
         <div class="partner-container reverse">
             <div class="partner-visual">
                 <video src="images/partners/atvt-logo.mp4" autoplay loop muted playsinline></video>
@@ -219,7 +219,7 @@
     </section>
 
     <!-- 🔥 3. KALPAMRIT -->
-    <section class="partner-section reveal" id="kalpamrit" style="scroll-margin-top: 100px;">
+    <section class="partner-section reveal" id="kalpamrit">
         <div class="partner-container">
             <div class="partner-visual">
                 <video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video>
@@ -281,7 +281,31 @@
             else { document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active')); document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate')); subMenu.classList.add('active'); icon.classList.add('rotate'); }
         }
 
-        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal); reveal(); 
+        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal);
+        
+        // 🔥 TAB SYSTEM LOGIC 🔥
+        function updatePartnerView() {
+            const hash = window.location.hash;
+            const sections = document.querySelectorAll('.partner-section');
+            
+            // पहले सबको छिपा दो
+            sections.forEach(sec => sec.style.display = 'none');
+            
+            if(hash && document.querySelector(hash)) {
+                // जिस पर क्लिक किया गया है, सिर्फ उसे दिखाओ
+                document.querySelector(hash).style.display = 'block';
+            } else {
+                // अगर कोई लिंक नहीं है, तो डिफ़ॉल्ट रूप से पहला (Earn with DK Sir) दिखाओ
+                document.getElementById('earn-with-dk-sir').style.display = 'block';
+            }
+            
+            // एनीमेशन ट्रिगर करने के लिए
+            setTimeout(reveal, 100); 
+        }
+
+        // पेज लोड होने पर और मेनू लिंक क्लिक होने पर चलायें
+        window.addEventListener('load', updatePartnerView);
+        window.addEventListener('hashchange', updatePartnerView);
     </script>
 </body>
 </html>
