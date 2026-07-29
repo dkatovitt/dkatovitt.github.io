@@ -34,7 +34,6 @@
             .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 8px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            /* 🔥 MOBILE LOGIN BUTTON FIX - Preventing Cut Off */
             .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; letter-spacing: 0px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
@@ -48,6 +47,10 @@
         #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
         .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 16px; transition: 0.3s; }
         .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
+        /* 🔥 MENU TEXT OVERFLOW FIX 🔥 */
+        .side-menu a span { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; display: inline-block !important; max-width: 80% !important; vertical-align: middle !important; }
+        
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
         
@@ -115,11 +118,15 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+        
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
 
-    <!-- 🔥 FIXED HEADER -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -138,7 +145,6 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED SIDE MENU -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -164,7 +170,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -178,7 +183,6 @@
         
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 NEW: ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -196,24 +200,19 @@
     <div id="overlay"></div>
 
 
-    <!-- 🔥 PAGE HEADER -->
     <div class="page-header">
         <h1>Digital Gallery</h1>
         <p>Exclusive Behind-the-Scenes & Official Posters</p>
     </div>
 
-    <!-- 🔥 GALLERY CONTAINER -->
     <div class="gallery-container">
 
-        <!-- 📸 SECTION 1: OFFICIAL POSTERS & SLIDES -->
         <h2 class="gallery-section-title reveal">Official Posters & Artworks</h2>
         <div class="gallery-grid reveal">
-            <!-- Main Poster -->
             <div class="gallery-item" onclick="openLightbox('images/movies/yakshini-poster.png')">
                 <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
                 <i class="fas fa-search-plus zoom-icon"></i>
             </div>
-            <!-- All 18 Slides -->
             <div class="gallery-item" onclick="openLightbox('images/movies/slide1.png')"><img src="images/movies/slide1.png" alt="Slide 1"><i class="fas fa-search-plus zoom-icon"></i></div>
             <div class="gallery-item" onclick="openLightbox('images/movies/slide2.png')"><img src="images/movies/slide2.png" alt="Slide 2"><i class="fas fa-search-plus zoom-icon"></i></div>
             <div class="gallery-item" onclick="openLightbox('images/movies/slide3.png')"><img src="images/movies/slide3.png" alt="Slide 3"><i class="fas fa-search-plus zoom-icon"></i></div>
@@ -234,10 +233,8 @@
             <div class="gallery-item" onclick="openLightbox('images/movies/slide18.png')"><img src="images/movies/slide18.png" alt="Slide 18"><i class="fas fa-search-plus zoom-icon"></i></div>
         </div>
 
-        <!-- 📸 SECTION 2: EXCLUSIVE BEHIND THE SCENES / GALLERY -->
         <h2 class="gallery-section-title reveal">Exclusive Snapshots</h2>
         <div class="gallery-grid reveal">
-            <!-- All 18 Gallery Photos (Horizontal styling for these) -->
             <div class="gallery-item horizontal" onclick="openLightbox('images/movies/gallery1.png')"><img src="images/movies/gallery1.png" alt="Gallery 1"><i class="fas fa-search-plus zoom-icon"></i></div>
             <div class="gallery-item horizontal" onclick="openLightbox('images/movies/gallery2.png')"><img src="images/movies/gallery2.png" alt="Gallery 2"><i class="fas fa-search-plus zoom-icon"></i></div>
             <div class="gallery-item horizontal" onclick="openLightbox('images/movies/gallery3.png')"><img src="images/movies/gallery3.png" alt="Gallery 3"><i class="fas fa-search-plus zoom-icon"></i></div>
@@ -259,13 +256,11 @@
         </div>
     </div>
 
-    <!-- 🔥 LIGHTBOX (For viewing images in full screen) -->
     <div id="lightbox">
         <button id="lightbox-close">&times;</button>
         <img id="lightbox-img" src="" alt="Full Screen Image">
     </div>
 
-    <!-- 🔥 UPDATED MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -319,10 +314,8 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center; text-decoration:none;" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- JavaScript -->
     <script>
         // MENU SCRIPT
         const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
