@@ -8,21 +8,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+
         /* Header Fix */
-        .header .container { padding-left: 15px !important; padding-right: 15px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
-        .login-btn-header { color: #e6c875; text-decoration: none; font-size: 13px; font-weight: bold; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; transition: 0.3s; white-space: nowrap; }
-        .login-btn-header:hover { background-color: #e6c875; color: #000; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        #menuToggle { font-size: 28px !important; color: #fff !important; cursor: pointer; transition: 0.3s; margin-right: 0 !important; }
+        
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        
         @media (max-width: 768px) {
-            .header .container { padding-left: 5px !important; padding-right: 5px !important; }
-            .logo video { height: 55px !important; }
-            .logo-text h1 { font-size: 17px !important; margin-bottom: 2px !important; font-weight: 900 !important; }
-            .logo-text p { font-size: 8.5px !important; }
-            .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            #menuToggle { font-size: 22px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; display: block !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
         }
 
         /* 🌟 News Page Style */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
-        .legal-section { padding: 120px 20px 60px 20px; }
+        .legal-section { padding: 140px 20px 60px 20px; }
         .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
         .legal-title { color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; }
         
@@ -69,22 +81,22 @@
 
     <!-- Header -->
     <header class="header">
-        <div class="container" style="display: flex; align-items: center;">
-            <!-- 🔥 Menu Toggle Button Added -->
-            <div class="menu-toggle" id="menuToggle" style="font-size: 26px; color: #e6c875; cursor: pointer; margin-right: 15px;">
-                <i class="fas fa-bars"></i>
-            </div>
-            
-            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; text-decoration: none; flex-grow: 1;">
-                <!-- 🔥 HEADER VIDEO LOGO ADDED HERE -->
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 65px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h1 style="font-size: 22px; color: #e6c875; letter-spacing: 1px; text-transform: uppercase; margin: 0; font-weight: 900;">DK ATOVITT</h1>
-                    <p style="font-size: 11px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin: 0;">Official Movie Production House</p>
+        <div class="container">
+            <div class="header-left">
+                <!-- 🔥 Menu Toggle Button -->
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
                 </div>
-            </a>
-            <div class="header-icons" style="display: flex; gap: 12px; align-items: center;">
-                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
