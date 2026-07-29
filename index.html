@@ -49,37 +49,47 @@
 
         /* 🌟 HOVER EFFECT ON VIDEOS & IMAGES */
         .video-wrapper { overflow: hidden; border-radius: 8px; text-align: center; padding-bottom: 15px; background: #111; border: 1px solid #222; }
+        .video-thumbnail { position: relative; cursor: pointer; display: block; overflow: hidden; }
         .video-thumbnail img { transition: transform 0.5s ease; width: 100%; display: block; }
-        .video-wrapper:hover .video-thumbnail img { transform: scale(1.05); }
+        .video-thumbnail:hover img { transform: scale(1.05); }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); color: #e6c875; border: 2px solid #e6c875; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; }
+        .video-thumbnail:hover .play-btn { background: #e6c875; color: #000; transform: translate(-50%, -50%) scale(1.1); }
 
-        /* 🔥 PLAY & DOWNLOAD BUTTONS CSS */
-        .btn-group { display: flex; justify-content: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; padding: 0 10px; }
-        .play-audio-btn { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; }
-        .play-audio-btn:hover { background: #e6c875; color: #000; box-shadow: 0 0 10px rgba(230, 200, 117, 0.5); transform: translateY(-2px); }
-        .download-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; display: inline-block; }
-        .download-btn:hover { background: #fff; color: #000; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); transform: translateY(-2px); }
+        /* 🔥 3 SMART LOGOS GROUP (YouTube, MP3 Play, Download) */
+        .action-icons-group { display: flex; justify-content: center; gap: 20px; margin-top: 15px; padding: 0 10px; }
+        .icon-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; text-decoration: none; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .yt-btn { background: #ff0000; } .yt-btn:hover { background: #cc0000; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,0,0,0.4); }
+        .mp3-btn { background: #e6c875; color: #000; } .mp3-btn:hover { background: #d4b561; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230,200,117,0.4); }
+        .dl-btn { background: #25d366; } .dl-btn:hover { background: #1ebe5d; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37,211,102,0.4); }
 
         /* 🌟 WHATSAPP BUTTON */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        /* 🎵 CUSTOM MUSIC PLAYER CSS */
-        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(10, 10, 10, 0.85); border: 1px solid #e6c875; border-radius: 50px; padding: 8px 25px 8px 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.8); z-index: 1000; backdrop-filter: blur(8px); transition: 0.3s; }
+        /* 🔥 SPINNING CD MUSIC PLAYER CSS 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(10, 10, 10, 0.9); border: 1px solid #e6c875; border-radius: 50px; padding: 6px 20px 6px 6px; display: flex; align-items: center; gap: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(8px); transition: 0.3s; }
         .music-player:hover { border-color: #fff; transform: translateY(-2px); }
-        .track-info { display: flex; flex-direction: column; max-width: 200px; }
+        
+        .cd-spin { width: 50px; height: 50px; border-radius: 50%; background: #222; border: 2px solid #e6c875; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #e6c875; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        .track-info { display: flex; flex-direction: column; max-width: 180px; }
         .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .track-artist { color: #aaa; font-size: 11px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .play-pause-btn { background: #e6c875; color: #000; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 0 10px rgba(230, 200, 117, 0.4); flex-shrink: 0; }
-        .play-pause-btn:hover { background: #fff; transform: scale(1.05); }
+        
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 20px; cursor: pointer; transition: 0.3s; padding: 0 5px; }
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
 
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } 
-            .music-player { bottom: 20px; left: 20px; right: auto; padding: 6px 15px 6px 6px; }
-            .track-info { max-width: 140px; }
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
+            .cd-spin { width: 40px; height: 40px; font-size: 18px; }
+            .track-info { max-width: 130px; }
             .track-name { font-size: 12px; }
             .track-artist { font-size: 9px; }
-            .play-pause-btn { width: 35px; height: 35px; font-size: 14px; }
+            .play-pause-btn { font-size: 16px; }
         }
 
         /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
@@ -302,87 +312,106 @@
         </div>
     </section>
 
-    <!-- 🎬 TRAILER SECTION -->
+    <!-- 🎬 TRAILER SECTION (UPDATED WITH INLINE VIDEO & 3 SMART LOGOS) -->
     <section class="trailer-section reveal" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
-                <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                <h3 class="trailer-title" style="padding: 0 15px;">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙</h3>
-                <div class="btn-group">
-                    <button class="play-audio-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')"><i class="fas fa-music"></i> Play Audio</button>
-                    <a href="yakshini-title-track.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                <div class="video-thumbnail" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
+                    <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer">
+                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                </div>
+                <h3 class="trailer-title" style="padding: 10px 15px 0;">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙</h3>
+                <div class="action-icons-group">
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                    <button class="icon-btn mp3-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')" title="Play Audio"><i class="fas fa-music"></i></button>
+                    <a href="yakshini-title-track.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 🎵 SONGS SECTION -->
+    <!-- 🎵 SONGS SECTION (UPDATED WITH INLINE VIDEO & 3 SMART LOGOS) -->
     <section class="trailer-section reveal" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
             <div class="songs-grid">
                 
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/32FIP1DQU5w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">❤️ आज की शाम है खुशियों के नाम | Official Romantic Song</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')"><i class="fas fa-music"></i> Play</button>
-                        <a href="aaj-ki-shaam.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, '32FIP1DQU5w')">
+                        <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">❤️ आज की शाम है खुशियों के नाम</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/32FIP1DQU5w" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="aaj-ki-shaam.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/jq3fKMww5_M" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">🌙 Kalpamrit Ke Rahon Mein 👻 | Horror Romantic Song</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')"><i class="fas fa-music"></i> Play</button>
-                        <a href="kalpamrit-ke-rahon-mein.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'jq3fKMww5_M')">
+                        <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">🌙 Kalpamrit Ke Rahon Mein 👻</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/jq3fKMww5_M" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="kalpamrit-ke-rahon-mein.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')"><i class="fas fa-music"></i> Play</button>
-                        <a href="shaam-dhale.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, '7qFB_8WtAxE')">
+                        <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">🌙 शाम ढले जब पानी डोले</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="shaam-dhale.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/eTYetclIVbM" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')"><i class="fas fa-music"></i> Play</button>
-                        <a href="dipak-aur-ravi-dosti.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'eTYetclIVbM')">
+                        <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">❤️ दीपक और रवि - दोनों ही एक जान</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/eTYetclIVbM" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="dipak-aur-ravi-dosti.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Love Story</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')"><i class="fas fa-music"></i> Play</button>
-                        <a href="tere-naam-se-meri-subah.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, '-08OXkmPFcs')">
+                        <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                    </div>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">❤️ तेरे नाम से मेरी सुबह</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="tere-naam-se-meri-subah.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="video-wrapper">
-                    <a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">🎉 Happy 19th Birthday Harshika ❤️ | Emotional Song</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy 19th Birthday Harshika')"><i class="fas fa-music"></i> Play</button>
-                        <a href="happy-birthday-harshika.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'GBXiOsFb77w')">
+                        <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song">
+                        <button class="play-btn"><i class="fas fa-play"></i></button>
                     </div>
-                </div>
-                
-                <div class="video-wrapper">
-                    <a href="https://youtu.be/OqYiYRsg9rQ" target="_blank" class="video-thumbnail"><img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Song"><button class="play-btn"><i class="fas fa-play"></i></button></a>
-                    <h3 class="trailer-title" style="padding: 0 15px;">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Love Song</h3>
-                    <div class="btn-group">
-                        <button class="play-audio-btn" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')"><i class="fas fa-music"></i> Play</button>
-                        <a href="teri-roshni-mein.mp3" download class="download-btn"><i class="fas fa-download"></i> Download MP3</a>
+                    <h3 class="trailer-title" style="padding: 10px 15px 0;">🎉 Happy 19th Birthday Harshika ❤️</h3>
+                    <div class="action-icons-group">
+                        <a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="icon-btn yt-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i></a>
+                        <button class="icon-btn mp3-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy 19th Birthday Harshika')" title="Play Audio"><i class="fas fa-music"></i></button>
+                        <a href="happy-birthday-harshika.mp3" download class="icon-btn dl-btn" title="Download MP3"><i class="fas fa-download"></i></a>
                     </div>
                 </div>
                 
@@ -509,13 +538,14 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER -->
+    <!-- 🎵 SPINNING CD CUSTOM MUSIC PLAYER -->
     <div class="music-player">
-        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+        <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
         <div class="track-info">
-            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme Song</p>
+            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
             <p class="track-artist">DK ATOVITT</p>
         </div>
+        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
         <audio id="bgMusic" loop>
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
         </audio>
@@ -574,11 +604,19 @@
             }
         }
 
-        /* 🎵 DYNAMIC MUSIC PLAYER SCRIPT */
+        /* 🔥 INLINE VIDEO PLAY SCRIPT 🔥 */
+        function playInlineVideo(element, videoId) {
+            const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="aspect-ratio: 16/9; border-radius: 8px; display: block;"></iframe>`;
+            element.innerHTML = iframeHTML;
+            element.onclick = null;
+        }
+
+        /* 🎵 DYNAMIC MUSIC PLAYER WITH SPINNING CD SCRIPT */
         const audio = document.getElementById('bgMusic');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const trackNameElement = document.getElementById('trackName');
         const audioSource = document.getElementById('audioSource');
+        const cdAnim = document.getElementById('cdAnim');
 
         function playSong(fileName, songTitle) {
             audioSource.src = fileName;
@@ -586,16 +624,24 @@
             audio.play();
             trackNameElement.innerText = songTitle;
             playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            cdAnim.classList.add('playing'); // Start CD spin
         }
 
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cdAnim.classList.add('playing');
             } else {
                 audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                cdAnim.classList.remove('playing');
             }
+        });
+        
+        audio.addEventListener('ended', () => {
+            cdAnim.classList.remove('playing');
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
         });
     </script>
 </body>
