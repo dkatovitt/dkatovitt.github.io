@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+
         /* 🌟 GLOBAL FIXES & HEADER */
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
@@ -38,8 +41,8 @@
         @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
 
         /* 🌟 ECOSYSTEM PAGE CSS */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
-        .eco-hero { padding: 150px 20px 80px 20px; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); border-bottom: 1px solid #333; }
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin-top: 100px; /* Add margin for fixed header */ }
+        .eco-hero { padding: 80px 20px; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); border-bottom: 1px solid #333; }
         .eco-title { font-size: 50px; color: #e6c875; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 15px 0; text-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
         .eco-subtitle { font-size: 18px; color: #fff; max-width: 800px; margin: 0 auto 30px auto; line-height: 1.8; }
         .eco-title span { color: #fff; }
@@ -176,10 +179,9 @@
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
         </a>
         <div class="sub-menu" id="ecoSub">
-            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -195,7 +197,7 @@
     <div class="eco-grid">
         
         <!-- Earn with DK Sir -->
-        <div class="eco-card reveal">
+        <div class="eco-card reveal" id="earn-with-dk-sir" style="scroll-margin-top: 100px;">
             <video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline></video>
             <h3>Earn With DK Sir</h3>
             <p>Your gateway to financial freedom. Learn the secrets of digital growth, marketing, and network building directly from DK Sir. An exclusive platform designed to help you earn while you grow.</p>
@@ -211,7 +213,7 @@
         </div>
 
         <!-- Kalpamrit -->
-        <div class="eco-card reveal">
+        <div class="eco-card reveal" id="kalpamrit" style="scroll-margin-top: 100px;">
             <video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video>
             <h3>Kalpamrit</h3>
             <p>Health is the ultimate wealth. Partnering with Kalpamrit, we bring you world-class Ayurvedic and wellness products. Join the movement to build a healthier society and a robust business network.</p>
@@ -219,7 +221,7 @@
         </div>
 
         <!-- ATVT -->
-        <div class="eco-card reveal">
+        <div class="eco-card reveal" id="atvt" style="scroll-margin-top: 100px;">
             <video src="images/partners/atvt-logo.mp4" autoplay loop muted playsinline></video>
             <h3>ATVT (Crypto/Tech)</h3>
             <p>Embracing the future of digital finance. ATVT powers our ecosystem with next-generation blockchain technology and tokenization, providing secure, transparent, and global financial solutions.</p>
