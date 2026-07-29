@@ -408,7 +408,7 @@
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
             
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
-                <i class="fas fa-redo" style="color:#e6c875;"></i>
+                <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
             </button>
 
         </div>
@@ -468,7 +468,7 @@
         reveal(); 
 
         /* 🔥 ADVANCED PLAYLIST ENGINE (AUDIO ONLY) 🔥 */
-        // Now containing all 8 songs!
+        // All 8 Songs included!
         const playlist = [
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
             { file: 'aaj-ki-shaam.mp3', title: 'आज की शाम है खुशियों के नाम' },
@@ -533,20 +533,20 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 ROCK-SOLID LOOP MODE LOGIC 🔥
+        // 🔥 PERFECT ALIGNED LOOP MODE LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                // Native HTML superscript '1' added cleanly next to icon
-                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875;"></i><sup style="font-size:10px; font-weight:bold; color:#e6c875; margin-left:1px;">1</sup>';
+                // Perfectly centered '1' inside the arrows
+                loopBtn.innerHTML = '<div style="position:relative; display:flex; align-items:center; justify-content:center; width:20px; height:20px;"><i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i><span style="position:absolute; font-size:8.5px; font-weight:900; color:#e6c875;">1</span></div>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                // Only the icon for "Play All"
-                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875;"></i>';
+                // Standard Play All arrows
+                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
         }
