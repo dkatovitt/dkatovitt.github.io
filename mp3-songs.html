@@ -118,7 +118,7 @@
         .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
         
         .player-controls { display: flex; align-items: center; gap: 6px; }
-        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; }
+        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; }
         .control-btn:hover { color: #e6c875; transform: scale(1.1); }
         .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; }
         .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
@@ -311,6 +311,30 @@
                 </div>
             </div>
 
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('happy-birthday-harshika.mp3', 'Happy Birthday Harshika')">
+                    <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Happy Birthday Harshika">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">🎉 Happy Birthday Harshika ❤️ | Papa Ki Taraf Se Song</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy Birthday Harshika')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="happy-birthday-harshika.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')">
+                    <img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Teri Roshni Mein">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya ✨ | Romantic MP3</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="teri-roshni-mein.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -382,9 +406,11 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
+            
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
-                <i class="fas fa-repeat" style="color:#e6c875;"></i>
+                <i class="fas fa-redo" style="color:#e6c875;"></i>
             </button>
+
         </div>
         <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
@@ -442,14 +468,18 @@
         reveal(); 
 
         /* 🔥 ADVANCED PLAYLIST ENGINE (AUDIO ONLY) 🔥 */
+        // Now containing all 8 songs!
         const playlist = [
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
             { file: 'aaj-ki-shaam.mp3', title: 'आज की शाम है खुशियों के नाम' },
             { file: 'kalpamrit-ke-rahon-mein.mp3', title: 'Kalpamrit Ke Rahon Mein' },
             { file: 'shaam-dhale.mp3', title: 'शाम ढले जब पानी डोले' },
             { file: 'dipak-aur-ravi-dosti.mp3', title: 'दीपक और रवि - एक ही जान' },
-            { file: 'tere-naam-se-meri-subah.mp3', title: 'तेरे नाम से मेरी सुबह' }
+            { file: 'tere-naam-se-meri-subah.mp3', title: 'तेरे नाम से मेरी सुबह' },
+            { file: 'happy-birthday-harshika.mp3', title: 'Happy Birthday Harshika' },
+            { file: 'teri-roshni-mein.mp3', title: 'Teri Roshni Mein Kho Gaya' }
         ];
+        
         let currentSongIndex = 0;
         let loopMode = 'all'; // 'all' or 'one'
 
@@ -503,18 +533,20 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 CSS TRICK FOR '1' ICON IN LOOP MODE 🔥
+        // 🔥 ROCK-SOLID LOOP MODE LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                loopBtn.innerHTML = '<span style="position:relative; display:inline-flex; align-items:center; justify-content:center;"><i class="fas fa-repeat" style="color:#e6c875;"></i><span style="position:absolute; font-size:8px; font-weight:bold; color:#e6c875;">1</span></span>';
+                // Native HTML superscript '1' added cleanly next to icon
+                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875;"></i><sup style="font-size:10px; font-weight:bold; color:#e6c875; margin-left:1px;">1</sup>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                loopBtn.innerHTML = '<i class="fas fa-repeat" style="color:#e6c875;"></i>';
+                // Only the icon for "Play All"
+                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
         }
