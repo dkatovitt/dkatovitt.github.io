@@ -100,14 +100,19 @@
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        /* 🔥 MUSIC PLAYER WITH SPINNING CD 🔥 */
+        /* 🔥 MUSIC PLAYER WITH "SMART PROGRESS CD" 🔥 */
         .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 25px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
         .music-player.active { display: flex; animation: slideUp 0.4s ease; }
         @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        .cd-spin { width: 45px; height: 45px; border-radius: 50%; background: #222; border: 2px solid #e6c875; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #e6c875; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); flex-shrink: 0; }
+        /* CD Progress Ring CSS */
+        .cd-wrapper { position: relative; width: 45px; height: 45px; flex-shrink: 0; }
+        .cd-spin { position: absolute; top: 2px; left: 2px; width: 41px; height: 41px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6c875; z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
         .cd-spin.playing { animation: spin 3s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        /* Conic Gradient for Circular Progress Bar */
+        .cd-progress { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#333 100%, transparent 0); z-index: 1; transition: background 0.1s linear; }
 
         .track-info { display: flex; flex-direction: column; max-width: 180px; }
         .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -119,7 +124,8 @@
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } 
             .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
-            .cd-spin { width: 40px; height: 40px; font-size: 18px; }
+            .cd-wrapper { width: 40px; height: 40px; }
+            .cd-spin { width: 36px; height: 36px; font-size: 16px; top: 2px; left: 2px; }
             .track-info { max-width: 130px; }
             .track-name { font-size: 12px; }
             .play-pause-btn { font-size: 18px; }
@@ -334,8 +340,6 @@
                     </div>
                 </div>
                 <h3 class="trailer-title" style="padding: 10px 15px 0;">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙</h3>
-                
-                <!-- 3 SMART BUTTONS ROW -->
                 <div class="btn-group-3">
                     <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
                     <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
@@ -578,15 +582,18 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER WITH CD SPIN -->
+    <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD -->
     <div class="music-player">
-        <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        <div class="cd-wrapper">
+            <div class="cd-progress" id="cdProgress"></div>
+            <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        </div>
         <div class="track-info">
             <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
             <p class="track-artist">DK ATOVITT</p>
         </div>
         <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
-        <audio id="bgMusic" loop>
+        <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
         </audio>
     </div>
@@ -644,27 +651,31 @@
         const audioSource = document.getElementById('audioSource');
         const musicPlayer = document.querySelector('.music-player');
         const cdAnim = document.getElementById('cdAnim');
+        const cdProgress = document.getElementById('cdProgress');
+
+        // Update CD Progress Circle
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                // Update conic-gradient dynamically
+                cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
+            }
+        });
 
         // VIDEO PLAY FUNCTION
         function playInlineVideo(element, videoId) {
-            // 1. Stop audio if playing
             if (!audio.paused) {
                 audio.pause();
                 playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
                 cdAnim.classList.remove('playing');
             }
-
-            // 2. Stop previously playing video
             if (activeVideoContainer && activeVideoContainer !== element) {
                 activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
             }
-
-            // 3. Play new Video
             activeVideoContainer = element;
             element.querySelector('.thumbnail-content').style.display = 'none'; 
-            
             if(!element.querySelector('iframe')) {
                 const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="aspect-ratio: 16/9; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
                 element.insertAdjacentHTML('beforeend', iframeHTML);
@@ -673,23 +684,18 @@
 
         // AUDIO PLAY FUNCTION
         function playSong(fileName, songTitle) {
-            // 1. Stop video if playing
             if (activeVideoContainer) {
                 activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
                 activeVideoContainer = null;
             }
-
-            // 2. Show Music Player
             musicPlayer.classList.add('active');
-
-            // 3. Load & Play new song
             if (!audioSource.src.endsWith(fileName)) {
                 audioSource.src = fileName;
                 audio.load();
+                cdProgress.style.background = `conic-gradient(#333 100%, transparent 0)`; // Reset progress
             }
-            
             audio.play();
             trackNameElement.innerText = songTitle;
             playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -718,6 +724,7 @@
         audio.addEventListener('ended', () => {
             playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
             cdAnim.classList.remove('playing');
+            cdProgress.style.background = `conic-gradient(#333 100%, transparent 0)`; // Reset progress on end
         });
     </script>
 </body>
