@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
+        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+
         /* 🌟 GLOBAL FIXES & HEADER */
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
@@ -47,7 +50,7 @@
         /* 🌟 TRAILERS PAGE CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
         
-        .trailer-header { padding: 120px 20px 40px 20px; text-align: center; background: radial-gradient(circle at top, #1a0505 0%, #050505 100%); border-bottom: 1px solid #222; }
+        .trailer-header { padding: 140px 20px 40px 20px; text-align: center; background: radial-gradient(circle at top, #1a0505 0%, #050505 100%); border-bottom: 1px solid #222; }
         .page-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 3px; }
         .page-subtitle { font-size: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
@@ -81,11 +84,9 @@
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
         
-        /* 🌟 Moving Right to Left - 80s for smooth speed with 18 images */
         .slider-track { display: inline-flex; animation: scroll-right-to-left 80s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
-        /* 🌟 Tall (Portrait) Image Style exactly like Homepage */
         .slider-track img { 
             height: 380px; 
             width: 250px; 
@@ -150,7 +151,8 @@
         </div>
     </header>
 
-        <div class="side-menu" id="sideMenu">
+    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & PARTNERS DROPDOWN -->
+    <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
@@ -185,15 +187,22 @@
             <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
         </div>
 
-        <!-- 🔥 GALLERY PAGE LINK -->
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
-        <!-- 🔥 AUDITIONS PAGE LINK -->
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <a href="index.html#partners"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</a>
+        <!-- 🔥 NEW: ECOSYSTEM & PARTNERS DROPDOWN -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+        </a>
+        <div class="sub-menu" id="ecoSub">
+            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
+            <a href="ecosystem.html"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+        </div>
+        
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
         <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     <div id="overlay"></div>
@@ -273,13 +282,12 @@
         </div>
     </section>
 
-    <!-- 🔥 MOVIE GALLERY SLIDER (HOMEPAGE STYLE - SLIDE1 to SLIDE18) -->
+    <!-- 🔥 MOVIE GALLERY SLIDER -->
     <section class="trailer-gallery-section reveal">
         <h2 class="section-heading" style="max-width: 1100px; margin: 0 auto 30px auto; border: none; padding-left: 0; text-align: center;">MOVIE GALLERY</h2>
         <div class="slider-container">
             <div class="slider-track" id="gallery-track">
                 
-                <!-- GROUP 1: All 18 slides -->
                 <img src="images/movies/slide1.png" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+1'">
                 <img src="images/movies/slide2.png" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+2'">
                 <img src="images/movies/slide3.png" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+3'">
@@ -299,7 +307,6 @@
                 <img src="images/movies/slide17.png" alt="Slide 17" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+17'">
                 <img src="images/movies/slide18.png" alt="Slide 18" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+18'">
                 
-                <!-- GROUP 2: (Duplicate for smooth infinite loop) -->
                 <img src="images/movies/slide1.png" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+1'">
                 <img src="images/movies/slide2.png" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+2'">
                 <img src="images/movies/slide3.png" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+3'">
@@ -323,56 +330,113 @@
         </div>
     </section>
 
-    <footer class="tseries-footer">
+    <!-- 🔥 UPDATED MEGA FOOTER -->
+    <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="footer-video-logo"></video>
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
-                <h4>Movies & Media</h4><ul><li><a href="index.html#home">Home</a></li><li><a href="index.html#movies-section">Featured Movie</a></li><li><a href="trailers.html">Official Trailer</a></li><li><a href="movie-songs.html">Movie Songs</a></li><li><a href="index.html#gallery">Gallery</a></li></ul>
+                <h4>Movies & Media</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#movies-section">Featured Movie</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Join Us</h4><ul><li><a href="index.html#audition-section">Auditions</a></li><li><a href="index.html#partners">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>About Us</h4><ul><li><a href="ceo.html">About CEO</a></li><li><a href="company.html">About Company</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="ceo.html">About CEO & Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Legal & Help</h4><ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
+                <h4>Legal & Help</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="notice.html">Public Notice</a></li>
+                    <li><a href="faq.html">Help / FAQs</a></li>
+                </ul>
             </div>
         </div>
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
-            <div class="tseries-footer-socials"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a><a href="#" target="_blank"><i class="fab fa-facebook"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></div>
+            <div class="tseries-footer-socials">
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/919330332929" class="whatsapp-float" style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center; text-decoration:none;" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- JavaScript -->
     <script>
-        const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
-        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay');
         
-        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
+            }); 
+        }); 
+        
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
-        
-        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal); reveal(); 
 
+        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
-            if(subMenu.classList.contains('active')) {
-                subMenu.classList.remove('active');
-                icon.classList.remove('rotate');
-            } else {
-                document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
-                document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
-                subMenu.classList.add('active');
-                icon.classList.add('rotate');
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
             }
         }
+
+        // Reveal animations
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { 
+                    reveals[i].classList.add('active'); 
+                } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal); 
+        reveal(); 
     </script>
 </body>
 </html>
