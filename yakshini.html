@@ -9,11 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        /* 🔥 FIXED HEADER CSS */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
-        /* 🌟 GLOBAL FIXES & HEADER */
-        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -32,20 +31,31 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
         
-        /* 🔥 SIDE MENU DROPDOWN CSS */
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
+        /* 🔥 MENU DROPDOWN CSS */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
         .sub-menu a:hover { color: #fff !important; }
-        .dropdown-icon { transition: transform 0.3s; font-size: 14px; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
 
         /* 🌟 YAKSHINI PAGE CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
@@ -78,6 +88,54 @@
             .movie-poster-large, .movie-info-text { width: 100%; }
         }
 
+        /* 🔥 SMART INLINE VIDEO PLAYER & 3 BUTTONS CSS 🔥 */
+        .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 12px; overflow: hidden; border: 2px solid #333; box-shadow: 0 10px 25px rgba(0,0,0,0.8); margin-bottom: 20px; cursor: pointer; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .thumbnail-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .thumbnail-content img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .video-wrapper:hover .thumbnail-content img { transform: scale(1.05); }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 70px; height: 70px; font-size: 28px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .video-wrapper:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
+
+        .btn-group-3 { display: flex; justify-content: flex-start; align-items: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+        .smart-btn { background: transparent; padding: 10px 20px; border-radius: 25px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
+        .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
+        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
+        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
+        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
+        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        @media (max-width: 768px) {
+            .btn-group-3 { justify-content: center; gap: 6px; }
+            .smart-btn { padding: 8px 12px; font-size: 11px; gap: 4px; }
+            .play-btn { width: 55px; height: 55px; font-size: 20px; }
+        }
+
+        /* 🔥 MUSIC PLAYER WITH SPINNING CD 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 25px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .cd-spin { width: 45px; height: 45px; border-radius: 50%; background: #222; border: 2px solid #e6c875; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #e6c875; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); flex-shrink: 0; }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .track-info { display: flex; flex-direction: column; max-width: 180px; }
+        .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-artist { color: #888; font-size: 11px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 20px; cursor: pointer; transition: 0.3s; padding: 0 5px; }
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
+
+        @media (max-width: 768px) { 
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
+            .cd-spin { width: 40px; height: 40px; font-size: 18px; }
+            .track-info { max-width: 130px; }
+            .track-name { font-size: 12px; }
+            .play-pause-btn { font-size: 18px; }
+        }
+
         /* 🔥 CAST & CREW SECTION */
         .cast-section { padding: 60px 20px; background: #0a0a0a; text-align: center; border-top: 1px solid #222; }
         .section-title { color: #e6c875; font-size: 35px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; font-family: 'Playfair Display', serif; }
@@ -101,28 +159,10 @@
         .slider-track { display: inline-flex; animation: scroll-left 30s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
         
-        .slider-track img { 
-            height: 250px; 
-            width: 400px; 
-            margin: 0 15px; 
-            border-radius: 10px; 
-            border: 2px solid #333; 
-            transition: 0.3s; 
-            object-fit: cover; 
-            background: #111; 
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+        .slider-track img { height: 250px; width: 400px; margin: 0 15px; border-radius: 10px; border: 2px solid #333; transition: 0.3s; object-fit: cover; background: #111; cursor: pointer; flex-shrink: 0; }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
-        
-        @keyframes scroll-left { 
-            0% { transform: translateX(-50%); } 
-            100% { transform: translateX(0); } 
-        }
-        
-        @media (max-width: 768px) {
-            .slider-track img { height: 180px; width: 300px; margin: 0 10px; }
-        }
+        @keyframes scroll-left { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        @media (max-width: 768px) { .slider-track img { height: 180px; width: 300px; margin: 0 10px; } }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -143,6 +183,11 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+        
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -165,7 +210,7 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & PARTNERS DROPDOWN -->
+    <!-- 🔥 MENU -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -191,7 +236,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -202,19 +246,17 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 NEW: ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
         </a>
         <div class="sub-menu" id="ecoSub">
             <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -222,6 +264,7 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🔥 PAGE HEADER -->
     <section class="movie-hero">
         <div class="reveal">
             <h1 class="yakshini-main-title">यक्षिणी</h1>
@@ -230,26 +273,39 @@
         </div>
     </section>
 
+    <!-- 🔥 MOVIE INFO & SMART INLINE VIDEO PLAYER 🔥 -->
     <section style="background: #050505; padding-bottom: 20px;">
         <div class="movie-details-container reveal">
             <div class="movie-poster-large">
                 <img src="images/movies/yakshini-poster.png" alt="Yakshini Official Poster">
             </div>
+            
             <div class="movie-info-text">
                 <h2>About The Movie</h2>
                 <p><strong>'यक्षिणी' (Yakshini)</strong> एक खौफनाक और दिल दहला देने वाली हॉरर-रोमांस कहानी है। कुछ जंगल सिर्फ रास्ता नहीं भूलवाते, बल्कि आपकी रूह का इम्तिहान लेते हैं। एक भयानक रहस्य, एक डरावनी रात और उस साये में छुपी यक्षिणी की सच्ची दास्तान, जो आपके रोंगटे खड़े कर देगी। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                 
                 <div class="ai-notice">
-                    <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है।</p>
+                    <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है.</p>
                     <span class="highlight">🎬 Mega Announcement: बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span>
                 </div>
                 
-                <!-- 🔥 BUTTONS UPDATED HERE 🔥 -->
-                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                    <a href="watch-movie.html" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important;"><i class="fas fa-play-circle"></i> Watch Movie</a>
-                    
-                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="login-btn-header" style="padding: 12px 25px !important; font-size: 16px !important; background: transparent; color: #fff !important; border-color: #fff !important;"><i class="fas fa-music"></i> Listen Movie</a>
+                <!-- 🔥 SMART INLINE VIDEO PLAYER INSTALLED HERE 🔥 -->
+                <div style="margin-top: 30px;">
+                    <div class="video-wrapper" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
+                        <div class="thumbnail-content">
+                            <img src="https://img.youtube.com/vi/Mek5HNkypTQ/maxresdefault.jpg" alt="Yakshini Trailer">
+                            <button class="play-btn"><i class="fas fa-play" style="margin-left: 5px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 🔥 3 SMART BUTTONS 🔥 -->
+                    <div class="btn-group-3">
+                        <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                        <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                        <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -360,7 +416,6 @@
         <div class="slider-container">
             <div class="slider-track">
                 
-                <!-- Group 1 -->
                 <img src="images/movies/gallery1.png" alt="Gallery Photo 1" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+1'">
                 <img src="images/movies/gallery2.png" alt="Gallery Photo 2" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+2'">
                 <img src="images/movies/gallery3.png" alt="Gallery Photo 3" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+3'">
@@ -368,7 +423,6 @@
                 <img src="images/movies/gallery5.png" alt="Gallery Photo 5" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+5'">
                 <img src="images/movies/gallery6.png" alt="Gallery Photo 6" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+6'">
                 
-                <!-- Group 2 (Duplicate for smooth loop) -->
                 <img src="images/movies/gallery1.png" alt="Gallery Photo 1" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+1'">
                 <img src="images/movies/gallery2.png" alt="Gallery Photo 2" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+2'">
                 <img src="images/movies/gallery3.png" alt="Gallery Photo 3" onerror="this.src='https://via.placeholder.com/400x250/11a/e6c875?text=Gallery+Photo+3'">
@@ -380,7 +434,7 @@
         </div>
     </section>
 
-    <!-- 🔥 UPDATED MEGA FOOTER -->
+    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -436,6 +490,19 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- 🎵 CUSTOM MUSIC PLAYER WITH CD SPIN -->
+    <div class="music-player">
+        <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        <div class="track-info">
+            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
+            <p class="track-artist">DK ATOVITT</p>
+        </div>
+        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+        <audio id="bgMusic" loop>
+            <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
@@ -454,7 +521,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -486,6 +553,78 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🔥 SMART LOGIC: STOPPING OVERLAPPING AUDIO/VIDEO 🔥 */
+        let activeVideoContainer = null;
+        const audio = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const trackNameElement = document.getElementById('trackName');
+        const audioSource = document.getElementById('audioSource');
+        const musicPlayer = document.querySelector('.music-player');
+        const cdAnim = document.getElementById('cdAnim');
+
+        // VIDEO PLAY FUNCTION
+        function playInlineVideo(element, videoId) {
+            if (!audio.paused) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+            if (activeVideoContainer && activeVideoContainer !== element) {
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+            }
+            activeVideoContainer = element;
+            element.querySelector('.thumbnail-content').style.display = 'none'; 
+            if(!element.querySelector('iframe')) {
+                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
+                element.insertAdjacentHTML('beforeend', iframeHTML);
+            }
+        }
+
+        // AUDIO PLAY FUNCTION
+        function playSong(fileName, songTitle) {
+            if (activeVideoContainer) {
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+                activeVideoContainer = null;
+            }
+            musicPlayer.classList.add('active');
+            if (!audioSource.src.endsWith(fileName)) {
+                audioSource.src = fileName;
+                audio.load();
+            }
+            audio.play();
+            trackNameElement.innerText = songTitle;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            cdAnim.classList.add('playing');
+        }
+
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                if (activeVideoContainer) {
+                    activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                    const oldIframe = activeVideoContainer.querySelector('iframe');
+                    if (oldIframe) oldIframe.remove();
+                    activeVideoContainer = null;
+                }
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cdAnim.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+            cdAnim.classList.remove('playing');
+        });
     </script>
 </body>
 </html>
