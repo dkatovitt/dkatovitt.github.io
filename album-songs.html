@@ -9,11 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        /* 🔥 FIXED HEADER CSS */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
-        /* 🌟 GLOBAL FIXES & HEADER */
-        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -32,20 +31,34 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
         
-        /* 🔥 SIDE MENU DROPDOWN CSS */
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
+        /* 🔥 MENU TEXT OVERFLOW FIX */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
         .sub-menu a:hover { color: #fff !important; }
-        .dropdown-icon { transition: transform 0.3s; font-size: 14px; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
 
         /* 🌟 SONGS PAGE CSS */
         body { background-color: #0a0a0a; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
@@ -59,19 +72,68 @@
         .songs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
         @media (max-width: 800px) { .songs-grid { grid-template-columns: 1fr; gap: 30px; } .page-title { font-size: 40px; } }
 
-        .song-card { background: #161616; border: 1px solid #2a2a2a; border-radius: 15px; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: 0.3s; }
+        /* 🔥 PREMIUM VIDEO THUMBNAIL DESIGN 🔥 */
+        .song-card { background: #111; border: 1px solid #2a2a2a; border-radius: 12px; padding-bottom: 15px; display: flex; flex-direction: column; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: 0.3s; overflow: hidden; }
         .song-card:hover { border-color: #e6c875; box-shadow: 0 15px 35px rgba(230,200,117,0.15); transform: translateY(-5px); }
+
+        .video-wrapper { position: relative; width: 100%; border-radius: 12px 12px 0 0; overflow: hidden; }
+        .video-thumbnail { position: relative; cursor: pointer; display: block; overflow: hidden; }
+        .thumbnail-content img { transition: transform 0.5s ease; width: 100%; display: block; }
+        .video-thumbnail:hover .thumbnail-content img { transform: scale(1.05); }
         
-        .video-box { width: 100%; position: relative; padding-bottom: 56.25%; border-radius: 10px; overflow: hidden; background: #000; border: 2px solid #222; margin-bottom: 20px; }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 65px; height: 65px; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .video-thumbnail:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
         
-        .song-title { color: #fff; font-size: 16px; font-weight: bold; text-align: center; margin: 0 0 25px 0; padding: 0 10px; line-height: 1.5; }
+        .trailer-title { color: #fff; font-size: 16px; font-weight: bold; text-align: center; margin: 15px 0; padding: 0 15px; line-height: 1.5; }
+
+        /* 🔥 3 SMART BUTTONS CSS (Left YT, Mid MP3, Right DL) 🔥 */
+        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: auto; flex-wrap: wrap; padding: 0 10px; }
+        .smart-btn { background: transparent; padding: 8px 16px; border-radius: 25px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
         
-        .song-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: auto; }
-        .btn-play { background: transparent; color: #e6c875; border: 2px solid #e6c875; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; letter-spacing: 1px; }
-        .btn-play:hover { background: #e6c875; color: #000; }
-        .btn-download { background: transparent; color: #fff; border: 2px solid #fff; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-size: 13px; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 8px; letter-spacing: 1px; }
-        .btn-download:hover { background: #fff; color: #000; }
+        .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
+        .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
+        
+        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
+        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
+        
+        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
+        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        @media (max-width: 768px) {
+            .btn-group-3 { gap: 6px; }
+            .smart-btn { padding: 6px 10px; font-size: 10px; gap: 4px; }
+            .trailer-title { font-size: 14px; }
+        }
+
+        /* 🌟 WHATSAPP BUTTON */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        /* 🔥 MUSIC PLAYER WITH SPINNING CD 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 25px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .cd-spin { width: 45px; height: 45px; border-radius: 50%; background: #222; border: 2px solid #e6c875; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #e6c875; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); flex-shrink: 0; }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .track-info { display: flex; flex-direction: column; max-width: 180px; }
+        .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-artist { color: #888; font-size: 11px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 20px; cursor: pointer; transition: 0.3s; padding: 0 5px; }
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
+
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } 
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
+            .cd-spin { width: 40px; height: 40px; font-size: 18px; }
+            .track-info { max-width: 130px; }
+            .track-name { font-size: 12px; }
+            .play-pause-btn { font-size: 18px; }
+        }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -92,11 +154,6 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
-        
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -184,55 +241,79 @@
         </div>
     </section>
 
-    <!-- 🎬 SONGS GRID -->
+    <!-- 🎬 SONGS GRID WITH NEW PREMIUM LAYOUT -->
     <section class="songs-container">
         <div class="songs-grid">
             
             <!-- Song 1 -->
             <div class="song-card reveal">
-                <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/eTYetclIVbM?rel=0" title="Dosti Yaari Zindabad" allowfullscreen></iframe>
+                <div class="video-wrapper">
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'eTYetclIVbM')">
+                        <div class="thumbnail-content">
+                            <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Song">
+                            <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="song-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song</h3>
-                <div class="song-buttons">
-                    <a href="https://youtu.be/eTYetclIVbM" target="_blank" class="btn-play"><i class="fas fa-music"></i> PLAY</a>
-                    <a href="#" class="btn-download" onclick="alert('Download Feature Coming Soon!')"><i class="fas fa-download"></i> DOWNLOAD MP3</a>
+                <h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Dosti Yaari Zindabad | Official Friendship Song</h3>
+                <div class="btn-group-3">
+                    <a href="https://youtu.be/eTYetclIVbM" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="dipak-aur-ravi-dosti.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
             </div>
 
             <!-- Song 2 -->
             <div class="song-card reveal">
-                <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/-08OXkmPFcs?rel=0" title="Tere Naam Se Meri Subah" allowfullscreen></iframe>
+                <div class="video-wrapper">
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, '-08OXkmPFcs')">
+                        <div class="thumbnail-content">
+                            <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Song">
+                            <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="song-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3>
-                <div class="song-buttons">
-                    <a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="btn-play"><i class="fas fa-music"></i> PLAY</a>
-                    <a href="#" class="btn-download" onclick="alert('Download Feature Coming Soon!')"><i class="fas fa-download"></i> DOWNLOAD MP3</a>
+                <h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Dipak Aur Puja Ki Romantic Love Story | Official Music Video</h3>
+                <div class="btn-group-3">
+                    <a href="https://youtu.be/-08OXkmPFcs" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="tere-naam-se-meri-subah.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
             </div>
 
             <!-- Song 3 -->
             <div class="song-card reveal">
-                <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/OqYiYRsg9rQ?rel=0" title="Teri Roshni Mein Kho Gaya" allowfullscreen></iframe>
+                <div class="video-wrapper">
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'OqYiYRsg9rQ')">
+                        <div class="thumbnail-content">
+                            <img src="https://img.youtube.com/vi/OqYiYRsg9rQ/hqdefault.jpg" alt="Song">
+                            <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="song-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song</h3>
-                <div class="song-buttons">
-                    <a href="https://youtu.be/OqYiYRsg9rQ" target="_blank" class="btn-play"><i class="fas fa-music"></i> PLAY</a>
-                    <a href="#" class="btn-download" onclick="alert('Download Feature Coming Soon!')"><i class="fas fa-download"></i> DOWNLOAD MP3</a>
+                <h3 class="trailer-title">❤️ Teri Roshni Mein Kho Gaya Hoon Main ✨ | Dipak ❤️ Puja Romantic Love Song</h3>
+                <div class="btn-group-3">
+                    <a href="https://youtu.be/OqYiYRsg9rQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('teri-roshni-mein.mp3', 'Teri Roshni Mein Kho Gaya')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="teri-roshni-mein.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
             </div>
 
             <!-- Song 4 -->
             <div class="song-card reveal">
-                <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/GBXiOsFb77w?rel=0" title="Happy Birthday Harshika" allowfullscreen></iframe>
+                <div class="video-wrapper">
+                    <div class="video-thumbnail" onclick="playInlineVideo(this, 'GBXiOsFb77w')">
+                        <div class="thumbnail-content">
+                            <img src="https://img.youtube.com/vi/GBXiOsFb77w/hqdefault.jpg" alt="Song">
+                            <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="song-title">🎉 Happy Birthday Harshika ❤️ | Papa Ki Taraf Se Special Emotional Birthday Song</h3>
-                <div class="song-buttons">
-                    <a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="btn-play"><i class="fas fa-music"></i> PLAY</a>
-                    <a href="#" class="btn-download" onclick="alert('Download Feature Coming Soon!')"><i class="fas fa-download"></i> DOWNLOAD MP3</a>
+                <h3 class="trailer-title">🎉 Happy Birthday Harshika ❤️ | Papa Ki Taraf Se Special Emotional Birthday Song</h3>
+                <div class="btn-group-3">
+                    <a href="https://youtu.be/GBXiOsFb77w" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('happy-birthday-harshika.mp3', 'Happy Birthday Harshika')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="happy-birthday-harshika.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
             </div>
 
@@ -295,6 +376,19 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- 🎵 CUSTOM MUSIC PLAYER WITH CD SPIN -->
+    <div class="music-player">
+        <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        <div class="track-info">
+            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
+            <p class="track-artist">DK ATOVITT</p>
+        </div>
+        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+        <audio id="bgMusic" loop>
+            <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
@@ -313,7 +407,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -345,6 +439,78 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🔥 SMART LOGIC: STOPPING OVERLAPPING AUDIO/VIDEO 🔥 */
+        let activeVideoContainer = null;
+        const audio = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const trackNameElement = document.getElementById('trackName');
+        const audioSource = document.getElementById('audioSource');
+        const musicPlayer = document.querySelector('.music-player');
+        const cdAnim = document.getElementById('cdAnim');
+
+        // VIDEO PLAY FUNCTION
+        function playInlineVideo(element, videoId) {
+            if (!audio.paused) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+            if (activeVideoContainer && activeVideoContainer !== element) {
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+            }
+            activeVideoContainer = element;
+            element.querySelector('.thumbnail-content').style.display = 'none'; 
+            if(!element.querySelector('iframe')) {
+                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
+                element.insertAdjacentHTML('beforeend', iframeHTML);
+            }
+        }
+
+        // AUDIO PLAY FUNCTION
+        function playSong(fileName, songTitle) {
+            if (activeVideoContainer) {
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+                activeVideoContainer = null;
+            }
+            musicPlayer.classList.add('active');
+            if (!audioSource.src.endsWith(fileName)) {
+                audioSource.src = fileName;
+                audio.load();
+            }
+            audio.play();
+            trackNameElement.innerText = songTitle;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            cdAnim.classList.add('playing');
+        }
+
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                if (activeVideoContainer) {
+                    activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                    const oldIframe = activeVideoContainer.querySelector('iframe');
+                    if (oldIframe) oldIframe.remove();
+                    activeVideoContainer = null;
+                }
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cdAnim.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+            cdAnim.classList.remove('playing');
+        });
     </script>
 </body>
 </html>
