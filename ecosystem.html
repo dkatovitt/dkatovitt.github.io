@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        /* 🔥 FIXED HEADER CSS */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
-
-        /* 🌟 GLOBAL FIXES & HEADER */
-        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding: 10px 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -40,17 +38,49 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
 
+        /* 🔥 MENU TEXT OVERFLOW FIX (Perfectly fixed now) */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        
+        /* Fixed Line Breaking & Text cut-off */
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
+        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
+        .sub-menu a:hover { color: #fff !important; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
+
         /* 🌟 ECOSYSTEM PAGE CSS */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin-top: 100px; /* Add margin for fixed header */ }
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin-top: 100px; }
         .eco-hero { padding: 80px 20px; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); border-bottom: 1px solid #333; }
         .eco-title { font-size: 50px; color: #e6c875; text-transform: uppercase; letter-spacing: 3px; margin: 0 0 15px 0; text-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
         .eco-subtitle { font-size: 18px; color: #fff; max-width: 800px; margin: 0 auto 30px auto; line-height: 1.8; }
         .eco-title span { color: #fff; }
 
-        .eco-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1100px; margin: -40px auto 60px auto; padding: 0 20px; position: relative; z-index: 10; }
-        @media (max-width: 768px) { .eco-grid { grid-template-columns: 1fr; gap: 30px; margin-top: -20px; } .eco-title { font-size: 32px; } }
+        /* 🔥 GRID CSS UPDATED FOR SINGLE ITEM VIEW 🔥 */
+        .eco-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1100px; margin: -40px auto 60px auto; padding: 0 20px; position: relative; z-index: 10; transition: 0.3s; }
+        .eco-grid.single-view { grid-template-columns: 1fr; max-width: 600px; } /* Center single card beautifully */
         
-        .eco-card { background: #111; border: 1px solid #333; border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: 0.4s; overflow: hidden; position: relative; }
+        @media (max-width: 768px) { 
+            .eco-grid { grid-template-columns: 1fr; gap: 30px; margin-top: -20px; } 
+            .eco-grid.single-view { max-width: 100%; }
+            .eco-title { font-size: 32px; } 
+        }
+        
+        .eco-card { background: #111; border: 1px solid #333; border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); transition: 0.4s; overflow: hidden; position: relative; display: block; }
         .eco-card:hover { transform: translateY(-10px); border-color: #e6c875; box-shadow: 0 15px 40px rgba(230,200,117,0.15); }
         .eco-card video { width: 100%; height: 180px; object-fit: contain; mix-blend-mode: screen; transform: scale(1.3); margin-bottom: 20px; transition: 0.4s; }
         .eco-card:hover video { transform: scale(1.4); }
@@ -101,16 +131,6 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
-
-        /* 🔥 NEW: SIDE MENU DROPDOWN CSS ADDED HERE */
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
-        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
-        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
-        .sub-menu a:hover { color: #fff !important; }
-        .dropdown-icon { transition: transform 0.3s; font-size: 14px; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -133,7 +153,6 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & PARTNERS DROPDOWN 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -159,7 +178,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -173,12 +191,13 @@
         
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 NEW: ECOSYSTEM & PARTNERS DROPDOWN -->
+        <!-- 🔥 ECOSYSTEM HASH LINKS UPDATED 🔥 -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
         </a>
         <div class="sub-menu" id="ecoSub">
+            <a href="ecosystem.html#all"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
             <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
             <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
             <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
@@ -194,34 +213,35 @@
         <p class="eco-subtitle">We are not just a Movie Production House; we are a massive digital network connecting Cinema, Wellness, and Digital Finance. Join the revolution and create your path to success.</p>
     </section>
 
-    <div class="eco-grid">
+    <!-- 🔥 CARDS GRID WITH IDS -->
+    <div class="eco-grid" id="ecoGrid">
         
-        <!-- Earn with DK Sir -->
-        <div class="eco-card reveal" id="earn-with-dk-sir" style="scroll-margin-top: 100px;">
+        <!-- Card 1: Earn with DK Sir -->
+        <div class="eco-card reveal" id="earn-with-dk-sir">
             <video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline></video>
             <h3>Earn With DK Sir</h3>
             <p>Your gateway to financial freedom. Learn the secrets of digital growth, marketing, and network building directly from DK Sir. An exclusive platform designed to help you earn while you grow.</p>
             <a href="https://wa.me/919330332929" class="eco-btn" target="_blank">Start Earning</a>
         </div>
 
-        <!-- DK Atovitt -->
-        <div class="eco-card reveal">
+        <!-- Card 2: DK Atovitt -->
+        <div class="eco-card reveal" id="dk-atovitt">
             <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
             <h3>DK Atovitt Production</h3>
             <p>The heart of entertainment. We produce high-end 4K Cinematic Movies, Web Series, and Music Videos. Giving a 100% genuine platform and casting opportunities to fresh faces and raw talent.</p>
             <a href="index.html#movies" class="eco-btn">Explore Movies</a>
         </div>
 
-        <!-- Kalpamrit -->
-        <div class="eco-card reveal" id="kalpamrit" style="scroll-margin-top: 100px;">
+        <!-- Card 3: Kalpamrit -->
+        <div class="eco-card reveal" id="kalpamrit">
             <video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video>
             <h3>Kalpamrit</h3>
             <p>Health is the ultimate wealth. Partnering with Kalpamrit, we bring you world-class Ayurvedic and wellness products. Join the movement to build a healthier society and a robust business network.</p>
             <a href="https://wa.me/919330332929" class="eco-btn" target="_blank">View Products</a>
         </div>
 
-        <!-- ATVT -->
-        <div class="eco-card reveal" id="atvt" style="scroll-margin-top: 100px;">
+        <!-- Card 4: ATVT -->
+        <div class="eco-card reveal" id="atvt">
             <video src="images/partners/atvt-logo.mp4" autoplay loop muted playsinline></video>
             <h3>ATVT (Crypto/Tech)</h3>
             <p>Embracing the future of digital finance. ATVT powers our ecosystem with next-generation blockchain technology and tokenization, providing secure, transparent, and global financial solutions.</p>
@@ -285,7 +305,7 @@
         </div>
     </section>
 
-    <!-- 🔥 UPDATED MEGA FOOTER 🔥 -->
+    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -298,8 +318,8 @@
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
-                    <li><a href="index.html#trailer">Official Trailer</a></li>
-                    <li><a href="index.html#songs">Movie Songs</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
@@ -341,17 +361,12 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🔥 JAVASCRIPT FIXED FOR NEW DROPDOWN MENU -->
+    <!-- JavaScript -->
     <script>
-        const menuBtn = document.getElementById('menuBtn'); 
-        const sideMenu = document.getElementById('sideMenu'); 
-        const closeMenu = document.getElementById('closeMenu'); 
-        const overlay = document.getElementById('overlay');
-        
+        const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
-        // This ensures normal links close the menu, but dropdowns do not
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
@@ -360,7 +375,6 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -371,14 +385,12 @@
                 } else {
                     document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
                     document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
-                    
                     subMenu.classList.add('active');
                     if(icon) icon.classList.add('rotate');
                 }
             }
         }
 
-        // Reveal animations
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
@@ -391,7 +403,47 @@
             } 
         } 
         window.addEventListener('scroll', reveal); 
-        reveal(); 
+        
+        // 🔥 ECOSYSTEM FILTERING JAVASCRIPT LOGIC 🔥
+        function updateEcosystemView() {
+            const hash = window.location.hash;
+            const cards = document.querySelectorAll('.eco-card');
+            const grid = document.getElementById('ecoGrid');
+            
+            // अगर hash खाली है या '#all' है, तो चारों कार्ड दिखाओ
+            if (!hash || hash === '#all' || hash === '') {
+                cards.forEach(card => card.style.display = 'block');
+                grid.classList.remove('single-view');
+            } 
+            // अगर कोई स्पेसिफिक कैटेगरी क्लिक हुई है, तो सिर्फ उसे दिखाओ
+            else {
+                let found = false;
+                cards.forEach(card => {
+                    if ('#' + card.id === hash) {
+                        card.style.display = 'block';
+                        found = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // अगर कार्ड मिल गया, तो ग्रिड को सिंगल व्यू बना दो
+                if(found) {
+                    grid.classList.add('single-view');
+                } else {
+                    cards.forEach(card => card.style.display = 'block');
+                    grid.classList.remove('single-view');
+                }
+            }
+            
+            // एनीमेशन ट्रिगर करने के लिए और पेज के ऊपर हल्का सा स्क्रॉल करने के लिए
+            setTimeout(reveal, 100);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // पेज लोड होने पर और लिंक बदलने पर फंक्शन रन करें
+        window.addEventListener('load', updateEcosystemView);
+        window.addEventListener('hashchange', updateEcosystemView);
     </script>
 </body>
 </html>
