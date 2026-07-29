@@ -9,24 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🌟 GLOBAL CSS */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; }
-        
-        /* 🔥 HEADER FIX */
-        .header { position: fixed; width: 100%; top: 0; background: rgba(5, 5, 5, 0.95); z-index: 1000; border-bottom: 1px solid #222; }
-        .header .container { padding: 10px 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+
+        /* 🌟 GLOBAL FIXES & HEADER */
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
-        .desktop-logo-img { height: 75px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
         .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
-        .desktop-logo-text { font-size: 28px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
-        .desktop-logo-sub { font-size: 12px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
-        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; display: inline-block !important; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; display: inline-block !important; white-space: nowrap !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
 
         @media (max-width: 768px) {
-            .header .container { padding: 8px !important; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
             .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
@@ -38,16 +39,6 @@
         }
         
         /* 🔥 SIDE MENU DROPDOWN CSS */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 1001; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
-        .side-menu.active { left: 0; }
-        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
-        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
-        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 16px; transition: 0.3s; }
-        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; display: none; }
-        #overlay.active { display: block; }
-        
         .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
@@ -57,12 +48,15 @@
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* 🌟 GLOBAL CSS */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; }
+        
         /* 🔥 PARTNERS PAGE CSS */
-        .page-header { padding: 120px 20px 40px; text-align: center; background: #111; border-bottom: 1px solid #333; }
+        .page-header { padding: 160px 20px 40px; text-align: center; background: #111; border-bottom: 1px solid #333; }
         .page-header h1 { color: #e6c875; font-size: 45px; font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
         .page-header p { color: #aaa; font-size: 16px; margin-top: 10px; max-width: 700px; margin-left: auto; margin-right: auto; }
         
-        .partner-section { padding: 80px 20px; border-bottom: 1px solid #222; display: none; /* 🔥 छिपे रहेंगे जब तक क्लिक न हो */ min-height: 50vh; }
+        .partner-section { padding: 80px 20px; border-bottom: 1px solid #222; display: none; /* 🔥 छिपे रहेंगे जब तक क्लिक न हो */ min-height: 50vh; scroll-margin-top: 100px; }
         .partner-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 50px; }
         .partner-container.reverse { flex-direction: row-reverse; }
         
@@ -90,6 +84,7 @@
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
         .tseries-footer-col ul li { margin-bottom: 10px; }
@@ -99,6 +94,11 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -161,19 +161,20 @@
         
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 NEW MEDIA PARTNERS DROPDOWN 🔥 -->
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('partnersSub')">
-            <span style="color: #e6c875 !important;"><i class="fas fa-handshake" style="color:var(--primary-color); margin-right:12px;"></i> Media Partners</span>
-            <i class="fas fa-chevron-down dropdown-icon rotate" id="partnersIcon"></i>
+        <!-- 🔥 NEW ECOSYSTEM & MEDIA PARTNERS DROPDOWN 🔥 -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
+            <i class="fas fa-chevron-down dropdown-icon rotate" id="ecoIcon"></i>
         </a>
-        <div class="sub-menu active" id="partnersSub">
+        <div class="sub-menu active" id="ecoSub">
+            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
+            <!-- Local links because they represent tabs on THIS page -->
             <a href="#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
             <a href="#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
             <a href="#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem</a>
         <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     <div id="overlay"></div>
@@ -235,30 +236,57 @@
         </div>
     </section>
 
-    <!-- 🔥 FOOTER -->
-    <footer class="tseries-footer">
+    <!-- 🔥 UPDATED MEGA FOOTER 🔥 -->
+    <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="footer-video-logo"></video>
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
-                <h4>Movies & Media</h4><ul><li><a href="index.html#home">Home</a></li><li><a href="yakshini.html">Featured Movie</a></li><li><a href="trailers.html">Official Trailer</a></li><li><a href="movie-songs.html">Movie Songs</a></li><li><a href="gallery.html">Gallery</a></li></ul>
+                <h4>Movies & Media</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#movies-section">Featured Movie</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Join Us</h4><ul><li><a href="auditions.html">Auditions</a></li><li><a href="media-partners.html">Media Partners</a></li><li><a href="auth.html">Login / Signup</a></li></ul>
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>About Us</h4><ul><li><a href="ceo.html">About CEO</a></li><li><a href="company.html">About Company</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="ecosystem.html">Ecosystem</a></li></ul>
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="ceo.html">About CEO & Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
+                </ul>
             </div>
             <div class="tseries-footer-col">
-                <h4>Legal & Help</h4><ul><li><a href="terms.html">Terms & Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="notice.html">Public Notice</a></li><li><a href="faq.html">Help / FAQs</a></li></ul>
+                <h4>Legal & Help</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="notice.html">Public Notice</a></li>
+                    <li><a href="faq.html">Help / FAQs</a></li>
+                </ul>
             </div>
         </div>
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
-            <div class="tseries-footer-socials"><a href="#" target="_blank"><i class="fab fa-youtube"></i></a><a href="#" target="_blank"><i class="fab fa-facebook"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></div>
+            <div class="tseries-footer-socials">
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </footer>
 
@@ -267,23 +295,51 @@
 
     <!-- JavaScript -->
     <script>
-        const menuBtn = document.getElementById('menuBtn'); const sideMenu = document.getElementById('sideMenu'); const closeMenu = document.getElementById('closeMenu'); const overlay = document.getElementById('overlay');
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay');
+        
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
         // Auto-close menu when clicking inside page links
-        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); });
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
+            }); 
+        });
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
         
         function toggleSubMenu(id) {
-            const subMenu = document.getElementById(id); const icon = document.getElementById(id.replace('Sub', 'Icon'));
-            if(subMenu.classList.contains('active')) { subMenu.classList.remove('active'); icon.classList.remove('rotate'); } 
-            else { document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active')); document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate')); subMenu.classList.add('active'); icon.classList.add('rotate'); }
+            const subMenu = document.getElementById(id); 
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu.classList.contains('active')) { 
+                subMenu.classList.remove('active'); 
+                icon.classList.remove('rotate'); 
+            } 
+            else { 
+                document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active')); 
+                document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate')); 
+                subMenu.classList.add('active'); 
+                icon.classList.add('rotate'); 
+            }
         }
 
-        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal);
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { 
+                    reveals[i].classList.add('active'); 
+                } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal);
         
-        // 🔥 TAB SYSTEM LOGIC 🔥
+        // 🔥 TAB SYSTEM LOGIC (To switch sections smoothly without reloading) 🔥
         function updatePartnerView() {
             const hash = window.location.hash;
             const sections = document.querySelectorAll('.partner-section');
@@ -301,6 +357,9 @@
             
             // एनीमेशन ट्रिगर करने के लिए
             setTimeout(reveal, 100); 
+            
+            // Smooth scroll up so header doesn't cover title
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // पेज लोड होने पर और मेनू लिंक क्लिक होने पर चलायें
