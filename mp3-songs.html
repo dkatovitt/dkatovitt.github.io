@@ -214,7 +214,6 @@
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -394,7 +393,8 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs"><i class="fas fa-redo-alt" style="color:#e6c875;"></i></button>
+            <!-- 🔥 UPDATED LOOP BUTTON (No Red Color, uses '1' icon) 🔥 -->
+            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs"><i class="fas fa-repeat" style="color:#e6c875;"></i></button>
         </div>
         <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
@@ -514,18 +514,20 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // TOGGLE LOOP MODE (ALL vs ONE)
+        // 🔥 UPDATED TOGGLE LOOP MODE (Uses Original FA6 Icons for "1" and "All") 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                loopBtn.innerHTML = '<i class="fas fa-redo-alt" style="color:#ff4d4d;"></i>';
+                // 'fa-repeat-1' will show a (1) inside the arrows!
+                loopBtn.innerHTML = '<i class="fas fa-repeat-1" style="color:#e6c875;"></i>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                loopBtn.innerHTML = '<i class="fas fa-redo-alt" style="color:#e6c875;"></i>';
+                // 'fa-repeat' will show standard arrows for Play All!
+                loopBtn.innerHTML = '<i class="fas fa-repeat" style="color:#e6c875;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
         }
