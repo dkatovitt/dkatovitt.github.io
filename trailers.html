@@ -9,11 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
+        /* 🔥 FIXED HEADER CSS */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
-        /* 🌟 GLOBAL FIXES & HEADER */
-        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -32,20 +31,31 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
         
-        /* 🔥 SIDE MENU DROPDOWN CSS */
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between; align-items: center; width: 100%; cursor: pointer; }
+        /* 🔥 MENU TEXT OVERFLOW FIX */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
         .sub-menu a:hover { color: #fff !important; }
-        .dropdown-icon { transition: transform 0.3s; font-size: 14px; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
 
         /* 🌟 TRAILERS PAGE CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
@@ -54,14 +64,29 @@
         .page-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 3px; }
         .page-subtitle { font-size: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
 
-        /* 🔥 MAIN PREMIERE VIDEO */
+        /* 🔥 PREMIUM INLINE VIDEO THUMBNAILS (For Main Video) 🔥 */
         .main-premiere-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .main-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 15px; overflow: hidden; border: 2px solid #333; box-shadow: 0 15px 40px rgba(230,200,117,0.15); margin-bottom: 25px; }
+        .main-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 15px; overflow: hidden; border: 2px solid #333; box-shadow: 0 15px 40px rgba(230,200,117,0.15); margin-bottom: 25px; cursor: pointer; }
         .main-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .main-thumbnail-content img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .main-video-wrapper:hover .main-thumbnail-content img { transform: scale(1.05); }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 75px; height: 75px; font-size: 30px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .main-video-wrapper:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
+        
         .main-trailer-title { color: #fff; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
         .main-trailer-desc { color: #888; font-size: 15px; max-width: 800px; margin: 0 auto; }
 
-        /* 🔥 YOUTUBE SHORTS GRID */
+        /* 🔥 NEW 3 SMART BUTTONS CSS (Left YT, Mid MP3, Right DL) 🔥 */
+        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; padding: 0 10px; }
+        .smart-btn { background: transparent; padding: 8px 16px; border-radius: 25px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+        .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
+        .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
+        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
+        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
+        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
+        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        /* 🔥 YOUTUBE SHORTS GRID WITH INLINE PLAY 🔥 */
         .more-trailers-section { padding: 40px 20px 60px 20px; max-width: 1100px; margin: 0 auto; border-top: 1px solid #222; }
         .section-heading { color: #e6c875; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-left: 4px solid #e6c875; padding-left: 15px; }
         
@@ -72,43 +97,27 @@
         .trailer-card { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
         .trailer-card:hover { border-color: #e6c875; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
         
-        .shorts-video-wrapper { position: relative; width: 100%; padding-bottom: 177.77%; background: #000; }
+        .shorts-video-wrapper { position: relative; width: 100%; padding-bottom: 177.77%; background: #000; cursor: pointer; }
         .shorts-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .shorts-thumbnail-content img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .shorts-video-wrapper:hover .shorts-thumbnail-content img { transform: scale(1.05); }
+        .shorts-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .shorts-video-wrapper:hover .shorts-play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
         
         .trailer-info { padding: 15px 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
         .trailer-info h3 { color: #fff; font-size: 14px; margin: 0 0 5px 0; text-transform: uppercase; }
         .trailer-info p { color: #e6c875; font-size: 11px; margin: 0; font-weight: bold; }
 
-        /* 🔥 MOVIE GALLERY SLIDER CSS (PORTRAIT SIZE + RIGHT TO LEFT) */
+        /* 🔥 MOVIE GALLERY SLIDER CSS */
         .trailer-gallery-section { padding: 50px 0 70px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; text-align: center; }
         .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
         .slider-container::-webkit-scrollbar { display: none; }
-        
         .slider-track { display: inline-flex; animation: scroll-right-to-left 80s linear infinite; align-items: center; }
         .slider-track:hover { animation-play-state: paused; }
-        
-        .slider-track img { 
-            height: 380px; 
-            width: 250px; 
-            margin: 0 15px; 
-            border-radius: 10px; 
-            border: 2px solid #333; 
-            transition: 0.3s; 
-            object-fit: cover; 
-            background: #111; 
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+        .slider-track img { height: 380px; width: 250px; margin: 0 15px; border-radius: 10px; border: 2px solid #333; transition: 0.3s; object-fit: cover; background: #111; cursor: pointer; flex-shrink: 0; }
         .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
-        
-        @keyframes scroll-right-to-left { 
-            0% { transform: translateX(0); } 
-            100% { transform: translateX(-50%); } 
-        }
-        
-        @media (max-width: 768px) {
-            .slider-track img { height: 280px; width: 180px; margin: 0 10px; }
-        }
+        @keyframes scroll-right-to-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @media (max-width: 768px) { .slider-track img { height: 280px; width: 180px; margin: 0 10px; } }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -129,6 +138,38 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+
+        /* 🌟 WHATSAPP BUTTON */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        /* 🔥 MUSIC PLAYER WITH SPINNING CD 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 25px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .cd-spin { width: 45px; height: 45px; border-radius: 50%; background: #222; border: 2px solid #e6c875; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #e6c875; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); flex-shrink: 0; }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .track-info { display: flex; flex-direction: column; max-width: 180px; }
+        .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-artist { color: #888; font-size: 11px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 20px; cursor: pointer; transition: 0.3s; padding: 0 5px; }
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
+
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } 
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
+            .cd-spin { width: 40px; height: 40px; font-size: 18px; }
+            .track-info { max-width: 130px; }
+            .track-name { font-size: 12px; }
+            .play-pause-btn { font-size: 18px; }
+            .btn-group-3 { gap: 6px; }
+            .smart-btn { padding: 6px 10px; font-size: 10px; gap: 4px; }
+        }
     </style>
 </head>
 <body>
@@ -197,9 +238,9 @@
         </a>
         <div class="sub-menu" id="ecoSub">
             <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -215,33 +256,49 @@
         </div>
     </section>
 
-    <!-- 🎬 MAIN PREMIERE -->
+    <!-- 🎬 MAIN PREMIERE (UPDATED WITH SMART INLINE PLAY & 3 BUTTONS) -->
     <section class="main-premiere-section reveal">
-        <div class="main-video-wrapper">
-            <iframe src="https://www.youtube.com/embed/Mek5HNkypTQ?rel=0&modestbranding=1" title="Yakshini Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="main-video-wrapper" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
+            <div class="main-thumbnail-content">
+                <img src="https://img.youtube.com/vi/Mek5HNkypTQ/maxresdefault.jpg" alt="Yakshini Main Trailer">
+                <button class="play-btn"><i class="fas fa-play" style="margin-left: 5px;"></i></button>
+            </div>
         </div>
         <h2 class="main-trailer-title">यक्षिणी (Yakshini) - Official Movie Trailer</h2>
         <p class="main-trailer-desc">An upcoming Bollywood Horror-Romance masterpiece produced by DK Atovitt Production House. Watch the chilling mysteries unfold.</p>
+        
+        <!-- 3 Smart Buttons for Main Trailer -->
+        <div class="btn-group-3" style="margin-top: 20px;">
+            <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+            <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+            <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
+        </div>
     </section>
 
-    <!-- 🎬 YOUTUBE SHORTS GRID -->
+    <!-- 🎬 YOUTUBE SHORTS GRID (UPDATED WITH SMART INLINE PLAY) -->
     <section class="more-trailers-section reveal">
         <h2 class="section-heading">Yakshini - Teasers & Promos</h2>
         <div class="trailer-grid">
             
             <div class="trailer-card">
-                <div class="shorts-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/5PXJLvRFFqE?rel=0" title="Kalpamrit Jungle Mystery" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, '5PXJLvRFFqE')">
+                    <div class="shorts-thumbnail-content">
+                        <img src="https://img.youtube.com/vi/5PXJLvRFFqE/hqdefault.jpg" alt="Teaser">
+                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+                    </div>
                 </div>
                 <div class="trailer-info">
                     <h3>Kalpamrit Mystery</h3>
-                    <p>Official Short Promo</p>
+                    <p>Official Promo</p>
                 </div>
             </div>
 
             <div class="trailer-card">
-                <div class="shorts-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/j_OF3Y3DKIc?rel=0" title="Yakshini Teaser 1" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'j_OF3Y3DKIc')">
+                    <div class="shorts-thumbnail-content">
+                        <img src="https://img.youtube.com/vi/j_OF3Y3DKIc/hqdefault.jpg" alt="Teaser">
+                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+                    </div>
                 </div>
                 <div class="trailer-info">
                     <h3>Yakshini Teaser 1</h3>
@@ -250,8 +307,11 @@
             </div>
 
             <div class="trailer-card">
-                <div class="shorts-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/LHahM_4XCbQ?rel=0" title="Yakshini Teaser 2" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'LHahM_4XCbQ')">
+                    <div class="shorts-thumbnail-content">
+                        <img src="https://img.youtube.com/vi/LHahM_4XCbQ/hqdefault.jpg" alt="Teaser">
+                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+                    </div>
                 </div>
                 <div class="trailer-info">
                     <h3>Yakshini Teaser 2</h3>
@@ -260,8 +320,11 @@
             </div>
             
             <div class="trailer-card">
-                <div class="shorts-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/AJkHkmUw9tI?rel=0" title="Yakshini Teaser 3" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'AJkHkmUw9tI')">
+                    <div class="shorts-thumbnail-content">
+                        <img src="https://img.youtube.com/vi/AJkHkmUw9tI/hqdefault.jpg" alt="Teaser">
+                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+                    </div>
                 </div>
                 <div class="trailer-info">
                     <h3>Yakshini Teaser 3</h3>
@@ -270,8 +333,11 @@
             </div>
             
             <div class="trailer-card">
-                <div class="shorts-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/AdP6cAnyDec?rel=0" title="Yakshini Teaser 4" allowfullscreen></iframe>
+                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'AdP6cAnyDec')">
+                    <div class="shorts-thumbnail-content">
+                        <img src="https://img.youtube.com/vi/AdP6cAnyDec/hqdefault.jpg" alt="Teaser">
+                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+                    </div>
                 </div>
                 <div class="trailer-info">
                     <h3>Yakshini Teaser 4</h3>
@@ -307,6 +373,7 @@
                 <img src="images/movies/slide17.png" alt="Slide 17" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+17'">
                 <img src="images/movies/slide18.png" alt="Slide 18" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+18'">
                 
+                <!-- Repeat for infinite scroll effect -->
                 <img src="images/movies/slide1.png" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+1'">
                 <img src="images/movies/slide2.png" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+2'">
                 <img src="images/movies/slide3.png" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+3'">
@@ -387,6 +454,19 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center; text-decoration:none;" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- 🎵 CUSTOM MUSIC PLAYER WITH CD SPIN -->
+    <div class="music-player">
+        <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        <div class="track-info">
+            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
+            <p class="track-artist">DK ATOVITT</p>
+        </div>
+        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+        <audio id="bgMusic" loop>
+            <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
@@ -405,7 +485,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -437,6 +517,78 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🔥 SMART LOGIC: STOPPING OVERLAPPING AUDIO/VIDEO 🔥 */
+        let activeVideoContainer = null;
+        const audio = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const trackNameElement = document.getElementById('trackName');
+        const audioSource = document.getElementById('audioSource');
+        const musicPlayer = document.querySelector('.music-player');
+        const cdAnim = document.getElementById('cdAnim');
+
+        // VIDEO PLAY FUNCTION
+        function playInlineVideo(element, videoId) {
+            if (!audio.paused) {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+            if (activeVideoContainer && activeVideoContainer !== element) {
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+            }
+            activeVideoContainer = element;
+            element.querySelector('[class*="thumbnail-content"]').style.display = 'none'; 
+            if(!element.querySelector('iframe')) {
+                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
+                element.insertAdjacentHTML('beforeend', iframeHTML);
+            }
+        }
+
+        // AUDIO PLAY FUNCTION
+        function playSong(fileName, songTitle) {
+            if (activeVideoContainer) {
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                const oldIframe = activeVideoContainer.querySelector('iframe');
+                if (oldIframe) oldIframe.remove();
+                activeVideoContainer = null;
+            }
+            musicPlayer.classList.add('active');
+            if (!audioSource.src.endsWith(fileName)) {
+                audioSource.src = fileName;
+                audio.load();
+            }
+            audio.play();
+            trackNameElement.innerText = songTitle;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            cdAnim.classList.add('playing');
+        }
+
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                if (activeVideoContainer) {
+                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                    const oldIframe = activeVideoContainer.querySelector('iframe');
+                    if (oldIframe) oldIframe.remove();
+                    activeVideoContainer = null;
+                }
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cdAnim.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+            cdAnim.classList.remove('playing');
+        });
     </script>
 </body>
 </html>
