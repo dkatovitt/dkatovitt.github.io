@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3 Audio Songs - DK Atovitt</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🔥 FIXED HEADER CSS */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
+        
+        @media (max-width: 768px) {
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+        }
+
+        /* 🔥 MENU TEXT OVERFLOW FIX */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
+        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
+        .sub-menu a:hover { color: #fff !important; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
+
+        /* 🌟 AUDIO SONGS PAGE CSS */
+        body { background-color: #0a0a0a; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
+        
+        .page-header { padding: 160px 20px 60px 20px; text-align: center; background: radial-gradient(circle at top, #1a0505 0%, #0a0a0a 100%); border-bottom: 1px solid #222; }
+        .page-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+        .page-subtitle { font-size: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 3px; margin: 0; }
+
+        /* 🔥 AUDIO SONGS GRID (SQUARE ALBUM DESIGN) */
+        .songs-container { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .songs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        @media (max-width: 900px) { .songs-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; } }
+        @media (max-width: 600px) { .songs-grid { grid-template-columns: 1fr; gap: 30px; } .page-title { font-size: 35px; } }
+
+        .song-card { background: #111; border: 1px solid #2a2a2a; border-radius: 15px; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.9); transition: 0.3s; }
+        .song-card:hover { border-color: #e6c875; box-shadow: 0 15px 35px rgba(230,200,117,0.15); transform: translateY(-5px); }
+
+        /* 🔥 SQUARE ALBUM COVER CSS 🔥 */
+        .audio-cover { width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; position: relative; border: 2px solid #222; box-shadow: 0 10px 25px rgba(0,0,0,0.8); margin-bottom: 20px; cursor: pointer; background: #000; }
+        .audio-cover img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .song-card:hover .audio-cover img { transform: scale(1.08); filter: brightness(0.8); }
+        
+        .audio-play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(230, 200, 117, 0.9); color: #000; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; opacity: 0; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+        .audio-cover:hover .audio-play-overlay { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        
+        .trailer-title { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 15px 0; line-height: 1.4; }
+
+        /* 🔥 ONLY 2 BUTTONS (PLAY & DOWNLOAD) */
+        .btn-group-2 { display: flex; justify-content: center; gap: 12px; width: 100%; }
+        .smart-btn { background: transparent; padding: 10px 18px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; flex: 1; }
+        
+        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
+        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
+        
+        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
+        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        /* 🌟 WHATSAPP BUTTON */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        /* 🔥 MUSIC PLAYER WITH "SMART PROGRESS CD" 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 25px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        /* CD Progress Ring CSS */
+        .cd-wrapper { position: relative; width: 45px; height: 45px; flex-shrink: 0; }
+        .cd-spin { position: absolute; top: 2px; left: 2px; width: 41px; height: 41px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6c875; z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .cd-progress { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#333 100%, transparent 0); z-index: 1; transition: background 0.1s linear; }
+
+        .track-info { display: flex; flex-direction: column; max-width: 180px; }
+        .track-name { color: #e6c875; font-size: 14px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-artist { color: #888; font-size: 11px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 20px; cursor: pointer; transition: 0.3s; padding: 0 5px; }
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
+
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } 
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 15px 5px 5px; gap: 8px; }
+            .cd-wrapper { width: 40px; height: 40px; }
+            .cd-spin { width: 36px; height: 36px; font-size: 16px; top: 2px; left: 2px; }
+            .track-info { max-width: 130px; }
+            .track-name { font-size: 12px; }
+            .play-pause-btn { font-size: 18px; }
+        }
+
+        /* Reveal Anim */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Footer */
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tseries-footer-col ul li { margin-bottom: 10px; }
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; }
+        .tseries-footer-col ul li a:hover { color: #e6c875; padding-left: 5px; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
+        .tseries-footer-socials { display: flex; gap: 15px; }
+        .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
+        .tseries-footer-socials a:hover { color: #e6c875; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🔥 UPDATED MENU WITH MP3 AUDIO SONGS -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
+        
+        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
+            <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
+        </a>
+        <div class="sub-menu" id="aboutSub">
+            <a href="ceo.html"><i class="fas fa-user-tie" style="color:var(--primary-color); margin-right:8px;"></i> CEO</a>
+            <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
+        </div>
+
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
+            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
+        </a>
+        <div class="sub-menu" id="moviesMenuSub">
+            <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
+        </div>
+
+        <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        
+        <!-- 🔥 SONGS DROPDOWN -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+        </a>
+        <div class="sub-menu" id="songsSub">
+            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
+            <a href="album-songs.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:8px;"></i> Album Videos</a>
+            <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
+        </div>
+
+        <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+        </a>
+        <div class="sub-menu" id="ecoSub">
+            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+        </div>
+        
+        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+    </div>
+    <div id="overlay"></div>
+
+
+    <section class="page-header">
+        <div class="reveal">
+            <h1 class="page-title">MP3 AUDIO SONGS</h1>
+            <p class="page-subtitle">Listen & Download Premium Soundtracks</p>
+        </div>
+    </section>
+
+    <!-- 🎧 MP3 SONGS GRID WITH ALBUM ART LAYOUT -->
+    <section class="songs-container">
+        <div class="songs-grid">
+            
+            <!-- MP3 Song 1 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')">
+                    <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Yakshini Title Song">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">👻 यक्षिणी (Yakshini) Official Title Song 🌙</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
+            <!-- MP3 Song 2 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')">
+                    <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Aaj Ki Shaam">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">❤️ आज की शाम है खुशियों के नाम | Romantic MP3</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="aaj-ki-shaam.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
+            <!-- MP3 Song 3 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')">
+                    <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Kalpamrit Ke Rahon Mein">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">🌙 Kalpamrit Ke Rahon Mein 👻 | Horror MP3 ❤️</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="kalpamrit-ke-rahon-mein.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
+            <!-- MP3 Song 4 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')">
+                    <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Shaam Dhale">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Hindi Horror MP3</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+            
+            <!-- MP3 Song 5 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')">
+                    <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Dosti Song">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">❤️ दीपक और रवि - दोनों ही एक जान | Friendship MP3</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="dipak-aur-ravi-dosti.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+            
+            <!-- MP3 Song 6 -->
+            <div class="song-card reveal">
+                <div class="audio-cover" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')">
+                    <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Tere Naam Se">
+                    <div class="audio-play-overlay"><i class="fas fa-play" style="margin-left: 4px;"></i></div>
+                </div>
+                <h3 class="trailer-title">❤️ तेरे नाम से मेरी सुबह | Romantic MP3 Song</h3>
+                <div class="btn-group-2">
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')" title="Play Audio"><i class="fas fa-music"></i> PLAY</button>
+                    <a href="tere-naam-se-meri-subah.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> DOWNLOAD</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 🔥 MEGA FOOTER -->
+    <footer class="tseries-footer" id="contact">
+        <div class="tseries-footer-container">
+            <div class="tseries-footer-brand">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
+                <h3>DK ATOVITT</h3>
+                <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Movies & Media</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#movies-section">Featured Movie</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="ceo.html">About CEO & Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
+                </ul>
+            </div>
+            <div class="tseries-footer-col">
+                <h4>Legal & Help</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="notice.html">Public Notice</a></li>
+                    <li><a href="faq.html">Help / FAQs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tseries-footer-bottom">
+            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+            <div class="tseries-footer-socials">
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD -->
+    <div class="music-player">
+        <div class="cd-wrapper">
+            <div class="cd-progress" id="cdProgress"></div>
+            <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
+        </div>
+        <div class="track-info">
+            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
+            <p class="track-artist">DK ATOVITT</p>
+        </div>
+        <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+        <audio id="bgMusic">
+            <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay');
+        
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
+            }); 
+        }); 
+        
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
+        function toggleSubMenu(id) {
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
+        // Reveal animations
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { 
+                    reveals[i].classList.add('active'); 
+                } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal); 
+        reveal(); 
+
+        /* 🔥 SMART LOGIC: MP3 PLAYER ONLY (No Video Overlay needed here) 🔥 */
+        const audio = document.getElementById('bgMusic');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const trackNameElement = document.getElementById('trackName');
+        const audioSource = document.getElementById('audioSource');
+        const musicPlayer = document.querySelector('.music-player');
+        const cdAnim = document.getElementById('cdAnim');
+        const cdProgress = document.getElementById('cdProgress');
+
+        // Update CD Progress Circle
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
+            }
+        });
+
+        // AUDIO PLAY FUNCTION
+        function playSong(fileName, songTitle) {
+            musicPlayer.classList.add('active');
+            if (!audioSource.src.endsWith(fileName)) {
+                audioSource.src = fileName;
+                audio.load();
+                cdProgress.style.background = `conic-gradient(#333 100%, transparent 0)`; // Reset progress
+            }
+            audio.play();
+            trackNameElement.innerText = songTitle;
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            cdAnim.classList.add('playing');
+        }
+
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                cdAnim.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+                cdAnim.classList.remove('playing');
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 3px;"></i>';
+            cdAnim.classList.remove('playing');
+            cdProgress.style.background = `conic-gradient(#333 100%, transparent 0)`; // Reset progress on end
+        });
+    </script>
+</body>
+</html>
