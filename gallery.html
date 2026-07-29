@@ -14,7 +14,7 @@
         
         /* 🔥 FIXED HEADER CSS (Scroll karne par header upar ruka rahega) */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
-        .header .container { padding: 10px 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding: 10px 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -28,13 +28,14 @@
         .show-on-mobile { display: none; }
 
         @media (max-width: 768px) {
-            .header .container { padding: 8px !important; }
-            .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
-            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 9px !important; display: block !important; }
+            .header .container { padding-left: 5px !important; padding-right: 5px !important; }
+            .header-left { gap: 5px !important; }
+            .desktop-logo-img { height: 45px !important; transform: scale(1.5); margin-right: 10px !important; }
+            .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 8px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 12px !important; padding: 5px 10px !important; }
+            /* 🔥 MOBILE LOGIN BUTTON FIX - Preventing Cut Off */
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; letter-spacing: 0px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
@@ -114,6 +115,11 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+        
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -132,6 +138,7 @@
                 </a>
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <!-- 🔥 The show-on-mobile text is now just 'Login' to save space -->
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
@@ -184,9 +191,9 @@
         </a>
         <div class="sub-menu" id="ecoSub">
             <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -277,8 +284,8 @@
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
-                    <li><a href="index.html#trailer">Official Trailer</a></li>
-                    <li><a href="index.html#songs">Movie Songs</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
