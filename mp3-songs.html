@@ -174,7 +174,6 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH MP3 AUDIO SONGS -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -200,7 +199,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -238,11 +236,9 @@
         </div>
     </section>
 
-    <!-- 🎧 MP3 SONGS GRID WITH ALBUM ART LAYOUT -->
     <section class="songs-container">
         <div class="songs-grid">
             
-            <!-- MP3 Song 1 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Title Song')">
                     <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Yakshini Title Song">
@@ -255,7 +251,6 @@
                 </div>
             </div>
 
-            <!-- MP3 Song 2 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('aaj-ki-shaam.mp3', 'आज की शाम है खुशियों के नाम')">
                     <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Aaj Ki Shaam">
@@ -268,7 +263,6 @@
                 </div>
             </div>
 
-            <!-- MP3 Song 3 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('kalpamrit-ke-rahon-mein.mp3', 'Kalpamrit Ke Rahon Mein')">
                     <img src="https://img.youtube.com/vi/jq3fKMww5_M/hqdefault.jpg" alt="Kalpamrit Ke Rahon Mein">
@@ -281,7 +275,6 @@
                 </div>
             </div>
 
-            <!-- MP3 Song 4 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')">
                     <img src="https://img.youtube.com/vi/7qFB_8WtAxE/hqdefault.jpg" alt="Shaam Dhale">
@@ -294,7 +287,6 @@
                 </div>
             </div>
             
-            <!-- MP3 Song 5 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('dipak-aur-ravi-dosti.mp3', 'दीपक और रवि - एक ही जान')">
                     <img src="https://img.youtube.com/vi/eTYetclIVbM/hqdefault.jpg" alt="Dosti Song">
@@ -307,7 +299,6 @@
                 </div>
             </div>
             
-            <!-- MP3 Song 6 -->
             <div class="song-card reveal">
                 <div class="audio-cover" onclick="playSong('tere-naam-se-meri-subah.mp3', 'तेरे नाम से मेरी सुबह')">
                     <img src="https://img.youtube.com/vi/-08OXkmPFcs/hqdefault.jpg" alt="Tere Naam Se">
@@ -323,7 +314,6 @@
         </div>
     </section>
 
-    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -379,7 +369,6 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & PLAYLIST ENGINE -->
     <div class="music-player">
         <div class="cd-wrapper">
             <div class="cd-progress" id="cdProgress"></div>
@@ -393,15 +382,15 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            <!-- 🔥 UPDATED LOOP BUTTON (No Red Color, uses '1' icon) 🔥 -->
-            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs"><i class="fas fa-repeat" style="color:#e6c875;"></i></button>
+            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
+                <i class="fas fa-repeat" style="color:#e6c875;"></i>
+            </button>
         </div>
         <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -514,19 +503,17 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 UPDATED TOGGLE LOOP MODE (Uses Original FA6 Icons for "1" and "All") 🔥
+        // 🔥 CSS TRICK FOR '1' ICON IN LOOP MODE 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                // 'fa-repeat-1' will show a (1) inside the arrows!
-                loopBtn.innerHTML = '<i class="fas fa-repeat-1" style="color:#e6c875;"></i>';
+                loopBtn.innerHTML = '<span style="position:relative; display:inline-flex; align-items:center; justify-content:center;"><i class="fas fa-repeat" style="color:#e6c875;"></i><span style="position:absolute; font-size:8px; font-weight:bold; color:#e6c875;">1</span></span>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                // 'fa-repeat' will show standard arrows for Play All!
                 loopBtn.innerHTML = '<i class="fas fa-repeat" style="color:#e6c875;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
