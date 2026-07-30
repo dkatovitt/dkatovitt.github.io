@@ -13,7 +13,7 @@
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
         /* 🌟 GLOBAL FIXES & HEADER */
-        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
@@ -156,7 +156,7 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & MP3 SONGS 🔥 -->
+    <!-- 🔥 MENU WITH SMART ACTIVE SYSTEM 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -381,7 +381,7 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🔥 JAVASCRIPT FIXED FOR NEW DROPDOWN MENU -->
+    <!-- JavaScript -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -391,7 +391,6 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
-        // This ensures normal links close the menu, but dropdowns do not
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
@@ -400,7 +399,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -432,6 +431,42 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") isMatch = true;
+                } else {
+                    if (href === currentPage) isMatch = true;
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; 
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
+                    link.style.borderLeft = '4px solid #e6c875'; 
+                    link.style.paddingLeft = '25px'; 
+                    
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
