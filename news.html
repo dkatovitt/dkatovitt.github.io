@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Updates - DK Atovitt</title>
+    <title>News & Roadmap - DK Atovitt</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -61,22 +61,34 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
-        /* 🌟 News Page Style */
+        /* 🌟 News & Roadmap Page Style */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
         .legal-section { padding: 140px 20px 60px 20px; }
         .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .legal-title { color: #e6c875; font-size: 32px; font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; }
+        .legal-title { color: #e6c875; font-size: 32px; font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .legal-subtitle { color: #888; font-size: 15px; text-align: center; margin-bottom: 35px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 15px; }
         
-        .news-item { background: #1a1a1a; border-left: 4px solid #e6c875; padding: 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; transition: 0.3s; }
-        .news-item:hover { transform: translateX(5px); background: #222; }
-        .news-date { color: #ff4d4d; font-size: 13px; font-weight: bold; margin-bottom: 5px; letter-spacing: 1px; text-transform: uppercase; }
-        .news-headline { color: #fff; font-size: 20px; font-weight: bold; margin-bottom: 10px; }
-        .news-desc { font-size: 14px; color: #aaa; text-align: justify; }
+        .news-item { background: #1a1a1a; border-left: 4px solid #e6c875; padding: 22px; margin-bottom: 25px; border-radius: 0 10px 10px 0; transition: 0.3s; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .news-item:hover { transform: translateX(8px); background: #222; border-left-color: #f5d680; }
+        
+        .news-item.upcoming { border-left-color: #ff4d4d; background: linear-gradient(135deg, #221010 0%, #1a1a1a 100%); }
+        .news-item.upcoming:hover { border-left-color: #ff6666; }
+
+        .news-badge { display: inline-block; background: #e6c875; color: #000; padding: 2px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; text-transform: uppercase; margin-left: 10px; vertical-align: middle; }
+        .news-badge.upcoming-badge { background: #ff4d4d; color: #fff; }
+
+        .news-date { color: #e6c875; font-size: 13px; font-weight: bold; margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .news-item.upcoming .news-date { color: #ff4d4d; }
+        
+        .news-headline { color: #fff; font-size: 20px; font-weight: bold; margin-bottom: 10px; line-height: 1.4; }
+        .news-desc { font-size: 14px; color: #bbb; text-align: justify; line-height: 1.7; }
         
         @media (max-width: 768px) {
             .legal-container { padding: 20px; }
             .legal-title { font-size: 24px; }
-            .news-headline { font-size: 18px; }
+            .legal-subtitle { font-size: 12px; }
+            .news-headline { font-size: 17px; }
+            .news-desc { font-size: 13px; }
         }
 
         /* 🌟 WHATSAPP BUTTON */
@@ -185,30 +197,42 @@
     <!-- Content Section -->
     <section class="legal-section">
         <div class="legal-container">
-            <h1 class="legal-title">Latest News & Updates</h1>
-            
-            <div class="news-item">
-                <div class="news-date"><i class="far fa-calendar-alt"></i> July 2026</div>
-                <div class="news-headline">🎬 'Yakshini' Official Trailer Launched!</div>
-                <div class="news-desc">The wait is over! DK Atovitt Production House has officially released the much-awaited 4K trailer of our upcoming Horror-Romance film 'यक्षिणी (Yakshini)'. Experience the ultimate thrill and mystery. Watch it now in our Trailers section!</div>
+            <h1 class="legal-title">DK ATOVITT Production Roadmap</h1>
+            <p class="legal-subtitle">Latest News, Project Milestones & Release Timeline</p>
+
+            <!-- 5) AUGUST 2026 -->
+            <div class="news-item upcoming">
+                <div class="news-date"><i class="fas fa-bullhorn"></i> August 2026 <span class="news-badge upcoming-badge">Upcoming Big Event</span></div>
+                <div class="news-headline">🚀 Mega Announcement: 'Yakshini' Official Release Date, Press Release & New Album Tracks!</div>
+                <div class="news-desc">अगस्त महीने में DK Atovitt Production House की तरफ से बड़ा धमाका होने जा रहा है! फिल्म <strong>'यक्षिणी' (Yakshini)</strong> की ग्रैंड थिएटर/डिजिटल रिलीज़ डेट का आधिकारिक ऐलान किया जाएगा। इसके साथ ही स्पेशल <strong>Media Screening</strong> और <strong>Press Release</strong> आयोजित होगी। इतना ही नहीं, अगस्त में ही कुछ ब्रांड न्यू एक्सक्लूसिव <strong>Album Songs</strong> भी रिलीज़ किए जाएंगे!</div>
             </div>
 
+            <!-- 4) JULY 2026 -->
+            <div class="news-item">
+                <div class="news-date"><i class="far fa-calendar-check"></i> July 2026 <span class="news-badge">Current Milestone</span></div>
+                <div class="news-headline">🎬 'Yakshini Movie Part 1' Master Cut Ready - Testing & Quality Check Underway!</div>
+                <div class="news-desc">शानदार खबर! हमारी बहुप्रतीक्षित हॉरर-रोमांस फिल्म <strong>'यक्षिणी Part 1'</strong> का फाइनल मास्टर कट पूरी तरह बनकर तैयार हो चुका है। फिलहाल फिल्म की साउंड डिज़ाइनिंग, कलर ग्रेडिंग और फाइनल क्वालिटी टेस्टिंग का काम तेजी से चल रहा है ताकि दर्शकों को बेहतरीन सिनेमाई अनुभव मिल सके।</div>
+            </div>
+
+            <!-- 3) JUNE 2026 -->
             <div class="news-item">
                 <div class="news-date"><i class="far fa-calendar-alt"></i> June 2026</div>
-                <div class="news-headline">🎵 New Romantic Track Release: "Teri Roshni Mein Kho Gaya Hoon Main"</div>
-                <div class="news-desc">Dive into the magic of love with our latest official music video featuring Dipak & Puja. The song is already breaking records and winning hearts across platforms. Available now in MP3 Audio Songs.</div>
+                <div class="news-headline">🎵 All 8 Blockbuster Songs & 'Yakshini' Official 4K Trailer Released!</div>
+                <div class="news-desc">जून महीने में 'यक्षिणी' फिल्म के सभी <strong>8 सुपरहिट गाने</strong> और रोंगटे खड़े कर देने वाला <strong>Official 4K Trailer</strong> पूरी तरह से तैयार होकर हमारी वेबसाइट और यूट्यूब चैनल पर रिलीज़ कर दिया गया है। दर्शकों से मिल रहे अपार प्यार के लिए हम आभारी हैं!</div>
             </div>
 
+            <!-- 2) MAY 2026 -->
             <div class="news-item">
                 <div class="news-date"><i class="far fa-calendar-alt"></i> May 2026</div>
-                <div class="news-headline">🌟 Open Auditions Announced for Upcoming Projects</div>
-                <div class="news-desc">DK Atovitt is on the hunt for fresh talent! We have announced open auditions for actors, singers, and technicians for our upcoming web series and short films. Register through our official Auditions page to get a chance to shine.</div>
+                <div class="news-headline">🖼️ Official Poster Unveiling: 'यक्षिणी (Yakshini)' First Look Launch</div>
+                <div class="news-desc">मई 2026 में हमारी आगामी हॉरर-रोमांस फिल्म 'यक्षिणी' का पहला आधिकारिक खौफनाक <strong>Official Poster</strong> लॉन्च किया गया। इस पोस्टर के टैगलाइन <em>"शाम 6 बजे के बाद कोई वापस नहीं जाएगा"</em> ने सोशल मीडिया और सिनेमा प्रेमियों के बीच तहलका मचा दिया।</div>
             </div>
 
+            <!-- 1) APRIL 2026 -->
             <div class="news-item">
                 <div class="news-date"><i class="far fa-calendar-alt"></i> April 2026</div>
-                <div class="news-headline">🤝 Partnership with Kalpamrit & ATVT Ecosystem</div>
-                <div class="news-desc">We are proud to announce our official media partnership with Kalpamrit and the ATVT Ecosystem. Together, we aim to bring more engaging and high-quality content to our audience while providing earning opportunities.</div>
+                <div class="news-headline">🤝 Grand Strategic Partnership: Kalpamrit, ATVT & Earn With DK Sir Ecosystem</div>
+                <div class="news-desc">अप्रैल 2026 में DK Atovitt Production House ने अपने डिजिटल नेटवर्क का विस्तार करते हुए <strong>Kalpamrit</strong>, <strong>ATVT Token</strong> और <strong>'Earn with DK Sir'</strong> के साथ ऐतिहासिक मीडिया प्रमोशन पार्टनरशिप की घोषणा की। यह गठबंधन सिनेमा, वेलनेस और डिजिटल फाइनेंस को एक साथ जोड़ने का काम कर रहा है।</div>
             </div>
 
         </div>
