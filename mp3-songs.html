@@ -205,7 +205,7 @@
         </a>
         <div class="sub-menu" id="songsSub">
             <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
-            <a href="album-songs.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:8px;"></i> Album Videos</a>
+            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
             <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
         </div>
 
@@ -466,6 +466,42 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") isMatch = true;
+                } else {
+                    if (href === currentPage) isMatch = true;
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; 
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
+                    link.style.borderLeft = '4px solid #e6c875'; 
+                    link.style.paddingLeft = '25px'; 
+                    
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
 
         /* 🔥 ADVANCED PLAYLIST ENGINE (AUDIO ONLY) 🔥 */
         const playlist = [
