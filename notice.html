@@ -6,42 +6,88 @@
     <title>Public Notice - DK Atovitt</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* Header Fix */
-        .header .container { padding-left: 15px !important; padding-right: 15px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; }
-        .login-btn-header { color: #e6c875; text-decoration: none; font-size: 13px; font-weight: bold; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; transition: 0.3s; white-space: nowrap; }
-        .login-btn-header:hover { background-color: #e6c875; color: #000; }
-        @media (max-width: 768px) {
-            .header .container { padding-left: 5px !important; padding-right: 5px !important; }
-            .logo img { height: 55px !important; }
-            .logo-text h1 { font-size: 17px !important; margin-bottom: 2px !important; font-weight: 900 !important; }
-            .logo-text p { font-size: 8.5px !important; }
-            .login-btn-header { font-size: 11px !important; padding: 5px 8px !important; }
-        }
+        /* 🔥 FIXED HEADER CSS */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
-        /* 🌟 Legal Page Content Style */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
-        .legal-section { padding: 120px 20px 60px 20px; }
-        .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .legal-title { color: #ff4d4d; font-size: 32px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; }
-        .legal-container h3 { color: #e6c875; margin-top: 35px; font-size: 20px; letter-spacing: 1px; }
-        .legal-container p { font-size: 15px; margin-bottom: 15px; color: #bbb; text-align: justify; }
-        .legal-container ul { margin-bottom: 15px; padding-left: 20px; color: #bbb; }
-        .legal-container ul li { margin-bottom: 8px; font-size: 15px; }
-        .legal-container a { color: #e6c875; text-decoration: none; }
-        .alert-box { background: rgba(255, 77, 77, 0.1); border-left: 4px solid #ff4d4d; padding: 15px; margin: 20px 0; color: #fff; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
         
         @media (max-width: 768px) {
-            .legal-container { padding: 20px; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+        }
+
+        /* 🔥 MENU CSS */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
+        .sub-menu a:hover { color: #fff !important; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
+
+        /* 🌟 WHATSAPP BUTTON */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
+
+        /* 🌟 Legal Page Content Style (Notice Specific) */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        .legal-section { padding: 140px 20px 60px 20px; }
+        .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
+        .legal-title { color: #ff4d4d; font-size: 35px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(255, 77, 77, 0.3); }
+        .legal-container h3 { color: #e6c875; margin-top: 35px; font-size: 20px; letter-spacing: 1px; text-transform: uppercase; }
+        .legal-container p { font-size: 15px; margin-bottom: 15px; color: #bbb; text-align: justify; }
+        .legal-container a { color: #ff4d4d; text-decoration: none; transition: 0.3s; font-weight: bold; }
+        .legal-container a:hover { color: #fff; text-decoration: underline; }
+        
+        .alert-box { background: rgba(255, 77, 77, 0.08); border-left: 5px solid #ff4d4d; padding: 20px; margin: 25px 0; color: #fff; border-radius: 0 8px 8px 0; font-size: 16px; line-height: 1.5; }
+        .alert-box strong { color: #ff4d4d; font-size: 18px; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            .legal-container { padding: 25px 20px; }
             .legal-title { font-size: 24px; }
+            .legal-container h3 { font-size: 18px; }
+            .alert-box { font-size: 14px; padding: 15px; }
         }
 
         /* Mega Footer */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; }
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand img { height: 60px; margin-bottom: 15px; }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -53,6 +99,10 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+
+        /* Reveal Anim */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -60,23 +110,84 @@
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start; text-decoration: none;">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo" style="height: 65px;">
-                <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h1 style="font-size: 22px; color: #e6c875; letter-spacing: 1px; text-transform: uppercase; margin: 0; font-weight: 900;">DK ATOVITT</h1>
-                    <p style="font-size: 11px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; margin: 0;">Official Movie Production House</p>
-                </div>
-            </a>
-            <div class="header-icons" style="display: flex; gap: 12px; align-items: center;">
-                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> Login / Signup</a>
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
 
+    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & PARTNERS DROPDOWN -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
+        
+        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
+            <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
+        </a>
+        <div class="sub-menu" id="aboutSub">
+            <a href="ceo.html"><i class="fas fa-user-tie" style="color:var(--primary-color); margin-right:8px;"></i> CEO</a>
+            <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
+        </div>
+
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
+            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
+        </a>
+        <div class="sub-menu" id="moviesMenuSub">
+            <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
+        </div>
+
+        <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        
+        <!-- 🔥 SONGS DROPDOWN -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+        </a>
+        <div class="sub-menu" id="songsSub">
+            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
+            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
+            <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
+        </div>
+
+        <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        
+        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+        </a>
+        <div class="sub-menu" id="ecoSub">
+            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
+            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
+            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
+            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+        </div>
+        
+        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+    </div>
+    <div id="overlay"></div>
+
     <!-- Content Section -->
     <section class="legal-section">
-        <div class="legal-container">
-            <h1 class="legal-title">PUBLIC NOTICE & DISCLAIMER</h1>
+        <div class="legal-container reveal">
+            <h1 class="legal-title"><i class="fas fa-exclamation-triangle"></i> PUBLIC NOTICE & DISCLAIMER</h1>
             
             <div class="alert-box">
                 <strong>IMPORTANT WARNING:</strong> Beware of Fake Casting Agents and Fraudulent Offers.
@@ -88,7 +199,7 @@
             <p><strong>DK Atovitt strictly does NOT charge any fees for auditions, casting, or talent selection.</strong> We have not authorized any casting agency, coordinator, or individual to demand money, registration fees, or portfolio charges on our behalf. Any such demand is a scam and a fraudulent act.</p>
             
             <h3>2. Official Communication Channels</h3>
-            <p>All official announcements regarding casting, auditions, or job openings will only be made through our official website <strong>(dkatovitt.github.io)</strong> and our verified official social media accounts. Any email communication from us will exclusively come from addresses ending in <strong>@dkatovitt.com</strong>.</p>
+            <p>All official announcements regarding casting, auditions, or job openings will only be made through our official website <strong>(dkatovitt.github.io)</strong> and our verified official social media accounts. Any email communication from us will exclusively come from addresses ending in <strong>@dkatovitt.com</strong> or our official Gmail <strong>dipakatovitt@gmail.com</strong>.</p>
             
             <h3>3. Intellectual Property Rights</h3>
             <p>The name "DK ATOVITT", our logos, movie titles (e.g., Yakshini), posters, songs, and all associated content are the exclusive intellectual property of DK Atovitt Production House. Unauthorized use, reproduction, distribution, or piracy of our content is a punishable offense under the Copyright and Trademark laws of India. Strict legal action will be taken against violators.</p>
@@ -96,18 +207,21 @@
             <h3>4. Liability</h3>
             <p>DK Atovitt, its Producers, Directors, and employees shall not be held liable or responsible for any loss, damage, or financial fraud suffered by any individual who engages with fake agents or unauthorized persons claiming to represent us.</p>
             
-            <p style="margin-top: 40px; color: #e6c875; font-weight: bold;">Report Fraud</p>
-            <p>If you encounter any suspicious activity, fake casting calls, or someone demanding money in the name of DK Atovitt, please report it to us immediately at:<br>
-            <a href="mailto:contact@dkatovitt.com" style="color:#ff4d4d;">contact@dkatovitt.com</a></p>
-            <p>We urge everyone to remain vigilant and verify information before taking any action.</p>
+            <div style="margin-top: 40px; padding: 20px; background: rgba(255, 77, 77, 0.05); border-left: 4px solid #ff4d4d; border-radius: 8px;">
+                <span style="color: #ff4d4d; font-weight: bold; font-size: 16px; text-transform: uppercase;">Report Fraud</span><br>
+                <p style="margin-bottom: 5px;">If you encounter any suspicious activity, fake casting calls, or someone demanding money in the name of DK Atovitt, please report it to us immediately at:</p>
+                <a href="mailto:dipakatovitt@gmail.com">dipakatovitt@gmail.com</a>
+            </div>
+            
+            <p style="text-align: center; color: #888; margin-top: 30px;">We urge everyone to remain vigilant and verify information before taking any action.</p>
         </div>
     </section>
 
-    <!-- 🌟 T-SERIES STYLE PROFESSIONAL MEGA FOOTER -->
+    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <img src="images/logo/logo.png" alt="DK Atovitt Logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3>DK ATOVITT</h3>
                 <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
@@ -115,26 +229,26 @@
                 <h4>Movies & Media</h4>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#movies">Featured Movie</a></li>
-                    <li><a href="index.html#trailer">Official Trailer</a></li>
-                    <li><a href="index.html#songs">Movie Songs</a></li>
-                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#movies-section">Featured Movie</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>Join Us</h4>
                 <ul>
-                    <li><a href="index.html#audition-section">Auditions</a></li>
-                    <li><a href="index.html#partners">Media Partners</a></li>
+                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                    <li><a href="#">News & Updates</a></li>
-                    <li><a href="#">Ecosystem</a></li>
+                    <li><a href="ceo.html">About CEO & Company</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -143,7 +257,7 @@
                     <li><a href="terms.html">Terms & Conditions</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="notice.html">Public Notice</a></li>
-                    <li><a href="#">Help / FAQs</a></li>
+                    <li><a href="faq.html">Help / FAQs</a></li>
                 </ul>
             </div>
         </div>
@@ -157,5 +271,58 @@
         </div>
     </footer>
 
+    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- JavaScript -->
+    <script>
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay');
+        
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
+            }); 
+        }); 
+        
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+
+        function toggleSubMenu(id) {
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
+        // Reveal animations
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { 
+                    reveals[i].classList.add('active'); 
+                } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal); 
+        reveal(); 
+    </script>
 </body>
 </html>
