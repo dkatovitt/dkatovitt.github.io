@@ -655,6 +655,48 @@
             }
         }
 
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") {
+                        isMatch = true;
+                    }
+                } else {
+                    // Match Exact Page File
+                    if (href === currentPage) {
+                        isMatch = true;
+                    }
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; // Golden Text
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; // Light golden bg
+                    link.style.borderLeft = '4px solid #e6c875'; // Golden border left
+                    link.style.paddingLeft = '25px'; // Adjust padding
+                    
+                    // Dropdown auto-open
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
+
         /* 🔥 ADVANCED PLAYLIST ENGINE & VIDEO LOGIC 🔥 */
         const playlist = [
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
