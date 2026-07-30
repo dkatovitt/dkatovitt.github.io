@@ -76,8 +76,8 @@
         .main-trailer-title { color: #fff; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
         .main-trailer-desc { color: #888; font-size: 15px; max-width: 800px; margin: 0 auto; }
 
-        /* 🔥 NEW 3 SMART BUTTONS CSS (Left YT, Mid MP3, Right DL) 🔥 */
-        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; padding: 0 10px; }
+        /* 🔥 3 SMART BUTTONS CSS (Left YT, Mid MP3, Right DL) 🔥 */
+        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; padding: 0 10px; }
         .smart-btn { background: transparent; padding: 8px 16px; border-radius: 25px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
         .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
         .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
@@ -199,7 +199,7 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH MP3 AUDIO SONGS -->
+    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & MP3 AUDIO SONGS -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -232,7 +232,7 @@
         </a>
         <div class="sub-menu" id="songsSub">
             <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
-            <a href="album-songs.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:8px;"></i> Album Videos</a>
+            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
             <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
         </div>
 
@@ -264,7 +264,7 @@
         </div>
     </section>
 
-    <!-- 🎬 MAIN PREMIERE (UPDATED WITH SMART INLINE PLAY & 3 BUTTONS) -->
+    <!-- 🎬 MAIN PREMIERE -->
     <section class="main-premiere-section reveal">
         <div class="main-video-wrapper" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
             <div class="main-thumbnail-content">
@@ -275,15 +275,15 @@
         <h2 class="main-trailer-title">यक्षिणी (Yakshini) - Official Movie Trailer</h2>
         <p class="main-trailer-desc">An upcoming Bollywood Horror-Romance masterpiece produced by DK Atovitt Production House. Watch the chilling mysteries unfold.</p>
         
-        <!-- 3 Smart Buttons for Main Trailer -->
-        <div class="btn-group-3" style="margin-top: 20px;">
+        <!-- 🔥 3 Smart Buttons for Main Trailer -->
+        <div class="btn-group-3">
             <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
             <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
             <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
         </div>
     </section>
 
-    <!-- 🎬 YOUTUBE SHORTS GRID (UPDATED WITH SMART INLINE PLAY) -->
+    <!-- 🎬 YOUTUBE SHORTS GRID -->
     <section class="more-trailers-section reveal">
         <h2 class="section-heading">Yakshini - Teasers & Promos</h2>
         <div class="trailer-grid">
@@ -405,7 +405,7 @@
         </div>
     </section>
 
-    <!-- 🔥 UPDATED MEGA FOOTER -->
+    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -419,7 +419,7 @@
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
@@ -460,7 +460,7 @@
     </footer>
 
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919330332929" class="whatsapp-float" style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#25d366; color:#FFF; border-radius:50px; text-align:center; font-size:35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center; text-decoration:none;" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & PLAYLIST ENGINE -->
     <div class="music-player">
@@ -476,9 +476,9 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            <!-- 🔥 PERFECT LOOP BUTTON WITH DESI CSS TRICK 🔥 -->
+            <!-- 🔥 PERFECT CENTER ALIGNED LOOP ICON 🔥 -->
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
-                <i class="fas fa-repeat" style="color:#e6c875;"></i>
+                <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
             </button>
         </div>
         <audio id="bgMusic">
@@ -622,18 +622,18 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 CSS TRICK FOR '1' ICON IN LOOP MODE 🔥
+        // 🔥 PERFECT LOOP BUTTON WITH DESI CSS TRICK 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                loopBtn.innerHTML = '<span style="position:relative; display:inline-flex; align-items:center; justify-content:center;"><i class="fas fa-repeat" style="color:#e6c875;"></i><span style="position:absolute; font-size:8px; font-weight:bold; color:#e6c875;">1</span></span>';
+                loopBtn.innerHTML = '<div style="position:relative; display:flex; align-items:center; justify-content:center; width:20px; height:20px;"><i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i><span style="position:absolute; font-size:8.5px; font-weight:900; color:#e6c875;">1</span></div>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                loopBtn.innerHTML = '<i class="fas fa-repeat" style="color:#e6c875;"></i>';
+                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
         }
