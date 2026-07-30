@@ -144,7 +144,7 @@
         </div>
     </header>
 
-    <!-- 🔥 MENU WITH MP3 & ECOSYSTEM 🔥 -->
+    <!-- 🔥 MENU WITH SMART ACTIVE SYSTEM 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -260,7 +260,7 @@
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
@@ -353,6 +353,42 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") isMatch = true;
+                } else {
+                    if (href === currentPage) isMatch = true;
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; 
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
+                    link.style.borderLeft = '4px solid #e6c875'; 
+                    link.style.paddingLeft = '25px'; 
+                    
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
