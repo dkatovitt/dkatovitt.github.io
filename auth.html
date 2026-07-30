@@ -30,7 +30,7 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
+            .login-btn-header { font-size: 12px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
@@ -358,7 +358,6 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <!-- JavaScript -->
@@ -371,7 +370,6 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
-        // This ensures normal links close the menu, but dropdowns do not
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
@@ -414,6 +412,47 @@
                 document.getElementById('formAudition').classList.add('active');
             }
         }
+
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") {
+                        isMatch = true;
+                    }
+                } else {
+                    if (href === currentPage) {
+                        isMatch = true;
+                    }
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; // Golden Text
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; // Light golden bg
+                    link.style.borderLeft = '4px solid #e6c875'; // Golden border left
+                    link.style.paddingLeft = '25px'; // Adjust padding
+                    
+                    // Dropdown auto-open
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
