@@ -6,6 +6,7 @@
     <title>News & Updates - DK Atovitt</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
         /* 🔥 FIXED HEADER CSS */
@@ -64,7 +65,7 @@
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
         .legal-section { padding: 140px 20px 60px 20px; }
         .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .legal-title { color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; }
+        .legal-title { color: #e6c875; font-size: 32px; font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; }
         
         .news-item { background: #1a1a1a; border-left: 4px solid #e6c875; padding: 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; transition: 0.3s; }
         .news-item:hover { transform: translateX(5px); background: #222; }
@@ -123,7 +124,7 @@
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH ECOSYSTEM & PARTNERS DROPDOWN 🔥 -->
+    <!-- 🔥 MENU WITH SMART ACTIVE SYSTEM 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -164,7 +165,7 @@
         
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 NEW: ECOSYSTEM & PARTNERS DROPDOWN -->
+        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -270,7 +271,7 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🔥 JAVASCRIPT FIXED FOR NEW DROPDOWN MENU -->
+    <!-- 🔥 JAVASCRIPT FIXED FOR ACTIVE MENU HIGHLIGHT 🔥 -->
     <script>
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -280,7 +281,6 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
-        // This ensures normal links close the menu, but dropdowns do not
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
@@ -289,7 +289,6 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT (Fixed with Icon Rotate) */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -306,6 +305,42 @@
                 }
             }
         }
+
+        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
+        document.addEventListener("DOMContentLoaded", function() {
+            let currentPage = window.location.pathname.split("/").pop();
+            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            
+            menuLinks.forEach(link => {
+                let href = link.getAttribute('href');
+                if(!href) return;
+
+                let isMatch = false;
+                
+                if (currentPage === "index.html") {
+                    if (href === "index.html#home" || href === "index.html") isMatch = true;
+                } else {
+                    if (href === currentPage) isMatch = true;
+                }
+
+                if (isMatch) {
+                    link.style.color = '#e6c875'; 
+                    link.style.fontWeight = 'bold';
+                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
+                    link.style.borderLeft = '4px solid #e6c875'; 
+                    link.style.paddingLeft = '25px'; 
+                    
+                    let parentSub = link.closest('.sub-menu');
+                    if (parentSub) {
+                        parentSub.classList.add('active');
+                        let icon = parentSub.previousElementSibling.querySelector('.dropdown-icon');
+                        if (icon) icon.classList.add('rotate');
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
