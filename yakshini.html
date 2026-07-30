@@ -128,7 +128,7 @@
         .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
         
         .player-controls { display: flex; align-items: center; gap: 6px; }
-        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; }
+        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; justify-content: center;}
         .control-btn:hover { color: #e6c875; transform: scale(1.1); }
         .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; }
         .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
@@ -512,7 +512,11 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs"><i class="fas fa-redo-alt" style="color:#e6c875;"></i></button>
+            
+            <!-- 🔥 PERFECT CENTER ALIGNED LOOP ICON 🔥 -->
+            <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
+                <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
+            </button>
         </div>
         <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
@@ -659,18 +663,18 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // TOGGLE LOOP MODE (ALL vs ONE)
+        // 🔥 USER PREFERRED LOOP MODE (CENTERED '1') 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
                 loopMode = 'one';
                 audio.loop = true;
-                loopBtn.innerHTML = '<i class="fas fa-redo-alt" style="color:#ff4d4d;"></i>';
+                loopBtn.innerHTML = '<div style="position:relative; display:flex; align-items:center; justify-content:center; width:20px; height:20px;"><i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i><span style="position:absolute; font-size:8.5px; font-weight:900; color:#e6c875;">1</span></div>';
                 loopBtn.title = 'Loop: Single Song (Repeat 1)';
             } else {
                 loopMode = 'all';
                 audio.loop = false;
-                loopBtn.innerHTML = '<i class="fas fa-redo-alt" style="color:#e6c875;"></i>';
+                loopBtn.innerHTML = '<i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>';
                 loopBtn.title = 'Loop: All Songs (Play All)';
             }
         }
