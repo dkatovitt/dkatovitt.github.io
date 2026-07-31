@@ -39,17 +39,16 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 GOOGLE TRANSLATE CUSTOM CSS 🔥 */
-        .translator-box { overflow: hidden; border-radius: 20px; }
-        .translator-box select { background: #111; color: #e6c875; border: 1px solid #e6c875; padding: 6px 10px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .translator-box select:hover { background: #e6c875; color: #000; }
-        .goog-te-gadget { color: transparent !important; font-size: 0px; }
-        .goog-te-gadget .goog-te-combo { margin: 0 !important; }
-        /* Hide Google Bar and Tooltips */
-        .skiptranslate iframe { display: none !important; } 
-        body { top: 0 !important; position: static !important; } 
+        /* 🔥 CUSTOM TRANSLATOR CSS (100% WORKING) 🔥 */
+        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .custom-translate select:hover { background: #e6c875; color: #000; }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+        
+        /* HIDE GOOGLE'S DEFAULT STUFF */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-        font { background: transparent !important; box-shadow: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         /* 🔥 MENU TEXT OVERFLOW FIX */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
@@ -270,22 +269,47 @@
                     </div>
                 </a>
             </div>
-            
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
-                <!-- 🔥 MULTI-LANGUAGE TRANSLATOR WIDGET 🔥 -->
-                <div id="google_translate_element" class="translator-box hide-on-mobile"></div>
                 
+                <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
+                <div class="custom-translate hide-on-mobile">
+                    <select id="lang-desktop" onchange="translatePage(this.value)">
+                        <option value="">🌐 Language</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="en">English (अंग्रेज़ी)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                    </select>
+                </div>
+
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH MP3 SONGS & ECO পুনঃ 🔥 -->
+    <!-- 🔥 HIDDEN GOOGLE TRANSLATE BOX 🔥 -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- 🔥 UPDATED MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
-        <!-- TRANSLATOR FOR MOBILE MENU -->
-        <div id="google_translate_element_mobile" class="translator-box show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;"></div>
+        <!-- 🔥 CUSTOM TRANSLATOR FOR MOBILE MENU 🔥 -->
+        <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+            <select id="lang-mobile" onchange="translatePage(this.value)" style="width: 100%;">
+                <option value="">🌐 Select Language</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="en">English (अंग्रेज़ी)</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+            </select>
+        </div>
 
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
@@ -621,31 +645,26 @@
                 </div>
                 <div class="ticker-container">
                     <div class="ticker-content">
-                        <!-- August Update -->
                         <div class="ticker-item">
                             <div class="ticker-date">August 2026 (Upcoming)</div>
                             <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
                             <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
-                        <!-- July Update -->
                         <div class="ticker-item">
                             <div class="ticker-date">July 2026</div>
                             <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
                             <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
-                        <!-- June Update -->
                         <div class="ticker-item">
                             <div class="ticker-date">June 2026</div>
                             <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
                             <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
-                        <!-- May Update -->
                         <div class="ticker-item">
                             <div class="ticker-date">May 2026</div>
                             <h4 class="ticker-title">🖼️ Official Movie Poster Launch</h4>
                             <p class="ticker-desc">'यक्षिणी' का पहला आधिकारिक पोस्टर भव्य रूप से लॉन्च किया गया। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
-                        <!-- Duplicated list for seamless infinite loop -->
                         <div class="ticker-item">
                             <div class="ticker-date">August 2026 (Upcoming)</div>
                             <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
@@ -680,7 +699,6 @@
             
             <div class="contact-grid">
                 
-                <!-- 🔥 UPDATED INQUIRY FORM WITH MAXLENGTH 🔥 -->
                 <div class="inquiry-form">
                     <h3>Send Inquiry / Message</h3>
                     <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! Your inquiry has been submitted successfully. We will contact you soon.');">
@@ -778,7 +796,6 @@
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            <!-- 🔥 PERFECT CENTER ALIGNED LOOP ICON 🔥 -->
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs">
                 <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
             </button>
@@ -788,19 +805,45 @@
         </audio>
     </div>
 
-    <!-- 🔥 GOOGLE TRANSLATE SCRIPT 🔥 -->
+    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
-            // For Desktop Header
-            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-            // For Mobile Menu
-            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,en,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element_mobile');
+            new google.translate.TranslateElement({
+                pageLanguage: 'hi', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- JavaScript -->
     <script>
+        /* 🔥 CUSTOM TRANSLATOR LOGIC 🔥 */
+        function translatePage(lang) {
+            if (lang === "") return;
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang;
+                googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) {
+                    var d = document.getElementById('lang-desktop');
+                    var m = document.getElementById('lang-mobile');
+                    if(d) d.value = googleSelect.value;
+                    if(m) m.value = googleSelect.value;
+                }
+            }, 1000);
+        });
+
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -895,7 +938,6 @@
                     url: url
                 }).catch((error) => console.log('Error sharing', error));
             } else {
-                // Fallback for Desktop/PC
                 prompt("अपने दोस्तों को भेजने के लिए यह लिंक कॉपी करें:", url);
             }
         }
