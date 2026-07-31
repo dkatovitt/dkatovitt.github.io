@@ -65,8 +65,13 @@
         .page-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .page-subtitle { font-size: 18px; color: #aaa; text-transform: uppercase; letter-spacing: 3px; margin: 0; }
 
+        /* 🔥 PREMIUM CONTENT SECTION 🔥 */
+        .premium-content-section { padding: 80px 20px 40px 20px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .premium-quote { font-size: 22px; color: #e6c875; font-style: italic; font-family: 'Playfair Display', serif; line-height: 1.6; margin-bottom: 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.8); }
+        .premium-text { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 40px; }
+        
         /* 🔥 ACTIVE CASTING CALLS SECTION */
-        .casting-section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+        .casting-section { padding: 20px 20px 60px 20px; max-width: 1100px; margin: 0 auto; }
         .section-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
         
         .casting-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -88,26 +93,27 @@
         .process-box h4 { color: #fff; font-size: 18px; margin: 0 0 10px 0; text-transform: uppercase; }
         .process-box p { color: #999; font-size: 14px; margin: 0; }
 
-        /* 🔥 VIP AUDITION FORM SECTION */
-        .form-section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
-        .audition-form-box { background: #111; border: 2px solid #333; border-radius: 15px; padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); }
+        /* 🔥 SMART CALL TO ACTION (LOGIN REQUIRED) 🔥 */
+        .cta-section { padding: 80px 20px; text-align: center; background: radial-gradient(circle at center, #1a0505 0%, #050505 100%); }
+        .cta-box { max-width: 700px; margin: 0 auto; background: #111; border: 2px solid #e6c875; padding: 50px 30px; border-radius: 15px; box-shadow: 0 15px 40px rgba(230, 200, 117, 0.15); position: relative; overflow: hidden; }
+        .cta-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #e6c875; }
+        .cta-icon { font-size: 50px; color: #e6c875; margin-bottom: 20px; }
+        .cta-box h3 { color: #fff; font-size: 26px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1.5px; }
+        .cta-box p { color: #bbb; font-size: 15px; margin: 0 0 30px 0; line-height: 1.6; }
         
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; color: #e6c875; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold; }
-        .form-control { width: 100%; background: #0a0a0a; border: 1px solid #333; color: #fff; padding: 14px; border-radius: 8px; font-size: 15px; transition: 0.3s; box-sizing: border-box; }
-        .form-control:focus { outline: none; border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
-        
-        .submit-btn { width: 100%; background: #e6c875; color: #000; border: none; padding: 16px; border-radius: 30px; font-size: 16px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .submit-btn:hover { background: #fff; box-shadow: 0 5px 20px rgba(230,200,117,0.4); }
+        .smart-login-btn { display: inline-block; background: #e6c875; color: #000; padding: 16px 40px; border-radius: 30px; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; transition: 0.3s; box-shadow: 0 5px 20px rgba(230,200,117,0.4); }
+        .smart-login-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(230,200,117,0.6); }
 
         /* 🔥 SCAM WARNING NOTICE */
-        .warning-box { background: rgba(255, 77, 77, 0.08); border-left: 4px solid #ff4d4d; padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        .warning-box { background: rgba(255, 77, 77, 0.08); border-left: 4px solid #ff4d4d; padding: 20px; border-radius: 8px; max-width: 800px; margin: 0 auto 60px auto; text-align: left; }
         .warning-box h4 { color: #ff4d4d; margin: 0 0 8px 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
         .warning-box p { color: #bbb; font-size: 13px; margin: 0; line-height: 1.6; }
 
         @media (max-width: 600px) {
-            .audition-form-box { padding: 20px; }
             .page-title { font-size: 35px; }
+            .cta-box { padding: 30px 20px; }
+            .cta-box h3 { font-size: 20px; }
+            .smart-login-btn { font-size: 14px; padding: 12px 25px; }
         }
 
         /* Reveal Anim */
@@ -222,6 +228,12 @@
         </div>
     </section>
 
+    <!-- 🔥 PREMIUM CONTENT SECTION 🔥 -->
+    <section class="premium-content-section reveal">
+        <p class="premium-quote">"A true artist doesn't wait for the right opportunity; they create it. We are not just making movies; we are building legacies. Bring your talent, and let's create magic together on the silver screen."</p>
+        <p class="premium-text">At <strong>DK Atovitt Production House</strong>, we believe that real talent deserves a global platform. Whether you are a passionate actor, a soulful playback singer, or a creative writer, our doors are always open for those who dare to dream big. We are currently casting for our upcoming Bollywood Horror Romance projects, Albums, and Web Series.</p>
+    </section>
+
     <!-- 🔥 ACTIVE CASTING CALLS -->
     <section class="casting-section reveal">
         <h2 class="section-title">Active Casting Roles</h2>
@@ -249,82 +261,46 @@
         </div>
     </section>
 
-    <!-- 🔥 SELECTION PROCESS -->
+    <!-- 🔥 THE 3-STEP PROCESS -->
     <section class="process-section reveal">
+        <h2 class="section-title" style="margin-bottom: 50px;">How It Works</h2>
         <div class="process-grid">
             <div class="process-box">
                 <div class="step-num">01</div>
-                <h4>Submit Profile</h4>
-                <p>Fill out the official audition form with your portfolio and details.</p>
+                <h4>Register & Login</h4>
+                <p>Create your exclusive talent account on our official portal to access the casting form.</p>
             </div>
             <div class="process-box">
                 <div class="step-num">02</div>
-                <h4>Casting Review</h4>
-                <p>Our director and casting team will review your submission.</p>
+                <h4>Submit Portfolio</h4>
+                <p>Fill out the audition form securely from your dashboard and attach your work links.</p>
             </div>
             <div class="process-box">
                 <div class="step-num">03</div>
                 <h4>Studio Call</h4>
-                <p>Shortlisted candidates will be called directly for live screen tests.</p>
+                <p>Our casting directors will review your profile and invite you for a live screen test.</p>
             </div>
         </div>
     </section>
 
-    <!-- 🔥 AUDITION FORM SECTION -->
-    <section class="form-section reveal">
-        <div class="audition-form-box">
-            
-            <!-- FRAUD WARNING NOTICE -->
-            <div class="warning-box">
-                <h4><i class="fas fa-shield-alt"></i> Official Notice (Beware of Frauds)</h4>
-                <p>DK Atovitt Production House <strong>NEVER</strong> charges any money or registration fee for auditions or casting. Do not pay anyone claiming to be our agent for jobs.</p>
-            </div>
+    <!-- 🔥 SMART CALL TO ACTION (LOGIN REQUIRED) 🔥 -->
+    <section class="cta-section reveal">
+        
+        <!-- FRAUD WARNING NOTICE -->
+        <div class="warning-box">
+            <h4><i class="fas fa-shield-alt"></i> Official Notice (Beware of Frauds)</h4>
+            <p>DK Atovitt Production House <strong>NEVER</strong> charges any money or registration fee for auditions or casting. Do not pay anyone claiming to be our casting agent.</p>
+        </div>
 
-            <h2 class="section-title" style="margin-bottom: 25px; text-align: left; font-size: 26px;">Apply For Audition</h2>
-            
-            <form onsubmit="event.preventDefault(); alert('🎉 Application Submitted Successfully! Our casting team will contact you soon.');">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" class="form-control" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone Number (WhatsApp)</label>
-                    <input type="tel" class="form-control" placeholder="Enter your mobile number" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" placeholder="Enter your email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Audition Category</label>
-                    <select class="form-control" required>
-                        <option value="" disabled selected>Select your category</option>
-                        <option value="actor">Lead Actor / Actress</option>
-                        <option value="singer">Playback Singer</option>
-                        <option value="child">Child Artist</option>
-                        <option value="crew">Technical Crew / Writer</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Portfolio / Instagram / YouTube Link</label>
-                    <input type="url" class="form-control" placeholder="Paste your work link here">
-                </div>
-
-                <div class="form-group">
-                    <label>Tell Us About Your Experience</label>
-                    <textarea class="form-control" rows="4" placeholder="Briefly write about your acting/singing experience..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
-            </form>
+        <div class="cta-box">
+            <i class="fas fa-lock cta-icon"></i>
+            <h3>Exclusive Audition Portal</h3>
+            <p>To maintain privacy and ensure we only connect with serious artists, our official audition submission form is available exclusively to registered members. Create your free talent account to access the application form.</p>
+            <a href="auth.html" class="smart-login-btn">Login / Sign Up to Apply</a>
         </div>
     </section>
 
-    <!-- 🔥 UPDATED MEGA FOOTER 🔥 -->
+    <!-- 🔥 MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
