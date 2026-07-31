@@ -179,6 +179,36 @@
             .partner-card h3 { font-size: 13px !important; }
         }
 
+        /* 🔥 NEWS TICKER CSS 🔥 */
+        .news-ticker-wrapper { max-width: 800px; margin: 30px auto 0 auto; background: #111; border: 1px solid #333; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.5); position: relative; }
+        .ticker-header { background: #1a1a1a; border-bottom: 1px solid #333; padding: 10px 15px; font-size: 14px; font-weight: bold; color: #e6c875; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .ticker-header i { color: #ff4d4d; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        
+        .ticker-container { height: 180px; position: relative; overflow: hidden; padding: 0 15px; }
+        .ticker-container::before, .ticker-container::after { content: ''; position: absolute; left: 0; width: 100%; height: 30px; z-index: 2; pointer-events: none; }
+        .ticker-container::before { top: 0; background: linear-gradient(to bottom, #111 0%, transparent 100%); }
+        .ticker-container::after { bottom: 0; background: linear-gradient(to top, #111 0%, transparent 100%); }
+        
+        .ticker-content { position: absolute; width: calc(100% - 30px); top: 100%; animation: verticalTicker 20s linear infinite; }
+        .ticker-container:hover .ticker-content { animation-play-state: paused; }
+        
+        @keyframes verticalTicker { 0% { top: 100%; } 100% { top: -150%; } }
+        
+        .ticker-item { margin-bottom: 20px; text-align: left; }
+        .ticker-date { font-size: 11px; color: #ff4d4d; font-weight: bold; margin-bottom: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .ticker-title { font-size: 14px; color: #fff; line-height: 1.5; margin: 0 0 5px 0; font-weight: bold; }
+        .ticker-desc { font-size: 12px; color: #aaa; margin: 0; line-height: 1.5; }
+        .ticker-link { color: #e6c875; font-size: 11px; text-decoration: none; font-weight: bold; }
+        .ticker-link:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .news-ticker-wrapper { margin-top: 20px; }
+            .ticker-container { height: 160px; }
+            .ticker-title { font-size: 13px; }
+            .ticker-desc { font-size: 11.5px; }
+        }
+
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
         .contact-info-box { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
@@ -563,6 +593,53 @@
                 <div class="partner-card"><video src="images/partners/kalpamrit-logo.mp4" autoplay loop muted playsinline></video><h3>Kalpamrit</h3></div>
                 <div class="partner-card"><video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video><h3>Ecosystem</h3></div>
             </div>
+            
+            <!-- 🔥 NEW AUTO-SCROLLING NEWS TICKER 🔥 -->
+            <div class="news-ticker-wrapper reveal" style="margin-bottom: 20px;">
+                <div class="ticker-header">
+                    <i class="fas fa-circle"></i> Latest Updates & Roadmap
+                </div>
+                <div class="ticker-container">
+                    <div class="ticker-content">
+                        <!-- August Update -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">August 2026 (Upcoming)</div>
+                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
+                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <!-- July Update -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">July 2026</div>
+                            <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
+                            <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <!-- June Update -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">June 2026</div>
+                            <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
+                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <!-- May Update -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">May 2026</div>
+                            <h4 class="ticker-title">🖼️ Official Movie Poster Launch</h4>
+                            <p class="ticker-desc">'यक्षिणी' का पहला आधिकारिक पोस्टर भव्य रूप से लॉन्च किया गया। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <!-- Duplicated list for seamless infinite loop -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">August 2026 (Upcoming)</div>
+                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
+                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">July 2026</div>
+                            <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
+                            <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="audition-box" id="audition-section" style="scroll-margin-top: 100px;">
                 <h2>Join Our Upcoming Projects</h2>
                 <p>Are you passionate about acting or filmmaking? Connect with DK Atovitt Production House for exciting roles and auditions.</p>
