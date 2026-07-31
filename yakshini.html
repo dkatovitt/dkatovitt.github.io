@@ -227,8 +227,9 @@
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                        <h1 class="desktop-logo-text">DK ATOVITT</h1>
-                        <p class="desktop-logo-sub">Official Movie Production House</p>
+                        <!-- 🔥 BRAND NAME LOCK 🔥 -->
+                        <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
                     </div>
                 </a>
             </div>
@@ -514,8 +515,10 @@
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3>DK ATOVITT</h3>
-                <p>Official Movie Production House. Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+                <!-- 🔥 BRAND NAME LOCK 🔥 -->
+                <h3 class="notranslate">DK ATOVITT</h3>
+                <!-- 🔥 BRAND NAME LOCK 🔥 -->
+                <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
@@ -539,7 +542,8 @@
                 <h4>About Us</h4>
                 <ul>
                     <li><a href="ceo.html">About CEO</a></li>
-                    <li><a href="company.html">About DK ATOVITT</a></li>
+                    <!-- 🔥 BRAND NAME LOCK 🔥 -->
+                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
                 </ul>
@@ -555,7 +559,8 @@
             </div>
         </div>
         <div class="tseries-footer-bottom">
-            <p>&copy; 2026 DK Atovitt Production House. All Rights Reserved.</p>
+            <!-- 🔥 BRAND NAME LOCK 🔥 -->
+            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
             <div class="tseries-footer-socials">
                 <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -574,7 +579,8 @@
         </div>
         <div class="track-info">
             <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
-            <p class="track-artist">DK ATOVITT</p>
+            <!-- 🔥 BRAND NAME LOCK 🔥 -->
+            <p class="track-artist notranslate">DK ATOVITT</p>
         </div>
         <div class="player-controls">
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
@@ -595,7 +601,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
+                pageLanguage: 'hi', 
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -618,24 +624,30 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
+                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
         
         window.addEventListener('load', function() {
-            var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-            var currentLang = "";
-            if (match) {
-                var parts = match[2].split('/');
-                currentLang = parts[parts.length - 1];
-            }
-            
-            var d = document.getElementById('lang-desktop');
-            var m = document.getElementById('lang-mobile');
-            if(d && currentLang) d.value = currentLang;
-            if(m && currentLang) m.value = currentLang;
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) {
+                    var parts = match[2].split('/');
+                    currentLang = parts[parts.length - 1];
+                }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) {
+                    currentLang = googleSelect.value;
+                }
+                
+                var d = document.getElementById('lang-desktop');
+                var m = document.getElementById('lang-mobile');
+                if(d && currentLang) d.value = currentLang;
+                if(m && currentLang) m.value = currentLang;
+            }, 1000);
         });
 
         const menuBtn = document.getElementById('menuBtn'); 
@@ -739,12 +751,7 @@
 
         /* 🔥 ADVANCED PLAYLIST & AUDIO/VIDEO ENGINE 🔥 */
         const playlist = [
-            { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
-            { file: 'aaj-ki-shaam.mp3', title: 'आज की शाम है खुशियों के नाम' },
-            { file: 'kalpamrit-ke-rahon-mein.mp3', title: 'Kalpamrit Ke Rahon Mein' },
-            { file: 'shaam-dhale.mp3', title: 'शाम ढले जब पानी डोले' },
-            { file: 'dipak-aur-ravi-dosti.mp3', title: 'दीपक और रवि - एक ही जान' },
-            { file: 'tere-naam-se-meri-subah.mp3', title: 'तेरे नाम से मेरी सुबह' }
+            { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' }
         ];
         let currentSongIndex = 0;
         let loopMode = 'all'; // 'all' or 'one'
@@ -774,12 +781,12 @@
                 cdAnim.classList.remove('playing');
             }
             if (activeVideoContainer && activeVideoContainer !== element) {
-                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
             }
             activeVideoContainer = element;
-            element.querySelector('.thumbnail-content').style.display = 'none'; 
+            element.querySelector('[class*="thumbnail-content"]').style.display = 'none'; 
             if(!element.querySelector('iframe')) {
                 const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
                 element.insertAdjacentHTML('beforeend', iframeHTML);
@@ -797,11 +804,12 @@
             }
 
             if (activeVideoContainer) {
-                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
                 activeVideoContainer = null;
             }
+
             musicPlayer.classList.add('active');
             if (!audioSource.src.endsWith(fileName)) {
                 audioSource.src = fileName;
@@ -826,7 +834,7 @@
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 USER PREFERRED LOOP MODE (CENTERED '1') 🔥
+        // 🔥 PERFECT LOOP BUTTON LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
@@ -846,7 +854,7 @@
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 if (activeVideoContainer) {
-                    activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                     const oldIframe = activeVideoContainer.querySelector('iframe');
                     if (oldIframe) oldIframe.remove();
                     activeVideoContainer = null;
