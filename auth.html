@@ -30,7 +30,7 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .login-btn-header { font-size: 12px !important; padding: 4px 8px !important; }
+            .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
@@ -156,7 +156,7 @@
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
-                        <option value="en">English</option>
+                        <option value="en">English (English)</option>
                         <option value="bn">বাংলা (Bengali)</option>
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
@@ -182,7 +182,7 @@
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
-                <option value="en">English</option>
+                <option value="en">English (English)</option>
                 <option value="bn">বাংলা (Bengali)</option>
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
@@ -374,11 +374,11 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
+    <!-- 🔥 100% FIXED GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
+                pageLanguage: 'hi', // 👈 Fixed: Ab yeh perfectly load hoga!
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -388,7 +388,7 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        /* 🔥 CUSTOM TRANSLATOR LOGIC (100% FIXED FOR REFRESH & DEFAULT) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -401,24 +401,31 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                // Fixed cookie path to match 'hi'
+                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
+                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
         
         window.addEventListener('load', function() {
-            var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-            var currentLang = "";
-            if (match) {
-                var parts = match[2].split('/');
-                currentLang = parts[parts.length - 1];
-            }
-            
-            var d = document.getElementById('lang-desktop');
-            var m = document.getElementById('lang-mobile');
-            if(d && currentLang) d.value = currentLang;
-            if(m && currentLang) m.value = currentLang;
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) {
+                    var parts = match[2].split('/');
+                    currentLang = parts[parts.length - 1];
+                }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) {
+                    currentLang = googleSelect.value;
+                }
+                
+                var d = document.getElementById('lang-desktop');
+                var m = document.getElementById('lang-mobile');
+                if(d && currentLang) d.value = currentLang;
+                if(m && currentLang) m.value = currentLang;
+            }, 1000);
         });
 
         const menuBtn = document.getElementById('menuBtn'); 
