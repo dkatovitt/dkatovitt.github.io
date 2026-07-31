@@ -34,6 +34,17 @@
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
+
+        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
+        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .custom-translate select:hover { background: #e6c875; color: #000; }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+        
+        /* HIDE GOOGLE'S DEFAULT STUFF */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
         
         /* 🔥 SIDE MENU DROPDOWN CSS */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
@@ -129,7 +140,8 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <!-- 🔥 LOGO LINK FIXED (STAYS ON CURRENT PAGE) 🔥 -->
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text">DK ATOVITT</h1>
@@ -138,15 +150,47 @@
                 </a>
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                
+                <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP (NOTRANSLATE FIXED) 🔥 -->
+                <div class="custom-translate hide-on-mobile">
+                    <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                        <option value="">🌐 Language</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                    </select>
+                </div>
+
                 <a href="index.html" class="login-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Back to Home</span><span class="show-on-mobile">Home</span></a>
             </div>
         </div>
     </header>
 
-    <!-- 🔥 UPDATED MENU WITH MP3 SONGS & ECOSYSTEM 🔥 -->
+    <!-- 🔥 HIDDEN GOOGLE TRANSLATE BOX 🔥 -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- 🔥 MENU WITH MP3 SONGS & ECOSYSTEM 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
+        <!-- 🔥 CUSTOM TRANSLATOR FOR MOBILE MENU (NOTRANSLATE FIXED) 🔥 -->
+        <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
+                <option value="">🌐 Select Language</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="en">English</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+            </select>
+        </div>
+
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
@@ -169,7 +213,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -184,7 +227,6 @@
         
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -216,7 +258,7 @@
                 <div class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Login</div>
             </div>
 
-            <!-- 1. SIGN UP FORM (WITH OTP & CONFIRM PASSWORD) -->
+            <!-- 1. SIGN UP FORM -->
             <div class="form-box" id="formSignup">
                 <form id="signupForm" action="#" method="POST">
                     
@@ -229,7 +271,6 @@
                         <label>Email Address</label>
                         <div style="display: flex; gap: 10px;">
                             <input type="email" id="emailInput" placeholder="Enter email address" required style="flex: 1;">
-                            <!-- OTP Button logic updated -->
                             <button type="button" class="otp-btn" onclick="sendDemoOTP()">Send OTP</button>
                         </div>
                     </div>
@@ -244,7 +285,6 @@
                         <input type="password" id="passInput" placeholder="Create a strong password" required>
                     </div>
 
-                    <!-- 🔥 NEW: Confirm Password Box -->
                     <div class="form-group">
                         <label>Confirm Password</label>
                         <input type="password" id="confirmPassInput" placeholder="Re-enter your password" required>
@@ -277,7 +317,7 @@
         </div>
     </section>
 
-    <!-- 🔥 UPDATED MEGA FOOTER -->
+    <!-- 🔥 MEGA FOOTER -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -334,8 +374,53 @@
 
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <!-- JavaScript -->
     <script>
+        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        function translatePage(lang) {
+            if (lang === "") {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload();
+                return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang;
+                googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+            var currentLang = "";
+            if (match) {
+                var parts = match[2].split('/');
+                currentLang = parts[parts.length - 1];
+            }
+            
+            var d = document.getElementById('lang-desktop');
+            var m = document.getElementById('lang-mobile');
+            if(d && currentLang) d.value = currentLang;
+            if(m && currentLang) m.value = currentLang;
+        });
+
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -392,20 +477,17 @@
                 alert("Error: Please enter your Email Address first to receive OTP!");
                 return;
             }
-            // Generate Random 6 digit OTP
             demoOTP = Math.floor(100000 + Math.random() * 900000).toString();
             alert(`Demo Mode Active:\n\nOTP sent successfully to ${email}!\n\n(Your Demo OTP is: ${demoOTP})\n\nUse this OTP to register.`);
         }
 
         /* 🌟 PASSWORD & OTP VALIDATION SCRIPT 🌟 */
         document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Stop form submission temporarily
-
+            event.preventDefault(); 
             let pass1 = document.getElementById('passInput').value;
             let pass2 = document.getElementById('confirmPassInput').value;
             let enteredOTP = document.getElementById('otpInput').value;
 
-            // 1. Check if OTP is correct
             if (enteredOTP !== demoOTP && demoOTP !== "") {
                 alert("Error: Invalid OTP! Please check the OTP sent to your email.");
                 return;
@@ -415,16 +497,14 @@
                  return;
             }
 
-            // 2. Check if passwords match
             if (pass1 !== pass2) {
                 alert("Error: Passwords do not match! Please confirm your password correctly.");
-                return; // Stop here
+                return; 
             }
 
-            // If everything is correct
             alert('Account Created Successfully! Welcome to DK Atovitt Family. You can now login to access the Portal.');
             switchTab('login');
-            this.reset(); // Clear form
+            this.reset(); 
         });
 
         /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
