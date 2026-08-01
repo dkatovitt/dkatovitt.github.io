@@ -155,7 +155,7 @@
                 <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                        <option value="">🌐 Language</option>
+                        <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
                         <option value="bn">বাংলা (Bengali)</option>
@@ -226,7 +226,6 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
@@ -261,7 +260,7 @@
             <h2>Who We Are</h2>
             <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p><strong class="notranslate">DK ATOVITT</strong> is a premier Movie Production House based in Kolkata, dedicated to creating cinematic masterpieces that leave a lasting impact. Founded by visionary entrepreneur Mr. Dipak Kumar Gupta, our studio specializes in producing high-end 4K feature films, web series, and original music tracks.</p>
-            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
+            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम ক্ষমতায় काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
             
             <div class="services-grid">
                 
@@ -359,7 +358,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'hi', 
+                pageLanguage: 'auto', 
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -369,7 +368,7 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        /* 🔥 CUSTOM TRANSLATOR LOGIC (NEW SMART FIX) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -382,8 +381,8 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
-                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
@@ -403,8 +402,8 @@
                 
                 var d = document.getElementById('lang-desktop');
                 var m = document.getElementById('lang-mobile');
-                if(d && currentLang) d.value = currentLang;
-                if(m && currentLang) m.value = currentLang;
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
             }, 1000);
         });
 
