@@ -255,6 +255,19 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
+
+        /* 🔥 FIREWORKS LAUNCH BANNER CSS 🔥 */
+        #launch-banner { position: fixed; top: 120px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.85); border: 2px solid #e6c875; color: #fff; padding: 20px 30px; border-radius: 12px; z-index: 10001; text-align: center; box-shadow: 0 0 20px rgba(230, 200, 117, 0.6); animation: slideDownBanner 0.5s ease-out; width: 90%; max-width: 600px;}
+        #launch-banner h2 { margin: 0 0 10px 0; color: #ff4d4d; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        #launch-banner p { margin: 0; font-size: 16px; color: #e6c875; }
+        
+        @keyframes slideDownBanner { from { top: -100px; opacity: 0; } to { top: 120px; opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            #launch-banner { top: 80px; padding: 15px 20px; }
+            #launch-banner h2 { font-size: 18px; }
+            #launch-banner p { font-size: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -366,6 +379,12 @@
         <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     <div id="overlay"></div>
+
+    <!-- 🔥 GRAND LAUNCH BANNER 🔥 -->
+    <div id="launch-banner">
+        <h2>🎉 GRAND LAUNCH 🎉</h2>
+        <p>DK ATOVITT OFFICIAL WEBSITE IS LIVE!</p>
+    </div>
 
     <section class="hero" id="home">
         <div class="hero-overlay">
@@ -672,6 +691,11 @@
                             <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
+                            <div class="ticker-date">2 August 2026</div>
+                            <h4 class="ticker-title">🚀 DK ATOVITT Official Website Successfully Launched!</h4>
+                            <p class="ticker-desc">The official website of DK Atovitt is now live to the world! <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
                             <div class="ticker-date">August 2026 (Upcoming)</div>
                             <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
                             <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
@@ -697,6 +721,11 @@
                             <div class="ticker-date">July 2026</div>
                             <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
                             <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">2 August 2026</div>
+                            <h4 class="ticker-title">🚀 DK ATOVITT Official Website Successfully Launched!</h4>
+                            <p class="ticker-desc">The official website of DK Atovitt is now live to the world! <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
                             <div class="ticker-date">August 2026 (Upcoming)</div>
@@ -920,6 +949,15 @@
         window.addEventListener('load', () => {
             const track1 = document.getElementById('autoSlider'); if(track1) { const imgCount = track1.querySelectorAll('img').length; const slideWidth = 175; const totalScroll = slideWidth * imgCount; track1.innerHTML += track1.innerHTML; const style1 = document.createElement('style'); style1.innerHTML = `@keyframes smartScroll1 { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } } #autoSlider { animation: smartScroll1 ${imgCount * 2.5}s linear infinite !important; }`; document.head.appendChild(style1); }
             const track2 = document.getElementById('gallerySlider'); if(track2) { const imgCount = track2.querySelectorAll('img').length; const slideWidth = 376; const totalScroll = slideWidth * imgCount; track2.innerHTML += track2.innerHTML; const style2 = document.createElement('style'); style2.innerHTML = `@keyframes smartScroll2 { 0% { transform: translateX(-${totalScroll}px); } 100% { transform: translateX(0); } } #gallerySlider { animation: smartScroll2 ${imgCount * 3.5}s linear infinite !important; }`; document.head.appendChild(style2); }
+            
+            // Hide banner after 5 seconds
+            setTimeout(function() {
+                var banner = document.getElementById('launch-banner');
+                if(banner) {
+                    banner.style.animation = 'slideDownBanner 0.5s ease-in reverse';
+                    setTimeout(function() { banner.style.display = 'none'; }, 450);
+                }
+            }, 5000);
         });
 
         function toggleSubMenu(id) {
@@ -1121,5 +1159,34 @@
             }
         });
     </script>
+
+    <!-- 🎉 Official Launch Fireworks Effect 🎉 -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <script>
+      var duration = 5 * 1000; // 5 second tak patakhe chalenge
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
+
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          return clearInterval(interval);
+        }
+        var particleCount = 50 * (timeLeft / duration);
+        // Left side se aatishbazi
+        confetti(Object.assign({}, defaults, { particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        }));
+        // Right side se aatishbazi
+        confetti(Object.assign({}, defaults, { particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+    </script>
+    <!-- 🎉 Fireworks Effect Ends 🎉 -->
 </body>
 </html>
