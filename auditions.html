@@ -232,7 +232,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -244,10 +243,8 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -412,7 +409,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'hi', 
+                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -435,8 +432,8 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
-                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
@@ -456,8 +453,8 @@
                 
                 var d = document.getElementById('lang-desktop');
                 var m = document.getElementById('lang-mobile');
-                if(d && currentLang) d.value = currentLang;
-                if(m && currentLang) m.value = currentLang;
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
             }, 1000);
         });
 
