@@ -190,7 +190,7 @@
             .partner-card h3 { font-size: 13px !important; }
         }
 
-        /* 🔥 NEWS TICKER CSS 🔥 */
+        /* 🔥 CORRECTED NEWS TICKER CSS (BOTTOM TO TOP / APRIL TO AUGUST) 🔥 */
         .news-ticker-wrapper { max-width: 800px; margin: 30px auto 0 auto; background: #111; border: 1px solid #333; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.5); position: relative; }
         .ticker-header { background: #1a1a1a; border-bottom: 1px solid #333; padding: 10px 15px; font-size: 14px; font-weight: bold; color: #e6c875; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
         .ticker-header i { color: #ff4d4d; animation: blink 1.5s infinite; }
@@ -201,10 +201,13 @@
         .ticker-container::before { top: 0; background: linear-gradient(to bottom, #111 0%, transparent 100%); }
         .ticker-container::after { bottom: 0; background: linear-gradient(to top, #111 0%, transparent 100%); }
         
-        .ticker-content { position: absolute; width: calc(100% - 30px); top: 100%; animation: verticalTicker 20s linear infinite; }
+        .ticker-content { position: absolute; width: calc(100% - 30px); top: 0; animation: verticalTicker 22s linear infinite; }
         .ticker-container:hover .ticker-content { animation-play-state: paused; }
         
-        @keyframes verticalTicker { 0% { top: 100%; } 100% { top: -150%; } }
+        @keyframes verticalTicker { 
+            0% { transform: translateY(0); } 
+            100% { transform: translateY(-50%); } 
+        }
         
         .ticker-item { margin-bottom: 20px; text-align: left; }
         .ticker-date { font-size: 11px; color: #ff4d4d; font-weight: bold; margin-bottom: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
@@ -640,27 +643,18 @@
                 <div class="partner-card"><video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video><h3>Ecosystem</h3></div>
             </div>
             
-            <!-- 🔥 NEWS TICKER 🔥 -->
+            <!-- 🔥 CORRECTED NEWS TICKER (BOTTOM TO TOP / APRIL TO AUGUST) 🔥 -->
             <div class="news-ticker-wrapper reveal" style="margin-bottom: 20px;">
                 <div class="ticker-header">
                     <i class="fas fa-circle"></i> Latest Updates & Roadmap
                 </div>
                 <div class="ticker-container">
                     <div class="ticker-content">
+                        <!-- First Set (April to August) -->
                         <div class="ticker-item">
-                            <div class="ticker-date">August 2026 (Upcoming)</div>
-                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
-                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
-                        </div>
-                        <div class="ticker-item">
-                            <div class="ticker-date">July 2026</div>
-                            <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
-                            <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
-                        </div>
-                        <div class="ticker-item">
-                            <div class="ticker-date">June 2026</div>
-                            <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
-                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
+                            <div class="ticker-date">April 2026</div>
+                            <h4 class="ticker-title">🌱 Project Kickoff & Planning</h4>
+                            <p class="ticker-desc">'यक्षिणी' फिल्म और डिजिटल प्लेटफॉर्म के प्रोजेक्ट की रूपरेखा तैयार की गई। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
                             <div class="ticker-date">May 2026</div>
@@ -668,14 +662,46 @@
                             <p class="ticker-desc">'यक्षिणी' का पहला आधिकारिक पोस्टर भव्य रूप से लॉन्च किया गया। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
-                            <div class="ticker-date">August 2026 (Upcoming)</div>
-                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
-                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
+                            <div class="ticker-date">June 2026</div>
+                            <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
+                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
                             <div class="ticker-date">July 2026</div>
                             <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
                             <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">August 2026 (Upcoming)</div>
+                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
+                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless Infinite Loop (April to August) -->
+                        <div class="ticker-item">
+                            <div class="ticker-date">April 2026</div>
+                            <h4 class="ticker-title">🌱 Project Kickoff & Planning</h4>
+                            <p class="ticker-desc">'यक्षिणी' फिल्म और डिजिटल प्लेटफॉर्म के प्रोजेक्ट की रूपरेखा तैयार की गई। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">May 2026</div>
+                            <h4 class="ticker-title">🖼️ Official Movie Poster Launch</h4>
+                            <p class="ticker-desc">'यक्षिणी' का पहला आधिकारिक पोस्टर भव्य रूप से लॉन्च किया गया। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">June 2026</div>
+                            <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
+                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">July 2026</div>
+                            <h4 class="ticker-title">🎬 'Yakshini Part 1' Testing Underway</h4>
+                            <p class="ticker-desc">फिल्म का पहला हिस्सा तैयार है और टेस्टिंग चल रही है। हार्शिका का स्पेशल बर्थडे सॉन्ग भी रिलीज़। <a href="news.html" class="ticker-link">Read More</a></p>
+                        </div>
+                        <div class="ticker-item">
+                            <div class="ticker-date">August 2026 (Upcoming)</div>
+                            <h4 class="ticker-title">🚀 'Yakshini' Release Date Announcement</h4>
+                            <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                     </div>
                 </div>
@@ -821,7 +847,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', // 🔥 AUTO DETECT ON 🔥
+                pageLanguage: 'auto', 
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -831,7 +857,7 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (NEW SMART FIX) 🔥 */
+        /* 🔥 CUSTOM TRANSLATOR LOGIC 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
