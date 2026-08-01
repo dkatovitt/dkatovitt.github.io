@@ -177,7 +177,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <!-- 🔥 BRAND NAME LOCK 🔥 -->
@@ -191,7 +191,7 @@
                 <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                        <option value="">🌐 Language</option>
+                        <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
                         <option value="bn">বাংলা (Bengali)</option>
@@ -550,7 +550,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'hi', 
+                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -572,8 +572,8 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
-                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
@@ -593,8 +593,8 @@
                 
                 var d = document.getElementById('lang-desktop');
                 var m = document.getElementById('lang-mobile');
-                if(d && currentLang) d.value = currentLang;
-                if(m && currentLang) m.value = currentLang;
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
             }, 1000);
         });
 
