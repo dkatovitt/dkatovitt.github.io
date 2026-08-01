@@ -223,7 +223,7 @@
                 <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                        <option value="">🌐 Language</option>
+                        <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
                         <option value="bn">বাংলা (Bengali)</option>
@@ -490,7 +490,7 @@
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
@@ -533,7 +533,6 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & PLAYLIST ENGINE -->
@@ -566,7 +565,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'hi', 
+                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -576,7 +575,7 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 CUSTOM TRANSLATOR LOGIC 🔥 */
+        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -589,8 +588,8 @@
                 googleSelect.value = lang;
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
-                document.cookie = "googtrans=/hi/" + lang + "; path=/;";
-                document.cookie = "googtrans=/hi/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
@@ -610,8 +609,8 @@
                 
                 var d = document.getElementById('lang-desktop');
                 var m = document.getElementById('lang-mobile');
-                if(d && currentLang) d.value = currentLang;
-                if(m && currentLang) m.value = currentLang;
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
             }, 1000);
         });
 
@@ -709,16 +708,17 @@
                     url: url
                 }).catch((error) => console.log('Error sharing', error));
             } else {
+                // Fallback for Desktop/PC
                 prompt("अपने दोस्तों को भेजने के लिए यह लिंक कॉपी करें:", url);
             }
         }
 
-        /* 🔥 ADVANCED PLAYLIST ENGINE & VIDEO LOGIC 🔥 */
+        /* 🔥 ADVANCED PLAYLIST & AUDIO/VIDEO ENGINE 🔥 */
         const playlist = [
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' }
         ];
         let currentSongIndex = 0;
-        let loopMode = 'all';
+        let loopMode = 'all'; // 'all' or 'one'
 
         let activeVideoContainer = null;
         const audio = document.getElementById('bgMusic');
@@ -729,6 +729,7 @@
         const cdAnim = document.getElementById('cdAnim');
         const cdProgress = document.getElementById('cdProgress');
 
+        // Update CD Progress Circle
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
                 const progressPercent = (audio.currentTime / audio.duration) * 100;
@@ -736,6 +737,7 @@
             }
         });
 
+        // VIDEO PLAY FUNCTION
         function playInlineVideo(element, videoId) {
             if (!audio.paused) {
                 audio.pause();
@@ -755,6 +757,7 @@
             }
         }
 
+        // AUDIO PLAY FUNCTION
         function playSong(fileName, songTitle) {
             const foundIndex = playlist.findIndex(s => s.file === fileName);
             if (foundIndex !== -1) {
@@ -783,16 +786,19 @@
             cdAnim.classList.add('playing');
         }
 
+        // NEXT SONG
         function nextSong() {
             currentSongIndex = (currentSongIndex + 1) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
+        // PREVIOUS SONG
         function prevSong() {
             currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
+        // 🔥 PERFECT LOOP BUTTON LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
@@ -808,6 +814,7 @@
             }
         }
 
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 if (activeVideoContainer) {
