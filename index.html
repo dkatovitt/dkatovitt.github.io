@@ -35,11 +35,6 @@
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         
-        /* 🔥 FORCE SHOW INSTALL APP BUTTON CSS 🔥 */
-        .install-app-btn { display: inline-block !important; background-color: #25d366 !important; color: #000 !important; border-color: #25d366 !important; cursor: pointer; animation: pulse-install 2s infinite; }
-        .install-app-btn:hover { background-color: #1ebc5a !important; color: #fff !important; animation: none; }
-        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-
         .show-on-mobile { display: none; }
 
         @media (max-width: 768px) {
@@ -129,17 +124,20 @@
             .social-action-bar { gap: 30px; margin-top: 12px; padding-top: 10px; }
         }
 
-        /* 🌟 WHATSAPP BUTTON */
+        /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        /* 🔥 24x7 AI CHATBOT CSS 🔥 */
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         
-        .chatbot-container { position: fixed; bottom: 190px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; transform: scale(1.1); animation: none; }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+
+        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
@@ -158,7 +156,8 @@
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .chatbot-container { bottom: 145px; right: 10px; left: 10px; width: auto; }
+            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
+            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
         
         /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
@@ -416,11 +415,7 @@
                     </select>
                 </div>
 
-                <!-- 🔥 FORCE INSTALL APP BUTTON 🔥 -->
-                <button id="installAppBtn" class="login-btn-header install-app-btn">
-                    <i class="fas fa-download"></i> <span class="hide-on-mobile">Install App</span><span class="show-on-mobile">Install</span>
-                </button>
-
+                <!-- 🔥 LOGIN BUTTON IS BACK IN ITS ORIGINAL GLORY 🔥 -->
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
@@ -965,14 +960,22 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
+    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
+    
+    <!-- 1. WHATSAPP BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT 🔥 🤖 -->
+    <!-- 2. AI CHATBOT BUTTON -->
     <div class="chatbot-toggler" id="chatbotToggler">
         <i class="fas fa-comment-dots"></i>
     </div>
     
+    <!-- 3. INSTALL APP FLOATING BUTTON -->
+    <button id="installAppBtn" class="floating-install-btn" title="Install Official App">
+        <i class="fas fa-download"></i>
+    </button>
+
+    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -1027,7 +1030,7 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 PWA CUSTOM INSTALL BUTTON SCRIPT (FORCE SHOW FIX) 🔥 */
+        /* 🔥 PWA CUSTOM INSTALL BUTTON SCRIPT 🔥 */
         let deferredPrompt = null;
         const installAppBtn = document.getElementById('installAppBtn');
 
@@ -1046,7 +1049,6 @@
                 }
                 deferredPrompt = null;
             } else {
-                // अगर Chrome नखरे कर रहा है, तो हम यूज़र को सीधा रास्ता बता देंगे!
                 alert("App Install करने के लिए:\n\n1. ब्राउज़र के ऊपर दाईं तरफ 3-डॉट (⋮) मेनू पर क्लिक करें।\n2. 'Add to Home screen' या 'Install app' का ऑप्शन चुनें।");
             }
         });
@@ -1088,11 +1090,9 @@
                 botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
             }
 
-            // User Message Show
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
-            // Bot Typing Delay (0.6 seconds)
             setTimeout(() => {
                 chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
@@ -1395,6 +1395,17 @@
                 audio.play();
             }
         });
+    </script>
+    
+    <!-- PWA App Script -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js').then((reg) => {
+            console.log('App ready to install!', reg);
+          });
+        });
+      }
     </script>
 </body>
 </html>
