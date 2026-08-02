@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK Atovitt - Official Movie Production House</title>
+    <!-- 🔥 PRELOAD POPUP IMAGE FOR INSTANT LOAD 🔥 -->
+    <link rel="preload" href="1001091855.png" as="image">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -607,7 +610,7 @@
                     <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
                     <div class="btn-group-3">
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
-                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले যখন पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
@@ -961,26 +964,23 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 PERMANENT POPUP LOGIC 🔥 */
-        window.addEventListener('load', function() {
+        /* 🔥 PERMANENT POPUP LOGIC (SUPER FAST FIX) 🔥 */
+        // अब यह पूरे वेबसाइट के लोड होने का वेट नहीं करेगा, तुरंत आ जाएगा!
+        document.addEventListener("DOMContentLoaded", function() {
             const customPopup = document.getElementById('mainFestivalPopup');
             const closeCustomPopup = document.getElementById('closeMainPopup');
             
-            // यह चेक करेगा कि क्या इस सेशन में पॉपअप पहले ही दिख चुका है या नहीं।
-            // अगर तुम चाहते हो कि हर बार साइट खोलने पर पॉपअप दिखे, तो sessionStorage वाली लाइन हटा सकते हो।
             if (!sessionStorage.getItem('customPopupShown')) {
                 setTimeout(function() {
                     customPopup.classList.add('show-popup');
-                }, 800); // 0.8 सेकंड बाद पॉपअप आएगा
+                }, 100); // 100ms यानी 0.1 सेकंड में सामने होगा
             }
 
-            // कट (X) बटन दबाने पर पॉपअप बंद हो जाएगा
             closeCustomPopup.addEventListener('click', function() {
                 customPopup.classList.remove('show-popup');
                 sessionStorage.setItem('customPopupShown', 'true');
             });
 
-            // बैकग्राउंड (इमेज के बाहर) क्लिक करने पर भी पॉपअप बंद हो जाएगा
             customPopup.addEventListener('click', function(e) {
                 if (e.target === customPopup) {
                     customPopup.classList.remove('show-popup');
