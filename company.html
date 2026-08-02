@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Company - DK Atovitt</title>
+    
+    <!-- 🔥 PWA MANIFEST 🔥 -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e6c875">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -72,8 +77,37 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
+        /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
+        .chatbot-toggler:hover { transform: scale(1.1); }
+        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; transform: scale(1.1); animation: none; }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+
+        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
+        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
+        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
+        .chatbot-header button:hover { color: #fff; }
+        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
+        
+        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
+        
+        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .chat-opt-btn:hover { background: #e6c875; color: #000; }
+        
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         /* 🌟 COMPANY PAGE CSS */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         
         .company-hero { padding: 180px 20px 100px 20px; text-align: center; background: url('images/movies/gallery1.png') center/cover no-repeat; position: relative; border-bottom: 2px solid #333; }
         .company-hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.9); z-index: 1; }
@@ -106,6 +140,11 @@
             .about-container h2 { font-size: 26px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .company-header-content video { height: 100px; }
+            
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
+            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
+            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
 
         /* Reveal Anim */
@@ -127,12 +166,6 @@
         .tseries-footer-socials { display: flex; gap: 15px; }
         .tseries-footer-socials a { color: #aaa; font-size: 18px; transition: 0.3s; }
         .tseries-footer-socials a:hover { color: #e6c875; }
-
-        /* 🌟 WHATSAPP BUTTON */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
     </style>
 </head>
 <body>
@@ -260,7 +293,7 @@
             <h2>Who We Are</h2>
             <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p><strong class="notranslate">DK ATOVITT</strong> is a premier Movie Production House based in Kolkata, dedicated to creating cinematic masterpieces that leave a lasting impact. Founded by visionary entrepreneur Mr. Dipak Kumar Gupta, our studio specializes in producing high-end 4K feature films, web series, and original music tracks.</p>
-            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम ক্ষমতায় काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
+            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
             
             <div class="services-grid">
                 
@@ -351,8 +384,37 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
+    
+    <!-- 1. WHATSAPP BUTTON (Number Updated) -->
+    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- 2. AI CHATBOT BUTTON (ROBOT ICON UPDATED) -->
+    <div class="chatbot-toggler" id="chatbotToggler">
+        <i class="fas fa-robot"></i>
+    </div>
+    
+    <!-- 3. INSTALL APP FLOATING BUTTON -->
+    <button id="installAppBtn" class="floating-install-btn" title="Install Official App">
+        <i class="fas fa-download"></i>
+    </button>
+
+    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
+            <button id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+        </div>
+        <div class="chatbot-options">
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
+            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
+            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
+            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
+        </div>
+    </div>
 
     <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
@@ -368,6 +430,77 @@
 
     <!-- JavaScript -->
     <script>
+        /* 🔥 PWA CUSTOM INSTALL BUTTON SCRIPT 🔥 */
+        let deferredPrompt = null;
+        const installAppBtn = document.getElementById('installAppBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        if(installAppBtn) {
+            installAppBtn.addEventListener('click', async () => {
+                if (deferredPrompt !== null) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        installAppBtn.style.display = 'none';
+                    }
+                    deferredPrompt = null;
+                } else {
+                    alert("App Install करने के लिए:\n\n1. ब्राउज़र के ऊपर दाईं तरफ 3-डॉट (⋮) मेनू पर क्लिक करें।\n2. 'Add to Home screen' या 'Install app' का ऑप्शन चुनें।");
+                }
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            if(installAppBtn) installAppBtn.style.display = 'none';
+            console.log('PWA was installed');
+        });
+
+        /* 🔥 CHATBOT LOGIC (EMAIL ID UPDATED) 🔥 */
+        const chatbotToggler = document.getElementById('chatbotToggler');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotBody = document.getElementById('chatbotBody');
+
+        chatbotToggler.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        function sendChat(type) {
+            let userText = "";
+            let botReply = "";
+
+            if(type === 'Audition') {
+                userText = "मुझे Audition के बारे में जानना है।";
+                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+            } else if(type === 'Movies') {
+                userText = "आने वाली Movies कौन सी हैं?";
+                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+            } else if(type === 'Contact') {
+                userText = "मुझे DK Sir से बात करनी है।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+            } else if(type === 'Join') {
+                userText = "Ecosystem कैसे Join करूँ?";
+                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+            }
+
+            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
+            setTimeout(() => {
+                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }, 600);
+        }
+
         /* 🔥 CUSTOM TRANSLATOR LOGIC (NEW SMART FIX) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
@@ -491,6 +624,15 @@
                 }
             });
         });
+
+        // App Register
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js').then((reg) => {
+              console.log('App ready to install!', reg);
+            });
+          });
+        }
     </script>
 </body>
 </html>
