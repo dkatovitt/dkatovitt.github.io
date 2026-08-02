@@ -35,9 +35,10 @@
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         
-        /* 🔥 INSTALL APP BUTTON CSS 🔥 */
-        .install-app-btn { display: none; background-color: #25d366 !important; color: #000 !important; border-color: #25d366 !important; cursor: pointer; }
-        .install-app-btn:hover { background-color: #1ebc5a !important; color: #fff !important; }
+        /* 🔥 FORCE SHOW INSTALL APP BUTTON CSS 🔥 */
+        .install-app-btn { display: inline-block !important; background-color: #25d366 !important; color: #000 !important; border-color: #25d366 !important; cursor: pointer; animation: pulse-install 2s infinite; }
+        .install-app-btn:hover { background-color: #1ebc5a !important; color: #fff !important; animation: none; }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
         .show-on-mobile { display: none; }
 
@@ -132,7 +133,33 @@
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; } }
+        
+        /* 🔥 24x7 AI CHATBOT CSS 🔥 */
+        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
+        .chatbot-toggler:hover { transform: scale(1.1); }
+        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .chatbot-container { position: fixed; bottom: 190px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
+        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
+        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
+        .chatbot-header button:hover { color: #fff; }
+        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
+        
+        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
+        
+        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .chat-opt-btn:hover { background: #e6c875; color: #000; }
+        
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
+            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .chatbot-container { bottom: 145px; right: 10px; left: 10px; width: auto; }
+        }
         
         /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
         .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
@@ -353,7 +380,6 @@
 <body>
 
     <!-- 🔥 PERMANENT FESTIVAL / LAUNCH POPUP HTML 🔥 -->
-    <!-- भविष्य में इमेज बदलने के लिए बस नीचे 'src' में अपनी नई इमेज का नाम डाल देना -->
     <div id="mainFestivalPopup" class="custom-popup-overlay">
         <div class="custom-popup-content">
             <button id="closeMainPopup" class="custom-close-btn">&times;</button>
@@ -390,7 +416,7 @@
                     </select>
                 </div>
 
-                <!-- 🔥 INSTALL APP BUTTON 🔥 -->
+                <!-- 🔥 FORCE INSTALL APP BUTTON 🔥 -->
                 <button id="installAppBtn" class="login-btn-header install-app-btn">
                     <i class="fas fa-download"></i> <span class="hide-on-mobile">Install App</span><span class="show-on-mobile">Install</span>
                 </button>
@@ -942,6 +968,27 @@
     <!-- 🌟 WHATSAPP FLOATING BUTTON -->
     <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT 🔥 🤖 -->
+    <div class="chatbot-toggler" id="chatbotToggler">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
+            <button id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+        </div>
+        <div class="chatbot-options">
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
+            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
+            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
+            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
+        </div>
+    </div>
+
     <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & ADVANCED CONTROLS -->
     <div class="music-player">
         <div class="cd-wrapper">
@@ -980,38 +1027,77 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 PWA CUSTOM INSTALL BUTTON SCRIPT 🔥 */
-        let deferredPrompt;
+        /* 🔥 PWA CUSTOM INSTALL BUTTON SCRIPT (FORCE SHOW FIX) 🔥 */
+        let deferredPrompt = null;
         const installAppBtn = document.getElementById('installAppBtn');
 
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome from showing the mini-infobar automatically
             e.preventDefault();
-            // Stash the event so it can be triggered later.
             deferredPrompt = e;
-            // Update UI notify the user they can install the PWA
-            installAppBtn.style.display = 'inline-block';
         });
 
         installAppBtn.addEventListener('click', async () => {
             if (deferredPrompt !== null) {
-                // Show the install prompt
                 deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
                     console.log('User accepted the install prompt');
                     installAppBtn.style.display = 'none';
                 }
                 deferredPrompt = null;
+            } else {
+                // अगर Chrome नखरे कर रहा है, तो हम यूज़र को सीधा रास्ता बता देंगे!
+                alert("App Install करने के लिए:\n\n1. ब्राउज़र के ऊपर दाईं तरफ 3-डॉट (⋮) मेनू पर क्लिक करें।\n2. 'Add to Home screen' या 'Install app' का ऑप्शन चुनें।");
             }
         });
 
         window.addEventListener('appinstalled', () => {
-            // Hide the app-provided install promotion
             installAppBtn.style.display = 'none';
             console.log('PWA was installed');
         });
+        
+        /* 🔥 CHATBOT LOGIC 🔥 */
+        const chatbotToggler = document.getElementById('chatbotToggler');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotBody = document.getElementById('chatbotBody');
+
+        chatbotToggler.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
+
+        function sendChat(type) {
+            let userText = "";
+            let botReply = "";
+
+            if(type === 'Audition') {
+                userText = "मुझे Audition के बारे में जानना है।";
+                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो dkatovitt@gmail.com पर भेज सकते हैं।";
+            } else if(type === 'Movies') {
+                userText = "आने वाली Movies कौन सी हैं?";
+                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+            } else if(type === 'Contact') {
+                userText = "मुझे DK Sir से बात करनी है।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9330332929 पर कॉल या WhatsApp कर सकते हैं।";
+            } else if(type === 'Join') {
+                userText = "Ecosystem कैसे Join करूँ?";
+                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+            }
+
+            // User Message Show
+            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
+            // Bot Typing Delay (0.6 seconds)
+            setTimeout(() => {
+                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }, 600);
+        }
 
         /* 🔥 PERMANENT POPUP LOGIC (SUPER FAST FIX) 🔥 */
         document.addEventListener("DOMContentLoaded", function() {
@@ -1309,46 +1395,6 @@
                 audio.play();
             }
         });
-    </script>
-
-    <!-- 🎉 Official Launch Fireworks Effect 🎉 -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
-    <script>
-      var duration = 5 * 1000; // 5 second tak patakhe chalenge
-      var animationEnd = Date.now() + duration;
-      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
-
-      function randomInRange(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      var interval = setInterval(function() {
-        var timeLeft = animationEnd - Date.now();
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-        var particleCount = 50 * (timeLeft / duration);
-        // Left side se aatishbazi
-        confetti(Object.assign({}, defaults, { particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-        }));
-        // Right side se aatishbazi
-        confetti(Object.assign({}, defaults, { particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-        }));
-      }, 250);
-    </script>
-    <!-- 🎉 Fireworks Effect Ends 🎉 -->
-    
-    <!-- PWA App Script -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js').then((reg) => {
-            console.log('App ready to install!', reg);
-          });
-        });
-      }
     </script>
 </body>
 </html>
