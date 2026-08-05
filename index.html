@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK Atovitt - Official Movie Production House</title>
     
-    <!-- 🔥 PWA MANIFEST 🔥 -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
     
@@ -120,23 +119,11 @@
             .social-action-bar { gap: 30px; margin-top: 12px; padding-top: 10px; }
         }
 
-        /* 🌟 NEW MULTI-SOCIAL EXPANDING FLOATING BUTTON 🌟 */
-        .floating-social-container { position: fixed; bottom: 40px; right: 40px; z-index: 10000; display: flex; align-items: center; flex-direction: row-reverse; gap: 15px; }
-        .social-menu-items { display: flex; flex-direction: row-reverse; gap: 12px; opacity: 0; visibility: hidden; transform: translateX(20px); transition: all 0.3s ease; pointer-events: none; }
-        .social-menu-items.active { opacity: 1; visibility: visible; transform: translateX(0); pointer-events: auto; }
-        .f-social-item { width: 50px; height: 50px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: 0.3s; }
-        .f-social-item:hover { transform: scale(1.15); }
-        .f-whatsapp { background: #25d366; }
-        .f-facebook { background: #1877F2; }
-        .f-instagram { background: #E4405F; }
-        .f-youtube { background: #FF0000; }
-        .f-email { background: #e6c875; color: #000; }
+        /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
-        .main-social-toggle { width: 60px; height: 60px; border-radius: 50%; background: #e6c875; color: #000; border: none; font-size: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); transition: 0.3s; animation: pulse-social 2s infinite; }
-        .main-social-toggle:hover { transform: scale(1.1); }
-        @keyframes pulse-social { 0% { box-shadow: 0 0 0 0 rgba(230,200,117,0.7); } 70% { box-shadow: 0 0 0 15px rgba(230,200,117,0); } 100% { box-shadow: 0 0 0 0 rgba(230,200,117,0); } }
-
-        /* AI Chatbot & Install App Floating Buttons */
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -144,16 +131,6 @@
         .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-
-        @media (max-width: 768px) { 
-            .floating-social-container { bottom: 20px; right: 20px; }
-            .main-social-toggle { width: 50px; height: 50px; font-size: 20px; }
-            .f-social-item { width: 40px; height: 40px; font-size: 18px; }
-            .social-menu-items { gap: 8px; }
-            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-        }
 
         /* 🤖 AI CHATBOT WINDOW */
         .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
@@ -168,6 +145,13 @@
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
+            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
+            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
+        }
 
         /* 🌟 LAPTOP 2-COLUMN VIDEO GRID */
         .songs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
@@ -256,22 +240,18 @@
         .submit-btn { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 6px; font-weight: bold; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .submit-btn:hover { background: #d4b561; }
         
+        /* 🔥 NEW 6-COLUMN FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 10px; }
-        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; }
-        .tseries-footer-col ul li a:hover { color: #e6c875; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #777; }
-        
-        /* 🔥 NEW FOOTER SOCIAL ICONS CSS 🔥 */
-        .tseries-footer-socials { display: flex; gap: 15px; }
-        .tseries-footer-socials a { color: #aaa; font-size: 20px; transition: 0.3s; display: inline-block; }
-        .tseries-footer-socials a:hover { color: #e6c875; transform: scale(1.2); }
+        .tseries-footer-col ul li { margin-bottom: 12px; }
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
+        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
         /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
         .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
@@ -314,7 +294,6 @@
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                        <!-- 🔥 BRAND NAME LOCK 🔥 -->
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
                         <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
                     </div>
@@ -322,7 +301,6 @@
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 
-                <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -341,14 +319,11 @@
         </div>
     </header>
 
-    <!-- 🔥 HIDDEN GOOGLE TRANSLATE BOX 🔥 -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
-        <!-- 🔥 CUSTOM TRANSLATOR FOR MOBILE MENU 🔥 -->
         <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
                 <option value="">🌐 Select Language</option>
@@ -384,7 +359,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -398,7 +372,6 @@
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -417,7 +390,6 @@
 
     <section class="hero" id="home">
         <div class="hero-overlay">
-            <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <div class="studio notranslate">DK ATOVITT PRESENTS</div>
             <h1 class="yakshini-title">यक्षिणी</h1>
             <div class="yakshini-english"><div class="line"></div><span>Y a k s h i n i</span><div class="line"></div></div>
@@ -447,7 +419,6 @@
 
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                            <!-- 🔥 BRAND NAME LOCK 🔥 -->
                             <strong>Production House:</strong> <span class="notranslate">DK ATOVITT</span> 
                             <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 60px;"></video>
                         </li>
@@ -469,7 +440,6 @@
         </div>
     </section>
 
-    <!-- 🎬 TRAILER SECTION -->
     <section class="trailer-section reveal" id="trailer">
         <div class="container">
             <h2>Official Trailer</h2>
@@ -486,7 +456,6 @@
                     <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
                     <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
-                <!-- 🔥 VIRAL SHARE & COMMENT BAR 🔥 -->
                 <div class="social-action-bar">
                     <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का खौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/index.html#trailer')">
                         <i class="fas fa-share-alt"></i> Share
@@ -499,7 +468,6 @@
         </div>
     </section>
 
-    <!-- 🎵 SONGS SECTION -->
     <section class="trailer-section reveal" id="songs">
         <div class="container">
             <h2>Yakshini Movie Song's</h2>
@@ -691,14 +659,12 @@
                 <div class="partner-card"><video src="images/partners/ecosystem-logo.mp4" autoplay loop muted playsinline></video><h3>Ecosystem</h3></div>
             </div>
             
-            <!-- 🔥 CORRECTED NEWS TICKER 🔥 -->
             <div class="news-ticker-wrapper reveal" style="margin-bottom: 20px;">
                 <div class="ticker-header">
                     <i class="fas fa-circle"></i> Latest Updates & Roadmap
                 </div>
                 <div class="ticker-container">
                     <div class="ticker-content">
-                        <!-- First Set (April to August) -->
                         <div class="ticker-item">
                             <div class="ticker-date">April 2026</div>
                             <h4 class="ticker-title">🌱 Project Kickoff & Planning</h4>
@@ -730,7 +696,6 @@
                             <p class="ticker-desc">अगस्त में 'यक्षिणी' फिल्म की रिलीज़ डेट और स्पेशल स्क्रीनिंग की घोषणा की जाएगी। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
 
-                        <!-- Duplicate Set for Seamless Infinite Loop -->
                         <div class="ticker-item">
                             <div class="ticker-date">April 2026</div>
                             <h4 class="ticker-title">🌱 Project Kickoff & Planning</h4>
@@ -802,10 +767,8 @@
                 <div class="contact-info-box">
                     <div style="text-align: center; padding-bottom: 15px; border-bottom: 1px solid #333; margin-bottom: 20px;">
                         <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 60px; transform: scale(1.4); margin-bottom: 5px;"></video>
-                        <!-- 🔥 BRAND NAME LOCK 🔥 -->
                         <h3 class="notranslate" style="margin: 0; font-size: 22px;">DK ATOVITT</h3>
                     </div>
-                    <!-- 🔥 BRAND NAME LOCK 🔥 -->
                     <p><i class="fas fa-film" style="color:#e6c875;"></i> <span class="notranslate"><strong>Official Movie Production House</strong></span></p>
                     <p><i class="fas fa-map-marker-alt"></i> <span>M. G. ROAD, KOLKATA- 700119</span></p>
                     <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
@@ -815,14 +778,11 @@
         </div>
     </section>
 
-    <!-- 🔥 MEGA FOOTER (UPDATED) 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <!-- 🔥 BRAND NAME LOCK 🔥 -->
                 <h3 class="notranslate">DK ATOVITT</h3>
-                <!-- 🔥 BRAND NAME LOCK 🔥 -->
                 <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
@@ -847,7 +807,6 @@
                 <h4>About Us</h4>
                 <ul>
                     <li><a href="ceo.html">About CEO</a></li>
-                    <!-- 🔥 BRAND NAME LOCK 🔥 -->
                     <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
@@ -862,38 +821,32 @@
                     <li><a href="faq.html">Help / FAQs</a></li>
                 </ul>
             </div>
+            <div class="tseries-footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://wa.me/919830332929" target="_blank"><i class="fab fa-whatsapp" style="color: #25d366; font-size: 16px; margin-right: 5px;"></i> WhatsApp</a></li>
+                    <li><a href="https://www.facebook.com/share/1BiyDgCsgS/" target="_blank"><i class="fab fa-facebook" style="color: #1877F2; font-size: 16px; margin-right: 5px;"></i> Facebook</a></li>
+                    <li><a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank"><i class="fab fa-instagram" style="color: #E4405F; font-size: 16px; margin-right: 5px;"></i> Instagram</a></li>
+                    <li><a href="https://www.youtube.com/@DKATOVITT" target="_blank"><i class="fab fa-youtube" style="color: #FF0000; font-size: 16px; margin-right: 5px;"></i> YouTube</a></li>
+                    <li><a href="mailto:info@dkatovitt.com"><i class="fas fa-envelope" style="color: #e6c875; font-size: 16px; margin-right: 5px;"></i> Email Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="tseries-footer-bottom">
-            <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
-            
-            <!-- 🔥 ALL SOCIAL MEDIA LINKS IN FOOTER 🔥 -->
-            <div class="tseries-footer-socials">
-                <a href="https://wa.me/919830332929" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/share/1BiyDgCsgS/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@DKATOVITT" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="mailto:info@dkatovitt.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
         </div>
     </footer>
 
-    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
-    
-    <!-- 1. WHATSAPP BUTTON (RESTORED TO ORIGINAL GLORY) -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 2. AI CHATBOT BUTTON -->
     <div class="chatbot-toggler" id="chatbotToggler">
         <i class="fas fa-robot"></i>
     </div>
     
-    <!-- 3. DIRECT APK DOWNLOAD FLOATING BUTTON -->
     <a href="DK_ATOVITT.apk" download class="floating-install-btn" title="Download Official APK">
         <i class="fas fa-download"></i>
     </a>
 
-    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -910,7 +863,6 @@
         </div>
     </div>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & ADVANCED CONTROLS -->
     <div class="music-player">
         <div class="cd-wrapper">
             <div class="cd-progress" id="cdProgress"></div>
@@ -918,7 +870,6 @@
         </div>
         <div class="track-info">
             <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
-            <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p class="track-artist notranslate">DK ATOVITT</p>
         </div>
         <div class="player-controls">
@@ -934,7 +885,6 @@
         </audio>
     </div>
 
-    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -946,7 +896,6 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- JavaScript -->
     <script>
         /* 🔥 CHATBOT LOGIC 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
@@ -1129,7 +1078,7 @@
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
             { file: 'aaj-ki-shaam.mp3', title: 'आज की शाम है खुशियों के नाम' },
             { file: 'kalpamrit-ke-rahon-mein.mp3', title: 'Kalpamrit Ke Rahon Mein' },
-            { file: 'shaam-dhale.mp3', title: 'शाम ढले जब पानी डोले' },
+            { file: 'shaam-dhale.mp3', title: 'शाम ढले buffer... wait, this is just title' },
             { file: 'dipak-aur-ravi-dosti.mp3', title: 'दीपक और रवि - एक ही जान' },
             { file: 'tere-naam-se-meri-subah.mp3', title: 'तेरे नाम से मेरी सुबह' },
             { file: 'happy-birthday-harshika.mp3', title: 'Happy Birthday Harshika' },
@@ -1242,6 +1191,14 @@
                 audio.pause();
                 playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
                 cdAnim.classList.remove('playing');
+            }
+        });
+        
+        audio.addEventListener('ended', () => {
+            if (loopMode === 'all') {
+                nextSong();
+            } else {
+                audio.play();
             }
         });
     </script>
