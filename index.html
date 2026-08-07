@@ -13,37 +13,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS (OVERLAP & SPACING ISSUE RESOLVED) 🔥 */
+        /* 🔥 EXACT SAME HEADER CSS AS OTHER PAGES (CONTACT/FAQ) 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
-        
-        /* 🔥 Increased Gap Here to separate Menu and Logo 🔥 */
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
-        
-        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; margin: 0; padding: 0;}
-        
-        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .desktop-logo-img { height: 50px !important; width: 50px !important; object-fit: cover !important; mix-blend-mode: screen; border-radius: 8px; }
-        .logo-text-box { display: flex; flex-direction: column; justify-content: center; }
-        .desktop-logo-text { font-size: 24px !important; color: #e6c875 !important; letter-spacing: 1px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
-        .desktop-logo-sub { font-size: 10px !important; color: #aaa !important; letter-spacing: 1px !important; text-transform: uppercase !important; margin: 0 !important; }
-        
-        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; margin: 0; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
-        
         .show-on-mobile { display: none; }
-
+        
         @media (max-width: 768px) {
-            .header .container { padding-left: 10px !important; padding-right: 10px !important; }
-            /* 🔥 Perfect gap for mobile menu and logo 🔥 */
-            .header-left { gap: 15px !important; }
-            
-            .header-logo-link { gap: 8px; }
-            .desktop-logo-img { height: 35px !important; width: 35px !important; }
-            .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0px !important; display: block !important; }
-            
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
             .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
@@ -60,7 +51,7 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* 🔥 MENU CSS */
+        /* 🔥 MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
@@ -327,9 +318,9 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="header-logo-link">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
-                    <div class="logo-text-box">
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
                         <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
                     </div>
@@ -957,7 +948,7 @@
                 }
             });
         }
-
+        
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -1050,7 +1041,7 @@
                 var currentLang = "";
                 if (match && match[2]) {
                     var parts = match[2].split('/');
-                    currentLang = parts[currentLang.length - 1];
+                    currentLang = parts[parts.length - 1];
                 }
                 var googleSelect = document.querySelector('select.goog-te-combo');
                 if (googleSelect && googleSelect.value) {
