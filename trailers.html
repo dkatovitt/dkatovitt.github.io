@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BMGLN6Z9M4');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Official Trailers - DK Atovitt</title>
     
-    <!-- 🔥 PWA MANIFEST 🔥 -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
 
@@ -14,21 +23,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS */
+        /* 🔥 HEADER CSS 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
-
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
-        .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        
         .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
-        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
+        
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
@@ -41,29 +49,21 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
-        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .custom-translate select:hover { background: #e6c875; color: #000; }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-        
-        /* HIDE GOOGLE'S DEFAULT STUFF */
-        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
-        body { top: 0px !important; position: static !important; } 
-        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-        .goog-text-highlight { background: none !important; box-shadow: none !important; }
-        
-        /* 🔥 MENU TEXT OVERFLOW FIX */
+        /* 🔥 MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
         #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        
         .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
         .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
         .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
         .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
@@ -73,8 +73,20 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
-        /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
+        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: #e6c875; color: #000; }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+        /* 🌟 FLOATING BUTTONS 🌟 */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
@@ -82,136 +94,39 @@
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         
-        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: 0.3s; animation: pulse-install 2s infinite; }
-        .floating-install-btn:hover { background-color: #008cd9; transform: scale(1.1); animation: none; }
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
         /* 🔥 CUSTOM APP INSTALL POPUP MODAL 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        
-        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 20px; padding: 25px 20px; text-align: center; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .app-modal-close:hover { color: #fff; }
-        
-        .app-modal-logo-wrap { width: 75px; height: 75px; margin: 0 auto 15px auto; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
+        .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
-        .app-modal-title { color: #e6c875; font-size: 24px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
-        .app-modal-subtitle { color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 15px 0; font-weight: bold; }
-        
-        .app-modal-desc { color: #ccc; font-size: 13.5px; line-height: 1.6; margin-bottom: 25px; }
+        .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
+        .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
+        .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
-        
-        .app-modal-btn { display: block; width: 100%; background: #e6c875; color: #000; padding: 13px; border-radius: 25px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-bottom: 10px; }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
+        /* 🤖 CHATBOT CSS */
         .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        
         .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
         .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 768px) { 
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
-            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-        }
-
-        /* 🌟 TRAILERS PAGE CSS */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
-        
-        .trailer-header { padding: 140px 20px 40px 20px; text-align: center; background: radial-gradient(circle at top, #1a0505 0%, #050505 100%); border-bottom: 1px solid #222; }
-        .page-title { font-family: 'Playfair Display', serif; font-size: 50px; color: #e6c875; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 3px; }
-        .page-subtitle { font-size: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
-
-        /* 🔥 PREMIUM INLINE VIDEO THUMBNAILS 🔥 */
-        .main-premiere-section { padding: 40px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .main-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 15px; overflow: hidden; border: 2px solid #333; box-shadow: 0 15px 40px rgba(230,200,117,0.15); margin-bottom: 25px; cursor: pointer; }
-        .main-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .main-thumbnail-content img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
-        .main-video-wrapper:hover .main-thumbnail-content img { transform: scale(1.05); }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 75px; height: 75px; font-size: 30px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .main-video-wrapper:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
-        
-        .main-trailer-title { color: #fff; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
-        .main-trailer-desc { color: #888; font-size: 15px; max-width: 800px; margin: 0 auto; }
-
-        /* 🔥 NEW 3 SMART BUTTONS CSS 🔥 */
-        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 15px; flex-wrap: nowrap; padding: 0 5px; width: 100%; box-sizing: border-box; }
-        .smart-btn { background: transparent; padding: 8px 12px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; white-space: nowrap; flex: 1; text-align: center; }
-        
-        .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
-        .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
-        
-        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
-        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
-        
-        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
-        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
-
-        /* 🔥 VIRAL SHARE & COMMENT BAR CSS 🔥 */
-        .social-action-bar { display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 15px; padding-top: 12px; border-top: 1px solid #222; width: 90%; margin-left: auto; margin-right: auto; }
-        .social-btn { background: transparent; color: #aaa; border: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
-        .social-btn:hover { color: #e6c875; transform: scale(1.05); }
-        .social-btn i { font-size: 16px; }
-
-        @media (max-width: 768px) {
-            .btn-group-3 { gap: 4px; padding: 0 5px; }
-            .smart-btn { padding: 6px 2px; font-size: 9px; gap: 3px; letter-spacing: -0.2px; }
-            .main-trailer-title { font-size: 20px; }
-            .social-action-bar { gap: 30px; margin-top: 12px; padding-top: 10px; }
-        }
-
-        /* 🔥 YOUTUBE SHORTS GRID WITH INLINE PLAY 🔥 */
-        .more-trailers-section { padding: 40px 20px 60px 20px; max-width: 1100px; margin: 0 auto; border-top: 1px solid #222; }
-        .section-heading { color: #e6c875; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; border-left: 4px solid #e6c875; padding-left: 15px; }
-        
-        .trailer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        @media (max-width: 900px) { .trailer-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 600px) { .trailer-grid { grid-template-columns: repeat(2, 1fr); } .page-title { font-size: 35px; } }
-
-        .trailer-card { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
-        .trailer-card:hover { border-color: #e6c875; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.8); }
-        
-        .shorts-video-wrapper { position: relative; width: 100%; padding-bottom: 177.77%; background: #000; cursor: pointer; }
-        .shorts-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .shorts-thumbnail-content img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
-        .shorts-video-wrapper:hover .shorts-thumbnail-content img { transform: scale(1.05); }
-        .shorts-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 45px; height: 45px; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .shorts-video-wrapper:hover .shorts-play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
-        
-        .trailer-info { padding: 15px 10px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .trailer-info h3 { color: #fff; font-size: 14px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .trailer-info p { color: #e6c875; font-size: 11px; margin: 0; font-weight: bold; }
-
-        /* 🔥 MOVIE GALLERY SLIDER CSS */
-        .trailer-gallery-section { padding: 50px 0 70px 0; background: #050505; border-top: 1px solid #222; overflow: hidden; text-align: center; }
-        .slider-container { white-space: nowrap; overflow-x: auto; overflow-y: hidden; position: relative; width: 100%; padding: 10px 0; scrollbar-width: none; }
-        .slider-container::-webkit-scrollbar { display: none; }
-        .slider-track { display: inline-flex; animation: scroll-right-to-left 80s linear infinite; align-items: center; }
-        .slider-track:hover { animation-play-state: paused; }
-        .slider-track img { height: 380px; width: 250px; margin: 0 15px; border-radius: 10px; border: 2px solid #333; transition: 0.3s; object-fit: cover; background: #111; cursor: pointer; flex-shrink: 0; }
-        .slider-track img:hover { border-color: #e6c875; transform: scale(1.05); box-shadow: 0 5px 20px rgba(230,200,117,0.3); }
-        @keyframes scroll-right-to-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @media (max-width: 768px) { .slider-track img { height: 280px; width: 180px; margin: 0 10px; } }
-
-        /* Reveal Anim */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* 🔥 NEW 6-COLUMN FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
@@ -225,14 +140,12 @@
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-
-        /* 🔥 FOOTER HORIZONTAL SOCIAL ICONS STYLING 🔥 */
-        .footer-social-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
-        .footer-icon-btn { width: 40px; height: 40px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
+        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
+        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-        
+
         /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
-        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 10000; backdrop-filter: blur(10px); transition: 0.3s; }
         .music-player.active { display: flex; animation: slideUp 0.4s ease; }
         @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
@@ -247,9 +160,9 @@
         .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
         
         .player-controls { display: flex; align-items: center; gap: 6px; }
-        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; justify-content: center;}
+        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; justify-content: center; }
         .control-btn:hover { color: #e6c875; transform: scale(1.1); }
-        .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; display: flex; align-items: center; justify-content: center;}
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; display: flex; align-items: center; justify-content: center; }
         .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
 
         @media (max-width: 768px) { 
@@ -261,6 +174,49 @@
             .control-btn { font-size: 13px; }
             .play-pause-btn { font-size: 16px; }
         }
+
+        /* 🌟 TRAILERS PAGE SPECIFIC CSS 🌟 */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        .page-section { padding: 140px 20px 60px 20px; }
+        .page-container { max-width: 1200px; margin: 0 auto; }
+        
+        .page-title { color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(230, 200, 117, 0.4); line-height: 1.5; }
+        .page-subtitle { color: #aaa; font-size: 15px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 🔥 VIDEO THUMBNAIL DESIGN 🔥 */
+        .video-wrapper { overflow: hidden; border-radius: 12px; text-align: center; padding-bottom: 15px; background: #111; border: 1px solid #222; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);}
+        .video-thumbnail { position: relative; cursor: pointer; display: block; overflow: hidden; border-radius: 12px 12px 0 0; }
+        .thumbnail-content img { transition: transform 0.5s ease; width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;}
+        .video-thumbnail:hover .thumbnail-content img { transform: scale(1.05); }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 65px; height: 65px; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+        .video-thumbnail:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
+
+        /* 🔥 3 SMART BUTTONS CSS 🔥 */
+        .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: nowrap; padding: 0 15px; width: 100%; box-sizing: border-box; }
+        .smart-btn { background: transparent; padding: 10px 15px; border-radius: 25px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; white-space: nowrap; flex: 1; text-align: center; }
+        
+        .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
+        .yt-smart-btn:hover { background: #ff4d4d; color: #fff; box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4); }
+        
+        .mp3-smart-btn { color: #e6c875; border: 1.5px solid #e6c875; }
+        .mp3-smart-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230, 200, 117, 0.4); }
+        
+        .dl-smart-btn { color: #25d366; border: 1.5px solid #25d366; }
+        .dl-smart-btn:hover { background: #25d366; color: #000; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); }
+
+        .trailer-title { color: #fff; font-size: 18px; font-weight: bold; margin: 20px 0 0 0; padding: 0 10px; line-height: 1.4; text-align: center;}
+        
+        .social-action-bar { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 20px; padding-top: 15px; border-top: 1px solid #222; width: 90%; margin-left: auto; margin-right: auto; }
+        .social-btn { background: transparent; color: #aaa; border: none; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .social-btn:hover { color: #e6c875; transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 26px; }
+            .btn-group-3 { gap: 6px; padding: 0 10px; }
+            .smart-btn { padding: 8px 4px; font-size: 10px; gap: 4px; letter-spacing: -0.2px; }
+            .trailer-title { font-size: 15px; }
+            .social-action-bar { gap: 30px; margin-top: 15px; padding-top: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -269,18 +225,16 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <!-- 🔥 LOGO LINK DISABLED 🔥 -->
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                        <!-- 🔥 BRAND NAME LOCK 🔥 -->
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
                         <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
                     </div>
                 </a>
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
-                
-                <!-- 🔥 CUSTOM TRANSLATOR FOR DESKTOP 🔥 -->
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -293,20 +247,17 @@
                         <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
-
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
 
-    <!-- 🔥 HIDDEN GOOGLE TRANSLATE BOX 🔥 -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 MENU 🔥 -->
+    <!-- 🔥 MENU WITH CELEBRITY LINK 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
-        <!-- 🔥 CUSTOM TRANSLATOR FOR MOBILE MENU 🔥 -->
         <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
                 <option value="">🌐 Select Language</option>
@@ -342,7 +293,6 @@
 
         <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <!-- 🔥 SONGS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
             <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
@@ -355,9 +305,11 @@
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         
+        <!-- 🔥 CELEBRITY LINK 🔥 -->
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -374,174 +326,47 @@
     </div>
     <div id="overlay"></div>
 
-
-    <section class="trailer-header">
-        <div class="reveal">
-            <h1 class="page-title">Digital Cinema Hall</h1>
+    <!-- 🌟 MAIN CONTENT SECTION 🌟 -->
+    <section class="page-section">
+        <div class="page-container reveal">
+            <h1 class="page-title">DIGITAL CINEMA HALL</h1>
             <p class="page-subtitle">Exclusive Trailers, Teasers & Behind The Scenes</p>
-        </div>
-    </section>
-
-    <!-- 🎬 MAIN PREMIERE -->
-    <section class="main-premiere-section reveal">
-        <div class="main-video-wrapper" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
-            <div class="main-thumbnail-content">
-                <img src="https://img.youtube.com/vi/Mek5HNkypTQ/maxresdefault.jpg" alt="Yakshini Main Trailer">
-                <button class="play-btn"><i class="fas fa-play" style="margin-left: 5px;"></i></button>
-            </div>
-        </div>
-        <h2 class="main-trailer-title">यक्षिणी (Yakshini) - Official Movie Trailer</h2>
-        <!-- 🔥 BRAND NAME LOCK 🔥 -->
-        <p class="main-trailer-desc">An upcoming Bollywood Horror-Romance masterpiece produced by <span class="notranslate">DK Atovitt Production House</span>. Watch the chilling mysteries unfold.</p>
-        
-        <!-- 🔥 3 Smart Buttons for Main Trailer -->
-        <div class="btn-group-3">
-            <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
-            <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
-            <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
-        </div>
-        
-        <!-- 🔥 NEW SOCIAL ACTION BAR 🔥 -->
-        <div class="social-action-bar">
-            <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) - Official Movie Trailer', '🎬 रोंगटे खड़े कर देने वाली हॉरर फिल्म यक्षिणी का ऑफिशियल ट्रेलर अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/trailers.html')">
-                <i class="fas fa-share-alt"></i> Share
-            </button>
-            <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="social-btn" title="Comment on YouTube">
-                <i class="fas fa-comment"></i> Comment
-            </a>
-        </div>
-    </section>
-
-    <!-- 🎬 YOUTUBE SHORTS GRID -->
-    <section class="more-trailers-section reveal">
-        <h2 class="section-heading">Yakshini - Teasers & Promos</h2>
-        <div class="trailer-grid">
             
-            <div class="trailer-card">
-                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, '5PXJLvRFFqE')">
-                    <div class="shorts-thumbnail-content">
-                        <img src="https://img.youtube.com/vi/5PXJLvRFFqE/hqdefault.jpg" alt="Teaser">
-                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
+            <!-- 🔥 YAKSHINI TRAILER VIDEO 🔥 -->
+            <div class="video-wrapper">
+                <div class="video-thumbnail" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
+                    <div class="thumbnail-content">
+                        <img src="https://img.youtube.com/vi/Mek5HNkypTQ/hqdefault.jpg" alt="Trailer" onerror="this.src='https://via.placeholder.com/800x450/111/e6c875?text=Trailer+Coming+Soon'">
+                        <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
                     </div>
                 </div>
-                <div class="trailer-info">
-                    <h3>Kalpamrit Mystery</h3>
-                    <p>Official Promo</p>
+                <h3 class="trailer-title">👻 यक्षिणी (Yakshini) - Official Movie Trailer 🌙</h3>
+                <div class="btn-group-3">
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
+                </div>
+                <div class="social-action-bar">
+                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का खौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/trailers.html')">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="social-btn" title="Comment on YouTube">
+                        <i class="fas fa-comment"></i> Comment
+                    </a>
                 </div>
             </div>
 
-            <div class="trailer-card">
-                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'j_OF3Y3DKIc')">
-                    <div class="shorts-thumbnail-content">
-                        <img src="https://img.youtube.com/vi/j_OF3Y3DKIc/hqdefault.jpg" alt="Teaser">
-                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
-                    </div>
-                </div>
-                <div class="trailer-info">
-                    <h3>Yakshini Teaser 1</h3>
-                    <p>Coming Soon</p>
-                </div>
-            </div>
-
-            <div class="trailer-card">
-                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'LHahM_4XCbQ')">
-                    <div class="shorts-thumbnail-content">
-                        <img src="https://img.youtube.com/vi/LHahM_4XCbQ/hqdefault.jpg" alt="Teaser">
-                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
-                    </div>
-                </div>
-                <div class="trailer-info">
-                    <h3>Yakshini Teaser 2</h3>
-                    <p>Coming Soon</p>
-                </div>
-            </div>
-            
-            <div class="trailer-card">
-                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'AJkHkmUw9tI')">
-                    <div class="shorts-thumbnail-content">
-                        <img src="https://img.youtube.com/vi/AJkHkmUw9tI/hqdefault.jpg" alt="Teaser">
-                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
-                    </div>
-                </div>
-                <div class="trailer-info">
-                    <h3>Yakshini Teaser 3</h3>
-                    <p>Coming Soon</p>
-                </div>
-            </div>
-            
-            <div class="trailer-card">
-                <div class="shorts-video-wrapper" onclick="playInlineVideo(this, 'AdP6cAnyDec')">
-                    <div class="shorts-thumbnail-content">
-                        <img src="https://img.youtube.com/vi/AdP6cAnyDec/hqdefault.jpg" alt="Teaser">
-                        <button class="shorts-play-btn"><i class="fas fa-play" style="margin-left: 3px;"></i></button>
-                    </div>
-                </div>
-                <div class="trailer-info">
-                    <h3>Yakshini Teaser 4</h3>
-                    <p>Coming Soon</p>
-                </div>
-            </div>
+            <p style="text-align: center; color: #888; margin-top: 40px; font-style: italic;">More trailers and teasers coming soon...</p>
 
         </div>
     </section>
 
-    <!-- 🔥 MOVIE GALLERY SLIDER -->
-    <section class="trailer-gallery-section reveal">
-        <h2 class="section-heading" style="max-width: 1100px; margin: 0 auto 30px auto; border: none; padding-left: 0; text-align: center;">MOVIE GALLERY</h2>
-        <div class="slider-container">
-            <div class="slider-track" id="gallery-track">
-                
-                <img src="images/movies/slide1.png" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+1'">
-                <img src="images/movies/slide2.png" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+2'">
-                <img src="images/movies/slide3.png" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+3'">
-                <img src="images/movies/slide4.png" alt="Slide 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+4'">
-                <img src="images/movies/slide5.png" alt="Slide 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+5'">
-                <img src="images/movies/slide6.png" alt="Slide 6" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+6'">
-                <img src="images/movies/slide7.png" alt="Slide 7" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+7'">
-                <img src="images/movies/slide8.png" alt="Slide 8" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+8'">
-                <img src="images/movies/slide9.png" alt="Slide 9" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+9'">
-                <img src="images/movies/slide10.png" alt="Slide 10" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+10'">
-                <img src="images/movies/slide11.png" alt="Slide 11" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+11'">
-                <img src="images/movies/slide12.png" alt="Slide 12" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+12'">
-                <img src="images/movies/slide13.png" alt="Slide 13" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+13'">
-                <img src="images/movies/slide14.png" alt="Slide 14" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+14'">
-                <img src="images/movies/slide15.png" alt="Slide 15" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+15'">
-                <img src="images/movies/slide16.png" alt="Slide 16" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+16'">
-                <img src="images/movies/slide17.png" alt="Slide 17" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+17'">
-                <img src="images/movies/slide18.png" alt="Slide 18" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+18'">
-                
-                <!-- Repeat for infinite scroll effect -->
-                <img src="images/movies/slide1.png" alt="Slide 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+1'">
-                <img src="images/movies/slide2.png" alt="Slide 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+2'">
-                <img src="images/movies/slide3.png" alt="Slide 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+3'">
-                <img src="images/movies/slide4.png" alt="Slide 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+4'">
-                <img src="images/movies/slide5.png" alt="Slide 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+5'">
-                <img src="images/movies/slide6.png" alt="Slide 6" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+6'">
-                <img src="images/movies/slide7.png" alt="Slide 7" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+7'">
-                <img src="images/movies/slide8.png" alt="Slide 8" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+8'">
-                <img src="images/movies/slide9.png" alt="Slide 9" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+9'">
-                <img src="images/movies/slide10.png" alt="Slide 10" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+10'">
-                <img src="images/movies/slide11.png" alt="Slide 11" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+11'">
-                <img src="images/movies/slide12.png" alt="Slide 12" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+12'">
-                <img src="images/movies/slide13.png" alt="Slide 13" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+13'">
-                <img src="images/movies/slide14.png" alt="Slide 14" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+14'">
-                <img src="images/movies/slide15.png" alt="Slide 15" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+15'">
-                <img src="images/movies/slide16.png" alt="Slide 16" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+16'">
-                <img src="images/movies/slide17.png" alt="Slide 17" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+17'">
-                <img src="images/movies/slide18.png" alt="Slide 18" onerror="this.onerror=null; this.src='https://via.placeholder.com/250x380/111/e6c875?text=Slide+18'">
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 🔥 MEGA FOOTER (UPDATED) -->
+    <!-- 🔥 MEGA FOOTER WITH CELEBRITY LINK 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <!-- 🔥 BRAND NAME LOCK 🔥 -->
                 <h3 class="notranslate">DK ATOVITT</h3>
-                <!-- 🔥 BRAND NAME LOCK 🔥 -->
                 <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
             <div class="tseries-footer-col">
@@ -550,8 +375,9 @@
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -566,7 +392,6 @@
                 <h4>About Us</h4>
                 <ul>
                     <li><a href="ceo.html">About CEO</a></li>
-                    <!-- 🔥 BRAND NAME LOCK 🔥 -->
                     <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
@@ -584,49 +409,33 @@
             <div class="tseries-footer-col">
                 <h4>Connect With Us</h4>
                 <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
         <div class="tseries-footer-bottom">
-            <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
-    
-    <!-- 1. WHATSAPP BUTTON (Number Updated) -->
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- 🌟 FLOATING BUTTONS 🌟 -->
+    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
+    <button class="floating-install-btn" id="openAppModal" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
 
-    <!-- 2. AI CHATBOT BUTTON (ROBOT ICON UPDATED) -->
-    <div class="chatbot-toggler" id="chatbotToggler">
-        <i class="fas fa-robot"></i>
-    </div>
-    
-    <!-- 3. INSTALL APP FLOATING BUTTON -->
-    <button class="floating-install-btn" id="openAppModal" title="Install Official App">
-        <i class="fas fa-download"></i>
-    </button>
-
-    <!-- 🔥 CUSTOM INSTALL POPUP HTML WITH VIDEO LOGO & STRUCTURED TEXT 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="app-modal-logo-wrap">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            </div>
+            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
             <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
-            <p class="app-modal-desc">
-                App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें।
-            </p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn"><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
+            <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
+            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
@@ -647,7 +456,7 @@
         </div>
     </div>
 
-    <!-- 🎵 CUSTOM MUSIC PLAYER WITH SMART PROGRESS CD & PLAYLIST ENGINE -->
+    <!-- 🎵 CUSTOM MUSIC PLAYER -->
     <div class="music-player">
         <div class="cd-wrapper">
             <div class="cd-progress" id="cdProgress"></div>
@@ -655,15 +464,12 @@
         </div>
         <div class="track-info">
             <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
-            <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p class="track-artist notranslate">DK ATOVITT</p>
         </div>
         <div class="player-controls">
             <button class="control-btn" onclick="prevSong()" title="Previous Song"><i class="fas fa-step-backward"></i></button>
             <button class="play-pause-btn" id="playPauseBtn"><i class="fas fa-play" style="margin-left: 2px;"></i></button>
             <button class="control-btn" onclick="nextSong()" title="Next Song"><i class="fas fa-step-forward"></i></button>
-            
-            <!-- 🔥 PERFECT CENTER ALIGNED LOOP ICON 🔥 -->
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs" style="display:flex; align-items:center; justify-content:center;">
                 <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
             </button>
@@ -677,7 +483,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
+                pageLanguage: 'auto', 
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -687,60 +493,47 @@
 
     <!-- JavaScript -->
     <script>
-        /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
-        const openAppModal = document.getElementById('openAppModal');
-        const appModalOverlay = document.getElementById('appModalOverlay');
-        const closeAppModal = document.getElementById('closeAppModal');
-
-        if(openAppModal && appModalOverlay) {
-            openAppModal.addEventListener('click', (e) => {
-                e.preventDefault();
-                appModalOverlay.classList.add('active');
-            });
-            closeAppModal.addEventListener('click', () => {
-                appModalOverlay.classList.remove('active');
-            });
-            appModalOverlay.addEventListener('click', (e) => {
-                if(e.target === appModalOverlay) {
-                    appModalOverlay.classList.remove('active');
+        /* 🔥 ANTI-CACHE SCRIPT (FORCES BROWSER TO LOAD NEW HTML) 🔥 */
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
                 }
             });
         }
+        
+        /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
+        document.addEventListener('DOMContentLoaded', () => {
+            const openAppModal = document.getElementById('openAppModal');
+            const appModalOverlay = document.getElementById('appModalOverlay');
+            const closeAppModal = document.getElementById('closeAppModal');
 
-        /* 🔥 CHATBOT LOGIC (EMAIL ID UPDATED) 🔥 */
+            if(openAppModal && appModalOverlay) {
+                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
+                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
+                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
+            }
+        });
+
+        /* 🔥 CHATBOT LOGIC 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
 
-        if(chatbotToggler) {
-            chatbotToggler.addEventListener('click', () => {
-                chatbotContainer.classList.toggle('active');
-            });
-        }
-
-        if(closeChatbot) {
-            closeChatbot.addEventListener('click', () => {
-                chatbotContainer.classList.remove('active');
-            });
-        }
+        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
+        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
 
         function sendChat(type) {
-            let userText = "";
-            let botReply = "";
-
+            let userText = ""; let botReply = "";
             if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।";
-                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
             } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?";
-                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।";
-                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
             } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?";
-                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
             }
 
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
@@ -752,62 +545,20 @@
             }, 600);
         }
 
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
-        function translatePage(lang) {
-            if (lang === "") {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
-                return;
-            }
-            var googleSelect = document.querySelector('select.goog-te-combo');
-            if (googleSelect) {
-                googleSelect.value = lang;
-                googleSelect.dispatchEvent(new Event('change'));
-            } else {
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
-            }
-        }
-        
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-                var currentLang = "";
-                if (match && match[2]) {
-                    var parts = match[2].split('/');
-                    currentLang = parts[parts.length - 1];
-                }
-                var googleSelect = document.querySelector('select.goog-te-combo');
-                if (googleSelect && googleSelect.value) {
-                    currentLang = googleSelect.value;
-                }
-                
-                var d = document.getElementById('lang-desktop');
-                var m = document.getElementById('lang-mobile');
-                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
-                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
-            }, 1000);
-        });
-
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
-        const overlay = document.getElementById('overlay');
+        const overlay = document.getElementById('overlay'); 
         
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
-            link.addEventListener('click', () => { 
-                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
-            }); 
-        }); 
+            link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        });
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
-
-        /* 🌟 SUB-MENU TOGGLE SCRIPT */
+        
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -825,21 +576,18 @@
             }
         }
 
-        // Reveal animations
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
                 var windowHeight = window.innerHeight; 
                 var elementTop = reveals[i].getBoundingClientRect().top; 
                 var elementVisible = 100; 
-                if (elementTop < windowHeight - elementVisible) { 
-                    reveals[i].classList.add('active'); 
-                } 
+                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } 
             } 
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
-
+        
         /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
@@ -852,7 +600,6 @@
                 if(!href) return;
 
                 let isMatch = false;
-                
                 if (currentPage === "index.html") {
                     if (href === "index.html#home" || href === "index.html") isMatch = true;
                 } else {
@@ -879,20 +626,17 @@
         /* 🔥 VIRAL SHARE SCRIPT 🔥 */
         function shareViralContent(title, text, url) {
             if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: text + "\n",
-                    url: url
-                }).catch((error) => console.log('Error sharing', error));
+                navigator.share({ title: title, text: text + "\n", url: url }).catch((error) => console.log('Error sharing', error));
             } else {
                 prompt("अपने दोस्तों को भेजने के लिए यह लिंक कॉपी करें:", url);
             }
         }
 
-        /* 🔥 ADVANCED PLAYLIST & AUDIO/VIDEO ENGINE 🔥 */
+        /* 🔥 ADVANCED PLAYLIST ENGINE & VIDEO LOGIC 🔥 */
         const playlist = [
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' }
         ];
+        
         let currentSongIndex = 0;
         let loopMode = 'all';
 
@@ -905,12 +649,14 @@
         const cdAnim = document.getElementById('cdAnim');
         const cdProgress = document.getElementById('cdProgress');
 
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
-            }
-        });
+        if(audio && cdProgress) {
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
+                }
+            });
+        }
 
         function playInlineVideo(element, videoId) {
             if (!audio.paused) {
@@ -919,14 +665,14 @@
                 cdAnim.classList.remove('playing');
             }
             if (activeVideoContainer && activeVideoContainer !== element) {
-                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
             }
             activeVideoContainer = element;
-            element.querySelector('[class*="thumbnail-content"]').style.display = 'none'; 
+            element.querySelector('.thumbnail-content').style.display = 'none'; 
             if(!element.querySelector('iframe')) {
-                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
+                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="aspect-ratio: 16/9; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
                 element.insertAdjacentHTML('beforeend', iframeHTML);
             }
         }
@@ -941,7 +687,7 @@
             }
 
             if (activeVideoContainer) {
-                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
                 activeVideoContainer = null;
@@ -984,30 +730,65 @@
             }
         }
 
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                if (activeVideoContainer) {
-                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
-                    const oldIframe = activeVideoContainer.querySelector('iframe');
-                    if (oldIframe) oldIframe.remove();
-                    activeVideoContainer = null;
+        if(playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    if (activeVideoContainer) {
+                        activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                        const oldIframe = activeVideoContainer.querySelector('iframe');
+                        if (oldIframe) oldIframe.remove();
+                        activeVideoContainer = null;
+                    }
+                    audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    cdAnim.classList.add('playing');
+                } else {
+                    audio.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
+                    cdAnim.classList.remove('playing');
                 }
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                cdAnim.classList.add('playing');
-            } else {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
-                cdAnim.classList.remove('playing');
-            }
-        });
+            });
+        }
         
-        audio.addEventListener('ended', () => {
-            if (loopMode === 'all') {
-                nextSong();
-            } else {
-                audio.play();
+        if(audio) {
+            audio.addEventListener('ended', () => {
+                if (loopMode === 'all') {
+                    nextSong();
+                } else {
+                    audio.play();
+                }
+            });
+        }
+
+        /* 🔥 CUSTOM TRANSLATOR LOGIC 🔥 */
+        function translatePage(lang) {
+            if (lang === "") {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload(); return;
             }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var d = document.getElementById('lang-desktop');
+                var m = document.getElementById('lang-mobile');
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
+            }, 1000);
         });
     </script>
 </body>
