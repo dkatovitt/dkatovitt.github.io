@@ -145,12 +145,15 @@
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        /* 🌟 CELEBRITY GALLERY PAGE STYLE 🌟 */
+        /* 🌟 CELEBRITY GALLERY PAGE STYLE (UPDATED) 🌟 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .page-section { padding: 140px 20px 60px 20px; }
         .page-container { max-width: 1200px; margin: 0 auto; }
         
-        .page-title { color: #e6c875; font-size: 35px; text-align: center; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(230, 200, 117, 0.2); }
+        /* 🔥 NEW TITLE DESIGN 🔥 */
+        .page-title { color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(230, 200, 117, 0.4); line-height: 1.5; }
+        .title-highlight { color: #fff; background: linear-gradient(90deg, transparent, rgba(230,200,117,0.2), transparent); padding: 5px 15px; border-radius: 8px; display: inline-block; margin-top: 5px; }
+        
         .page-subtitle { color: #aaa; font-size: 15px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
 
         .celebrity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -159,6 +162,8 @@
         .celeb-card:hover { transform: translateY(-5px); border-color: #e6c875; box-shadow: 0 8px 25px rgba(230,200,117,0.2); }
         
         .celeb-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #000; position: relative; }
+        
+        /* 🔥 FIX FOR CROPPED HEADS: object-position: top center 🔥 */
         .celeb-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
         .celeb-card:hover .celeb-img-wrap img { transform: scale(1.05); }
         
@@ -175,7 +180,6 @@
             .celebrity-grid { grid-template-columns: 1fr; gap: 20px; }
             .celeb-info { padding: 15px; }
         }
-
     </style>
 </head>
 <body>
@@ -212,6 +216,7 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
+    <!-- 🔥 MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -261,9 +266,7 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        
         <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
-
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
@@ -282,16 +285,23 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🌟 MAIN CONTENT SECTION 🌟 -->
     <section class="page-section">
         <div class="page-container reveal">
-            <h1 class="page-title"><i class="fas fa-star"></i> Celebrity with DK Sir</h1>
+            <!-- 🔥 NEW ATTRACTIVE TITLE 🔥 -->
+            <h1 class="page-title">
+                <i class="fas fa-star" style="color: #ffaa00; font-size: 28px;"></i> CELEBRITY WITH <br> 
+                <span class="title-highlight">DK SIR</span>
+            </h1>
             <p class="page-subtitle">Exclusive Moments with Actors, Politicians & Leaders</p>
             
             <div class="celebrity-grid">
                 
+                <!-- 🔥 PHOTO 1 🔥 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo1.jpg" alt="DK Sir with Mr. Sunil Chaila Bihari" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <!-- ?v=2 added here to break the cache -->
+                        <img src="images/celebrities/photo1.jpg?v=2" alt="DK Sir with Mr. Sunil Chaila Bihari" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
                         <h3>Mr. Sunil Chaila Bihari</h3>
@@ -303,9 +313,10 @@
                     </div>
                 </div>
 
+                <!-- 🔥 PHOTO 2 🔥 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo2.jpg" alt="DK Sir with Mr. Dinesh Lal Yadav (Nirahuwa)" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo2.jpg?v=2" alt="DK Sir with Mr. Dinesh Lal Yadav (Nirahuwa)" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
                         <h3 style="font-size: 17px;">Mr. Dinesh Lal Yadav (Nirahuwa)</h3>
@@ -317,9 +328,10 @@
                     </div>
                 </div>
 
+                <!-- 🔥 PHOTO 3 🔥 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo3.jpg" alt="DK Sir with Mr. Gaurav Shankar" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo3.jpg?v=2" alt="DK Sir with Mr. Gaurav Shankar" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
                         <h3>Mr. Gaurav Shankar</h3>
@@ -331,9 +343,10 @@
                     </div>
                 </div>
 
+                <!-- 🔥 PHOTO 4 🔥 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo4.jpg" alt="DK Sir with Mr. Arudipta Dasgupta" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo4.jpg?v=2" alt="DK Sir with Mr. Arudipta Dasgupta" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
                         <h3>Mr. Arudipta Dasgupta</h3>
@@ -351,6 +364,7 @@
         </div>
     </section>
 
+    <!-- 🔥 MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -366,6 +380,8 @@
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <!-- 🔥 NEW LINK ADDED IN FOOTER 🔥 -->
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -464,25 +480,15 @@
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
             const closeAppModal = document.getElementById('closeAppModal');
 
             if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    appModalOverlay.classList.add('active');
-                });
-                closeAppModal.addEventListener('click', () => {
-                    appModalOverlay.classList.remove('active');
-                });
-                appModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === appModalOverlay) {
-                        appModalOverlay.classList.remove('active');
-                    }
-                });
+                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
+                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
+                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
             }
         });
 
@@ -495,15 +501,10 @@
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
-            link.addEventListener('click', () => { 
-                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
-            }); 
+            link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         });
         
-        overlay.addEventListener('click', () => { 
-            sideMenu.classList.remove('active'); 
-            overlay.classList.remove('active'); 
-        });
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
         
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
@@ -515,7 +516,6 @@
                 } else {
                     document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
                     document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
-                    
                     subMenu.classList.add('active');
                     if(icon) icon.classList.add('rotate');
                 }
@@ -528,39 +528,32 @@
                 var windowHeight = window.innerHeight; 
                 var elementTop = reveals[i].getBoundingClientRect().top; 
                 var elementVisible = 100; 
-                if (elementTop < windowHeight - elementVisible) { 
-                    reveals[i].classList.add('active'); 
-                } 
+                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } 
             } 
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
         
-        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
             if (currentPage === "" || currentPage === "/") currentPage = "index.html";
 
             let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
-            
             menuLinks.forEach(link => {
                 let href = link.getAttribute('href');
                 if(!href) return;
-
                 let isMatch = false;
                 if (currentPage === "index.html") {
                     if (href === "index.html#home" || href === "index.html") isMatch = true;
                 } else {
                     if (href === currentPage) isMatch = true;
                 }
-
                 if (isMatch) {
                     link.style.color = '#e6c875'; 
                     link.style.fontWeight = 'bold';
                     link.style.background = 'rgba(230, 200, 117, 0.08)'; 
                     link.style.borderLeft = '4px solid #e6c875'; 
                     link.style.paddingLeft = '25px'; 
-                    
                     let parentSub = link.closest('.sub-menu');
                     if (parentSub) {
                         parentSub.classList.add('active');
@@ -571,50 +564,63 @@
             });
         });
 
-        /* 🔥 CHATBOT LOGIC 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
 
-        if(chatbotToggler) {
-            chatbotToggler.addEventListener('click', () => {
-                chatbotContainer.classList.toggle('active');
-            });
-        }
-
-        if(closeChatbot) {
-            closeChatbot.addEventListener('click', () => {
-                chatbotContainer.classList.remove('active');
-            });
-        }
+        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
+        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
 
         function sendChat(type) {
             let userText = "";
             let botReply = "";
-
             if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।";
-                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
             } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?";
-                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।";
-                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
             } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?";
-                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
             }
-
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
-
             setTimeout(() => {
                 chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }, 600);
         }
+
+        function translatePage(lang) {
+            if (lang === "") {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload(); return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var d = document.getElementById('lang-desktop');
+                var m = document.getElementById('lang-mobile');
+                if(d && currentLang && currentLang !== "auto") d.value = currentLang;
+                if(m && currentLang && currentLang !== "auto") m.value = currentLang;
+            }, 1000);
+        });
     </script>
 </body>
 </html>
