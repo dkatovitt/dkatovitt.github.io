@@ -115,6 +115,24 @@
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
+        /* FOOTER */
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 900px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tseries-footer-col ul li { margin-bottom: 10px; }
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
+        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
+        
+        /* 🔥 PERFECT 3x2 GRID FOR SOCIAL ICONS (FIXED) 🔥 */
+        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
+        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
+        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        
         /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
@@ -128,24 +146,24 @@
         .floating-install-btn:hover { background-color: #008cd9; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 CUSTOM APP INSTALL POPUP MODAL 🔥 */
+        /* 🔥 CUSTOM APP INSTALL POPUP MODAL (FIXED DESIGN) 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         
-        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 20px; padding: 25px 20px; text-align: center; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .app-modal-close:hover { color: #fff; }
         
-        .app-modal-logo-wrap { width: 75px; height: 75px; margin: 0 auto 15px auto; border-radius: 16px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
+        .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
         
-        .app-modal-title { color: #e6c875; font-size: 24px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
-        .app-modal-subtitle { color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 15px 0; font-weight: bold; }
+        .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
+        .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
         
-        .app-modal-desc { color: #ccc; font-size: 13.5px; line-height: 1.6; margin-bottom: 25px; }
+        .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         
-        .app-modal-btn { display: block; width: 100%; background: #e6c875; color: #000; padding: 13px; border-radius: 25px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-bottom: 10px; }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -165,31 +183,13 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
-
-        /* 🔥 NEW 6-COLUMN FOOTER CSS 🔥 */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
-        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
-        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
-        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-
-        /* 🔥 FOOTER HORIZONTAL SOCIAL ICONS STYLING 🔥 */
-        .footer-social-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
-        .footer-icon-btn { width: 40px; height: 40px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
-        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -199,7 +199,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <!-- 🔥 BRAND NAME LOCK 🔥 -->
@@ -436,8 +436,10 @@
         </div>
     </footer>
 
-    <!-- 🌟 WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/919330332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
+    
+    <!-- 1. WHATSAPP BUTTON -->
+    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <!-- 2. AI CHATBOT BUTTON -->
     <div class="chatbot-toggler" id="chatbotToggler">
