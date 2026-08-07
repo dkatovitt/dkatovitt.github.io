@@ -158,6 +158,11 @@
         .auth-box { position: relative; z-index: 2; background: #111; border: 1px solid #333; border-radius: 12px; padding: 40px; width: 100%; max-width: 450px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); }
         
         .auth-header { text-align: center; margin-bottom: 30px; }
+        
+        /* 🔥 NEW VIDEO LOGO WRAPPER FOR LOGIN/SIGNUP 🔥 */
+        .auth-video-logo { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; overflow: hidden; background: #000; border: 2px solid #e6c875; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); display: flex; align-items: center; justify-content: center; }
+        .auth-video-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+
         .auth-header h2 { color: #e6c875; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
         .auth-header p { color: #aaa; font-size: 14px; margin: 0; }
         
@@ -291,6 +296,9 @@
             
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
+                    <div class="auth-video-logo">
+                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                    </div>
                     <h2>Welcome Back</h2>
                     <p>Login to DK Atovitt Ecosystem</p>
                 </div>
@@ -315,6 +323,9 @@
 
             <div id="registerForm" class="auth-form">
                 <div class="auth-header">
+                    <div class="auth-video-logo">
+                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                    </div>
                     <h2>Create Account</h2>
                     <p>Join the DK Atovitt Family</p>
                 </div>
@@ -490,7 +501,7 @@
         function sendChat(type) {
             let userText = ""; let botReply = "";
             if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+                userText = "मुझे Audition के बारे जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
             } else if(type === 'Movies') {
                 userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
