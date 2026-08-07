@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 FIXED HEADER CSS (OVERLAP ISSUE RESOLVED) 🔥 */
+        /* 🔥 FIXED HEADER CSS (OVERLAP ISSUE 100% RESOLVED) 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
@@ -21,9 +21,12 @@
         
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; margin: 0; padding: 0;}
         
-        .desktop-logo-img { height: 60px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.2); transform-origin: left center; margin-right: 5px; } 
-        .desktop-logo-text { font-size: 26px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
-        .desktop-logo-sub { font-size: 11px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        /* 🔥 STRICT LOGO SIZING 🔥 */
+        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .desktop-logo-img { height: 50px !important; width: 50px !important; object-fit: cover !important; mix-blend-mode: screen; border-radius: 8px; }
+        .logo-text-box { display: flex; flex-direction: column; justify-content: center; }
+        .desktop-logo-text { font-size: 24px !important; color: #e6c875 !important; letter-spacing: 1px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 10px !important; color: #aaa !important; letter-spacing: 1px !important; text-transform: uppercase !important; margin: 0 !important; }
         
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; margin: 0; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
@@ -33,9 +36,13 @@
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 40px !important; transform: scale(1.3); transform-origin: left center; margin-right: 5px !important; }
+            
+            /* Mobile Logo Lock */
+            .header-logo-link { gap: 6px; }
+            .desktop-logo-img { height: 35px !important; width: 35px !important; }
             .desktop-logo-text { font-size: 16px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 8px !important; letter-spacing: 0px !important; display: block !important; }
+            .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0px !important; display: block !important; }
+            
             #menuBtn { font-size: 22px !important; }
             .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; }
             .hide-on-mobile { display: none !important; }
@@ -125,12 +132,12 @@
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         
-        /* 🔥 THE INSTALL BUTTON MUST BE A BUTTON TAG TO PREVENT DIRECT DOWNLOAD 🔥 */
+        /* 🔥 INSTALL BUTTON STRICT CSS TO PREVENT DIRECT DOWNLOAD 🔥 */
         .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 CUSTOM APP INSTALL POPUP MODAL (PERFECT DESIGN) 🔥 */
+        /* 🔥 CUSTOM APP INSTALL POPUP MODAL 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         
@@ -319,9 +326,9 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <a href="index.html" class="header-logo-link">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
-                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                    <div class="logo-text-box">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
                         <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
                     </div>
@@ -807,7 +814,7 @@
     </section>
 
     <!-- 🔥 MEGA FOOTER (UPDATED) -->
-    <footer class="tseries-footer" id="contact">
+    <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
