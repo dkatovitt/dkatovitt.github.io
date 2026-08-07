@@ -13,14 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 EXACT SAME HEADER CSS AS OTHER PAGES (CONTACT/FAQ) 🔥 */
+        /* 🔥 OLD PERFECT HEADER CSS (LOGO CHIPAKNE WALA ISSUE SOLVED) 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
         .video-logo { mix-blend-mode: screen; object-fit: contain; }
+        
+        /* THE PERFECT LOGO CSS RESTORED */
         .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        
         .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
@@ -32,7 +35,9 @@
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
+            /* THE PERFECT MOBILE LOGO CSS RESTORED */
             .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
@@ -275,7 +280,7 @@
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
-        /* 🔥 PERFECT 3x2 GRID FOR SOCIAL ICONS (FIXED) 🔥 */
+        /* 🔥 PERFECT 3x2 GRID FOR SOCIAL ICONS 🔥 */
         .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
@@ -396,7 +401,11 @@
             <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
         </div>
 
+        <!-- 🔥 UPDATED MENU STRUCTURE HERE 🔥 -->
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
@@ -875,6 +884,7 @@
         <i class="fas fa-download"></i>
     </button>
 
+    <!-- 🔥 CUSTOM INSTALL POPUP HTML 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -890,6 +900,7 @@
         </div>
     </div>
 
+    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -906,6 +917,7 @@
         </div>
     </div>
 
+    <!-- 🎵 CUSTOM MUSIC PLAYER -->
     <div class="music-player">
         <div class="cd-wrapper">
             <div class="cd-progress" id="cdProgress"></div>
@@ -928,6 +940,7 @@
         </audio>
     </div>
 
+    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -939,6 +952,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <!-- JavaScript -->
     <script>
         /* 🔥 ANTI-CACHE SCRIPT (FORCES BROWSER TO LOAD NEW HTML) 🔥 */
         if ('serviceWorker' in navigator) {
@@ -949,6 +963,12 @@
             });
         }
         
+        /* 🔥 CLEAR LOCAL STORAGE & SESSION STORAGE CACHE JUGGAD 🔥 */
+        if(window.location.hash === '#home' || window.location.pathname.endsWith('index.html')) {
+            localStorage.clear();
+            sessionStorage.clear();
+        }
+
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -1074,13 +1094,6 @@
             overlay.classList.remove('active'); 
         });
         
-        function reveal() { var reveals = document.querySelectorAll('.reveal'); for (var i = 0; i < reveals.length; i++) { var windowHeight = window.innerHeight; var elementTop = reveals[i].getBoundingClientRect().top; var elementVisible = 100; if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } } } window.addEventListener('scroll', reveal); reveal(); 
-        
-        window.addEventListener('load', () => {
-            const track1 = document.getElementById('autoSlider'); if(track1) { const imgCount = track1.querySelectorAll('img').length; const slideWidth = 175; const totalScroll = slideWidth * imgCount; track1.innerHTML += track1.innerHTML; const style1 = document.createElement('style'); style1.innerHTML = `@keyframes smartScroll1 { 0% { transform: translateX(0); } 100% { transform: translateX(-${totalScroll}px); } } #autoSlider { animation: smartScroll1 ${imgCount * 2.5}s linear infinite !important; }`; document.head.appendChild(style1); }
-            const track2 = document.getElementById('gallerySlider'); if(track2) { const imgCount = track2.querySelectorAll('img').length; const slideWidth = 376; const totalScroll = slideWidth * imgCount; track2.innerHTML += track2.innerHTML; const style2 = document.createElement('style'); style2.innerHTML = `@keyframes smartScroll2 { 0% { transform: translateX(-${totalScroll}px); } 100% { transform: translateX(0); } } #gallerySlider { animation: smartScroll2 ${imgCount * 3.5}s linear infinite !important; }`; document.head.appendChild(style2); }
-        });
-
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -1098,6 +1111,20 @@
             }
         }
 
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { 
+                    reveals[i].classList.add('active'); 
+                } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal); 
+        reveal(); 
+        
         /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
@@ -1112,13 +1139,9 @@
                 let isMatch = false;
                 
                 if (currentPage === "index.html") {
-                    if (href === "index.html#home" || href === "index.html") {
-                        isMatch = true;
-                    }
+                    if (href === "index.html#home" || href === "index.html") isMatch = true;
                 } else {
-                    if (href === currentPage) {
-                        isMatch = true;
-                    }
+                    if (href === currentPage) isMatch = true;
                 }
 
                 if (isMatch) {
