@@ -154,12 +154,11 @@
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
-        /* 🔥 PERFECT 3x2 GRID FOR SOCIAL ICONS 🔥 */
         .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        /* 🌟 CELEBRITY GALLERY PAGE STYLE 🌟 */
+        /* 🌟 CELEBRITY GALLERY PAGE STYLE (UPDATED) 🌟 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .page-section { padding: 140px 20px 60px 20px; }
         .page-container { max-width: 1200px; margin: 0 auto; }
@@ -167,19 +166,23 @@
         .page-title { color: #e6c875; font-size: 35px; text-align: center; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Playfair Display', serif; text-shadow: 0 0 15px rgba(230, 200, 117, 0.2); }
         .page-subtitle { color: #aaa; font-size: 15px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* CSS GRID FOR PHOTOS */
         .celebrity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         
         .celeb-card { background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; transition: 0.3s; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
         .celeb-card:hover { transform: translateY(-5px); border-color: #e6c875; box-shadow: 0 8px 25px rgba(230,200,117,0.2); }
         
+        /* 🔥 FIX FOR CROPPED HEADS: Added object-position: top center; 🔥 */
         .celeb-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #000; position: relative; }
-        .celeb-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .celeb-card:hover .celeb-img-wrap img { transform: scale(1.08); }
+        .celeb-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
+        .celeb-card:hover .celeb-img-wrap img { transform: scale(1.05); }
         
+        /* 🔥 NEW INFO DESIGN FOR NAME, YEAR, PLACE 🔥 */
         .celeb-info { padding: 20px; text-align: center; border-top: 2px solid #222; }
-        .celeb-info h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-        .celeb-info p { color: #aaa; font-size: 12px; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        .celeb-info h3 { color: #e6c875; font-size: 18px; margin: 0 0 8px 0; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .celeb-event { color: #fff; font-size: 13px; margin: 0 0 12px 0; line-height: 1.4; }
+        
+        .celeb-meta { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; border-top: 1px dashed #333; padding-top: 12px; }
+        .celeb-meta span i { color: #e6c875; margin-right: 4px; font-size: 12px; }
         
         @media (max-width: 768px) {
             .page-title { font-size: 26px; }
@@ -191,7 +194,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -226,7 +228,6 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 UPDATED MENU (Celebrity With DK Sir Added) 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -275,7 +276,6 @@
             <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
         </div>
 
-        <!-- 🔥 SEPARATE GALLERY AND CELEBRITY LINKS 🔥 -->
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         
         <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
@@ -298,7 +298,6 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🌟 MAIN CONTENT SECTION 🌟 -->
     <section class="page-section">
         <div class="page-container reveal">
             <h1 class="page-title"><i class="fas fa-star"></i> Celebrity with DK Sir</h1>
@@ -306,51 +305,59 @@
             
             <div class="celebrity-grid">
                 
-                <!-- PHOTO 1 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <!-- Yahan photo1.jpg ka sahi path dalna -->
                         <img src="images/celebrities/photo1.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>Meeting with Director</h3>
-                        <p>Discussing Upcoming Projects</p>
+                        <h3>With Mr. XYZ (Director)</h3>
+                        <p class="celeb-event">Meeting for Yakshini Project</p>
+                        <div class="celeb-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PHOTO 2 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <!-- Yahan photo2.jpg ka sahi path dalna -->
                         <img src="images/celebrities/photo2.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>Bollywood Connection</h3>
-                        <p>Special Moments</p>
+                        <h3>With Bollywood Star</h3>
+                        <p class="celeb-event">At Grand Film Festival</p>
+                        <div class="celeb-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kolkata</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PHOTO 3 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <!-- Yahan photo3.jpg ka sahi path dalna -->
                         <img src="images/celebrities/photo3.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>Casting Discussion</h3>
-                        <p>Planning for Yakshini</p>
+                        <h3>With Prominent Leader</h3>
+                        <p class="celeb-event">Special Meet & Greet</p>
+                        <div class="celeb-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> New Delhi</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PHOTO 4 -->
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <!-- Yahan photo4.jpg ka sahi path dalna -->
                         <img src="images/celebrities/photo4.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>Event & Media</h3>
-                        <p>DK Atovitt Production</p>
+                        <h3>With Music Composer</h3>
+                        <p class="celeb-event">Studio Recording Session</p>
+                        <div class="celeb-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 2026</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                        </div>
                     </div>
                 </div>
 
@@ -360,7 +367,6 @@
         </div>
     </section>
 
-    <!-- 🔥 MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -421,7 +427,6 @@
         </div>
     </footer>
 
-    <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <div class="chatbot-toggler" id="chatbotToggler">
@@ -432,7 +437,6 @@
         <i class="fas fa-download"></i>
     </button>
 
-    <!-- 🔥 CUSTOM INSTALL POPUP HTML -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -448,7 +452,6 @@
         </div>
     </div>
 
-    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -465,7 +468,6 @@
         </div>
     </div>
 
-    <!-- 🔥 CUSTOM GOOGLE TRANSLATOR SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -477,7 +479,6 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- JavaScript -->
     <script>
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
