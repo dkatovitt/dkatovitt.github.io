@@ -13,17 +13,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 ORIGINAL PERFECT HEADER CSS 🔥 */
+        /* 🔥 HEADER CSS 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
 
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
-        .video-logo { mix-blend-mode: screen; object-fit: contain; }
         
         .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
         
-        .footer-video-logo { height: 75px; margin-bottom: 10px; mix-blend-mode: screen; object-fit: contain; transform: scale(1.3); }
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
@@ -43,16 +41,6 @@
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
-
-        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
-        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
-        .custom-translate select:hover { background: #e6c875; color: #000; }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-        
-        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
-        body { top: 0px !important; position: static !important; } 
-        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-        .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         /* 🔥 MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
@@ -78,7 +66,6 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
-        /* 🌟 SCROLL ANIMATION */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -98,23 +85,17 @@
         /* 🔥 CUSTOM APP INSTALL POPUP MODAL 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .app-modal-close:hover { color: #fff; }
-        
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
         .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
-        
         .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
-        
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         /* 🤖 CHATBOT CSS */
@@ -124,14 +105,11 @@
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        
         .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
         .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) { 
@@ -153,7 +131,6 @@
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-
         .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
@@ -180,6 +157,7 @@
         .celeb-info { padding: 20px; text-align: center; border-top: 2px solid #222; }
         .celeb-info h3 { color: #e6c875; font-size: 18px; margin: 0 0 8px 0; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
         .celeb-event { color: #fff; font-size: 13px; margin: 0 0 12px 0; line-height: 1.4; }
+        .celeb-event strong { color: #e6c875; }
         
         .celeb-meta { display: flex; justify-content: center; align-items: center; gap: 15px; font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; border-top: 1px dashed #333; padding-top: 12px; }
         .celeb-meta span i { color: #e6c875; margin-right: 4px; font-size: 12px; }
@@ -207,7 +185,6 @@
                 </a>
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
-                
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -220,7 +197,6 @@
                         <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
-
                 <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
@@ -307,56 +283,56 @@
                 
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo1.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo1.jpg" alt="DK Sir with Mr. Sunil Chaila Bihari" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>With Mr. XYZ (Director)</h3>
-                        <p class="celeb-event">Meeting for Yakshini Project</p>
+                        <h3>Mr. Sunil Chaila Bihari</h3>
+                        <p class="celeb-event"><strong>DK Sir</strong> with the renowned Actor & Singer</p>
                         <div class="celeb-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2026</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2013</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Barrackpore, Kolkata</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo2.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo2.jpg" alt="DK Sir with Mr. Dinesh Lal Yadav (Nirahua)" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>With Bollywood Star</h3>
-                        <p class="celeb-event">At Grand Film Festival</p>
+                        <h3 style="font-size: 17px;">Mr. Dinesh Lal Yadav (Nirahua)</h3>
+                        <p class="celeb-event"><strong>DK Sir</strong> with the popular Actor & Singer</p>
                         <div class="celeb-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2025</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Kolkata</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2023</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Azamgarh, UP</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo3.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo3.jpg" alt="DK Sir with Mr. Gaurav Shankar" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>With Prominent Leader</h3>
-                        <p class="celeb-event">Special Meet & Greet</p>
+                        <h3>Mr. Gaurav Shankar</h3>
+                        <p class="celeb-event"><strong>DK Sir</strong> with Producer (Film 'Hijab')</p>
                         <div class="celeb-meta">
                             <span><i class="fas fa-calendar-alt"></i> 2024</span>
-                            <span><i class="fas fa-map-marker-alt"></i> New Delhi</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lucknow, UP</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="celeb-card">
                     <div class="celeb-img-wrap">
-                        <img src="images/celebrities/photo4.jpg" alt="DK Sir with Celebrity" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
+                        <img src="images/celebrities/photo4.jpg" alt="DK Sir with Mr. Arudipta Dasgupta" onerror="this.src='https://via.placeholder.com/400x500/111/e6c875?text=Image+Coming+Soon'">
                     </div>
                     <div class="celeb-info">
-                        <h3>With Music Composer</h3>
-                        <p class="celeb-event">Studio Recording Session</p>
+                        <h3>Mr. Arudipta Dasgupta</h3>
+                        <p class="celeb-event"><strong>DK Sir</strong> with Bengali Film Producer</p>
                         <div class="celeb-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 2026</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Mumbai</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Barrackpore, Kolkata</span>
                         </div>
                     </div>
                 </div>
