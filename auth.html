@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -159,8 +160,8 @@
         
         .auth-header { text-align: center; margin-bottom: 30px; }
         
-        /* 🔥 NEW VIDEO LOGO WRAPPER FOR LOGIN/SIGNUP 🔥 */
-        .auth-video-logo { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; overflow: hidden; background: #000; border: 2px solid #e6c875; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); display: flex; align-items: center; justify-content: center; }
+        /* 🔥 CHANGED TO SQUARE (18px border-radius) 🔥 */
+        .auth-video-logo { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 2px solid #e6c875; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); display: flex; align-items: center; justify-content: center; }
         .auth-video-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
 
         .auth-header h2 { color: #e6c875; font-size: 28px; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
@@ -194,6 +195,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <!-- 🔥 LOGO LINK DISABLED 🔥 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
@@ -221,6 +223,7 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
+    <!-- 🔥 UPDATED MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -271,6 +274,7 @@
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
         
+        <!-- 🔥 CELEBRITY LINK 🔥 -->
         <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
 
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
@@ -291,11 +295,14 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🌟 LOGIN / SIGN UP MAIN SECTION 🌟 -->
     <section class="auth-section">
         <div class="auth-box reveal">
             
+            <!-- LOGIN FORM -->
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
+                    <!-- 🔥 SQUARE VIDEO LOGO 🔥 -->
                     <div class="auth-video-logo">
                         <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
                     </div>
@@ -321,8 +328,10 @@
                 </div>
             </div>
 
+            <!-- REGISTER FORM -->
             <div id="registerForm" class="auth-form">
                 <div class="auth-header">
+                    <!-- 🔥 SQUARE VIDEO LOGO 🔥 -->
                     <div class="auth-video-logo">
                         <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
                     </div>
@@ -368,6 +377,7 @@
         </div>
     </section>
 
+    <!-- 🔥 MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -429,6 +439,7 @@
         </div>
     </footer>
 
+    <!-- 🌟 FLOATING BUTTONS 🌟 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
     <button class="floating-install-btn" id="openAppModal" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
@@ -444,6 +455,7 @@
         </div>
     </div>
 
+    <!-- 🤖 🔥 DK ATOVITT AI CHATBOT WINDOW 🔥 🤖 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -460,6 +472,7 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
         /* 🔥 AUTHENTICATION TOGGLE LOGIC 🔥 */
         function toggleAuth(type) {
@@ -501,7 +514,7 @@
         function sendChat(type) {
             let userText = ""; let botReply = "";
             if(type === 'Audition') {
-                userText = "मुझे Audition के बारे जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
             } else if(type === 'Movies') {
                 userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
