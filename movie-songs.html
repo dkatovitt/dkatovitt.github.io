@@ -174,41 +174,12 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
-        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
-        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
-        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        .cd-wrapper { position: relative; width: 45px; height: 45px; flex-shrink: 0; }
-        .cd-spin { position: absolute; top: 2px; left: 2px; width: 41px; height: 41px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6c875; z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
-        .cd-spin.playing { animation: spin 3s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .cd-progress { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#333 100%, transparent 0); z-index: 1; transition: background 0.1s linear; }
-
-        .track-info { display: flex; flex-direction: column; max-width: 150px; }
-        .track-name { color: #e6c875; font-size: 13px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .player-controls { display: flex; align-items: center; gap: 6px; }
-        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; }
-        .control-btn:hover { color: #e6c875; transform: scale(1.1); }
-        .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; }
-        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
-
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-            
-            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 12px 5px 5px; gap: 8px; }
-            .cd-wrapper { width: 38px; height: 38px; }
-            .cd-spin { width: 34px; height: 34px; font-size: 15px; top: 2px; left: 2px; }
-            .track-info { max-width: 100px; }
-            .track-name { font-size: 11px; }
-            .control-btn { font-size: 13px; }
-            .play-pause-btn { font-size: 16px; }
         }
 
         /* Reveal Anim */
@@ -232,6 +203,37 @@
         .footer-social-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
         .footer-icon-btn { width: 40px; height: 40px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+
+        /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
+        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 10000; backdrop-filter: blur(10px); transition: 0.3s; }
+        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .cd-wrapper { position: relative; width: 45px; height: 45px; flex-shrink: 0; }
+        .cd-spin { position: absolute; top: 2px; left: 2px; width: 41px; height: 41px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6c875; z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        .cd-spin.playing { animation: spin 3s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .cd-progress { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#333 100%, transparent 0); z-index: 1; transition: background 0.1s linear; }
+
+        .track-info { display: flex; flex-direction: column; max-width: 150px; }
+        .track-name { color: #e6c875; font-size: 13px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .player-controls { display: flex; align-items: center; gap: 6px; }
+        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; justify-content: center;}
+        .control-btn:hover { color: #e6c875; transform: scale(1.1); }
+        .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; display: flex; align-items: center; justify-content: center;}
+        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
+
+        @media (max-width: 768px) { 
+            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 12px 5px 5px; gap: 8px; }
+            .cd-wrapper { width: 38px; height: 38px; }
+            .cd-spin { width: 34px; height: 34px; font-size: 15px; top: 2px; left: 2px; }
+            .track-info { max-width: 100px; }
+            .track-name { font-size: 11px; }
+            .control-btn { font-size: 13px; }
+            .play-pause-btn { font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -325,6 +327,10 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <!-- 🔥 CELEBRITY LINK ADDED IN MENU 🔥 -->
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <!-- 🔥 ECOSYSTEM DROPDOWN -->
@@ -485,6 +491,8 @@
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="movie-songs.html">Movie Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <!-- 🔥 CELEBRITY LINK ADDED IN FOOTER 🔥 -->
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -600,7 +608,6 @@
             <button class="control-btn" id="loopBtn" onclick="toggleLoopMode()" title="Loop: All Songs" style="display:flex; align-items:center; justify-content:center;">
                 <i class="fas fa-redo" style="color:#e6c875; font-size:16px;"></i>
             </button>
-            
         </div>
         <audio id="bgMusic">
             <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
@@ -819,6 +826,7 @@
                     url: url
                 }).catch((error) => console.log('Error sharing', error));
             } else {
+                // Fallback for Desktop/PC
                 prompt("अपने दोस्तों को भेजने के लिए यह लिंक कॉपी करें:", url);
             }
         }
@@ -842,6 +850,7 @@
         const cdAnim = document.getElementById('cdAnim');
         const cdProgress = document.getElementById('cdProgress');
 
+        // Update CD Progress Circle
         audio.addEventListener('timeupdate', () => {
             if (audio.duration) {
                 const progressPercent = (audio.currentTime / audio.duration) * 100;
@@ -849,6 +858,7 @@
             }
         });
 
+        // VIDEO PLAY FUNCTION
         function playInlineVideo(element, videoId) {
             if (!audio.paused) {
                 audio.pause();
@@ -856,18 +866,19 @@
                 cdAnim.classList.remove('playing');
             }
             if (activeVideoContainer && activeVideoContainer !== element) {
-                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
             }
             activeVideoContainer = element;
-            element.querySelector('.thumbnail-content').style.display = 'none'; 
+            element.querySelector('[class*="thumbnail-content"]').style.display = 'none'; 
             if(!element.querySelector('iframe')) {
                 const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
                 element.insertAdjacentHTML('beforeend', iframeHTML);
             }
         }
 
+        // AUDIO PLAY FUNCTION
         function playSong(fileName, songTitle) {
             const foundIndex = playlist.findIndex(s => s.file === fileName);
             if (foundIndex !== -1) {
@@ -878,11 +889,12 @@
             }
 
             if (activeVideoContainer) {
-                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
                 activeVideoContainer = null;
             }
+
             musicPlayer.classList.add('active');
             if (!audioSource.src.endsWith(fileName)) {
                 audioSource.src = fileName;
@@ -895,16 +907,19 @@
             cdAnim.classList.add('playing');
         }
 
+        // NEXT SONG
         function nextSong() {
             currentSongIndex = (currentSongIndex + 1) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
+        // PREVIOUS SONG
         function prevSong() {
             currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
+        // 🔥 PERFECT LOOP BUTTON LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
@@ -920,10 +935,11 @@
             }
         }
 
+        // BOTTOM PLAYER PLAY/PAUSE LOGIC
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 if (activeVideoContainer) {
-                    activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
                     const oldIframe = activeVideoContainer.querySelector('iframe');
                     if (oldIframe) oldIframe.remove();
                     activeVideoContainer = null;
