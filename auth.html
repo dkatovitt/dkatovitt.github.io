@@ -455,7 +455,7 @@
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में আসতে आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
             <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
@@ -602,43 +602,32 @@
             });
         });
 
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (FIXED COOKIE BUG) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC 🔥 */
         function translatePage(lang) {
-            // 1. पुरानी कुकीज़ को जड़ से डिलीट करना (ताकि ब्राउज़र अटका ना रहे)
-            var domains = [
-                window.location.hostname,
-                '.' + window.location.hostname,
-                window.location.hostname.replace(/^www\./i, ''),
-                '.' + window.location.hostname.replace(/^www\./i, '')
-            ];
-            domains.forEach(function(d) {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + d + ";";
-            });
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-            // 2. अगर "Select Language" चुना है तो असली भाषा में लौटें
             if (lang === "") {
+                // Delete all possible googtrans cookies
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                
+                sessionStorage.removeItem('googtrans');
+                localStorage.removeItem('googtrans');
+                
                 window.location.reload(); 
                 return;
             }
-
-            // 3. नई भाषा की कुकी सही डोमेन पर सेट करना
-            document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + window.location.hostname.replace(/^www\./i, '') + ";";
-            document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-
-            // 4. पेज को नई भाषा में बदलना
+            
             var googleSelect = document.querySelector('select.goog-te-combo');
             if (googleSelect) {
-                googleSelect.value = lang;
-                var event;
-                if (typeof Event === 'function') {
-                    event = new Event('change', { bubbles: true });
-                } else {
-                    event = document.createEvent('HTMLEvents');
-                    event.initEvent('change', true, true);
-                }
-                googleSelect.dispatchEvent(event);
+                googleSelect.value = lang; 
+                googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
                 window.location.reload();
             }
         }
