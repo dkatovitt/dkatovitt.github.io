@@ -289,6 +289,7 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
@@ -368,6 +369,7 @@
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -538,21 +540,29 @@
             }, 600);
         }
 
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (NEW SMART FIX) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
+                
+                window.location.reload(); 
                 return;
             }
+            
             var googleSelect = document.querySelector('select.goog-te-combo');
             if (googleSelect) {
-                googleSelect.value = lang;
+                googleSelect.value = lang; 
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
