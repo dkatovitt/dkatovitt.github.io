@@ -123,7 +123,7 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
@@ -369,6 +369,10 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <!-- 🔥 CELEBRITY LINK ADDED IN MENU 🔥 -->
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
@@ -787,21 +791,29 @@
             }, 600);
         }
 
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
+                
+                window.location.reload(); 
                 return;
             }
+            
             var googleSelect = document.querySelector('select.goog-te-combo');
             if (googleSelect) {
-                googleSelect.value = lang;
+                googleSelect.value = lang; 
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
