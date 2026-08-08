@@ -164,41 +164,12 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* 🔥 MUSIC PLAYER WITH SMART PROGRESS CD & CONTROLS 🔥 */
-        .music-player { position: fixed; bottom: 40px; left: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #333; border-radius: 50px; padding: 6px 20px 6px 6px; display: none; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 1000; backdrop-filter: blur(10px); transition: 0.3s; }
-        .music-player.active { display: flex; animation: slideUp 0.4s ease; }
-        @keyframes slideUp { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        .cd-wrapper { position: relative; width: 45px; height: 45px; flex-shrink: 0; }
-        .cd-spin { position: absolute; top: 2px; left: 2px; width: 41px; height: 41px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #e6c875; z-index: 2; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
-        .cd-spin.playing { animation: spin 3s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .cd-progress { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#333 100%, transparent 0); z-index: 1; transition: background 0.1s linear; }
-
-        .track-info { display: flex; flex-direction: column; max-width: 150px; }
-        .track-name { color: #e6c875; font-size: 13px; font-weight: bold; margin: 0; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .track-artist { color: #888; font-size: 10px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .player-controls { display: flex; align-items: center; gap: 6px; }
-        .control-btn { background: none; color: #aaa; border: none; font-size: 15px; cursor: pointer; transition: 0.3s; padding: 0 3px; display: flex; align-items: center; justify-content: center;}
-        .control-btn:hover { color: #e6c875; transform: scale(1.1); }
-        .play-pause-btn { background: none; color: #fff; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; padding: 0 4px; display: flex; align-items: center; justify-content: center;}
-        .play-pause-btn:hover { color: #e6c875; transform: scale(1.1); }
-
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-            
-            .music-player { bottom: 20px; left: 10px; right: auto; padding: 5px 12px 5px 5px; gap: 8px; }
-            .cd-wrapper { width: 38px; height: 38px; }
-            .cd-spin { width: 34px; height: 34px; font-size: 15px; top: 2px; left: 2px; }
-            .track-info { max-width: 100px; }
-            .track-name { font-size: 11px; }
-            .control-btn { font-size: 13px; }
-            .play-pause-btn { font-size: 16px; }
         }
 
         /* Reveal Anim */
@@ -230,7 +201,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <!-- 🔥 BRAND NAME LOCK 🔥 -->
@@ -313,6 +284,10 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <!-- 🔥 CELEBRITY LINK ADDED IN MENU 🔥 -->
+        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
@@ -531,6 +506,7 @@
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -605,7 +581,7 @@
             <p class="app-modal-desc">
                 App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें।
             </p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn"><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
+            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
@@ -633,7 +609,7 @@
             <div class="cd-spin" id="cdAnim"><i class="fas fa-compact-disc"></i></div>
         </div>
         <div class="track-info">
-            <p class="track-name" id="trackName">यक्षिणी (Yakshini) Theme</p>
+            <p class="track-name" id="trackName">दीपक और रवि - एक ही जान</p>
             <!-- 🔥 BRAND NAME LOCK 🔥 -->
             <p class="track-artist notranslate">DK ATOVITT</p>
         </div>
@@ -647,7 +623,7 @@
             </button>
         </div>
         <audio id="bgMusic">
-            <source id="audioSource" src="yakshini-title-track.mp3" type="audio/mpeg">
+            <source id="audioSource" src="dipak-aur-ravi-dosti.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -666,24 +642,26 @@
     <!-- JavaScript -->
     <script>
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
-        const openAppModal = document.getElementById('openAppModal');
-        const appModalOverlay = document.getElementById('appModalOverlay');
-        const closeAppModal = document.getElementById('closeAppModal');
+        document.addEventListener('DOMContentLoaded', () => {
+            const openAppModal = document.getElementById('openAppModal');
+            const appModalOverlay = document.getElementById('appModalOverlay');
+            const closeAppModal = document.getElementById('closeAppModal');
 
-        if(openAppModal && appModalOverlay) {
-            openAppModal.addEventListener('click', (e) => {
-                e.preventDefault();
-                appModalOverlay.classList.add('active');
-            });
-            closeAppModal.addEventListener('click', () => {
-                appModalOverlay.classList.remove('active');
-            });
-            appModalOverlay.addEventListener('click', (e) => {
-                if(e.target === appModalOverlay) {
+            if(openAppModal && appModalOverlay) {
+                openAppModal.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    appModalOverlay.classList.add('active');
+                });
+                closeAppModal.addEventListener('click', () => {
                     appModalOverlay.classList.remove('active');
-                }
-            });
-        }
+                });
+                appModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === appModalOverlay) {
+                        appModalOverlay.classList.remove('active');
+                    }
+                });
+            }
+        });
 
         /* 🔥 CHATBOT LOGIC 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
@@ -730,21 +708,29 @@
             }, 600);
         }
 
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
+                
+                window.location.reload(); 
                 return;
             }
+            
             var googleSelect = document.querySelector('select.goog-te-combo');
             if (googleSelect) {
-                googleSelect.value = lang;
+                googleSelect.value = lang; 
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
