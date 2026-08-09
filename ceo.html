@@ -598,20 +598,18 @@
             }, 600);
         }
 
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (SUPER COOKIE NUKER) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
-            // Force Delete All Possible Google Translate Cookies
-            var d = window.location.hostname;
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + d + ";";
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + d + ";";
-            
-            var cleanDomain = d.replace(/^www\./i, '');
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + cleanDomain + ";";
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + cleanDomain + ";";
-
             if (lang === "") {
-                window.location.reload(true); 
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                
+                window.location.reload(); 
                 return;
             }
             
@@ -620,10 +618,10 @@
                 googleSelect.value = lang; 
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=" + d + ";";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + d + ";";
-                window.location.reload(true);
+                window.location.reload();
             }
         }
         
@@ -663,6 +661,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -730,6 +729,7 @@
                 }
             });
         });
+
     </script>
 </body>
 </html>
