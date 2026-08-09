@@ -170,10 +170,10 @@
         .vision-card h4 { color: #fff; font-size: 18px; margin-bottom: 10px; text-transform: uppercase; }
         .vision-card p { font-size: 14px; color: #999; line-height: 1.6; margin: 0; }
 
-        /* 🔥 CEO CONTACT INFO WITH 6 ICONS IN A LINE 🔥 */
+        /* 🔥 CEO CONTACT INFO (ALIGNED PROPERLY) 🔥 */
         .ceo-contact-info { margin-top: 35px; border-top: 1px solid #333; padding-top: 25px; }
-        .ceo-contact-info p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
-        .ceo-contact-info i { color: #e6c875; font-size: 16px; }
+        .ceo-contact-info p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
+        .ceo-contact-info i { color: #e6c875; font-size: 16px; margin-top: 4px; }
         .ceo-contact-info a { color: #bbb; text-decoration: none; transition: 0.3s; }
         .ceo-contact-info a:hover { color: #e6c875; }
 
@@ -303,7 +303,10 @@
         </div>
 
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        
+        <!-- 🔥 CELEBRITY LINK ADDED IN MENU 🔥 -->
         <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
@@ -357,7 +360,9 @@
                 <!-- 🔥 NEW: CEO CONTACT INFO WITH 6 ICONS IN A LINE 🔥 -->
                 <div class="ceo-contact-info">
                     <p style="margin-bottom: 20px; font-weight: bold; color: #e6c875; font-size: 16px; text-transform: uppercase;">Connect with DK Sir</p>
-                    <p><i class="fas fa-phone-alt"></i> <span>+91 983 033 2929</span></p>
+                    
+                    <!-- 🔥 BOTH PHONE NUMBERS BEAUTIFULLY ALIGNED 🔥 -->
+                    <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
                     
                     <!-- 🔥 CEO SPECIFIC EMAIL 🔥 -->
                     <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakceo@dkatovitt.com">dipakceo@dkatovitt.com</a></span></p>
@@ -448,10 +453,10 @@
 
     <!-- 🌟 FLOATING BUTTONS AREA 🌟 -->
     
-    <!-- 1. WHATSAPP BUTTON -->
+    <!-- 1. WHATSAPP BUTTON (Number Updated) -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- 2. AI CHATBOT BUTTON -->
+    <!-- 2. AI CHATBOT BUTTON (ROBOT ICON UPDATED) -->
     <div class="chatbot-toggler" id="chatbotToggler">
         <i class="fas fa-robot"></i>
     </div>
@@ -461,7 +466,7 @@
         <i class="fas fa-download"></i>
     </button>
 
-    <!-- 🔥 CUSTOM INSTALL POPUP HTML -->
+    <!-- 🔥 CUSTOM INSTALL POPUP HTML WITH VIDEO LOGO & STRUCTURED TEXT 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -473,7 +478,7 @@
             <p class="app-modal-desc">
                 App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें।
             </p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
+            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn"><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
@@ -498,7 +503,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
+                pageLanguage: 'auto', 
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -516,46 +521,40 @@
                 }
             });
         }
-
+        
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
-        document.addEventListener('DOMContentLoaded', () => {
-            const openAppModal = document.getElementById('openAppModal');
-            const appModalOverlay = document.getElementById('appModalOverlay');
-            const closeAppModal = document.getElementById('closeAppModal');
+        const openAppModal = document.getElementById('openAppModal');
+        const appModalOverlay = document.getElementById('appModalOverlay');
+        const closeAppModal = document.getElementById('closeAppModal');
 
-            if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    appModalOverlay.classList.add('active');
-                });
-                closeAppModal.addEventListener('click', () => {
+        if(openAppModal && appModalOverlay) {
+            openAppModal.addEventListener('click', (e) => {
+                e.preventDefault();
+                appModalOverlay.classList.add('active');
+            });
+            closeAppModal.addEventListener('click', () => {
+                appModalOverlay.classList.remove('active');
+            });
+            appModalOverlay.addEventListener('click', (e) => {
+                if(e.target === appModalOverlay) {
                     appModalOverlay.classList.remove('active');
-                });
-                appModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === appModalOverlay) {
-                        appModalOverlay.classList.remove('active');
-                    }
-                });
-            }
-        });
+                }
+            });
+        }
 
-        /* 🔥 CHATBOT LOGIC 🔥 */
+        /* 🔥 CHATBOT LOGIC (EMAIL ID UPDATED) 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
 
-        if(chatbotToggler) {
-            chatbotToggler.addEventListener('click', () => {
-                chatbotContainer.classList.toggle('active');
-            });
-        }
+        chatbotToggler.addEventListener('click', () => {
+            chatbotContainer.classList.toggle('active');
+        });
 
-        if(closeChatbot) {
-            closeChatbot.addEventListener('click', () => {
-                chatbotContainer.classList.remove('active');
-            });
-        }
+        closeChatbot.addEventListener('click', () => {
+            chatbotContainer.classList.remove('active');
+        });
 
         function sendChat(type) {
             let userText = "";
@@ -584,7 +583,7 @@
             }, 600);
         }
 
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (SUPER COOKIE NUKER) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
             // Force Delete All Possible Google Translate Cookies
             var d = window.location.hostname;
@@ -649,6 +648,7 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
+        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
