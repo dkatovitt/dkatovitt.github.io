@@ -54,7 +54,7 @@
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
-        
+
         /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
         .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .custom-translate select:hover { background: #e6c875; color: #000; }
@@ -603,8 +603,10 @@
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="movie-songs.html">Movie Songs</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <!-- 🔥 CELEBRITY LINK ADDED IN FOOTER 🔥 -->
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -951,12 +953,16 @@
             }
         }
 
-        /* 🔥 ADVANCED PLAYLIST & AUDIO/VIDEO ENGINE 🔥 */
+        /* 🔥 ADVANCED PLAYLIST ENGINE & VIDEO LOGIC 🔥 */
         const playlist = [
-            { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' }
+            { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
+            { file: 'aaj-ki-shaam.mp3', title: 'आज की शाम है खुशियों के नाम' },
+            { file: 'kalpamrit-ke-rahon-mein.mp3', title: 'Kalpamrit Ke Rahon Mein' },
+            { file: 'shaam-dhale.mp3', title: 'शाम ढले जब पानी डोले' }
         ];
+        
         let currentSongIndex = 0;
-        let loopMode = 'all'; // 'all' or 'one'
+        let loopMode = 'all';
 
         let activeVideoContainer = null;
         const audio = document.getElementById('bgMusic');
@@ -967,15 +973,15 @@
         const cdAnim = document.getElementById('cdAnim');
         const cdProgress = document.getElementById('cdProgress');
 
-        // Update CD Progress Circle
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
-            }
-        });
+        if(audio && cdProgress) {
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
+                }
+            });
+        }
 
-        // VIDEO PLAY FUNCTION
         function playInlineVideo(element, videoId) {
             if (!audio.paused) {
                 audio.pause();
@@ -983,19 +989,18 @@
                 cdAnim.classList.remove('playing');
             }
             if (activeVideoContainer && activeVideoContainer !== element) {
-                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
             }
             activeVideoContainer = element;
-            element.querySelector('[class*="thumbnail-content"]').style.display = 'none'; 
+            element.querySelector('.thumbnail-content').style.display = 'none'; 
             if(!element.querySelector('iframe')) {
-                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="position:absolute; top:0; left:0; border-radius: inherit; display: block;"></iframe>`;
+                const iframeHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="aspect-ratio: 16/9; border-radius: 12px 12px 0 0; display: block;"></iframe>`;
                 element.insertAdjacentHTML('beforeend', iframeHTML);
             }
         }
 
-        // AUDIO PLAY FUNCTION
         function playSong(fileName, songTitle) {
             const foundIndex = playlist.findIndex(s => s.file === fileName);
             if (foundIndex !== -1) {
@@ -1006,7 +1011,7 @@
             }
 
             if (activeVideoContainer) {
-                activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
                 const oldIframe = activeVideoContainer.querySelector('iframe');
                 if (oldIframe) oldIframe.remove();
                 activeVideoContainer = null;
@@ -1024,19 +1029,16 @@
             cdAnim.classList.add('playing');
         }
 
-        // NEXT SONG
         function nextSong() {
             currentSongIndex = (currentSongIndex + 1) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // PREVIOUS SONG
         function prevSong() {
             currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
             playSong(playlist[currentSongIndex].file, playlist[currentSongIndex].title);
         }
 
-        // 🔥 PERFECT LOOP BUTTON LOGIC 🔥
         function toggleLoopMode() {
             const loopBtn = document.getElementById('loopBtn');
             if (loopMode === 'all') {
@@ -1052,32 +1054,35 @@
             }
         }
 
-        // BOTTOM PLAYER PLAY/PAUSE LOGIC
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                if (activeVideoContainer) {
-                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
-                    const oldIframe = activeVideoContainer.querySelector('iframe');
-                    if (oldIframe) oldIframe.remove();
-                    activeVideoContainer = null;
+        if(playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    if (activeVideoContainer) {
+                        activeVideoContainer.querySelector('.thumbnail-content').style.display = 'block';
+                        const oldIframe = activeVideoContainer.querySelector('iframe');
+                        if (oldIframe) oldIframe.remove();
+                        activeVideoContainer = null;
+                    }
+                    audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    cdAnim.classList.add('playing');
+                } else {
+                    audio.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
+                    cdAnim.classList.remove('playing');
                 }
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                cdAnim.classList.add('playing');
-            } else {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
-                cdAnim.classList.remove('playing');
-            }
-        });
+            });
+        }
         
-        audio.addEventListener('ended', () => {
-            if (loopMode === 'all') {
-                nextSong();
-            } else {
-                audio.play();
-            }
-        });
+        if(audio) {
+            audio.addEventListener('ended', () => {
+                if (loopMode === 'all') {
+                    nextSong();
+                } else {
+                    audio.play();
+                }
+            });
+        }
     </script>
 </body>
 </html>
