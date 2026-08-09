@@ -99,7 +99,7 @@
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         
-        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
         .floating-install-btn:hover { background-color: #008cd9; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
@@ -166,6 +166,20 @@
         .ceo-designation { font-size: 16px; color: #fff; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 35px 0; font-weight: bold; }
         .ceo-designation span { color: #aaa; font-weight: normal; font-size: 13px; }
         
+        /* 🔥 CEO HIGHLIGHTED CONTACT BOX (Right under photo) 🔥 */
+        .ceo-highlight-contact { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: left; width: 100%; max-width: 600px; box-sizing: border-box; position: relative; overflow: hidden; }
+        .ceo-highlight-contact::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; }
+        .ceo-highlight-contact h3 { color: #e6c875; font-size: 18px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .ceo-highlight-contact p { font-size: 15px; color: #bbb; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; }
+        .ceo-highlight-contact p i { color: #e6c875; font-size: 16px; margin-top: 4px; width: 20px; text-align: center; }
+        .ceo-highlight-contact a { color: #bbb; text-decoration: none; transition: 0.3s; }
+        .ceo-highlight-contact a:hover { color: #e6c875; }
+        
+        /* 6 Icons aligned */
+        .highlight-social-links { margin-top: 20px; display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; border-top: 1px solid #222; padding-top: 20px; }
+        .highlight-social-links a { width: 40px; height: 40px; flex-shrink: 0; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
+        .highlight-social-links a:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+
         .ceo-content-box { background: #111; border: 1px solid #333; border-radius: 15px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); text-align: left; width: 100%; box-sizing: border-box; }
         .ceo-content-box h3 { color: #e6c875; font-size: 24px; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #333; padding-bottom: 10px; }
         .ceo-content-box p { font-size: 16px; color: #bbb; line-height: 1.8; margin-bottom: 20px; }
@@ -177,6 +191,9 @@
             .ceo-title { font-size: 24px; letter-spacing: 0px; white-space: normal; } 
             .vision-grid { grid-template-columns: 1fr; } 
             .ceo-content-box { padding: 25px 20px; } 
+            .ceo-highlight-contact { padding: 20px 15px; }
+            .highlight-social-links { justify-content: center; gap: 8px; }
+            .highlight-social-links a { width: 36px; height: 36px; font-size: 14px; }
         }
         
         .vision-card { background: #1a1a1a; padding: 25px; border-radius: 10px; border-left: 4px solid #e6c875; transition: 0.3s; }
@@ -184,24 +201,6 @@
         .vision-card i { font-size: 30px; color: #e6c875; margin-bottom: 15px; }
         .vision-card h4 { color: #fff; font-size: 18px; margin-bottom: 10px; text-transform: uppercase; }
         .vision-card p { font-size: 14px; color: #999; line-height: 1.6; margin: 0; }
-
-        /* 🔥 CEO CONTACT INFO (ALIGNED PROPERLY) 🔥 */
-        .ceo-contact-info { margin-top: 35px; border-top: 1px solid #333; padding-top: 25px; }
-        .ceo-contact-info p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
-        .ceo-contact-info i { color: #e6c875; font-size: 16px; margin-top: 4px; }
-        .ceo-contact-info a { color: #bbb; text-decoration: none; transition: 0.3s; }
-        .ceo-contact-info a:hover { color: #e6c875; }
-
-        /* 🔥 FIXED: 6 ICONS IN ONE SINGLE LINE 🔥 */
-        .social-links { margin-top: 25px; display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; }
-        .social-links a { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
-        .social-links a:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-
-        @media (max-width: 768px) {
-            .social-links { gap: 8px; justify-content: center; }
-            .social-links a { width: 36px; height: 36px; font-size: 15px; }
-            .ceo-contact-info p { font-size: 14px; }
-        }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -324,7 +323,7 @@
 
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
+        <!-- 🔥 ECOSYSTEM DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -352,6 +351,23 @@
             <h1 class="ceo-title">Mr. Dipak Kumar Gupta</h1>
             <p class="ceo-designation">Founder & CEO <br><span>( DK SIR )</span></p>
 
+            <!-- 🔥 NEW HIGHLIGHTED CONNECT WITH DK SIR SECTION 🔥 -->
+            <div class="ceo-highlight-contact">
+                <h3>CONNECT WITH DK SIR</h3>
+                
+                <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
+                <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakceo@dkatovitt.com">dipakceo@dkatovitt.com</a></span></p>
+                
+                <div class="highlight-social-links">
+                    <a href="https://wa.me/919830332929" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:dipakceo@dkatovitt.com" title="Email CEO"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
             <div class="ceo-content-box">
                 <h3>Meet The Visionary</h3>
                 <!-- 🔥 BRAND NAME LOCK 🔥 -->
@@ -372,28 +388,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 NEW: CEO CONTACT INFO WITH 6 ICONS IN A LINE 🔥 -->
-                <div class="ceo-contact-info">
-                    <p style="margin-bottom: 20px; font-weight: bold; color: #e6c875; font-size: 16px; text-transform: uppercase;">Connect with DK Sir</p>
-                    
-                    <!-- 🔥 BOTH PHONE NUMBERS BEAUTIFULLY ALIGNED 🔥 -->
-                    <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
-                    
-                    <!-- 🔥 CEO SPECIFIC EMAIL 🔥 -->
-                    <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakceo@dkatovitt.com">dipakceo@dkatovitt.com</a></span></p>
-                    
-                    <!-- 🔥 6 ICONS (EMAIL ICON USES CEO EMAIL) 🔥 -->
-                    <div class="social-links">
-                        <a href="https://wa.me/919830332929" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                        
-                        <!-- 🔥 CEO SPECIFIC MAILTO LINK 🔥 -->
-                        <a href="mailto:dipakceo@dkatovitt.com" title="Email CEO"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -518,7 +512,7 @@
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
+                pageLanguage: 'auto', // 🔥 SMART DETECT 🔥
                 includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
                 autoDisplay: false
             }, 'google_translate_element');
@@ -536,7 +530,7 @@
                 }
             });
         }
-        
+
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         const openAppModal = document.getElementById('openAppModal');
         const appModalOverlay = document.getElementById('appModalOverlay');
@@ -563,13 +557,17 @@
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
 
-        chatbotToggler.addEventListener('click', () => {
-            chatbotContainer.classList.toggle('active');
-        });
+        if(chatbotToggler) {
+            chatbotToggler.addEventListener('click', () => {
+                chatbotContainer.classList.toggle('active');
+            });
+        }
 
-        closeChatbot.addEventListener('click', () => {
-            chatbotContainer.classList.remove('active');
-        });
+        if(closeChatbot) {
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.classList.remove('active');
+            });
+        }
 
         function sendChat(type) {
             let userText = "";
@@ -661,7 +659,6 @@
         
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        /* 🌟 SUB-MENU TOGGLE SCRIPT */
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -729,7 +726,6 @@
                 }
             });
         });
-
     </script>
 </body>
 </html>
