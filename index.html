@@ -195,7 +195,7 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
@@ -275,14 +275,31 @@
 
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
-        .contact-info-box { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
-        .contact-info-box p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: flex-start; gap: 12px; }
-        .contact-info-box i { color: #e6c875; margin-top: 4px; font-size: 16px; }
-        .contact-info-box a { color: #bbb; text-decoration: none; transition: 0.3s; }
-        .contact-info-box a:hover { color: #e6c875; }
         
-        .inquiry-form { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; }
-        .inquiry-form h3 { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        /* 🔥 NEW CONTACT INFO BOX CSS FOR INDEX PAGE 🔥 */
+        .contact-info-box { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; }
+        .contact-info-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
+        .contact-info-box p.info-text { font-size: 16px; color: #bbb; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
+        .contact-info-box i.info-icon { color: #e6c875; margin-top: 4px; font-size: 18px; width: 20px; text-align: center; }
+        .contact-info-box a.info-link { color: #bbb; text-decoration: none; transition: 0.3s; }
+        .contact-info-box a.info-link:hover { color: #e6c875; padding-left: 5px; }
+
+        .contact-brand-subtitle { margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; }
+        
+        .contact-social-row { display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; }
+        .contact-social-btn { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
+        .contact-social-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        
+        @media (max-width: 768px) {
+            .contact-brand-subtitle { font-size: 10px; letter-spacing: 1px; }
+            .contact-social-row { gap: 8px; justify-content: center; }
+            .contact-social-btn { width: 36px; height: 36px; font-size: 15px; }
+            .contact-info-box { padding: 30px 15px !important; }
+        }
+        
+        .inquiry-form { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; }
+        .inquiry-form::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
+        .inquiry-form h3 { color: #e6c875; font-size: 20px; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .form-group { margin-bottom: 15px; text-align: left; }
         .form-group label { display: block; color: #aaa; font-size: 13px; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 6px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
@@ -347,7 +364,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -815,6 +832,7 @@
         </div>
     </section>
 
+    <!-- 🔥 HOME PAGE CONTACT SECTION (FIXED LIKE CONTACT.HTML) 🔥 -->
     <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
             <div style="text-align: center; margin-bottom: -10px;">
@@ -839,16 +857,33 @@
                     </form>
                 </div>
                 
+                <!-- 🔥 FIXED CONTACT INFO BOX (SAME AS CONTACT.HTML) 🔥 -->
                 <div class="contact-info-box">
-                    <div style="text-align: center; padding-bottom: 15px; border-bottom: 1px solid #333; margin-bottom: 20px;">
-                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 60px; transform: scale(1.4); margin-bottom: 5px;"></video>
-                        <h3 class="notranslate" style="margin: 0; font-size: 22px;">DK ATOVITT</h3>
+                    <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #333; margin-bottom: 25px;">
+                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 70px; transform: scale(1.4); margin-bottom: 5px;"></video>
+                        <h3 class="notranslate" style="margin: 0; font-size: 24px; color: #fff; letter-spacing: 1px;">DK ATOVITT</h3>
+                        <p class="contact-brand-subtitle notranslate">Official Movie Production House</p>
                     </div>
-                    <p><i class="fas fa-film" style="color:#e6c875;"></i> <span class="notranslate"><strong>Official Movie Production House</strong></span></p>
-                    <p><i class="fas fa-map-marker-alt"></i> <span>M. G. ROAD, KOLKATA- 700119</span></p>
-                    <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
-                    <p><i class="fas fa-envelope"></i> <span><a href="mailto:info@dkatovitt.com">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com">contact@dkatovitt.com</a></span></p>
+                    
+                    <p class="info-text"><i class="fas fa-map-marker-alt info-icon"></i> <span><strong>Head Office:</strong><br> M. G. ROAD, KOLKATA- 700119, West Bengal, India</span></p>
+                    
+                    <p class="info-text"><i class="fas fa-phone-alt info-icon"></i> <span><strong>Contact Numbers:</strong><br> +91 933 033 2929<br>+91 983 033 2929</span></p>
+                    
+                    <p class="info-text"><i class="fas fa-envelope info-icon"></i> <span><strong>Email Addresses:</strong><br> <a href="mailto:info@dkatovitt.com" class="info-link">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com" class="info-link">contact@dkatovitt.com</a></span></p>
+
+                    <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
+                        <p style="margin-bottom: 15px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase;">Connect With Us</p>
+                        <div class="contact-social-row">
+                            <a href="https://wa.me/919830332929" target="_blank" class="contact-social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="contact-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="contact-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="contact-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="contact-social-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="mailto:info@dkatovitt.com" class="contact-social-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1351,6 +1386,15 @@
                 audio.play();
             }
         });
+
+        // App Register
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js').then((reg) => {
+              console.log('App ready to install!', reg);
+            });
+          });
+        }
     </script>
 </body>
 </html>
