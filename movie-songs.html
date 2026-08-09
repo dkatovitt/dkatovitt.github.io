@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BMGLN6Z9M4');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
+        crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yakshini Movie Songs - DK Atovitt</title>
@@ -333,7 +347,7 @@
 
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <!-- 🔥 ECOSYSTEM DROPDOWN -->
+        <!-- 🔥 ECOSYSTEM & PARTNERS DROPDOWN -->
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
             <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
@@ -693,21 +707,29 @@
             }, 600);
         }
 
-        /* 🔥 CUSTOM TRANSLATOR LOGIC (FIXED FOR REFRESH & DEFAULT) 🔥 */
+        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
             if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-                window.location.reload();
+                
+                window.location.reload(); 
                 return;
             }
+            
             var googleSelect = document.querySelector('select.goog-te-combo');
             if (googleSelect) {
-                googleSelect.value = lang;
+                googleSelect.value = lang; 
                 googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                document.cookie = "googtrans=/auto/" + lang + "; domain=" + window.location.hostname + "; path=/;";
                 window.location.reload();
             }
         }
@@ -851,12 +873,14 @@
         const cdProgress = document.getElementById('cdProgress');
 
         // Update CD Progress Circle
-        audio.addEventListener('timeupdate', () => {
-            if (audio.duration) {
-                const progressPercent = (audio.currentTime / audio.duration) * 100;
-                cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
-            }
-        });
+        if(audio && cdProgress) {
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progressPercent = (audio.currentTime / audio.duration) * 100;
+                    cdProgress.style.background = `conic-gradient(#e6c875 ${progressPercent}%, #333 0)`;
+                }
+            });
+        }
 
         // VIDEO PLAY FUNCTION
         function playInlineVideo(element, videoId) {
@@ -936,31 +960,35 @@
         }
 
         // BOTTOM PLAYER PLAY/PAUSE LOGIC
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                if (activeVideoContainer) {
-                    activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
-                    const oldIframe = activeVideoContainer.querySelector('iframe');
-                    if (oldIframe) oldIframe.remove();
-                    activeVideoContainer = null;
+        if(playPauseBtn) {
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    if (activeVideoContainer) {
+                        activeVideoContainer.querySelector('[class*="thumbnail-content"]').style.display = 'block';
+                        const oldIframe = activeVideoContainer.querySelector('iframe');
+                        if (oldIframe) oldIframe.remove();
+                        activeVideoContainer = null;
+                    }
+                    audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    cdAnim.classList.add('playing');
+                } else {
+                    audio.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
+                    cdAnim.classList.remove('playing');
                 }
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                cdAnim.classList.add('playing');
-            } else {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play" style="margin-left: 2px;"></i>';
-                cdAnim.classList.remove('playing');
-            }
-        });
+            });
+        }
         
-        audio.addEventListener('ended', () => {
-            if (loopMode === 'all') {
-                nextSong();
-            } else {
-                audio.play();
-            }
-        });
+        if(audio) {
+            audio.addEventListener('ended', () => {
+                if (loopMode === 'all') {
+                    nextSong();
+                } else {
+                    audio.play();
+                }
+            });
+        }
     </script>
 </body>
 </html>
