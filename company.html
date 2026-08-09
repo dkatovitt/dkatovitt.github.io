@@ -77,7 +77,7 @@
         #overlay.active { display: block; }
 
         /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float { fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
@@ -160,17 +160,19 @@
         .service-card h3 { color: #fff; font-size: 22px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .service-card p { color: #999; font-size: 15px; line-height: 1.6; margin: 0; }
 
-        /* 🔥 COMPANY CONTACT INFO WITH 6 ICONS IN A LINE 🔥 */
-        .company-contact-info { margin-top: 45px; border-top: 1px solid #333; padding-top: 25px; text-align: left; }
-        .company-contact-info p { font-size: 15px; color: #bbb; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 12px; }
-        .company-contact-info i { color: #e6c875; font-size: 16px; }
-        .company-contact-info a { color: #bbb; text-decoration: none; transition: 0.3s; }
-        .company-contact-info a:hover { color: #e6c875; }
+        /* 🔥 NEW CONTACT INFO BOX CSS FOR COMPANY PAGE (SAME AS CONTACT.HTML) 🔥 */
+        .contact-info-box { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; text-align: left; margin-top: 50px; }
+        .contact-info-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
+        .contact-info-box p.info-text { font-size: 16px; color: #bbb; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
+        .contact-info-box i.info-icon { color: #e6c875; margin-top: 4px; font-size: 18px; width: 20px; text-align: center; }
+        .contact-info-box a.info-link { color: #bbb; text-decoration: none; transition: 0.3s; }
+        .contact-info-box a.info-link:hover { color: #e6c875; padding-left: 5px; }
 
-        /* 🔥 FIXED: 6 ICONS IN ONE SINGLE LINE 🔥 */
-        .social-links { margin-top: 25px; display: flex; gap: 12px; flex-wrap: nowrap; justify-content: center; }
-        .social-links a { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
-        .social-links a:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        .contact-brand-subtitle { margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; text-align: center; }
+        
+        .contact-social-row { display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; }
+        .contact-social-btn { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
+        .contact-social-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
         @media (max-width: 768px) { 
             .company-hero { padding: 140px 20px 80px 20px; }
@@ -180,10 +182,11 @@
             .about-container h2 { font-size: 26px; }
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .company-header-content video { height: 100px; }
-
-            .social-links { gap: 8px; justify-content: center; }
-            .social-links a { width: 36px; height: 36px; font-size: 15px; }
-            .company-contact-info p { font-size: 14px; flex-direction: column; gap: 5px; }
+            
+            .contact-brand-subtitle { font-size: 10px; letter-spacing: 1px; }
+            .contact-social-row { gap: 8px; justify-content: center; }
+            .contact-social-btn { width: 36px; height: 36px; font-size: 15px; }
+            .contact-info-box { padding: 30px 15px !important; }
         }
 
         /* Reveal Anim */
@@ -215,7 +218,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -328,7 +331,7 @@
         <div class="about-container reveal">
             <h2>Who We Are</h2>
             <p><strong class="notranslate">DK ATOVITT</strong> is a premier Movie Production House based in Kolkata, dedicated to creating cinematic masterpieces that leave a lasting impact. Founded by visionary entrepreneur Mr. Dipak Kumar Gupta, our studio specializes in producing high-end 4K feature films, web series, and original music tracks.</p>
-            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर कामাপন্ন काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
+            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश के असली और छुपे हुए टैलेंट को एक बड़ा मंच देना है। हम एक 100% पारदर्शी (Transparent) कास्टिंग सिस्टम पर काम करते हैं, जहाँ नए एक्टर्स, सिंगर्स और क्रिएटर्स को अपनी कला दिखाने का बराबर मौका मिलता है। हमारा पहला बड़ा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
             
             <div class="services-grid">
                 
@@ -358,24 +361,30 @@
 
             </div>
 
-            <!-- 🔥 NEW: COMPANY CONTACT INFO WITH 6 ICONS IN A LINE 🔥 -->
-            <div class="company-contact-info reveal">
-                <p style="margin-bottom: 20px; font-weight: bold; color: #e6c875; font-size: 16px; text-transform: uppercase; text-align: center;">Contact DK Atovitt</p>
-                <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929 | +91 983 033 2929</span></p>
+            <!-- 🔥 FIXED CONTACT INFO BOX (SAME AS CONTACT.HTML) 🔥 -->
+            <div class="contact-info-box reveal">
+                <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #333; margin-bottom: 25px;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 70px; transform: scale(1.4); margin-bottom: 5px;"></video>
+                    <h3 class="notranslate" style="margin: 0; font-size: 24px; color: #fff; letter-spacing: 1px;">DK ATOVITT</h3>
+                    <p class="contact-brand-subtitle notranslate">Official Movie Production House</p>
+                </div>
                 
-                <!-- 🔥 COMPANY SPECIFIC EMAILS 🔥 -->
-                <p><i class="fas fa-envelope"></i> <span><a href="mailto:info@dkatovitt.com">info@dkatovitt.com</a> | <a href="mailto:contact@dkatovitt.com">contact@dkatovitt.com</a></span></p>
+                <p class="info-text"><i class="fas fa-map-marker-alt info-icon"></i> <span><strong>Head Office:</strong><br> M. G. ROAD, KOLKATA- 700119, West Bengal, India</span></p>
                 
-                <!-- 🔥 6 ICONS (EMAIL ICON USES COMPANY EMAIL) 🔥 -->
-                <div class="social-links">
-                    <a href="https://wa.me/919830332929" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    
-                    <!-- 🔥 COMPANY SPECIFIC MAILTO LINK 🔥 -->
-                    <a href="mailto:info@dkatovitt.com" title="Email Us"><i class="fas fa-envelope"></i></a>
+                <p class="info-text"><i class="fas fa-phone-alt info-icon"></i> <span><strong>Contact Numbers:</strong><br> +91 933 033 2929<br>+91 983 033 2929</span></p>
+                
+                <p class="info-text"><i class="fas fa-envelope info-icon"></i> <span><strong>Email Addresses:</strong><br> <a href="mailto:info@dkatovitt.com" class="info-link">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com" class="info-link">contact@dkatovitt.com</a></span></p>
+
+                <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
+                    <p style="margin-bottom: 15px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase;">Connect With Us</p>
+                    <div class="contact-social-row">
+                        <a href="https://wa.me/919830332929" target="_blank" class="contact-social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="contact-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="contact-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="contact-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="contact-social-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="mailto:info@dkatovitt.com" class="contact-social-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
 
