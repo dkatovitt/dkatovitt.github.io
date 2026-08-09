@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BMGLN6Z9M4');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
+        crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Company - DK Atovitt</title>
@@ -77,7 +91,7 @@
         #overlay.active { display: block; }
 
         /* 🌟 FLOATING BUTTONS (WhatsApp, Chatbot, Install App) 🌟 */
-        .whatsapp-float { fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         
@@ -168,7 +182,8 @@
         .contact-info-box a.info-link { color: #bbb; text-decoration: none; transition: 0.3s; }
         .contact-info-box a.info-link:hover { color: #e6c875; padding-left: 5px; }
 
-        .contact-brand-subtitle { margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; text-align: center; }
+        /* 🔥 FIXED: NO TEXT CUT OFF ON MOBILE 🔥 */
+        .contact-brand-subtitle { margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
         
         .contact-social-row { display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; }
         .contact-social-btn { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
@@ -183,7 +198,7 @@
             .services-grid { grid-template-columns: 1fr; gap: 20px; }
             .company-header-content video { height: 100px; }
             
-            .contact-brand-subtitle { font-size: 10px; letter-spacing: 1px; }
+            .contact-brand-subtitle { font-size: 10.5px; letter-spacing: 0.5px; white-space: normal; } /* Fixed Cut Off Issue */
             .contact-social-row { gap: 8px; justify-content: center; }
             .contact-social-btn { width: 36px; height: 36px; font-size: 15px; }
             .contact-info-box { padding: 30px 15px !important; }
@@ -376,7 +391,7 @@
                 <p class="info-text"><i class="fas fa-envelope info-icon"></i> <span><strong>Email Addresses:</strong><br> <a href="mailto:info@dkatovitt.com" class="info-link">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com" class="info-link">contact@dkatovitt.com</a></span></p>
 
                 <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
-                    <p style="margin-bottom: 15px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase;">Connect With Us</p>
+                    <p style="margin-bottom: 15px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase; text-align: center;">Connect With Us</p>
                     <div class="contact-social-row">
                         <a href="https://wa.me/919830332929" target="_blank" class="contact-social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="contact-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
