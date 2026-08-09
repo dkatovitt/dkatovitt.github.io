@@ -134,6 +134,13 @@
         .contact-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 38px; text-align: center; margin: 0 0 40px 0; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 15px; }
         
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+
+        /* 🔥 FIX FOR OFFICIAL MOVIE PRODUCTION HOUSE & 6 ICONS ON MOBILE 🔥 */
+        .contact-brand-subtitle { margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; }
+        
+        .contact-social-row { display: flex; gap: 12px; flex-wrap: nowrap; justify-content: flex-start; }
+        .contact-social-btn { width: 42px; height: 42px; flex-shrink: 0; background: #222; border: 1px solid #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 16px; text-decoration: none; transition: 0.3s; }
+        .contact-social-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
         
         @media (max-width: 768px) { 
             .contact-section { padding: 120px 20px 50px 20px; }
@@ -145,15 +152,21 @@
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
+
+            /* Fixes for mobile contact info box */
+            .contact-brand-subtitle { font-size: 10px; letter-spacing: 1px; }
+            .contact-social-row { gap: 8px; justify-content: center; }
+            .contact-social-btn { width: 36px; height: 36px; font-size: 15px; }
+            .contact-info-box { padding: 30px 15px !important; }
         }
         
         /* Contact Info Box */
         .contact-info-box { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; }
         .contact-info-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
-        .contact-info-box p { font-size: 16px; color: #bbb; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
-        .contact-info-box i { color: #e6c875; margin-top: 4px; font-size: 18px; width: 20px; text-align: center; }
-        .contact-info-box a { color: #bbb; text-decoration: none; transition: 0.3s; }
-        .contact-info-box a:hover { color: #e6c875; padding-left: 5px; }
+        .contact-info-box p.info-text { font-size: 16px; color: #bbb; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
+        .contact-info-box i.info-icon { color: #e6c875; margin-top: 4px; font-size: 18px; width: 20px; text-align: center; }
+        .contact-info-box a.info-link { color: #bbb; text-decoration: none; transition: 0.3s; }
+        .contact-info-box a.info-link:hover { color: #e6c875; padding-left: 5px; }
         
         /* Form Box */
         .inquiry-form { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; }
@@ -210,7 +223,7 @@
                 
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                        <option value="">🌐 Language</option>
+                        <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
                         <option value="bn">বাংলা (Bengali)</option>
@@ -344,25 +357,25 @@
                     <div style="text-align: center; padding-bottom: 20px; border-bottom: 1px solid #333; margin-bottom: 25px;">
                         <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="video-logo" style="height: 70px; transform: scale(1.4); margin-bottom: 5px;"></video>
                         <h3 class="notranslate" style="margin: 0; font-size: 24px; color: #fff; letter-spacing: 1px;">DK ATOVITT</h3>
-                        <p style="margin: 5px 0 0 0; color: #e6c875; font-size: 13px; text-transform: uppercase; letter-spacing: 2px;">Official Movie Production House</p>
+                        <p class="contact-brand-subtitle notranslate">Official Movie Production House</p>
                     </div>
                     
-                    <p><i class="fas fa-map-marker-alt"></i> <span><strong>Head Office:</strong><br> M. G. ROAD, KOLKATA- 700119, West Bengal, India</span></p>
+                    <p class="info-text"><i class="fas fa-map-marker-alt info-icon"></i> <span><strong>Head Office:</strong><br> M. G. ROAD, KOLKATA- 700119, West Bengal, India</span></p>
                     
-                    <p><i class="fas fa-phone-alt"></i> <span><strong>Contact Numbers:</strong><br> +91 933 033 2929<br>+91 983 033 2929</span></p>
+                    <p class="info-text"><i class="fas fa-phone-alt info-icon"></i> <span><strong>Contact Numbers:</strong><br> +91 933 033 2929<br>+91 983 033 2929</span></p>
                     
-                    <p><i class="fas fa-envelope"></i> <span><strong>Email Addresses:</strong><br> <a href="mailto:info@dkatovitt.com">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com">contact@dkatovitt.com</a></span></p>
+                    <p class="info-text"><i class="fas fa-envelope info-icon"></i> <span><strong>Email Addresses:</strong><br> <a href="mailto:info@dkatovitt.com" class="info-link">info@dkatovitt.com</a><br><a href="mailto:contact@dkatovitt.com" class="info-link">contact@dkatovitt.com</a></span></p>
 
                     <div style="margin-top: 35px; border-top: 1px solid #333; padding-top: 25px;">
-                        <p style="margin-bottom: 10px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase;">Connect With Us</p>
+                        <p style="margin-bottom: 15px; font-weight: bold; color: #e6c875; font-size: 14px; text-transform: uppercase;">Connect With Us</p>
                         
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp" style="background: #222; border-color: #444;"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook" style="background: #222; border-color: #444;"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="footer-icon-btn" title="Instagram" style="background: #222; border-color: #444;"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube" style="background: #222; border-color: #444;"><i class="fab fa-youtube"></i></a>
-                            <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram" style="background: #222; border-color: #444;"><i class="fab fa-telegram-plane"></i></a>
-                            <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us" style="background: #222; border-color: #444;"><i class="fas fa-envelope"></i></a>
+                        <div class="contact-social-row">
+                            <a href="https://wa.me/919830332929" target="_blank" class="contact-social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="contact-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="contact-social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="contact-social-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="contact-social-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                            <a href="mailto:info@dkatovitt.com" class="contact-social-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
@@ -453,7 +466,7 @@
             <p class="app-modal-desc">
                 App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें।
             </p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
+            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn"><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
@@ -507,7 +520,7 @@
             }
         });
 
-        /* 🔥 CHATBOT LOGIC 🔥 */
+        /* 🔥 CHATBOT LOGIC (EMAIL ID UPDATED) 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -537,7 +550,7 @@
                 botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
                 userText = "मुझे DK Sir से बात करनी है।";
-                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल স্ক্রिन कर सकते हैं।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
             } else if(type === 'Join') {
                 userText = "Ecosystem कैसे Join करूँ?";
                 botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
