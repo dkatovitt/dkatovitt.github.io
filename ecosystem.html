@@ -17,7 +17,37 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosystem & Business - DK Atovitt</title>
+    
+    <!-- 🔥 SUPER POWERFUL SEO META TAGS START 🔥 -->
+    
+    <title>DK Atovitt Ecosystem | Earn with DK Sir, ATVT & Kalpamrit</title>
+    
+    <meta name="description" content="Join the DK Atovitt Ecosystem. Discover 'Earn with DK Sir', explore digital finance with ATVT, and build a wellness business with Kalpamrit. Your gateway to financial freedom.">
+    
+    <meta name="keywords" content="DK Atovitt Ecosystem, Earn with DK Sir, ATVT Crypto, Kalpamrit Business, DK Sir Network, Digital Finance, Make Money Online India, Kalpamrit Products, Bollywood Production Partners">
+    
+    <meta name="author" content="DK Atovitt Production House">
+    
+    <meta name="robots" content="index, follow">
+
+    <!-- 🔥 OPEN GRAPH (OG) TAGS FOR SHARING 🔥 -->
+    <meta property="og:title" content="DK Atovitt Ecosystem | Join the Network">
+    <meta property="og:description" content="Explore 'Earn with DK Sir', ATVT, and Kalpamrit. Join our massive digital network connecting Cinema, Wellness, and Finance.">
+    <meta property="og:image" content="https://dkatovitt.github.io/images/movies/gallery1.png">
+    <meta property="og:url" content="https://dkatovitt.github.io/ecosystem.html">
+    <meta property="og:type" content="website">
+
+    <!-- 🔥 TWITTER CARD TAGS 🔥 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DK Atovitt Ecosystem | Join the Network">
+    <meta name="twitter:description" content="Explore 'Earn with DK Sir', ATVT, and Kalpamrit. Join our massive digital network.">
+    <meta name="twitter:image" content="https://dkatovitt.github.io/images/movies/gallery1.png">
+    
+    <!-- 🔥 SUPER POWERFUL SEO META TAGS END 🔥 -->
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e6c875">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -186,7 +216,7 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
@@ -238,7 +268,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
 
@@ -261,7 +291,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -522,12 +552,6 @@
             });
         }
         
-        /* 🔥 CLEAR LOCAL STORAGE & SESSION STORAGE CACHE JUGGAD 🔥 */
-        if(window.location.hash === '#home' || window.location.pathname.endsWith('index.html')) {
-            localStorage.clear();
-            sessionStorage.clear();
-        }
-
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -693,6 +717,51 @@
 
         window.addEventListener('load', updateEcosystemView);
         window.addEventListener('hashchange', updateEcosystemView);
+
+        /* 🔥 CHATBOT LOGIC 🔥 */
+        const chatbotToggler = document.getElementById('chatbotToggler');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotBody = document.getElementById('chatbotBody');
+
+        if(chatbotToggler) {
+            chatbotToggler.addEventListener('click', () => {
+                chatbotContainer.classList.toggle('active');
+            });
+        }
+
+        if(closeChatbot) {
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.classList.remove('active');
+            });
+        }
+
+        function sendChat(type) {
+            let userText = "";
+            let botReply = "";
+
+            if(type === 'Audition') {
+                userText = "मुझे Audition के बारे में जानना है।";
+                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+            } else if(type === 'Movies') {
+                userText = "आने वाली Movies कौन सी हैं?";
+                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+            } else if(type === 'Contact') {
+                userText = "मुझे DK Sir से बात करनी है।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+            } else if(type === 'Join') {
+                userText = "Ecosystem कैसे Join करूँ?";
+                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+            }
+
+            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
+            setTimeout(() => {
+                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }, 600);
+        }
 
         /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
         function translatePage(lang) {
