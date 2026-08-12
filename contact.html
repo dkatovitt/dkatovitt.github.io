@@ -545,11 +545,14 @@
           const btn = document.getElementById('submit-btn');
           btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
           
+          const userName = document.getElementById('user_name').value;
+          const userCategory = document.getElementById('inquiry_category').value;
+          
           const templateParams = {
-              user_name: document.getElementById('user_name').value,
+              user_name: userName,
               user_email: document.getElementById('user_email').value,
               user_phone: document.getElementById('user_phone').value,
-              inquiry_category: document.getElementById('inquiry_category').value,
+              inquiry_category: userCategory,
               message: document.getElementById('message').value
           };
     
@@ -558,6 +561,11 @@
                  
                  // Show beautiful green success message
                  document.getElementById('success-message').style.display = 'block';
+                 
+                 // 🔥 MAGIC WHATSAPP FEATURE 🔥
+                 const whatsappMsg = `Hello DK ATOVITT Team! मैंने अभी वेबसाइट पर फॉर्म भरा है। मेरा नाम ${userName} है और मेरी Inquiry '${userCategory}' के लिए है।`;
+                 const whatsappUrl = `https://wa.me/919830332929?text=${encodeURIComponent(whatsappMsg)}`;
+                 window.open(whatsappUrl, '_blank');
                  
                  // Reset form and button
                  document.getElementById('contact-form').reset();
