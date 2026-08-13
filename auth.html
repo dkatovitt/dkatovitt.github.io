@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,27 +11,34 @@
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
+        crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- 🔥 SUPER POWERFUL SEO META TAGS START 🔥 -->
     <title>Login / Sign Up - DK Atovitt Official Member Portal</title>
     <meta name="description" content="Create your free talent account or log in to the DK Atovitt Ecosystem. Submit your acting and singing audition portfolio directly to our casting directors.">
     <meta name="keywords" content="DK Atovitt Login, DK Atovitt Sign Up, Bollywood Audition Registration, Join DK Atovitt Ecosystem, Talent Portal, Yakshini Audition Form, Cast and Crew Registration">
     <meta name="author" content="DK Atovitt Production House">
     <meta name="robots" content="index, follow">
 
+    <!-- 🔥 OPEN GRAPH (OG) TAGS FOR SHARING 🔥 -->
     <meta property="og:title" content="Login / Sign Up - DK Atovitt Official Portal">
     <meta property="og:description" content="Create your free talent account or log in to the DK Atovitt Ecosystem. Submit your audition portfolio securely.">
     <meta property="og:image" content="https://dkatovitt.github.io/images/movies/yakshini-poster.png">
     <meta property="og:url" content="https://dkatovitt.github.io/auth.html">
     <meta property="og:type" content="website">
 
+    <!-- 🔥 TWITTER CARD TAGS 🔥 -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Login / Sign Up - DK Atovitt">
     <meta name="twitter:description" content="Create your free talent account or log in to the DK Atovitt Ecosystem.">
     <meta name="twitter:image" content="https://dkatovitt.github.io/images/movies/yakshini-poster.png">
+    <!-- 🔥 SUPER POWERFUL SEO META TAGS END 🔥 -->
+    
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
 
@@ -336,6 +344,9 @@
 
     <section class="auth-section">
         <div class="auth-box reveal">
+            
+            <div id="firebaseMsg" class="firebase-msg"></div>
+
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -344,6 +355,7 @@
                     <h2>Welcome Back</h2>
                     <p>Login to DK Atovitt Ecosystem</p>
                 </div>
+                
                 <form id="firebase-login-form">
                     <div class="form-group">
                         <label>Email Address</label>
@@ -379,6 +391,7 @@
                     <h2>Create Account</h2>
                     <p>Join the DK Atovitt Family</p>
                 </div>
+                
                 <form id="firebase-signup-form">
                     <div class="form-group">
                         <label>Full Name</label>
@@ -515,10 +528,10 @@
         </div>
     </div>
 
-    <!-- 🔥 FIREBASE LOGIC + GOOGLE AUTH 🔥 -->
+    <!-- 🔥 FIREBASE LOGIC + GOOGLE AUTH + EMAIL VERIFICATION 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -555,7 +568,7 @@
             });
         });
 
-        // SIGNUP LOGIC
+        // SIGNUP LOGIC (NOW SENDS EMAIL VERIFICATION)
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = document.getElementById('signupBtn');
@@ -575,10 +588,14 @@
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     updateProfile(userCredential.user, { displayName: name }).then(() => {
-                        alert('🎉 Account Created Successfully! Welcome to DK Atovitt.');
-                        signupForm.reset();
-                        btn.innerHTML = '<i class="fas fa-check"></i> Success';
-                        setTimeout(() => { window.location.href = "index.html"; }, 2000);
+                        // SENDING VERIFICATION EMAIL
+                        sendEmailVerification(userCredential.user).then(() => {
+                            alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify.');
+                            auth.signOut(); // Log them out until they verify
+                            signupForm.reset();
+                            btn.innerHTML = '<i class="fas fa-check"></i> Success';
+                            toggleAuth('login'); // Switch back to login screen
+                        });
                     });
                 })
                 .catch((error) => {
@@ -587,7 +604,7 @@
                 });
         });
 
-        // LOGIN LOGIC
+        // LOGIN LOGIC (NOW CHECKS IF EMAIL IS VERIFIED)
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = document.getElementById('loginBtn');
@@ -599,7 +616,15 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
 
             signInWithEmailAndPassword(auth, email, password)
-                .then(() => {
+                .then((userCredential) => {
+                    // Check if email is verified
+                    if (!userCredential.user.emailVerified) {
+                        alert('⚠️ Your email is not verified yet! Please check your email inbox/spam folder and click the verification link before logging in.');
+                        auth.signOut();
+                        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
+                        return;
+                    }
+
                     alert('✅ Login Successful! Redirecting...');
                     loginForm.reset();
                     btn.innerHTML = '<i class="fas fa-check"></i> Success';
