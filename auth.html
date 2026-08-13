@@ -261,7 +261,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
@@ -283,7 +283,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -344,8 +344,6 @@
     <section class="auth-section">
         <div class="auth-box reveal">
             
-            <div id="firebaseMsg" class="firebase-msg"></div>
-
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -527,7 +525,7 @@
         </div>
     </div>
 
-    <!-- 🔥 FIREBASE LOGIC + GOOGLE AUTH + EMAIL VERIFICATION 🔥 -->
+    <!-- 🔥 FIREBASE LOGIC (SOLID ERROR HANDLING) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -550,7 +548,7 @@
         const signupForm = document.getElementById('firebase-signup-form');
         const googleBtns = document.querySelectorAll('.googleAuthBtn');
 
-        // GOOGLE AUTH
+        // 🔥 GOOGLE AUTH
         googleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
@@ -567,8 +565,8 @@
             });
         });
 
-        // SIGNUP LOGIC (NOW SENDS EMAIL VERIFICATION WITH CONTINUE LINK)
-        signupForm.addEventListener('submit', (e) => {
+        // 🔥 SIGNUP LOGIC (NEVER GETS STUCK NOW)
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('signupBtn');
             const name = document.getElementById('signupName').value;
@@ -584,33 +582,31 @@
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
 
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    updateProfile(userCredential.user, { displayName: name }).then(() => {
-                        
-                        // 🔥 SETTING THE CONTINUE URL FOR THE WHITE VERIFICATION PAGE 🔥
-                        const actionCodeSettings = {
-                            url: 'https://dkatovitt.github.io/auth.html', // Wapas yahan bhejega
-                            handleCodeInApp: false
-                        };
-
-                        sendEmailVerification(userCredential.user, actionCodeSettings).then(() => {
-                            alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify before logging in.');
-                            auth.signOut(); // Log them out until they verify
-                            signupForm.reset();
-                            btn.innerHTML = '<i class="fas fa-check"></i> Success';
-                            toggleAuth('login'); // Switch back to login screen
-                        });
-                    });
-                })
-                .catch((error) => {
-                    alert('❌ Error: ' + error.message.replace('Firebase: ', ''));
-                    btn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now';
-                });
+            try {
+                // 1. Account Banao
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                
+                // 2. Naam Save Karo
+                await updateProfile(userCredential.user, { displayName: name });
+                
+                // 3. Email Bhejo (Bina Extra URL ke)
+                await sendEmailVerification(userCredential.user);
+                
+                alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify before logging in.');
+                await auth.signOut(); // Log them out until they verify
+                signupForm.reset();
+                btn.innerHTML = '<i class="fas fa-check"></i> Success';
+                toggleAuth('login'); // Wapas login screen par
+                
+            } catch (error) {
+                // Agar email already used hai ya koi bhi error hai, turant alert dega!
+                alert('❌ Error: ' + error.message.replace('Firebase: ', ''));
+                btn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now';
+            }
         });
 
-        // LOGIN LOGIC (NOW CHECKS IF EMAIL IS VERIFIED)
-        loginForm.addEventListener('submit', (e) => {
+        // 🔥 LOGIN LOGIC
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('loginBtn');
             const email = document.getElementById('loginEmail').value;
@@ -620,25 +616,26 @@
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
 
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Check if email is verified
-                    if (!userCredential.user.emailVerified) {
-                        alert('⚠️ Your email is not verified yet! Please check your email inbox/spam folder and click the verification link before logging in.');
-                        auth.signOut();
-                        btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
-                        return;
-                    }
-
-                    alert('✅ Login Successful! Redirecting...');
-                    loginForm.reset();
-                    btn.innerHTML = '<i class="fas fa-check"></i> Success';
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
-                })
-                .catch((error) => {
-                    alert('❌ Invalid Email or Password! Please try again.');
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                
+                // Check if email is verified
+                if (!userCredential.user.emailVerified) {
+                    alert('⚠️ Your email is not verified yet! Please check your email inbox/spam folder and click the verification link before logging in.');
+                    await auth.signOut();
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
-                });
+                    return;
+                }
+
+                alert('✅ Login Successful! Redirecting...');
+                loginForm.reset();
+                btn.innerHTML = '<i class="fas fa-check"></i> Success';
+                setTimeout(() => { window.location.href = "index.html"; }, 1500);
+
+            } catch (error) {
+                alert('❌ Invalid Email or Password! Please try again.');
+                btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
+            }
         });
     </script>
 
