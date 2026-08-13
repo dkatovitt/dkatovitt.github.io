@@ -264,7 +264,6 @@
                         <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
-                <!-- 🔥 UPDATED HOME BUTTON 🔥 -->
                 <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
             </div>
         </div>
@@ -568,7 +567,7 @@
             });
         });
 
-        // SIGNUP LOGIC (NOW SENDS EMAIL VERIFICATION)
+        // SIGNUP LOGIC (NOW SENDS EMAIL VERIFICATION WITH CONTINUE LINK)
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = document.getElementById('signupBtn');
@@ -588,9 +587,15 @@
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     updateProfile(userCredential.user, { displayName: name }).then(() => {
-                        // SENDING VERIFICATION EMAIL
-                        sendEmailVerification(userCredential.user).then(() => {
-                            alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify.');
+                        
+                        // 🔥 SETTING THE CONTINUE URL FOR THE WHITE VERIFICATION PAGE 🔥
+                        const actionCodeSettings = {
+                            url: 'https://dkatovitt.github.io/auth.html', // Wapas yahan bhejega
+                            handleCodeInApp: false
+                        };
+
+                        sendEmailVerification(userCredential.user, actionCodeSettings).then(() => {
+                            alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify before logging in.');
                             auth.signOut(); // Log them out until they verify
                             signupForm.reset();
                             btn.innerHTML = '<i class="fas fa-check"></i> Success';
