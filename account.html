@@ -26,15 +26,13 @@
         .home-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
         
-        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
-        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
-        .custom-translate select:hover { background: #e6c875; color: #000; }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
-        body { top: 0px !important; position: static !important; } 
-        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-        .goog-text-highlight { background: none !important; box-shadow: none !important; }
-
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content { display: none; position: absolute; right: 0; top: 100%; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; margin-top: 10px; }
+        .profile-dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; transition: 0.3s; border-bottom: 1px solid #222; }
+        .profile-dropdown-content a:hover { background-color: #e6c875; color: #000; font-weight: bold; }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; animation: fadeInDropdown 0.3s ease; }
+        @keyframes fadeInDropdown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
@@ -48,7 +46,16 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 FULL MENU CSS 🔥 */
+        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
+        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: #e6c875; color: #000; }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+        /* 🔥 VIP DASHBOARD MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
@@ -56,16 +63,6 @@
         #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
         .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
-        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
-        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
-        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
-        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
-        .sub-menu a:hover { color: #fff !important; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
@@ -192,7 +189,7 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <div class="side-menu" id="sideMenu">
-        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
+        <div class="menu-header"><h2>VIP MENU</h2><button id="closeMenu">&times;</button></div>
         
         <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
@@ -207,57 +204,27 @@
             </select>
         </div>
 
-        <div id="menuProfileArea"></div> <a href="index.html"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
-        <a href="account.html" style="color:#e6c875; font-weight:bold; background:rgba(230,200,117,0.08); border-left:4px solid #e6c875;"><i class="fas fa-tachometer-alt" style="color:var(--primary-color); margin-right:12px;"></i> My Account (VIP)</a>
+        <div id="menuProfileArea"></div> <a href="index.html"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home Website</a>
         
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
-            <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
+        <a href="javascript:void(0)" onclick="switchTab('auditionTab', document.getElementById('btnAudition'))" style="color:#e6c875; font-weight:bold; background:rgba(230,200,117,0.08); border-left:4px solid #e6c875;">
+            <i class="fas fa-tachometer-alt" style="color:var(--primary-color); margin-right:12px;"></i> Dashboard (Audition)
         </a>
-        <div class="sub-menu" id="aboutSub">
-            <a href="ceo.html"><i class="fas fa-user-tie" style="color:var(--primary-color); margin-right:8px;"></i> CEO</a>
-            <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
-        </div>
-
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
-            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
-        </a>
-        <div class="sub-menu" id="moviesMenuSub">
-            <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
-        </div>
-
-        <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
-            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+        <a href="javascript:void(0)" onclick="switchTab('walletTab', document.getElementById('btnWallet'))">
+            <i class="fas fa-wallet" style="color:var(--primary-color); margin-right:12px;"></i> My Wallet
         </a>
-        <div class="sub-menu" id="songsSub">
-            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
-            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
-            <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
-        </div>
-
-        <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
-        <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
-            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+        <a href="javascript:void(0)" onclick="switchTab('referralTab', document.getElementById('btnReferral'))">
+            <i class="fas fa-share-alt" style="color:var(--primary-color); margin-right:12px;"></i> Refer & Earn
         </a>
-        <div class="sub-menu" id="ecoSub">
-            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
-        </div>
         
-        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+        <a href="javascript:void(0)" onclick="switchTab('profileTab', document.getElementById('btnProfile'))">
+            <i class="fas fa-user-edit" style="color:var(--primary-color); margin-right:12px;"></i> Edit Profile
+        </a>
 
-        <a href="javascript:void(0)" id="menuLogoutBtn" style="border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
+        <a href="javascript:void(0)" id="menuLogoutBtn" style="border-top: 1px solid #333; margin-top: 10px;">
+            <i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout
+        </a>
     </div>
     <div id="overlay"></div>
 
@@ -279,10 +246,10 @@
         </div>
 
         <div class="dashboard-tabs">
-            <button class="tab-btn active" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Auditions Form</button>
-            <button class="tab-btn" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> My Wallet</button>
-            <button class="tab-btn" onclick="switchTab('referralTab', this)"><i class="fas fa-share-alt"></i> Refer & Earn</button>
-            <button class="tab-btn" onclick="switchTab('profileTab', this)"><i class="fas fa-user-edit"></i> Edit Profile</button>
+            <button class="tab-btn active" id="btnAudition" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Auditions Form</button>
+            <button class="tab-btn" id="btnWallet" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> My Wallet</button>
+            <button class="tab-btn" id="btnReferral" onclick="switchTab('referralTab', this)"><i class="fas fa-share-alt"></i> Refer & Earn</button>
+            <button class="tab-btn" id="btnProfile" onclick="switchTab('profileTab', this)"><i class="fas fa-user-edit"></i> Edit Profile</button>
         </div>
 
         <div id="auditionTab" class="tab-content active">
@@ -382,17 +349,6 @@
         </div>
 
     </div>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
-                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -532,24 +488,14 @@
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        // Sub Menu Toggle
-        function toggleSubMenu(id) {
-            const subMenu = document.getElementById(id);
-            const icon = document.getElementById(id.replace('Sub', 'Icon'));
-            if(subMenu) {
-                if(subMenu.classList.contains('active')) {
-                    subMenu.classList.remove('active');
-                    if(icon) icon.classList.remove('rotate');
-                } else {
-                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
-                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
-                    subMenu.classList.add('active');
-                    if(icon) icon.classList.add('rotate');
-                }
-            }
-        }
+        // Auto Close menu on link click
+        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
+            }); 
+        });
 
-        // Tabs Switching
+        // Tabs Switching Function
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
