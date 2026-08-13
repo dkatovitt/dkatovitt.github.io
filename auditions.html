@@ -67,6 +67,15 @@
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
+
+        /* 🔥 NEW ACCOUNT DROPDOWN CSS 🔥 */
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content { display: none; position: absolute; right: 0; top: 100%; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; margin-top: 10px; }
+        .profile-dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; transition: 0.3s; border-bottom: 1px solid #222; }
+        .profile-dropdown-content a:hover { background-color: #e6c875; color: #000; font-weight: bold; }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; animation: fadeInDropdown 0.3s ease; }
+        @keyframes fadeInDropdown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
@@ -251,7 +260,7 @@
         }
     </style>
 </head>
-<body>
+<body style="display: none;"> <!-- Hidden until auth state resolves to prevent flickering -->
 
     <header class="header">
         <div class="container">
@@ -282,7 +291,7 @@
                     </select>
                 </div>
 
-                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
+                <a href="auth.html" class="login-btn-header" id="headerAuthBtn"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
@@ -308,7 +317,7 @@
             </select>
         </div>
 
-        <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="auth.html" id="sideMenuAuthBtn"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
         <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
@@ -474,7 +483,7 @@
                 <ul>
                     <li><a href="auditions.html">Auditions</a></li>
                     <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
-                    <li><a href="auth.html">Login / Signup</a></li>
+                    <li><a href="auth.html" id="footerAuthBtn">Login / Signup</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -781,6 +790,93 @@
                     }
                 }
             });
+        });
+    </script>
+    
+    <!-- 🔥 FIREBASE SMART LOGIN CHECKER & REDIRECT FOR AUDITIONS PAGE 🔥 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
+                // 🛑 VIP REDIRECT RULE: If logged in, don't show this page, send to Dashboard!
+                window.location.replace("account.html");
+                
+                let userName = user.displayName || "Member";
+                if(userName.length > 10) userName = userName.substring(0, 10) + "..";
+                
+                // (Optional: Fallback UI update just in case redirect takes a split second)
+                const headerBtn = document.getElementById('headerAuthBtn');
+                if(headerBtn) {
+                    const dropdownHTML = `
+                        <div class="profile-dropdown">
+                            <a href="javascript:void(0)" class="login-btn-header" style="display:flex; align-items:center; gap:8px;">
+                                <i class="fas fa-user-check"></i>
+                                <span class="hide-on-mobile">Hi, ${userName}</span>
+                                <span class="show-on-mobile">${userName}</span>
+                                <i class="fas fa-caret-down"></i>
+                            </a>
+                            <div class="profile-dropdown-content">
+                                <a href="account.html"><i class="fas fa-tachometer-alt" style="color: #e6c875;"></i> My Account</a>
+                                <a href="javascript:void(0)" class="logout-action"><i class="fas fa-sign-out-alt" style="color: #ff4d4d;"></i> Logout</a>
+                            </div>
+                        </div>
+                    `;
+                    headerBtn.outerHTML = dropdownHTML;
+                }
+
+                const sideMenuBtn = document.getElementById('sideMenuAuthBtn');
+                if(sideMenuBtn) {
+                    sideMenuBtn.outerHTML = `
+                        <a href="account.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> My Account</a>
+                        <a href="javascript:void(0)" class="logout-action"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
+                    `;
+                }
+
+                const menuHeader = document.querySelector('.menu-header');
+                if(menuHeader && !document.querySelector('.user-profile-menu')) {
+                    const userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                    const profileHTML = `
+                        <div class="user-profile-menu" style="padding: 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
+                            <img src="${userPhoto}" alt="Profile" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(230,200,117,0.3);">
+                            <h3 style="color: #e6c875; margin: 0; font-size: 16px; font-family: 'Playfair Display', serif;">${userName}</h3>
+                            <p style="color: #888; font-size: 11px; margin: 2px 0 0 0; letter-spacing: 1px; text-transform: uppercase;">VIP Member</p>
+                        </div>
+                    `;
+                    menuHeader.insertAdjacentHTML('afterend', profileHTML);
+                }
+
+                const footerBtn = document.getElementById('footerAuthBtn');
+                if(footerBtn) {
+                    footerBtn.innerHTML = `My Account`;
+                    footerBtn.href = "account.html";
+                }
+
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
+                            signOut(auth).then(() => { window.location.reload(); });
+                        }
+                    });
+                });
+            } else {
+                // If not logged in, show the page normally (Remove the body display:none)
+                document.body.style.display = 'block';
+            }
         });
     </script>
 </body>
