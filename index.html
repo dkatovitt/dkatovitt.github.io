@@ -789,7 +789,7 @@
                         <div class="ticker-item">
                             <div class="ticker-date">June 2026</div>
                             <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
-                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
+                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा ডান हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
 
                         <div class="ticker-item">
@@ -1433,9 +1433,13 @@
         const auth = getAuth(app);
 
         onAuthStateChanged(auth, (user) => {
-            if (user && (user.emailVerified || (user.providerData && user.providerData.length > 0 && user.providerData[0].providerId === 'google.com'))) {
-                let userName = user.displayName || "Member";
-                if(userName.length > 10) userName = userName.substring(0, 10) + "..";
+            // 🔥 SMART FIX: Yahan user.phoneNumber add kar diya hai 🔥
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
+                let fullName = user.displayName || "Member";
+                // SMART LOGIC: सिर्फ पहला नाम (First Name) उठाएगा
+                let userName = fullName.trim().split(' ')[0]; 
+                if(userName.length > 8) userName = userName.substring(0, 8) + "..";
                 
                 // HEADER BUTTON UPDATE
                 const headerBtn = document.getElementById('headerAuthBtn');
