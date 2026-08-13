@@ -148,6 +148,19 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
+        /* 🔥 VIP CUSTOM ALERT MODAL CSS 🔥 */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
+
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         /* 🤖 CHATBOT CSS */
@@ -261,7 +274,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
@@ -283,7 +296,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -509,6 +522,18 @@
         </div>
     </div>
 
+    <!-- 🔥 VIP CUSTOM ALERT MODAL HTML 🔥 -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -525,7 +550,31 @@
         </div>
     </div>
 
-    <!-- 🔥 FIREBASE LOGIC (SOLID ERROR HANDLING) 🔥 -->
+    <!-- 🔥 VIP ALERT LOGIC SCRIPT 🔥 -->
+    <script>
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const titleEl = document.getElementById('customAlertTitle');
+            const msgEl = document.getElementById('customAlertMsg');
+            
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            
+            if (isError) {
+                titleEl.className = "custom-alert-title error";
+            } else {
+                titleEl.className = "custom-alert-title success";
+            }
+            
+            overlay.classList.add('active');
+        }
+
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+        });
+    </script>
+
+    <!-- 🔥 FIREBASE LOGIC (SOLID ERROR HANDLING WITH CUSTOM ALERTS) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -555,11 +604,11 @@
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Please wait...';
                 signInWithPopup(auth, googleProvider)
                     .then((result) => {
-                        alert("🎉 Google Login Successful! Welcome " + result.user.displayName);
-                        setTimeout(() => { window.location.href = "index.html"; }, 1000);
+                        showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500);
                     })
                     .catch((error) => {
-                        alert('❌ Google Login Failed: ' + error.message);
+                        showCustomAlert("Login Failed", error.message, true);
                         btn.innerHTML = originalText;
                     });
             });
@@ -575,32 +624,27 @@
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
             const agreeTerms = document.getElementById('agreeTerms').checked;
 
-            if (!name || !email || !password || !confirmPassword) { alert('❌ Please fill in all the details!'); return; }
-            if (!agreeTerms) { alert('❌ You must agree to the Terms & Conditions (Tick the box)!'); return; }
-            if (password.length < 6) { alert('❌ Password is too short! It must be at least 6 characters.'); return; }
-            if (password !== confirmPassword) { alert('❌ Passwords do not match! Please type them carefully.'); return; }
+            if (!name || !email || !password || !confirmPassword) { showCustomAlert('Missing Details', 'Please fill in all the details!', true); return; }
+            if (!agreeTerms) { showCustomAlert('Action Required', 'You must agree to the Terms & Conditions (Tick the box)!', true); return; }
+            if (password.length < 6) { showCustomAlert('Weak Password', 'Password is too short! It must be at least 6 characters.', true); return; }
+            if (password !== confirmPassword) { showCustomAlert('Mismatch', 'Passwords do not match! Please type them carefully.', true); return; }
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
 
             try {
-                // 1. Account Banao
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                
-                // 2. Naam Save Karo
                 await updateProfile(userCredential.user, { displayName: name });
-                
-                // 3. Email Bhejo (Bina Extra URL ke)
                 await sendEmailVerification(userCredential.user);
                 
-                alert('🎉 Account Created! A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify before logging in.');
-                await auth.signOut(); // Log them out until they verify
+                showCustomAlert("Account Created!", "A verification link has been sent to your email. Please check your inbox (and Spam folder) to verify before logging in.", false);
+                
+                await auth.signOut(); 
                 signupForm.reset();
                 btn.innerHTML = '<i class="fas fa-check"></i> Success';
-                toggleAuth('login'); // Wapas login screen par
+                toggleAuth('login'); 
                 
             } catch (error) {
-                // Agar email already used hai ya koi bhi error hai, turant alert dega!
-                alert('❌ Error: ' + error.message.replace('Firebase: ', ''));
+                showCustomAlert("Sign Up Failed", error.message.replace('Firebase: ', ''), true);
                 btn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now';
             }
         });
@@ -612,28 +656,27 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
-            if (!email || !password) { alert('❌ Please enter your Email and Password!'); return; }
+            if (!email || !password) { showCustomAlert('Missing Details', 'Please enter your Email and Password!', true); return; }
 
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
 
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 
-                // Check if email is verified
                 if (!userCredential.user.emailVerified) {
-                    alert('⚠️ Your email is not verified yet! Please check your email inbox/spam folder and click the verification link before logging in.');
+                    showCustomAlert("Verification Pending", "Your email is not verified yet! Please check your email inbox/spam folder and click the verification link before logging in.", true);
                     await auth.signOut();
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
                     return;
                 }
 
-                alert('✅ Login Successful! Redirecting...');
+                showCustomAlert("Login Successful", "Welcome back to DK Atovitt Ecosystem! Redirecting...", false);
                 loginForm.reset();
                 btn.innerHTML = '<i class="fas fa-check"></i> Success';
                 setTimeout(() => { window.location.href = "index.html"; }, 1500);
 
             } catch (error) {
-                alert('❌ Invalid Email or Password! Please try again.');
+                showCustomAlert("Login Failed", "Invalid Email or Password! Please try again.", true);
                 btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
             }
         });
