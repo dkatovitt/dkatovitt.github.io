@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - DK Atovitt VIP Dashboard</title>
+    
+    <meta name="theme-color" content="#e6c875">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🔥 HEADER CSS 🔥 */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
+        
+        .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        
+        .home-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: flex !important; align-items: center !important; gap: 6px !important; }
+        .home-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
+        
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content { display: none; position: absolute; right: 0; top: 100%; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; margin-top: 10px; }
+        .profile-dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; transition: 0.3s; border-bottom: 1px solid #222; }
+        .profile-dropdown-content a:hover { background-color: #e6c875; color: #000; font-weight: bold; }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; animation: fadeInDropdown 0.3s ease; }
+        @keyframes fadeInDropdown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
+            #menuBtn { font-size: 22px !important; }
+            .home-btn-header { width: 35px !important; height: 35px !important; padding: 0 !important; justify-content: center !important; border-radius: 50% !important; }
+            .home-btn-header i { font-size: 16px !important; margin: 0 !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+        }
+
+        /* 🔥 MENU CSS 🔥 */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay.active { display: block; }
+
+        /* 🔥 VIP DASHBOARD CSS 🔥 */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        
+        .dashboard-container { max-width: 1000px; margin: 120px auto 50px auto; padding: 0 20px; }
+        
+        /* Profile Header Card */
+        .profile-header-card { background: linear-gradient(135deg, #111, #0a0a0a); border: 1px solid #333; border-radius: 15px; padding: 40px 30px; display: flex; align-items: center; gap: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; overflow: hidden; margin-bottom: 40px; }
+        .profile-header-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: #e6c875; }
+        
+        /* 📸 SMART PHOTO UPLOAD CSS */
+        .photo-upload-wrapper { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+        .profile-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #e6c875; box-shadow: 0 5px 15px rgba(230,200,117,0.3); transition: 0.3s; }
+        .photo-upload-btn { position: absolute; bottom: 0; right: 0; background: #e6c875; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 2px solid #111; font-size: 16px; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .photo-upload-btn:hover { background: #fff; transform: scale(1.1); }
+        #fileInput { display: none; }
+
+        .profile-info h2 { color: #e6c875; font-size: 32px; font-family: 'Playfair Display', serif; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .profile-info p { color: #aaa; font-size: 15px; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px; }
+        .vip-badge { display: inline-block; background: rgba(230,200,117,0.1); border: 1px solid #e6c875; color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        @media (max-width: 600px) {
+            .profile-header-card { flex-direction: column; text-align: center; gap: 20px; padding: 30px 20px; }
+            .profile-info p { justify-content: center; }
+            .profile-info h2 { font-size: 26px; }
+        }
+
+        /* Tabs System */
+        .dashboard-tabs { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; border-bottom: 2px solid #222; padding-bottom: 10px; }
+        .tab-btn { background: transparent; color: #888; border: none; font-size: 16px; font-weight: bold; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #ccc; background: #1a1a1a; }
+        .tab-btn.active { background: #e6c875; color: #000; box-shadow: 0 4px 15px rgba(230,200,117,0.3); }
+        
+        .tab-content { display: none; background: #111; border: 1px solid #333; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Form Elements inside Dashboard */
+        .dash-title { color: #e6c875; font-size: 22px; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; gap: 15px; } }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; color: #ccc; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #e6c875; background: #1a1a1a; }
+        .form-group textarea { height: 100px; resize: vertical; }
+        
+        .submit-btn { background: #e6c875; color: #000; padding: 14px 30px; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); display: inline-flex; align-items: center; gap: 8px; }
+        .submit-btn:hover { background: #d4b561; transform: translateY(-2px); }
+
+        /* 🔥 WALLET & REFERRAL CSS 🔥 */
+        .wallet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .wallet-box { background: linear-gradient(135deg, #1a1a1a, #0d0d0d); border: 1px solid #333; border-radius: 12px; padding: 30px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); position: relative; overflow: hidden; transition: 0.3s; }
+        .wallet-box:hover { border-color: #e6c875; transform: translateY(-5px); }
+        .wallet-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
+        .wallet-box i { font-size: 40px; color: #e6c875; margin-bottom: 15px; }
+        .wallet-box h4 { color: #aaa; margin: 0 0 10px 0; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .wallet-box .balance { color: #fff; font-size: 32px; font-weight: 900; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .small-btn { background: transparent; border: 1px solid #e6c875; color: #e6c875; padding: 8px 20px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .small-btn:hover { background: #e6c875; color: #000; }
+
+        .referral-box { background: #1a1a1a; border: 1px dashed #e6c875; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
+        .referral-box input { flex-grow: 1; background: #111; color: #e6c875; border: 1px solid #333; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; font-weight: bold; letter-spacing: 0.5px; width: 100%; }
+        .ref-buttons { display: flex; gap: 10px; flex-wrap: nowrap; }
+        .ref-btn { padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .copy-btn { background: #333; color: #fff; border: 1px solid #444; }
+        .copy-btn:hover { background: #555; }
+        .share-btn { background: #e6c875; color: #000; border: 1px solid #e6c875; }
+        .share-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        @media (max-width: 600px) {
+            .wallet-grid { grid-template-columns: 1fr; }
+            .referral-box { flex-direction: column; align-items: stretch; }
+            .ref-buttons { justify-content: center; width: 100%; }
+            .ref-btn { flex: 1; justify-content: center; }
+        }
+
+        /* Loader */
+        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #pageLoader video { width: 100px; mix-blend-mode: screen; transform: scale(1.5); margin-bottom: 20px; }
+        #pageLoader p { color: #e6c875; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+
+    </style>
+</head>
+<body>
+
+    <div id="pageLoader">
+        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+        <p>Loading Profile...</p>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
+                    </div>
+                </a>
+            </div>
+            <div class="header-icons" style="display: flex; gap: 15px; align-items: center;">
+                <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-header"><h2>MENU</h2><button id="closeMenu">&times;</button></div>
+        <div id="menuProfileArea"></div> <a href="index.html"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="account.html" style="color:#e6c875; font-weight:bold; background:rgba(230,200,117,0.08); border-left:4px solid #e6c875;"><i class="fas fa-tachometer-alt" style="color:var(--primary-color); margin-right:12px;"></i> My Account</a>
+        <a href="javascript:void(0)" id="menuLogoutBtn"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
+    </div>
+    <div id="overlay"></div>
+
+    <div class="dashboard-container">
+        
+        <div class="profile-header-card">
+            <div class="photo-upload-wrapper">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="displayProfilePhoto" class="profile-photo" alt="Profile">
+                <label for="fileInput" class="photo-upload-btn" title="Change Profile Photo">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+            <div class="profile-info">
+                <h2 id="displayFullName">Loading Name...</h2>
+                <p><i class="fas fa-envelope-open-text" style="color:#e6c875;"></i> <span id="displayContact">Loading Contact...</span></p>
+                <div class="vip-badge"><i class="fas fa-star"></i> Verified Member</div>
+            </div>
+        </div>
+
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Auditions Form</button>
+            <button class="tab-btn" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> My Wallet</button>
+            <button class="tab-btn" onclick="switchTab('referralTab', this)"><i class="fas fa-share-alt"></i> Refer & Earn</button>
+            <button class="tab-btn" onclick="switchTab('profileTab', this)"><i class="fas fa-user-edit"></i> Edit Profile</button>
+        </div>
+
+        <div id="auditionTab" class="tab-content active">
+            <h3 class="dash-title">Apply for Casting / Audition</h3>
+            <p style="color:#aaa; font-size:13px; margin-bottom:20px;">Submit your portfolio directly to DK Atovitt Casting Directors. We will review your profile and contact you for live screen tests.</p>
+            
+            <form id="auditionForm" onsubmit="event.preventDefault(); alert('Your Audition Portfolio has been successfully submitted!');">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Category Applying For</label>
+                        <select required>
+                            <option value="" disabled selected>Select Category...</option>
+                            <option>Lead Actor / Actress</option>
+                            <option>Supporting Role</option>
+                            <option>Playback Singer</option>
+                            <option>Child Artist</option>
+                            <option>Crew / Writer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Age & Gender</label>
+                        <input type="text" placeholder="e.g. 24, Male" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Height & Weight</label>
+                        <input type="text" placeholder="e.g. 5'8'', 70kg" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Current City / Location</label>
+                        <input type="text" placeholder="e.g. Kolkata, West Bengal" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Audition Video / Showreel Link (YouTube or Drive)</label>
+                    <input type="url" placeholder="Paste your video link here..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Previous Experience / Short Bio</label>
+                    <textarea placeholder="Tell us about your acting/singing experience..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Portfolio</button>
+            </form>
+        </div>
+
+        <div id="walletTab" class="tab-content">
+            <h3 class="dash-title">My Wallet & Earnings</h3>
+            <p style="color:#aaa; font-size:13px;">Manage your DK Atovitt rewards, event coupons, and ATVT Crypto coin balance here.</p>
+            
+            <div class="wallet-grid">
+                <div class="wallet-box">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h4>My Coupons</h4>
+                    <div class="balance">0</div>
+                    <button class="small-btn" onclick="alert('No active coupons to redeem right now.')">Redeem Now</button>
+                </div>
+                
+                <div class="wallet-box">
+                    <i class="fas fa-coins"></i>
+                    <h4>ATVT Balance</h4>
+                    <div class="balance">0.00 <span style="font-size: 16px; color:#e6c875;">ATVT</span></div>
+                    <button class="small-btn" onclick="alert('Withdrawal will be available once ATVT is officially listed.')">Withdraw</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="referralTab" class="tab-content">
+            <h3 class="dash-title">Refer & Earn</h3>
+            <p style="color:#bbb; font-size:14px; line-height: 1.6;">Share your unique referral link with your friends and family. When they join the <strong>DK Atovitt Ecosystem</strong> using your link, both of you will earn free <strong>ATVT Coins</strong> directly in your wallet!</p>
+            
+            <div class="referral-box">
+                <input type="text" id="myReferralLink" readonly value="Loading Link...">
+                <div class="ref-buttons">
+                    <button onclick="copyRefLink()" class="ref-btn copy-btn"><i class="fas fa-copy"></i> Copy</button>
+                    <button onclick="shareReferralLink()" class="ref-btn share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="profileTab" class="tab-content">
+            <h3 class="dash-title">Personal Details</h3>
+            <form id="editProfileForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Registered Email / Phone</label>
+                        <input type="text" id="editContact" disabled style="background:#1a1a1a; cursor:not-allowed; color:#888;" title="Cannot change registered contact">
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" id="saveProfileBtn"><i class="fas fa-save"></i> Save Changes</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // UI Elements
+        const pageLoader = document.getElementById('pageLoader');
+        const displayFullName = document.getElementById('displayFullName');
+        const displayContact = document.getElementById('displayContact');
+        const displayProfilePhoto = document.getElementById('displayProfilePhoto');
+        const fileInput = document.getElementById('fileInput');
+        const editName = document.getElementById('editName');
+        const editContact = document.getElementById('editContact');
+        const menuProfileArea = document.getElementById('menuProfileArea');
+        const myReferralLink = document.getElementById('myReferralLink');
+
+        // Check Login Status
+        onAuthStateChanged(auth, (user) => {
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
+                // User is Logged In -> Setup Dashboard
+                pageLoader.style.display = 'none'; // Hide Loader
+                
+                const fullName = user.displayName || "VIP Member";
+                const contact = user.email || user.phoneNumber || "Verified User";
+                const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
+                // Populate UI
+                displayFullName.innerText = fullName;
+                displayContact.innerText = contact;
+                displayProfilePhoto.src = photo;
+                
+                editName.value = fullName;
+                editContact.value = contact;
+
+                // 🔥 GENERATE UNIQUE REFERRAL LINK BASED ON USER ID 🔥
+                const userUniqueId = user.uid.substring(0, 8).toUpperCase(); // Extract 8 chars from UID
+                const refUrl = window.location.origin + "/auth.html?ref=DK" + userUniqueId;
+                myReferralLink.value = refUrl;
+
+                // Setup Menu Profile
+                let shortName = fullName.trim().split(' ')[0]; 
+                if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
+                
+                menuProfileArea.innerHTML = `
+                    <div style="padding: 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
+                        <img src="${photo}" id="menuSidePhoto" alt="Profile" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 10px;">
+                        <h3 style="color: #e6c875; margin: 0; font-size: 16px; font-family: 'Playfair Display', serif;">${shortName}</h3>
+                        <p style="color: #888; font-size: 11px; margin: 2px 0 0 0; text-transform: uppercase;">VIP Member</p>
+                    </div>
+                `;
+
+                // 🔥 PHOTO UPLOAD LOGIC (Any Format -> Base64)
+                fileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if(file) {
+                        // Max 1MB check for Base64 saving in Firebase Auth
+                        if(file.size > 1024 * 1024) {
+                            alert("File is too large! Please upload a photo smaller than 1 MB.");
+                            return;
+                        }
+                        
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            const base64String = event.target.result;
+                            
+                            // Instant Preview
+                            displayProfilePhoto.src = base64String;
+                            const menuSidePhoto = document.getElementById('menuSidePhoto');
+                            if(menuSidePhoto) menuSidePhoto.src = base64String;
+
+                            // Update Firebase Profile
+                            updateProfile(auth.currentUser, { photoURL: base64String })
+                            .then(() => {
+                                console.log("Profile Photo Updated!");
+                            }).catch((err) => {
+                                alert("Failed to save photo: " + err.message);
+                            });
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                });
+
+                // Name Update Logic
+                document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const newName = editName.value.trim();
+                    const btn = document.getElementById('saveProfileBtn');
+                    
+                    if(newName) {
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                        try {
+                            await updateProfile(auth.currentUser, { displayName: newName });
+                            displayFullName.innerText = newName;
+                            alert("Profile updated successfully!");
+                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
+                        } catch (error) {
+                            alert("Error updating profile!");
+                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
+                        }
+                    }
+                });
+
+                // Logout Logic
+                document.getElementById('menuLogoutBtn').addEventListener('click', () => {
+                    if(confirm("Are you sure you want to Logout?")) {
+                        signOut(auth).then(() => { window.location.href = "auth.html"; });
+                    }
+                });
+
+            } else {
+                // 🛑 USER NOT LOGGED IN -> KICK OUT TO LOGIN PAGE
+                window.location.replace("auth.html");
+            }
+        });
+    </script>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay'); 
+        
+        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
+        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+
+        function switchTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        // 🔥 REFERRAL LINK & SMART SHARE SCRIPTS 🔥
+        function copyRefLink() {
+            var copyText = document.getElementById("myReferralLink");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(copyText.value);
+            
+            // Change button text temporarily
+            var copyBtn = document.querySelector('.copy-btn');
+            var originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            copyBtn.style.background = '#25d366';
+            copyBtn.style.borderColor = '#25d366';
+            setTimeout(() => { 
+                copyBtn.innerHTML = originalText; 
+                copyBtn.style.background = '#333';
+                copyBtn.style.borderColor = '#444';
+            }, 2000);
+        }
+
+        // 🔥 NEW SMART SHARE FUNCTION 🔥
+        function shareReferralLink() {
+            var link = document.getElementById("myReferralLink").value;
+            var text = "Hello! Join the DK Atovitt Movie Production Ecosystem using my VIP referral link. Sign up now and earn free ATVT Coins!";
+            
+            if (navigator.share) {
+                // Asli Mobile Share Dialog khulega
+                navigator.share({
+                    title: 'DK Atovitt VIP Invitation',
+                    text: text + "\n\nClick here to join: ",
+                    url: link
+                }).catch((error) => console.log('Error sharing', error));
+            } else {
+                // Agar Web Share support nahi karta to ye aayega
+                prompt("Copy this link to share with your friends:", link);
+            }
+        }
+    </script>
+</body>
+</html>
