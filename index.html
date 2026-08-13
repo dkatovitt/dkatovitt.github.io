@@ -64,6 +64,14 @@
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-block !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
+
+        /* 🔥 NEW ACCOUNT DROPDOWN CSS 🔥 */
+        .profile-dropdown { position: relative; display: inline-block; }
+        .profile-dropdown-content { display: none; position: absolute; right: 0; top: 100%; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; margin-top: 10px; }
+        .profile-dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; transition: 0.3s; border-bottom: 1px solid #222; }
+        .profile-dropdown-content a:hover { background-color: #e6c875; color: #000; font-weight: bold; }
+        .profile-dropdown:hover .profile-dropdown-content { display: block; animation: fadeInDropdown 0.3s ease; }
+        @keyframes fadeInDropdown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
         @media (max-width: 768px) {
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
@@ -196,13 +204,16 @@
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
+        
         .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
         .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
+        
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
+        
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
+        
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
@@ -394,7 +405,7 @@
                     </select>
                 </div>
 
-                <a href="auth.html" class="login-btn-header"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
+                <a href="auth.html" class="login-btn-header" id="headerAuthBtn"><i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span></a>
             </div>
         </div>
     </header>
@@ -1404,7 +1415,7 @@
         }
     </script>
     
-    <!-- 🔥 FIREBASE LOGIN CHECKER (FOR HOME PAGE) 🔥 -->
+    <!-- 🔥 SMART ACCOUNT DROPDOWN LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1415,36 +1426,41 @@
             projectId: "dk-atovitt",
             storageBucket: "dk-atovitt.firebasestorage.app",
             messagingSenderId: "234274941441",
-            appId: "1:234274941441:web:5e029c7ba315f849c3ae00",
-            measurementId: "G-MZY82D20RL"
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
         };
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
         onAuthStateChanged(auth, (user) => {
-            if (user && (user.emailVerified || (user.providerData && user.providerData.length > 0 && user.providerData[0].providerId === 'google.com'))) {
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 let userName = user.displayName || "Member";
-                // Max 10 characters display name
                 if(userName.length > 10) userName = userName.substring(0, 10) + "..";
                 
-                const loginLinks = document.querySelectorAll('a[href="auth.html"]');
+                const headerBtn = document.getElementById('headerAuthBtn');
                 
-                loginLinks.forEach(link => {
-                    if (link.classList.contains('login-btn-header')) {
-                        link.innerHTML = `<i class="fas fa-user-check"></i> <span class="hide-on-mobile">Hi, ${userName}</span><span class="show-on-mobile">${userName}</span>`;
-                    } else {
-                        link.innerHTML = `<i class="fas fa-user-check" style="color: #25d366; margin-right:12px;"></i> Logout (${userName})`;
-                    }
-                    
-                    link.href = "javascript:void(0)";
-                    
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
+                if(headerBtn) {
+                    const dropdownHTML = `
+                        <div class="profile-dropdown">
+                            <a href="javascript:void(0)" class="login-btn-header" style="display:flex; align-items:center; gap:8px;">
+                                <i class="fas fa-user-check"></i>
+                                <span class="hide-on-mobile">Hi, ${userName}</span>
+                                <span class="show-on-mobile">${userName}</span>
+                                <i class="fas fa-caret-down"></i>
+                            </a>
+                            <div class="profile-dropdown-content">
+                                <a href="account.html"><i class="fas fa-tachometer-alt" style="color: #e6c875;"></i> My Account</a>
+                                <a href="javascript:void(0)" class="logout-action"><i class="fas fa-sign-out-alt" style="color: #ff4d4d;"></i> Logout</a>
+                            </div>
+                        </div>
+                    `;
+                    headerBtn.outerHTML = dropdownHTML;
+                }
+
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.addEventListener('click', () => {
                         if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
-                            signOut(auth).then(() => {
-                                window.location.reload(); 
-                            });
+                            signOut(auth).then(() => { window.location.reload(); });
                         }
                     });
                 });
