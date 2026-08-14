@@ -187,6 +187,16 @@
         #pageLoader video { width: 100px; mix-blend-mode: screen; transform: scale(1.5); margin-bottom: 20px; }
         #pageLoader p { color: #e6c875; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
+        /* VIP CUSTOM ALERT MODAL CSS */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; color: #e6c875; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -195,6 +205,18 @@
     <div id="pageLoader">
         <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
         <p>Loading Workspace...</p>
+    </div>
+
+    <!-- 🔥 VIP CUSTOM ALERT MODAL 🔥 -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
     </div>
 
     <!-- 🔥 HEADER 🔥 -->
@@ -308,7 +330,7 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 1: OVERVIEW (NEW) 🔥 -->
+        <!-- 🔥 TAB 1: OVERVIEW 🔥 -->
         <div id="overviewTab" class="tab-content active">
             <h3 class="dash-title"><i class="fas fa-chart-pie"></i> Workspace Overview</h3>
             
@@ -328,7 +350,7 @@
                 <div class="info-card" onclick="switchTab('trackerTab', document.getElementById('btnTracker'))" style="cursor:pointer;">
                     <i class="fas fa-file-signature card-icon"></i>
                     <h4>Active Applications</h4>
-                    <div class="value">0 <span>Forms</span></div>
+                    <div class="value" id="dashAppCount">0 <span>Forms</span></div>
                     <p class="desc">Audition/Casting Status</p>
                 </div>
             </div>
@@ -339,11 +361,11 @@
             <h3 class="dash-title"><i class="fas fa-theater-masks"></i> Apply for Casting</h3>
             <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Submit your portfolio directly to the DK Atovitt Casting Directors. Fill all details carefully for the upcoming Mega Projects.</p>
             
-            <form id="auditionForm" onsubmit="event.preventDefault(); alert('Your Audition Portfolio has been successfully submitted!');">
+            <form id="auditionForm">
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Category Applying For</label>
-                        <select required>
+                        <select id="audRole" required>
                             <option value="" disabled selected>Select Role Category...</option>
                             <option>Lead Actor / Actress</option>
                             <option>Supporting Role</option>
@@ -354,38 +376,38 @@
                     </div>
                     <div class="form-group">
                         <label>Age & Gender</label>
-                        <input type="text" placeholder="e.g. 24, Male" required>
+                        <input type="text" id="audAge" placeholder="e.g. 24, Male" required>
                     </div>
                     <div class="form-group">
                         <label>Height & Weight</label>
-                        <input type="text" placeholder="e.g. 5'8'', 70kg" required>
+                        <input type="text" id="audHeight" placeholder="e.g. 5'8'', 70kg" required>
                     </div>
                     <div class="form-group">
                         <label>Current City / State</label>
-                        <input type="text" placeholder="e.g. Kolkata, West Bengal" required>
+                        <input type="text" id="audCity" placeholder="e.g. Kolkata, West Bengal" required>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label>Audition Video Link (Optional here, can upload in Studio)</label>
-                    <input type="url" placeholder="YouTube or G-Drive Link...">
+                    <input type="url" id="audVideo" placeholder="YouTube or G-Drive Link...">
                 </div>
                 
                 <div class="form-group">
                     <label>Previous Experience / Short Bio</label>
-                    <textarea placeholder="Tell us about your acting/singing experience..." required></textarea>
+                    <textarea id="audBio" placeholder="Tell us about your acting/singing experience..." required></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
             </form>
         </div>
 
-        <!-- 🔥 TAB 3: CREATOR STUDIO (NEW - IG REELS STYLE) 🔥 -->
+        <!-- 🔥 TAB 3: CREATOR STUDIO 🔥 -->
         <div id="studioTab" class="tab-content">
             <h3 class="dash-title"><i class="fab fa-instagram"></i> Creator Studio</h3>
             <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Showcase your talent! Upload short vertical videos (like Reels) of your acting or singing. Our Production House tracks this for direct casting.</p>
             
-            <div class="studio-upload-box" onclick="alert('Video Upload feature will be connected to Firebase Storage soon!')">
+            <div class="studio-upload-box" onclick="showAlert('Coming Soon', 'Video Upload feature will be connected to our high-speed Firebase Storage very soon!')">
                 <i class="fas fa-cloud-upload-alt"></i>
                 <h3>Upload New Short / Reel</h3>
                 <p>Click here to select a video (MP4, Max 50MB)</p>
@@ -394,7 +416,6 @@
             <h4 style="color:#e6c875; text-transform:uppercase; font-size:14px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:5px;">Your Uploaded Portfolio</h4>
             
             <div class="reels-grid">
-                <!-- Placeholders for videos -->
                 <div class="reel-card empty">
                     <i class="fas fa-video" style="font-size:24px; margin-bottom:10px;"></i>
                     <span style="font-size:12px;">Empty Slot</span>
@@ -410,32 +431,29 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 4: EARNINGS & WALLET (COMBINED INCOME HUB) 🔥 -->
+        <!-- 🔥 TAB 4: EARNINGS & WALLET 🔥 -->
         <div id="walletTab" class="tab-content">
             <h3 class="dash-title"><i class="fas fa-wallet"></i> Income & Wallet Hub</h3>
             <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Track your Ecosystem Earnings, Social Media Revenue, and Referral Rewards.</p>
             
             <div class="info-grid">
-                <!-- Social Media Income -->
                 <div class="info-card">
                     <i class="fas fa-rupee-sign card-icon"></i>
                     <h4>Social Media Revenue</h4>
                     <div class="value">₹0<span>.00</span></div>
                     <p class="desc">From Views & Ecosystem</p>
-                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px;" onclick="alert('Minimum withdrawal is ₹500.')">Withdraw Fund</button>
+                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px;" onclick="showAlert('Withdrawal', 'Minimum withdrawal limit is ₹500.')">Withdraw Fund</button>
                 </div>
                 
-                <!-- ATVT Crypto -->
                 <div class="info-card">
                     <i class="fas fa-coins card-icon"></i>
                     <h4>ATVT Coin Balance</h4>
                     <div class="value">0.00 <span>ATVT</span></div>
                     <p class="desc">Locked Asset</p>
-                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px; background:transparent; border:1px solid #e6c875; color:#e6c875;" onclick="alert('Trading starts post launch.')">Trade/Swap</button>
+                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px; background:transparent; border:1px solid #e6c875; color:#e6c875;" onclick="showAlert('Trading Locked', 'Trading and Swapping will start post official launch.')">Trade/Swap</button>
                 </div>
             </div>
 
-            <!-- Referral Section Inside Income Hub -->
             <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 25px;">
                 <h4 style="color:#e6c875; font-size:18px; margin-bottom:5px; text-transform:uppercase;">Refer & Earn ATVT</h4>
                 <p style="color:#888; font-size:13px; line-height:1.5;">Share your VIP link. When friends join the Ecosystem, you earn free ATVT Coins directly to your wallet!</p>
@@ -450,12 +468,11 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 5: APP TRACKER & HELP (NEW) 🔥 -->
+        <!-- 🔥 TAB 5: APP TRACKER & HELP 🔥 -->
         <div id="trackerTab" class="tab-content">
             <h3 class="dash-title"><i class="fas fa-tasks"></i> Application Status & Help</h3>
             
             <div class="form-grid">
-                <!-- Tracking Timeline -->
                 <div style="background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333;">
                     <h4 style="color:#e6c875; margin-top:0; border-bottom:1px solid #333; padding-bottom:10px;">Audition Tracking</h4>
                     
@@ -468,12 +485,12 @@
                                 <span class="track-date">Done</span>
                             </div>
                         </div>
-                        <div class="track-step">
+                        <div class="track-step active" id="trackStep2">
                             <div class="track-icon"></div>
                             <div class="track-content">
                                 <h4>Form Submitted</h4>
-                                <p>Audition profile sent to casting team.</p>
-                                <span class="track-date">Pending Action</span>
+                                <p id="trackStep2Msg">Submit your audition form to begin.</p>
+                                <span class="track-date" id="trackStep2Date">Action Required</span>
                             </div>
                         </div>
                         <div class="track-step">
@@ -493,7 +510,6 @@
                     </div>
                 </div>
 
-                <!-- Help Desk -->
                 <div style="background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
                     <i class="fas fa-headset" style="font-size: 60px; color: #e6c875; margin-bottom: 20px;"></i>
                     <h4 style="color:#fff; font-size:20px; margin:0 0 10px 0;">Need Help?</h4>
@@ -523,10 +539,12 @@
 
     </div>
 
-    <!-- 🔥 FIREBASE AUTHENTICATION & VIP LOGIC 🔥 -->
+    <!-- 🔥 FIREBASE + FIRESTORE DATABASE LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // IMPORT FIRESTORE FOR DATABASE
+        import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -539,6 +557,7 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app); // INITIALIZE DATABASE
 
         // UI Elements
         const pageLoader = document.getElementById('pageLoader');
@@ -551,18 +570,15 @@
         const menuProfileArea = document.getElementById('menuProfileArea');
         const myReferralLink = document.getElementById('myReferralLink');
 
-        // Check Login Status
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
-                // Hide Loader
                 pageLoader.style.display = 'none'; 
                 
                 const fullName = user.displayName || "VIP Member";
                 const contact = user.email || user.phoneNumber || "Verified Account";
                 const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
-                // Populate UI
                 displayFullName.innerText = fullName;
                 displayContact.innerText = contact;
                 displayProfilePhoto.src = photo;
@@ -570,12 +586,11 @@
                 editName.value = fullName;
                 editContact.value = contact;
 
-                // 🔥 GENERATE REFERRAL LINK 🔥
+                // Referral Logic
                 const userUniqueId = user.uid.substring(0, 8).toUpperCase(); 
                 const refUrl = window.location.origin + "/auth.html?ref=DK" + userUniqueId;
                 if(myReferralLink) myReferralLink.value = refUrl;
 
-                // Setup Menu Profile
                 let shortName = fullName.trim().split(' ')[0]; 
                 if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
                 
@@ -587,11 +602,99 @@
                     </div>
                 `;
 
+                // ========================================================
+                // 🛑 1. SINGLE DEVICE AUTO-LOGOUT LOGIC 🛑
+                // ========================================================
+                let currentDeviceToken = localStorage.getItem('device_token');
+                
+                // If this browser doesn't have a token, generate one and save it to Database
+                if (!currentDeviceToken) {
+                    currentDeviceToken = "DK_" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+                    localStorage.setItem('device_token', currentDeviceToken);
+                    
+                    // Save this new token to Firestore (Overwrites any old device's token)
+                    await setDoc(doc(db, "users", user.uid), {
+                        activeDeviceToken: currentDeviceToken,
+                        lastLogin: serverTimestamp(),
+                        name: fullName,
+                        contact: contact
+                    }, { merge: true });
+                }
+
+                // MAGIC: Continuously listen to changes in Database for this user
+                onSnapshot(doc(db, "users", user.uid), (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        // If Database Token DOES NOT match this browser's Token -> Someone else logged in!
+                        if (data.activeDeviceToken && data.activeDeviceToken !== currentDeviceToken) {
+                            alert("⚠️ SECURITY ALERT: Your account was just logged in from another device. You are being securely logged out from this device.");
+                            signOut(auth).then(() => {
+                                localStorage.removeItem('device_token');
+                                window.location.replace("auth.html");
+                            });
+                        }
+                    }
+                });
+
+                // ========================================================
+                // 🎬 2. AUDITION FORM DATABASE LOGIC 🎬
+                // ========================================================
+                const auditionForm = document.getElementById('auditionForm');
+                if(auditionForm) {
+                    auditionForm.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = auditionForm.querySelector('.submit-btn');
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                        
+                        // Get Values
+                        const role = document.getElementById('audRole').value;
+                        const ageGender = document.getElementById('audAge').value;
+                        const heightWeight = document.getElementById('audHeight').value;
+                        const cityState = document.getElementById('audCity').value;
+                        const videoLink = document.getElementById('audVideo').value;
+                        const bio = document.getElementById('audBio').value;
+
+                        try {
+                            // Save directly to Firestore "auditions" collection
+                            await setDoc(doc(db, "auditions", user.uid), {
+                                userId: user.uid,
+                                name: fullName,
+                                contact: contact,
+                                role: role,
+                                ageGender: ageGender,
+                                heightWeight: heightWeight,
+                                cityState: cityState,
+                                videoLink: videoLink,
+                                bio: bio,
+                                status: "Pending Review",
+                                submittedAt: serverTimestamp()
+                            }, { merge: true }); // Updates form if already submitted
+                            
+                            showAlert("Success", "🎉 Your Audition Portfolio has been securely saved to the DK Atovitt Database!");
+                            
+                            // Update Tracker UI
+                            document.getElementById('dashAppCount').innerHTML = `1 <span>Form</span>`;
+                            document.getElementById('trackStep2').classList.replace('active', 'completed');
+                            document.getElementById('trackStep2Msg').innerText = "Audition profile securely sent to casting team.";
+                            document.getElementById('trackStep2Date').innerText = "Submitted Successfully";
+
+                            // Move user to tracker tab
+                            switchTab('trackerTab', document.getElementById('btnTracker'));
+                        } catch(error) {
+                            showAlert("Database Error", "Failed to submit form. Make sure you are connected to internet. Error: " + error.message);
+                        } finally {
+                            btn.innerHTML = originalText;
+                        }
+                    });
+                }
+
+
                 // Photo Upload
                 fileInput.addEventListener('change', (e) => {
                     const file = e.target.files[0];
                     if(file) {
-                        if(file.size > 1024 * 1024) { alert("File is too large! Please upload under 1 MB."); return; }
+                        if(file.size > 1024 * 1024) { showAlert("Error", "File is too large! Please upload under 1 MB."); return; }
                         const reader = new FileReader();
                         reader.onload = function(event) {
                             const base64String = event.target.result;
@@ -600,7 +703,7 @@
                             if(menuSidePhoto) menuSidePhoto.src = base64String;
 
                             updateProfile(auth.currentUser, { photoURL: base64String })
-                            .catch((err) => { alert("Failed to save photo: " + err.message); });
+                            .catch((err) => { showAlert("Error", "Failed to save photo: " + err.message); });
                         }
                         reader.readAsDataURL(file);
                     }
@@ -617,27 +720,43 @@
                         try {
                             await updateProfile(auth.currentUser, { displayName: newName });
                             displayFullName.innerText = newName;
-                            alert("Profile updated successfully!");
+                            // Also update name in database
+                            await setDoc(doc(db, "users", user.uid), { name: newName }, { merge: true });
+                            
+                            showAlert("Success", "Profile updated successfully!");
                             btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
                         } catch (error) {
-                            alert("Error updating profile!");
+                            showAlert("Error", "Error updating profile!");
                             btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
                         }
                     }
                 });
 
-                // Logout
+                // Logout Logic
                 document.getElementById('menuLogoutBtn').addEventListener('click', () => {
                     if(confirm("Are you sure you want to Logout from your VIP Workspace?")) {
-                        signOut(auth).then(() => { window.location.href = "auth.html"; });
+                        signOut(auth).then(() => { 
+                            localStorage.removeItem('device_token'); // Clear token on normal logout
+                            window.location.href = "auth.html"; 
+                        });
                     }
                 });
 
             } else {
-                // Not logged in -> Kick out
                 window.location.replace("auth.html");
             }
         });
+
+        // 🌟 CUSTOM ALERT FUNCTION
+        window.showAlert = function(title, msg) {
+            document.getElementById('customAlertTitle').innerText = title;
+            document.getElementById('customAlertMsg').innerText = msg;
+            document.getElementById('customAlertOverlay').classList.add('active');
+        }
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+        });
+
     </script>
 
     <!-- Basic UI Scripts -->
@@ -651,7 +770,6 @@
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
 
-        // Auto Close menu on link click
         document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
@@ -659,14 +777,13 @@
         });
 
         // Tabs Switching Function
-        function switchTab(tabId, btnElement) {
+        window.switchTab = function(tabId, btnElement) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
             if(btnElement) btnElement.classList.add('active');
 
-            // Scroll the tabs container to show active button on mobile
             if(btnElement) {
                 const container = document.querySelector('.dashboard-tabs-container');
                 container.scrollTo({
@@ -677,7 +794,7 @@
         }
 
         // 🔥 SHARE SCRIPTS 🔥
-        function copyRefLink() {
+        window.copyRefLink = function() {
             var copyText = document.getElementById("myReferralLink");
             copyText.select();
             copyText.setSelectionRange(0, 99999); 
@@ -695,7 +812,7 @@
             }, 2000);
         }
 
-        function shareReferralLink() {
+        window.shareReferralLink = function() {
             var link = document.getElementById("myReferralLink").value;
             var text = "Hello! Join the DK Atovitt Movie Production Ecosystem using my VIP link. Sign up, showcase your talent, and earn free ATVT Coins!";
             
@@ -711,7 +828,7 @@
         }
 
         // Translator Logic
-        function translatePage(lang) {
+        window.translatePage = function(lang) {
             if (lang === "") {
                 var d = window.location.hostname;
                 var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
