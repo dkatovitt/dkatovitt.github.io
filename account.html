@@ -15,21 +15,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | VIP Dashboard - DK Atovitt</title>
     
-    <!-- 🔥 SEO META TAGS FOR DASHBOARD 🔥 -->
-    <title>My Account | VIP Dashboard - DK Atovitt Production House</title>
-    <meta name="description" content="Manage your DK Atovitt VIP member profile, track your audition applications, view your earnings and ATVT coin wallet.">
-    <meta name="keywords" content="DK Atovitt Account, VIP Dashboard, Audition Tracker, Creator Studio, Earning Hub, DK Atovitt Member Portal">
-    <meta name="author" content="DK Atovitt Production House">
-    <meta name="robots" content="noindex, follow"> <!-- noindex kyunki ye ek private user dashboard hai -->
-
-    <!-- 🔥 OPEN GRAPH TAGS 🔥 -->
-    <meta property="og:title" content="My Account - DK Atovitt VIP Dashboard">
-    <meta property="og:description" content="Access your exclusive VIP dashboard, manage your projects, and track your growth in the DK Atovitt Ecosystem.">
-    <meta property="og:image" content="https://dkatovitt.github.io/images/movies/yakshini-poster.png">
-    <meta property="og:url" content="https://dkatovitt.github.io/account.html">
-    <meta property="og:type" content="website">
-
     <meta name="theme-color" content="#e6c875">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,696 +26,100 @@
         /* 🔥 HEADER CSS 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
-        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
-        #menuBtn, .header-icons button, .search-btn { position: static !important; transform: none !important; left: auto !important; top: auto !important; margin: 0 !important; padding: 0 !important; }
-        
         .desktop-logo-img { height: 80px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
         .desktop-logo-text { font-size: 30px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        .home-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 6px !important; }
         
-        .home-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: flex !important; align-items: center !important; gap: 6px !important; }
-        .home-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
-        .show-on-mobile { display: none; }
-        
-        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
-        .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
-        .custom-translate select:hover { background: #e6c875; color: #000; }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
-        body { top: 0px !important; position: static !important; } 
-        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-        .goog-text-highlight { background: none !important; box-shadow: none !important; }
-
-        @media (max-width: 768px) {
-            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
-            .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
-            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
-            #menuBtn { font-size: 22px !important; }
-            .home-btn-header { width: 35px !important; height: 35px !important; padding: 0 !important; justify-content: center !important; border-radius: 50% !important; }
-            .home-btn-header i { font-size: 16px !important; margin: 0 !important; }
-            .hide-on-mobile { display: none !important; }
-            .show-on-mobile { display: inline !important; }
-        }
-
-        /* 🔥 FULL MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
-        .side-menu.active { left: 0; }
-        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
-        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
-        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
-        #overlay.active { display: block; }
-
-        /* 🔥 VIP SUPER-APP DASHBOARD CSS 🔥 */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        /* 🔥 PERFORMANCE & LAYOUT CSS 🔥 */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; }
         .dashboard-container { max-width: 1100px; margin: 120px auto 50px auto; padding: 0 20px; min-height: 60vh; }
         
-        /* Profile Header Card */
-        .profile-header-card { background: linear-gradient(135deg, #111, #0a0a0a); border: 1px solid #333; border-radius: 15px; padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; overflow: hidden; margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
-        .profile-header-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #e6c875, #ff4d4d); }
+        /* 🔥 PROFILE CARD 🔥 */
+        .profile-header-card { background: linear-gradient(135deg, #111, #0a0a0a); border: 1px solid #333; border-radius: 15px; padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
+        .profile-photo { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid #e6c875; }
         
-        .profile-left-section { display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
-        
-        /* 📸 SMART PHOTO UPLOAD CSS */
-        .photo-upload-wrapper { position: relative; width: 130px; height: 130px; flex-shrink: 0; }
-        .profile-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #e6c875; box-shadow: 0 5px 20px rgba(230,200,117,0.3); transition: 0.3s; }
-        .photo-upload-btn { position: absolute; bottom: 5px; right: 5px; background: #e6c875; color: #000; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 3px solid #111; font-size: 16px; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .photo-upload-btn:hover { background: #fff; transform: scale(1.1); }
-        #fileInput { display: none; }
-
-        .profile-info h2 { color: #fff; font-size: 36px; font-family: 'Playfair Display', serif; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .profile-info h2 span { color: #e6c875; }
-        .profile-info p { color: #aaa; font-size: 15px; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px; font-weight: bold; }
-        .vip-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(90deg, rgba(230,200,117,0.2), rgba(230,200,117,0.05)); border: 1px solid #e6c875; color: #e6c875; padding: 6px 15px; border-radius: 30px; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 15px rgba(230,200,117,0.2); }
-
-        .profile-right-stats { background: #1a1a1a; padding: 15px 25px; border-radius: 12px; border: 1px solid #333; text-align: center; }
-        .profile-right-stats h4 { margin: 0 0 5px 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-        .profile-right-stats .stat-val { font-size: 28px; color: #25d366; font-weight: 900; font-family: 'Playfair Display', serif; }
-        .profile-right-stats .stat-val span { font-size: 14px; color: #ccc; }
-
-        @media (max-width: 768px) {
-            .profile-header-card { flex-direction: column; text-align: center; padding: 30px 15px; }
-            .profile-left-section { flex-direction: column; gap: 15px; justify-content: center; width: 100%; }
-            .profile-info p { justify-content: center; }
-            .profile-info h2 { font-size: 26px; }
-            .profile-right-stats { width: 100%; box-sizing: border-box; }
-        }
-
-        /* 🔥 PREMIUM SCROLLABLE TABS 🔥 */
-        .dashboard-tabs-container { overflow-x: auto; white-space: nowrap; margin-bottom: 30px; padding-bottom: 15px; scrollbar-width: none; border-bottom: 2px solid #222; -webkit-overflow-scrolling: touch; }
-        .dashboard-tabs-container::-webkit-scrollbar { display: none; }
-        .dashboard-tabs { display: inline-flex; gap: 12px; }
-        
-        .tab-btn { background: #1a1a1a; color: #aaa; border: 1px solid #333; font-size: 14px; font-weight: bold; cursor: pointer; padding: 12px 22px; border-radius: 30px; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tab-btn:hover { color: #fff; background: #222; border-color: #555; transform: translateY(-2px); }
-        .tab-btn.active { background: #e6c875; color: #000; border-color: #e6c875; box-shadow: 0 5px 15px rgba(230,200,117,0.4); }
-
-        .tab-content { display: none; background: #111; border: 1px solid #333; border-radius: 15px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); animation: fadeIn 0.4s ease; position: relative; overflow: hidden; }
+        /* 🔥 TAB CONTENT 🔥 */
+        .tab-content { display: none; background: #111; border: 1px solid #333; border-radius: 15px; padding: 35px; }
         .tab-content.active { display: block; }
-        .tab-content::after { content: ''; position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle, rgba(230,200,117,0.05) 0%, transparent 70%); pointer-events: none; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .dash-title { color: #e6c875; font-size: 24px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 15px; }
 
-        .dash-title { color: #e6c875; font-size: 24px; margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: 'Playfair Display', serif;}
-        .dash-title i { color: #fff; background: #222; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 18px; border: 1px solid #333;}
+        /* 🔥 FOOTER CSS (Optimized) 🔥 */
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px; border-top: 2px solid #333; margin-top: 50px; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .footer-social-row { display: flex; gap: 15px; margin-top: 15px; }
+        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; text-decoration: none; }
 
-        /* 🔥 GRID CARDS (Overview & Wallet) 🔥 */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .info-card { background: linear-gradient(145deg, #1a1a1a, #0a0a0a); border: 1px solid #333; padding: 25px; border-radius: 12px; position: relative; overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; justify-content: center; }
-        .info-card:hover { border-color: #e6c875; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.6); }
-        .info-card .card-icon { position: absolute; right: -10px; bottom: -10px; font-size: 80px; color: rgba(255,255,255,0.03); transform: rotate(-15deg); pointer-events: none; }
-        .info-card h4 { margin: 0 0 10px 0; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
-        .info-card .value { font-size: 32px; color: #fff; font-weight: 900; margin-bottom: 5px; font-family: 'Playfair Display', serif; }
-        .info-card .value span { font-size: 16px; color: #e6c875; }
-        .info-card .desc { font-size: 12px; color: #777; margin: 0; }
-
-        /* 🔥 CREATOR STUDIO (Instagram Like) 🔥 */
-        .studio-upload-box { border: 2px dashed #444; border-radius: 15px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); transition: 0.3s; cursor: pointer; margin-bottom: 30px; }
-        .studio-upload-box:hover { border-color: #e6c875; background: rgba(230,200,117,0.05); }
-        .studio-upload-box i { font-size: 50px; color: #e6c875; margin-bottom: 15px; }
-        .studio-upload-box h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; }
-        .studio-upload-box p { color: #888; font-size: 13px; margin: 0; }
-        
-        .reels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
-        .reel-card { aspect-ratio: 9/16; background: #222; border-radius: 12px; overflow: hidden; position: relative; border: 1px solid #333; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #555; }
-        .reel-card.empty { border: 1px dashed #444; background: transparent; }
-
-        /* 🔥 APP TRACKER (Timeline) 🔥 */
-        .tracking-timeline { position: relative; padding-left: 30px; margin-top: 20px; }
-        .tracking-timeline::before { content: ''; position: absolute; left: 6px; top: 0; height: 100%; width: 2px; background: #333; }
-        
-        .track-step { position: relative; margin-bottom: 30px; }
-        .track-step:last-child { margin-bottom: 0; }
-        .track-icon { position: absolute; left: -36px; top: 0; width: 14px; height: 14px; border-radius: 50%; background: #333; border: 3px solid #111; z-index: 2; transition: 0.3s; }
-        .track-step.completed .track-icon { background: #25d366; box-shadow: 0 0 10px #25d366; }
-        .track-step.active .track-icon { background: #e6c875; box-shadow: 0 0 10px #e6c875; animation: pulse-dot 1.5s infinite; }
-        
-        .track-content h4 { margin: 0 0 5px 0; color: #fff; font-size: 16px; }
-        .track-step.completed .track-content h4 { color: #25d366; }
-        .track-step.active .track-content h4 { color: #e6c875; }
-        .track-content p { margin: 0; color: #888; font-size: 13px; line-height: 1.5; }
-        .track-date { font-size: 11px; color: #555; margin-top: 5px; display: block; font-weight: bold; }
-
-        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(230, 200, 117, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(230, 200, 117, 0); } 100% { box-shadow: 0 0 0 0 rgba(230, 200, 117, 0); } }
-
-        /* Form Elements */
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; gap: 15px; } }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; color: #ccc; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #e6c875; background: #1a1a1a; }
-        .form-group textarea { height: 100px; resize: vertical; }
-        
-        .submit-btn { background: #e6c875; color: #000; padding: 14px 30px; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); display: inline-flex; align-items: center; gap: 8px; }
-        .submit-btn:hover { background: #d4b561; transform: translateY(-2px); }
-
-        /* Referral Box */
-        .referral-box { background: #1a1a1a; border: 1px dashed #e6c875; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
-        .referral-box input { flex-grow: 1; background: #111; color: #e6c875; border: 1px solid #333; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; font-weight: bold; letter-spacing: 0.5px; width: 100%; }
-        .ref-buttons { display: flex; gap: 10px; flex-wrap: nowrap; }
-        .ref-btn { padding: 12px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-        .copy-btn { background: #333; color: #fff; border: 1px solid #444; }
-        .copy-btn:hover { background: #555; }
-        .share-btn { background: #e6c875; color: #000; border: 1px solid #e6c875; }
-        .share-btn:hover { background: #d4b561; transform: scale(1.05); }
-
-        @media (max-width: 768px) {
-            .tab-content { padding: 25px 15px; }
-            .dash-title { font-size: 18px; }
-            .dash-title i { width: 35px; height: 35px; font-size: 16px; }
-            .referral-box { flex-direction: column; align-items: stretch; }
-            .ref-buttons { justify-content: center; width: 100%; }
-            .ref-btn { flex: 1; justify-content: center; }
-        }
-
-        /* Loader */
-        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #pageLoader video { width: 100px; mix-blend-mode: screen; transform: scale(1.5); margin-bottom: 20px; }
-        #pageLoader p { color: #e6c875; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* VIP CUSTOM ALERT MODAL CSS */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; color: #e6c875; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
-
-        /* 🔥 MEGA FOOTER CSS 🔥 */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin-top: 50px; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
-        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
-        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
-        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
-        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
-        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        
-        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
-        .chatbot-toggler:hover { transform: scale(1.1); }
-        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
-        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
-        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
-        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-
-        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
-        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
-        .chatbot-header button:hover { color: #fff; }
-        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
-        .app-modal-close:hover { color: #fff; }
-        .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
-        .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
-        .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
-        .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
-        .app-modal-desc span { color: #e6c875; font-weight: bold; }
-        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-
-        @media (max-width: 768px) { 
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
-            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-        }
+        /* 🔥 LOADER (Fast Performance) 🔥 */
+        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.3s ease; }
+        body.loaded #pageLoader { opacity: 0; pointer-events: none; }
     </style>
 </head>
-<body>
+<body class="loading">
 
-    <!-- 🔥 LOADING SCREEN 🔥 -->
+    <!-- 🔥 LOADER 🔥 -->
     <div id="pageLoader">
-        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+        <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
         <p>Loading Workspace...</p>
     </div>
 
-    <!-- 🔥 VIP CUSTOM ALERT MODAL 🔥 -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
-        </div>
-    </div>
-
-    <!-- 🔥 HEADER (FIXED LOGO LINK) 🔥 -->
+    <!-- 🔥 HEADER 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <!-- 🚫 LOGO REFRESH/LINK LOCKED 🚫 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
-                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
-                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
-                        <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
-                        <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
-                    </div>
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" class="desktop-logo-img"></video>
+                    <div class="logo-text"><h1 class="desktop-logo-text notranslate">DK ATOVITT</h1><p class="desktop-logo-sub notranslate">Official Movie Production House</p></div>
                 </a>
             </div>
-            <div class="header-icons" style="display: flex; gap: 15px; align-items: center;">
-                <div class="custom-translate hide-on-mobile">
-                    <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                        <option value="">🌐 Select Language</option>
-                        <option value="hi">हिन्दी (Hindi)</option>
-                        <option value="en">English</option>
-                    </select>
-                </div>
-                <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
-            </div>
+            <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> Home</a>
         </div>
     </header>
 
-    <div id="google_translate_element" style="display:none;"></div>
-
-    <!-- 🔥 VIP SUPER-APP MENU 🔥 -->
+    <!-- 🔥 MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>VIP MENU</h2><button id="closeMenu">&times;</button></div>
-        
-        <div class="custom-translate show-on-mobile" style="padding: 15px 20px; border-bottom: 1px solid #222;">
-            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
-                <option value="">🌐 Select Language</option>
-                <option value="hi">हिन्दी (Hindi)</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-
         <div id="menuProfileArea"></div> 
-        
-        <!-- VIP Navigation Links (Navigates securely, no logout!) -->
-        <a href="index.html"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Go to Website</a>
-        
-        <a href="javascript:void(0)" onclick="switchTab('overviewTab', document.getElementById('btnOverview'))" style="color:#e6c875; font-weight:bold; background:rgba(230,200,117,0.08); border-left:4px solid #e6c875;">
-            <i class="fas fa-th-large" style="color:var(--primary-color); margin-right:12px;"></i> Hub Overview
-        </a>
-        
-        <a href="javascript:void(0)" onclick="switchTab('auditionTab', document.getElementById('btnAudition'))">
-            <i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Casting Form
-        </a>
-
-        <a href="javascript:void(0)" onclick="switchTab('studioTab', document.getElementById('btnStudio'))">
-            <i class="fab fa-instagram" style="color:var(--primary-color); margin-right:12px;"></i> Creator Studio
-        </a>
-        
-        <a href="javascript:void(0)" onclick="switchTab('walletTab', document.getElementById('btnWallet'))">
-            <i class="fas fa-wallet" style="color:var(--primary-color); margin-right:12px;"></i> Earnings & Wallet
-        </a>
-
-        <a href="javascript:void(0)" onclick="switchTab('trackerTab', document.getElementById('btnTracker'))">
-            <i class="fas fa-tasks" style="color:var(--primary-color); margin-right:12px;"></i> App Tracker & Help
-        </a>
-        
-        <a href="javascript:void(0)" onclick="switchTab('profileTab', document.getElementById('btnProfile'))">
-            <i class="fas fa-user-edit" style="color:var(--primary-color); margin-right:12px;"></i> Edit Profile
-        </a>
-
-        <!-- Added missing main site links for easy access -->
-        <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> View Gallery</a>
-        <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:12px;"></i> Yakshini Movie</a>
-
-        <a href="javascript:void(0)" id="menuLogoutBtn" style="border-top: 1px solid #333; margin-top: 10px;">
-            <i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout
-        </a>
+        <a href="index.html"><i class="fas fa-home" style="margin-right:12px;"></i> Go to Website</a>
+        <a href="gallery.html"><i class="fas fa-images" style="margin-right:12px;"></i> View Gallery</a>
+        <a href="yakshini.html"><i class="fas fa-ghost" style="margin-right:12px;"></i> Yakshini Movie</a>
+        <a href="javascript:void(0)" id="menuLogoutBtn" style="border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
     </div>
-    <div id="overlay"></div>
 
-    <!-- 🔥 MAIN VIP DASHBOARD 🔥 -->
+    <!-- 🔥 DASHBOARD CONTENT 🔥 -->
     <div class="dashboard-container">
-        
-        <!-- 🔥 SUPER PROFILE CARD 🔥 -->
         <div class="profile-header-card">
-            <div class="profile-left-section">
-                <div class="photo-upload-wrapper">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="displayProfilePhoto" class="profile-photo" alt="Profile">
-                    <label for="fileInput" class="photo-upload-btn" title="Change Profile Photo"><i class="fas fa-camera"></i></label>
-                    <input type="file" id="fileInput" accept="image/*">
-                </div>
-                <div class="profile-info">
-                    <h2>Hello, <span id="displayFullName">Loading...</span></h2>
-                    <p><i class="fas fa-envelope-open-text" style="color:#e6c875;"></i> <span id="displayContact">Loading...</span></p>
-                    <div class="vip-badge"><i class="fas fa-check-circle"></i> Official Verified Member</div>
-                </div>
+             <div class="profile-left-section">
+                <div class="photo-upload-wrapper"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="displayProfilePhoto" class="profile-photo" alt="Profile" loading="lazy"></div>
+                <div class="profile-info"><h2>Hello, <span id="displayFullName">Loading...</span></h2><p id="displayContact"></p></div>
             </div>
-            <div class="profile-right-stats">
-                <h4>Total Revenue Generated</h4>
-                <div class="stat-val">₹0<span>.00</span></div>
-                <p style="margin:5px 0 0 0; color:#888; font-size:11px;">Via Ecosystem & Social</p>
-            </div>
+            <div class="profile-right-stats"><h4>Earnings</h4><div class="stat-val">₹0</div></div>
         </div>
-
-        <!-- 🔥 PREMIUM APP TABS 🔥 -->
-        <div class="dashboard-tabs-container">
-            <div class="dashboard-tabs">
-                <button class="tab-btn active" id="btnOverview" onclick="switchTab('overviewTab', this)"><i class="fas fa-th-large"></i> Overview</button>
-                <button class="tab-btn" id="btnAudition" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Casting</button>
-                <button class="tab-btn" id="btnStudio" onclick="switchTab('studioTab', this)"><i class="fab fa-instagram"></i> Creator Studio</button>
-                <button class="tab-btn" id="btnWallet" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> Income Hub</button>
-                <button class="tab-btn" id="btnTracker" onclick="switchTab('trackerTab', this)"><i class="fas fa-tasks"></i> Tracker & Help</button>
-                <button class="tab-btn" id="btnProfile" onclick="switchTab('profileTab', this)"><i class="fas fa-cog"></i> Settings</button>
-            </div>
-        </div>
-
-        <!-- 🔥 TAB 1: OVERVIEW 🔥 -->
-        <div id="overviewTab" class="tab-content active">
-            <h3 class="dash-title"><i class="fas fa-chart-pie"></i> Workspace Overview</h3>
-            
-            <div class="info-grid">
-                <div class="info-card" onclick="switchTab('walletTab', document.getElementById('btnWallet'))" style="cursor:pointer;">
-                    <i class="fas fa-coins card-icon"></i>
-                    <h4>ATVT Holdings</h4>
-                    <div class="value">0.00 <span>ATVT</span></div>
-                    <p class="desc">Crypto Asset Balance</p>
-                </div>
-                <div class="info-card" onclick="switchTab('studioTab', document.getElementById('btnStudio'))" style="cursor:pointer;">
-                    <i class="fab fa-instagram card-icon"></i>
-                    <h4>Studio Videos</h4>
-                    <div class="value">0 <span>Shorts</span></div>
-                    <p class="desc">Uploaded Talent Reels</p>
-                </div>
-                <div class="info-card" onclick="switchTab('trackerTab', document.getElementById('btnTracker'))" style="cursor:pointer;">
-                    <i class="fas fa-file-signature card-icon"></i>
-                    <h4>Active Applications</h4>
-                    <div class="value" id="dashAppCount">0 <span>Forms</span></div>
-                    <p class="desc">Audition/Casting Status</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🔥 TAB 2: AUDITION FORM 🔥 -->
-        <div id="auditionTab" class="tab-content">
-            <h3 class="dash-title"><i class="fas fa-theater-masks"></i> Apply for Casting</h3>
-            <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Submit your portfolio directly to the DK Atovitt Casting Directors. Fill all details carefully for the upcoming Mega Projects.</p>
-            
-            <form id="auditionForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Category Applying For</label>
-                        <select id="audRole" required>
-                            <option value="" disabled selected>Select Role Category...</option>
-                            <option>Lead Actor / Actress</option>
-                            <option>Supporting Role</option>
-                            <option>Playback Singer</option>
-                            <option>Child Artist</option>
-                            <option>Crew / Writer</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Age & Gender</label>
-                        <input type="text" id="audAge" placeholder="e.g. 24, Male" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Height & Weight</label>
-                        <input type="text" id="audHeight" placeholder="e.g. 5'8'', 70kg" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Current City / State</label>
-                        <input type="text" id="audCity" placeholder="e.g. Kolkata, West Bengal" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Audition Video Link (Optional here, can upload in Studio)</label>
-                    <input type="url" id="audVideo" placeholder="YouTube or G-Drive Link...">
-                </div>
-                
-                <div class="form-group">
-                    <label>Previous Experience / Short Bio</label>
-                    <textarea id="audBio" placeholder="Tell us about your acting/singing experience..." required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Application</button>
-            </form>
-        </div>
-
-        <!-- 🔥 TAB 3: CREATOR STUDIO 🔥 -->
-        <div id="studioTab" class="tab-content">
-            <h3 class="dash-title"><i class="fab fa-instagram"></i> Creator Studio</h3>
-            <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Showcase your talent! Upload short vertical videos (like Reels) of your acting or singing. Our Production House tracks this for direct casting.</p>
-            
-            <div class="studio-upload-box" onclick="showAlert('Coming Soon', 'Video Upload feature will be connected to our high-speed Firebase Storage very soon!')">
-                <i class="fas fa-cloud-upload-alt"></i>
-                <h3>Upload New Short / Reel</h3>
-                <p>Click here to select a video (MP4, Max 50MB)</p>
-            </div>
-
-            <h4 style="color:#e6c875; text-transform:uppercase; font-size:14px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:5px;">Your Uploaded Portfolio</h4>
-            
-            <div class="reels-grid">
-                <div class="reel-card empty">
-                    <i class="fas fa-video" style="font-size:24px; margin-bottom:10px;"></i>
-                    <span style="font-size:12px;">Empty Slot</span>
-                </div>
-                <div class="reel-card empty">
-                    <i class="fas fa-video" style="font-size:24px; margin-bottom:10px;"></i>
-                    <span style="font-size:12px;">Empty Slot</span>
-                </div>
-                <div class="reel-card empty">
-                    <i class="fas fa-video" style="font-size:24px; margin-bottom:10px;"></i>
-                    <span style="font-size:12px;">Empty Slot</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🔥 TAB 4: EARNINGS & WALLET 🔥 -->
-        <div id="walletTab" class="tab-content">
-            <h3 class="dash-title"><i class="fas fa-wallet"></i> Income & Wallet Hub</h3>
-            <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Track your Ecosystem Earnings, Social Media Revenue, and Referral Rewards.</p>
-            
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-rupee-sign card-icon"></i>
-                    <h4>Social Media Revenue</h4>
-                    <div class="value">₹0<span>.00</span></div>
-                    <p class="desc">From Views & Ecosystem</p>
-                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px;" onclick="showAlert('Withdrawal', 'Minimum withdrawal limit is ₹500.')">Withdraw Fund</button>
-                </div>
-                
-                <div class="info-card">
-                    <i class="fas fa-coins card-icon"></i>
-                    <h4>ATVT Coin Balance</h4>
-                    <div class="value">0.00 <span>ATVT</span></div>
-                    <p class="desc">Locked Asset</p>
-                    <button class="submit-btn" style="padding: 8px 15px; font-size:11px; margin-top:15px; background:transparent; border:1px solid #e6c875; color:#e6c875;" onclick="showAlert('Trading Locked', 'Trading and Swapping will start post official launch.')">Trade/Swap</button>
-                </div>
-            </div>
-
-            <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 25px;">
-                <h4 style="color:#e6c875; font-size:18px; margin-bottom:5px; text-transform:uppercase;">Refer & Earn ATVT</h4>
-                <p style="color:#888; font-size:13px; line-height:1.5;">Share your VIP link. When friends join the Ecosystem, you earn free ATVT Coins directly to your wallet!</p>
-                
-                <div class="referral-box" style="margin-top: 15px;">
-                    <input type="text" id="myReferralLink" readonly value="Loading Link...">
-                    <div class="ref-buttons">
-                        <button onclick="copyRefLink()" class="ref-btn copy-btn"><i class="fas fa-copy"></i> Copy</button>
-                        <button onclick="shareReferralLink()" class="ref-btn share-btn"><i class="fas fa-share-alt"></i> Share</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🔥 TAB 5: APP TRACKER & HELP 🔥 -->
-        <div id="trackerTab" class="tab-content">
-            <h3 class="dash-title"><i class="fas fa-tasks"></i> Application Status & Help</h3>
-            
-            <div class="form-grid">
-                <div style="background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333;">
-                    <h4 style="color:#e6c875; margin-top:0; border-bottom:1px solid #333; padding-bottom:10px;">Audition Tracking</h4>
-                    
-                    <div class="tracking-timeline">
-                        <div class="track-step completed">
-                            <div class="track-icon"></div>
-                            <div class="track-content">
-                                <h4>Account Created</h4>
-                                <p>Welcome to DK Atovitt Ecosystem.</p>
-                                <span class="track-date">Done</span>
-                            </div>
-                        </div>
-                        <div class="track-step active" id="trackStep2">
-                            <div class="track-icon"></div>
-                            <div class="track-content">
-                                <h4>Form Submitted</h4>
-                                <p id="trackStep2Msg">Submit your audition form to begin.</p>
-                                <span class="track-date" id="trackStep2Date">Action Required</span>
-                            </div>
-                        </div>
-                        <div class="track-step">
-                            <div class="track-icon"></div>
-                            <div class="track-content">
-                                <h4>Under Review</h4>
-                                <p>Directors are watching your Studio Reels.</p>
-                            </div>
-                        </div>
-                        <div class="track-step">
-                            <div class="track-icon"></div>
-                            <div class="track-content">
-                                <h4>Selected for Screen Test</h4>
-                                <p>You will be called for live acting test.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
-                    <i class="fas fa-headset" style="font-size: 60px; color: #e6c875; margin-bottom: 20px;"></i>
-                    <h4 style="color:#fff; font-size:20px; margin:0 0 10px 0;">Need Help?</h4>
-                    <p style="color:#888; font-size:13px; line-height:1.6; margin-bottom:20px;">Have questions about your earnings, ATVT coins, or audition status? Contact our official support team.</p>
-                    <a href="https://wa.me/919830332929" target="_blank" class="submit-btn" style="text-decoration:none;"><i class="fab fa-whatsapp"></i> Chat with Support</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🔥 TAB 6: EDIT PROFILE 🔥 -->
-        <div id="profileTab" class="tab-content">
-            <h3 class="dash-title"><i class="fas fa-user-edit"></i> Profile Settings</h3>
-            <form id="editProfileForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Full Legal Name</label>
-                        <input type="text" id="editName" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Registered Auth ID</label>
-                        <input type="text" id="editContact" disabled style="background:#111; cursor:not-allowed; color:#666; border:1px solid #222;" title="Cannot change registered identity">
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn" id="saveProfileBtn"><i class="fas fa-save"></i> Save Changes</button>
-            </form>
+        
+        <div class="tab-content active" id="overviewTab">
+            <h3 class="dash-title">Workspace</h3>
+            <p>Welcome to your premium dashboard. Everything is optimized for speed.</p>
         </div>
     </div>
 
-    <!-- 🔥 MEGA FOOTER (SAME AS HOME PAGE) 🔥 -->
-    <footer class="tseries-footer" id="contact-footer">
+    <!-- 🔥 FOOTER 🔥 -->
+    <footer class="tseries-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate">DK ATOVITT</h3>
-                <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="height: 50px;"></video>
+                <h3>DK ATOVITT</h3>
             </div>
-            <div class="tseries-footer-col">
-                <h4>Movies & Media</h4>
-                <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#movies-section">Featured Movie</a></li>
-                    <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Join Us</h4>
-                <ul>
-                    <li><a href="auditions.html">Auditions</a></li>
-                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
-                    <li><a href="account.html">My Dashboard</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="ceo.html">About CEO</a></li>
-                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Legal & Help</h4>
-                <ul>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="notice.html">Public Notice</a></li>
-                    <li><a href="faq.html">Help / FAQs</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Connect With Us</h4>
-                <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
+            <div class="tseries-footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
         </div>
-        <div class="tseries-footer-bottom">
-            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
-        </div>
+        <div class="tseries-footer-bottom">&copy; 2026 DK Atovitt. All Rights Reserved.</div>
     </footer>
 
-    <!-- 🔥 FLOATING BUTTONS & MODALS 🔥 -->
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
-    <button class="floating-install-btn" id="openAppModal" title="Install Official App" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
-
-    <div class="app-modal-overlay" id="appModalOverlay">
-        <div class="app-modal-box">
-            <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
-            <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
-            <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें।</p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
-        </div>
-    </div>
-
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
-            <button id="closeChatbot">&times;</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
-        </div>
-        <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
-        </div>
-    </div>
-
-    <!-- 🔥 FIREBASE + FIRESTORE DATABASE LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -738,330 +129,37 @@
             messagingSenderId: "234274941441",
             appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
         };
-
+        
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app); 
+        const db = getFirestore(app);
 
-        // UI Elements
-        const pageLoader = document.getElementById('pageLoader');
-        const displayFullName = document.getElementById('displayFullName');
-        const displayContact = document.getElementById('displayContact');
-        const displayProfilePhoto = document.getElementById('displayProfilePhoto');
-        const fileInput = document.getElementById('fileInput');
-        const editName = document.getElementById('editName');
-        const editContact = document.getElementById('editContact');
-        const menuProfileArea = document.getElementById('menuProfileArea');
-        const myReferralLink = document.getElementById('myReferralLink');
-
-        onAuthStateChanged(auth, async (user) => {
-            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.body.classList.add('loaded'); // Hide Loader
                 
-                pageLoader.style.display = 'none'; 
-                
-                const fullName = user.displayName || "VIP Member";
-                const contact = user.email || user.phoneNumber || "Verified Account";
-                const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-
-                displayFullName.innerText = fullName;
-                displayContact.innerText = contact;
-                displayProfilePhoto.src = photo;
-                
-                editName.value = fullName;
-                editContact.value = contact;
-
-                // Referral Logic
-                const userUniqueId = user.uid.substring(0, 8).toUpperCase(); 
-                const refUrl = window.location.origin + "/auth.html?ref=DK" + userUniqueId;
-                if(myReferralLink) myReferralLink.value = refUrl;
-
-                let shortName = fullName.trim().split(' ')[0]; 
-                if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
-                
-                menuProfileArea.innerHTML = `
-                    <div style="padding: 25px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
-                        <img src="${photo}" id="menuSidePhoto" alt="Profile" style="width: 75px; height: 75px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 12px; box-shadow: 0 5px 15px rgba(230,200,117,0.2);">
-                        <h3 style="color: #fff; margin: 0; font-size: 18px; font-family: 'Playfair Display', serif;">${shortName}</h3>
-                        <p style="color: #e6c875; font-size: 10px; margin: 3px 0 0 0; text-transform: uppercase; font-weight:bold; letter-spacing: 1px;"><i class="fas fa-star"></i> Pro Member</p>
-                    </div>
-                `;
-
-                // ========================================================
-                // 🛑 1. SINGLE DEVICE AUTO-LOGOUT LOGIC 🛑
-                // ========================================================
+                // Security Check
                 let currentDeviceToken = localStorage.getItem('device_token');
-                
-                if (!currentDeviceToken) {
-                    currentDeviceToken = "DK_" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
-                    localStorage.setItem('device_token', currentDeviceToken);
-                    
-                    await setDoc(doc(db, "users", user.uid), {
-                        activeDeviceToken: currentDeviceToken,
-                        lastLogin: serverTimestamp(),
-                        name: fullName,
-                        contact: contact
-                    }, { merge: true });
-                }
-
                 onSnapshot(doc(db, "users", user.uid), (docSnap) => {
-                    if (docSnap.exists()) {
-                        const data = docSnap.data();
-                        if (data.activeDeviceToken && data.activeDeviceToken !== currentDeviceToken) {
-                            alert("⚠️ SECURITY ALERT: Your account was just logged in from another device. You are being securely logged out from this device.");
-                            signOut(auth).then(() => {
-                                localStorage.removeItem('device_token');
-                                window.location.replace("auth.html");
-                            });
-                        }
+                    if (docSnap.exists() && docSnap.data().activeDeviceToken !== currentDeviceToken) {
+                        alert("Security Alert: Logged out from another device.");
+                        signOut(auth).then(() => window.location.href = "auth.html");
                     }
                 });
-
-                // ========================================================
-                // 🎬 2. AUDITION FORM DATABASE LOGIC 🎬
-                // ========================================================
-                const auditionForm = document.getElementById('auditionForm');
-                if(auditionForm) {
-                    auditionForm.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = auditionForm.querySelector('.submit-btn');
-                        const originalText = btn.innerHTML;
-                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-                        
-                        const role = document.getElementById('audRole').value;
-                        const ageGender = document.getElementById('audAge').value;
-                        const heightWeight = document.getElementById('audHeight').value;
-                        const cityState = document.getElementById('audCity').value;
-                        const videoLink = document.getElementById('audVideo').value;
-                        const bio = document.getElementById('audBio').value;
-
-                        try {
-                            await setDoc(doc(db, "auditions", user.uid), {
-                                userId: user.uid,
-                                name: fullName,
-                                contact: contact,
-                                role: role,
-                                ageGender: ageGender,
-                                heightWeight: heightWeight,
-                                cityState: cityState,
-                                videoLink: videoLink,
-                                bio: bio,
-                                status: "Pending Review",
-                                submittedAt: serverTimestamp()
-                            }, { merge: true }); 
-                            
-                            showAlert("Success", "🎉 Your Audition Portfolio has been securely saved to the DK Atovitt Database!");
-                            
-                            document.getElementById('dashAppCount').innerHTML = `1 <span>Form</span>`;
-                            document.getElementById('trackStep2').classList.replace('active', 'completed');
-                            document.getElementById('trackStep2Msg').innerText = "Audition profile securely sent to casting team.";
-                            document.getElementById('trackStep2Date').innerText = "Submitted Successfully";
-
-                            switchTab('trackerTab', document.getElementById('btnTracker'));
-                        } catch(error) {
-                            showAlert("Database Error", "Failed to submit form. Make sure you are connected to internet. Error: " + error.message);
-                        } finally {
-                            btn.innerHTML = originalText;
-                        }
-                    });
-                }
-
-
-                // Photo Upload
-                fileInput.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if(file) {
-                        if(file.size > 1024 * 1024) { showAlert("Error", "File is too large! Please upload under 1 MB."); return; }
-                        const reader = new FileReader();
-                        reader.onload = function(event) {
-                            const base64String = event.target.result;
-                            displayProfilePhoto.src = base64String;
-                            const menuSidePhoto = document.getElementById('menuSidePhoto');
-                            if(menuSidePhoto) menuSidePhoto.src = base64String;
-
-                            updateProfile(auth.currentUser, { photoURL: base64String })
-                            .catch((err) => { showAlert("Error", "Failed to save photo: " + err.message); });
-                        }
-                        reader.readAsDataURL(file);
-                    }
-                });
-
-                // Name Update
-                document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const newName = editName.value.trim();
-                    const btn = document.getElementById('saveProfileBtn');
-                    
-                    if(newName) {
-                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-                        try {
-                            await updateProfile(auth.currentUser, { displayName: newName });
-                            displayFullName.innerText = newName;
-                            await setDoc(doc(db, "users", user.uid), { name: newName }, { merge: true });
-                            
-                            showAlert("Success", "Profile updated successfully!");
-                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
-                        } catch (error) {
-                            showAlert("Error", "Error updating profile!");
-                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
-                        }
-                    }
-                });
-
-                // Logout Logic
-                document.getElementById('menuLogoutBtn').addEventListener('click', () => {
-                    if(confirm("Are you sure you want to Logout from your VIP Workspace?")) {
-                        signOut(auth).then(() => { 
-                            localStorage.removeItem('device_token'); 
-                            window.location.href = "auth.html"; 
-                        });
-                    }
-                });
-
             } else {
-                window.location.replace("auth.html");
+                window.location.href = "auth.html";
             }
         });
 
-        // 🌟 CUSTOM ALERT FUNCTION
-        window.showAlert = function(title, msg) {
-            document.getElementById('customAlertTitle').innerText = title;
-            document.getElementById('customAlertMsg').innerText = msg;
-            document.getElementById('customAlertOverlay').classList.add('active');
-        }
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
+        // Fast Load
+        document.addEventListener("DOMContentLoaded", () => {
+             // Basic UI events
+             document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('sideMenu').classList.add('active'));
+             document.getElementById('closeMenu').addEventListener('click', () => document.getElementById('sideMenu').classList.remove('active'));
+             document.getElementById('menuLogoutBtn').addEventListener('click', () => {
+                 signOut(auth).then(() => window.location.href = "auth.html");
+             });
         });
-
-    </script>
-
-    <!-- UI, Modals & Floating Buttons Scripts -->
-    <script>
-        // APP MODAL LOGIC
-        document.addEventListener('DOMContentLoaded', () => {
-            const openAppModal = document.getElementById('openAppModal');
-            const appModalOverlay = document.getElementById('appModalOverlay');
-            const closeAppModal = document.getElementById('closeAppModal');
-            if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
-                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
-                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
-            }
-        });
-
-        // CHATBOT LOGIC
-        const chatbotToggler = document.getElementById('chatbotToggler');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatbotBody = document.getElementById('chatbotBody');
-        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
-        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
-
-        window.sendChat = function(type) {
-            let userText = ""; let botReply = "";
-            if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
-            } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
-            } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
-            } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
-            }
-            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            setTimeout(() => {
-                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
-                chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            }, 600);
-        }
-
-        const menuBtn = document.getElementById('menuBtn'); 
-        const sideMenu = document.getElementById('sideMenu'); 
-        const closeMenu = document.getElementById('closeMenu'); 
-        const overlay = document.getElementById('overlay'); 
-        
-        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
-        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
-        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
-
-        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
-            link.addEventListener('click', () => { 
-                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
-            }); 
-        });
-
-        // Tabs Switching Function
-        window.switchTab = function(tabId, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            if(btnElement) btnElement.classList.add('active');
-
-            if(btnElement) {
-                const container = document.querySelector('.dashboard-tabs-container');
-                container.scrollTo({
-                    left: btnElement.offsetLeft - 20,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // 🔥 SHARE SCRIPTS 🔥
-        window.copyRefLink = function() {
-            var copyText = document.getElementById("myReferralLink");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); 
-            navigator.clipboard.writeText(copyText.value);
-            
-            var copyBtn = document.querySelector('.copy-btn');
-            var originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            copyBtn.style.background = '#25d366';
-            copyBtn.style.borderColor = '#25d366';
-            setTimeout(() => { 
-                copyBtn.innerHTML = originalText; 
-                copyBtn.style.background = '#333';
-                copyBtn.style.borderColor = '#444';
-            }, 2000);
-        }
-
-        window.shareReferralLink = function() {
-            var link = document.getElementById("myReferralLink").value;
-            var text = "Hello! Join the DK Atovitt Movie Production Ecosystem using my VIP link. Sign up, showcase your talent, and earn free ATVT Coins!";
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'DK Atovitt VIP Invitation',
-                    text: text + "\n\nJoin here: ",
-                    url: link
-                }).catch((error) => console.log('Error sharing', error));
-            } else {
-                prompt("Copy this link to share with your friends:", link);
-            }
-        }
-
-        // Translator Logic
-        window.translatePage = function(lang) {
-            if (lang === "") {
-                var d = window.location.hostname;
-                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
-                domains.forEach(function(domain) { document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";"; });
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.reload(); 
-                return;
-            }
-            var googleSelect = document.querySelector('select.goog-te-combo');
-            if (googleSelect) {
-                googleSelect.value = lang; 
-                googleSelect.dispatchEvent(new Event('change'));
-            } else {
-                var domainStr = window.location.hostname.replace(/^www\./i, '');
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                window.location.reload();
-            }
-        }
     </script>
 </body>
 </html>
