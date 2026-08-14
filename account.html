@@ -72,6 +72,8 @@
         .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
         
+        .active-vip-link { color: #e6c875 !important; font-weight: bold !important; background: rgba(230,200,117,0.08) !important; border-left: 4px solid #e6c875 !important; padding-left: 25px !important; }
+
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
@@ -101,15 +103,7 @@
             .profile-info h2 { font-size: 26px; }
         }
 
-        /* 🔥 PREMIUM SCROLLABLE TABS 🔥 */
-        .dashboard-tabs-container { overflow-x: auto; white-space: nowrap; margin-bottom: 30px; padding-bottom: 15px; scrollbar-width: none; border-bottom: 2px solid #222; -webkit-overflow-scrolling: touch; }
-        .dashboard-tabs-container::-webkit-scrollbar { display: none; }
-        .dashboard-tabs { display: inline-flex; gap: 12px; }
-        
-        .tab-btn { background: #1a1a1a; color: #aaa; border: 1px solid #333; font-size: 14px; font-weight: bold; cursor: pointer; padding: 12px 22px; border-radius: 30px; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tab-btn:hover { color: #fff; background: #222; border-color: #555; transform: translateY(-2px); }
-        .tab-btn.active { background: #e6c875; color: #000; border-color: #e6c875; box-shadow: 0 5px 15px rgba(230,200,117,0.4); }
-
+        /* 🔥 CONTENT TABS CSS 🔥 */
         .tab-content { display: none; background: #111; border: 1px solid #333; border-radius: 15px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); animation: fadeIn 0.4s ease; position: relative; overflow: hidden; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -117,7 +111,7 @@
         .dash-title { color: #e6c875; font-size: 24px; margin-top: 0; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: 'Playfair Display', serif;}
         .dash-title i { color: #fff; background: #222; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 18px; border: 1px solid #333;}
 
-        /* 🔥 CINEMATIC DASHBOARD CSS (NEW) 🔥 */
+        /* 🔥 CINEMATIC DASHBOARD CSS (TAB 1) 🔥 */
         .cinematic-box { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), url('images/movies/yakshini-bg.jpg') center/cover; border: 1px solid #e6c875; border-radius: 12px; padding: 40px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(230,200,117,0.15); position: relative; overflow: hidden; }
         .cinematic-box::before { content: '\f03d'; font-family: 'Font Awesome 5 Free'; font-weight: 900; position: absolute; font-size: 150px; opacity: 0.05; right: -20px; bottom: -30px; transform: rotate(-15deg); color: #e6c875; }
         .cinematic-title { color: #e6c875; font-size: 32px; font-family: 'Playfair Display', serif; font-weight: 900; letter-spacing: 3px; margin: 0 0 10px 0; text-transform: uppercase; text-shadow: 2px 2px 5px #000; }
@@ -254,30 +248,15 @@
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
-        .chatbot-toggler:hover { transform: scale(1.1); }
-        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
         .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
-        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
-        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
         
-        /* CHATBOT */
-        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
-        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
-        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        
+        @media (max-width: 768px) { 
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
+            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
+        }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -323,6 +302,7 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
+    <!-- 🔥 VIP SUPER-APP MENU WITH ACTIVE STATE LINKS 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header"><h2>VIP MENU</h2><button id="closeMenu">&times;</button></div>
         
@@ -337,12 +317,15 @@
         <div id="menuProfileArea"></div> 
         
         <a href="index.html"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Go to Website</a>
-        <a href="javascript:void(0)" onclick="switchTab('overviewTab', document.getElementById('btnOverview'))" style="color:#e6c875; font-weight:bold; background:rgba(230,200,117,0.08); border-left:4px solid #e6c875;"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Dashboard</a>
-        <a href="javascript:void(0)" onclick="switchTab('auditionTab', document.getElementById('btnAudition'))"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Casting Form</a>
-        <a href="javascript:void(0)" onclick="switchTab('studioTab', document.getElementById('btnStudio'))"><i class="fab fa-instagram" style="color:var(--primary-color); margin-right:12px;"></i> Creator Studio</a>
-        <a href="javascript:void(0)" onclick="switchTab('walletTab', document.getElementById('btnWallet'))"><i class="fas fa-wallet" style="color:var(--primary-color); margin-right:12px;"></i> Earnings & Wallet</a>
-        <a href="javascript:void(0)" onclick="switchTab('trackerTab', document.getElementById('btnTracker'))"><i class="fas fa-tasks" style="color:var(--primary-color); margin-right:12px;"></i> App Tracker & Help</a>
-        <a href="javascript:void(0)" onclick="switchTab('profileTab', document.getElementById('btnProfile'))"><i class="fas fa-user-edit" style="color:var(--primary-color); margin-right:12px;"></i> Edit Profile</a>
+        
+        <!-- Only side menu items for tabs now -->
+        <a href="javascript:void(0)" id="menuLink_overviewTab" onclick="switchTab('overviewTab')" class="vip-nav-link active-vip-link"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Dashboard</a>
+        <a href="javascript:void(0)" id="menuLink_auditionTab" onclick="switchTab('auditionTab')" class="vip-nav-link"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Casting Form</a>
+        <a href="javascript:void(0)" id="menuLink_studioTab" onclick="switchTab('studioTab')" class="vip-nav-link"><i class="fab fa-instagram" style="color:var(--primary-color); margin-right:12px;"></i> Creator Studio</a>
+        <a href="javascript:void(0)" id="menuLink_walletTab" onclick="switchTab('walletTab')" class="vip-nav-link"><i class="fas fa-wallet" style="color:var(--primary-color); margin-right:12px;"></i> Earnings & Wallet</a>
+        <a href="javascript:void(0)" id="menuLink_trackerTab" onclick="switchTab('trackerTab')" class="vip-nav-link"><i class="fas fa-tasks" style="color:var(--primary-color); margin-right:12px;"></i> App Tracker & Help</a>
+        <a href="javascript:void(0)" id="menuLink_profileTab" onclick="switchTab('profileTab')" class="vip-nav-link"><i class="fas fa-user-edit" style="color:var(--primary-color); margin-right:12px;"></i> Edit Profile</a>
+        
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> View Gallery</a>
         <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:12px;"></i> Yakshini Movie</a>
         <a href="javascript:void(0)" id="menuLogoutBtn" style="border-top: 1px solid #333; margin-top: 10px;"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
@@ -366,18 +349,8 @@
             </div>
         </div>
 
-        <div class="dashboard-tabs-container">
-            <div class="dashboard-tabs">
-                <button class="tab-btn active" id="btnOverview" onclick="switchTab('overviewTab', this)"><i class="fas fa-video"></i> Dashboard</button>
-                <button class="tab-btn" id="btnAudition" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Casting</button>
-                <button class="tab-btn" id="btnStudio" onclick="switchTab('studioTab', this)"><i class="fab fa-instagram"></i> Studio</button>
-                <button class="tab-btn" id="btnWallet" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> Wallet</button>
-                <button class="tab-btn" id="btnTracker" onclick="switchTab('trackerTab', this)"><i class="fas fa-tasks"></i> Tracker</button>
-                <button class="tab-btn" id="btnProfile" onclick="switchTab('profileTab', this)"><i class="fas fa-cog"></i> Settings</button>
-            </div>
-        </div>
-
-        <!-- 🔥 NEW CINEMATIC DASHBOARD (TAB 1) 🔥 -->
+        <!-- 🔥 TABS (BAR REMOVED FROM OUTSIDE, ONLY VIA MENU NOW) 🔥 -->
+        
         <div id="overviewTab" class="tab-content active">
             
             <div class="cinematic-box">
@@ -385,7 +358,7 @@
                 <p class="cinematic-subtitle">Welcome to your personal Film Production Dashboard</p>
             </div>
 
-            <!-- PROMOS (Yakshini & Audition) -->
+            <!-- PROMOS -->
             <div class="promo-split">
                 <div class="promo-card" onclick="window.location.href='yakshini.html'">
                     <div class="promo-img"><img src="images/movies/yakshini-poster.png" alt="Yakshini" loading="lazy"></div>
@@ -394,7 +367,7 @@
                         <p>Our most awaited Horror-Romance movie. Watch the trailer & listen to songs now!</p>
                     </div>
                 </div>
-                <div class="promo-card" onclick="switchTab('auditionTab', document.getElementById('btnAudition'))">
+                <div class="promo-card" onclick="switchTab('auditionTab')">
                     <div class="promo-img" style="background: #e6c875; color: #000; font-size: 40px;"><i class="fas fa-theater-masks"></i></div>
                     <div class="promo-details">
                         <h4>Show Your Talent</h4>
@@ -432,16 +405,16 @@
 
             <!-- STATS GRID -->
             <div class="info-grid">
-                <div class="info-card" onclick="switchTab('walletTab', document.getElementById('btnWallet'))" style="cursor:pointer;">
+                <div class="info-card" onclick="switchTab('walletTab')" style="cursor:pointer;">
                     <i class="fas fa-coins card-icon"></i><h4>ATVT Holdings</h4><div class="value">0.00 <span>ATVT</span></div><p class="desc">ATVT COIN BALANCE</p>
                 </div>
-                <div class="info-card" style="cursor:pointer;">
+                <div class="info-card" onclick="switchTab('walletTab')" style="cursor:pointer;">
                     <i class="fas fa-ticket-alt card-icon"></i><h4>ATVT Coupons</h4><div class="value">0 <span>Coupons</span></div><p class="desc">Available Reward Coupons</p>
                 </div>
-                <div class="info-card" onclick="switchTab('studioTab', document.getElementById('btnStudio'))" style="cursor:pointer;">
+                <div class="info-card" onclick="switchTab('studioTab')" style="cursor:pointer;">
                     <i class="fab fa-instagram card-icon"></i><h4>Studio Videos</h4><div class="value">0 <span>Shorts</span></div><p class="desc">Uploaded Talent Reels</p>
                 </div>
-                <div class="info-card" onclick="switchTab('trackerTab', document.getElementById('btnTracker'))" style="cursor:pointer;">
+                <div class="info-card" onclick="switchTab('trackerTab')" style="cursor:pointer;">
                     <i class="fas fa-file-signature card-icon"></i><h4>Active Applications</h4><div class="value" id="dashAppCount">0 <span>Forms</span></div><p class="desc">Audition/Casting Status</p>
                 </div>
             </div>
@@ -613,7 +586,6 @@
                 <h4 style="color:#e6c875; margin:0 0 15px 0; border-bottom:1px solid #333; padding-bottom:10px; font-size:16px; text-transform:uppercase;">Account Linking & Verification</h4>
                 <p style="color:#888; font-size:12px; margin-bottom:20px;">Link your accounts below. Once linked, you can use any of them to login securely. A linked account cannot be used to create another profile.</p>
                 
-                <!-- Google Link -->
                 <div class="link-item">
                     <div class="link-info">
                         <i class="fab fa-google" style="color:#fff;"></i>
@@ -622,7 +594,6 @@
                     <button type="button" class="link-btn" id="btnLinkGoogle">Link Now</button>
                 </div>
 
-                <!-- Facebook Link -->
                 <div class="link-item">
                     <div class="link-info">
                         <i class="fab fa-facebook" style="color:#1877F2;"></i>
@@ -631,7 +602,6 @@
                     <button type="button" class="link-btn" id="btnLinkFacebook">Link Now</button>
                 </div>
 
-                <!-- Email Link -->
                 <div class="link-item">
                     <div class="link-info">
                         <i class="fas fa-envelope" style="color:#e6c875;"></i>
@@ -640,14 +610,12 @@
                     <button type="button" class="link-btn" id="btnLinkEmail">Link Now</button>
                 </div>
                 
-                <!-- Hidden Email Link Form -->
                 <div id="emailLinkForm" style="display:none; padding:15px; background:#111; border-top:1px solid #333; border-bottom:1px solid #333;">
                     <input type="email" id="linkEmailInput" placeholder="Enter Email Address" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
                     <input type="password" id="linkEmailPassword" placeholder="Create Password (Min 6 chars)" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
                     <button type="button" id="submitLinkEmail" class="submit-btn" style="padding:8px 15px; font-size:12px; margin:0;">Verify & Link Email</button>
                 </div>
 
-                <!-- Mobile Link -->
                 <div class="link-item">
                     <div class="link-info">
                         <i class="fas fa-phone-alt" style="color:#25d366;"></i>
@@ -656,7 +624,6 @@
                     <button type="button" class="link-btn" id="btnLinkPhone">Link Now</button>
                 </div>
 
-                <!-- Hidden Phone Link Form -->
                 <div id="phoneLinkForm" style="display:none; padding:15px; background:#111;">
                     <div id="recaptcha-link-phone"></div>
                     <input type="tel" id="linkPhoneInput" placeholder="Enter Mobile No (+91...)" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
@@ -837,7 +804,6 @@
                     </div>
                 `;
 
-                // 🛑 DATABASE LOAD WRAPPED IN TRY-CATCH TO PREVENT FREEZE 🛑
                 try {
                     const userDoc = await getDoc(doc(db, "users", user.uid));
                     if(userDoc.exists()) {
@@ -851,7 +817,6 @@
                     }
                 } catch(e) { console.error("Database fetch ignored", e); }
 
-                // Single Device Logic
                 try {
                     let currentDeviceToken = localStorage.getItem('device_token');
                     if (!currentDeviceToken) {
@@ -867,7 +832,6 @@
                     });
                 } catch(e) {}
 
-                // 🔥 ACCOUNT LINKING LOGIC 🔥
                 let isGoogleLinked = false, isFacebookLinked = false, isEmailLinked = false, isPhoneLinked = false;
                 user.providerData.forEach(provider => {
                     if(provider.providerId === 'google.com') {
@@ -952,7 +916,6 @@
                     } catch(e) { showCustomAlert('Error', 'Invalid OTP', true); this.innerHTML = 'Verify & Link Mobile'; }
                 });
 
-                // Forms
                 document.getElementById('auditionForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const btn = document.querySelector('#auditionForm .submit-btn'); const originalText = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
@@ -965,7 +928,7 @@
                         }, { merge: true }); 
                         showCustomAlert("Success", "🎉 Your Audition Portfolio has been securely saved!");
                         document.getElementById('dashAppCount').innerHTML = `1 <span>Form</span>`; document.getElementById('trackStep2').classList.replace('active', 'completed');
-                        switchTab('trackerTab', document.getElementById('btnTracker'));
+                        switchTab('trackerTab');
                     } catch(error) { showCustomAlert("Error", "Failed to submit form.", true); } finally { btn.innerHTML = originalText; }
                 });
 
@@ -984,7 +947,6 @@
                     } catch (error) { showCustomAlert("Error", error.message, true); } finally { btn.innerHTML = '<i class="fas fa-save"></i> Save Details'; }
                 });
 
-                // Logout handling mapping
                 document.body.addEventListener('click', (e) => {
                     if(e.target.closest('.logout-action') || e.target.id === 'menuLogoutBtn') {
                         if(confirm("Are you sure you want to Logout?")) {
@@ -1000,7 +962,6 @@
     </script>
 
     <script>
-        // Failsafe loader hide
         window.addEventListener('load', function() {
             setTimeout(function() {
                 var loader = document.getElementById('pageLoader');
@@ -1011,8 +972,7 @@
                 document.body.classList.add('loaded');
             }, 2000);
         });
-        
-        // 🌟 CUSTOM ALERT & TABS
+
         window.showCustomAlert = function(title, msg, isError=false) {
             document.getElementById('customAlertTitle').innerText = title;
             document.getElementById('customAlertMsg').innerText = msg;
@@ -1021,17 +981,19 @@
         }
         document.getElementById('closeCustomAlert').addEventListener('click', () => document.getElementById('customAlertOverlay').classList.remove('active'));
 
-        window.switchTab = function(tabId, btnElement) {
+        window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            if(btnElement) {
-                btnElement.classList.add('active');
-                document.querySelector('.dashboard-tabs-container').scrollTo({ left: btnElement.offsetLeft - 20, behavior: 'smooth' });
-            }
+            
+            document.querySelectorAll('.vip-nav-link').forEach(link => link.classList.remove('active-vip-link'));
+            let activeLink = document.getElementById('menuLink_' + tabId);
+            if(activeLink) activeLink.classList.add('active-vip-link');
+
+            document.getElementById('sideMenu').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
         }
 
-        // 🌟 MENU LOGIC
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1041,7 +1003,6 @@
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
         
-        // 🌟 MODALS & CHATBOT
         document.getElementById('openAppModal').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('appModalOverlay').classList.add('active'); });
         document.getElementById('closeAppModal').addEventListener('click', () => document.getElementById('appModalOverlay').classList.remove('active'));
         document.getElementById('chatbotToggler').addEventListener('click', () => document.getElementById('chatbotContainer').classList.toggle('active'));
@@ -1052,13 +1013,13 @@
             if(type === 'Audition') { userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।"; } 
             else if(type === 'Movies') { userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है!"; } 
             else if(type === 'Contact') { userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने के लिए आप +91 9830332929 पर WhatsApp कर सकते हैं।"; } 
+            else if(type === 'Join') { userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir' से जुड़कर अच्छी कमाई कर सकते हैं।"; }
             
             const body = document.getElementById('chatbotBody');
             body.innerHTML += `<div class="user-msg">${userText}</div>`; body.scrollTop = body.scrollHeight;
             setTimeout(() => { body.innerHTML += `<div class="bot-msg">${botReply}</div>`; body.scrollTop = body.scrollHeight; }, 600);
         }
 
-        // 🌟 SHARE
         window.copyRefLink = function() {
             var copyText = document.getElementById("myReferralLink"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value);
             var copyBtn = document.querySelector('.copy-btn'); var originalText = copyBtn.innerHTML;
@@ -1071,7 +1032,6 @@
             else prompt("Copy this link to share with your friends:", link);
         }
 
-        // 🌟 TRANSLATOR
         window.translatePage = function(lang) {
             if (lang === "") {
                 var d = window.location.hostname; var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
