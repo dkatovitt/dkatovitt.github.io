@@ -172,6 +172,19 @@
         .submit-btn { background: #e6c875; color: #000; padding: 14px 30px; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); display: inline-flex; align-items: center; gap: 8px; }
         .submit-btn:hover { background: #d4b561; transform: translateY(-2px); }
 
+        /* 🔥 LINKED ACCOUNTS SECTION 🔥 */
+        .linked-accounts-box { background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333; margin-bottom: 30px; }
+        .link-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #333; }
+        .link-item:last-child { border-bottom: none; }
+        .link-info { display: flex; align-items: center; gap: 15px; }
+        .link-info i { font-size: 24px; width: 30px; text-align: center; }
+        .link-title { font-weight: bold; color: #fff; font-size: 14px; }
+        .link-status { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        .link-btn { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .link-btn:hover { background: #e6c875; color: #000; }
+        .link-btn.verified { background: rgba(37, 211, 102, 0.1); color: #25d366; border-color: #25d366; cursor: default; }
+        .link-btn.verified:hover { background: rgba(37, 211, 102, 0.1); color: #25d366; }
+
         /* Referral Box */
         .referral-box { background: #1a1a1a; border: 1px dashed #e6c875; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
         .referral-box input { flex-grow: 1; background: #111; color: #e6c875; border: 1px solid #333; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; font-weight: bold; letter-spacing: 0.5px; width: 100%; }
@@ -189,6 +202,8 @@
             .referral-box { flex-direction: column; align-items: stretch; }
             .ref-buttons { justify-content: center; width: 100%; }
             .ref-btn { flex: 1; justify-content: center; }
+            .link-item { flex-direction: column; gap: 10px; align-items: flex-start; }
+            .link-btn { width: 100%; text-align: center; }
         }
 
         /* Loader */
@@ -245,9 +260,7 @@
 
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            </div>
+            <div class="custom-alert-logo"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
             <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
             <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
@@ -328,9 +341,9 @@
             <div class="dashboard-tabs">
                 <button class="tab-btn active" id="btnOverview" onclick="switchTab('overviewTab', this)"><i class="fas fa-th-large"></i> Overview</button>
                 <button class="tab-btn" id="btnAudition" onclick="switchTab('auditionTab', this)"><i class="fas fa-theater-masks"></i> Casting</button>
-                <button class="tab-btn" id="btnStudio" onclick="switchTab('studioTab', this)"><i class="fab fa-instagram"></i> Creator Studio</button>
-                <button class="tab-btn" id="btnWallet" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> Income Hub</button>
-                <button class="tab-btn" id="btnTracker" onclick="switchTab('trackerTab', this)"><i class="fas fa-tasks"></i> Tracker & Help</button>
+                <button class="tab-btn" id="btnStudio" onclick="switchTab('studioTab', this)"><i class="fab fa-instagram"></i> Studio</button>
+                <button class="tab-btn" id="btnWallet" onclick="switchTab('walletTab', this)"><i class="fas fa-wallet"></i> Wallet</button>
+                <button class="tab-btn" id="btnTracker" onclick="switchTab('trackerTab', this)"><i class="fas fa-tasks"></i> Tracker</button>
                 <button class="tab-btn" id="btnProfile" onclick="switchTab('profileTab', this)"><i class="fas fa-cog"></i> Settings</button>
             </div>
         </div>
@@ -529,21 +542,123 @@
 
         <div id="profileTab" class="tab-content">
             <h3 class="dash-title"><i class="fas fa-user-edit"></i> Profile Settings</h3>
+            
+            <div class="linked-accounts-box">
+                <h4 style="color:#e6c875; margin:0 0 15px 0; border-bottom:1px solid #333; padding-bottom:10px; font-size:16px; text-transform:uppercase;">Account Linking & Verification</h4>
+                <p style="color:#888; font-size:12px; margin-bottom:20px;">Link your accounts below. Once linked, you can use any of them to login securely. A linked account cannot be used to create another profile.</p>
+                
+                <!-- Google Link -->
+                <div class="link-item">
+                    <div class="link-info">
+                        <i class="fab fa-google" style="color:#fff;"></i>
+                        <div><span class="link-title">Google (Gmail)</span><br><span class="link-status" id="statusGoogle">Checking...</span></div>
+                    </div>
+                    <button type="button" class="link-btn" id="btnLinkGoogle">Link Now</button>
+                </div>
+
+                <!-- Facebook Link -->
+                <div class="link-item">
+                    <div class="link-info">
+                        <i class="fab fa-facebook" style="color:#1877F2;"></i>
+                        <div><span class="link-title">Facebook</span><br><span class="link-status" id="statusFacebook">Checking...</span></div>
+                    </div>
+                    <button type="button" class="link-btn" id="btnLinkFacebook">Link Now</button>
+                </div>
+
+                <!-- Email Link -->
+                <div class="link-item">
+                    <div class="link-info">
+                        <i class="fas fa-envelope" style="color:#e6c875;"></i>
+                        <div><span class="link-title">Email Address</span><br><span class="link-status" id="statusEmail">Checking...</span></div>
+                    </div>
+                    <button type="button" class="link-btn" id="btnLinkEmail">Link Now</button>
+                </div>
+                
+                <!-- Hidden Email Link Form -->
+                <div id="emailLinkForm" style="display:none; padding:15px; background:#111; border-top:1px solid #333; border-bottom:1px solid #333;">
+                    <input type="email" id="linkEmailInput" placeholder="Enter Email Address" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
+                    <input type="password" id="linkEmailPassword" placeholder="Create Password (Min 6 chars)" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
+                    <button type="button" id="submitLinkEmail" class="submit-btn" style="padding:8px 15px; font-size:12px; margin:0;">Verify & Link Email</button>
+                </div>
+
+                <!-- Mobile Link -->
+                <div class="link-item">
+                    <div class="link-info">
+                        <i class="fas fa-phone-alt" style="color:#25d366;"></i>
+                        <div><span class="link-title">Mobile Number</span><br><span class="link-status" id="statusPhone">Checking...</span></div>
+                    </div>
+                    <button type="button" class="link-btn" id="btnLinkPhone">Link Now</button>
+                </div>
+
+                <!-- Hidden Phone Link Form -->
+                <div id="phoneLinkForm" style="display:none; padding:15px; background:#111;">
+                    <div id="recaptcha-link-phone"></div>
+                    <input type="tel" id="linkPhoneInput" placeholder="Enter Mobile No (+91...)" style="width:100%; padding:10px; margin-bottom:10px; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
+                    <button type="button" id="sendLinkPhoneOtp" class="submit-btn" style="padding:8px 15px; font-size:12px; margin:0;">Send OTP</button>
+                    
+                    <input type="number" id="linkPhoneOtpInput" placeholder="Enter OTP" style="display:none; width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:#fff; border-radius:5px;">
+                    <button type="button" id="verifyLinkPhoneOtp" class="submit-btn" style="display:none; padding:8px 15px; font-size:12px; margin:0; background:#25d366;">Verify & Link Mobile</button>
+                </div>
+            </div>
+
             <form id="editProfileForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label style="display:flex; justify-content:space-between; align-items:center;">
+                        <label>
                             Full Legal Name 
-                            <span onclick="document.getElementById('editName').focus()" style="color:#e6c875; cursor:pointer; font-size:11px; padding: 4px 8px; background: #222; border-radius: 4px; border: 1px solid #333;"><i class="fas fa-edit"></i> EDIT</span>
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editName').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
                         <input type="text" id="editName" required>
                     </div>
                     <div class="form-group">
-                        <label>Registered Auth ID</label>
-                        <input type="text" id="editContact" disabled style="background:#111; cursor:not-allowed; color:#666; border:1px solid #222;" title="Cannot change registered identity">
+                        <label>
+                            Date of Birth 
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editDob').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                        </label>
+                        <input type="date" id="editDob">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Age 
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAge').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                        </label>
+                        <input type="number" id="editAge" placeholder="e.g. 25">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Sex / Gender 
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editGender').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                        </label>
+                        <select id="editGender">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Occupation 
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editOccupation').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                        </label>
+                        <input type="text" id="editOccupation" placeholder="e.g. Student, Actor, Business">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Other Mobile Number 
+                            <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAltMobile').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                        </label>
+                        <input type="tel" id="editAltMobile" placeholder="e.g. +91 9876543210">
                     </div>
                 </div>
-                <button type="submit" class="submit-btn" id="saveProfileBtn"><i class="fas fa-save"></i> Save Changes</button>
+                <div class="form-group">
+                    <label>
+                        Full Address with PIN Code 
+                        <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAddress').focus()"><i class="fas fa-edit"></i> EDIT</span>
+                    </label>
+                    <textarea id="editAddress" placeholder="Enter your full residential address..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="saveProfileBtn"><i class="fas fa-save"></i> Save Details</button>
             </form>
         </div>
 
@@ -552,7 +667,7 @@
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3 class="notranslate">DK ATOVITT</h3>
                 <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
@@ -564,7 +679,6 @@
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -581,7 +695,6 @@
                     <li><a href="ceo.html">About CEO</a></li>
                     <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
@@ -589,62 +702,26 @@
                 <ul>
                     <li><a href="terms.html">Terms & Conditions</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="notice.html">Public Notice</a></li>
                     <li><a href="faq.html">Help / FAQs</a></li>
                 </ul>
             </div>
             <div class="tseries-footer-col">
                 <h4>Connect With Us</h4>
                 <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
-        <div class="tseries-footer-bottom">
-            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
-        </div>
+        <div class="tseries-footer-bottom"><p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p></div>
     </footer>
-
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
-    <button class="floating-install-btn" id="openAppModal" title="Install Official App" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
-
-    <div class="app-modal-overlay" id="appModalOverlay">
-        <div class="app-modal-box">
-            <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
-            <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
-            <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
-        </div>
-    </div>
-
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
-            <button id="closeChatbot">&times;</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
-        </div>
-        <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
-        </div>
-    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged, signOut, updateProfile, updateEmail, updatePassword, sendEmailVerification, RecaptchaVerifier, PhoneAuthProvider, updatePhoneNumber, GoogleAuthProvider, FacebookAuthProvider, linkWithPopup } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -659,177 +736,186 @@
         const auth = getAuth(app);
         const db = getFirestore(app); 
 
-        // UI Elements
-        const pageLoader = document.getElementById('pageLoader');
-        const displayFullName = document.getElementById('displayFullName');
-        const displayContact = document.getElementById('displayContact');
-        const displayProfilePhoto = document.getElementById('displayProfilePhoto');
-        const fileInput = document.getElementById('fileInput');
-        const editName = document.getElementById('editName');
-        const editContact = document.getElementById('editContact');
-        const menuProfileArea = document.getElementById('menuProfileArea');
-        const myReferralLink = document.getElementById('myReferralLink');
-
         onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
-                
-                pageLoader.style.display = 'none'; 
+                document.body.classList.add('loaded');
                 
                 const fullName = user.displayName || "VIP Member";
-                const contact = user.email || user.phoneNumber || "Verified Account";
                 const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
-                displayFullName.innerText = fullName;
-                displayContact.innerText = contact;
-                displayProfilePhoto.src = photo;
+                document.getElementById('displayFullName').innerText = fullName;
+                document.getElementById('displayProfilePhoto').src = photo;
+                document.getElementById('editName').value = fullName;
                 
-                editName.value = fullName;
-                editContact.value = contact;
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                if(userDoc.exists()) {
+                    const d = userDoc.data();
+                    if(d.dob) document.getElementById('editDob').value = d.dob;
+                    if(d.age) document.getElementById('editAge').value = d.age;
+                    if(d.gender) document.getElementById('editGender').value = d.gender;
+                    if(d.occupation) document.getElementById('editOccupation').value = d.occupation;
+                    if(d.altMobile) document.getElementById('editAltMobile').value = d.altMobile;
+                    if(d.address) document.getElementById('editAddress').value = d.address;
+                }
 
-                // Referral Logic
-                const userUniqueId = user.uid.substring(0, 8).toUpperCase(); 
-                const refUrl = window.location.origin + "/auth.html?ref=DK" + userUniqueId;
-                if(myReferralLink) myReferralLink.value = refUrl;
+                let isGoogleLinked = false, isFacebookLinked = false, isEmailLinked = false, isPhoneLinked = false;
 
-                let shortName = fullName.trim().split(' ')[0]; 
-                if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
+                user.providerData.forEach(provider => {
+                    if(provider.providerId === 'google.com') {
+                        isGoogleLinked = true;
+                        document.getElementById('statusGoogle').innerText = provider.email || "Linked";
+                        document.getElementById('statusGoogle').style.color = "#25d366";
+                        const btn = document.getElementById('btnLinkGoogle');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
+                        btn.classList.add('verified');
+                    }
+                    if(provider.providerId === 'facebook.com') {
+                        isFacebookLinked = true;
+                        document.getElementById('statusFacebook').innerText = "Linked Account";
+                        document.getElementById('statusFacebook').style.color = "#25d366";
+                        const btn = document.getElementById('btnLinkFacebook');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
+                        btn.classList.add('verified');
+                    }
+                    if(provider.providerId === 'password') {
+                        isEmailLinked = true;
+                        document.getElementById('statusEmail').innerText = user.email || "Linked";
+                        document.getElementById('statusEmail').style.color = "#25d366";
+                        const btn = document.getElementById('btnLinkEmail');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
+                        btn.classList.add('verified');
+                    }
+                    if(provider.providerId === 'phone') {
+                        isPhoneLinked = true;
+                        document.getElementById('statusPhone').innerText = user.phoneNumber || "Linked";
+                        document.getElementById('statusPhone').style.color = "#25d366";
+                        const btn = document.getElementById('btnLinkPhone');
+                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
+                        btn.classList.add('verified');
+                    }
+                });
+
+                document.getElementById('btnLinkGoogle').addEventListener('click', async () => {
+                    if(isGoogleLinked) return;
+                    try {
+                        await linkWithPopup(user, new GoogleAuthProvider());
+                        showCustomAlert('Success', 'Google Account linked successfully! You can now use it to login.');
+                        setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) {
+                        if(e.code === 'auth/credential-already-in-use') showCustomAlert('Error', 'This Google Account is already registered with another user!', true);
+                        else showCustomAlert('Error', e.message, true);
+                    }
+                });
+
+                document.getElementById('btnLinkFacebook').addEventListener('click', async () => {
+                    if(isFacebookLinked) return;
+                    try {
+                        await linkWithPopup(user, new FacebookAuthProvider());
+                        showCustomAlert('Success', 'Facebook Account linked successfully!');
+                        setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) {
+                        if(e.code === 'auth/credential-already-in-use') showCustomAlert('Error', 'This Facebook Account is already registered with another user!', true);
+                        else showCustomAlert('Error', e.message, true);
+                    }
+                });
+
+                document.getElementById('btnLinkEmail').addEventListener('click', () => {
+                    if(isEmailLinked) return;
+                    const f = document.getElementById('emailLinkForm');
+                    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+                });
                 
-                menuProfileArea.innerHTML = `
-                    <div style="padding: 25px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
-                        <img src="${photo}" id="menuSidePhoto" alt="Profile" style="width: 75px; height: 75px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 12px; box-shadow: 0 5px 15px rgba(230,200,117,0.2);">
-                        <h3 style="color: #fff; margin: 0; font-size: 18px; font-family: 'Playfair Display', serif;">${shortName}</h3>
-                        <p style="color: #e6c875; font-size: 10px; margin: 3px 0 0 0; text-transform: uppercase; font-weight:bold; letter-spacing: 1px;"><i class="fas fa-star"></i> Pro Member</p>
-                    </div>
-                `;
-
-                // ========================================================
-                // 🛑 1. SINGLE DEVICE AUTO-LOGOUT LOGIC 🛑
-                // ========================================================
-                let currentDeviceToken = localStorage.getItem('device_token');
-                
-                if (!currentDeviceToken) {
-                    currentDeviceToken = "DK_" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
-                    localStorage.setItem('device_token', currentDeviceToken);
+                document.getElementById('submitLinkEmail').addEventListener('click', async function() {
+                    const em = document.getElementById('linkEmailInput').value;
+                    const pass = document.getElementById('linkEmailPassword').value;
+                    if(!em || pass.length < 6) { showCustomAlert('Error', 'Enter valid email and min 6 char password', true); return; }
                     
-                    await setDoc(doc(db, "users", user.uid), {
-                        activeDeviceToken: currentDeviceToken,
-                        lastLogin: serverTimestamp(),
-                        name: fullName,
-                        contact: contact
-                    }, { merge: true });
-                }
-
-                onSnapshot(doc(db, "users", user.uid), (docSnap) => {
-                    if (docSnap.exists()) {
-                        const data = docSnap.data();
-                        if (data.activeDeviceToken && data.activeDeviceToken !== currentDeviceToken) {
-                            alert("⚠️ SECURITY ALERT: Your account was just logged in from another device. You are being securely logged out from this device.");
-                            signOut(auth).then(() => {
-                                localStorage.removeItem('device_token');
-                                window.location.replace("auth.html");
-                            });
-                        }
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Linking...';
+                    try {
+                        await updateEmail(user, em);
+                        await updatePassword(user, pass);
+                        await sendEmailVerification(user);
+                        showCustomAlert('Success', 'Email Linked! A verification link has been sent. You can now use this email to login.');
+                        setTimeout(() => window.location.reload(), 2500);
+                    } catch(e) {
+                        if(e.code === 'auth/email-already-in-use') showCustomAlert('Error', 'This Email is already registered with another user!', true);
+                        else if(e.code === 'auth/requires-recent-login') showCustomAlert('Security Alert', 'Please logout and login again to link an email.', true);
+                        else showCustomAlert('Error', e.message, true);
+                        this.innerHTML = 'Verify & Link Email';
                     }
                 });
 
-                // ========================================================
-                // 🎬 2. AUDITION FORM DATABASE LOGIC 🎬
-                // ========================================================
-                const auditionForm = document.getElementById('auditionForm');
-                if(auditionForm) {
-                    auditionForm.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = auditionForm.querySelector('.submit-btn');
-                        const originalText = btn.innerHTML;
-                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-                        
-                        const role = document.getElementById('audRole').value;
-                        const ageGender = document.getElementById('audAge').value;
-                        const heightWeight = document.getElementById('audHeight').value;
-                        const cityState = document.getElementById('audCity').value;
-                        const videoLink = document.getElementById('audVideo').value;
-                        const bio = document.getElementById('audBio').value;
-
-                        try {
-                            await setDoc(doc(db, "auditions", user.uid), {
-                                userId: user.uid,
-                                name: fullName,
-                                contact: contact,
-                                role: role,
-                                ageGender: ageGender,
-                                heightWeight: heightWeight,
-                                cityState: cityState,
-                                videoLink: videoLink,
-                                bio: bio,
-                                status: "Pending Review",
-                                submittedAt: serverTimestamp()
-                            }, { merge: true }); 
-                            
-                            showAlert("Success", "🎉 Your Audition Portfolio has been securely saved to the DK Atovitt Database!");
-                            
-                            document.getElementById('dashAppCount').innerHTML = `1 <span>Form</span>`;
-                            document.getElementById('trackStep2').classList.replace('active', 'completed');
-                            document.getElementById('trackStep2Msg').innerText = "Audition profile securely sent to casting team.";
-                            document.getElementById('trackStep2Date').innerText = "Submitted Successfully";
-
-                            switchTab('trackerTab', document.getElementById('btnTracker'));
-                        } catch(error) {
-                            showAlert("Database Error", "Failed to submit form. Make sure you are connected to internet. Error: " + error.message);
-                        } finally {
-                            btn.innerHTML = originalText;
-                        }
-                    });
-                }
-
-
-                // Photo Upload
-                fileInput.addEventListener('change', (e) => {
-                    const file = e.target.files[0];
-                    if(file) {
-                        if(file.size > 1024 * 1024) { showAlert("Error", "File is too large! Please upload under 1 MB."); return; }
-                        const reader = new FileReader();
-                        reader.onload = function(event) {
-                            const base64String = event.target.result;
-                            displayProfilePhoto.src = base64String;
-                            const menuSidePhoto = document.getElementById('menuSidePhoto');
-                            if(menuSidePhoto) menuSidePhoto.src = base64String;
-
-                            updateProfile(auth.currentUser, { photoURL: base64String })
-                            .catch((err) => { showAlert("Error", "Failed to save photo: " + err.message); });
-                        }
-                        reader.readAsDataURL(file);
+                document.getElementById('btnLinkPhone').addEventListener('click', () => {
+                    if(isPhoneLinked) return;
+                    const f = document.getElementById('phoneLinkForm');
+                    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+                });
+                
+                document.getElementById('sendLinkPhoneOtp').addEventListener('click', async function() {
+                    let ph = document.getElementById('linkPhoneInput').value.trim();
+                    if(!ph.startsWith('+91')) ph = '+91' + ph;
+                    if(ph.length < 12) { showCustomAlert('Error', 'Enter valid 10 digit number', true); return; }
+                    
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    try {
+                        if(!window.recaptchaLink) window.recaptchaLink = new RecaptchaVerifier(auth, 'recaptcha-link-phone', { 'size': 'invisible' });
+                        const provider = new PhoneAuthProvider(auth);
+                        window.linkVerificationId = await provider.verifyPhoneNumber(ph, window.recaptchaLink);
+                        this.style.display = 'none';
+                        document.getElementById('linkPhoneOtpInput').style.display = 'block';
+                        document.getElementById('verifyLinkPhoneOtp').style.display = 'block';
+                    } catch(e) {
+                        showCustomAlert('Error', e.message, true);
+                        this.innerHTML = 'Send OTP';
+                    }
+                });
+                
+                document.getElementById('verifyLinkPhoneOtp').addEventListener('click', async function() {
+                    const otp = document.getElementById('linkPhoneOtpInput').value;
+                    if(!otp) return;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
+                    try {
+                        const credential = PhoneAuthProvider.credential(window.linkVerificationId, otp);
+                        await updatePhoneNumber(user, credential);
+                        showCustomAlert('Success', 'Mobile Number Linked Successfully! You can now use it to login.');
+                        setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) {
+                        if(e.code === 'auth/phone-number-already-exists') showCustomAlert('Error', 'This Mobile Number is already registered with another user!', true);
+                        else showCustomAlert('Error', 'Invalid OTP', true);
+                        this.innerHTML = 'Verify & Link Mobile';
                     }
                 });
 
-                // Name Update
                 document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const newName = editName.value.trim();
+                    const newName = document.getElementById('editName').value.trim();
                     const btn = document.getElementById('saveProfileBtn');
                     
-                    if(newName) {
-                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-                        try {
-                            await updateProfile(auth.currentUser, { displayName: newName });
-                            displayFullName.innerText = newName;
-                            await setDoc(doc(db, "users", user.uid), { name: newName }, { merge: true });
-                            
-                            showAlert("Success", "Profile updated successfully!");
-                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
-                        } catch (error) {
-                            showAlert("Error", "Error updating profile!");
-                            btn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
-                        }
-                    }
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                    try {
+                        if(newName !== fullName) await updateProfile(auth.currentUser, { displayName: newName });
+                        
+                        const profileData = {
+                            name: newName,
+                            dob: document.getElementById('editDob').value,
+                            age: document.getElementById('editAge').value,
+                            gender: document.getElementById('editGender').value,
+                            occupation: document.getElementById('editOccupation').value,
+                            altMobile: document.getElementById('editAltMobile').value,
+                            address: document.getElementById('editAddress').value
+                        };
+                        
+                        await setDoc(doc(db, "users", user.uid), profileData, { merge: true });
+                        document.getElementById('displayFullName').innerText = newName;
+                        showCustomAlert("Success", "All Profile Details Saved Successfully!");
+                        
+                    } catch (error) { showCustomAlert("Error", error.message, true); }
+                    finally { btn.innerHTML = '<i class="fas fa-save"></i> Save Details'; }
                 });
 
-                // Logout Logic
                 document.getElementById('menuLogoutBtn').addEventListener('click', () => {
-                    if(confirm("Are you sure you want to Logout from your VIP Workspace?")) {
-                        signOut(auth).then(() => { 
-                            localStorage.removeItem('device_token'); 
-                            window.location.href = "auth.html"; 
-                        });
+                    if(confirm("Are you sure you want to Logout?")) {
+                        signOut(auth).then(() => { localStorage.removeItem('device_token'); window.location.href = "auth.html"; });
                     }
                 });
 
@@ -837,57 +923,25 @@
                 window.location.replace("auth.html");
             }
         });
-
-        // 🌟 CUSTOM ALERT FUNCTION
-        window.showAlert = function(title, msg) {
-            document.getElementById('customAlertTitle').innerText = title;
-            document.getElementById('customAlertMsg').innerText = msg;
-            document.getElementById('customAlertOverlay').classList.add('active');
-        }
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-        });
-
     </script>
 
     <script>
-        // APP MODAL LOGIC
-        document.addEventListener('DOMContentLoaded', () => {
-            const openAppModal = document.getElementById('openAppModal');
-            const appModalOverlay = document.getElementById('appModalOverlay');
-            const closeAppModal = document.getElementById('closeAppModal');
-            if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
-                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
-                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
-            }
-        });
+        window.showCustomAlert = function(title, msg, isError=false) {
+            document.getElementById('customAlertTitle').innerText = title;
+            document.getElementById('customAlertMsg').innerText = msg;
+            document.getElementById('customAlertTitle').style.color = isError ? "#ff4d4d" : "#e6c875";
+            document.getElementById('customAlertOverlay').classList.add('active');
+        }
+        document.getElementById('closeCustomAlert').addEventListener('click', () => document.getElementById('customAlertOverlay').classList.remove('active'));
 
-        // CHATBOT LOGIC
-        const chatbotToggler = document.getElementById('chatbotToggler');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatbotBody = document.getElementById('chatbotBody');
-        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
-        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
-
-        window.sendChat = function(type) {
-            let userText = ""; let botReply = "";
-            if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
-            } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
-            } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
-            } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+        window.switchTab = function(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if(btnElement) {
+                btnElement.classList.add('active');
+                document.querySelector('.dashboard-tabs-container').scrollTo({ left: btnElement.offsetLeft - 20, behavior: 'smooth' });
             }
-            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            setTimeout(() => {
-                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
-                chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            }, 600);
         }
 
         const menuBtn = document.getElementById('menuBtn'); 
@@ -898,85 +952,6 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
-
-        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
-            link.addEventListener('click', () => { 
-                sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
-            }); 
-        });
-
-        // Tabs Switching Function
-        window.switchTab = function(tabId, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            if(btnElement) btnElement.classList.add('active');
-
-            if(btnElement) {
-                const container = document.querySelector('.dashboard-tabs-container');
-                container.scrollTo({
-                    left: btnElement.offsetLeft - 20,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // 🔥 SHARE SCRIPTS 🔥
-        window.copyRefLink = function() {
-            var copyText = document.getElementById("myReferralLink");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); 
-            navigator.clipboard.writeText(copyText.value);
-            
-            var copyBtn = document.querySelector('.copy-btn');
-            var originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            copyBtn.style.background = '#25d366';
-            copyBtn.style.borderColor = '#25d366';
-            setTimeout(() => { 
-                copyBtn.innerHTML = originalText; 
-                copyBtn.style.background = '#333';
-                copyBtn.style.borderColor = '#444';
-            }, 2000);
-        }
-
-        window.shareReferralLink = function() {
-            var link = document.getElementById("myReferralLink").value;
-            var text = "Hello! Join the DK Atovitt Movie Production Ecosystem using my VIP link. Sign up, showcase your talent, and earn free ATVT Coins!";
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'DK Atovitt VIP Invitation',
-                    text: text + "\n\nJoin here: ",
-                    url: link
-                }).catch((error) => console.log('Error sharing', error));
-            } else {
-                prompt("Copy this link to share with your friends:", link);
-            }
-        }
-
-        // Translator Logic
-        window.translatePage = function(lang) {
-            if (lang === "") {
-                var d = window.location.hostname;
-                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
-                domains.forEach(function(domain) { document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";"; });
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.reload(); 
-                return;
-            }
-            var googleSelect = document.querySelector('select.goog-te-combo');
-            if (googleSelect) {
-                googleSelect.value = lang; 
-                googleSelect.dispatchEvent(new Event('change'));
-            } else {
-                var domainStr = window.location.hostname.replace(/^www\./i, '');
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                window.location.reload();
-            }
-        }
     </script>
 </body>
 </html>
