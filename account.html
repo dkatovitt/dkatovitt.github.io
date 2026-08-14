@@ -206,8 +206,8 @@
             .link-btn { width: 100%; text-align: center; }
         }
 
-        /* Loader */
-        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        /* 🔥 BULLETPROOF LOADER CSS 🔥 */
+        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.3s ease; }
         #pageLoader video { width: 100px; mix-blend-mode: screen; transform: scale(1.5); margin-bottom: 20px; }
         #pageLoader p { color: #e6c875; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
@@ -217,7 +217,9 @@
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
         .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; color: #e6c875; }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
         .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
@@ -604,28 +606,28 @@
             <form id="editProfileForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Full Legal Name 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editName').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
                         <input type="text" id="editName" required>
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Date of Birth 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editDob').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
                         <input type="date" id="editDob">
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Age 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAge').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
                         <input type="number" id="editAge" placeholder="e.g. 25">
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Sex / Gender 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editGender').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
@@ -637,14 +639,14 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Occupation 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editOccupation').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
-                        <input type="text" id="editOccupation" placeholder="e.g. Student, Actor, Business">
+                        <input type="text" id="editOccupation" placeholder="e.g. Student, Actor">
                     </div>
                     <div class="form-group">
-                        <label>
+                        <label style="display:flex; justify-content:space-between; align-items:center;">
                             Other Mobile Number 
                             <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAltMobile').focus()"><i class="fas fa-edit"></i> EDIT</span>
                         </label>
@@ -652,7 +654,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>
+                    <label style="display:flex; justify-content:space-between; align-items:center;">
                         Full Address with PIN Code 
                         <span style="color:#e6c875; font-size:10px; padding:3px 6px; background:#222; border:1px solid #333; border-radius:4px; cursor:pointer;" onclick="document.getElementById('editAddress').focus()"><i class="fas fa-edit"></i> EDIT</span>
                     </label>
@@ -718,6 +720,7 @@
         <div class="tseries-footer-bottom"><p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p></div>
     </footer>
 
+    <!-- 🔥 FIREBASE & UI SCRIPTS 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut, updateProfile, updateEmail, updatePassword, sendEmailVerification, RecaptchaVerifier, PhoneAuthProvider, updatePhoneNumber, GoogleAuthProvider, FacebookAuthProvider, linkWithPopup } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -738,60 +741,94 @@
 
         onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
+                // 🔥 INSTANT LOADER HIDE 🔥
+                const loader = document.getElementById('pageLoader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 300);
+                }
                 document.body.classList.add('loaded');
                 
                 const fullName = user.displayName || "VIP Member";
+                const contact = user.email || user.phoneNumber || "Verified Account";
                 const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
                 document.getElementById('displayFullName').innerText = fullName;
+                document.getElementById('displayContact').innerText = contact;
                 document.getElementById('displayProfilePhoto').src = photo;
                 document.getElementById('editName').value = fullName;
+
+                const userUniqueId = user.uid.substring(0, 8).toUpperCase(); 
+                document.getElementById('myReferralLink').value = window.location.origin + "/auth.html?ref=DK" + userUniqueId;
+
+                let shortName = fullName.trim().split(' ')[0]; 
+                if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
                 
-                const userDoc = await getDoc(doc(db, "users", user.uid));
-                if(userDoc.exists()) {
-                    const d = userDoc.data();
-                    if(d.dob) document.getElementById('editDob').value = d.dob;
-                    if(d.age) document.getElementById('editAge').value = d.age;
-                    if(d.gender) document.getElementById('editGender').value = d.gender;
-                    if(d.occupation) document.getElementById('editOccupation').value = d.occupation;
-                    if(d.altMobile) document.getElementById('editAltMobile').value = d.altMobile;
-                    if(d.address) document.getElementById('editAddress').value = d.address;
-                }
+                document.getElementById('menuProfileArea').innerHTML = `
+                    <div style="padding: 25px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
+                        <img src="${photo}" id="menuSidePhoto" alt="Profile" style="width: 75px; height: 75px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 12px; box-shadow: 0 5px 15px rgba(230,200,117,0.2);">
+                        <h3 style="color: #fff; margin: 0; font-size: 18px; font-family: 'Playfair Display', serif;">${shortName}</h3>
+                        <p style="color: #e6c875; font-size: 10px; margin: 3px 0 0 0; text-transform: uppercase; font-weight:bold; letter-spacing: 1px;"><i class="fas fa-star"></i> Pro Member</p>
+                    </div>
+                `;
 
+                // 🛑 DATABASE LOAD WRAPPED IN TRY-CATCH TO PREVENT FREEZE 🛑
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if(userDoc.exists()) {
+                        const d = userDoc.data();
+                        if(d.dob) document.getElementById('editDob').value = d.dob;
+                        if(d.age) document.getElementById('editAge').value = d.age;
+                        if(d.gender) document.getElementById('editGender').value = d.gender;
+                        if(d.occupation) document.getElementById('editOccupation').value = d.occupation;
+                        if(d.altMobile) document.getElementById('editAltMobile').value = d.altMobile;
+                        if(d.address) document.getElementById('editAddress').value = d.address;
+                    }
+                } catch(e) { console.error("Database fetch ignored", e); }
+
+                // Single Device Logic
+                try {
+                    let currentDeviceToken = localStorage.getItem('device_token');
+                    if (!currentDeviceToken) {
+                        currentDeviceToken = "DK_" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+                        localStorage.setItem('device_token', currentDeviceToken);
+                        await setDoc(doc(db, "users", user.uid), { activeDeviceToken: currentDeviceToken, lastLogin: serverTimestamp(), name: fullName, contact: contact }, { merge: true });
+                    }
+                    onSnapshot(doc(db, "users", user.uid), (docSnap) => {
+                        if (docSnap.exists() && docSnap.data().activeDeviceToken && docSnap.data().activeDeviceToken !== currentDeviceToken) {
+                            alert("⚠️ SECURITY ALERT: Logged in from another device.");
+                            signOut(auth).then(() => { localStorage.removeItem('device_token'); window.location.replace("auth.html"); });
+                        }
+                    });
+                } catch(e) {}
+
+                // 🔥 ACCOUNT LINKING LOGIC 🔥
                 let isGoogleLinked = false, isFacebookLinked = false, isEmailLinked = false, isPhoneLinked = false;
-
                 user.providerData.forEach(provider => {
                     if(provider.providerId === 'google.com') {
                         isGoogleLinked = true;
                         document.getElementById('statusGoogle').innerText = provider.email || "Linked";
                         document.getElementById('statusGoogle').style.color = "#25d366";
-                        const btn = document.getElementById('btnLinkGoogle');
-                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
-                        btn.classList.add('verified');
+                        const btn = document.getElementById('btnLinkGoogle'); btn.innerHTML = '<i class="fas fa-check"></i> Verified'; btn.classList.add('verified');
                     }
                     if(provider.providerId === 'facebook.com') {
                         isFacebookLinked = true;
                         document.getElementById('statusFacebook').innerText = "Linked Account";
                         document.getElementById('statusFacebook').style.color = "#25d366";
-                        const btn = document.getElementById('btnLinkFacebook');
-                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
-                        btn.classList.add('verified');
+                        const btn = document.getElementById('btnLinkFacebook'); btn.innerHTML = '<i class="fas fa-check"></i> Verified'; btn.classList.add('verified');
                     }
                     if(provider.providerId === 'password') {
                         isEmailLinked = true;
                         document.getElementById('statusEmail').innerText = user.email || "Linked";
                         document.getElementById('statusEmail').style.color = "#25d366";
-                        const btn = document.getElementById('btnLinkEmail');
-                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
-                        btn.classList.add('verified');
+                        const btn = document.getElementById('btnLinkEmail'); btn.innerHTML = '<i class="fas fa-check"></i> Verified'; btn.classList.add('verified');
                     }
                     if(provider.providerId === 'phone') {
                         isPhoneLinked = true;
                         document.getElementById('statusPhone').innerText = user.phoneNumber || "Linked";
                         document.getElementById('statusPhone').style.color = "#25d366";
-                        const btn = document.getElementById('btnLinkPhone');
-                        btn.innerHTML = '<i class="fas fa-check"></i> Verified';
-                        btn.classList.add('verified');
+                        const btn = document.getElementById('btnLinkPhone'); btn.innerHTML = '<i class="fas fa-check"></i> Verified'; btn.classList.add('verified');
                     }
                 });
 
@@ -799,123 +836,96 @@
                     if(isGoogleLinked) return;
                     try {
                         await linkWithPopup(user, new GoogleAuthProvider());
-                        showCustomAlert('Success', 'Google Account linked successfully! You can now use it to login.');
-                        setTimeout(() => window.location.reload(), 2000);
-                    } catch(e) {
-                        if(e.code === 'auth/credential-already-in-use') showCustomAlert('Error', 'This Google Account is already registered with another user!', true);
-                        else showCustomAlert('Error', e.message, true);
-                    }
+                        showCustomAlert('Success', 'Google Account linked successfully!'); setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) { showCustomAlert('Error', e.message, true); }
                 });
 
                 document.getElementById('btnLinkFacebook').addEventListener('click', async () => {
                     if(isFacebookLinked) return;
                     try {
                         await linkWithPopup(user, new FacebookAuthProvider());
-                        showCustomAlert('Success', 'Facebook Account linked successfully!');
-                        setTimeout(() => window.location.reload(), 2000);
-                    } catch(e) {
-                        if(e.code === 'auth/credential-already-in-use') showCustomAlert('Error', 'This Facebook Account is already registered with another user!', true);
-                        else showCustomAlert('Error', e.message, true);
-                    }
+                        showCustomAlert('Success', 'Facebook Account linked successfully!'); setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) { showCustomAlert('Error', e.message, true); }
                 });
 
                 document.getElementById('btnLinkEmail').addEventListener('click', () => {
                     if(isEmailLinked) return;
-                    const f = document.getElementById('emailLinkForm');
-                    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+                    const f = document.getElementById('emailLinkForm'); f.style.display = f.style.display === 'none' ? 'block' : 'none';
                 });
                 
                 document.getElementById('submitLinkEmail').addEventListener('click', async function() {
-                    const em = document.getElementById('linkEmailInput').value;
-                    const pass = document.getElementById('linkEmailPassword').value;
-                    if(!em || pass.length < 6) { showCustomAlert('Error', 'Enter valid email and min 6 char password', true); return; }
-                    
+                    const em = document.getElementById('linkEmailInput').value; const pass = document.getElementById('linkEmailPassword').value;
+                    if(!em || pass.length < 6) return showCustomAlert('Error', 'Enter valid email and min 6 char password', true);
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Linking...';
                     try {
-                        await updateEmail(user, em);
-                        await updatePassword(user, pass);
-                        await sendEmailVerification(user);
-                        showCustomAlert('Success', 'Email Linked! A verification link has been sent. You can now use this email to login.');
-                        setTimeout(() => window.location.reload(), 2500);
-                    } catch(e) {
-                        if(e.code === 'auth/email-already-in-use') showCustomAlert('Error', 'This Email is already registered with another user!', true);
-                        else if(e.code === 'auth/requires-recent-login') showCustomAlert('Security Alert', 'Please logout and login again to link an email.', true);
-                        else showCustomAlert('Error', e.message, true);
-                        this.innerHTML = 'Verify & Link Email';
-                    }
+                        await updateEmail(user, em); await updatePassword(user, pass); await sendEmailVerification(user);
+                        showCustomAlert('Success', 'Email Linked! Check inbox.'); setTimeout(() => window.location.reload(), 2500);
+                    } catch(e) { showCustomAlert('Error', e.message, true); this.innerHTML = 'Verify & Link Email'; }
                 });
 
                 document.getElementById('btnLinkPhone').addEventListener('click', () => {
                     if(isPhoneLinked) return;
-                    const f = document.getElementById('phoneLinkForm');
-                    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+                    const f = document.getElementById('phoneLinkForm'); f.style.display = f.style.display === 'none' ? 'block' : 'none';
                 });
                 
                 document.getElementById('sendLinkPhoneOtp').addEventListener('click', async function() {
-                    let ph = document.getElementById('linkPhoneInput').value.trim();
-                    if(!ph.startsWith('+91')) ph = '+91' + ph;
-                    if(ph.length < 12) { showCustomAlert('Error', 'Enter valid 10 digit number', true); return; }
-                    
+                    let ph = document.getElementById('linkPhoneInput').value.trim(); if(!ph.startsWith('+91')) ph = '+91' + ph;
+                    if(ph.length < 12) return showCustomAlert('Error', 'Enter valid number', true);
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                     try {
                         if(!window.recaptchaLink) window.recaptchaLink = new RecaptchaVerifier(auth, 'recaptcha-link-phone', { 'size': 'invisible' });
-                        const provider = new PhoneAuthProvider(auth);
-                        window.linkVerificationId = await provider.verifyPhoneNumber(ph, window.recaptchaLink);
-                        this.style.display = 'none';
-                        document.getElementById('linkPhoneOtpInput').style.display = 'block';
-                        document.getElementById('verifyLinkPhoneOtp').style.display = 'block';
-                    } catch(e) {
-                        showCustomAlert('Error', e.message, true);
-                        this.innerHTML = 'Send OTP';
-                    }
+                        window.linkVerificationId = await (new PhoneAuthProvider(auth)).verifyPhoneNumber(ph, window.recaptchaLink);
+                        this.style.display = 'none'; document.getElementById('linkPhoneOtpInput').style.display = 'block'; document.getElementById('verifyLinkPhoneOtp').style.display = 'block';
+                    } catch(e) { showCustomAlert('Error', e.message, true); this.innerHTML = 'Send OTP'; }
                 });
                 
                 document.getElementById('verifyLinkPhoneOtp').addEventListener('click', async function() {
-                    const otp = document.getElementById('linkPhoneOtpInput').value;
-                    if(!otp) return;
+                    const otp = document.getElementById('linkPhoneOtpInput').value; if(!otp) return;
                     this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
                     try {
-                        const credential = PhoneAuthProvider.credential(window.linkVerificationId, otp);
-                        await updatePhoneNumber(user, credential);
-                        showCustomAlert('Success', 'Mobile Number Linked Successfully! You can now use it to login.');
-                        setTimeout(() => window.location.reload(), 2000);
-                    } catch(e) {
-                        if(e.code === 'auth/phone-number-already-exists') showCustomAlert('Error', 'This Mobile Number is already registered with another user!', true);
-                        else showCustomAlert('Error', 'Invalid OTP', true);
-                        this.innerHTML = 'Verify & Link Mobile';
-                    }
+                        await updatePhoneNumber(user, PhoneAuthProvider.credential(window.linkVerificationId, otp));
+                        showCustomAlert('Success', 'Mobile Number Linked!'); setTimeout(() => window.location.reload(), 2000);
+                    } catch(e) { showCustomAlert('Error', 'Invalid OTP', true); this.innerHTML = 'Verify & Link Mobile'; }
+                });
+
+                // Forms
+                document.getElementById('auditionForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.querySelector('#auditionForm .submit-btn'); const originalText = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                    try {
+                        await setDoc(doc(db, "auditions", user.uid), {
+                            userId: user.uid, name: fullName, contact: contact, role: document.getElementById('audRole').value,
+                            ageGender: document.getElementById('audAge').value, heightWeight: document.getElementById('audHeight').value,
+                            cityState: document.getElementById('audCity').value, videoLink: document.getElementById('audVideo').value,
+                            bio: document.getElementById('audBio').value, status: "Pending Review", submittedAt: serverTimestamp()
+                        }, { merge: true }); 
+                        showCustomAlert("Success", "🎉 Your Audition Portfolio has been securely saved!");
+                        document.getElementById('dashAppCount').innerHTML = `1 <span>Form</span>`; document.getElementById('trackStep2').classList.replace('active', 'completed');
+                        switchTab('trackerTab', document.getElementById('btnTracker'));
+                    } catch(error) { showCustomAlert("Error", "Failed to submit form.", true); } finally { btn.innerHTML = originalText; }
                 });
 
                 document.getElementById('editProfileForm').addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const newName = document.getElementById('editName').value.trim();
-                    const btn = document.getElementById('saveProfileBtn');
-                    
+                    const newName = document.getElementById('editName').value.trim(); const btn = document.getElementById('saveProfileBtn');
                     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
                     try {
                         if(newName !== fullName) await updateProfile(auth.currentUser, { displayName: newName });
-                        
-                        const profileData = {
-                            name: newName,
-                            dob: document.getElementById('editDob').value,
-                            age: document.getElementById('editAge').value,
-                            gender: document.getElementById('editGender').value,
-                            occupation: document.getElementById('editOccupation').value,
-                            altMobile: document.getElementById('editAltMobile').value,
-                            address: document.getElementById('editAddress').value
-                        };
-                        
-                        await setDoc(doc(db, "users", user.uid), profileData, { merge: true });
-                        document.getElementById('displayFullName').innerText = newName;
-                        showCustomAlert("Success", "All Profile Details Saved Successfully!");
-                        
-                    } catch (error) { showCustomAlert("Error", error.message, true); }
-                    finally { btn.innerHTML = '<i class="fas fa-save"></i> Save Details'; }
+                        await setDoc(doc(db, "users", user.uid), {
+                            name: newName, dob: document.getElementById('editDob').value, age: document.getElementById('editAge').value,
+                            gender: document.getElementById('editGender').value, occupation: document.getElementById('editOccupation').value,
+                            altMobile: document.getElementById('editAltMobile').value, address: document.getElementById('editAddress').value
+                        }, { merge: true });
+                        document.getElementById('displayFullName').innerText = newName; showCustomAlert("Success", "Profile Details Saved!");
+                    } catch (error) { showCustomAlert("Error", error.message, true); } finally { btn.innerHTML = '<i class="fas fa-save"></i> Save Details'; }
                 });
 
-                document.getElementById('menuLogoutBtn').addEventListener('click', () => {
-                    if(confirm("Are you sure you want to Logout?")) {
-                        signOut(auth).then(() => { localStorage.removeItem('device_token'); window.location.href = "auth.html"; });
+                // Logout handling mapping
+                document.body.addEventListener('click', (e) => {
+                    if(e.target.closest('.logout-action') || e.target.id === 'menuLogoutBtn') {
+                        if(confirm("Are you sure you want to Logout?")) {
+                            signOut(auth).then(() => { localStorage.removeItem('device_token'); window.location.href = "auth.html"; });
+                        }
                     }
                 });
 
@@ -926,6 +936,19 @@
     </script>
 
     <script>
+        // Failsafe loader hide
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('pageLoader');
+                if(loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(function() { loader.style.display = 'none'; }, 500);
+                }
+                document.body.classList.add('loaded');
+            }, 2000);
+        });
+        
+        // 🌟 CUSTOM ALERT & TABS
         window.showCustomAlert = function(title, msg, isError=false) {
             document.getElementById('customAlertTitle').innerText = title;
             document.getElementById('customAlertMsg').innerText = msg;
@@ -944,6 +967,7 @@
             }
         }
 
+        // 🌟 MENU LOGIC
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -952,6 +976,49 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+        
+        // 🌟 MODALS & CHATBOT
+        document.getElementById('openAppModal').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('appModalOverlay').classList.add('active'); });
+        document.getElementById('closeAppModal').addEventListener('click', () => document.getElementById('appModalOverlay').classList.remove('active'));
+        document.getElementById('chatbotToggler').addEventListener('click', () => document.getElementById('chatbotContainer').classList.toggle('active'));
+        document.getElementById('closeChatbot').addEventListener('click', () => document.getElementById('chatbotContainer').classList.remove('active'));
+
+        function sendChat(type) {
+            let userText = "", botReply = "";
+            if(type === 'Audition') { userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।"; } 
+            else if(type === 'Movies') { userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है!"; } 
+            else if(type === 'Contact') { userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने के लिए आप +91 9830332929 पर WhatsApp कर सकते हैं।"; } 
+            
+            const body = document.getElementById('chatbotBody');
+            body.innerHTML += `<div class="user-msg">${userText}</div>`; body.scrollTop = body.scrollHeight;
+            setTimeout(() => { body.innerHTML += `<div class="bot-msg">${botReply}</div>`; body.scrollTop = body.scrollHeight; }, 600);
+        }
+
+        // 🌟 SHARE
+        window.copyRefLink = function() {
+            var copyText = document.getElementById("myReferralLink"); copyText.select(); copyText.setSelectionRange(0, 99999); navigator.clipboard.writeText(copyText.value);
+            var copyBtn = document.querySelector('.copy-btn'); var originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!'; copyBtn.style.background = '#25d366'; copyBtn.style.borderColor = '#25d366';
+            setTimeout(() => { copyBtn.innerHTML = originalText; copyBtn.style.background = '#333'; copyBtn.style.borderColor = '#444'; }, 2000);
+        }
+        window.shareReferralLink = function() {
+            var link = document.getElementById("myReferralLink").value;
+            if (navigator.share) navigator.share({ title: 'DK Atovitt VIP Invitation', text: "Join the DK Atovitt Movie Production Ecosystem using my VIP link!\n\nJoin here: ", url: link });
+            else prompt("Copy this link to share with your friends:", link);
+        }
+
+        // 🌟 TRANSLATOR
+        window.translatePage = function(lang) {
+            if (lang === "") {
+                var d = window.location.hostname; var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) { document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";"; });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.reload(); return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) { googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change')); } 
+            else { document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + window.location.hostname.replace(/^www\./i, '') + ";"; window.location.reload(); }
+        }
     </script>
 </body>
 </html>
