@@ -641,7 +641,8 @@
     <!-- 🔥 FIREBASE SMART LOGIC (Google + Facebook Added) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // 🔥 ADDED onAuthStateChanged HERE 🔥
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -660,6 +661,13 @@
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
+        // 🔥 NEW: AUTO-REDIRECT IF ALREADY LOGGED IN 🔥
+        onAuthStateChanged(auth, (user) => {
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                window.location.replace("account.html"); // Background me login hone par direct bhej dega
+            }
+        });
+
         // 🌟 GOOGLE LOGIN
         document.querySelectorAll('.googleAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -677,7 +685,7 @@
             });
         });
 
-        // 🌟 FACEBOOK LOGIN
+        // 🌟 FACEBOOK LOGIN (FIXED: Ab real error dikhayega, fake "Setup Required" nahi)
         document.querySelectorAll('.facebookAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
@@ -688,7 +696,14 @@
                         setTimeout(() => { window.location.href = "account.html"; }, 1500);
                     })
                     .catch((error) => {
-                        showCustomAlert("Setup Required", "Please enable Facebook Auth in Firebase and add App ID/Secret.", true);
+                        // Error handling theek kiya gaya hai
+                        if (error.code === 'auth/account-exists-with-different-credential') {
+                            showCustomAlert("Account Exists", "This email is already registered using Google or Email/Password. Please login using that.", true);
+                        } else if (error.code === 'auth/popup-closed-by-user') {
+                            showCustomAlert("Cancelled", "Facebook login was cancelled by the user.", true);
+                        } else {
+                            showCustomAlert("Login Failed", error.message, true); // Ab real error aayega!
+                        }
                         btn.innerHTML = originalText;
                     });
             });
