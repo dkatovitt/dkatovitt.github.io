@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,8 +11,12 @@
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
 
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
         crossorigin="anonymous"></script>
+
+    <!-- EmailJS Script (Optional for Welcome Email) -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +37,7 @@
     <meta name="twitter:title" content="Login / Sign Up - DK Atovitt">
     <meta name="twitter:description" content="Create your free talent account or log in to the DK Atovitt Ecosystem.">
     <meta name="twitter:image" content="https://dkatovitt.github.io/images/movies/yakshini-poster.png">
+    
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
 
@@ -40,7 +46,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 HEADER CSS 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; }
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
@@ -51,7 +56,6 @@
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
         
-        /* 🔥 PERFECT HOME BUTTON CSS 🔥 */
         .home-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: flex !important; align-items: center !important; gap: 6px !important; }
         .home-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
@@ -63,16 +67,12 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            
-            /* 🔥 HOME ICON FIX FOR MOBILE (PERFECT CIRCLE) 🔥 */
             .home-btn-header { width: 35px !important; height: 35px !important; padding: 0 !important; justify-content: center !important; border-radius: 50% !important; }
             .home-btn-header i { font-size: 16px !important; margin: 0 !important; }
-            
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
@@ -81,7 +81,6 @@
         
         .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        
         .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
         .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
         .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
@@ -99,7 +98,6 @@
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
         .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: #e6c875; color: #000; }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
@@ -108,7 +106,6 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* 🌟 FLOATING BUTTONS 🌟 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
@@ -121,27 +118,20 @@
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 CUSTOM APP INSTALL POPUP MODAL 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .app-modal-close:hover { color: #fff; }
-        
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
         .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
-        
         .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
-        
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
-        /* 🔥 VIP CUSTOM ALERT MODAL CSS 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -154,23 +144,17 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
-        /* 🤖 CHATBOT CSS */
         .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        
         .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
         .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) { 
@@ -180,7 +164,6 @@
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
 
-        /* 🔥 NEW 6-COLUMN FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -197,7 +180,6 @@
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        /* 🔥 PREMIUM AUTHENTICATION (LOGIN/SIGNUP) CSS 🔥 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .auth-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px 20px; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; position: relative; }
         .auth-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.85); z-index: 1; }
@@ -206,7 +188,6 @@
         
         .auth-header { text-align: center; margin-bottom: 30px; }
         
-        /* 🔥 SQUARE (18px border-radius) LOGO 🔥 */
         .auth-video-logo { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 2px solid #e6c875; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); display: flex; align-items: center; justify-content: center; }
         .auth-video-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
 
@@ -222,16 +203,14 @@
         .form-group input { width: 100%; padding: 14px 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
         .form-group input:focus { border-color: #e6c875; background: #1a1a1a; box-shadow: 0 0 8px rgba(230, 200, 117, 0.2); }
         
-        /* 🔥 NEW: SHOW/HIDE PASSWORD CSS 🔥 */
         .password-wrapper { position: relative; display: flex; align-items: center; }
-        .password-wrapper input { padding-right: 45px; } /* space for eye icon */
+        .password-wrapper input { padding-right: 45px; } 
         .toggle-password { position: absolute; right: 15px; color: #888; cursor: pointer; z-index: 10; font-size: 16px; transition: 0.3s; }
         .toggle-password:hover { color: #e6c875; }
 
         .auth-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
         .auth-btn:hover { background: #d4b561; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 200, 117, 0.4); }
 
-        /* 🔥 NEW SOCIAL BUTTONS CSS (GOOGLE & FACEBOOK) 🔥 */
         .social-login-grid { display: flex; gap: 10px; margin-top: 10px; }
         .social-btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; }
         .google-btn { background: #fff; color: #000; box-shadow: 0 4px 10px rgba(255,255,255,0.1); }
@@ -362,6 +341,7 @@
     <section class="auth-section">
         <div class="auth-box reveal">
             
+            <!-- 🔥 LOGIN SECTION 🔥 -->
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -371,12 +351,14 @@
                     <p>Login to DK Atovitt Ecosystem</p>
                 </div>
                 
+                <!-- 🔥 SMART SINGLE BOX FOR LOGIN 🔥 -->
                 <form id="smart-login-form">
                     <div class="form-group">
                         <label>Email Address or Mobile Number</label>
                         <input type="text" id="loginSmartInput" placeholder="Enter Email or Mobile No.">
                     </div>
                     
+                    <!-- 🔥 NEW: Password box with Toggle Eye Icon 🔥 -->
                     <div class="form-group" id="loginPasswordField" style="display: none;">
                         <label>Password</label>
                         <div class="password-wrapper">
@@ -388,17 +370,20 @@
                         </div>
                     </div>
 
+                    <!-- Recaptcha & OTP Section (Shows only for Mobile) -->
                     <div id="recaptcha-container-login" style="margin-bottom: 10px;"></div>
                     <div class="form-group" id="loginOtpField" style="display: none; margin-top: 15px;">
                         <label>Enter 6-Digit OTP</label>
                         <input type="number" id="loginOtpInput" placeholder="Enter OTP sent to your mobile">
                     </div>
 
+                    <!-- Dynamic Buttons -->
                     <button type="button" class="auth-btn" id="loginNextBtn">Next <i class="fas fa-arrow-right"></i></button>
                     <button type="submit" class="auth-btn" id="loginSubmitEmailBtn" style="display: none;"><i class="fas fa-sign-in-alt"></i> Secure Login</button>
                     <button type="button" class="auth-btn" id="loginVerifyOtpBtn" style="display: none; background:#25d366; color:#fff;"><i class="fas fa-check-circle"></i> Verify & Login</button>
                 </form>
 
+                <!-- 🔥 DUAL SOCIAL LOGIN BUTTONS 🔥 -->
                 <div class="divider">OR</div>
                 <div class="social-login-grid">
                     <button type="button" class="social-btn google-btn googleAuthBtn">
@@ -414,6 +399,7 @@
                 </div>
             </div>
 
+            <!-- 🔥 SIGN UP SECTION 🔥 -->
             <div id="registerForm" class="auth-form">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -423,18 +409,21 @@
                     <p>Join the DK Atovitt Family</p>
                 </div>
                 
+                <!-- 🔥 SMART SINGLE BOX FOR SIGNUP 🔥 -->
                 <form id="smart-signup-form">
                     <div class="form-group">
                         <label>Email Address or Mobile Number</label>
                         <input type="text" id="signupSmartInput" placeholder="Enter Email or Mobile No.">
                     </div>
                     
+                    <!-- Dynamic Details Box -->
                     <div id="signupDetailsFields" style="display: none;">
                         <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" id="signupName" placeholder="Enter your full name">
                         </div>
                         
+                        <!-- 🔥 NEW: Password box with Toggle Eye Icon 🔥 -->
                         <div id="signupPasswordFields">
                             <div class="form-group">
                                 <label>Create Password</label>
@@ -452,12 +441,14 @@
                             </div>
                         </div>
 
+                        <!-- Shows only for Mobile -->
                         <div id="recaptcha-container-signup" style="margin-bottom: 10px;"></div>
                         <div class="form-group" id="signupOtpField" style="display: none; margin-top: 15px;">
                             <label>Enter 6-Digit OTP</label>
                             <input type="number" id="signupOtpInput" placeholder="Enter OTP sent to your mobile">
                         </div>
 
+                        <!-- Terms & Conditions -->
                         <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
                             <input type="checkbox" id="agreeTerms" style="width: 18px; height: 18px; cursor: pointer; margin-top: 2px; accent-color: #e6c875;">
                             <label for="agreeTerms" style="color: #ccc; font-size: 12px; text-transform: none; letter-spacing: 0.5px; font-weight: normal; cursor: pointer; line-height: 1.4; margin: 0;">
@@ -466,12 +457,14 @@
                         </div>
                     </div>
 
+                    <!-- Dynamic Buttons -->
                     <button type="button" class="auth-btn" id="signupNextBtn">Next <i class="fas fa-arrow-right"></i></button>
                     <button type="submit" class="auth-btn" id="signupSubmitEmailBtn" style="display: none;"><i class="fas fa-user-plus"></i> Sign Up Now</button>
                     <button type="button" class="auth-btn" id="signupSendOtpBtn" style="display: none;"><i class="fas fa-paper-plane"></i> Send OTP</button>
                     <button type="button" class="auth-btn" id="signupVerifyOtpBtn" style="display: none; background:#25d366; color:#fff;"><i class="fas fa-check-circle"></i> Verify & Sign Up</button>
                 </form>
 
+                <!-- 🔥 DUAL SOCIAL SIGNUP BUTTONS 🔥 -->
                 <div class="divider">OR</div>
                 <div class="social-login-grid">
                     <button type="button" class="social-btn google-btn googleAuthBtn">
@@ -565,6 +558,7 @@
         </div>
     </div>
 
+    <!-- 🔥 VIP CUSTOM ALERT MODAL HTML 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -592,8 +586,9 @@
         </div>
     </div>
 
+    <!-- 🔥 VIP ALERT LOGIC SCRIPT 🔥 -->
     <script>
-        // 🔥 NEW: Password Visibility Toggle Logic (FIXED)
+        // 🔥 NEW: Password Visibility Toggle Logic
         function togglePasswordVisibility(inputId, iconElement) {
             const input = document.getElementById(inputId);
             if (input.type === "password") {
@@ -642,8 +637,24 @@
                 document.title = "Login / Sign Up - DK Atovitt Official Portal";
             }
         }
+
+        // Feature 3 Placeholder: Send Welcome Message EmailJS
+        function sendWelcomeMessage(user) {
+            // NOTE: Automatic Welcome Email or WhatsApp needs EmailJS or a Backend Server.
+            console.log("Welcome Message Trigger: Hello", user.displayName);
+            /* Example EmailJS Code (Uncomment to use):
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                    to_name: user.displayName,
+                    to_email: user.email,
+                    message: "Welcome to DK Atovitt Ecosystem!"
+                }).then(function(res) { console.log('Email Sent!', res.status); })
+                  .catch(function(err) { console.log('Email Error', err); });
+            } */
+        }
     </script>
 
+    <!-- 🔥 FIREBASE SMART LOGIC (FIXED) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -664,22 +675,47 @@
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        // 🔥 AUTO-REDIRECT IF ALREADY LOGGED IN 🔥
+        // 🔥 FIX 2: ALREADY LOGGED IN PROTECTION 🔥
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
-                window.location.replace("account.html"); 
+                
+                document.getElementById('loginForm').classList.remove('active');
+                document.getElementById('registerForm').classList.remove('active');
+                
+                const authBox = document.querySelector('.auth-box');
+                if(!document.getElementById('alreadyLoggedInBox')) {
+                    const div = document.createElement('div');
+                    div.id = 'alreadyLoggedInBox';
+                    div.style.textAlign = 'center';
+                    div.innerHTML = `
+                        <div class="auth-video-logo" style="margin: 0 auto 15px auto;">
+                            <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                        </div>
+                        <h2 style="color: #e6c875; margin-bottom: 10px; font-family: 'Playfair Display', serif; text-transform: uppercase;">Already Logged In</h2>
+                        <p style="color: #aaa; margin-bottom: 25px; font-size: 14px;">You are currently logged in. Please logout first to sign in with a different account.</p>
+                        <button id="goHomeBtn" class="auth-btn" style="margin-bottom: 15px;"><i class="fas fa-home"></i> Go to Home Page</button>
+                        <button id="logoutAuthBtn" class="auth-btn" style="background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
+                    `;
+                    authBox.appendChild(div);
+
+                    document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+                    document.getElementById('logoutAuthBtn').addEventListener('click', () => {
+                        auth.signOut().then(() => window.location.reload());
+                    });
+                }
             }
         });
 
-        // 🌟 GOOGLE LOGIN
+        // 🌟 GOOGLE LOGIN 
         document.querySelectorAll('.googleAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
                 signInWithPopup(auth, googleProvider)
                     .then((result) => {
+                        sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
                     })
                     .catch((error) => {
                         showCustomAlert("Login Failed", error.message, true);
@@ -695,8 +731,9 @@
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
                 signInWithPopup(auth, facebookProvider)
                     .then((result) => {
+                        sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
                     })
                     .catch((error) => {
                         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -786,8 +823,9 @@
                     loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
                     return;
                 }
+                sendWelcomeMessage(userCred.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
             } catch (error) {
                 showCustomAlert("Login Failed", "Invalid Email or Password!", true);
                 loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
@@ -800,8 +838,9 @@
             
             loginVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
             loginConfirmationResult.confirm(code).then((result) => {
+                sendWelcomeMessage(result.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
@@ -923,8 +962,9 @@
             signupVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
             signupConfirmationResult.confirm(code).then((result) => {
                 updateProfile(result.user, { displayName: name }).then(() => {
+                    sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Mobile Account Created & Logged In!", false);
-                    setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
                 });
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
