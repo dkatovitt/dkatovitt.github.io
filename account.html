@@ -815,7 +815,7 @@
 
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header"><div><i class="fas fa-robot"></i> DK ATOVITT AI</div><button id="closeChatbot">&times;</button></div>
-        <div class="chatbot-body" id="chatbotBody"><div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div></div>
+        <div class="chatbot-body" id="chatbotBody"><div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में কার্যকলাপ में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div></div>
         <div class="chatbot-options">
             <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
             <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
@@ -851,7 +851,24 @@
                 
                 const fullName = user.displayName || "VIP Member";
                 const contact = user.email || user.phoneNumber || "Verified Account";
-                const photo = user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                
+                // 🔥 SMART DP FETCHER START 🔥
+                let photo = user.photoURL;
+                if (user.providerData && user.providerData.length > 0) {
+                    user.providerData.forEach(provider => {
+                        if (provider.photoURL) {
+                            if (provider.providerId === 'facebook.com') {
+                                photo = provider.photoURL + (provider.photoURL.includes('?') ? '&' : '?') + "type=large";
+                            } else if (provider.providerId === 'google.com') {
+                                photo = provider.photoURL.replace('s96-c', 's400-c'); // High res Google DP
+                            } else if (!photo) {
+                                photo = provider.photoURL;
+                            }
+                        }
+                    });
+                }
+                photo = photo || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                // 🔥 SMART DP FETCHER END 🔥
 
                 document.getElementById('displayFullName').innerText = fullName;
                 document.getElementById('displayContact').innerText = contact;
