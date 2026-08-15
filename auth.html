@@ -227,8 +227,14 @@
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; color: #ccc; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
         .form-group input { width: 100%; padding: 14px 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
-        .form-group input:focus { border-color: #e6c875; background: #1a1a1a; }
+        .form-group input:focus { border-color: #e6c875; background: #1a1a1a; box-shadow: 0 0 8px rgba(230, 200, 117, 0.2); }
         
+        /* 🔥 NEW: SHOW/HIDE PASSWORD CSS 🔥 */
+        .password-wrapper { position: relative; display: flex; align-items: center; }
+        .password-wrapper input { padding-right: 45px; } /* space for eye icon */
+        .toggle-password { position: absolute; right: 15px; color: #888; cursor: pointer; z-index: 10; font-size: 16px; transition: 0.3s; }
+        .toggle-password:hover { color: #e6c875; }
+
         .auth-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border: none; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
         .auth-btn:hover { background: #d4b561; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 200, 117, 0.4); }
 
@@ -380,10 +386,13 @@
                         <input type="text" id="loginSmartInput" placeholder="Enter Email or Mobile No.">
                     </div>
                     
-                    <!-- Dynamic Password Box (Shows only for Email) -->
+                    <!-- 🔥 NEW: Password box with Toggle Eye Icon 🔥 -->
                     <div class="form-group" id="loginPasswordField" style="display: none;">
                         <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password">
+                        <div class="password-wrapper">
+                            <input type="password" id="loginPassword" placeholder="Enter your password">
+                            <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('loginPassword', this)"></i>
+                        </div>
                         <div style="text-align: right; margin-top: 5px;">
                             <a href="#" style="color: #888; font-size: 12px; text-decoration: none;">Forgot Password?</a>
                         </div>
@@ -442,15 +451,21 @@
                             <input type="text" id="signupName" placeholder="Enter your full name">
                         </div>
                         
-                        <!-- Shows only for Email -->
+                        <!-- 🔥 NEW: Password box with Toggle Eye Icon 🔥 -->
                         <div id="signupPasswordFields">
                             <div class="form-group">
                                 <label>Create Password</label>
-                                <input type="password" id="signupPassword" placeholder="Create a strong password (Min 6 Chars)">
+                                <div class="password-wrapper">
+                                    <input type="password" id="signupPassword" placeholder="Create a strong password (Min 6 Chars)">
+                                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('signupPassword', this)"></i>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Confirm Password</label>
-                                <input type="password" id="signupConfirmPassword" placeholder="Repeat your password">
+                                <div class="password-wrapper">
+                                    <input type="password" id="signupConfirmPassword" placeholder="Repeat your password">
+                                    <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('signupConfirmPassword', this)"></i>
+                                </div>
                             </div>
                         </div>
 
@@ -601,6 +616,20 @@
 
     <!-- 🔥 VIP ALERT LOGIC SCRIPT 🔥 -->
     <script>
+        // 🔥 NEW: Password Visibility Toggle Logic
+        function togglePasswordVisibility(inputId, iconElement) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                iconElement.classList.remove("fa-eye");
+                iconElement.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                iconElement.classList.remove("fa-eye-slash");
+                iconElement.classList.add("fa-eye");
+            }
+        }
+
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
             const titleEl = document.getElementById('customAlertTitle');
@@ -638,11 +667,11 @@
         }
     </script>
 
-    <!-- 🔥 FIREBASE SMART LOGIC (Google + Facebook Added) 🔥 -->
+    <!-- 🔥 FIREBASE SMART LOGIC (Redirect Mode Active) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        // 🔥 ADDED onAuthStateChanged HERE 🔥
-        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // 🔥 CHANGED TO REDIRECT LOGIC 🔥
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, getRedirectResult, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -657,55 +686,40 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         
-        // Providers
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        // 🔥 NEW: AUTO-REDIRECT IF ALREADY LOGGED IN 🔥
+        // 🔥 AUTO-REDIRECT IF LOGGED IN 🔥
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
-                window.location.replace("account.html"); // Background me login hone par direct bhej dega
+                window.location.replace("account.html"); 
             }
         });
 
-        // 🌟 GOOGLE LOGIN
+        // 🔥 CATCH REDIRECT ERRORS 🔥
+        getRedirectResult(auth).catch((error) => {
+            if (error) {
+                if (error.code === 'auth/account-exists-with-different-credential') {
+                    showCustomAlert("Account Exists", "This email is already registered using Google or Email/Password. Please login with that.", true);
+                } else if (error.code !== 'auth/popup-closed-by-user') {
+                    showCustomAlert("Login Failed", error.message, true);
+                }
+            }
+        });
+
+        // 🌟 GOOGLE LOGIN (Now using Redirect)
         document.querySelectorAll('.googleAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithPopup(auth, googleProvider)
-                    .then((result) => {
-                        showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
-                    })
-                    .catch((error) => {
-                        showCustomAlert("Login Failed", error.message, true);
-                        btn.innerHTML = originalText;
-                    });
+                signInWithRedirect(auth, googleProvider);
             });
         });
 
-        // 🌟 FACEBOOK LOGIN (FIXED: Ab real error dikhayega, fake "Setup Required" nahi)
+        // 🌟 FACEBOOK LOGIN (Now using Redirect)
         document.querySelectorAll('.facebookAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
-                const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithPopup(auth, facebookProvider)
-                    .then((result) => {
-                        showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
-                    })
-                    .catch((error) => {
-                        // Error handling theek kiya gaya hai
-                        if (error.code === 'auth/account-exists-with-different-credential') {
-                            showCustomAlert("Account Exists", "This email is already registered using Google or Email/Password. Please login using that.", true);
-                        } else if (error.code === 'auth/popup-closed-by-user') {
-                            showCustomAlert("Cancelled", "Facebook login was cancelled by the user.", true);
-                        } else {
-                            showCustomAlert("Login Failed", error.message, true); // Ab real error aayega!
-                        }
-                        btn.innerHTML = originalText;
-                    });
+                signInWithRedirect(auth, facebookProvider);
             });
         });
 
@@ -805,7 +819,6 @@
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
             });
         });
-
 
         // ==========================================
         // 🔥 SIGNUP LOGIC (SMART AUTO DETECT) 🔥
