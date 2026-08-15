@@ -324,7 +324,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -874,7 +874,7 @@
                 if(headerAuthBtn) {
                     headerAuthBtn.innerHTML = `
                         <div class="profile-dropdown" onclick="const menu = this.querySelector('.profile-dropdown-content'); menu.style.display = menu.style.display === 'block' ? 'none' : 'block';">
-                            <a href="javascript:void(0)" class="login-btn-header" style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                            <a href="javascript:void(0)" class="login-btn-header" style="display:flex; align-items:center; gap:8px; cursor:pointer; color: #fff !important; text-decoration: none;">
                                 <i class="fas fa-user-check"></i><span class="hide-on-mobile">Hi, ${shortName}</span><span class="show-on-mobile">${shortName}</span><i class="fas fa-caret-down"></i>
                             </a>
                             <div class="profile-dropdown-content" style="transition:0.3s; display:none; position:absolute; right:0; background:#111; min-width:160px; box-shadow:0px 8px 16px rgba(0,0,0,0.9); border-radius:8px; border:1px solid #333; z-index:10000; margin-top:10px;">
@@ -1078,9 +1078,9 @@
         overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
         
         document.getElementById('openAppModal').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('appModalOverlay').classList.add('active'); });
-        document.getElementById('closeAppModal').addEventListener('click', () => document.getElementById('appModalOverlay').classList.remove('active'); });
-        document.getElementById('chatbotToggler').addEventListener('click', () => document.getElementById('chatbotContainer').classList.toggle('active'); });
-        document.getElementById('closeChatbot').addEventListener('click', () => document.getElementById('chatbotContainer').classList.remove('active'); });
+        document.getElementById('closeAppModal').addEventListener('click', () => { document.getElementById('appModalOverlay').classList.remove('active'); });
+        document.getElementById('chatbotToggler').addEventListener('click', () => { document.getElementById('chatbotContainer').classList.toggle('active'); });
+        document.getElementById('closeChatbot').addEventListener('click', () => { document.getElementById('chatbotContainer').classList.remove('active'); });
 
         function sendChat(type) {
             let userText = "", botReply = "";
