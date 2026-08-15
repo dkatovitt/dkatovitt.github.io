@@ -667,11 +667,11 @@
         }
     </script>
 
-    <!-- 🔥 FIREBASE SMART LOGIC (Redirect Mode Active) 🔥 -->
+    <!-- 🔥 FIREBASE SMART LOGIC (FIXED) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        // 🔥 CHANGED TO REDIRECT LOGIC 🔥
-        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithRedirect, getRedirectResult, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // 🔥 CHANGED BACK TO POPUP TO FIX REDIRECT ERROR 🔥
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -689,37 +689,50 @@
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        // 🔥 AUTO-REDIRECT IF LOGGED IN 🔥
+        // 🔥 AUTO-REDIRECT IF ALREADY LOGGED IN 🔥
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 window.location.replace("account.html"); 
             }
         });
 
-        // 🔥 CATCH REDIRECT ERRORS 🔥
-        getRedirectResult(auth).catch((error) => {
-            if (error) {
-                if (error.code === 'auth/account-exists-with-different-credential') {
-                    showCustomAlert("Account Exists", "This email is already registered using Google or Email/Password. Please login with that.", true);
-                } else if (error.code !== 'auth/popup-closed-by-user') {
-                    showCustomAlert("Login Failed", error.message, true);
-                }
-            }
-        });
-
-        // 🌟 GOOGLE LOGIN (Now using Redirect)
+        // 🌟 GOOGLE LOGIN (Back to Popup for stability)
         document.querySelectorAll('.googleAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
+                const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithRedirect(auth, googleProvider);
+                signInWithPopup(auth, googleProvider)
+                    .then((result) => {
+                        showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
+                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                    })
+                    .catch((error) => {
+                        showCustomAlert("Login Failed", error.message, true);
+                        btn.innerHTML = originalText;
+                    });
             });
         });
 
-        // 🌟 FACEBOOK LOGIN (Now using Redirect)
+        // 🌟 FACEBOOK LOGIN (Back to Popup for stability with Error Catching)
         document.querySelectorAll('.facebookAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
+                const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithRedirect(auth, facebookProvider);
+                signInWithPopup(auth, facebookProvider)
+                    .then((result) => {
+                        showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
+                        setTimeout(() => { window.location.href = "account.html"; }, 1500);
+                    })
+                    .catch((error) => {
+                        if (error.code === 'auth/account-exists-with-different-credential') {
+                            showCustomAlert("Account Exists", "This email is already registered. Please login with Google or Email.", true);
+                        } else if (error.code === 'auth/popup-closed-by-user') {
+                            showCustomAlert("Cancelled", "Login window was closed.", true);
+                        } else {
+                            showCustomAlert("Login Failed", error.message, true);
+                        }
+                        btn.innerHTML = originalText;
+                    });
             });
         });
 
@@ -819,6 +832,7 @@
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
             });
         });
+
 
         // ==========================================
         // 🔥 SIGNUP LOGIC (SMART AUTO DETECT) 🔥
