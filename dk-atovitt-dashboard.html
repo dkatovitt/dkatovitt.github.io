@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK ATOVITT Dashboard - Mega Super App</title>
+    <meta name="theme-color" content="#e6c875">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🔥 BASE VIP CSS 🔥 */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 80px; }
+        
+        /* 🔥 FIXED HEADER 🔥 */
+        .app-header { position: fixed; top: 0; left: 0; width: 100%; height: 75px; background: rgba(17, 17, 17, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.9); }
+        .app-header-left { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .app-header-left video { height: 50px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
+        .app-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-weight: 900; }
+        
+        .app-header-right { display: flex; align-items: center; gap: 15px; }
+        
+        /* 🔥 ATVT WALLET BADGE 🔥 */
+        .atvt-wallet { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); padding: 8px 20px; border-radius: 30px; color: #000; font-weight: 900; font-size: 15px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(230,200,117,0.4); cursor: pointer; border: 2px solid #fff; transition: 0.3s; }
+        .atvt-wallet:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(230,200,117,0.7); }
+        
+        .profile-btn { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; cursor: pointer; object-fit: cover; }
+        .logout-btn { background: #ff4d4d; color: #fff; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
+        .logout-btn:hover { background: #ff1a1a; }
+
+        /* 🔥 MAIN DASHBOARD AREA 🔥 */
+        .dashboard-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        
+        .welcome-box { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 30px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; overflow: hidden; }
+        .welcome-box::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; }
+        .welcome-text h1 { color: #fff; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; font-size: 32px; letter-spacing: 1px; }
+        .welcome-text h1 span { color: #e6c875; }
+        .welcome-text p { color: #aaa; margin: 0; font-size: 16px; }
+        
+        .section-title { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: bold; }
+
+        /* 🔥 BUSINESS GRID (THE DOORS) 🔥 */
+        .business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        
+        .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 30px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .business-card::after { content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: radial-gradient(circle, rgba(230,200,117,0.1) 0%, transparent 70%); opacity: 0; transition: 0.4s; }
+        .business-card:hover { transform: translateY(-10px); border-color: #e6c875; box-shadow: 0 15px 35px rgba(230,200,117,0.15); }
+        .business-card:hover::after { opacity: 1; }
+        
+        .card-icon { width: 70px; height: 70px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #e6c875; margin-bottom: 20px; border: 1px solid #333; transition: 0.4s; z-index: 2; }
+        .business-card:hover .card-icon { background: #e6c875; color: #000; box-shadow: 0 0 20px rgba(230,200,117,0.5); }
+        
+        .card-title { color: #fff; font-size: 18px; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+        .card-desc { color: #888; font-size: 13px; line-height: 1.5; margin: 0; z-index: 2; }
+        .card-badge { position: absolute; top: 15px; right: -30px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; padding: 5px 30px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .card-badge.live { background: #25d366; }
+
+        @media (max-width: 768px) {
+            .app-header { padding: 0 10px; height: 65px; }
+            .app-title { font-size: 18px; }
+            .app-header-left video { height: 40px; }
+            .atvt-wallet { padding: 5px 12px; font-size: 12px; }
+            .logout-btn span { display: none; }
+            .welcome-box { flex-direction: column; text-align: center; gap: 20px; padding: 25px 15px; }
+            .welcome-text h1 { font-size: 24px; }
+            .business-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 TOP HEADER 🔥 -->
+    <header class="app-header">
+        <a href="dk-atovitt-dashboard.html" class="app-header-left">
+            <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            <h1 class="app-title notranslate">Dashboard</h1>
+        </a>
+        <div class="app-header-right">
+            <div class="atvt-wallet" title="Your Total Earning">
+                <i class="fas fa-coins"></i> <span id="mainBalance">150.00</span>
+            </div>
+            <img src="images/movies/gallery1.png" class="profile-btn" alt="Profile">
+            <button class="logout-btn" onclick="window.location.href='auth.html'"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></button>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        
+        <!-- 🔥 WELCOME LOBBY BOX 🔥 -->
+        <div class="welcome-box">
+            <div class="welcome-text">
+                <h1>Welcome, <span>VIP Member</span></h1>
+                <p>Explore the DK ATOVITT Mega Ecosystem. Choose your destination below.</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="color: #888; font-size: 12px; margin: 0 0 5px 0;">Membership Status</p>
+                <span style="background: rgba(230,200,117,0.1); color: #e6c875; padding: 5px 15px; border-radius: 20px; border: 1px solid #e6c875; font-weight: bold; font-size: 14px;"><i class="fas fa-crown"></i> Active</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Our Ecosystem</h2>
+
+        <!-- 🔥 BUSINESS DOORS (GRID) 🔥 -->
+        <div class="business-grid">
+            
+            <!-- DOOR 1: Film Production -->
+            <a href="index.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-film"></i></div>
+                <h3 class="card-title">DK Film Production House</h3>
+                <p class="card-desc">Explore movies, trailers, auditions, and the official production house ecosystem.</p>
+            </a>
+
+            <!-- DOOR 2: Social -->
+            <a href="social.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3 class="card-title">DK Social</h3>
+                <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins daily.</p>
+            </a>
+
+            <!-- DOOR 3: Mart (Coming Soon) -->
+            <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                <h3 class="card-title">DK Mart</h3>
+                <p class="card-desc">Exclusive merchandise, movie tickets, and brand shopping with ATVT payments.</p>
+            </a>
+
+            <!-- DOOR 4: Trade/Crypto (Coming Soon) -->
+            <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="card-title">DK Trade</h3>
+                <p class="card-desc">Advanced Crypto exchange and ATVT coin trading platform.</p>
+            </a>
+
+            <!-- DOOR 5: Earn/Ecosystem -->
+            <a href="ecosystem.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                <h3 class="card-title">DK Ecosystem</h3>
+                <p class="card-desc">Business partnerships, ATVT roadmap, Kalpamrit wellness, and earning plans.</p>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
