@@ -15,7 +15,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
         crossorigin="anonymous"></script>
 
-    <!-- 🔥 EMAILJS SDK & INITIALIZATION (UPDATED) 🔥 -->
+    <!-- 🔥 EMAILJS SDK & INITIALIZATION 🔥 -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
@@ -263,7 +263,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
@@ -285,7 +285,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -640,7 +640,7 @@
             }
         }
 
-        // 🔥 VIP EMAILJS WELCOME MESSAGE LOGIC 🔥
+        // 🔥 VIP EMAILJS WELCOME MESSAGE LOGIC (UPDATED WITH ZOHO INFO SERVICE ID) 🔥
         function sendWelcomeMessage(user) {
             console.log("Sending Welcome Email to:", user.displayName, user.email);
             
@@ -660,7 +660,8 @@
             };
 
             if (typeof emailjs !== 'undefined') {
-                emailjs.send('service_p354q2m', 'template_lecntz3', templateParams)
+                // 🔥 यहाँ ZOHO INFO की नई SERVICE ID (service_xfogb0w) सेट कर दी है 🔥
+                emailjs.send('service_xfogb0w', 'template_lecntz3', templateParams)
                     .then(function(response) {
                         console.log('Welcome Email Sent Successfully!', response.status, response.text);
                     }, function(error) {
@@ -670,7 +671,7 @@
         }
     </script>
 
-    <!-- 🔥 FIREBASE SMART LOGIC (FIXED) 🔥 -->
+    <!-- 🔥 FIREBASE SMART LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
