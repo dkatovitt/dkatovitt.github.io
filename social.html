@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Social - Earn ATVT by DK Atovitt</title>
+    <meta name="theme-color" content="#e6c875">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🔥 BASE VIP CSS 🔥 */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 70px; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #e6c875; border-radius: 10px; }
+        
+        /* 🔥 FIXED APP HEADER 🔥 */
+        .app-header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: #111; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.9); }
+        .app-header-left { display: flex; align-items: center; gap: 15px; }
+        .app-header-left video { height: 45px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
+        .app-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 22px; margin: 0; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        
+        .app-search { background: #222; border: 1px solid #444; border-radius: 25px; padding: 8px 15px; display: flex; align-items: center; width: 300px; transition: 0.3s; }
+        .app-search:focus-within { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
+        .app-search input { background: transparent; border: none; color: #fff; outline: none; width: 100%; margin-left: 10px; font-size: 14px; }
+        
+        .app-header-right { display: flex; align-items: center; gap: 20px; }
+        .icon-btn { background: #222; color: #ccc; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; transition: 0.3s; position: relative; }
+        .icon-btn:hover { background: #e6c875; color: #000; }
+        .badge { position: absolute; top: -5px; right: -5px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        
+        /* 🔥 ATVT WALLET BADGE 🔥 */
+        .atvt-wallet { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); padding: 5px 15px; border-radius: 20px; color: #000; font-weight: 900; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(230,200,117,0.5); cursor: pointer; border: 2px solid #fff; }
+        .atvt-wallet img { width: 18px; height: 18px; }
+
+        /* 🔥 MAIN APP GRID 🔥 */
+        .app-container { display: grid; grid-template-columns: 260px 1fr 300px; gap: 20px; max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        
+        /* 🔥 LEFT SIDEBAR 🔥 */
+        .sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; }
+        .sidebar-menu { list-style: none; padding: 0; margin: 0; }
+        .sidebar-menu li { margin-bottom: 5px; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: #ccc; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; }
+        .sidebar-menu i { font-size: 20px; width: 25px; text-align: center; color: #e6c875; }
+        
+        .profile-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px; }
+        .profile-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; margin-bottom: 10px; }
+        .profile-card h3 { margin: 0; color: #fff; font-size: 18px; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
+        .profile-card p { margin: 5px 0 0 0; color: #888; font-size: 12px; }
+
+        /* 🔥 MIDDLE FEED AREA 🔥 */
+        .feed { display: flex; flex-direction: column; gap: 20px; }
+        
+        /* Create Post Box */
+        .create-post { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .create-post-top { display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px; }
+        .create-post-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; }
+        .create-post-top input { flex: 1; background: #222; border: none; padding: 12px 20px; border-radius: 25px; color: #fff; font-size: 15px; outline: none; }
+        .create-post-options { display: flex; justify-content: space-between; }
+        .post-opt-btn { display: flex; align-items: center; gap: 8px; color: #aaa; background: transparent; border: none; font-size: 14px; font-weight: bold; cursor: pointer; padding: 8px 15px; border-radius: 8px; transition: 0.3s; }
+        .post-opt-btn:hover { background: #222; color: #fff; }
+        .post-opt-btn.gold { color: #e6c875; }
+
+        /* Posts */
+        .post-card { background: #111; border: 1px solid #333; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); overflow: hidden; }
+        .post-header { display: flex; justify-content: space-between; align-items: center; padding: 15px; }
+        .post-user { display: flex; align-items: center; gap: 12px; }
+        .post-user img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e6c875; }
+        .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; }
+        .verify-badge { color: #1da1f2; font-size: 14px; }
+        .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; }
+        .post-text { padding: 0 15px 15px 15px; font-size: 14px; color: #ddd; line-height: 1.5; }
+        .post-media img, .post-media video { width: 100%; max-height: 500px; object-fit: cover; }
+        
+        /* 🔥 REWARD ACTIONS 🔥 */
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; color: #888; font-size: 13px; }
+        .post-actions { display: flex; justify-content: space-between; padding: 5px 15px; }
+        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 8px; transition: 0.3s; position: relative; }
+        .action-btn:hover { background: #222; color: #fff; }
+        .action-btn.active { color: #e6c875; }
+        
+        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.2); color: #e6c875; padding: 2px 6px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.5); }
+
+        /* 🔥 RIGHT SIDEBAR 🔥 */
+        .widget-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .widget-title { color: #e6c875; font-size: 16px; margin: 0 0 15px 0; border-bottom: 1px solid #222; padding-bottom: 10px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+        
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #222; }
+        .task-item:last-child { border: none; }
+        .task-info h5 { margin: 0; color: #fff; font-size: 13px; }
+        .task-info p { margin: 2px 0 0 0; color: #888; font-size: 11px; }
+        .task-reward { background: #e6c875; color: #000; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 15px; cursor: pointer; border: none; transition: 0.3s; }
+        .task-reward:hover { background: #fff; transform: scale(1.05); }
+
+        /* Floating ATVT Animation */
+        .floating-reward { position: fixed; color: #e6c875; font-size: 20px; font-weight: 900; text-shadow: 0 0 10px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.5s ease-out forwards; z-index: 10000; }
+        @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
+
+        /* MOBILE RESPONSIVE */
+        .mobile-bottom-nav { display: none; }
+        @media (max-width: 1000px) {
+            .app-container { grid-template-columns: 1fr; margin-top: 10px; padding-bottom: 80px; }
+            .sidebar, .app-search { display: none; }
+            .app-title { font-size: 18px; }
+            
+            /* Mobile Bottom Nav */
+            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #333; z-index: 1000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.9); }
+            .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 4px; transition: 0.3s; }
+            .nav-item i { font-size: 20px; }
+            .nav-item.active { color: #e6c875; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header class="app-header">
+        <div class="app-header-left">
+            <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            <h1 class="app-title notranslate">DK Social</h1>
+            <div class="app-search">
+                <i class="fas fa-search" style="color: #888;"></i>
+                <input type="text" placeholder="Search friends, movies, or creators...">
+            </div>
+        </div>
+        <div class="app-header-right">
+            <!-- Universal ATVT Wallet -->
+            <div class="atvt-wallet" id="walletBtn">
+                <i class="fas fa-coins"></i> <span id="atvtBalance">150.00</span> ATVT
+            </div>
+            <button class="icon-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
+            <button class="icon-btn"><i class="fas fa-envelope"></i><span class="badge">1</span></button>
+            <img src="images/movies/gallery1.png" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e6c875; cursor: pointer;" alt="Profile">
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <img src="images/movies/gallery1.png" class="profile-img" alt="User">
+                <h3>VIP Member</h3>
+                <p>@vip_creator</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Home Feed</a></li>
+                <li><a href="#"><i class="fas fa-video"></i> Watch Shorts <span style="margin-left:auto; background:#ff4d4d; padding:2px 6px; border-radius:10px; font-size:10px; color:#fff;">Live</span></a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Friends & Fans</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> DK Mart</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> Wallet & Earnings</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </aside>
+
+        <!-- MIDDLE FEED -->
+        <main class="feed">
+            
+            <!-- Create Post -->
+            <div class="create-post">
+                <div class="create-post-top">
+                    <img src="images/movies/gallery1.png" alt="User">
+                    <input type="text" placeholder="What's on your mind? Share to earn ATVT...">
+                </div>
+                <div class="create-post-options">
+                    <button class="post-opt-btn"><i class="fas fa-video" style="color: #ff4d4d;"></i> Live Video</button>
+                    <button class="post-opt-btn"><i class="fas fa-image" style="color: #25d366;"></i> Photo/Video</button>
+                    <button class="post-opt-btn gold" onclick="simulateEarning(event, 5, 'Post Created!')"><i class="fas fa-paper-plane"></i> Post (+5 ATVT)</button>
+                </div>
+            </div>
+
+            <!-- Fake Post 1 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="images/movies/gallery1.png" alt="DK Atovitt">
+                        <div class="post-user-info">
+                            <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
+                            <p>Official Page • 2 hours ago</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-ellipsis-h" style="color: #888; cursor: pointer;"></i>
+                </div>
+                <div class="post-text">
+                    Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
+                </div>
+                <div class="post-media">
+                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster" onerror="this.src='https://via.placeholder.com/800x400/111/e6c875?text=Yakshini+Poster'">
+                </div>
+                <div class="post-stats">
+                    <span><i class="fas fa-thumbs-up" style="color:#e6c875;"></i> 1.2k Likes</span>
+                    <span>450 Comments • 120 Shares</span>
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="earnAction(this, 1, 'Like')">
+                        <i class="far fa-thumbs-up"></i> Like <span class="reward-hint">+1 ATVT</span>
+                    </button>
+                    <button class="action-btn" onclick="earnAction(this, 2, 'Comment')">
+                        <i class="far fa-comment"></i> Comment <span class="reward-hint">+2 ATVT</span>
+                    </button>
+                    <button class="action-btn" onclick="earnAction(this, 5, 'Share')">
+                        <i class="fas fa-share"></i> Share <span class="reward-hint">+5 ATVT</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fake Post 2 -->
+            <div class="post-card">
+                <div class="post-header">
+                    <div class="post-user">
+                        <img src="https://via.placeholder.com/100" alt="User">
+                        <div class="post-user-info">
+                            <h4>Ravi Sharma</h4>
+                            <p>Creator • 5 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-text">
+                    Just uploaded my audition reel for DK Atovitt! Wish me luck guys. Earning ATVT every day just by using this awesome app! 💸🔥
+                </div>
+                <div class="post-actions" style="border-top: 1px solid #222;">
+                    <button class="action-btn" onclick="earnAction(this, 1, 'Like')">
+                        <i class="far fa-thumbs-up"></i> Like <span class="reward-hint">+1 ATVT</span>
+                    </button>
+                    <button class="action-btn" onclick="earnAction(this, 2, 'Comment')">
+                        <i class="far fa-comment"></i> Comment <span class="reward-hint">+2 ATVT</span>
+                    </button>
+                    <button class="action-btn" onclick="earnAction(this, 5, 'Share')">
+                        <i class="fas fa-share"></i> Share <span class="reward-hint">+5 ATVT</span>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside class="sidebar">
+            
+            <div class="widget-card">
+                <h3 class="widget-title"><i class="fas fa-tasks"></i> Daily Rewards</h3>
+                
+                <div class="task-item">
+                    <div class="task-info">
+                        <h5>Watch 5 Shorts</h5>
+                        <p>0/5 Completed</p>
+                    </div>
+                    <button class="task-reward" onclick="simulateEarning(event, 10, 'Task Completed!')">+10 ATVT</button>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-info">
+                        <h5>Invite a Friend</h5>
+                        <p>Share your referral link</p>
+                    </div>
+                    <button class="task-reward" onclick="simulateEarning(event, 50, 'Bonus Added!')">+50 ATVT</button>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-info">
+                        <h5>Daily Check-in</h5>
+                        <p>Claim your daily bonus</p>
+                    </div>
+                    <button class="task-reward" onclick="simulateEarning(event, 5, 'Checked In!')">Claim</button>
+                </div>
+            </div>
+
+            <div class="widget-card">
+                <h3 class="widget-title"><i class="fas fa-fire"></i> Trending Tags</h3>
+                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#DKAtovitt</p>
+                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#YakshiniAuditions</p>
+                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#EarnATVT</p>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bottom-nav">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
+        <a href="#" class="nav-item"><i class="fas fa-video"></i> Shorts</a>
+        <a href="#" class="nav-item"><i class="fas fa-plus-circle" style="font-size: 30px; color: #e6c875;"></i> Post</a>
+        <a href="#" class="nav-item"><i class="fas fa-wallet"></i> Wallet</a>
+        <a href="#" class="nav-item"><i class="fas fa-bars"></i> Menu</a>
+    </nav>
+
+    <!-- 🔥 JAVASCRIPT FOR ATVT EARNING MAGIC 🔥 -->
+    <script>
+        let currentBalance = 150.00;
+        const balanceSpan = document.getElementById('atvtBalance');
+
+        function earnAction(btn, amount, type) {
+            // Check if already clicked to prevent spam clicking
+            if(btn.classList.contains('active')) return; 
+
+            // Change button style
+            btn.classList.add('active');
+            const icon = btn.querySelector('i');
+            if(type === 'Like') {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+            }
+
+            // Add Balance and show animation
+            simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, amount, type);
+        }
+
+        function simulateEarning(event, amount, textHint) {
+            // Update Balance
+            currentBalance += amount;
+            balanceSpan.innerText = currentBalance.toFixed(2);
+            
+            // Add flash effect to wallet
+            const walletBtn = document.getElementById('walletBtn');
+            walletBtn.style.transform = 'scale(1.1)';
+            walletBtn.style.boxShadow = '0 0 30px #e6c875';
+            setTimeout(() => {
+                walletBtn.style.transform = 'scale(1)';
+                walletBtn.style.boxShadow = '0 0 15px rgba(230,200,117,0.5)';
+            }, 300);
+
+            // Create floating text (+X ATVT) at mouse click position
+            const floatingText = document.createElement('div');
+            floatingText.className = 'floating-reward';
+            floatingText.innerText = `+${amount} ATVT`;
+            floatingText.style.left = (event.clientX || window.innerWidth/2) + 'px';
+            floatingText.style.top = (event.clientY || window.innerHeight/2) + 'px';
+            
+            document.body.appendChild(floatingText);
+
+            // Remove element after animation ends
+            setTimeout(() => {
+                floatingText.remove();
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
