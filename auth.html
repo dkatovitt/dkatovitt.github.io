@@ -15,8 +15,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
         crossorigin="anonymous"></script>
 
-    <!-- EmailJS Script (Optional for Welcome Email) -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+    <!-- 🔥 EMAILJS SDK & INITIALIZATION (UPDATED) 🔥 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("ZyFgxirFQ4xUlEEu1"); // Your Public Key
+        })();
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -558,7 +563,6 @@
         </div>
     </div>
 
-    <!-- 🔥 VIP CUSTOM ALERT MODAL HTML 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -586,9 +590,7 @@
         </div>
     </div>
 
-    <!-- 🔥 VIP ALERT LOGIC SCRIPT 🔥 -->
     <script>
-        // 🔥 NEW: Password Visibility Toggle Logic
         function togglePasswordVisibility(inputId, iconElement) {
             const input = document.getElementById(inputId);
             if (input.type === "password") {
@@ -638,19 +640,32 @@
             }
         }
 
-        // Feature 3 Placeholder: Send Welcome Message EmailJS
+        // 🔥 VIP EMAILJS WELCOME MESSAGE LOGIC 🔥
         function sendWelcomeMessage(user) {
-            // NOTE: Automatic Welcome Email or WhatsApp needs EmailJS or a Backend Server.
-            console.log("Welcome Message Trigger: Hello", user.displayName);
-            /* Example EmailJS Code (Uncomment to use):
+            console.log("Sending Welcome Email to:", user.displayName, user.email);
+            
+            var userEmail = user.email || user.phoneNumber || "No Email Provided";
+            var userName = user.displayName || "VIP Member";
+
+            var templateParams = {
+                to_name: userName,
+                user_email: userEmail,
+                mail_title: "Welcome to the DK Atovitt Ecosystem! 🎬",
+                mail_message_1: "We are thrilled to have you here. Your VIP Account login was successful.",
+                mail_message_2: "You can now track your audition forms, check your ATVT wallet, upload your talent reels in Creator Studio, and explore our latest upcoming movies like Yakshini directly from your dashboard.",
+                btn_display: "block",
+                btn_link: "https://www.dkatovitt.com/account.html",
+                btn_text: "Go to My Dashboard"
+            };
+
             if (typeof emailjs !== 'undefined') {
-                emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                    to_name: user.displayName,
-                    to_email: user.email,
-                    message: "Welcome to DK Atovitt Ecosystem!"
-                }).then(function(res) { console.log('Email Sent!', res.status); })
-                  .catch(function(err) { console.log('Email Error', err); });
-            } */
+                emailjs.send('service_p354q2m', 'template_lecntz3', templateParams)
+                    .then(function(response) {
+                        console.log('Welcome Email Sent Successfully!', response.status, response.text);
+                    }, function(error) {
+                        console.log('Welcome Email Failed...', error);
+                    });
+            }
         }
     </script>
 
@@ -675,7 +690,6 @@
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        // 🔥 FIX 2: ALREADY LOGGED IN PROTECTION 🔥
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
@@ -706,7 +720,6 @@
             }
         });
 
-        // 🌟 GOOGLE LOGIN 
         document.querySelectorAll('.googleAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
@@ -715,7 +728,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500);
                     })
                     .catch((error) => {
                         showCustomAlert("Login Failed", error.message, true);
@@ -724,7 +737,6 @@
             });
         });
 
-        // 🌟 FACEBOOK LOGIN 
         document.querySelectorAll('.facebookAuthBtn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
@@ -733,7 +745,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500); 
                     })
                     .catch((error) => {
                         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -748,9 +760,6 @@
             });
         });
 
-        // ==========================================
-        // 🔥 LOGIN LOGIC (SMART AUTO DETECT) 🔥
-        // ==========================================
         const loginInput = document.getElementById('loginSmartInput');
         const loginNextBtn = document.getElementById('loginNextBtn');
         const loginPasswordField = document.getElementById('loginPasswordField');
@@ -825,7 +834,7 @@
                 }
                 sendWelcomeMessage(userCred.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
             } catch (error) {
                 showCustomAlert("Login Failed", "Invalid Email or Password!", true);
                 loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
@@ -840,17 +849,13 @@
             loginConfirmationResult.confirm(code).then((result) => {
                 sendWelcomeMessage(result.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
             });
         });
 
-
-        // ==========================================
-        // 🔥 SIGNUP LOGIC (SMART AUTO DETECT) 🔥
-        // ==========================================
         const signupInput = document.getElementById('signupSmartInput');
         const signupNextBtn = document.getElementById('signupNextBtn');
         const signupDetailsFields = document.getElementById('signupDetailsFields');
@@ -964,7 +969,7 @@
                 updateProfile(result.user, { displayName: name }).then(() => {
                     sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Mobile Account Created & Logged In!", false);
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500); // 🔥 FIX 1: REDIRECT TO HOME PAGE
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
                 });
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
@@ -975,7 +980,6 @@
     </script>
 
     <script type="text/javascript">
-        // Basic scripts for UI...
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
@@ -1055,7 +1059,6 @@
         window.addEventListener('scroll', reveal); 
         reveal(); 
         
-        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
             if (currentPage === "" || currentPage === "/") currentPage = "index.html";
@@ -1086,7 +1089,6 @@
             });
         });
 
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 var d = window.location.hostname;
