@@ -270,7 +270,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
 
@@ -293,7 +293,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -532,8 +532,8 @@
         </div>
     </div>
 
-    <!-- 🔥 EMAILJS SCRIPT START 🔥 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/emailjs.min.js"></script>
+    <!-- 🔥 EMAILJS SCRIPT START (UPDATED WITH DOUBLE DHAMAKA) 🔥 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
           emailjs.init("ZyFgxirFQ4xUlEEu1"); 
@@ -546,19 +546,43 @@
           btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
           
           const userName = document.getElementById('user_name').value;
+          const userEmail = document.getElementById('user_email').value;
+          const userPhone = document.getElementById('user_phone').value;
           const userCategory = document.getElementById('inquiry_category').value;
+          const userMessage = document.getElementById('message').value;
           
-          const templateParams = {
+          // 1. ADMIN PARAMS (तुम्हारे पास डिटेल्स भेजने के लिए)
+          const adminParams = {
               user_name: userName,
-              user_email: document.getElementById('user_email').value,
-              user_phone: document.getElementById('user_phone').value,
+              user_email: userEmail,
+              user_phone: userPhone,
               inquiry_category: userCategory,
-              message: document.getElementById('message').value
+              message: userMessage
+          };
+
+          // 2. USER VIP REPLY PARAMS (कस्टमर को थैंक यू भेजने के लिए)
+          const userParams = {
+              to_name: userName,
+              user_email: userEmail,
+              mail_title: "Thank you for reaching out to us!",
+              mail_message_1: "We have successfully received your message/inquiry.",
+              mail_message_2: "Our team is currently reviewing your details regarding " + userCategory + ". DK Atovitt's official team will get back to you shortly.",
+              btn_display: "none", // Contact Us के रिप्लाई में Dashboard बटन नहीं दिखेगा
+              btn_link: "#",
+              btn_text: ""
           };
     
-          emailjs.send('service_p354q2m', 'template_7ysg4yf', templateParams)
+          // सबसे पहले एडमिन (तुम्हें) ईमेल भेज रहे हैं
+          emailjs.send('service_p354q2m', 'template_7ysg4yf', adminParams)
               .then(function(response) {
-                 
+                 console.log("Admin Email Sent", response);
+
+                 // अब कस्टमर (User) को VIP Thank You Reply भेज रहे हैं
+                 return emailjs.send('service_p354q2m', 'template_lecntz3', userParams);
+              })
+              .then(function(userResponse) {
+                 console.log("User VIP Email Sent", userResponse);
+
                  // Show beautiful green success message
                  document.getElementById('success-message').style.display = 'block';
                  
@@ -576,7 +600,8 @@
                      document.getElementById('success-message').style.display = 'none';
                  }, 5000);
                  
-              }, function(error) {
+              })
+              .catch(function(error) {
                  alert('Failed to send inquiry. Please check your connection and try again.');
                  btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Inquiry';
                  console.log('FAILED...', error);
