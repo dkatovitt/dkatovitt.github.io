@@ -12,10 +12,9 @@
         /* 🔥 DASHBOARD CORE CSS */
         body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
         
-        /* 🔥 NEW VIP SIDEBAR */
-        .sidebar { width: 280px; background: #111; height: 100vh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        /* 🔥 NEW VIP SIDEBAR (Mobile Fix Applied) */
+        .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         
-        /* Sidebar Profile Section */
         .sidebar-profile { padding: 30px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; }
@@ -23,7 +22,6 @@
         .edit-profile-btn { display: inline-block; background: #222; color: #ccc; text-decoration: none; font-size: 12px; padding: 6px 15px; border-radius: 15px; border: 1px solid #444; transition: 0.3s; }
         .edit-profile-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; }
 
-        /* Sidebar Menu Section */
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -32,7 +30,6 @@
         .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
         .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
         
-        /* Language Dropdown in Sidebar */
         .menu-lang-wrapper { padding: 12px 25px; display: flex; align-items: center; }
         .menu-lang-wrapper i { width: 25px; font-size: 16px; color: #e6c875; }
         .menu-lang-wrapper select { background: #222; color: #fff; border: 1px solid #444; padding: 5px 10px; border-radius: 8px; outline: none; width: 100%; font-size: 13px; cursor: pointer; }
@@ -40,14 +37,14 @@
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 10px 25px 5px 25px; font-weight: bold; }
 
-        .sidebar-footer { padding: 20px; border-top: 1px solid #222; }
-        .logout-btn { display: block; text-align: center; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        /* Mobile cut-off fix for bottom */
+        .sidebar-footer { padding: 15px 20px 35px 20px; border-top: 1px solid #222; background: #111; }
+        .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .logout-btn:hover { background: #cc0000; }
 
         /* 🔥 MAIN CONTENT AREA */
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); }
         
-        /* 🔥 TOPBAR */
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
         .topbar-left { display: flex; align-items: center; gap: 15px; }
         .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
@@ -55,13 +52,11 @@
         
         .topbar-right { display: flex; align-items: center; gap: 20px; }
         
-        /* 🪙 WALLET CHIP */
         .wallet-chip { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); color: #000; padding: 8px 15px; border-radius: 30px; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 14px; box-shadow: 0 4px 10px rgba(230,200,117,0.3); }
         .wallet-chip i { font-size: 16px; }
 
         .profile-icon { width: 40px; height: 40px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 20px; border: 2px solid #e6c875; cursor: pointer; }
 
-        /* 🔥 DASHBOARD CONTENT SCROLL AREA */
         .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; }
         
         .welcome-banner { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #333; margin-bottom: 30px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -72,7 +67,6 @@
 
         .section-title { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: bold; }
 
-        /* 🔥 BUSINESS GRID (THE 5 DOORS) */
         .business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
         
         .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 25px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
@@ -87,7 +81,6 @@
         .card-badge { position: absolute; top: 12px; right: -30px; background: #ff4d4d; color: #fff; font-size: 9px; font-weight: bold; padding: 4px 30px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .card-badge.live { background: #25d366; }
 
-        /* 🔥 MOBILE RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { position: fixed; left: -280px; }
             .sidebar.active { left: 0; }
@@ -102,7 +95,6 @@
 
     <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
     <div class="sidebar" id="sidebar">
-        <!-- 1. Profile Section -->
         <div class="sidebar-profile">
             <img src="images/movies/gallery1.png" alt="Profile Photo">
             <h3>Dipak Kumar Gupta</h3>
@@ -111,10 +103,8 @@
         </div>
         
         <div class="sidebar-menu">
-            <!-- 2. Wallet -->
             <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
             
-            <!-- 3. Language -->
             <div class="menu-lang-wrapper">
                 <i class="fas fa-language"></i>
                 <select class="notranslate">
@@ -127,9 +117,8 @@
             <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
 
-            <!-- 4. The 5 Business Windows -->
             <a href="index.html"><i class="fas fa-film"></i> DK Film Production</a>
-            <a href="social.html"><i class="fas fa-users"></i> DK Social</a>
+            <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
             <a href="#" style="opacity: 0.5;"><i class="fas fa-shopping-cart"></i> DK Mart (Soon)</a>
             <a href="#" style="opacity: 0.5;"><i class="fas fa-chart-line"></i> DK Trade (Soon)</a>
             <a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
@@ -142,7 +131,6 @@
 
     <!-- 🔥 MAIN CONTENT -->
     <div class="main-content">
-        <!-- TOPBAR (Kept Exactly Same as Requested) -->
         <div class="topbar">
             <div class="topbar-left">
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
@@ -158,10 +146,7 @@
             </div>
         </div>
 
-        <!-- SCROLLABLE BODY -->
         <div class="dashboard-body">
-            
-            <!-- Welcome Banner -->
             <div class="welcome-banner">
                 <h1>Welcome back, <span>Dipak</span> 👋</h1>
                 <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
@@ -169,7 +154,6 @@
 
             <h2 class="section-title">Our Ecosystem</h2>
 
-            <!-- 🔥 BUSINESS DOORS (GRID) 🔥 -->
             <div class="business-grid">
                 
                 <a href="index.html" class="business-card">
@@ -182,7 +166,7 @@
                 <a href="social.html" class="business-card">
                     <div class="card-badge live">Live</div>
                     <div class="card-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="card-title">DK Social</h3>
+                    <h3 class="card-title">DK Connect</h3>
                     <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins.</p>
                 </a>
 
@@ -208,11 +192,9 @@
                 </a>
 
             </div>
-
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
