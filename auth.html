@@ -690,12 +690,12 @@
                         </div>
                         <h2 style="color: #e6c875; margin-bottom: 10px; font-family: 'Playfair Display', serif; text-transform: uppercase;">Already Logged In</h2>
                         <p style="color: #aaa; margin-bottom: 25px; font-size: 14px;">You are currently logged in. Please logout first to sign in with a different account.</p>
-                        <button id="goHomeBtn" class="auth-btn" style="margin-bottom: 15px;"><i class="fas fa-home"></i> Go to Home Page</button>
+                        <button id="goHomeBtn" class="auth-btn" style="margin-bottom: 15px;"><i class="fas fa-home"></i> Go to Dashboard</button>
                         <button id="logoutAuthBtn" class="auth-btn" style="background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
                     `;
                     authBox.appendChild(div);
 
-                    document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
+                    document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'dk-atovitt-dashboard.html'; });
                     document.getElementById('logoutAuthBtn').addEventListener('click', () => {
                         auth.signOut().then(() => window.location.reload());
                     });
@@ -711,7 +711,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                        setTimeout(() => { window.location.href = "dk-atovitt-dashboard.html"; }, 1500);
                     })
                     .catch((error) => {
                         showCustomAlert("Login Failed", error.message, true);
@@ -728,7 +728,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                        setTimeout(() => { window.location.href = "dk-atovitt-dashboard.html"; }, 1500); 
                     })
                     .catch((error) => {
                         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -838,7 +838,7 @@
                 }
                 sendWelcomeMessage(userCred.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                setTimeout(() => { window.location.href = "dk-atovitt-dashboard.html"; }, 1500); 
             } catch (error) {
                 showCustomAlert("Login Failed", "Invalid Email or Password!", true);
                 loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
@@ -853,7 +853,7 @@
             loginConfirmationResult.confirm(code).then((result) => {
                 sendWelcomeMessage(result.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                setTimeout(() => { window.location.href = "dk-atovitt-dashboard.html"; }, 1500); 
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
@@ -973,7 +973,7 @@
                 updateProfile(result.user, { displayName: name }).then(() => {
                     sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Mobile Account Created & Logged In!", false);
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                    setTimeout(() => { window.location.href = "dk-atovitt-dashboard.html"; }, 1500);
                 });
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
