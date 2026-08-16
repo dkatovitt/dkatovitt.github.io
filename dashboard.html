@@ -48,6 +48,11 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
+        /* 🔥 MENU OVERLAY FIX (NEW) 🔥 */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(2px); }
+        #overlay.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         /* 🔥 VIP SIDEBAR 🔥 */
         .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         
@@ -74,7 +79,7 @@
         .logout-btn:hover { background: #cc0000; }
 
         /* 🔥 MAIN CONTENT AREA 🔥 */
-        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); }
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
         
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
         .topbar-left { display: flex; align-items: center; gap: 15px; }
@@ -179,7 +184,10 @@
 </head>
 <body>
 
-    <!-- 🔥 Google Translate Invisible Element 🔥 -->
+    <!-- 🔥 OVERLAY FOR MENU CLICK FIX 🔥 -->
+    <div id="overlay"></div>
+
+    <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
     <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
@@ -211,7 +219,7 @@
             <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
 
-            <!-- 🔥 CHANGED LINK HERE TO PREVENT CACHE ISSUE 🔥 -->
+            <!-- 🔥 LINK FIXED: ALWAYS OPENS FRESH HOME PAGE 🔥 -->
             <a href="index.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a>
             <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
             <a href="#" style="opacity: 0.5;"><i class="fas fa-shopping-cart"></i> DK Mart (Soon)</a>
@@ -224,7 +232,7 @@
         </div>
     </div>
 
-    <!-- 🔥 MAIN CONTENT -->
+    <!-- 🔥 MAIN CONTENT 🔥 -->
     <div class="main-content">
         <div class="topbar">
             <div class="topbar-left">
@@ -251,7 +259,7 @@
 
             <div class="business-grid">
                 
-                <!-- 🔥 CHANGED LINK HERE TO PREVENT CACHE ISSUE 🔥 -->
+                <!-- 🔥 LINK FIXED: ALWAYS OPENS FRESH HOME PAGE 🔥 -->
                 <a href="index.html?v=fresh" class="business-card">
                     <div class="card-badge live">Live</div>
                     <div class="card-icon"><i class="fas fa-film"></i></div>
@@ -391,20 +399,19 @@
 
     <!-- 🔥 JAVASCRIPT SECTION 🔥 -->
     <script>
-        // Sidebar Toggle Logic
+        // 🔥 PERFECT OVERLAY CLICK FIX 🔥
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
         
         menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
         });
 
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-                    sidebar.classList.remove('active');
-                }
-            }
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
         });
 
         // App Modal Logic
@@ -466,7 +473,6 @@
             window.location.reload(); 
         };
 
-        // Attach listener explicitly for forced reload
         const langSidebar = document.getElementById('lang-sidebar');
         if(langSidebar) {
             langSidebar.addEventListener('change', function() {
