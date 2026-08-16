@@ -12,16 +12,24 @@
         /* 🔥 DASHBOARD CORE CSS */
         body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
         
-        /* 🔥 NEW VIP SIDEBAR (Mobile Fix Applied) */
+        /* 🔥 GOOGLE TRANSLATE HIDE BAR CSS */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+        /* 🔥 VIP SIDEBAR */
         .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         
-        .sidebar-profile { padding: 30px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
+        /* Profile Section */
+        .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; }
         .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 15px; letter-spacing: 1px; }
         .edit-profile-btn { display: inline-block; background: #222; color: #ccc; text-decoration: none; font-size: 12px; padding: 6px 15px; border-radius: 15px; border: 1px solid #444; transition: 0.3s; }
         .edit-profile-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; }
 
+        /* Sidebar Menu Section */
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -29,10 +37,6 @@
         .sidebar-menu a { display: flex; align-items: center; padding: 12px 25px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; border-left: 3px solid transparent; font-weight: bold; }
         .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
         .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
-        
-        .menu-lang-wrapper { padding: 12px 25px; display: flex; align-items: center; }
-        .menu-lang-wrapper i { width: 25px; font-size: 16px; color: #e6c875; }
-        .menu-lang-wrapper select { background: #222; color: #fff; border: 1px solid #444; padding: 5px 10px; border-radius: 8px; outline: none; width: 100%; font-size: 13px; cursor: pointer; }
         
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 10px 25px 5px 25px; font-weight: bold; }
@@ -93,8 +97,27 @@
 </head>
 <body>
 
+    <!-- Google Translate Invisible Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+
     <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
     <div class="sidebar" id="sidebar">
+        
+        <!-- 0. Language Section (Moved to TOP) -->
+        <div style="padding: 20px 20px 0 20px; background: #1a1a1a;">
+            <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; outline: none; cursor: pointer; text-align: center; margin-bottom: 15px;">
+                <option value="" style="background: #111;">🌐 Select Language</option>
+                <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
+                <option value="en" style="background: #111;">English</option>
+                <option value="bn" style="background: #111;">বাংলা (Bengali)</option>
+                <option value="mr" style="background: #111;">मराठी (Marathi)</option>
+                <option value="te" style="background: #111;">తెలుగు (Telugu)</option>
+                <option value="ta" style="background: #111;">தமிழ் (Tamil)</option>
+                <option value="gu" style="background: #111;">ગુજરાती (Gujarati)</option>
+            </select>
+        </div>
+
+        <!-- 1. Profile Section -->
         <div class="sidebar-profile">
             <img src="images/movies/gallery1.png" alt="Profile Photo">
             <h3>Dipak Kumar Gupta</h3>
@@ -105,15 +128,6 @@
         <div class="sidebar-menu">
             <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
             
-            <div class="menu-lang-wrapper">
-                <i class="fas fa-language"></i>
-                <select class="notranslate">
-                    <option value="en">🌐 Language: English</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                </select>
-            </div>
-
             <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
 
@@ -195,7 +209,22 @@
         </div>
     </div>
 
+    <!-- 🔥 JAVASCRIPT SECTION 🔥 -->
+    
+    <!-- Google Translate Script Setup -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
+        // Sidebar Toggle Logic
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         
@@ -209,6 +238,43 @@
                     sidebar.classList.remove('active');
                 }
             }
+        });
+
+        // 🔥 Translate Engine Logic (Same as Home Page) 🔥
+        function translatePage(lang) {
+            if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.reload(); 
+                return;
+            }
+            
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; 
+                googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var sidebarLang = document.getElementById('lang-sidebar');
+                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+            }, 1000);
         });
     </script>
 </body>
