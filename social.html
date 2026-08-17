@@ -138,7 +138,7 @@
         .story-tab.active { color: #1877F2; border-bottom: 3px solid #1877F2; }
         .story-tab:hover { background: rgba(255,255,255,0.05); }
 
-        .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px 15px 5px 15px; scroll-snap-type: x mandatory; }
+        .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px 15px 5px 15px; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
         .fb-stories-scroll::-webkit-scrollbar { display: none; }
         
         .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
@@ -151,10 +151,15 @@
         .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
 
         /* Standard Story */
-        .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; }
+        .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+        .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
+        .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
+        
+        /* 🔥 STORY LOADING SPINNER CSS 🔥 */
+        .story-overlay-loading { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 5; color: #fff; }
+        .story-overlay-loading .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid #1877F2; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* 3. POST CARDS */
         .post-card { background: #111; border-bottom: 5px solid #000; padding-top: 5px; }
@@ -225,7 +230,7 @@
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* 🔥 FULLSCREEN REELS VIEW 🔥 */
+        /* 🔥 FULLSCREEN REELS / STORY EDITOR VIEW 🔥 */
         .reels-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none; flex-direction: column; }
         .reels-view.active { display: flex; animation: slideUp 0.3s ease; }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -237,31 +242,29 @@
         .reel-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; overflow: hidden; }
         .reel-video { width: 100%; height: 100%; object-fit: cover; }
         
-        .reel-actions { position: absolute; bottom: 80px; right: 15px; display: flex; flex-direction: column; gap: 25px; align-items: center; z-index: 10; }
-        .reel-action-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #fff; cursor: pointer; transition: 0.3s; }
-        .reel-action-btn i { font-size: 28px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-        .reel-action-btn:hover i { color: #e6c875; transform: scale(1.1); }
-        .reel-action-btn.active i { color: #1877F2; }
-        .reel-action-btn span { font-size: 12px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
-        .reel-profile-img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; margin-top: 10px; }
-        
-        .reel-info { position: absolute; bottom: 80px; left: 15px; right: 70px; z-index: 10; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
-        .reel-info h4 { margin: 0 0 5px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
-        .reel-info h4 button { background: transparent; border: 1px solid #fff; color: #fff; padding: 2px 10px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold; }
-        .reel-info p { margin: 0 0 10px 0; font-size: 14px; line-height: 1.4; }
-        .reel-music { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+        /* Story Preview Specifics */
+        .story-preview-img { width: 100%; height: 85%; object-fit: contain; }
+        .story-editor-tools { position: absolute; right: 15px; top: 80px; display: flex; flex-direction: column; gap: 20px; z-index: 10; }
+        .story-editor-tools .tool-btn { color: #fff; font-size: 24px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; transition: 0.3s; }
+        .story-editor-tools .tool-btn:hover { color: #e6c875; transform: scale(1.1); }
+        .story-share-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #111; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; z-index: 20; }
+        .story-share-bar .privacy { color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: bold; }
+        .story-share-bar .share-btn { background: #1877F2; color: #fff; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
+        .story-share-bar .share-btn:hover { background: #166fe5; }
 
         /* 🔥 MOBILE RESPONSIVE 🔥 */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
             
+            /* Sidebar becomes Right-side Drawer */
             .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
             
             .fb-top-left .menu-btn { display: none; } 
             
+            /* Mobile Bottom Nav */
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
             .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
@@ -284,7 +287,7 @@
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="fb-top-right">
-                <button class="fb-icon-btn"><i class="fas fa-plus"></i></button>
+                <button class="fb-icon-btn" onclick="openStoryPicker()"><i class="fas fa-plus"></i></button>
                 <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
                 <button class="fb-icon-btn fill">
                     <i class="fab fa-facebook-messenger"></i>
@@ -426,8 +429,8 @@
             <!-- 1. FB CREATE POST BOX -->
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
-                <div class="input-box">What's on your mind?</div>
-                <i class="fas fa-images" style="color: #888;"></i>
+                <div class="input-box" onclick="openStoryPicker()">What's on your mind?</div>
+                <i class="fas fa-images" onclick="openStoryPicker()"></i>
             </div>
 
             <!-- 2. STORIES & REELS SECTION -->
@@ -437,8 +440,9 @@
                     <div class="story-tab" onclick="openReels()">Reels</div>
                 </div>
                 
-                <div class="fb-stories-scroll">
-                    <div class="story-card create-card">
+                <div class="fb-stories-scroll" id="storiesContainer">
+                    <!-- 🔥 CREATE STORY CARD (CLICKABLE) 🔥 -->
+                    <div class="story-card create-card" onclick="openStoryPicker()">
                         <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
@@ -468,7 +472,7 @@
 
             <!-- 3. FEED POSTS -->
             
-            <!-- POST 1 (Yakshini) -->
+            <!-- POST 1 -->
             <div class="post-card" id="post-1">
                 <div class="post-header">
                     <div class="post-user">
@@ -498,7 +502,6 @@
                     <span><span id="comment-count-post-1">450</span> Comments • 120 Shares</span>
                 </div>
                 
-                <!-- 🔥 LIVE ACTION BUTTONS 🔥 -->
                 <div class="post-actions">
                     <button class="action-btn" onclick="toggleLike(this, 'post-1', 1)" data-earned="false">
                         <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
@@ -511,10 +514,8 @@
                     </button>
                 </div>
                 
-                <!-- 🔥 LIVE COMMENT SECTION 🔥 -->
                 <div class="post-comments-section" id="comments-section-post-1">
                     <div class="comments-list" id="comment-list-post-1">
-                        <!-- Dummy comment -->
                         <div class="comment-item">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
                             <div class="comment-bubble">
@@ -531,7 +532,7 @@
                 </div>
             </div>
 
-            <!-- POST 2 (Nilesh) -->
+            <!-- POST 2 -->
             <div class="post-card" id="post-2">
                 <div class="post-header">
                     <div class="post-user">
@@ -561,7 +562,6 @@
                     <span><span id="comment-count-post-2">45</span> Comments</span>
                 </div>
                 
-                <!-- 🔥 LIVE ACTION BUTTONS 🔥 -->
                 <div class="post-actions">
                     <button class="action-btn" onclick="toggleLike(this, 'post-2', 1)" data-earned="false">
                         <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
@@ -574,7 +574,6 @@
                     </button>
                 </div>
                 
-                <!-- 🔥 LIVE COMMENT SECTION 🔥 -->
                 <div class="post-comments-section" id="comments-section-post-2">
                     <div class="comments-list" id="comment-list-post-2">
                         <div class="comment-item">
@@ -686,13 +685,7 @@
         </div>
         <div class="reel-container">
             <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="reel-video"></video>
-            <div class="reel-actions">
-                <div class="reel-action-btn" onclick="toggleReelLike(this)"><i class="fas fa-heart"></i><span id="reel-like-count">12K</span></div>
-                <div class="reel-action-btn"><i class="fas fa-comment"></i><span>450</span></div>
-                <div class="reel-action-btn"><i class="fas fa-share"></i><span>Share</span></div>
-                <div class="reel-action-btn"><i class="fas fa-ellipsis-h"></i></div>
-                <img src="images/movies/gallery1.png" class="reel-profile-img">
-            </div>
+            <!-- REEL ACTIONS REMOVED AS PER PREVIOUS STEP, THIS IS JUST A VIEWER -->
             <div class="reel-info">
                 <h4>DK ATOVITT <button>Follow</button></h4>
                 <p>Welcome to the DK Connect Reels! Swipe up for more. 🔥 #DKAtovitt #Shorts</p>
@@ -701,39 +694,123 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT FOR LIVE ACTIONS & EARNING MAGIC 🔥 -->
+    <!-- 🔥 HIDDEN FILE INPUT FOR STORY CREATION 🔥 -->
+    <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
+
+    <!-- 🔥 STORY PREVIEW / EDITOR MODAL 🔥 -->
+    <div id="storyPreviewModal" class="reels-view">
+        <div class="reels-header">
+            <i class="fas fa-times" onclick="closeStoryPreview()"></i>
+            <h2>Create story</h2>
+            <i class="fas fa-cog"></i>
+        </div>
+        <div class="reel-container" style="background: #000;">
+            <img id="storyPreviewImg" src="" class="story-preview-img">
+            
+            <div class="story-editor-tools">
+                <i class="fas fa-music tool-btn"></i>
+                <i class="fas fa-font tool-btn"></i>
+                <i class="fas fa-sticky-note tool-btn"></i>
+                <i class="fas fa-magic tool-btn"></i>
+            </div>
+
+            <div class="story-share-bar">
+                <div class="privacy"><i class="fas fa-globe-americas"></i> Public</div>
+                <button class="share-btn" onclick="shareStory()">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔥 JAVASCRIPT FOR LIVE ACTIONS, STORIES & EARNING MAGIC 🔥 -->
     <script>
-        // Global User Data for Comments
+        // Global User Data
         let currentUserName = "VIP Member";
         let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
-        // Reels Toggle Logic
+        // --- STORY CREATION LOGIC ---
+        function openStoryPicker() {
+            document.getElementById('storyFileInput').click();
+        }
+
+        document.getElementById('storyFileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('storyPreviewImg').src = e.target.result;
+                    document.getElementById('storyPreviewModal').classList.add('active');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function closeStoryPreview() {
+            document.getElementById('storyPreviewModal').classList.remove('active');
+            document.getElementById('storyFileInput').value = ""; 
+        }
+
+        function shareStory() {
+            closeStoryPreview();
+            
+            const imgSrc = document.getElementById('storyPreviewImg').src;
+            const storyId = 'story-' + Date.now();
+            
+            // Create New Story HTML with Loading Overlay
+            const newStoryHTML = `
+                <div class="story-card user-card" id="${storyId}">
+                    <img src="${imgSrc}" class="bg" alt="Story" style="opacity: 0.5;">
+                    <div class="user-ring"><img src="${currentUserPhoto}"></div>
+                    
+                    <!-- Loading Spinner Overlay -->
+                    <div class="story-overlay-loading" id="loading-${storyId}">
+                        <div class="spinner"></div>
+                        <span style="font-size: 11px; margin-top: 8px; font-weight: bold;">Sharing...</span>
+                    </div>
+                    
+                    <span class="story-name" id="name-${storyId}" style="display:none;">Your story</span>
+                </div>
+            `;
+            
+            // Insert after the Create Story card
+            const createCard = document.querySelector('.story-card.create-card');
+            createCard.insertAdjacentHTML('afterend', newStoryHTML);
+            
+            // Scroll to the new story
+            document.getElementById('storiesContainer').scrollLeft = 0;
+
+            // Simulate Upload (Remove Loading after 2 seconds)
+            setTimeout(() => {
+                document.getElementById('loading-' + storyId).style.display = 'none';
+                document.getElementById('name-' + storyId).style.display = 'block';
+                document.querySelector(`#${storyId} .bg`).style.opacity = '1';
+                
+                // Earn ATVT on Story post
+                simulateEarning(null, 10); // Center screen animation
+            }, 2000);
+        }
+
+        // --- OTHER LIVE LOGIC (Reels, Sidebar, Like, Comment, Share) ---
         function openReels() { document.getElementById('reelsView').classList.add('active'); }
         function closeReels() { document.getElementById('reelsView').classList.remove('active'); }
 
-        // Sidebar Mobile Toggle
         document.getElementById('overlay').addEventListener('click', () => {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         });
 
-        // Copy DK ID
         function copyDkId() {
             var text = document.getElementById("sidebarDkId").innerText.trim();
             navigator.clipboard.writeText(text);
             alert("DK ID Copied: " + text);
         }
 
-        // 🔥 ATVT EARNING CORE FUNCTION 🔥
         let currentBalance = 150.00;
         function simulateEarning(event, amount) {
             currentBalance += amount;
             
-            // Floating Text Animation
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
             floatingText.innerText = `+${amount} ATVT`;
-            // If event is not provided (like from modal), put it in center
             let x = event ? (event.clientX || event.pageX) : window.innerWidth / 2;
             let y = event ? (event.clientY || event.pageY) : window.innerHeight / 2;
             
@@ -744,30 +821,25 @@
             setTimeout(() => { floatingText.remove(); }, 1200);
         }
 
-        // 🔥 1. LIVE LIKE LOGIC 🔥
         function toggleLike(btn, postId, earnAmount) {
             const icon = btn.querySelector('i');
             const countSpan = document.getElementById('like-count-' + postId);
             let currentCount = parseInt(countSpan.innerText);
 
             if(btn.classList.contains('active')) {
-                // Unlike
                 btn.classList.remove('active');
                 icon.classList.remove('fas');
                 icon.classList.add('far');
                 countSpan.innerText = currentCount - 1;
             } else {
-                // Like
                 btn.classList.add('active');
                 icon.classList.remove('far');
                 icon.classList.add('fas');
                 countSpan.innerText = currentCount + 1;
                 
-                // Add Animation
                 btn.style.transform = 'scale(1.2)';
                 setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
-                // Earn ATVT only on first like
                 if(btn.getAttribute('data-earned') === 'false') {
                     let rect = btn.getBoundingClientRect();
                     simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
@@ -776,28 +848,12 @@
             }
         }
 
-        // Reel Like Logic
-        function toggleReelLike(btn) {
-            const icon = btn.querySelector('i');
-            if(btn.classList.contains('active')) {
-                btn.classList.remove('active');
-                icon.style.color = '#fff';
-            } else {
-                btn.classList.add('active');
-                icon.style.color = '#ff4d4d';
-                btn.style.transform = 'scale(1.3)';
-                setTimeout(()=> btn.style.transform = 'scale(1)', 200);
-            }
-        }
-
-        // 🔥 2. LIVE COMMENT LOGIC 🔥
         function toggleCommentSection(postId) {
             const section = document.getElementById('comments-section-' + postId);
             if(section.style.display === 'block') {
                 section.style.display = 'none';
             } else {
                 section.style.display = 'block';
-                // Focus on input
                 document.getElementById('comment-input-' + postId).focus();
             }
         }
@@ -805,14 +861,12 @@
         function postComment(postId, earnAmount) {
             const inputField = document.getElementById('comment-input-' + postId);
             const commentText = inputField.value.trim();
-            
-            if(commentText === "") return; // Don't post empty comments
+            if(commentText === "") return; 
 
             const commentList = document.getElementById('comment-list-' + postId);
             const countSpan = document.getElementById('comment-count-' + postId);
             const commentBtn = document.getElementById('comment-btn-' + postId);
 
-            // Create new comment HTML
             const newCommentHTML = `
                 <div class="comment-item" style="animation: fadeIn 0.3s ease;">
                     <img src="${currentUserPhoto}" alt="Me">
@@ -823,17 +877,12 @@
                 </div>
             `;
             
-            // Append and scroll to bottom
             commentList.insertAdjacentHTML('beforeend', newCommentHTML);
             commentList.scrollTop = commentList.scrollHeight;
 
-            // Increment Count
             countSpan.innerText = parseInt(countSpan.innerText) + 1;
-            
-            // Clear Input
             inputField.value = "";
 
-            // Earn ATVT only on first comment
             if(commentBtn.getAttribute('data-earned') === 'false') {
                 let rect = commentBtn.getBoundingClientRect();
                 simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
@@ -842,7 +891,6 @@
             }
         }
 
-        // Make "Enter" key submit comment
         document.querySelectorAll('input[id^="comment-input-"]').forEach(input => {
             input.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
@@ -852,9 +900,7 @@
             });
         });
 
-        // 🔥 3. LIVE SHARE LOGIC 🔥
         let currentSharePostId = null;
-
         function openShareModal(postId) {
             currentSharePostId = postId;
             document.getElementById('shareModalOverlay').classList.add('active');
@@ -865,18 +911,14 @@
         }
 
         function executeShare(platform) {
-            // Close modal
             closeShareModal();
-            
-            // Show alert for action
             if(platform === 'copy') alert("Link Copied to Clipboard!");
             else alert("Redirecting to " + platform + "...");
 
-            // Earn ATVT logic
             if(currentSharePostId) {
                 const shareBtn = document.getElementById('share-btn-' + currentSharePostId);
                 if(shareBtn && shareBtn.getAttribute('data-earned') === 'false') {
-                    simulateEarning(null, 5); // Centers the reward animation
+                    simulateEarning(null, 5); 
                     shareBtn.setAttribute('data-earned', 'true');
                     shareBtn.classList.add('active');
                 }
@@ -926,7 +968,6 @@
                 currentUserName = user.displayName || "VIP Member";
                 currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
-                // GENERATE 10-CHARACTER MIXED CASE DK ID
                 let uidSnippet = "";
                 if (user.uid) {
                     uidSnippet = user.uid.substring(0, 10);
@@ -936,23 +977,19 @@
                 }
                 let userDkId = "DK-" + uidSnippet;
 
-                // Update UI Elements
                 document.getElementById('sidebarProfileName').innerText = currentUserName;
                 document.getElementById('sidebarProfileImg').src = currentUserPhoto;
                 document.getElementById('sidebarDkId').innerText = userDkId;
                 if(document.getElementById('topbarProfileImg')) document.getElementById('topbarProfileImg').src = currentUserPhoto;
                 
-                // Update Feed Create Post Avatar, Story Avatar & Bottom Nav Avatar
                 if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = currentUserPhoto;
                 if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${currentUserPhoto}')`;
                 if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = currentUserPhoto;
 
-                // Update All Comment Avatars
                 document.querySelectorAll('.current-user-avatar').forEach(img => {
                     img.src = currentUserPhoto;
                 });
 
-                // Logout Action
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.addEventListener('click', () => {
                         if(confirm("Are you sure you want to Logout?")) {
