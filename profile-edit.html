@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BMGLN6Z9M4');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - DK ATOVITT</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🔥 CORE CSS 🔥 */
+        body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
+        
+        /* GOOGLE TRANSLATE HIDE BAR CSS */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+
+        /* 🔥 VIP SIDEBAR (Same as Dashboard) 🔥 */
+        .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
+        .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 15px; letter-spacing: 1px; }
+        
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
+        .sidebar-menu::-webkit-scrollbar { width: 5px; }
+        .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .sidebar-menu a { display: flex; align-items: center; padding: 12px 25px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; border-left: 3px solid transparent; font-weight: bold; }
+        .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
+        
+        .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
+        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 10px 25px 5px 25px; font-weight: bold; }
+        .sidebar-footer { padding: 15px 20px 35px 20px; border-top: 1px solid #222; background: #111; }
+        .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+
+        /* 🔥 MAIN CONTENT AREA 🔥 */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
+        
+        .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        .topbar-left { display: flex; align-items: center; gap: 15px; }
+        .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
+        
+        /* BACK BUTTON */
+        .back-btn { display: flex; align-items: center; gap: 8px; background: transparent; border: 1.5px solid #e6c875; color: #e6c875; padding: 6px 14px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
+        .back-btn:hover { background: #e6c875; color: #000; }
+        
+        .page-title { color: #fff; font-size: 18px; margin: 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
+
+        .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; }
+        .dashboard-body::-webkit-scrollbar { width: 6px; }
+        .dashboard-body::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+
+        /* 🔥 PROFILE EDIT FORM CSS 🔥 */
+        .profile-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .section-header { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+        .section-header i { color: #e6c875; font-size: 20px; }
+        .section-header h3 { color: #fff; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Profile Photo Upload */
+        .photo-upload-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 30px; }
+        .photo-circle { position: relative; width: 120px; height: 120px; border-radius: 50%; border: 3px solid #e6c875; padding: 4px; display: flex; align-items: center; justify-content: center; background: #0a0a0a; margin-bottom: 15px; }
+        .photo-circle img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .camera-btn { position: absolute; bottom: 0; right: 0; background: #e6c875; color: #000; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 2px solid #111; cursor: pointer; transition: 0.3s; }
+        .camera-btn:hover { transform: scale(1.1); background: #fff; }
+        #fileInput { display: none; }
+
+        /* Form Grid */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .form-group.full-width { grid-column: span 2; }
+        .form-group label { color: #aaa; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold; }
+        .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; }
+        .form-group input:focus, .form-group select:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
+        .form-group input:disabled { background: #0a0a0a; color: #666; cursor: not-allowed; }
+        
+        .verified-badge { color: #25d366; font-size: 12px; margin-left: 5px; text-transform: none; }
+
+        /* Save Button */
+        .save-btn-container { text-align: right; margin-top: 20px; margin-bottom: 40px; }
+        .save-btn { background: #e6c875; color: #000; border: none; padding: 15px 40px; border-radius: 30px; font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); display: inline-flex; align-items: center; gap: 8px; }
+        .save-btn:hover { background: #d4b561; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 200, 117, 0.5); }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(2px); }
+        #overlay.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; left: -280px; }
+            .sidebar.active { left: 0; }
+            .menu-toggle { display: block; }
+            .dashboard-body { padding: 15px; }
+            .form-grid { grid-template-columns: 1fr; gap: 15px; }
+            .form-group.full-width { grid-column: span 1; }
+            .profile-card { padding: 20px; }
+            .save-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OVERLAY -->
+    <div id="overlay"></div>
+
+    <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
+    <div class="sidebar" id="sidebar">
+        <div style="padding: 20px 20px 0 20px; background: #1a1a1a;">
+            <!-- Simple Select styling -->
+            <select class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; outline: none; cursor: pointer; text-align: center; margin-bottom: 15px;">
+                <option value="" style="background: #111;">🌐 Select Language</option>
+                <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
+                <option value="en" style="background: #111;">English</option>
+            </select>
+        </div>
+
+        <div class="sidebar-profile">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
+            <h3 id="sidebarProfileName">VIP Member</h3>
+            <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> My Dashboard</a>
+            <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
+            <div class="menu-divider"></div>
+            <a href="index.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a>
+            <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
+            <a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="javascript:void(0)" class="logout-btn logout-action"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- 🔥 MAIN CONTENT -->
+    <div class="main-content">
+        
+        <div class="topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                <a href="dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+                <h2 class="page-title">Edit Profile</h2>
+            </div>
+        </div>
+
+        <div class="dashboard-body">
+            
+            <form id="profileUpdateForm" onsubmit="event.preventDefault(); alert('Profile Updated Successfully! ✅');">
+                
+                <!-- 1. BASIC INFORMATION -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>Basic Information</h3>
+                    </div>
+
+                    <div class="photo-upload-wrapper">
+                        <div class="photo-circle">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="mainProfileImg" alt="Profile">
+                            <label for="fileInput" class="camera-btn"><i class="fas fa-camera"></i></label>
+                            <input type="file" id="fileInput" accept="image/*">
+                        </div>
+                        <p style="color: #888; font-size: 11px; margin: 0; text-transform: uppercase;">Tap camera to change photo</p>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="inputName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></label>
+                            <input type="email" id="inputEmail" placeholder="Your Email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="tel" placeholder="+91 xxxxx xxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. TALENT & AUDITION DETAILS -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-star"></i>
+                        <h3>Talent & Audition Details</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Primary Talent</label>
+                            <select>
+                                <option value="" disabled selected>What do you do?</option>
+                                <option value="Actor">Actor</option>
+                                <option value="Singer">Singer</option>
+                                <option value="Dancer">Dancer</option>
+                                <option value="Writer">Writer / Script Writer</option>
+                                <option value="Director">Director / Filmmaker</option>
+                                <option value="Fan">Just a Fan / Viewer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Experience Level</label>
+                            <select>
+                                <option value="" disabled selected>Select Experience</option>
+                                <option value="Fresher">Fresher (New)</option>
+                                <option value="Intermediate">Intermediate (1-3 Years)</option>
+                                <option value="Professional">Professional (3+ Years)</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Audition Reel / Portfolio Link (YouTube, Insta, Drive)</label>
+                            <input type="url" placeholder="Paste link to your best performance video">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. LOCATION DETAILS -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location Details</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" placeholder="Your City">
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" placeholder="Your State">
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode / Zip</label>
+                            <input type="number" placeholder="Enter Pincode">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. WALLET & ECOSYSTEM -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Wallet & Payment Details</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>UPI ID (For INR Withdrawals)</label>
+                            <input type="text" placeholder="e.g. 9876543210@ybl">
+                        </div>
+                        <div class="form-group">
+                            <label>ATVT Receiving Address (Crypto)</label>
+                            <input type="text" placeholder="Paste your BEP-20 / TRC-20 Address">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. SOCIAL MEDIA LINKS -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-link"></i>
+                        <h3>Social Media Links</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label><i class="fab fa-instagram" style="color: #E1306C;"></i> Instagram URL</label>
+                            <input type="url" placeholder="https://instagram.com/your_id">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fab fa-youtube" style="color: #FF0000;"></i> YouTube Channel URL</label>
+                            <input type="url" placeholder="https://youtube.com/@your_channel">
+                        </div>
+                        <div class="form-group full-width">
+                            <label><i class="fab fa-facebook" style="color: #1877F2;"></i> Facebook Profile URL</label>
+                            <input type="url" placeholder="https://facebook.com/your_profile">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. SECURITY -->
+                <div class="profile-card">
+                    <div class="section-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Security</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <button type="button" onclick="alert('Password reset link sent to your registered email.')" style="background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s;">
+                                <i class="fas fa-key"></i> Send Password Reset Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAVE BUTTON -->
+                <div class="save-btn-container">
+                    <button type="submit" class="save-btn"><i class="fas fa-save"></i> Save All Changes</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Image Preview Logic
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('mainProfileImg').src = e.target.result;
+                    document.getElementById('sidebarProfileImg').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let fullName = user.displayName || "VIP Member";
+                let userEmail = user.email || "No Email linked";
+                let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
+                // Update Sidebar
+                document.getElementById('sidebarProfileName').innerText = fullName;
+                document.getElementById('sidebarProfileImg').src = userPhoto;
+
+                // Update Form Fields
+                document.getElementById('inputName').value = fullName;
+                document.getElementById('inputEmail').value = userEmail;
+                document.getElementById('mainProfileImg').src = userPhoto;
+
+                // Logout Action
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(confirm("Are you sure you want to Logout?")) {
+                            signOut(auth).then(() => {
+                                window.location.href = "auth.html";
+                            });
+                        }
+                    });
+                });
+            } else {
+                window.location.href = "auth.html";
+            }
+        });
+    </script>
+
+</body>
+</html>
