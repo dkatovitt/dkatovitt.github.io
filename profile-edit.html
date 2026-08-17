@@ -32,8 +32,12 @@
         .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 15px; letter-spacing: 1px; }
+        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         
+        /* 🔥 NEW: DK ID BADGE IN SIDEBAR 🔥 */
+        .dk-id-badge { display: inline-block; background: #222; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 10px; cursor: pointer; transition: 0.3s;}
+        .dk-id-badge:hover { background: #e6c875; color: #000; }
+
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -152,7 +156,9 @@
         <div class="sidebar-profile">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName">VIP Member</h3>
-            <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span>
+            <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+            <!-- 🔥 DK ID IN SIDEBAR 🔥 -->
+            <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i> DK-......</span>
         </div>
         
         <div class="sidebar-menu">
@@ -184,7 +190,7 @@
             
             <form id="profileUpdateForm">
                 
-                <!-- 1. BASIC INFORMATION -->
+                <!-- 1. BASIC INFORMATION & DK ID -->
                 <div class="profile-card">
                     <div class="section-header">
                         <i class="fas fa-user-circle"></i>
@@ -201,6 +207,16 @@
                     </div>
 
                     <div class="form-grid">
+                        
+                        <!-- 🔥 NEW: DK ID COPY SECTION 🔥 -->
+                        <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3);">
+                            <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (For Internal Transfers) <i class="fas fa-info-circle" title="Share this ID to receive ATVT instantly with zero fees."></i></label>
+                            <div style="display: flex; gap: 10px; margin-top: 5px;">
+                                <input type="text" id="inputDkId" value="DK-......" readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1px; font-size: 16px;">
+                                <button type="button" onclick="copyDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" id="inputName" placeholder="Enter your full name" required>
@@ -324,9 +340,9 @@
                                 <div class="form-group">
                                     <label>Network</label>
                                     <select id="transferNetwork">
+                                        <option value="INTERNAL">Internal Transfer (Use DK ID - Zero Fee)</option>
                                         <option value="BEP20">Binance Smart Chain (BEP-20)</option>
                                         <option value="TRC20">Tron Network (TRC-20)</option>
-                                        <option value="INTERNAL">Internal Transfer (DK Wallet)</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -337,8 +353,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group full-width">
-                                    <label>Recipient Address / DK ID</label>
-                                    <input type="text" id="transferAddress" placeholder="Paste Recipient Wallet Address here">
+                                    <label>Recipient's DK ID or Crypto Address</label>
+                                    <input type="text" id="transferAddress" placeholder="e.g. DK-8X9B2A or 0x...">
                                 </div>
                                 <div class="form-group full-width" style="margin-bottom: 0;">
                                     <button type="button" onclick="initiateCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
@@ -424,6 +440,13 @@
             }
         });
 
+        // Copy DK ID Logic
+        function copyDkId() {
+            var copyText = document.getElementById("inputDkId");
+            navigator.clipboard.writeText(copyText.value);
+            alert("DK ID Copied: " + copyText.value);
+        }
+
         // 🔥 PINCODE TO STATE & DISTRICT API 🔥
         document.getElementById('inputPincode').addEventListener('input', async function() {
             let pin = this.value;
@@ -460,7 +483,6 @@
             panel.classList.toggle('active');
         }
 
-        // Global variable to track OTP context
         let currentOtpAction = '';
 
         // 🔥 PROFILE UPDATE SUBMIT LOGIC 🔥
@@ -478,7 +500,7 @@
             let amount = document.getElementById('transferAmount').value;
             
             if(address === "" || amount === "" || amount <= 0) {
-                alert("Please enter a valid amount and recipient address.");
+                alert("Please enter a valid amount and recipient address or DK ID.");
                 return;
             }
             
@@ -509,7 +531,7 @@
         }
     </script>
 
-    <!-- Google Translate Script Initialization -->
+    <!-- Google Translate Script -->
     <div id="google_translate_element" style="display:none;"></div>
     <script type="text/javascript">
         function translatePage(lang) {
@@ -529,7 +551,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA & GENERATE DK ID 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -552,13 +574,19 @@
                 let userEmail = user.email || "No Email linked";
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
+                // 🔥 GENERATE UNIQUE DK ID BASED ON FIREBASE UID 🔥
+                let userIdSnippet = user.uid ? user.uid.substring(0, 6).toUpperCase() : Math.floor(100000 + Math.random() * 900000);
+                let userDkId = "DK-" + userIdSnippet;
+
                 // Update Sidebar
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
+                document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
 
                 // Update Form Fields
                 document.getElementById('inputName').value = fullName;
                 document.getElementById('inputEmail').value = userEmail;
+                document.getElementById('inputDkId').value = userDkId;
                 document.getElementById('mainProfileImg').src = userPhoto;
 
                 // Logout Action
