@@ -38,27 +38,31 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         /* 🔥 FB STYLE APP HEADER 🔥 */
-        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; border-bottom: 1px solid #222; }
         
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
+        
+        /* 🔥 FIX: LOGO NEXT TO FEED 🔥 */
         .fb-top-left { display: flex; align-items: center; gap: 15px; }
         .fb-top-left .menu-btn { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 0; display: none; }
-        .fb-top-left h1 { margin: 0; color: #fff; font-size: 24px; font-weight: 900; letter-spacing: 0.5px; }
+        .fb-top-left h1 { margin: 0; color: #fff; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
+        .fb-top-left video { height: 35px; mix-blend-mode: screen; transform: scale(1.5); transform-origin: left center; margin-left: 10px; }
         
-        .fb-top-right { display: flex; align-items: center; gap: 12px; }
-        .fb-icon-btn { background: #222; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
-        .fb-icon-btn:hover { background: #333; }
-        .fb-icon-btn .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
+        .fb-top-right { display: flex; align-items: center; gap: 10px; }
+        .fb-icon-btn { background: transparent; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #222; }
+        .fb-icon-btn.fill { background: #333; }
+        .fb-icon-btn .badge { position: absolute; top: 0px; right: 0px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
         
         /* FB TABS ROW */
-        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 5px; border-bottom: 1px solid #333; }
-        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #888; font-size: 22px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
+        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; }
+        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #888; font-size: 24px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
         .fb-tab:hover { background: rgba(255,255,255,0.05); border-radius: 8px; }
-        .fb-tab.active { color: #e6c875; }
-        .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #e6c875; border-radius: 3px 3px 0 0; }
-        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 9px; padding: 2px 5px; border-radius: 10px; border: 2px solid #111; }
-        .fb-tab img { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
-        .fb-tab.active img { border-color: #e6c875; }
+        .fb-tab.active { color: #1877F2; } /* Facebook Blue */
+        .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
+        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 2px solid #111; font-weight: bold;}
+        .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
+        .fb-tab.active img { border-color: #1877F2; }
 
         /* SMART DROPDOWN PROFILE MENU */
         .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #1a1a1a; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; text-align: left; }
@@ -118,61 +122,61 @@
         .fb-logout-btn:hover { background: #333; }
 
         /* 🔥 MIDDLE FEED AREA (FACEBOOK STYLE) 🔥 */
-        .feed { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; width: 100%; }
+        .feed { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        /* 1. STORIES SECTION */
-        .fb-stories-wrapper { background: #111; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); overflow: hidden; padding-bottom: 15px; margin-bottom: 5px; }
+        /* 1. FB CREATE POST BOX (FIXED ALIGNMENT) */
+        .fb-create-post { background: #111; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #222; }
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
+        .fb-create-post .input-box { flex: 1; background: transparent; border: 1px solid #444; padding: 10px 15px; border-radius: 30px; color: #fff; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .fb-create-post .input-box:hover { background: #222; }
+        .fb-create-post i { color: #888; font-size: 24px; cursor: pointer; padding: 5px; flex-shrink: 0; transition: 0.3s; }
+        .fb-create-post i:hover { color: #e6c875; }
+
+        /* 2. STORIES & REELS SECTION */
+        .fb-stories-wrapper { background: #111; overflow: hidden; padding-bottom: 15px; margin-bottom: 5px; border-bottom: 5px solid #000;}
         .fb-story-tabs { display: flex; border-bottom: 1px solid #222; }
-        .story-tab { flex: 1; text-align: center; padding: 12px; color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
+        .story-tab { flex: 1; text-align: center; padding: 15px; color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
         .story-tab.active { color: #1877F2; border-bottom: 3px solid #1877F2; }
         .story-tab:hover { background: rgba(255,255,255,0.05); }
 
-        .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px; scroll-snap-type: x mandatory; }
+        .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px 15px 5px 15px; scroll-snap-type: x mandatory; }
         .fb-stories-scroll::-webkit-scrollbar { display: none; }
         
-        .story-card { min-width: 105px; height: 180px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
+        .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
         .story-card:hover { filter: brightness(1.1); }
         
         /* Create Story Card Specifics */
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
         .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
-        .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 18px; font-weight: bold; }
-        .story-card.create-card span { color: #fff; font-size: 12px; font-weight: bold; }
+        .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 20px; font-weight: bold; }
+        .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
 
         /* Standard Story Specifics */
         .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 32px; height: 32px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; }
+        .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
-
-        /* 2. CREATE POST BOX */
-        .create-post { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .create-post-top { display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px; }
-        .create-post-top img { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #444; object-fit: cover; }
-        .create-post-top input { flex: 1; background: transparent; border: 1px solid #333; padding: 12px 20px; border-radius: 25px; color: #fff; font-size: 15px; outline: none; cursor: pointer; transition: 0.3s; }
-        .create-post-top input:hover { background: #222; }
-        .create-post-top i { color: #25d366; font-size: 22px; cursor: pointer; padding: 5px; }
+        .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
 
         /* 3. POST CARDS */
-        .post-card { background: #111; border: 1px solid #222; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); margin-bottom: 5px; }
-        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
+        .post-card { background: #111; border-bottom: 5px solid #000; padding-top: 5px; }
+        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 15px; }
         .post-user { display: flex; gap: 10px; cursor: pointer; }
         .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
         .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
         .post-user-info h4 span.action { color: #aaa; font-weight: normal; font-size: 14px; }
         .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; display: flex; align-items: center; gap: 5px; }
-        .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; }
+        .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; padding-top: 5px;}
         
         .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
-        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; border-top: 1px solid #222; border-bottom: 1px solid #222; }
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; }
         
         /* Post Interactions */
-        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; }
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; border-bottom: 1px solid #222; }
         .post-stats .reactions { display: flex; align-items: center; gap: 5px; }
         .post-stats .reactions img { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #111; margin-left: -5px; }
         
-        .post-actions { display: flex; justify-content: space-between; padding: 4px 15px; border-top: 1px solid #333; border-bottom: 1px solid #333; margin: 0 10px 10px 10px; }
-        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 8px 0; border-radius: 4px; transition: 0.3s; }
+        .post-actions { display: flex; justify-content: space-between; padding: 4px 15px; margin: 0 10px; }
+        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 4px; transition: 0.3s; }
         .action-btn:hover { background: #222; }
         .action-btn.active { color: #1877F2; }
         .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 5px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); margin-left: 2px; }
@@ -193,33 +197,24 @@
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* 🔥 MOBILE RESPONSIVE (FACEBOOK STYLE) 🔥 */
-        .mobile-bottom-nav { display: none; }
+        /* 🔥 MOBILE RESPONSIVE 🔥 */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
-            .app-container { grid-template-columns: 1fr; margin-top: 5px; padding: 0; gap: 0; }
+            .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
             
             /* Sidebar becomes Right-side Drawer */
             .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
             
-            .fb-top-left .menu-btn { display: none; } /* Using bottom menu instead */
-            .fb-top-left h1 { font-size: 24px; }
-            
-            /* Fix borders for mobile full width */
-            .fb-create-post { border-radius: 0; border-left: none; border-right: none; }
-            .fb-stories-wrapper { border-radius: 0; border-left: none; border-right: none; }
-            .post-card { border-radius: 0; border-left: none; border-right: none; }
+            .fb-top-left .menu-btn { display: none; } 
             
             /* Mobile Bottom Nav */
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
             .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
-            .nav-item.active { color: #e6c875; }
+            .nav-item.active { color: #1877F2; }
             .nav-item.active i { transform: scale(1.1); }
-            
-            /* Notification badge on Mobile bottom nav */
             .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
         }
     </style>
@@ -236,11 +231,13 @@
         <div class="fb-top-row">
             <div class="fb-top-left">
                 <h1>Feed</h1>
+                <!-- 🔥 VIDEO LOGO ADDED HERE AS PER SCREENSHOT 🔥 -->
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="fb-top-right">
                 <button class="fb-icon-btn"><i class="fas fa-plus"></i></button>
                 <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
-                <button class="fb-icon-btn">
+                <button class="fb-icon-btn fill">
                     <i class="fab fa-facebook-messenger"></i>
                     <span class="badge">2</span>
                 </button>
@@ -271,7 +268,7 @@
     <!-- 🔥 MAIN APP CONTAINER 🔥 -->
     <div class="app-container">
         
-        <!-- 🔥 LEFT (OR MOBILE RIGHT) SIDEBAR (MENU EXACTLY LIKE VIDEO) 🔥 -->
+        <!-- 🔥 LEFT (OR MOBILE RIGHT) SIDEBAR (MENU EXACTLY LIKE FB VIDEO) 🔥 -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-inner" style="padding-bottom: 80px;">
                 
@@ -385,11 +382,11 @@
         <!-- MIDDLE FEED (FACEBOOK STYLE) -->
         <main class="feed">
             
-            <!-- 1. FB CREATE POST BOX -->
+            <!-- 1. FB CREATE POST BOX (MATCHING SCREENSHOT) -->
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
-                <input type="text" placeholder="What's on your mind?">
-                <i class="fas fa-images"></i>
+                <div class="input-box">What's on your mind?</div>
+                <i class="fas fa-images" style="color: #888;"></i>
             </div>
 
             <!-- 2. STORIES & REELS SECTION -->
@@ -445,7 +442,7 @@
                     </div>
                     <div class="post-options">
                         <i class="fas fa-ellipsis-h"></i>
-                        <i class="fas fa-times"></i>
+                        <i class="fas fa-times" style="margin-left: 10px;"></i>
                     </div>
                 </div>
                 <div class="post-text">
@@ -487,7 +484,7 @@
                     </div>
                     <div class="post-options">
                         <i class="fas fa-ellipsis-h"></i>
-                        <i class="fas fa-times"></i>
+                        <i class="fas fa-times" style="margin-left: 10px;"></i>
                     </div>
                 </div>
                 <div class="post-text">
@@ -580,6 +577,7 @@
             </div>
             <span>Notifications</span>
         </a>
+        <!-- THIS OPENS THE RIGHT SIDEBAR MENU -->
         <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active');">
             <div style="position: relative;">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="bottomNavImg" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
@@ -630,7 +628,6 @@
 
         function simulateEarning(event, amount) {
             currentBalance += amount;
-            // Update sidebar wallet text if needed
             
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
@@ -685,7 +682,6 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 let fullName = user.displayName || "VIP Member";
-                let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
                 // GENERATE 10-CHARACTER MIXED CASE DK ID
@@ -701,7 +697,7 @@
                 // Update UI Elements
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
-                document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                document.getElementById('sidebarDkId').innerText = userDkId;
                 document.getElementById('topbarProfileImg').src = userPhoto;
                 
                 // Update Feed Create Post Avatar, Story Avatar & Bottom Nav Avatar
