@@ -71,7 +71,7 @@
         .dropdown-menu a:hover { background: #2a2a2a; color: #fff; }
         .dropdown-menu a i { color: #e6c875; width: 20px; text-align: center; }
 
-        /* 🔥 MAIN APP GRID (3 COLUMNS) 🔥 */
+        /* 🔥 MAIN APP GRID 🔥 */
         .app-container { display: grid; grid-template-columns: 320px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1250px; margin: 0 auto; padding: 0 10px; }
         
         /* 🔥 FACEBOOK STYLE SIDEBAR MENU 🔥 */
@@ -120,7 +120,7 @@
         .fb-logout-btn { width: 100%; background: #222; color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; margin-bottom: 20px; transition: 0.3s; }
         .fb-logout-btn:hover { background: #333; }
 
-        /* 🔥 MIDDLE FEED AREA (FACEBOOK STYLE) 🔥 */
+        /* 🔥 MIDDLE FEED AREA 🔥 */
         .feed { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; width: 100%; }
         
         /* 1. FB CREATE POST BOX */
@@ -144,19 +144,21 @@
         .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
         .story-card:hover { filter: brightness(1.1); }
         
-        /* Create Story Card */
+        /* Create Card */
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
         .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
         .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 20px; font-weight: bold; }
+        /* Special Reel Icon Style */
+        .story-card.create-card.reel-btn .plus-btn { background: #ff4d4d; }
         .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
 
-        /* Standard Story */
+        /* Standard Card */
         .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
         
-        /* 🔥 STORY LOADING SPINNER CSS 🔥 */
+        /* 🔥 STORY / REEL LOADING SPINNER CSS 🔥 */
         .story-overlay-loading { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 5; color: #fff; }
         .story-overlay-loading .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid #1877F2; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -218,7 +220,6 @@
         .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
         .widget-title { color: #888; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
         
-        /* Contacts / Trending */
         .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
         .contact-item:hover { background: #222; }
         .contact-item .img-wrap { position: relative; }
@@ -230,7 +231,7 @@
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* 🔥 FULLSCREEN REELS / STORY EDITOR VIEW 🔥 */
+        /* 🔥 FULLSCREEN VIEWS (STORY/REEL EDITOR & SETTINGS) 🔥 */
         .reels-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none; flex-direction: column; }
         .reels-view.active { display: flex; animation: slideUp 0.3s ease; }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -240,12 +241,31 @@
         .reels-header h2 { color: #fff; margin: 0; font-size: 18px; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         
         .reel-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; overflow: hidden; }
-        .reel-video { width: 100%; height: 100%; object-fit: cover; }
         
-        /* Story Preview Specifics */
-        .story-preview-img { width: 100%; height: 85%; object-fit: contain; }
-        .story-editor-tools { position: absolute; right: 15px; top: 80px; display: flex; flex-direction: column; gap: 20px; z-index: 10; }
-        .story-editor-tools .tool-btn { color: #fff; font-size: 24px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; transition: 0.3s; }
+        /* Reel Editor Bottom Tools */
+        .reel-editor-bottom { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; justify-content: space-between; align-items: flex-end; z-index: 20; }
+        .reel-tools { display: flex; gap: 20px; }
+        .reel-tools .tool { display: flex; flex-direction: column; align-items: center; gap: 8px; color: #fff; cursor: pointer; transition: 0.3s; }
+        .reel-tools .tool:hover { color: #e6c875; transform: scale(1.1); }
+        .reel-tools .tool i { font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .reel-tools .tool span { font-size: 12px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+        .next-btn { background: #1877F2; color: #fff; border: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .next-btn:hover { background: #166fe5; }
+
+        /* Reel Settings Page */
+        .settings-list { display: flex; flex-direction: column; gap: 20px; padding-top: 15px; }
+        .settings-item { display: flex; align-items: center; gap: 15px; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        .settings-item > i:first-child { font-size: 22px; color: #aaa; width: 30px; text-align: center; }
+        .settings-item .text { flex: 1; }
+        .settings-item .text h4 { margin: 0; color: #fff; font-size: 16px; }
+        .settings-item .text p { margin: 4px 0 0 0; color: #888; font-size: 13px; }
+        .settings-item .arrow { color: #555; font-size: 18px; }
+
+        /* Story Editor (From previous) */
+        .story-preview-img { width: 100%; height: 100%; object-fit: contain; }
+        .story-editor-tools { position: absolute; right: 15px; top: 80px; display: flex; flex-direction: column; gap: 25px; z-index: 10; }
+        .story-editor-tools .tool-btn { color: #fff; font-size: 26px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap:5px;}
+        .story-editor-tools .tool-btn span { font-size: 10px; font-weight: bold; }
         .story-editor-tools .tool-btn:hover { color: #e6c875; transform: scale(1.1); }
         .story-share-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #111; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; z-index: 20; }
         .story-share-bar .privacy { color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: bold; }
@@ -257,14 +277,12 @@
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
             
-            /* Sidebar becomes Right-side Drawer */
             .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
             
             .fb-top-left .menu-btn { display: none; } 
             
-            /* Mobile Bottom Nav */
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
             .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
@@ -298,7 +316,7 @@
 
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <a href="javascript:void(0)" class="fb-tab" onclick="openReels()"><i class="fas fa-video"></i></a>
+            <a href="javascript:void(0)" class="fb-tab" onclick="switchMainTab('video')"><i class="fas fa-video"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
@@ -321,7 +339,6 @@
         <!-- 🔥 RIGHT SIDEBAR MENU 🔥 -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-inner" style="padding-bottom: 80px;">
-                
                 <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: -15px;" class="mobile-only-close">
                     <i class="fas fa-times" onclick="document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active');" style="color: #888; font-size: 24px; cursor: pointer;"></i>
                 </div>
@@ -383,7 +400,6 @@
                     </a>
                 </div>
                 <button class="fb-menu-see-more">See more</button>
-
                 <hr class="fb-menu-divider">
 
                 <details class="fb-accordion">
@@ -391,7 +407,6 @@
                     <div class="accordion-content">
                         <a href="#"><i class="fas fa-life-ring"></i> Help Center</a>
                         <a href="#"><i class="fas fa-envelope"></i> Support Inbox</a>
-                        <a href="#"><i class="fas fa-exclamation-triangle"></i> Report a problem</a>
                     </div>
                 </details>
 
@@ -399,27 +414,10 @@
                     <summary><i class="fas fa-cog"></i> Settings and privacy <i class="fas fa-chevron-down arrow"></i></summary>
                     <div class="accordion-content">
                         <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
-                        <div style="padding: 10px;">
-                            <label style="color:#888; font-size:12px; margin-bottom:5px; display:block;">Select Language</label>
-                            <select class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 10px; border-radius: 8px; font-size: 13px; outline: none; cursor: pointer;">
-                                <option value="">English / Default</option>
-                                <option value="hi">हिन्दी (Hindi)</option>
-                                <option value="bn">বাংলা (Bengali)</option>
-                            </select>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="fb-accordion">
-                    <summary><i class="fas fa-crown"></i> Upgrades & Extras <i class="fas fa-chevron-down arrow"></i></summary>
-                    <div class="accordion-content">
-                        <a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
-                        <a href="#"><i class="fas fa-leaf"></i> Kalpamrit Wellness</a>
                     </div>
                 </details>
 
                 <button class="fb-logout-btn logout-action">Log out</button>
-
             </div>
         </aside>
 
@@ -436,12 +434,12 @@
             <!-- 2. STORIES & REELS SECTION -->
             <div class="fb-stories-wrapper">
                 <div class="fb-story-tabs">
-                    <div class="story-tab active">Stories</div>
-                    <div class="story-tab" onclick="openReels()">Reels</div>
+                    <div class="story-tab active" id="tab-stories" onclick="switchTab('stories')">Stories</div>
+                    <div class="story-tab" id="tab-reels" onclick="switchTab('reels')">Reels</div>
                 </div>
                 
+                <!-- STORIES CONTAINER -->
                 <div class="fb-stories-scroll" id="storiesContainer">
-                    <!-- 🔥 CREATE STORY CARD (CLICKABLE) 🔥 -->
                     <div class="story-card create-card" onclick="openStoryPicker()">
                         <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
                         <div class="create-bottom">
@@ -461,18 +459,33 @@
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/women/44.jpg"></div>
                         <span class="story-name">Priya Singh</span>
                     </div>
+                </div>
+
+                <!-- 🔥 REELS CONTAINER (NEW) 🔥 -->
+                <div class="fb-stories-scroll" id="reelsContainer" style="display:none;">
+                    <div class="story-card create-card reel-btn" onclick="openReelPicker()">
+                        <div class="create-bg" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113'); opacity:0.8;"></div>
+                        <div class="create-bottom">
+                            <div class="plus-btn"><i class="fas fa-video"></i></div>
+                            <span>Create reel</span>
+                        </div>
+                    </div>
                     
-                    <div class="story-card user-card">
-                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Story">
+                    <div class="story-card user-card" onclick="alert('Playing Reel...')">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Reel">
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
-                        <span class="story-name">Rahul M.</span>
+                        <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 1.2M</span>
+                    </div>
+
+                    <div class="story-card user-card" onclick="alert('Playing Reel...')">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30" class="bg" alt="Reel">
+                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/75.jpg"></div>
+                        <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 450K</span>
                     </div>
                 </div>
             </div>
 
             <!-- 3. FEED POSTS -->
-            
-            <!-- POST 1 -->
             <div class="post-card" id="post-1">
                 <div class="post-header">
                     <div class="post-user">
@@ -532,66 +545,6 @@
                 </div>
             </div>
 
-            <!-- POST 2 -->
-            <div class="post-card" id="post-2">
-                <div class="post-header">
-                    <div class="post-user">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User">
-                        <div class="post-user-info">
-                            <h4>Nilesh Gupta <span class="action">updated his cover photo.</span></h4>
-                            <p>Yesterday at 9:15 AM • <i class="fas fa-globe-americas"></i></p>
-                        </div>
-                    </div>
-                    <div class="post-options">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="fas fa-times" style="margin-left: 10px;"></i>
-                    </div>
-                </div>
-                <div class="post-text">
-                    हर हर महादेव 🔱
-                </div>
-                <div class="post-media" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
-                    <img src="https://images.unsplash.com/photo-1590393802688-e21822806282" style="height: 250px;">
-                    <img src="https://images.unsplash.com/photo-1582298538104-10b2da8b7894" style="height: 250px;">
-                </div>
-                <div class="post-stats">
-                    <div class="reactions">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
-                        <span id="like-count-post-2">342</span>
-                    </div>
-                    <span><span id="comment-count-post-2">45</span> Comments</span>
-                </div>
-                
-                <div class="post-actions">
-                    <button class="action-btn" onclick="toggleLike(this, 'post-2', 1)" data-earned="false">
-                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
-                    </button>
-                    <button class="action-btn" onclick="toggleCommentSection('post-2')" data-earned="false" id="comment-btn-post-2">
-                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2 ATVT</span>
-                    </button>
-                    <button class="action-btn" onclick="openShareModal('post-2')" data-earned="false" id="share-btn-post-2">
-                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5 ATVT</span>
-                    </button>
-                </div>
-                
-                <div class="post-comments-section" id="comments-section-post-2">
-                    <div class="comments-list" id="comment-list-post-2">
-                        <div class="comment-item">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
-                            <div class="comment-bubble">
-                                <h5>Priya Singh</h5>
-                                <p>Har Har Mahadev! 🙏</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="add-comment-box">
-                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
-                        <input type="text" id="comment-input-post-2" placeholder="Write a comment...">
-                        <button onclick="postComment('post-2', 2)"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-            </div>
-
         </main>
 
         <!-- RIGHT SIDEBAR (Contacts & Trending) -->
@@ -605,17 +558,12 @@
                 <div class="img-wrap"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div class="status"></div></div>
                 <span>Rahul Sharma</span>
             </div>
-            <div class="contact-item">
-                <div class="img-wrap"><img src="https://randomuser.me/api/portraits/women/44.jpg"><div class="status" style="background:#ff4d4d;"></div></div>
-                <span>Priya Singh</span>
-            </div>
 
             <div class="menu-divider" style="margin: 20px 0;"></div>
 
             <h3 class="widget-title">Trending Hashtags</h3>
             <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#DKAtovitt</p>
             <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#YakshiniMovie</p>
-            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#EarnATVT</p>
         </aside>
 
     </div>
@@ -626,7 +574,7 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="javascript:void(0)" class="nav-item" onclick="openReels()">
+        <a href="javascript:void(0)" class="nav-item" onclick="switchMainTab('video')">
             <i class="fas fa-video"></i>
             <span>Video</span>
         </a>
@@ -676,28 +624,11 @@
         </div>
     </div>
 
-    <!-- 🔥 FULLSCREEN REELS VIEW 🔥 -->
-    <div id="reelsView" class="reels-view">
-        <div class="reels-header">
-            <i class="fas fa-arrow-left" onclick="closeReels()"></i>
-            <h2>Reels</h2>
-            <i class="fas fa-camera"></i>
-        </div>
-        <div class="reel-container">
-            <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="reel-video"></video>
-            <!-- REEL ACTIONS REMOVED AS PER PREVIOUS STEP, THIS IS JUST A VIEWER -->
-            <div class="reel-info">
-                <h4>DK ATOVITT <button>Follow</button></h4>
-                <p>Welcome to the DK Connect Reels! Swipe up for more. 🔥 #DKAtovitt #Shorts</p>
-                <div class="reel-music"><i class="fas fa-music"></i> Original Audio - DK Atovitt</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 🔥 HIDDEN FILE INPUT FOR STORY CREATION 🔥 -->
+    <!-- 🔥 HIDDEN FILE INPUTS 🔥 -->
     <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
+    <input type="file" id="reelFileInput" accept="video/*" style="display: none;">
 
-    <!-- 🔥 STORY PREVIEW / EDITOR MODAL 🔥 -->
+    <!-- 🔥 STORY EDITOR MODAL 🔥 -->
     <div id="storyPreviewModal" class="reels-view">
         <div class="reels-header">
             <i class="fas fa-times" onclick="closeStoryPreview()"></i>
@@ -706,14 +637,12 @@
         </div>
         <div class="reel-container" style="background: #000;">
             <img id="storyPreviewImg" src="" class="story-preview-img">
-            
             <div class="story-editor-tools">
-                <i class="fas fa-music tool-btn"></i>
-                <i class="fas fa-font tool-btn"></i>
-                <i class="fas fa-sticky-note tool-btn"></i>
-                <i class="fas fa-magic tool-btn"></i>
+                <div class="tool-btn"><i class="fas fa-music"></i><span>Music</span></div>
+                <div class="tool-btn"><i class="fas fa-font"></i><span>Text</span></div>
+                <div class="tool-btn"><i class="fas fa-sticky-note"></i><span>Stickers</span></div>
+                <div class="tool-btn"><i class="fas fa-magic"></i><span>Effects</span></div>
             </div>
-
             <div class="story-share-bar">
                 <div class="privacy"><i class="fas fa-globe-americas"></i> Public</div>
                 <button class="share-btn" onclick="shareStory()">Share</button>
@@ -721,103 +650,240 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT FOR LIVE ACTIONS, STORIES & EARNING MAGIC 🔥 -->
+    <!-- 🔥 REEL EDITOR MODAL (NEW) 🔥 -->
+    <div id="reelEditorModal" class="reels-view">
+        <div class="reels-header" style="background: transparent;">
+            <i class="fas fa-arrow-left" onclick="closeReelEditor()"></i>
+        </div>
+        <div class="reel-container" style="background: #000;">
+            <video id="reelPreviewVideo" src="" class="story-preview-img" autoplay loop muted></video>
+        </div>
+        <!-- FB Reel Bottom Tools -->
+        <div class="reel-editor-bottom">
+            <div class="reel-tools">
+                <div class="tool"><i class="fas fa-music"></i><span>Audio</span></div>
+                <div class="tool"><i class="fas fa-cut"></i><span>Edit</span></div>
+                <div class="tool"><i class="fas fa-magic"></i><span>Effects</span></div>
+                <div class="tool"><i class="fas fa-font"></i><span>Text</span></div>
+                <div class="tool"><i class="fas fa-smile"></i><span>Stickers</span></div>
+            </div>
+            <button class="next-btn" onclick="goToReelSettings()">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- 🔥 REEL SETTINGS MODAL (NEW) 🔥 -->
+    <div id="reelSettingsModal" class="reels-view" style="background: #111; flex-direction: column;">
+        <div class="fb-top-row" style="border-bottom: 1px solid #222; background: #111;">
+            <div class="fb-top-left">
+                <i class="fas fa-arrow-left" onclick="backToReelEditor()" style="font-size: 20px; cursor: pointer; color: #fff;"></i>
+                <h2 style="margin:0 0 0 15px; font-size: 18px; color: #fff;">Reel Settings</h2>
+            </div>
+        </div>
+        
+        <div style="padding: 15px; flex: 1; overflow-y: auto;">
+            <!-- Description Box -->
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 40px; height: 40px; border-radius: 50%;">
+                <textarea id="reelDescription" placeholder="Describe your reel. You can also add hashtags here..." style="flex:1; background: transparent; border: none; color: #fff; font-size: 15px; outline: none; resize: none; height: 60px;"></textarea>
+            </div>
+            
+            <!-- Settings Options -->
+            <div class="settings-list">
+                <div class="settings-item">
+                    <i class="fas fa-share-square"></i>
+                    <div class="text"><h4>Share to groups</h4></div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="settings-item">
+                    <i class="fas fa-layer-group"></i>
+                    <div class="text">
+                        <h4>Share to your story</h4>
+                        <p>Help this reach your followers</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="settings-item">
+                    <i class="fab fa-instagram" style="color:#E1306C;"></i>
+                    <div class="text">
+                        <h4>Instagram</h4>
+                        <p>Sharing as @vip_creator</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="settings-item">
+                    <i class="fas fa-user-tag"></i>
+                    <div class="text">
+                        <h4>Tag people</h4>
+                        <p>This also includes Pages.</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+                <div class="settings-item">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="text">
+                        <h4>Add product</h4>
+                        <p>Add products to your reel</p>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Share Button -->
+        <div style="padding: 15px; border-top: 1px solid #222; background: #111;">
+            <button onclick="publishReel()" style="width: 100%; background: #1877F2; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">Share now</button>
+        </div>
+    </div>
+
+    <!-- 🔥 JAVASCRIPT FOR LOGIC 🔥 -->
     <script>
-        // Global User Data
         let currentUserName = "VIP Member";
         let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
 
-        // --- STORY CREATION LOGIC ---
-        function openStoryPicker() {
-            document.getElementById('storyFileInput').click();
+        // --- TAB SWITCHING (Stories vs Reels) ---
+        function switchTab(tab) {
+            if(tab === 'stories') {
+                document.getElementById('tab-stories').classList.add('active');
+                document.getElementById('tab-reels').classList.remove('active');
+                document.getElementById('storiesContainer').style.display = 'flex';
+                document.getElementById('reelsContainer').style.display = 'none';
+            } else {
+                document.getElementById('tab-reels').classList.add('active');
+                document.getElementById('tab-stories').classList.remove('active');
+                document.getElementById('reelsContainer').style.display = 'flex';
+                document.getElementById('storiesContainer').style.display = 'none';
+            }
         }
 
+        // --- STORY LOGIC ---
+        function openStoryPicker() { document.getElementById('storyFileInput').click(); }
         document.getElementById('storyFileInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if(file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('storyPreviewImg').src = e.target.result;
-                    document.getElementById('storyPreviewModal').classList.add('active');
-                }
-                reader.readAsDataURL(file);
+                document.getElementById('storyPreviewImg').src = URL.createObjectURL(file);
+                document.getElementById('storyPreviewModal').classList.add('active');
             }
         });
-
         function closeStoryPreview() {
             document.getElementById('storyPreviewModal').classList.remove('active');
             document.getElementById('storyFileInput').value = ""; 
         }
-
         function shareStory() {
             closeStoryPreview();
-            
             const imgSrc = document.getElementById('storyPreviewImg').src;
             const storyId = 'story-' + Date.now();
             
-            // Create New Story HTML with Loading Overlay
             const newStoryHTML = `
                 <div class="story-card user-card" id="${storyId}">
                     <img src="${imgSrc}" class="bg" alt="Story" style="opacity: 0.5;">
                     <div class="user-ring"><img src="${currentUserPhoto}"></div>
-                    
-                    <!-- Loading Spinner Overlay -->
                     <div class="story-overlay-loading" id="loading-${storyId}">
                         <div class="spinner"></div>
                         <span style="font-size: 11px; margin-top: 8px; font-weight: bold;">Sharing...</span>
                     </div>
-                    
                     <span class="story-name" id="name-${storyId}" style="display:none;">Your story</span>
                 </div>
             `;
             
-            // Insert after the Create Story card
-            const createCard = document.querySelector('.story-card.create-card');
+            const createCard = document.querySelector('#storiesContainer .create-card');
             createCard.insertAdjacentHTML('afterend', newStoryHTML);
-            
-            // Scroll to the new story
             document.getElementById('storiesContainer').scrollLeft = 0;
 
-            // Simulate Upload (Remove Loading after 2 seconds)
             setTimeout(() => {
                 document.getElementById('loading-' + storyId).style.display = 'none';
                 document.getElementById('name-' + storyId).style.display = 'block';
                 document.querySelector(`#${storyId} .bg`).style.opacity = '1';
-                
-                // Earn ATVT on Story post
-                simulateEarning(null, 10); // Center screen animation
+                simulateEarning(null, 10);
             }, 2000);
         }
 
-        // --- OTHER LIVE LOGIC (Reels, Sidebar, Like, Comment, Share) ---
-        function openReels() { document.getElementById('reelsView').classList.add('active'); }
-        function closeReels() { document.getElementById('reelsView').classList.remove('active'); }
+        // --- NEW: REEL CREATION LOGIC ---
+        function openReelPicker() { document.getElementById('reelFileInput').click(); }
+        
+        document.getElementById('reelFileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if(file) {
+                document.getElementById('reelPreviewVideo').src = URL.createObjectURL(file);
+                document.getElementById('reelEditorModal').classList.add('active');
+            }
+        });
 
+        function closeReelEditor() {
+            document.getElementById('reelEditorModal').classList.remove('active');
+            document.getElementById('reelPreviewVideo').pause();
+            document.getElementById('reelPreviewVideo').src = "";
+            document.getElementById('reelFileInput').value = "";
+        }
+
+        function goToReelSettings() {
+            document.getElementById('reelEditorModal').classList.remove('active');
+            document.getElementById('reelSettingsModal').classList.add('active');
+            // Keep video playing in background or pause it (pausing for performance)
+            document.getElementById('reelPreviewVideo').pause();
+        }
+
+        function backToReelEditor() {
+            document.getElementById('reelSettingsModal').classList.remove('active');
+            document.getElementById('reelEditorModal').classList.add('active');
+            document.getElementById('reelPreviewVideo').play();
+        }
+
+        function publishReel() {
+            document.getElementById('reelSettingsModal').classList.remove('active');
+            
+            // Create dummy reel card in Reels tab
+            const vidSrc = document.getElementById('reelPreviewVideo').src;
+            const reelId = 'reel-' + Date.now();
+            
+            const newReelHTML = `
+                <div class="story-card user-card" id="${reelId}" onclick="alert('Playing your Reel...')">
+                    <video src="${vidSrc}" class="bg" style="opacity: 0.5;" muted></video>
+                    <div class="user-ring"><img src="${currentUserPhoto}"></div>
+                    <div class="story-overlay-loading" id="loading-${reelId}">
+                        <div class="spinner"></div>
+                        <span style="font-size: 11px; margin-top: 8px; font-weight: bold;">Uploading...</span>
+                    </div>
+                    <span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span>
+                </div>
+            `;
+            
+            const createReelCard = document.querySelector('#reelsContainer .create-card');
+            createReelCard.insertAdjacentHTML('afterend', newReelHTML);
+            
+            // Auto switch to reels tab
+            switchTab('reels');
+            document.getElementById('reelsContainer').scrollLeft = 0;
+
+            // Cleanup
+            document.getElementById('reelPreviewVideo').src = "";
+            document.getElementById('reelFileInput').value = "";
+            document.getElementById('reelDescription').value = "";
+
+            setTimeout(() => {
+                document.getElementById('loading-' + reelId).style.display = 'none';
+                document.getElementById('name-' + reelId).style.display = 'block';
+                document.querySelector(`#${reelId} .bg`).style.opacity = '1';
+                simulateEarning(null, 15); // Bonus for Reel
+            }, 2500);
+        }
+
+        // --- OTHER LIVE LOGIC ---
         document.getElementById('overlay').addEventListener('click', () => {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         });
 
-        function copyDkId() {
-            var text = document.getElementById("sidebarDkId").innerText.trim();
-            navigator.clipboard.writeText(text);
-            alert("DK ID Copied: " + text);
-        }
-
         let currentBalance = 150.00;
         function simulateEarning(event, amount) {
             currentBalance += amount;
-            
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
             floatingText.innerText = `+${amount} ATVT`;
             let x = event ? (event.clientX || event.pageX) : window.innerWidth / 2;
             let y = event ? (event.clientY || event.pageY) : window.innerHeight / 2;
-            
             floatingText.style.left = x + 'px';
             floatingText.style.top = y + 'px';
             document.body.appendChild(floatingText);
-
             setTimeout(() => { floatingText.remove(); }, 1200);
         }
 
@@ -836,7 +902,6 @@
                 icon.classList.remove('far');
                 icon.classList.add('fas');
                 countSpan.innerText = currentCount + 1;
-                
                 btn.style.transform = 'scale(1.2)';
                 setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
@@ -879,7 +944,6 @@
             
             commentList.insertAdjacentHTML('beforeend', newCommentHTML);
             commentList.scrollTop = commentList.scrollHeight;
-
             countSpan.innerText = parseInt(countSpan.innerText) + 1;
             inputField.value = "";
 
@@ -905,11 +969,7 @@
             currentSharePostId = postId;
             document.getElementById('shareModalOverlay').classList.add('active');
         }
-
-        function closeShareModal() {
-            document.getElementById('shareModalOverlay').classList.remove('active');
-        }
-
+        function closeShareModal() { document.getElementById('shareModalOverlay').classList.remove('active'); }
         function executeShare(platform) {
             closeShareModal();
             if(platform === 'copy') alert("Link Copied to Clipboard!");
@@ -926,27 +986,7 @@
         }
     </script>
     
-    <!-- Google Translate API -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function translatePage(lang) {
-            var domainStr = window.location.hostname.replace(/^www\./i, '');
-            if (lang === "") {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            } else {
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-            }
-            window.location.reload(); 
-        }
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'auto', autoDisplay: false }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA & DK ID 🔥 -->
+    <!-- FIREBASE FETCH PROFILE DATA & DK ID -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -968,13 +1008,7 @@
                 currentUserName = user.displayName || "VIP Member";
                 currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
-                let uidSnippet = "";
-                if (user.uid) {
-                    uidSnippet = user.uid.substring(0, 10);
-                } else {
-                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
+                let uidSnippet = user.uid ? user.uid.substring(0, 10) : "1039AJD83";
                 let userDkId = "DK-" + uidSnippet;
 
                 document.getElementById('sidebarProfileName').innerText = currentUserName;
@@ -986,9 +1020,7 @@
                 if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${currentUserPhoto}')`;
                 if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = currentUserPhoto;
 
-                document.querySelectorAll('.current-user-avatar').forEach(img => {
-                    img.src = currentUserPhoto;
-                });
+                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
 
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.addEventListener('click', () => {
