@@ -1,185 +1,317 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BMGLN6Z9M4');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK Social - Earn ATVT by DK Atovitt</title>
+    <title>DK Connect - Earn ATVT by DK Atovitt</title>
     <meta name="theme-color" content="#e6c875">
     
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
         /* 🔥 BASE VIP CSS 🔥 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 70px; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #e6c875; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e6c875; }
+
+        /* GOOGLE TRANSLATE HIDE BAR CSS */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+
+        /* 🔥 MENU OVERLAY FIX 🔥 */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; backdrop-filter: blur(2px); }
+        #overlay.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 FIXED APP HEADER 🔥 */
-        .app-header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: #111; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.9); }
+        /* 🔥 FIXED APP HEADER (FACEBOOK STYLE) 🔥 */
+        .app-header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: #111; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; z-index: 2000; box-shadow: 0 2px 10px rgba(0,0,0,0.9); }
+        
         .app-header-left { display: flex; align-items: center; gap: 15px; }
+        .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
         .app-header-left video { height: 45px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
-        .app-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 22px; margin: 0; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .app-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 24px; margin: 0; font-weight: 900; letter-spacing: 1px; }
         
-        .app-search { background: #222; border: 1px solid #444; border-radius: 25px; padding: 8px 15px; display: flex; align-items: center; width: 300px; transition: 0.3s; }
-        .app-search:focus-within { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
+        .app-search { background: #222; border: 1px solid #333; border-radius: 25px; padding: 10px 15px; display: flex; align-items: center; width: 280px; transition: 0.3s; margin-left: 20px; }
+        .app-search:focus-within { border-color: #e6c875; background: #1a1a1a; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
         .app-search input { background: transparent; border: none; color: #fff; outline: none; width: 100%; margin-left: 10px; font-size: 14px; }
         
-        .app-header-right { display: flex; align-items: center; gap: 20px; }
-        .icon-btn { background: #222; color: #ccc; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; transition: 0.3s; position: relative; }
-        .icon-btn:hover { background: #e6c875; color: #000; }
-        .badge { position: absolute; top: -5px; right: -5px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .app-header-right { display: flex; align-items: center; gap: 15px; }
+        .icon-btn { background: #222; color: #ccc; border: none; width: 42px; height: 42px; border-radius: 50%; font-size: 18px; cursor: pointer; transition: 0.3s; position: relative; display: flex; align-items: center; justify-content: center; }
+        .icon-btn:hover { background: #333; color: #fff; }
+        .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
         
-        /* 🔥 ATVT WALLET BADGE 🔥 */
-        .atvt-wallet { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); padding: 5px 15px; border-radius: 20px; color: #000; font-weight: 900; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(230,200,117,0.5); cursor: pointer; border: 2px solid #fff; }
-        .atvt-wallet img { width: 18px; height: 18px; }
+        /* ATVT WALLET BADGE */
+        .atvt-wallet { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); padding: 6px 15px; border-radius: 20px; color: #000; font-weight: 900; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(230,200,117,0.3); cursor: pointer; border: 1.5px solid #fff; transition: 0.3s; }
+        .atvt-wallet:hover { transform: scale(1.05); }
 
-        /* 🔥 MAIN APP GRID 🔥 */
-        .app-container { display: grid; grid-template-columns: 260px 1fr 300px; gap: 20px; max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        /* SMART PROFILE DROPDOWN */
+        .profile-dropdown-container { position: relative; display: inline-block; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; }
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; }
+        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; }
+        .dropdown-menu a i { color: #e6c875; width: 15px; }
+
+        /* 🔥 MAIN APP GRID (3 COLUMNS LIKE FB) 🔥 */
+        .app-container { display: grid; grid-template-columns: 280px minmax(500px, 1fr) 300px; gap: 20px; max-width: 1400px; margin: 20px auto; padding: 0 20px; }
         
         /* 🔥 LEFT SIDEBAR 🔥 */
-        .sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; }
+        .sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; z-index: 1600; }
+        .sidebar-inner { background: transparent; }
+        
+        /* Sidebar Profile */
+        .sidebar-profile { padding: 10px 10px 20px 10px; text-align: center; border-bottom: 1px solid #222; margin-bottom: 10px; }
+        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
+        .dk-id-badge { display: inline-block; background: #222; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; cursor: pointer; transition: 0.3s;}
+        .dk-id-badge:hover { background: #e6c875; color: #000; }
+
         .sidebar-menu { list-style: none; padding: 0; margin: 0; }
         .sidebar-menu li { margin-bottom: 5px; }
-        .sidebar-menu a { display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: #ccc; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; }
-        .sidebar-menu a:hover, .sidebar-menu a.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: #ccc; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 10px; transition: 0.3s; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background: #1a1a1a; color: #e6c875; }
+        .sidebar-menu a.active { background: rgba(230,200,117,0.1); }
         .sidebar-menu i { font-size: 20px; width: 25px; text-align: center; color: #e6c875; }
-        
-        .profile-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px; }
-        .profile-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; margin-bottom: 10px; }
-        .profile-card h3 { margin: 0; color: #fff; font-size: 18px; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
-        .profile-card p { margin: 5px 0 0 0; color: #888; font-size: 12px; }
+        .menu-divider { height: 1px; background: #222; margin: 10px 15px; }
 
-        /* 🔥 MIDDLE FEED AREA 🔥 */
-        .feed { display: flex; flex-direction: column; gap: 20px; }
+        /* 🔥 MIDDLE FEED AREA (FACEBOOK STYLE) 🔥 */
+        .feed { display: flex; flex-direction: column; gap: 20px; max-width: 680px; margin: 0 auto; width: 100%; }
         
-        /* Create Post Box */
-        .create-post { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        /* 1. STORIES SECTION */
+        .stories-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; }
+        .stories-container::-webkit-scrollbar { height: 5px; }
+        .story-card { min-width: 110px; height: 190px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; transition: 0.3s; }
+        .story-card:hover { transform: scale(1.02); border-color: #e6c875; }
+        .story-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .story-card .avatar { position: absolute; top: 10px; left: 10px; width: 35px; height: 35px; border-radius: 50%; border: 2px solid #25d366; }
+        .story-card .add-btn { position: absolute; top: 10px; left: 10px; width: 35px; height: 35px; border-radius: 50%; background: #e6c875; color: #000; display: flex; justify-content: center; align-items: center; border: 2px solid #111; font-size: 18px; font-weight: bold; }
+        .story-card span { position: absolute; bottom: 10px; left: 10px; color: #fff; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 3px #000; }
+
+        /* 2. CREATE POST BOX */
+        .create-post { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .create-post-top { display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px; }
-        .create-post-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; }
-        .create-post-top input { flex: 1; background: #222; border: none; padding: 12px 20px; border-radius: 25px; color: #fff; font-size: 15px; outline: none; }
+        .create-post-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #444; object-fit: cover; }
+        .create-post-top input { flex: 1; background: #222; border: none; padding: 12px 20px; border-radius: 25px; color: #fff; font-size: 15px; outline: none; cursor: pointer; transition: 0.3s; }
+        .create-post-top input:hover { background: #2a2a2a; }
         .create-post-options { display: flex; justify-content: space-between; }
-        .post-opt-btn { display: flex; align-items: center; gap: 8px; color: #aaa; background: transparent; border: none; font-size: 14px; font-weight: bold; cursor: pointer; padding: 8px 15px; border-radius: 8px; transition: 0.3s; }
-        .post-opt-btn:hover { background: #222; color: #fff; }
-        .post-opt-btn.gold { color: #e6c875; }
+        .post-opt-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; color: #aaa; background: transparent; border: none; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px; border-radius: 8px; transition: 0.3s; }
+        .post-opt-btn:hover { background: #222; }
+        .post-opt-btn.gold { color: #e6c875; background: rgba(230,200,117,0.1); border: 1px solid rgba(230,200,117,0.2); }
+        .post-opt-btn.gold:hover { background: #e6c875; color: #000; }
 
-        /* Posts */
-        .post-card { background: #111; border: 1px solid #333; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); overflow: hidden; }
+        /* 3. POST CARDS */
+        .post-card { background: #111; border: 1px solid #222; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); overflow: hidden; }
         .post-header { display: flex; justify-content: space-between; align-items: center; padding: 15px; }
-        .post-user { display: flex; align-items: center; gap: 12px; }
-        .post-user img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e6c875; }
-        .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; }
+        .post-user { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .post-user img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; }
+        .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
         .verify-badge { color: #1da1f2; font-size: 14px; }
-        .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; }
-        .post-text { padding: 0 15px 15px 15px; font-size: 14px; color: #ddd; line-height: 1.5; }
-        .post-media img, .post-media video { width: 100%; max-height: 500px; object-fit: cover; }
+        .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; display: flex; align-items: center; gap: 5px; }
+        .post-text { padding: 0 15px 15px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; border-top: 1px solid #222; border-bottom: 1px solid #222; }
         
-        /* 🔥 REWARD ACTIONS 🔥 */
-        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; color: #888; font-size: 13px; }
+        /* Post Interactions */
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; color: #aaa; font-size: 13px; }
         .post-actions { display: flex; justify-content: space-between; padding: 5px 15px; }
         .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 8px; transition: 0.3s; position: relative; }
-        .action-btn:hover { background: #222; color: #fff; }
+        .action-btn:hover { background: #222; }
         .action-btn.active { color: #e6c875; }
-        
-        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.2); color: #e6c875; padding: 2px 6px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.5); }
+        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 6px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); }
 
-        /* 🔥 RIGHT SIDEBAR 🔥 */
-        .widget-card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .widget-title { color: #e6c875; font-size: 16px; margin: 0 0 15px 0; border-bottom: 1px solid #222; padding-bottom: 10px; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+        /* 🔥 RIGHT SIDEBAR (WIDGETS) 🔥 */
+        .right-sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; }
+        .widget-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .widget-title { color: #888; font-size: 15px; margin: 0 0 15px 0; border-bottom: 1px solid #222; padding-bottom: 10px; font-weight: bold; }
         
-        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #222; }
-        .task-item:last-child { border: none; }
-        .task-info h5 { margin: 0; color: #fff; font-size: 13px; }
-        .task-info p { margin: 2px 0 0 0; color: #888; font-size: 11px; }
-        .task-reward { background: #e6c875; color: #000; font-size: 11px; font-weight: bold; padding: 4px 10px; border-radius: 15px; cursor: pointer; border: none; transition: 0.3s; }
-        .task-reward:hover { background: #fff; transform: scale(1.05); }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #222; }
+        .task-item:last-child { border: none; padding-bottom: 0; }
+        .task-info h5 { margin: 0; color: #fff; font-size: 14px; }
+        .task-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; }
+        .task-reward { background: rgba(230,200,117,0.1); color: #e6c875; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 20px; cursor: pointer; border: 1px solid #e6c875; transition: 0.3s; }
+        .task-reward:hover { background: #e6c875; color: #000; }
+
+        /* Contacts / Trending */
+        .contact-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .contact-item:hover { background: #222; padding-left: 5px; }
+        .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .contact-item .status { width: 8px; height: 8px; background: #25d366; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #111; }
 
         /* Floating ATVT Animation */
-        .floating-reward { position: fixed; color: #e6c875; font-size: 20px; font-weight: 900; text-shadow: 0 0 10px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.5s ease-out forwards; z-index: 10000; }
+        .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* MOBILE RESPONSIVE */
+        /* 🔥 MOBILE RESPONSIVE (FACEBOOK STYLE BOTTOM NAV) 🔥 */
         .mobile-bottom-nav { display: none; }
-        @media (max-width: 1000px) {
-            .app-container { grid-template-columns: 1fr; margin-top: 10px; padding-bottom: 80px; }
-            .sidebar, .app-search { display: none; }
-            .app-title { font-size: 18px; }
+        @media (max-width: 1100px) {
+            .app-container { grid-template-columns: 1fr; margin-top: 10px; padding-bottom: 70px; gap: 10px; }
+            .sidebar { position: fixed; left: -280px; top: 0; height: 100vh; background: #111; padding-top: 20px; transition: 0.3s; z-index: 1600; box-shadow: 5px 0 15px rgba(0,0,0,0.9); }
+            .sidebar.active { left: 0; }
+            .right-sidebar, .app-search { display: none; }
+            .menu-toggle { display: block; }
+            
+            .app-title { font-size: 20px; }
+            .header-video-logo { height: 40px; transform: scale(1.3); margin-right: 5px; }
+            .profile-name-btn { padding: 5px 10px; font-size: 12px; }
             
             /* Mobile Bottom Nav */
-            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #333; z-index: 1000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.9); }
-            .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 10px; gap: 4px; transition: 0.3s; }
-            .nav-item i { font-size: 20px; }
+            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
+            .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
+            .nav-item i { font-size: 22px; }
             .nav-item.active { color: #e6c875; }
+            .nav-item.active i { transform: scale(1.1); }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP HEADER -->
+    <!-- OVERLAY -->
+    <div id="overlay"></div>
+
+    <!-- 🔥 APP HEADER (TOP BAR) 🔥 -->
     <header class="app-header">
         <div class="app-header-left">
-            <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            <h1 class="app-title notranslate">DK Social</h1>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <a href="social.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="header-video-logo"></video>
+                <h1 class="app-title notranslate">DK Social</h1>
+            </a>
             <div class="app-search">
                 <i class="fas fa-search" style="color: #888;"></i>
                 <input type="text" placeholder="Search friends, movies, or creators...">
             </div>
         </div>
         <div class="app-header-right">
-            <!-- Universal ATVT Wallet -->
-            <div class="atvt-wallet" id="walletBtn">
-                <i class="fas fa-coins"></i> <span id="atvtBalance">150.00</span> ATVT
+            <!-- ATVT Wallet Banner -->
+            <div class="atvt-wallet" onclick="window.location.href='wallet.html'">
+                <i class="fas fa-coins"></i> <span id="atvtBalance">150.00</span>
             </div>
+            
             <button class="icon-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
-            <button class="icon-btn"><i class="fas fa-envelope"></i><span class="badge">1</span></button>
-            <img src="images/movies/gallery1.png" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e6c875; cursor: pointer;" alt="Profile">
+            
+            <!-- SMART DROPDOWN PROFILE MENU -->
+            <div class="profile-dropdown-container">
+                <div class="profile-name-btn" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                    <span id="topbarProfileName">VIP</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="dropdown-menu" id="profileDropdown">
+                    <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
         </div>
     </header>
 
+    <!-- 🔥 MAIN APP CONTAINER 🔥 -->
     <div class="app-container">
         
         <!-- LEFT SIDEBAR -->
-        <aside class="sidebar">
-            <div class="profile-card">
-                <img src="images/movies/gallery1.png" class="profile-img" alt="User">
-                <h3>VIP Member</h3>
-                <p>@vip_creator</p>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-inner">
+                <!-- Translator -->
+                <div style="padding: 0 15px 15px 15px;">
+                    <select class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; outline: none; cursor: pointer;">
+                        <option value="" style="background: #111;">🌐 Select Language</option>
+                        <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
+                        <option value="en" style="background: #111;">English</option>
+                        <option value="bn" style="background: #111;">বাংলা (Bengali)</option>
+                    </select>
+                </div>
+
+                <!-- Profile Info -->
+                <div class="sidebar-profile">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
+                    <h3 id="sidebarProfileName">VIP Member</h3>
+                    <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+                    <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Copy ID"><i class="fas fa-id-card"></i> DK-..........</span>
+                </div>
+                
+                <!-- Navigation -->
+                <ul class="sidebar-menu">
+                    <li><a href="social.html" class="active"><i class="fas fa-home"></i> Home Feed</a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> My Dashboard</a></li>
+                    <li><a href="wallet.html"><i class="fas fa-wallet"></i> Wallet & Transfer</a></li>
+                    <div class="menu-divider"></div>
+                    <div class="menu-heading">Explore Ecosystem</div>
+                    <li><a href="index.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-cart" style="opacity:0.5;"></i> DK Mart (Soon)</a></li>
+                    <li><a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a></li>
+                </ul>
             </div>
-            <ul class="sidebar-menu">
-                <li><a href="#" class="active"><i class="fas fa-home"></i> Home Feed</a></li>
-                <li><a href="#"><i class="fas fa-video"></i> Watch Shorts <span style="margin-left:auto; background:#ff4d4d; padding:2px 6px; border-radius:10px; font-size:10px; color:#fff;">Live</span></a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Friends & Fans</a></li>
-                <li><a href="#"><i class="fas fa-shopping-cart"></i> DK Mart</a></li>
-                <li><a href="#"><i class="fas fa-wallet"></i> Wallet & Earnings</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-            </ul>
         </aside>
 
-        <!-- MIDDLE FEED -->
+        <!-- MIDDLE FEED (FACEBOOK STYLE) -->
         <main class="feed">
             
-            <!-- Create Post -->
-            <div class="create-post">
-                <div class="create-post-top">
-                    <img src="images/movies/gallery1.png" alt="User">
-                    <input type="text" placeholder="What's on your mind? Share to earn ATVT...">
+            <!-- 1. STORIES SECTION -->
+            <div class="stories-container">
+                <!-- Add Story (User) -->
+                <div class="story-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="bg" id="storyUserImg" alt="Me" style="opacity: 0.5;">
+                    <div class="add-btn"><i class="fas fa-plus"></i></div>
+                    <span>Create Story</span>
                 </div>
-                <div class="create-post-options">
-                    <button class="post-opt-btn"><i class="fas fa-video" style="color: #ff4d4d;"></i> Live Video</button>
-                    <button class="post-opt-btn"><i class="fas fa-image" style="color: #25d366;"></i> Photo/Video</button>
-                    <button class="post-opt-btn gold" onclick="simulateEarning(event, 5, 'Post Created!')"><i class="fas fa-paper-plane"></i> Post (+5 ATVT)</button>
+                <!-- Story 1 -->
+                <div class="story-card">
+                    <img src="images/movies/yakshini-poster.png" class="bg" alt="Story">
+                    <img src="images/movies/gallery1.png" class="avatar" alt="Avatar">
+                    <span>DK Atovitt</span>
+                </div>
+                <!-- Story 2 -->
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Avatar">
+                    <span>Priya S.</span>
+                </div>
+                <!-- Story 3 -->
+                <div class="story-card">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Story">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" alt="Avatar">
+                    <span>Rahul M.</span>
                 </div>
             </div>
 
-            <!-- Fake Post 1 -->
+            <!-- 2. CREATE POST BOX -->
+            <div class="create-post">
+                <div class="create-post-top">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
+                    <input type="text" placeholder="What's on your mind? Share & Earn ATVT...">
+                </div>
+                <div class="create-post-options">
+                    <button class="post-opt-btn"><i class="fas fa-video" style="color: #ff4d4d; font-size: 18px;"></i> Live Video</button>
+                    <button class="post-opt-btn"><i class="fas fa-images" style="color: #25d366; font-size: 18px;"></i> Photo/Video</button>
+                    <button class="post-opt-btn gold" onclick="simulateEarning(event, 5)"><i class="fas fa-paper-plane" style="font-size: 18px;"></i> Post <span class="reward-hint">+5</span></button>
+                </div>
+            </div>
+
+            <!-- 3. FEED POSTS -->
+            <!-- Post 1 (Official) -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
                         <img src="images/movies/gallery1.png" alt="DK Atovitt">
                         <div class="post-user-info">
                             <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
-                            <p>Official Page • 2 hours ago</p>
+                            <p>Official Page • 2 hrs ago • <i class="fas fa-globe-americas"></i></p>
                         </div>
                     </div>
                     <i class="fas fa-ellipsis-h" style="color: #888; cursor: pointer;"></i>
@@ -188,154 +320,284 @@
                     Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
                 </div>
                 <div class="post-media">
-                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster" onerror="this.src='https://via.placeholder.com/800x400/111/e6c875?text=Yakshini+Poster'">
+                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
                 </div>
                 <div class="post-stats">
-                    <span><i class="fas fa-thumbs-up" style="color:#e6c875;"></i> 1.2k Likes</span>
-                    <span>450 Comments • 120 Shares</span>
+                    <span><i class="fas fa-thumbs-up" style="color:#e6c875; background: rgba(230,200,117,0.2); padding: 4px; border-radius: 50%;"></i> <i class="fas fa-heart" style="color:#ff4d4d; background: rgba(255,77,77,0.2); padding: 4px; border-radius: 50%; margin-left:-8px;"></i> 12.4k</span>
+                    <span>450 Comments • 1.2k Shares</span>
                 </div>
                 <div class="post-actions">
-                    <button class="action-btn" onclick="earnAction(this, 1, 'Like')">
-                        <i class="far fa-thumbs-up"></i> Like <span class="reward-hint">+1 ATVT</span>
+                    <button class="action-btn" onclick="earnAction(this, 1)">
+                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 2, 'Comment')">
-                        <i class="far fa-comment"></i> Comment <span class="reward-hint">+2 ATVT</span>
+                    <button class="action-btn" onclick="earnAction(this, 2)">
+                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 5, 'Share')">
-                        <i class="fas fa-share"></i> Share <span class="reward-hint">+5 ATVT</span>
+                    <button class="action-btn" onclick="earnAction(this, 5)">
+                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5 ATVT</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Fake Post 2 -->
+            <!-- Post 2 (User) -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
-                        <img src="https://via.placeholder.com/100" alt="User">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User">
                         <div class="post-user-info">
                             <h4>Ravi Sharma</h4>
-                            <p>Creator • 5 hours ago</p>
+                            <p>Creator • 5 hrs ago • <i class="fas fa-globe-americas"></i></p>
                         </div>
                     </div>
+                    <i class="fas fa-ellipsis-h" style="color: #888; cursor: pointer;"></i>
                 </div>
                 <div class="post-text">
-                    Just uploaded my audition reel for DK Atovitt! Wish me luck guys. Earning ATVT every day just by using this awesome app! 💸🔥
+                    Just submitted my audition portfolio for DK Atovitt's upcoming project! Earning ATVT every day just by using this awesome ecosystem! 💸🔥 Who else is participating?
                 </div>
-                <div class="post-actions" style="border-top: 1px solid #222;">
-                    <button class="action-btn" onclick="earnAction(this, 1, 'Like')">
-                        <i class="far fa-thumbs-up"></i> Like <span class="reward-hint">+1 ATVT</span>
+                <div class="post-stats">
+                    <span><i class="fas fa-thumbs-up" style="color:#e6c875; background: rgba(230,200,117,0.2); padding: 4px; border-radius: 50%;"></i> 342</span>
+                    <span>45 Comments</span>
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="earnAction(this, 1)">
+                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 2, 'Comment')">
-                        <i class="far fa-comment"></i> Comment <span class="reward-hint">+2 ATVT</span>
+                    <button class="action-btn" onclick="earnAction(this, 2)">
+                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 5, 'Share')">
-                        <i class="fas fa-share"></i> Share <span class="reward-hint">+5 ATVT</span>
+                    <button class="action-btn" onclick="earnAction(this, 5)">
+                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5</span>
                     </button>
                 </div>
             </div>
 
         </main>
 
-        <!-- RIGHT SIDEBAR -->
-        <aside class="sidebar">
+        <!-- RIGHT SIDEBAR (WIDGETS) -->
+        <aside class="right-sidebar">
             
             <div class="widget-card">
-                <h3 class="widget-title"><i class="fas fa-tasks"></i> Daily Rewards</h3>
-                
+                <h3 class="widget-title">Daily ATVT Tasks</h3>
                 <div class="task-item">
                     <div class="task-info">
-                        <h5>Watch 5 Shorts</h5>
+                        <h5>Watch 5 Videos</h5>
                         <p>0/5 Completed</p>
                     </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 10, 'Task Completed!')">+10 ATVT</button>
+                    <button class="task-reward" onclick="simulateEarning(event, 10)">+10 ATVT</button>
                 </div>
-                
                 <div class="task-item">
                     <div class="task-info">
                         <h5>Invite a Friend</h5>
-                        <p>Share your referral link</p>
+                        <p>Share referral link</p>
                     </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 50, 'Bonus Added!')">+50 ATVT</button>
+                    <button class="task-reward" onclick="simulateEarning(event, 50)">+50 ATVT</button>
                 </div>
-
                 <div class="task-item">
                     <div class="task-info">
                         <h5>Daily Check-in</h5>
-                        <p>Claim your daily bonus</p>
+                        <p>Claim bonus</p>
                     </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 5, 'Checked In!')">Claim</button>
+                    <button class="task-reward" onclick="simulateEarning(event, 5)" style="background:#e6c875; color:#000;">Claim</button>
                 </div>
             </div>
 
             <div class="widget-card">
-                <h3 class="widget-title"><i class="fas fa-fire"></i> Trending Tags</h3>
-                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#DKAtovitt</p>
-                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#YakshiniAuditions</p>
-                <p style="color: #1da1f2; font-size: 14px; cursor: pointer;">#EarnATVT</p>
+                <h3 class="widget-title">Trending Tags</h3>
+                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#DKAtovitt</p>
+                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#YakshiniAuditions</p>
+                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#EarnCrypto</p>
+            </div>
+
+            <div class="widget-card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+                <p style="color: #666; font-size: 11px; text-align: center;">Privacy • Terms • Advertising • Cookies • More <br> DK Atovitt © 2026</p>
             </div>
 
         </aside>
 
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
+    <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
     <nav class="mobile-bottom-nav">
-        <a href="#" class="nav-item active"><i class="fas fa-home"></i> Feed</a>
-        <a href="#" class="nav-item"><i class="fas fa-video"></i> Shorts</a>
-        <a href="#" class="nav-item"><i class="fas fa-plus-circle" style="font-size: 30px; color: #e6c875;"></i> Post</a>
-        <a href="#" class="nav-item"><i class="fas fa-wallet"></i> Wallet</a>
-        <a href="#" class="nav-item"><i class="fas fa-bars"></i> Menu</a>
+        <a href="social.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Feed</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dash</span>
+        </a>
+        <a href="wallet.html" class="nav-item" style="transform: translateY(-15px);">
+            <div style="background: linear-gradient(45deg, #b8860b, #ffd700); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid #050505; box-shadow: 0 5px 15px rgba(230,200,117,0.5); color: #000;">
+                <i class="fas fa-plus" style="font-size: 24px;"></i>
+            </div>
+            <span style="margin-top: 5px; color: #e6c875;">Post</span>
+        </a>
+        <a href="wallet.html" class="nav-item">
+            <i class="fas fa-wallet"></i>
+            <span>Wallet</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('menuToggle').click()">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </a>
     </nav>
 
-    <!-- 🔥 JAVASCRIPT FOR ATVT EARNING MAGIC 🔥 -->
+    <!-- 🔥 JAVASCRIPT FOR UI & ATVT EARNING MAGIC 🔥 -->
     <script>
+        // Sidebar Mobile Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Dropdown Click-outside closer
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-name-btn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Copy DK ID Logic
+        function copyDkId() {
+            var text = document.getElementById("sidebarDkId").innerText.trim();
+            navigator.clipboard.writeText(text);
+            alert("DK ID Copied: " + text);
+        }
+
+        // ATVT Earning Simulation
         let currentBalance = 150.00;
         const balanceSpan = document.getElementById('atvtBalance');
 
-        function earnAction(btn, amount, type) {
-            // Check if already clicked to prevent spam clicking
+        function earnAction(btn, amount) {
             if(btn.classList.contains('active')) return; 
-
-            // Change button style
             btn.classList.add('active');
             const icon = btn.querySelector('i');
-            if(type === 'Like') {
-                icon.classList.remove('far');
-                icon.classList.add('fas');
-            }
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            
+            // Re-trigger animation
+            btn.style.transform = 'scale(1.1)';
+            setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
-            // Add Balance and show animation
-            simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, amount, type);
+            simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, amount);
         }
 
-        function simulateEarning(event, amount, textHint) {
-            // Update Balance
+        function simulateEarning(event, amount) {
             currentBalance += amount;
             balanceSpan.innerText = currentBalance.toFixed(2);
             
-            // Add flash effect to wallet
             const walletBtn = document.getElementById('walletBtn');
-            walletBtn.style.transform = 'scale(1.1)';
-            walletBtn.style.boxShadow = '0 0 30px #e6c875';
-            setTimeout(() => {
-                walletBtn.style.transform = 'scale(1)';
-                walletBtn.style.boxShadow = '0 0 15px rgba(230,200,117,0.5)';
-            }, 300);
+            if(walletBtn) {
+                walletBtn.style.transform = 'scale(1.1)';
+                walletBtn.style.boxShadow = '0 0 30px #e6c875';
+                setTimeout(() => {
+                    walletBtn.style.transform = 'scale(1)';
+                    walletBtn.style.boxShadow = '0 0 15px rgba(230,200,117,0.3)';
+                }, 400);
+            }
 
-            // Create floating text (+X ATVT) at mouse click position
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
             floatingText.innerText = `+${amount} ATVT`;
             floatingText.style.left = (event.clientX || window.innerWidth/2) + 'px';
             floatingText.style.top = (event.clientY || window.innerHeight/2) + 'px';
-            
             document.body.appendChild(floatingText);
 
-            // Remove element after animation ends
-            setTimeout(() => {
-                floatingText.remove();
-            }, 1500);
+            setTimeout(() => { floatingText.remove(); }, 1200);
         }
+
+        // Google Translate Logic
+        window.translatePage = function(lang) {
+            var domainStr = window.location.hostname.replace(/^www\./i, '');
+            if (lang === "") {
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            } else {
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+            }
+            window.location.reload(); 
+        };
+    </script>
+    
+    <!-- Google Translate API -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'auto', autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA & DK ID 🔥 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                let fullName = user.displayName || "VIP Member";
+                let userName = fullName.trim().split(' ')[0];
+                let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
+                // GENERATE 10-CHARACTER MIXED CASE DK ID
+                let uidSnippet = "";
+                if (user.uid) {
+                    uidSnippet = user.uid.substring(0, 10);
+                } else {
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                let userDkId = "DK-" + uidSnippet;
+
+                // Update UI Elements
+                document.getElementById('sidebarProfileName').innerText = fullName;
+                document.getElementById('sidebarProfileImg').src = userPhoto;
+                document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                document.getElementById('topbarProfileName').innerText = userName;
+                
+                // Update Feed Create Post Avatar & Story Avatar
+                if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = userPhoto;
+                if(document.getElementById('storyUserImg')) document.getElementById('storyUserImg').src = userPhoto;
+
+                // Logout Action
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(confirm("Are you sure you want to Logout?")) {
+                            signOut(auth).then(() => window.location.href = "auth.html");
+                        }
+                    });
+                });
+            } else {
+                window.location.href = "auth.html";
+            }
+        });
     </script>
 </body>
 </html>
