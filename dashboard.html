@@ -60,8 +60,6 @@
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; }
         .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 15px; letter-spacing: 1px; }
-        .edit-profile-btn { display: inline-block; background: #222; color: #ccc; text-decoration: none; font-size: 12px; padding: 6px 15px; border-radius: 15px; border: 1px solid #444; transition: 0.3s; }
-        .edit-profile-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; }
 
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
@@ -82,16 +80,31 @@
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
         
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* 🔥 HEADER VIDEO LOGO FIX 🔥 */
         .topbar-left { display: flex; align-items: center; gap: 15px; }
         .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
+        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+        .header-video-logo { height: 40px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
         .page-title { color: #fff; font-size: 20px; margin: 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
         
-        .topbar-right { display: flex; align-items: center; gap: 20px; }
+        .topbar-right { display: flex; align-items: center; gap: 15px; }
         
         .wallet-chip { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); color: #000; padding: 8px 15px; border-radius: 30px; font-weight: bold; display: flex; align-items: center; gap: 8px; font-size: 14px; box-shadow: 0 4px 10px rgba(230,200,117,0.3); }
         .wallet-chip i { font-size: 16px; }
 
-        .profile-icon { width: 40px; height: 40px; background: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 20px; border: 2px solid #e6c875; cursor: pointer; }
+        /* 🔥 DROPDOWN PROFILE MENU CSS 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; }
+        .profile-icon-btn { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; cursor: pointer; object-fit: cover; box-shadow: 0 4px 10px rgba(230,200,117,0.3); transition: 0.3s; }
+        .profile-icon-btn:hover { transform: scale(1.05); }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 55px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; }
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; }
+        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; }
+        .dropdown-menu a i { color: #e6c875; width: 15px; }
+        .dropdown-menu a.drop-logout { border-top: 1px solid #222; }
+        .dropdown-menu a.drop-logout i { color: #ff4d4d; }
 
         .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; }
         
@@ -179,6 +192,11 @@
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
+            
+            /* Mobile adjustment for header */
+            .header-video-logo { height: 35px; }
+            .page-title { font-size: 16px; }
+            .profile-icon-btn { width: 35px; height: 35px; }
         }
     </style>
 </head>
@@ -207,10 +225,10 @@
         </div>
 
         <div class="sidebar-profile">
-            <img src="images/movies/gallery1.png" alt="Profile Photo">
-            <h3>Dipak Kumar Gupta</h3>
+            <!-- Sidebar photo will also be updated via Firebase JS -->
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
+            <h3 id="sidebarProfileName">VIP Member</h3>
             <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
-            <a href="profile-edit.html" class="edit-profile-btn"><i class="fas fa-user-edit"></i> Edit Profile</a>
         </div>
         
         <div class="sidebar-menu">
@@ -228,30 +246,42 @@
         </div>
         
         <div class="sidebar-footer">
-            <a href="auth.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="javascript:void(0)" class="logout-btn logout-action"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
     </div>
 
     <!-- 🔥 MAIN CONTENT -->
     <div class="main-content">
         <div class="topbar">
+            <!-- 🔥 HEADER VIDEO LOGO UPDATE 🔥 -->
             <div class="topbar-left">
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-                <h2 class="page-title">VIP Dashboard</h2>
+                <a href="javascript:void(0)" class="header-logo-link">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="header-video-logo"></video>
+                    <h2 class="page-title notranslate">VIP Dashboard</h2>
+                </a>
             </div>
+
             <div class="topbar-right">
                 <div class="wallet-chip">
                     <i class="fas fa-coins"></i> <span>150.00 ATVT</span>
                 </div>
-                <div class="profile-icon">
-                    <i class="fas fa-user"></i>
+                
+                <!-- 🔥 SMART DROPDOWN PROFILE MENU 🔥 -->
+                <div class="profile-dropdown-container">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" class="profile-icon-btn" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                    
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                        <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="dashboard-body">
             <div class="welcome-banner">
-                <h1>Welcome back, <span>Dipak</span> 👋</h1>
+                <h1>Welcome back, <span id="welcomeNameText">VIP</span> 👋</h1>
                 <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
             </div>
 
@@ -405,7 +435,20 @@
 
     <!-- 🔥 JAVASCRIPT SECTION 🔥 -->
     <script>
-        // 🔥 PERFECT OVERLAY CLICK FIX 🔥
+        // Dropdown Click-outside closer
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-icon-btn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // PERFECT OVERLAY CLICK FIX
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
@@ -511,5 +554,55 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Fetch User Name and Photo
+                let fullName = user.displayName || "VIP Member";
+                let userName = fullName.trim().split(' ')[0]; // Only first name
+                let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
+                // Update Sidebar Profile
+                document.getElementById('sidebarProfileName').innerText = fullName;
+                document.getElementById('sidebarProfileImg').src = userPhoto;
+
+                // Update Topbar Dropdown Profile Icon
+                document.getElementById('topbarProfileImg').src = userPhoto;
+
+                // Update Welcome Banner Name
+                document.getElementById('welcomeNameText').innerText = userName;
+
+                // Enable Logout Action anywhere it's placed
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
+                            signOut(auth).then(() => {
+                                window.location.href = "auth.html";
+                            });
+                        }
+                    });
+                });
+            } else {
+                // If not logged in, redirect to login page for safety
+                window.location.href = "auth.html";
+            }
+        });
+    </script>
 </body>
 </html>
