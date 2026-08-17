@@ -88,6 +88,17 @@
         
         .verified-badge { color: #25d366; font-size: 12px; margin-left: 5px; text-transform: none; }
 
+        /* 🔥 CRYPTO SEND PANEL CSS 🔥 */
+        .send-toggle-btn { background: #1a1a1a; color: #e6c875; border: 1px solid #e6c875; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-size: 14px; }
+        .send-toggle-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
+        .send-crypto-panel { display: none; margin-top: 15px; padding: 25px; background: #0a0a0a; border: 1px solid #333; border-radius: 12px; animation: slideDown 0.3s ease; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); }
+        .send-crypto-panel.active { display: block; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .balance-badge { float: right; background: rgba(230, 200, 117, 0.1); color: #e6c875; padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid #e6c875; }
+        .input-with-max { position: relative; display: flex; align-items: center; }
+        .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+
         /* Save Button */
         .save-btn-container { text-align: right; margin-top: 20px; margin-bottom: 40px; }
         .save-btn { background: #e6c875; color: #000; border: none; padding: 15px 40px; border-radius: 30px; font-size: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); display: inline-flex; align-items: center; gap: 8px; }
@@ -223,20 +234,16 @@
                     <div class="form-grid">
                         <div class="form-group full-width">
                             <label>Apartment / Society Name / Building</label>
-                            <input type="text" placeholder="e.g. DK Royal Enclave, Flat 402" required>
+                            <input type="text" placeholder="e.g. DK Royal Enclave, Flat 402">
                         </div>
                         <div class="form-group full-width">
                             <label>Holding Number & Street Name</label>
-                            <input type="text" placeholder="e.g. 15/A, MG Road" required>
+                            <input type="text" placeholder="e.g. 15/A, MG Road">
                         </div>
-                        
-                        <!-- Pincode starts the magic -->
                         <div class="form-group">
                             <label>Pincode / ZIP Code</label>
-                            <input type="number" id="inputPincode" placeholder="Enter 6-digit Pincode" maxlength="6" required>
+                            <input type="number" id="inputPincode" placeholder="Enter 6-digit Pincode" maxlength="6">
                         </div>
-
-                        <!-- Auto-filled by JS -->
                         <div class="form-group">
                             <label>State</label>
                             <input type="text" id="inputState" placeholder="State will auto-fill" readonly style="background: #222;">
@@ -283,7 +290,7 @@
                     </div>
                 </div>
 
-                <!-- 4. WALLET & ECOSYSTEM -->
+                <!-- 4. WALLET & CRYPTO TRANSFER -->
                 <div class="profile-card">
                     <div class="section-header">
                         <i class="fas fa-wallet"></i>
@@ -295,8 +302,50 @@
                             <input type="text" placeholder="e.g. 9876543210@ybl">
                         </div>
                         <div class="form-group">
-                            <label>ATVT Receiving Address (Crypto)</label>
+                            <label>My ATVT Receiving Address</label>
                             <input type="text" placeholder="Paste your BEP-20 / TRC-20 Address">
+                        </div>
+                        
+                        <!-- 🔥 TRANSFER ATVT BUTTON 🔥 -->
+                        <div class="form-group full-width">
+                            <button type="button" class="send-toggle-btn" onclick="toggleSendCrypto()">
+                                <i class="fas fa-paper-plane"></i> Send / Transfer ATVT
+                            </button>
+                        </div>
+
+                        <!-- 🔥 HIDDEN SEND CRYPTO PANEL 🔥 -->
+                        <div class="form-group full-width send-crypto-panel" id="sendCryptoPanel">
+                            <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                                <i class="fas fa-exchange-alt"></i> Transfer ATVT
+                                <span class="balance-badge">Available: 150.00 ATVT</span>
+                            </h4>
+                            
+                            <div class="form-grid" style="gap: 15px;">
+                                <div class="form-group">
+                                    <label>Network</label>
+                                    <select id="transferNetwork">
+                                        <option value="BEP20">Binance Smart Chain (BEP-20)</option>
+                                        <option value="TRC20">Tron Network (TRC-20)</option>
+                                        <option value="INTERNAL">Internal Transfer (DK Wallet)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount (ATVT)</label>
+                                    <div class="input-with-max">
+                                        <input type="number" id="transferAmount" placeholder="0.00" style="padding-right: 50px;">
+                                        <button type="button" class="max-btn" onclick="document.getElementById('transferAmount').value = '150.00'">MAX</button>
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>Recipient Address / DK ID</label>
+                                    <input type="text" id="transferAddress" placeholder="Paste Recipient Wallet Address here">
+                                </div>
+                                <div class="form-group full-width" style="margin-bottom: 0;">
+                                    <button type="button" onclick="initiateCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
+                                        Proceed to Transfer
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -337,12 +386,12 @@
         <div class="otp-modal-box">
             <button class="otp-modal-close" onclick="document.getElementById('otpModalOverlay').classList.remove('active')">&times;</button>
             <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
-            <h3 class="otp-title">Security Verification</h3>
-            <p class="otp-desc">To secure your account, an OTP has been sent to your registered <span>Email, SMS & WhatsApp</span>. Please enter it below to authorize changes.</p>
+            <h3 class="otp-title" id="otpModalTitle">Security Verification</h3>
+            <p class="otp-desc" id="otpModalDesc">To secure your account, an OTP has been sent to your registered <span>Email & WhatsApp</span>. Please enter it below.</p>
             
             <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
             
-            <button type="button" class="otp-btn" onclick="verifyAndSaveProfile()"><i class="fas fa-check-circle"></i> Verify & Update Profile</button>
+            <button type="button" class="otp-btn" onclick="verifyOtpAndProceed()"><i class="fas fa-check-circle"></i> Verify & Proceed</button>
         </div>
     </div>
 
@@ -388,7 +437,6 @@
                         document.getElementById('inputState').value = postOffice.State;
                         document.getElementById('inputCity').value = postOffice.District;
                         
-                        // Add glow effect to show auto-fill success
                         document.getElementById('inputState').style.borderColor = '#25d366';
                         document.getElementById('inputCity').style.borderColor = '#25d366';
                         setTimeout(() => {
@@ -406,19 +454,54 @@
             }
         });
 
-        // 🔥 OTP FORM SUBMIT LOGIC 🔥
+        // 🔥 SEND CRYPTO TOGGLE 🔥
+        function toggleSendCrypto() {
+            const panel = document.getElementById('sendCryptoPanel');
+            panel.classList.toggle('active');
+        }
+
+        // Global variable to track OTP context
+        let currentOtpAction = '';
+
+        // 🔥 PROFILE UPDATE SUBMIT LOGIC 🔥
         document.getElementById('profileUpdateForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Stop direct submission
-            
-            // Show the OTP Security Modal
+            event.preventDefault(); 
+            currentOtpAction = 'profile';
+            document.getElementById('otpModalTitle').innerText = 'Save Profile';
+            document.getElementById('otpModalDesc').innerHTML = 'An OTP has been sent to your <span>Email & WhatsApp</span> to authorize profile changes.';
             document.getElementById('otpModalOverlay').classList.add('active');
         });
 
-        function verifyAndSaveProfile() {
+        // 🔥 CRYPTO TRANSFER SUBMIT LOGIC 🔥
+        function initiateCryptoTransfer() {
+            let address = document.getElementById('transferAddress').value;
+            let amount = document.getElementById('transferAmount').value;
+            
+            if(address === "" || amount === "" || amount <= 0) {
+                alert("Please enter a valid amount and recipient address.");
+                return;
+            }
+            
+            currentOtpAction = 'transfer';
+            document.getElementById('otpModalTitle').innerText = 'Confirm Transfer';
+            document.getElementById('otpModalDesc').innerHTML = `You are sending <span>${amount} ATVT</span>. Enter OTP sent to your Email/WhatsApp to confirm.`;
+            document.getElementById('otpModalOverlay').classList.add('active');
+        }
+
+        // 🔥 VERIFY OTP LOGIC 🔥
+        function verifyOtpAndProceed() {
             let otp = document.getElementById('securityOtpInput').value;
-            if(otp.length >= 4) { // Dummy check for frontend
+            if(otp.length >= 4) { // Dummy check
                 document.getElementById('otpModalOverlay').classList.remove('active');
-                alert("Profile Updated Successfully! ✅");
+                
+                if(currentOtpAction === 'profile') {
+                    alert("Profile Updated Successfully! ✅");
+                } else if(currentOtpAction === 'transfer') {
+                    alert("Transfer Successful! Transaction ID generated. ✅");
+                    document.getElementById('transferAmount').value = "";
+                    document.getElementById('transferAddress').value = "";
+                    document.getElementById('sendCryptoPanel').classList.remove('active');
+                }
                 document.getElementById('securityOtpInput').value = "";
             } else {
                 alert("Please enter a valid OTP.");
