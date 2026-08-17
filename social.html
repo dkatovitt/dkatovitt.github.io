@@ -42,7 +42,6 @@
         
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
         
-        /* 🔥 FIX: LOGO NEXT TO FEED 🔥 */
         .fb-top-left { display: flex; align-items: center; gap: 15px; }
         .fb-top-left .menu-btn { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 0; display: none; }
         .fb-top-left h1 { margin: 0; color: #fff; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
@@ -58,7 +57,7 @@
         .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; }
         .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #888; font-size: 24px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
         .fb-tab:hover { background: rgba(255,255,255,0.05); border-radius: 8px; }
-        .fb-tab.active { color: #1877F2; } /* Facebook Blue */
+        .fb-tab.active { color: #1877F2; } 
         .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
         .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 2px solid #111; font-weight: bold;}
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
@@ -124,7 +123,7 @@
         /* 🔥 MIDDLE FEED AREA (FACEBOOK STYLE) 🔥 */
         .feed { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        /* 1. FB CREATE POST BOX (FIXED ALIGNMENT) */
+        /* 1. FB CREATE POST BOX */
         .fb-create-post { background: #111; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #222; }
         .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
         .fb-create-post .input-box { flex: 1; background: transparent; border: 1px solid #444; padding: 10px 15px; border-radius: 30px; color: #fff; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
@@ -145,13 +144,13 @@
         .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
         .story-card:hover { filter: brightness(1.1); }
         
-        /* Create Story Card Specifics */
+        /* Create Story Card */
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
         .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
         .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 20px; font-weight: bold; }
         .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
 
-        /* Standard Story Specifics */
+        /* Standard Story */
         .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
@@ -197,6 +196,32 @@
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
+        /* 🔥 FULLSCREEN REELS VIEW 🔥 */
+        .reels-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none; flex-direction: column; }
+        .reels-view.active { display: flex; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        
+        .reels-header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 10; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+        .reels-header i { color: #fff; font-size: 22px; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .reels-header h2 { color: #fff; margin: 0; font-size: 18px; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        
+        .reel-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; overflow: hidden; }
+        .reel-video { width: 100%; height: 100%; object-fit: cover; }
+        
+        .reel-actions { position: absolute; bottom: 80px; right: 15px; display: flex; flex-direction: column; gap: 25px; align-items: center; z-index: 10; }
+        .reel-action-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #fff; cursor: pointer; transition: 0.3s; }
+        .reel-action-btn i { font-size: 28px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        .reel-action-btn:hover i { color: #e6c875; transform: scale(1.1); }
+        .reel-action-btn span { font-size: 12px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+        .reel-profile-img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; margin-top: 10px; }
+        
+        .reel-info { position: absolute; bottom: 80px; left: 15px; right: 70px; z-index: 10; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+        .reel-info h4 { margin: 0 0 5px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        .reel-info h4 button { background: transparent; border: 1px solid #fff; color: #fff; padding: 2px 10px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold; }
+        .reel-info p { margin: 0 0 10px 0; font-size: 14px; line-height: 1.4; }
+        .reel-music { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+        .reel-music i { font-size: 12px; }
+
         /* 🔥 MOBILE RESPONSIVE 🔥 */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
@@ -209,7 +234,7 @@
             
             .fb-top-left .menu-btn { display: none; } 
             
-            /* Mobile Bottom Nav */
+            /* Mobile Bottom Nav (Fix for missing logo) */
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
             .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
@@ -227,11 +252,10 @@
     <!-- 🔥 APP HEADER (FACEBOOK STYLE) 🔥 -->
     <header class="fb-header">
         
-        <!-- Top Row (Logo, Search, Messenger) -->
+        <!-- Top Row -->
         <div class="fb-top-row">
             <div class="fb-top-left">
                 <h1>Feed</h1>
-                <!-- 🔥 VIDEO LOGO ADDED HERE AS PER SCREENSHOT 🔥 -->
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="fb-top-right">
@@ -247,12 +271,11 @@
         <!-- Bottom Row (Navigation Tabs) -->
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <a href="#" class="fb-tab"><i class="fas fa-video"></i></a>
+            <a href="javascript:void(0)" class="fb-tab" onclick="openReels()"><i class="fas fa-video"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
-            <!-- Desktop Profile/Menu Icon -->
             <div class="fb-tab profile-dropdown-container">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
@@ -268,16 +291,14 @@
     <!-- 🔥 MAIN APP CONTAINER 🔥 -->
     <div class="app-container">
         
-        <!-- 🔥 LEFT (OR MOBILE RIGHT) SIDEBAR (MENU EXACTLY LIKE FB VIDEO) 🔥 -->
+        <!-- 🔥 RIGHT SIDEBAR MENU 🔥 -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-inner" style="padding-bottom: 80px;">
                 
-                <!-- Close Button (Visible on Mobile) -->
                 <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: -15px;" class="mobile-only-close">
                     <i class="fas fa-times" onclick="document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active');" style="color: #888; font-size: 24px; cursor: pointer;"></i>
                 </div>
 
-                <!-- 1. Header: Profile + Actions -->
                 <div class="fb-menu-header">
                     <div class="fb-menu-profile" onclick="window.location.href='profile-edit.html'">
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
@@ -292,7 +313,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Your Shortcuts Section -->
                 <h4 class="fb-menu-section-title">Your shortcuts</h4>
                 <div class="fb-shortcuts-row">
                     <div class="shortcut-card" onclick="window.location.href='index.html?v=fresh'">
@@ -313,7 +333,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Main Menu List -->
                 <div style="display: flex; flex-direction: column; gap: 2px;">
                     <a href="social.html" class="fb-menu-item">
                         <i class="fas fa-newspaper" style="color: #1877F2;"></i>
@@ -340,7 +359,6 @@
 
                 <hr class="fb-menu-divider">
 
-                <!-- 4. Accordion Options -->
                 <details class="fb-accordion">
                     <summary><i class="fas fa-question-circle"></i> Help and support <i class="fas fa-chevron-down arrow"></i></summary>
                     <div class="accordion-content">
@@ -373,16 +391,15 @@
                     </div>
                 </details>
 
-                <!-- Logout Button -->
                 <button class="fb-logout-btn logout-action">Log out</button>
 
             </div>
         </aside>
 
-        <!-- MIDDLE FEED (FACEBOOK STYLE) -->
+        <!-- MIDDLE FEED -->
         <main class="feed">
             
-            <!-- 1. FB CREATE POST BOX (MATCHING SCREENSHOT) -->
+            <!-- 1. FB CREATE POST BOX -->
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
                 <div class="input-box">What's on your mind?</div>
@@ -393,11 +410,10 @@
             <div class="fb-stories-wrapper">
                 <div class="fb-story-tabs">
                     <div class="story-tab active">Stories</div>
-                    <div class="story-tab">Reels</div>
+                    <div class="story-tab" onclick="openReels()">Reels</div>
                 </div>
                 
                 <div class="fb-stories-scroll">
-                    <!-- Create Story Card -->
                     <div class="story-card create-card">
                         <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
                         <div class="create-bottom">
@@ -406,21 +422,18 @@
                         </div>
                     </div>
                     
-                    <!-- Friend Story 1 -->
                     <div class="story-card user-card">
                         <img src="images/movies/yakshini-poster.png" class="bg" alt="Story">
                         <div class="user-ring"><img src="images/movies/gallery1.png"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
                     
-                    <!-- Friend Story 2 -->
                     <div class="story-card user-card">
                         <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/women/44.jpg"></div>
                         <span class="story-name">Priya Singh</span>
                     </div>
                     
-                    <!-- Friend Story 3 -->
                     <div class="story-card user-card">
                         <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Story">
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
@@ -430,7 +443,6 @@
             </div>
 
             <!-- 3. FEED POSTS -->
-            <!-- Post 1 -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
@@ -472,7 +484,6 @@
                 </div>
             </div>
 
-            <!-- Post 2 -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
@@ -518,28 +529,17 @@
 
         <!-- RIGHT SIDEBAR (Contacts & Trending) -->
         <aside class="right-sidebar">
-            
             <h3 class="widget-title">Contacts</h3>
-            
             <div class="contact-item">
-                <div class="img-wrap">
-                    <img src="images/movies/gallery1.png">
-                    <div class="status"></div>
-                </div>
+                <div class="img-wrap"><img src="images/movies/gallery1.png"><div class="status"></div></div>
                 <span>DK Atovitt Support</span>
             </div>
             <div class="contact-item">
-                <div class="img-wrap">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                    <div class="status"></div>
-                </div>
+                <div class="img-wrap"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div class="status"></div></div>
                 <span>Rahul Sharma</span>
             </div>
             <div class="contact-item">
-                <div class="img-wrap">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
-                    <div class="status" style="background:#ff4d4d;"></div>
-                </div>
+                <div class="img-wrap"><img src="https://randomuser.me/api/portraits/women/44.jpg"><div class="status" style="background:#ff4d4d;"></div></div>
                 <span>Priya Singh</span>
             </div>
 
@@ -549,7 +549,6 @@
             <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#DKAtovitt</p>
             <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#YakshiniMovie</p>
             <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#EarnATVT</p>
-
         </aside>
 
     </div>
@@ -560,15 +559,14 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="javascript:void(0)" class="nav-item" onclick="openReels()">
             <i class="fas fa-video"></i>
             <span>Video</span>
         </a>
-        <a href="dashboard.html" class="nav-item" style="transform: translateY(-15px);">
-            <div style="background: linear-gradient(45deg, #b8860b, #ffd700); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid #050505; box-shadow: 0 5px 15px rgba(230,200,117,0.5); color: #000;">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 35px; mix-blend-mode: multiply; transform: scale(1.5);"></video>
-            </div>
-            <span style="margin-top: 5px; color: #e6c875;">Dash</span>
+        <!-- 🔥 FIX: REMOVED FLOATING VIDEO LOGO & REPLACED WITH STANDARD ICON 🔥 -->
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-th-large" style="font-size: 24px;"></i>
+            <span>Dash</span>
         </a>
         <a href="#" class="nav-item">
             <div style="position: relative;">
@@ -577,7 +575,6 @@
             </div>
             <span>Notifications</span>
         </a>
-        <!-- THIS OPENS THE RIGHT SIDEBAR MENU -->
         <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active');">
             <div style="position: relative;">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="bottomNavImg" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
@@ -587,8 +584,40 @@
         </a>
     </nav>
 
+    <!-- 🔥 FULLSCREEN REELS VIEW 🔥 -->
+    <div id="reelsView" class="reels-view">
+        <div class="reels-header">
+            <i class="fas fa-arrow-left" onclick="closeReels()"></i>
+            <h2>Reels</h2>
+            <i class="fas fa-camera"></i>
+        </div>
+        <div class="reel-container">
+            <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="reel-video"></video>
+            <div class="reel-actions">
+                <div class="reel-action-btn" onclick="earnAction(this, 1)"><i class="fas fa-heart"></i><span>12K</span></div>
+                <div class="reel-action-btn" onclick="earnAction(this, 2)"><i class="fas fa-comment"></i><span>450</span></div>
+                <div class="reel-action-btn" onclick="earnAction(this, 5)"><i class="fas fa-share"></i><span>Share</span></div>
+                <div class="reel-action-btn"><i class="fas fa-ellipsis-h"></i></div>
+                <img src="images/movies/gallery1.png" class="reel-profile-img">
+            </div>
+            <div class="reel-info">
+                <h4>DK ATOVITT <button>Follow</button></h4>
+                <p>Welcome to the DK Connect Reels! Swipe up for more. 🔥 #DKAtovitt #Shorts</p>
+                <div class="reel-music"><i class="fas fa-music"></i> Original Audio - DK Atovitt</div>
+            </div>
+        </div>
+    </div>
+
     <!-- 🔥 JAVASCRIPT FOR UI & ATVT EARNING MAGIC 🔥 -->
     <script>
+        // Reels Toggle Logic
+        function openReels() {
+            document.getElementById('reelsView').classList.add('active');
+        }
+        function closeReels() {
+            document.getElementById('reelsView').classList.remove('active');
+        }
+
         // Dropdown Click-outside closer
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container')) {
@@ -619,7 +648,6 @@
             icon.classList.remove('far');
             icon.classList.add('fas');
             
-            // Re-trigger animation
             btn.style.transform = 'scale(1.1)';
             setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
