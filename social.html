@@ -167,7 +167,7 @@
         .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; padding-top: 5px;}
         
         .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
-        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; }
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; }
         
         /* Post Interactions */
         .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; border-bottom: 1px solid #222; }
@@ -179,6 +179,35 @@
         .action-btn:hover { background: #222; }
         .action-btn.active { color: #1877F2; }
         .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 5px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); margin-left: 2px; }
+
+        /* 🔥 LIVE COMMENTS SECTION 🔥 */
+        .post-comments-section { padding: 10px 15px 15px 15px; background: #0a0a0a; display: none; border-bottom: 1px solid #222; }
+        .comments-list { max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
+        .comments-list::-webkit-scrollbar { width: 4px; }
+        .comments-list::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        .comment-item { display: flex; gap: 10px; }
+        .comment-item img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        .comment-bubble { background: #222; padding: 10px 12px; border-radius: 18px; border-top-left-radius: 4px; max-width: 85%; }
+        .comment-bubble h5 { margin: 0 0 3px 0; color: #fff; font-size: 13px; font-weight: bold; }
+        .comment-bubble p { margin: 0; color: #e4e6eb; font-size: 13px; line-height: 1.4; }
+        
+        .add-comment-box { display: flex; gap: 10px; align-items: center; }
+        .add-comment-box img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
+        .add-comment-box input { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 20px; color: #fff; outline: none; font-size: 14px; }
+        .add-comment-box button { background: transparent; border: none; color: #1877F2; font-size: 18px; cursor: pointer; padding: 5px 10px; transition: 0.3s; }
+        .add-comment-box button:hover { transform: scale(1.1); }
+
+        /* 🔥 SHARE MODAL 🔥 */
+        .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
+        .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .share-modal-box { background: #1a1a1a; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.8); }
+        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #333; color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+        .share-modal-box h3 { margin: 0 0 20px 0; color: #fff; font-size: 18px; text-align: center; }
+        .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
+        .share-opt { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: 0.3s; }
+        .share-opt:hover { transform: translateY(-5px); }
+        .share-opt .icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; }
+        .share-opt span { color: #ccc; font-size: 12px; font-weight: bold; }
 
         /* 🔥 RIGHT SIDEBAR (WIDGETS) 🔥 */
         .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
@@ -212,6 +241,7 @@
         .reel-action-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #fff; cursor: pointer; transition: 0.3s; }
         .reel-action-btn i { font-size: 28px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .reel-action-btn:hover i { color: #e6c875; transform: scale(1.1); }
+        .reel-action-btn.active i { color: #1877F2; }
         .reel-action-btn span { font-size: 12px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
         .reel-profile-img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; margin-top: 10px; }
         
@@ -220,21 +250,18 @@
         .reel-info h4 button { background: transparent; border: 1px solid #fff; color: #fff; padding: 2px 10px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold; }
         .reel-info p { margin: 0 0 10px 0; font-size: 14px; line-height: 1.4; }
         .reel-music { display: flex; align-items: center; gap: 8px; font-size: 13px; }
-        .reel-music i { font-size: 12px; }
 
         /* 🔥 MOBILE RESPONSIVE 🔥 */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
             
-            /* Sidebar becomes Right-side Drawer */
             .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
             
             .fb-top-left .menu-btn { display: none; } 
             
-            /* Mobile Bottom Nav (Fix for missing logo) */
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
             .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
@@ -251,8 +278,6 @@
 
     <!-- 🔥 APP HEADER (FACEBOOK STYLE) 🔥 -->
     <header class="fb-header">
-        
-        <!-- Top Row -->
         <div class="fb-top-row">
             <div class="fb-top-left">
                 <h1>Feed</h1>
@@ -268,7 +293,6 @@
             </div>
         </div>
 
-        <!-- Bottom Row (Navigation Tabs) -->
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
             <a href="javascript:void(0)" class="fb-tab" onclick="openReels()"><i class="fas fa-video"></i></a>
@@ -443,7 +467,9 @@
             </div>
 
             <!-- 3. FEED POSTS -->
-            <div class="post-card">
+            
+            <!-- POST 1 (Yakshini) -->
+            <div class="post-card" id="post-1">
                 <div class="post-header">
                     <div class="post-user">
                         <img src="images/movies/gallery1.png" alt="DK Atovitt">
@@ -467,24 +493,46 @@
                     <div class="reactions">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1200px-Love_Heart_symbol.svg.png" style="background:#fff;">
-                        <span>1.2K</span>
+                        <span id="like-count-post-1">1245</span>
                     </div>
-                    <span>450 Comments • 120 Shares</span>
+                    <span><span id="comment-count-post-1">450</span> Comments • 120 Shares</span>
                 </div>
+                
+                <!-- 🔥 LIVE ACTION BUTTONS 🔥 -->
                 <div class="post-actions">
-                    <button class="action-btn" onclick="earnAction(this, 1)">
+                    <button class="action-btn" onclick="toggleLike(this, 'post-1', 1)" data-earned="false">
                         <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 2)">
+                    <button class="action-btn" onclick="toggleCommentSection('post-1')" data-earned="false" id="comment-btn-post-1">
                         <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 5)">
+                    <button class="action-btn" onclick="openShareModal('post-1')" data-earned="false" id="share-btn-post-1">
                         <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5 ATVT</span>
                     </button>
                 </div>
+                
+                <!-- 🔥 LIVE COMMENT SECTION 🔥 -->
+                <div class="post-comments-section" id="comments-section-post-1">
+                    <div class="comments-list" id="comment-list-post-1">
+                        <!-- Dummy comment -->
+                        <div class="comment-item">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                            <div class="comment-bubble">
+                                <h5>Rahul Sharma</h5>
+                                <p>Super excited for this movie! 🔥</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-comment-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
+                        <input type="text" id="comment-input-post-1" placeholder="Write a comment...">
+                        <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
             </div>
 
-            <div class="post-card">
+            <!-- POST 2 (Nilesh) -->
+            <div class="post-card" id="post-2">
                 <div class="post-header">
                     <div class="post-user">
                         <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User">
@@ -508,20 +556,40 @@
                 <div class="post-stats">
                     <div class="reactions">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
-                        <span>342</span>
+                        <span id="like-count-post-2">342</span>
                     </div>
-                    <span>45 Comments</span>
+                    <span><span id="comment-count-post-2">45</span> Comments</span>
                 </div>
+                
+                <!-- 🔥 LIVE ACTION BUTTONS 🔥 -->
                 <div class="post-actions">
-                    <button class="action-btn" onclick="earnAction(this, 1)">
-                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1</span>
+                    <button class="action-btn" onclick="toggleLike(this, 'post-2', 1)" data-earned="false">
+                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 2)">
-                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2</span>
+                    <button class="action-btn" onclick="toggleCommentSection('post-2')" data-earned="false" id="comment-btn-post-2">
+                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2 ATVT</span>
                     </button>
-                    <button class="action-btn" onclick="earnAction(this, 5)">
-                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5</span>
+                    <button class="action-btn" onclick="openShareModal('post-2')" data-earned="false" id="share-btn-post-2">
+                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5 ATVT</span>
                     </button>
+                </div>
+                
+                <!-- 🔥 LIVE COMMENT SECTION 🔥 -->
+                <div class="post-comments-section" id="comments-section-post-2">
+                    <div class="comments-list" id="comment-list-post-2">
+                        <div class="comment-item">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                            <div class="comment-bubble">
+                                <h5>Priya Singh</h5>
+                                <p>Har Har Mahadev! 🙏</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-comment-box">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
+                        <input type="text" id="comment-input-post-2" placeholder="Write a comment...">
+                        <button onclick="postComment('post-2', 2)"><i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -563,7 +631,6 @@
             <i class="fas fa-video"></i>
             <span>Video</span>
         </a>
-        <!-- 🔥 FIX: REMOVED FLOATING VIDEO LOGO & REPLACED WITH STANDARD ICON 🔥 -->
         <a href="dashboard.html" class="nav-item">
             <i class="fas fa-th-large" style="font-size: 24px;"></i>
             <span>Dash</span>
@@ -584,6 +651,32 @@
         </a>
     </nav>
 
+    <!-- 🔥 SHARE MODAL 🔥 -->
+    <div id="shareModalOverlay" class="share-modal-overlay">
+        <div class="share-modal-box">
+            <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
+            <h3>Share this Post</h3>
+            <div class="share-options">
+                <div class="share-opt" onclick="executeShare('whatsapp')">
+                    <div class="icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div>
+                    <span>WhatsApp</span>
+                </div>
+                <div class="share-opt" onclick="executeShare('facebook')">
+                    <div class="icon" style="background:#1877F2;"><i class="fab fa-facebook-f"></i></div>
+                    <span>Facebook</span>
+                </div>
+                <div class="share-opt" onclick="executeShare('twitter')">
+                    <div class="icon" style="background:#1da1f2;"><i class="fab fa-twitter"></i></div>
+                    <span>Twitter</span>
+                </div>
+                <div class="share-opt" onclick="executeShare('copy')">
+                    <div class="icon" style="background:#555;"><i class="fas fa-link"></i></div>
+                    <span>Copy Link</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 🔥 FULLSCREEN REELS VIEW 🔥 -->
     <div id="reelsView" class="reels-view">
         <div class="reels-header">
@@ -594,9 +687,9 @@
         <div class="reel-container">
             <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="reel-video"></video>
             <div class="reel-actions">
-                <div class="reel-action-btn" onclick="earnAction(this, 1)"><i class="fas fa-heart"></i><span>12K</span></div>
-                <div class="reel-action-btn" onclick="earnAction(this, 2)"><i class="fas fa-comment"></i><span>450</span></div>
-                <div class="reel-action-btn" onclick="earnAction(this, 5)"><i class="fas fa-share"></i><span>Share</span></div>
+                <div class="reel-action-btn" onclick="toggleReelLike(this)"><i class="fas fa-heart"></i><span id="reel-like-count">12K</span></div>
+                <div class="reel-action-btn"><i class="fas fa-comment"></i><span>450</span></div>
+                <div class="reel-action-btn"><i class="fas fa-share"></i><span>Share</span></div>
                 <div class="reel-action-btn"><i class="fas fa-ellipsis-h"></i></div>
                 <img src="images/movies/gallery1.png" class="reel-profile-img">
             </div>
@@ -608,67 +701,193 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT FOR UI & ATVT EARNING MAGIC 🔥 -->
+    <!-- 🔥 JAVASCRIPT FOR LIVE ACTIONS & EARNING MAGIC 🔥 -->
     <script>
+        // Global User Data for Comments
+        let currentUserName = "VIP Member";
+        let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+
         // Reels Toggle Logic
-        function openReels() {
-            document.getElementById('reelsView').classList.add('active');
-        }
-        function closeReels() {
-            document.getElementById('reelsView').classList.remove('active');
-        }
+        function openReels() { document.getElementById('reelsView').classList.add('active'); }
+        function closeReels() { document.getElementById('reelsView').classList.remove('active'); }
 
-        // Dropdown Click-outside closer
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container')) {
-                var dropdowns = document.getElementsByClassName("dropdown-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
+        // Sidebar Mobile Toggle
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
 
-        // Copy DK ID Logic
+        // Copy DK ID
         function copyDkId() {
             var text = document.getElementById("sidebarDkId").innerText.trim();
             navigator.clipboard.writeText(text);
             alert("DK ID Copied: " + text);
         }
 
-        // ATVT Earning Simulation
+        // 🔥 ATVT EARNING CORE FUNCTION 🔥
         let currentBalance = 150.00;
-
-        function earnAction(btn, amount) {
-            if(btn.classList.contains('active')) return; 
-            btn.classList.add('active');
-            const icon = btn.querySelector('i');
-            icon.classList.remove('far');
-            icon.classList.add('fas');
-            
-            btn.style.transform = 'scale(1.1)';
-            setTimeout(()=> btn.style.transform = 'scale(1)', 200);
-
-            simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, amount);
-        }
-
         function simulateEarning(event, amount) {
             currentBalance += amount;
             
+            // Floating Text Animation
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
             floatingText.innerText = `+${amount} ATVT`;
-            floatingText.style.left = (event.clientX || window.innerWidth/2) + 'px';
-            floatingText.style.top = (event.clientY || window.innerHeight/2) + 'px';
+            // If event is not provided (like from modal), put it in center
+            let x = event ? (event.clientX || event.pageX) : window.innerWidth / 2;
+            let y = event ? (event.clientY || event.pageY) : window.innerHeight / 2;
+            
+            floatingText.style.left = x + 'px';
+            floatingText.style.top = y + 'px';
             document.body.appendChild(floatingText);
 
             setTimeout(() => { floatingText.remove(); }, 1200);
         }
 
-        // Google Translate Logic
-        window.translatePage = function(lang) {
+        // 🔥 1. LIVE LIKE LOGIC 🔥
+        function toggleLike(btn, postId, earnAmount) {
+            const icon = btn.querySelector('i');
+            const countSpan = document.getElementById('like-count-' + postId);
+            let currentCount = parseInt(countSpan.innerText);
+
+            if(btn.classList.contains('active')) {
+                // Unlike
+                btn.classList.remove('active');
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                countSpan.innerText = currentCount - 1;
+            } else {
+                // Like
+                btn.classList.add('active');
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                countSpan.innerText = currentCount + 1;
+                
+                // Add Animation
+                btn.style.transform = 'scale(1.2)';
+                setTimeout(()=> btn.style.transform = 'scale(1)', 200);
+
+                // Earn ATVT only on first like
+                if(btn.getAttribute('data-earned') === 'false') {
+                    let rect = btn.getBoundingClientRect();
+                    simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
+                    btn.setAttribute('data-earned', 'true');
+                }
+            }
+        }
+
+        // Reel Like Logic
+        function toggleReelLike(btn) {
+            const icon = btn.querySelector('i');
+            if(btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                icon.style.color = '#fff';
+            } else {
+                btn.classList.add('active');
+                icon.style.color = '#ff4d4d';
+                btn.style.transform = 'scale(1.3)';
+                setTimeout(()=> btn.style.transform = 'scale(1)', 200);
+            }
+        }
+
+        // 🔥 2. LIVE COMMENT LOGIC 🔥
+        function toggleCommentSection(postId) {
+            const section = document.getElementById('comments-section-' + postId);
+            if(section.style.display === 'block') {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+                // Focus on input
+                document.getElementById('comment-input-' + postId).focus();
+            }
+        }
+
+        function postComment(postId, earnAmount) {
+            const inputField = document.getElementById('comment-input-' + postId);
+            const commentText = inputField.value.trim();
+            
+            if(commentText === "") return; // Don't post empty comments
+
+            const commentList = document.getElementById('comment-list-' + postId);
+            const countSpan = document.getElementById('comment-count-' + postId);
+            const commentBtn = document.getElementById('comment-btn-' + postId);
+
+            // Create new comment HTML
+            const newCommentHTML = `
+                <div class="comment-item" style="animation: fadeIn 0.3s ease;">
+                    <img src="${currentUserPhoto}" alt="Me">
+                    <div class="comment-bubble" style="border: 1px solid #e6c875;">
+                        <h5 style="color: #e6c875;">${currentUserName}</h5>
+                        <p>${commentText}</p>
+                    </div>
+                </div>
+            `;
+            
+            // Append and scroll to bottom
+            commentList.insertAdjacentHTML('beforeend', newCommentHTML);
+            commentList.scrollTop = commentList.scrollHeight;
+
+            // Increment Count
+            countSpan.innerText = parseInt(countSpan.innerText) + 1;
+            
+            // Clear Input
+            inputField.value = "";
+
+            // Earn ATVT only on first comment
+            if(commentBtn.getAttribute('data-earned') === 'false') {
+                let rect = commentBtn.getBoundingClientRect();
+                simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
+                commentBtn.setAttribute('data-earned', 'true');
+                commentBtn.classList.add('active');
+            }
+        }
+
+        // Make "Enter" key submit comment
+        document.querySelectorAll('input[id^="comment-input-"]').forEach(input => {
+            input.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    let postId = this.id.replace('comment-input-', '');
+                    postComment(postId, 2);
+                }
+            });
+        });
+
+        // 🔥 3. LIVE SHARE LOGIC 🔥
+        let currentSharePostId = null;
+
+        function openShareModal(postId) {
+            currentSharePostId = postId;
+            document.getElementById('shareModalOverlay').classList.add('active');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModalOverlay').classList.remove('active');
+        }
+
+        function executeShare(platform) {
+            // Close modal
+            closeShareModal();
+            
+            // Show alert for action
+            if(platform === 'copy') alert("Link Copied to Clipboard!");
+            else alert("Redirecting to " + platform + "...");
+
+            // Earn ATVT logic
+            if(currentSharePostId) {
+                const shareBtn = document.getElementById('share-btn-' + currentSharePostId);
+                if(shareBtn && shareBtn.getAttribute('data-earned') === 'false') {
+                    simulateEarning(null, 5); // Centers the reward animation
+                    shareBtn.setAttribute('data-earned', 'true');
+                    shareBtn.classList.add('active');
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Translate API -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function translatePage(lang) {
             var domainStr = window.location.hostname.replace(/^www\./i, '');
             if (lang === "") {
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
@@ -678,12 +897,7 @@
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
             }
             window.location.reload(); 
-        };
-    </script>
-    
-    <!-- Google Translate API -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
+        }
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'auto', autoDisplay: false }, 'google_translate_element');
         }
@@ -709,8 +923,8 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                let fullName = user.displayName || "VIP Member";
-                let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                currentUserName = user.displayName || "VIP Member";
+                currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
                 // GENERATE 10-CHARACTER MIXED CASE DK ID
                 let uidSnippet = "";
@@ -723,15 +937,20 @@
                 let userDkId = "DK-" + uidSnippet;
 
                 // Update UI Elements
-                document.getElementById('sidebarProfileName').innerText = fullName;
-                document.getElementById('sidebarProfileImg').src = userPhoto;
+                document.getElementById('sidebarProfileName').innerText = currentUserName;
+                document.getElementById('sidebarProfileImg').src = currentUserPhoto;
                 document.getElementById('sidebarDkId').innerText = userDkId;
-                document.getElementById('topbarProfileImg').src = userPhoto;
+                if(document.getElementById('topbarProfileImg')) document.getElementById('topbarProfileImg').src = currentUserPhoto;
                 
                 // Update Feed Create Post Avatar, Story Avatar & Bottom Nav Avatar
-                if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = userPhoto;
-                if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${userPhoto}')`;
-                if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = userPhoto;
+                if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = currentUserPhoto;
+                if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${currentUserPhoto}')`;
+                if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = currentUserPhoto;
+
+                // Update All Comment Avatars
+                document.querySelectorAll('.current-user-avatar').forEach(img => {
+                    img.src = currentUserPhoto;
+                });
 
                 // Logout Action
                 document.querySelectorAll('.logout-action').forEach(btn => {
