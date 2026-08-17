@@ -23,14 +23,6 @@
     <meta name="author" content="DK Atovitt Production House">
     <meta name="robots" content="index, follow">
 
-    <!-- 🔥 OPEN GRAPH (OG) TAGS FOR SHARING 🔥 -->
-    <meta property="og:title" content="DK ATOVITT - VIP Dashboard">
-    <meta property="og:description" content="Access your exclusive VIP dashboard, wallet, and social features at DK Atovitt Ecosystem.">
-    <meta property="og:image" content="https://dkatovitt.github.io/images/movies/yakshini-poster.png">
-    <meta property="og:url" content="https://dkatovitt.github.io/dashboard.html">
-    <meta property="og:type" content="website">
-    <!-- 🔥 SUPER POWERFUL SEO META TAGS END 🔥 -->
-
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
 
@@ -42,7 +34,6 @@
         /* 🔥 DASHBOARD CORE CSS 🔥 */
         body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
         
-        /* GOOGLE TRANSLATE HIDE BAR CSS */
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
@@ -55,24 +46,23 @@
 
         /* 🔥 VIP SIDEBAR 🔥 */
         .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
-        
         .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
-        /* Long Name Wrap Fix */
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 5px; }
-        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 15px; letter-spacing: 1px; }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
+        
+        .dk-id-badge { display: inline-block; background: #222; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px; cursor: pointer; transition: 0.3s;}
+        .dk-id-badge:hover { background: #e6c875; color: #000; }
 
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-        
         .sidebar-menu a { display: flex; align-items: center; padding: 12px 25px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; border-left: 3px solid transparent; font-weight: bold; }
         .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
         .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
         
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 10px 25px 5px 25px; font-weight: bold; }
-
         .sidebar-footer { padding: 15px 20px 35px 20px; border-top: 1px solid #222; background: #111; }
         .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .logout-btn:hover { background: #cc0000; }
@@ -82,7 +72,6 @@
         
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
         
-        /* 🔥 HEADER PERFECT ALIGNMENT (TEXT OVER TEXT) 🔥 */
         .topbar-left { display: flex; align-items: center; gap: 10px; }
         .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
         .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
@@ -94,7 +83,6 @@
         
         .topbar-right { display: flex; align-items: center; gap: 15px; }
         
-        /* 🔥 SMART DROPDOWN PROFILE MENU (NAME + ARROW) 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
@@ -107,7 +95,9 @@
         .dropdown-menu a.drop-logout { border-top: 1px solid #222; }
         .dropdown-menu a.drop-logout i { color: #ff4d4d; }
 
-        .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; }
+        .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; scroll-behavior: smooth; }
+        .dashboard-body::-webkit-scrollbar { width: 6px; }
+        .dashboard-body::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
         
         .welcome-banner { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .welcome-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; }
@@ -115,29 +105,81 @@
         .welcome-banner h1 span { color: #e6c875; }
         .welcome-banner p { margin: 0; color: #aaa; font-size: 15px; }
 
-        /* 🔥 CENTERED WALLET BANNER CARD 🔥 */
-        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        /* 🔥 WALLET BANNER CARD 🔥 */
+        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .wallet-left { display: flex; align-items: center; gap: 15px; }
         .wallet-icon-large { width: 55px; height: 55px; background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 24px; box-shadow: 0 0 15px rgba(230,200,117,0.4); border: 2px solid #fff; }
         .wallet-info p { margin: 0; color: #aaa; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
         .wallet-info h3 { margin: 0; color: #e6c875; font-size: 26px; font-weight: bold; }
         .wallet-info h3 span { font-size: 14px; color: #fff; }
-        .wallet-action-btn { background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-size: 12px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .wallet-action-btn { background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         .wallet-action-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+
+        /* 🔥 DASHBOARD EXTENDED WALLET PANEL CSS 🔥 */
+        .dashboard-extended-wallet { display: none; background: #111; border: 1px solid #333; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: slideDown 0.3s ease; }
+        .dashboard-extended-wallet.active { display: block; }
+        
+        .ext-header { color: #e6c875; margin: 0 0 15px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        
+        /* Form & Grid Elements for Dashboard Wallet */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .form-group.full-width { grid-column: span 2; }
+        .form-group label { color: #aaa; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold; }
+        .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; width: 100%; box-sizing: border-box; }
+        .form-group input:focus, .form-group select:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
+        
+        .send-toggle-btn { background: #1a1a1a; color: #e6c875; border: 1px solid #e6c875; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-size: 14px; }
+        .send-toggle-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.3); }
+        .send-crypto-panel { display: none; margin-top: 15px; padding: 20px; background: #0a0a0a; border: 1px solid #222; border-radius: 12px; animation: slideDown 0.3s ease; }
+        .send-crypto-panel.active { display: block; }
+        
+        .balance-badge { float: right; background: rgba(230, 200, 117, 0.1); color: #e6c875; padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid #e6c875; }
+        .input-with-max { position: relative; display: flex; align-items: center; }
+        .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+
+        /* Tx History Elements */
+        .tx-history-container { max-height: 280px; overflow-y: auto; padding-right: 5px; }
+        .tx-history-container::-webkit-scrollbar { width: 4px; }
+        .tx-history-container::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        .tx-item { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #222; transition: 0.3s; }
+        .tx-item:hover { border-color: #444; background: #222; }
+        .tx-left { display: flex; align-items: center; gap: 15px; }
+        .tx-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+        .tx-icon.deposit { background: rgba(37, 211, 102, 0.1); color: #25d366; border: 1px solid rgba(37, 211, 102, 0.3); }
+        .tx-icon.withdraw { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; border: 1px solid rgba(255, 77, 77, 0.3); }
+        .tx-details h4 { margin: 0 0 4px 0; color: #fff; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;}
+        .tx-details p { margin: 0; color: #888; font-size: 11px; line-height: 1.4; }
+        .tx-details p span { color: #aaa; font-weight: bold; }
+        .tx-amount { text-align: right; }
+        .tx-amount h4 { margin: 0 0 5px 0; font-size: 15px; font-weight: 900; }
+        .tx-amount.deposit h4 { color: #25d366; }
+        .tx-amount.withdraw h4 { color: #ff4d4d; }
+        .tx-status { font-size: 10px; background: rgba(230, 200, 117, 0.1); padding: 3px 8px; border-radius: 4px; color: #e6c875; font-weight: bold; letter-spacing: 0.5px; border: 1px solid rgba(230, 200, 117, 0.3); }
+
+        /* 🔥 OTP MODAL CSS 🔥 */
+        .otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .otp-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .otp-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 15px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+        .otp-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
+        .otp-modal-close:hover { color: #fff; }
+        .otp-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .otp-desc { color: #aaa; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
+        .otp-desc span { color: #fff; font-weight: bold; }
+        .otp-input { width: 100%; padding: 15px; background: #222; border: 1px solid #444; color: #e6c875; border-radius: 8px; font-size: 20px; text-align: center; letter-spacing: 10px; font-weight: bold; margin-bottom: 20px; outline: none; box-sizing: border-box; transition: 0.3s;}
+        .otp-input:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
+        .otp-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .otp-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         .section-title { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: bold; }
 
         .business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        
         .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 25px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
         .business-card:hover { transform: translateY(-5px); border-color: #e6c875; box-shadow: 0 10px 25px rgba(230,200,117,0.15); background: #161616; }
-        
         .card-icon { width: 60px; height: 60px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #e6c875; margin-bottom: 15px; border: 1px solid #333; transition: 0.4s; z-index: 2; }
         .business-card:hover .card-icon { background: #e6c875; color: #000; box-shadow: 0 0 15px rgba(230,200,117,0.5); }
-        
         .card-title { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
         .card-desc { color: #888; font-size: 12px; line-height: 1.5; margin: 0; z-index: 2; }
-        
         .card-badge { position: absolute; top: 12px; right: -30px; background: #ff4d4d; color: #fff; font-size: 9px; font-weight: bold; padding: 4px 30px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .card-badge.live { background: #25d366; }
 
@@ -173,7 +215,6 @@
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 40px -30px -30px -30px; }
@@ -203,18 +244,18 @@
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-            
-            /* Mobile adjustment for header */
             .header-video-logo { height: 40px; transform: scale(1.4); margin-right: 5px; }
             .mobile-header-text-1 { font-size: 16px !important; }
             .mobile-header-text-2 { font-size: 11px !important; margin-top: 0px !important; }
             .profile-name-btn { font-size: 11px; padding: 6px 12px; }
-            
-            /* Wallet Mobile adjust */
             .wallet-banner { padding: 15px; flex-direction: row; }
             .wallet-icon-large { width: 45px; height: 45px; font-size: 20px; }
             .wallet-info h3 { font-size: 20px; }
             .wallet-action-btn { padding: 8px 12px; font-size: 11px; }
+            .form-grid { grid-template-columns: 1fr; gap: 15px; }
+            .form-group.full-width { grid-column: span 1; }
+            .dashboard-extended-wallet { padding: 15px; }
+            .tx-details h4 { max-width: 140px; }
         }
     </style>
 </head>
@@ -235,10 +276,6 @@
                 <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
                 <option value="en" style="background: #111;">English</option>
                 <option value="bn" style="background: #111;">বাংলা (Bengali)</option>
-                <option value="mr" style="background: #111;">मराठी (Marathi)</option>
-                <option value="te" style="background: #111;">తెలుగు (Telugu)</option>
-                <option value="ta" style="background: #111;">தமிழ் (Tamil)</option>
-                <option value="gu" style="background: #111;">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -247,6 +284,8 @@
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName" title="VIP Member">VIP Member</h3>
             <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+            <!-- 🔥 DK ID IN SIDEBAR 🔥 -->
+            <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i> DK-..........</span>
         </div>
         
         <div class="sidebar-menu">
@@ -269,7 +308,7 @@
     <!-- 🔥 MAIN CONTENT -->
     <div class="main-content">
         <div class="topbar">
-            <!-- 🔥 HEADER VIDEO LOGO & NEW ALIGNED TEXT UPDATE 🔥 -->
+            <!-- 🔥 HEADER VIDEO LOGO & TEXT 🔥 -->
             <div class="topbar-left">
                 <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
                 <a href="javascript:void(0)" class="header-logo-link">
@@ -303,7 +342,7 @@
                 <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
             </div>
 
-            <!-- 🔥 NEW WALLET DISPLAY SECTION 🔥 -->
+            <!-- 🔥 WALLET DISPLAY SECTION 🔥 -->
             <div class="wallet-banner">
                 <div class="wallet-left">
                     <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
@@ -312,7 +351,112 @@
                         <h3>150.00 <span>ATVT</span></h3>
                     </div>
                 </div>
-                <a href="wallet.html" class="wallet-action-btn"><i class="fas fa-wallet"></i> My Wallet</a>
+                <button class="wallet-action-btn" onclick="toggleDashboardWallet()" id="dashWalletBtn"><i class="fas fa-wallet"></i> Open Wallet</button>
+            </div>
+
+            <!-- 🔥 DASHBOARD EXTENDED WALLET (ADDRESS, SEND, HISTORY) 🔥 -->
+            <div class="dashboard-extended-wallet" id="dashboardWalletExtended">
+                
+                <!-- 1. RECEIVE & DK ID -->
+                <h4 class="ext-header"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
+                <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 25px;">
+                    <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (Zero Fee Internal Transfer)</label>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <input type="text" id="dashInputDkId" value="DK-.........." readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1.5px; font-size: 16px;">
+                        <button type="button" onclick="copyDashDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
+                </div>
+
+                <!-- 2. SEND / TRANSFER ATVT -->
+                <div class="form-group full-width">
+                    <button type="button" class="send-toggle-btn" onclick="document.getElementById('dashSendCryptoPanel').classList.toggle('active')">
+                        <i class="fas fa-paper-plane"></i> Send / Transfer ATVT
+                    </button>
+                </div>
+
+                <!-- SEND PANEL HIDDEN FORM -->
+                <div class="send-crypto-panel" id="dashSendCryptoPanel">
+                    <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                        <i class="fas fa-exchange-alt"></i> Transfer ATVT
+                        <span class="balance-badge">Available: 150.00 ATVT</span>
+                    </h4>
+                    
+                    <div class="form-grid" style="gap: 15px;">
+                        <div class="form-group">
+                            <label>Network</label>
+                            <select id="dashTransferNetwork">
+                                <option value="INTERNAL">Internal Transfer (Use DK ID - Zero Fee)</option>
+                                <option value="BEP20">Binance Smart Chain (BEP-20)</option>
+                                <option value="TRC20">Tron Network (TRC-20)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount (ATVT)</label>
+                            <div class="input-with-max">
+                                <input type="number" id="dashTransferAmount" placeholder="0.00" style="padding-right: 50px;">
+                                <button type="button" class="max-btn" onclick="document.getElementById('dashTransferAmount').value = '150.00'">MAX</button>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Recipient's DK ID or Crypto Address</label>
+                            <input type="text" id="dashTransferAddress" placeholder="e.g. DK-aB3dE5gH9J or 0x...">
+                        </div>
+                        <div class="form-group full-width" style="margin-bottom: 0;">
+                            <button type="button" onclick="initiateDashCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
+                                Proceed to Transfer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. TRANSACTION HISTORY (LEDGER) -->
+                <h4 class="ext-header" style="margin-top: 25px;"><i class="fas fa-history"></i> Recent Transactions</h4>
+                <div class="tx-history-container" id="dashTxHistoryContainer">
+                    
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                            <div class="tx-details">
+                                <h4>Received from DK Connect</h4>
+                                <p>Activity: <span>Post Like & Comment Reward</span><br>16 Aug 2026, 02:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount deposit">
+                            <h4>+5.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                            <div class="tx-details">
+                                <h4>Sent to DK-x8M2PqY9bZ</h4>
+                                <p>Activity: <span>Internal Transfer</span><br>14 Aug 2026, 09:15 AM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount withdraw">
+                            <h4>-20.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                            <div class="tx-details">
+                                <h4>Airdrop Reward</h4>
+                                <p>Activity: <span>Ecosystem Sign-up Bonus</span><br>10 Aug 2026, 11:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount deposit">
+                            <h4>+165.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <h2 class="section-title">Our Ecosystem</h2>
@@ -463,7 +607,21 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT SECTION 🔥 -->
+    <!-- 🔥 OTP SECURITY MODAL (For Crypto Send) 🔥 -->
+    <div id="otpModalOverlay" class="otp-modal-overlay">
+        <div class="otp-modal-box">
+            <button class="otp-modal-close" onclick="document.getElementById('otpModalOverlay').classList.remove('active')">&times;</button>
+            <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
+            <h3 class="otp-title" id="otpModalTitle">Confirm Transfer</h3>
+            <p class="otp-desc" id="otpModalDesc">To secure your account, an OTP has been sent to your registered <span>Email & WhatsApp</span>. Please enter it below.</p>
+            
+            <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
+            
+            <button type="button" class="otp-btn" onclick="verifyDashOtpAndProceed()"><i class="fas fa-check-circle"></i> Verify & Proceed</button>
+        </div>
+    </div>
+
+    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
         // Dropdown Click-outside closer
         window.onclick = function(event) {
@@ -499,16 +657,9 @@
         const closeAppModal = document.getElementById('closeAppModal');
 
         if(openAppModal && appModalOverlay) {
-            openAppModal.addEventListener('click', (e) => {
-                e.preventDefault();
-                appModalOverlay.classList.add('active');
-            });
-            closeAppModal.addEventListener('click', () => {
-                appModalOverlay.classList.remove('active');
-            });
-            appModalOverlay.addEventListener('click', (e) => {
-                if(e.target === appModalOverlay) appModalOverlay.classList.remove('active');
-            });
+            openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
+            closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
+            appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
         }
 
         // Chatbot Logic
@@ -537,6 +688,86 @@
                 chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }, 600);
+        }
+
+        // 🔥 DASHBOARD WALLET TOGGLE & LOGIC 🔥
+        function toggleDashboardWallet() {
+            const extWallet = document.getElementById('dashboardWalletExtended');
+            const btn = document.getElementById('dashWalletBtn');
+            extWallet.classList.toggle('active');
+            if(extWallet.classList.contains('active')) {
+                btn.innerHTML = '<i class="fas fa-times"></i> Close Wallet';
+                btn.style.background = '#e6c875';
+                btn.style.color = '#000';
+            } else {
+                btn.innerHTML = '<i class="fas fa-wallet"></i> Open Wallet';
+                btn.style.background = 'transparent';
+                btn.style.color = '#e6c875';
+            }
+        }
+
+        function copyDashDkId() {
+            var copyText = document.getElementById("dashInputDkId");
+            navigator.clipboard.writeText(copyText.value);
+            alert("DK ID Copied: " + copyText.value);
+        }
+
+        function copyDkId() {
+            var copyText = document.getElementById("sidebarDkId").innerText.trim();
+            navigator.clipboard.writeText(copyText);
+            alert("DK ID Copied: " + copyText);
+        }
+
+        function initiateDashCryptoTransfer() {
+            let address = document.getElementById('dashTransferAddress').value;
+            let amount = document.getElementById('dashTransferAmount').value;
+            
+            if(address === "" || amount === "" || amount <= 0) {
+                alert("Please enter a valid amount and recipient address or DK ID.");
+                return;
+            }
+            
+            document.getElementById('otpModalDesc').innerHTML = `You are sending <span>${amount} ATVT</span>. Enter OTP sent to your Email/WhatsApp to confirm.`;
+            document.getElementById('otpModalOverlay').classList.add('active');
+        }
+
+        function verifyDashOtpAndProceed() {
+            let otp = document.getElementById('securityOtpInput').value;
+            if(otp.length >= 4) { // Dummy verify
+                document.getElementById('otpModalOverlay').classList.remove('active');
+                alert("Transfer Successful! Transaction ID generated. ✅");
+                
+                // Add Live History
+                let amount = document.getElementById('dashTransferAmount').value;
+                let address = document.getElementById('dashTransferAddress').value;
+                let network = document.getElementById('dashTransferNetwork').value;
+                let activityType = network === "INTERNAL" ? "Internal Transfer" : "Crypto Withdrawal";
+
+                let newTxHTML = `
+                <div class="tx-item" style="border-color: #e6c875; background: rgba(230,200,117,0.05);">
+                    <div class="tx-left">
+                        <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                        <div class="tx-details">
+                            <h4>Sent to ${address}</h4>
+                            <p>Activity: <span>${activityType}</span><br>Just Now</p>
+                        </div>
+                    </div>
+                    <div class="tx-amount withdraw">
+                        <h4>-${amount} ATVT</h4>
+                        <span class="tx-status">Completed</span>
+                    </div>
+                </div>`;
+                
+                document.getElementById('dashTxHistoryContainer').insertAdjacentHTML('afterbegin', newTxHTML);
+
+                // Reset Fields
+                document.getElementById('dashTransferAmount').value = "";
+                document.getElementById('dashTransferAddress').value = "";
+                document.getElementById('dashSendCryptoPanel').classList.remove('active');
+                document.getElementById('securityOtpInput').value = "";
+            } else {
+                alert("Please enter a valid OTP.");
+            }
         }
 
         // 🔥 IMPROVED TRANSLATE ENGINE LOGIC 🔥
@@ -608,15 +839,31 @@
                 let userName = fullName.trim().split(' ')[0]; // Only first name
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
+                // 🔥 GENERATE 10-CHARACTER MIXED CASE DK ID 🔥
+                let uidSnippet = "";
+                if (user.uid) {
+                    uidSnippet = user.uid.substring(0, 10);
+                } else {
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                let userDkId = "DK-" + uidSnippet;
+
                 // Update Sidebar Profile
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
+                document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
 
                 // Update Topbar Dropdown Profile Name
                 document.getElementById('topbarProfileName').innerText = userName;
 
                 // Update Welcome Banner Name
                 document.getElementById('welcomeNameText').innerText = userName;
+
+                // Update Dashboard Extended Wallet Address
+                if(document.getElementById('dashInputDkId')) {
+                    document.getElementById('dashInputDkId').value = userDkId;
+                }
 
                 // Enable Logout Action anywhere it's placed
                 document.querySelectorAll('.logout-action').forEach(btn => {
