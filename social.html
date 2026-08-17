@@ -12,8 +12,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK Connect - Earn ATVT by DK Atovitt</title>
-    <meta name="theme-color" content="#e6c875">
+    <title>DK Connect - Feed</title>
+    <meta name="theme-color" content="#111111">
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,8 +21,8 @@
     
     <style>
         /* 🔥 BASE VIP CSS 🔥 */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 70px; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 115px; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #111; }
         ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #e6c875; }
@@ -37,185 +37,187 @@
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 FIXED APP HEADER (FACEBOOK STYLE) 🔥 */
-        .app-header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: #111; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; z-index: 2000; box-shadow: 0 2px 10px rgba(0,0,0,0.9); }
+        /* 🔥 FB STYLE APP HEADER 🔥 */
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
         
-        .app-header-left { display: flex; align-items: center; gap: 15px; }
-        .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
-        .app-header-left video { height: 45px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
-        .app-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 24px; margin: 0; font-weight: 900; letter-spacing: 1px; }
+        .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
+        .fb-top-left { display: flex; align-items: center; gap: 15px; }
+        .fb-top-left .menu-btn { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 0; }
+        .fb-top-left h1 { margin: 0; color: #fff; font-size: 24px; font-weight: 900; letter-spacing: 0.5px; }
         
-        .app-search { background: #222; border: 1px solid #333; border-radius: 25px; padding: 10px 15px; display: flex; align-items: center; width: 280px; transition: 0.3s; margin-left: 20px; }
-        .app-search:focus-within { border-color: #e6c875; background: #1a1a1a; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
-        .app-search input { background: transparent; border: none; color: #fff; outline: none; width: 100%; margin-left: 10px; font-size: 14px; }
+        .fb-top-right { display: flex; align-items: center; gap: 12px; }
+        .fb-icon-btn { background: #222; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #333; }
+        .fb-icon-btn .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
         
-        .app-header-right { display: flex; align-items: center; gap: 15px; }
-        .icon-btn { background: #222; color: #ccc; border: none; width: 42px; height: 42px; border-radius: 50%; font-size: 18px; cursor: pointer; transition: 0.3s; position: relative; display: flex; align-items: center; justify-content: center; }
-        .icon-btn:hover { background: #333; color: #fff; }
-        .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
-        
-        /* ATVT WALLET BADGE */
-        .atvt-wallet { background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); padding: 6px 15px; border-radius: 20px; color: #000; font-weight: 900; font-size: 14px; display: flex; align-items: center; gap: 8px; box-shadow: 0 0 15px rgba(230,200,117,0.3); cursor: pointer; border: 1.5px solid #fff; transition: 0.3s; }
-        .atvt-wallet:hover { transform: scale(1.05); }
+        /* FB TABS ROW */
+        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 5px; border-bottom: 1px solid #333; }
+        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #888; font-size: 22px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
+        .fb-tab:hover { background: rgba(255,255,255,0.05); border-radius: 8px; }
+        .fb-tab.active { color: #e6c875; }
+        .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #e6c875; border-radius: 3px 3px 0 0; }
+        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 9px; padding: 2px 5px; border-radius: 10px; border: 2px solid #111; }
+        .fb-tab img { width: 28px; height: 28px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
+        .fb-tab.active img { border-color: #e6c875; }
 
-        /* SMART PROFILE DROPDOWN */
-        .profile-dropdown-container { position: relative; display: inline-block; }
-        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; }
-        .profile-name-btn:hover { background: #e6c875; color: #000; }
-        .dropdown-menu { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; }
+        /* SMART DROPDOWN PROFILE MENU */
+        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #1a1a1a; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; text-align: left; }
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .dropdown-menu.show { display: block; }
-        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; }
-        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; }
-        .dropdown-menu a i { color: #e6c875; width: 15px; }
+        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; transition: 0.3s; }
+        .dropdown-menu a:hover { background-color: #2a2a2a; color: #fff; }
+        .dropdown-menu a i { color: #e6c875; width: 20px; text-align: center; }
 
-        /* 🔥 MAIN APP GRID (3 COLUMNS LIKE FB) 🔥 */
-        .app-container { display: grid; grid-template-columns: 280px minmax(500px, 1fr) 300px; gap: 20px; max-width: 1400px; margin: 20px auto; padding: 0 20px; }
+        /* 🔥 MAIN APP GRID (3 COLUMNS) 🔥 */
+        .app-container { display: grid; grid-template-columns: 280px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 10px; }
         
         /* 🔥 LEFT SIDEBAR 🔥 */
-        .sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; z-index: 1600; }
-        .sidebar-inner { background: transparent; }
+        .sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; z-index: 1600; padding-right: 10px; }
+        .sidebar-profile { padding: 10px; display: flex; align-items: center; gap: 12px; margin-bottom: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .sidebar-profile:hover { background: #1a1a1a; }
+        .sidebar-profile img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .sidebar-profile h3 { color: #fff; margin: 0; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        /* Sidebar Profile */
-        .sidebar-profile { padding: 10px 10px 20px 10px; text-align: center; border-bottom: 1px solid #222; margin-bottom: 10px; }
-        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
-        .dk-id-badge { display: inline-block; background: #222; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; cursor: pointer; transition: 0.3s;}
-        .dk-id-badge:hover { background: #e6c875; color: #000; }
-
         .sidebar-menu { list-style: none; padding: 0; margin: 0; }
-        .sidebar-menu li { margin-bottom: 5px; }
-        .sidebar-menu a { display: flex; align-items: center; gap: 15px; padding: 12px 15px; color: #ccc; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 10px; transition: 0.3s; }
-        .sidebar-menu a:hover, .sidebar-menu a.active { background: #1a1a1a; color: #e6c875; }
-        .sidebar-menu a.active { background: rgba(230,200,117,0.1); }
+        .sidebar-menu li { margin-bottom: 2px; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 12px; padding: 10px 10px; color: #ccc; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 8px; transition: 0.3s; }
+        .sidebar-menu a:hover { background: #1a1a1a; color: #fff; }
         .sidebar-menu i { font-size: 20px; width: 25px; text-align: center; color: #e6c875; }
-        .menu-divider { height: 1px; background: #222; margin: 10px 15px; }
+        .menu-divider { height: 1px; background: #333; margin: 10px; }
 
         /* 🔥 MIDDLE FEED AREA (FACEBOOK STYLE) 🔥 */
-        .feed { display: flex; flex-direction: column; gap: 20px; max-width: 680px; margin: 0 auto; width: 100%; }
+        .feed { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        /* 1. STORIES SECTION */
-        .stories-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; }
-        .stories-container::-webkit-scrollbar { height: 5px; }
-        .story-card { min-width: 110px; height: 190px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; transition: 0.3s; }
-        .story-card:hover { transform: scale(1.02); border-color: #e6c875; }
-        .story-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .story-card .avatar { position: absolute; top: 10px; left: 10px; width: 35px; height: 35px; border-radius: 50%; border: 2px solid #25d366; }
-        .story-card .add-btn { position: absolute; top: 10px; left: 10px; width: 35px; height: 35px; border-radius: 50%; background: #e6c875; color: #000; display: flex; justify-content: center; align-items: center; border: 2px solid #111; font-size: 18px; font-weight: bold; }
-        .story-card span { position: absolute; bottom: 10px; left: 10px; color: #fff; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 3px #000; }
+        /* 1. FB CREATE POST BOX */
+        .fb-create-post { background: #111; border-radius: 12px; padding: 12px 15px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .fb-create-post input { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 30px; color: #fff; font-size: 15px; outline: none; cursor: pointer; transition: 0.3s; }
+        .fb-create-post input:hover { background: #2a2a2a; }
+        .fb-create-post i { color: #25d366; font-size: 22px; cursor: pointer; padding: 5px; }
 
-        /* 2. CREATE POST BOX */
-        .create-post { background: #111; border: 1px solid #333; border-radius: 12px; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .create-post-top { display: flex; gap: 15px; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px; }
-        .create-post-top img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #444; object-fit: cover; }
-        .create-post-top input { flex: 1; background: #222; border: none; padding: 12px 20px; border-radius: 25px; color: #fff; font-size: 15px; outline: none; cursor: pointer; transition: 0.3s; }
-        .create-post-top input:hover { background: #2a2a2a; }
-        .create-post-options { display: flex; justify-content: space-between; }
-        .post-opt-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; color: #aaa; background: transparent; border: none; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px; border-radius: 8px; transition: 0.3s; }
-        .post-opt-btn:hover { background: #222; }
-        .post-opt-btn.gold { color: #e6c875; background: rgba(230,200,117,0.1); border: 1px solid rgba(230,200,117,0.2); }
-        .post-opt-btn.gold:hover { background: #e6c875; color: #000; }
+        /* 2. STORIES & REELS SECTION */
+        .fb-stories-wrapper { background: #111; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); overflow: hidden; padding-bottom: 15px; margin-bottom: 5px; }
+        .fb-story-tabs { display: flex; border-bottom: 1px solid #222; }
+        .story-tab { flex: 1; text-align: center; padding: 12px; color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
+        .story-tab.active { color: #e6c875; border-bottom: 3px solid #e6c875; }
+        .story-tab:hover { background: rgba(255,255,255,0.05); }
+
+        .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px; scroll-snap-type: x mandatory; }
+        .fb-stories-scroll::-webkit-scrollbar { display: none; }
+        
+        .story-card { min-width: 105px; height: 180px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
+        .story-card:hover { filter: brightness(1.1); }
+        
+        /* Create Story Card Specifics */
+        .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
+        .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
+        .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 18px; font-weight: bold; }
+        .story-card.create-card span { color: #fff; font-size: 12px; font-weight: bold; }
+
+        /* Standard Story Specifics */
+        .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 32px; height: 32px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; }
+        .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
 
         /* 3. POST CARDS */
-        .post-card { background: #111; border: 1px solid #222; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); overflow: hidden; }
-        .post-header { display: flex; justify-content: space-between; align-items: center; padding: 15px; }
-        .post-user { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .post-user img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; }
+        .post-card { background: #111; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); margin-bottom: 5px; }
+        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
+        .post-user { display: flex; gap: 10px; cursor: pointer; }
+        .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
         .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
-        .verify-badge { color: #1da1f2; font-size: 14px; }
+        .post-user-info h4 span.action { color: #aaa; font-weight: normal; font-size: 14px; }
         .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; display: flex; align-items: center; gap: 5px; }
-        .post-text { padding: 0 15px 15px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
+        .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; }
+        
+        .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
         .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; border-top: 1px solid #222; border-bottom: 1px solid #222; }
         
         /* Post Interactions */
-        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; color: #aaa; font-size: 13px; }
-        .post-actions { display: flex; justify-content: space-between; padding: 5px 15px; }
-        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 8px; transition: 0.3s; position: relative; }
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; }
+        .post-stats .reactions { display: flex; align-items: center; gap: 5px; }
+        .post-stats .reactions img { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #111; margin-left: -5px; }
+        
+        .post-actions { display: flex; justify-content: space-between; padding: 4px 15px; border-top: 1px solid #333; border-bottom: 1px solid #333; margin: 0 10px 10px 10px; }
+        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 8px 0; border-radius: 4px; transition: 0.3s; }
         .action-btn:hover { background: #222; }
-        .action-btn.active { color: #e6c875; }
-        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 6px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); }
+        .action-btn.active { color: #1877F2; }
+        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 5px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); margin-left: 2px; }
 
         /* 🔥 RIGHT SIDEBAR (WIDGETS) 🔥 */
-        .right-sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); overflow-y: auto; }
-        .widget-card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .widget-title { color: #888; font-size: 15px; margin: 0 0 15px 0; border-bottom: 1px solid #222; padding-bottom: 10px; font-weight: bold; }
+        .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
+        .widget-title { color: #888; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
         
-        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #222; }
-        .task-item:last-child { border: none; padding-bottom: 0; }
-        .task-info h5 { margin: 0; color: #fff; font-size: 14px; }
-        .task-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; }
-        .task-reward { background: rgba(230,200,117,0.1); color: #e6c875; font-size: 12px; font-weight: bold; padding: 6px 12px; border-radius: 20px; cursor: pointer; border: 1px solid #e6c875; transition: 0.3s; }
-        .task-reward:hover { background: #e6c875; color: #000; }
-
         /* Contacts / Trending */
-        .contact-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; cursor: pointer; border-radius: 8px; transition: 0.3s; }
-        .contact-item:hover { background: #222; padding-left: 5px; }
+        .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .contact-item:hover { background: #222; }
+        .contact-item .img-wrap { position: relative; }
         .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
-        .contact-item .status { width: 8px; height: 8px; background: #25d366; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #111; }
+        .contact-item .status { width: 9px; height: 9px; background: #25d366; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #111; }
+        .contact-item span { color: #ccc; font-size: 14px; font-weight: bold; }
 
         /* Floating ATVT Animation */
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* 🔥 MOBILE RESPONSIVE (FACEBOOK STYLE BOTTOM NAV) 🔥 */
-        .mobile-bottom-nav { display: none; }
-        @media (max-width: 1100px) {
-            .app-container { grid-template-columns: 1fr; margin-top: 10px; padding-bottom: 70px; gap: 10px; }
-            .sidebar { position: fixed; left: -280px; top: 0; height: 100vh; background: #111; padding-top: 20px; transition: 0.3s; z-index: 1600; box-shadow: 5px 0 15px rgba(0,0,0,0.9); }
+        /* 🔥 MOBILE RESPONSIVE 🔥 */
+        @media (max-width: 1000px) {
+            body { padding-top: 105px; }
+            .app-container { grid-template-columns: 1fr; margin-top: 5px; padding: 0; gap: 0; }
+            
+            /* Sidebar becomes Drawer */
+            .sidebar { position: fixed; left: -300px; top: 0; height: 100vh; width: 280px; background: #111; padding-top: 20px; transition: 0.3s; z-index: 2500; box-shadow: 5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { left: 0; }
-            .right-sidebar, .app-search { display: none; }
-            .menu-toggle { display: block; }
+            .right-sidebar { display: none; }
             
-            .app-title { font-size: 20px; }
-            .header-video-logo { height: 40px; transform: scale(1.3); margin-right: 5px; }
-            .profile-name-btn { padding: 5px 10px; font-size: 12px; }
-            
-            /* Mobile Bottom Nav */
-            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
-            .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
-            .nav-item i { font-size: 22px; }
-            .nav-item.active { color: #e6c875; }
-            .nav-item.active i { transform: scale(1.1); }
+            .fb-top-left .menu-btn { display: block; }
+            .fb-top-left h1 { font-size: 22px; }
+            .fb-create-post { border-radius: 0; border-left: none; border-right: none; }
+            .fb-stories-wrapper { border-radius: 0; border-left: none; border-right: none; }
+            .post-card { border-radius: 0; border-left: none; border-right: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- OVERLAY -->
+    <!-- OVERLAY FOR MOBILE MENU -->
     <div id="overlay"></div>
 
-    <!-- 🔥 APP HEADER (TOP BAR) 🔥 -->
-    <header class="app-header">
-        <div class="app-header-left">
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            <a href="social.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="header-video-logo"></video>
-                <h1 class="app-title notranslate">DK Social</h1>
-            </a>
-            <div class="app-search">
-                <i class="fas fa-search" style="color: #888;"></i>
-                <input type="text" placeholder="Search friends, movies, or creators...">
+    <!-- 🔥 APP HEADER (FACEBOOK STYLE) 🔥 -->
+    <header class="fb-header">
+        
+        <!-- Top Row (Logo, Search, Messenger) -->
+        <div class="fb-top-row">
+            <div class="fb-top-left">
+                <button class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+                <h1>Feed</h1>
+            </div>
+            <div class="fb-top-right">
+                <button class="fb-icon-btn"><i class="fas fa-plus"></i></button>
+                <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+                <button class="fb-icon-btn">
+                    <i class="fab fa-facebook-messenger"></i>
+                    <span class="badge">2</span>
+                </button>
             </div>
         </div>
-        <div class="app-header-right">
-            <!-- ATVT Wallet Banner -->
-            <div class="atvt-wallet" onclick="window.location.href='wallet.html'">
-                <i class="fas fa-coins"></i> <span id="atvtBalance">150.00</span>
-            </div>
+
+        <!-- Bottom Row (Navigation Tabs) -->
+        <div class="fb-tabs-row">
+            <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
+            <a href="#" class="fb-tab"><i class="fas fa-video"></i></a>
+            <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
+            <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
+            <a href="#" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
-            <button class="icon-btn"><i class="fas fa-bell"></i><span class="badge">3</span></button>
-            
-            <!-- SMART DROPDOWN PROFILE MENU -->
-            <div class="profile-dropdown-container">
-                <div class="profile-name-btn" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
-                    <span id="topbarProfileName">VIP</span>
-                    <i class="fas fa-caret-down"></i>
-                </div>
+            <!-- Profile Dropdown Tab -->
+            <div class="fb-tab profile-dropdown-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -224,97 +226,95 @@
     <!-- 🔥 MAIN APP CONTAINER 🔥 -->
     <div class="app-container">
         
-        <!-- LEFT SIDEBAR -->
+        <!-- LEFT SIDEBAR (Menu) -->
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-inner">
-                <!-- Translator -->
-                <div style="padding: 0 15px 15px 15px;">
-                    <select class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; outline: none; cursor: pointer;">
-                        <option value="" style="background: #111;">🌐 Select Language</option>
-                        <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
-                        <option value="en" style="background: #111;">English</option>
-                        <option value="bn" style="background: #111;">বাংলা (Bengali)</option>
-                    </select>
-                </div>
-
-                <!-- Profile Info -->
-                <div class="sidebar-profile">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
+            <div class="sidebar-profile" onclick="window.location.href='profile-edit.html'">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
+                <div>
                     <h3 id="sidebarProfileName">VIP Member</h3>
-                    <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
-                    <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Copy ID"><i class="fas fa-id-card"></i> DK-..........</span>
+                    <p style="margin:2px 0 0 0; color:#888; font-size:12px;" id="sidebarDkId">DK-..........</p>
                 </div>
-                
-                <!-- Navigation -->
-                <ul class="sidebar-menu">
-                    <li><a href="social.html" class="active"><i class="fas fa-home"></i> Home Feed</a></li>
-                    <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> My Dashboard</a></li>
-                    <li><a href="wallet.html"><i class="fas fa-wallet"></i> Wallet & Transfer</a></li>
-                    <div class="menu-divider"></div>
-                    <div class="menu-heading">Explore Ecosystem</div>
-                    <li><a href="index.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a></li>
-                    <li><a href="#"><i class="fas fa-shopping-cart" style="opacity:0.5;"></i> DK Mart (Soon)</a></li>
-                    <li><a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a></li>
-                </ul>
             </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="social.html"><i class="fas fa-user-friends" style="color: #1877F2;"></i> Friends</a></li>
+                <li><a href="#"><i class="fas fa-users" style="color: #25d366;"></i> Groups</a></li>
+                <li><a href="#"><i class="fas fa-video" style="color: #ff4d4d;"></i> Video</a></li>
+                <li><a href="#"><i class="fas fa-history" style="color: #e6c875;"></i> Memories</a></li>
+                <li><a href="#"><i class="fas fa-bookmark" style="color: #b8860b;"></i> Saved</a></li>
+                <div class="menu-divider"></div>
+                <div class="menu-heading" style="padding-left:10px;">DK Ecosystem</div>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</a></li>
+                <li><a href="wallet.html"><i class="fas fa-wallet"></i> Wallet (<span id="sidebarBalance">150.00</span> ATVT)</a></li>
+                <li><a href="index.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a></li>
+            </ul>
         </aside>
 
         <!-- MIDDLE FEED (FACEBOOK STYLE) -->
         <main class="feed">
             
-            <!-- 1. STORIES SECTION -->
-            <div class="stories-container">
-                <!-- Add Story (User) -->
-                <div class="story-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="bg" id="storyUserImg" alt="Me" style="opacity: 0.5;">
-                    <div class="add-btn"><i class="fas fa-plus"></i></div>
-                    <span>Create Story</span>
-                </div>
-                <!-- Story 1 -->
-                <div class="story-card">
-                    <img src="images/movies/yakshini-poster.png" class="bg" alt="Story">
-                    <img src="images/movies/gallery1.png" class="avatar" alt="Avatar">
-                    <span>DK Atovitt</span>
-                </div>
-                <!-- Story 2 -->
-                <div class="story-card">
-                    <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Avatar">
-                    <span>Priya S.</span>
-                </div>
-                <!-- Story 3 -->
-                <div class="story-card">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Story">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" alt="Avatar">
-                    <span>Rahul M.</span>
-                </div>
+            <!-- 1. FB CREATE POST BOX -->
+            <div class="fb-create-post">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
+                <input type="text" placeholder="What's on your mind?">
+                <i class="fas fa-images"></i>
             </div>
 
-            <!-- 2. CREATE POST BOX -->
-            <div class="create-post">
-                <div class="create-post-top">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
-                    <input type="text" placeholder="What's on your mind? Share & Earn ATVT...">
+            <!-- 2. STORIES & REELS SECTION -->
+            <div class="fb-stories-wrapper">
+                <div class="fb-story-tabs">
+                    <div class="story-tab active">Stories</div>
+                    <div class="story-tab">Reels</div>
                 </div>
-                <div class="create-post-options">
-                    <button class="post-opt-btn"><i class="fas fa-video" style="color: #ff4d4d; font-size: 18px;"></i> Live Video</button>
-                    <button class="post-opt-btn"><i class="fas fa-images" style="color: #25d366; font-size: 18px;"></i> Photo/Video</button>
-                    <button class="post-opt-btn gold" onclick="simulateEarning(event, 5)"><i class="fas fa-paper-plane" style="font-size: 18px;"></i> Post <span class="reward-hint">+5</span></button>
+                
+                <div class="fb-stories-scroll">
+                    <!-- Add Story Card -->
+                    <div class="story-card create-card">
+                        <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
+                        <div class="create-bottom">
+                            <div class="plus-btn"><i class="fas fa-plus"></i></div>
+                            <span>Create story</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Friend Story 1 -->
+                    <div class="story-card user-card">
+                        <img src="images/movies/yakshini-poster.png" class="bg" alt="Story">
+                        <div class="user-ring"><img src="images/movies/gallery1.png"></div>
+                        <span class="story-name">DK Atovitt</span>
+                    </div>
+                    
+                    <!-- Friend Story 2 -->
+                    <div class="story-card user-card">
+                        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
+                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/women/44.jpg"></div>
+                        <span class="story-name">Priya Singh</span>
+                    </div>
+                    
+                    <!-- Friend Story 3 -->
+                    <div class="story-card user-card">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Story">
+                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
+                        <span class="story-name">Rahul M.</span>
+                    </div>
                 </div>
             </div>
 
             <!-- 3. FEED POSTS -->
-            <!-- Post 1 (Official) -->
+            <!-- Post 1 -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
                         <img src="images/movies/gallery1.png" alt="DK Atovitt">
                         <div class="post-user-info">
                             <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
-                            <p>Official Page • 2 hrs ago • <i class="fas fa-globe-americas"></i></p>
+                            <p>18h • <i class="fas fa-user-friends"></i></p>
                         </div>
                     </div>
-                    <i class="fas fa-ellipsis-h" style="color: #888; cursor: pointer;"></i>
+                    <div class="post-options">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="fas fa-times"></i>
+                    </div>
                 </div>
                 <div class="post-text">
                     Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
@@ -323,8 +323,12 @@
                     <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
                 </div>
                 <div class="post-stats">
-                    <span><i class="fas fa-thumbs-up" style="color:#e6c875; background: rgba(230,200,117,0.2); padding: 4px; border-radius: 50%;"></i> <i class="fas fa-heart" style="color:#ff4d4d; background: rgba(255,77,77,0.2); padding: 4px; border-radius: 50%; margin-left:-8px;"></i> 12.4k</span>
-                    <span>450 Comments • 1.2k Shares</span>
+                    <div class="reactions">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1200px-Love_Heart_symbol.svg.png" style="background:#fff;">
+                        <span>1.2K</span>
+                    </div>
+                    <span>450 Comments • 120 Shares</span>
                 </div>
                 <div class="post-actions">
                     <button class="action-btn" onclick="earnAction(this, 1)">
@@ -339,23 +343,33 @@
                 </div>
             </div>
 
-            <!-- Post 2 (User) -->
+            <!-- Post 2 -->
             <div class="post-card">
                 <div class="post-header">
                     <div class="post-user">
                         <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User">
                         <div class="post-user-info">
-                            <h4>Ravi Sharma</h4>
-                            <p>Creator • 5 hrs ago • <i class="fas fa-globe-americas"></i></p>
+                            <h4>Nilesh Gupta <span class="action">updated his cover photo.</span></h4>
+                            <p>Yesterday at 9:15 AM • <i class="fas fa-globe-americas"></i></p>
                         </div>
                     </div>
-                    <i class="fas fa-ellipsis-h" style="color: #888; cursor: pointer;"></i>
+                    <div class="post-options">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <i class="fas fa-times"></i>
+                    </div>
                 </div>
                 <div class="post-text">
-                    Just submitted my audition portfolio for DK Atovitt's upcoming project! Earning ATVT every day just by using this awesome ecosystem! 💸🔥 Who else is participating?
+                    हर हर महादेव 🔱
+                </div>
+                <div class="post-media" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+                    <img src="https://images.unsplash.com/photo-1590393802688-e21822806282" style="height: 250px;">
+                    <img src="https://images.unsplash.com/photo-1582298538104-10b2da8b7894" style="height: 250px;">
                 </div>
                 <div class="post-stats">
-                    <span><i class="fas fa-thumbs-up" style="color:#e6c875; background: rgba(230,200,117,0.2); padding: 4px; border-radius: 50%;"></i> 342</span>
+                    <div class="reactions">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
+                        <span>342</span>
+                    </div>
                     <span>45 Comments</span>
                 </div>
                 <div class="post-actions">
@@ -373,74 +387,43 @@
 
         </main>
 
-        <!-- RIGHT SIDEBAR (WIDGETS) -->
+        <!-- RIGHT SIDEBAR (Contacts & Trending) -->
         <aside class="right-sidebar">
             
-            <div class="widget-card">
-                <h3 class="widget-title">Daily ATVT Tasks</h3>
-                <div class="task-item">
-                    <div class="task-info">
-                        <h5>Watch 5 Videos</h5>
-                        <p>0/5 Completed</p>
-                    </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 10)">+10 ATVT</button>
+            <h3 class="widget-title">Contacts</h3>
+            
+            <div class="contact-item">
+                <div class="img-wrap">
+                    <img src="images/movies/gallery1.png">
+                    <div class="status"></div>
                 </div>
-                <div class="task-item">
-                    <div class="task-info">
-                        <h5>Invite a Friend</h5>
-                        <p>Share referral link</p>
-                    </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 50)">+50 ATVT</button>
+                <span>DK Atovitt Support</span>
+            </div>
+            <div class="contact-item">
+                <div class="img-wrap">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <div class="status"></div>
                 </div>
-                <div class="task-item">
-                    <div class="task-info">
-                        <h5>Daily Check-in</h5>
-                        <p>Claim bonus</p>
-                    </div>
-                    <button class="task-reward" onclick="simulateEarning(event, 5)" style="background:#e6c875; color:#000;">Claim</button>
+                <span>Rahul Sharma</span>
+            </div>
+            <div class="contact-item">
+                <div class="img-wrap">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                    <div class="status" style="background:#ff4d4d;"></div>
                 </div>
+                <span>Priya Singh</span>
             </div>
 
-            <div class="widget-card">
-                <h3 class="widget-title">Trending Tags</h3>
-                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#DKAtovitt</p>
-                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#YakshiniAuditions</p>
-                <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 8px; cursor: pointer;">#EarnCrypto</p>
-            </div>
+            <div class="menu-divider" style="margin: 20px 0;"></div>
 
-            <div class="widget-card" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-                <p style="color: #666; font-size: 11px; text-align: center;">Privacy • Terms • Advertising • Cookies • More <br> DK Atovitt © 2026</p>
-            </div>
+            <h3 class="widget-title">Trending Hashtags</h3>
+            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#DKAtovitt</p>
+            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#YakshiniMovie</p>
+            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#EarnATVT</p>
 
         </aside>
 
     </div>
-
-    <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
-    <nav class="mobile-bottom-nav">
-        <a href="social.html" class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Feed</span>
-        </a>
-        <a href="dashboard.html" class="nav-item">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dash</span>
-        </a>
-        <a href="wallet.html" class="nav-item" style="transform: translateY(-15px);">
-            <div style="background: linear-gradient(45deg, #b8860b, #ffd700); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 4px solid #050505; box-shadow: 0 5px 15px rgba(230,200,117,0.5); color: #000;">
-                <i class="fas fa-plus" style="font-size: 24px;"></i>
-            </div>
-            <span style="margin-top: 5px; color: #e6c875;">Post</span>
-        </a>
-        <a href="wallet.html" class="nav-item">
-            <i class="fas fa-wallet"></i>
-            <span>Wallet</span>
-        </a>
-        <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('menuToggle').click()">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </a>
-    </nav>
 
     <!-- 🔥 JAVASCRIPT FOR UI & ATVT EARNING MAGIC 🔥 -->
     <script>
@@ -460,7 +443,7 @@
 
         // Dropdown Click-outside closer
         window.onclick = function(event) {
-            if (!event.target.closest('.profile-name-btn')) {
+            if (!event.target.closest('.profile-dropdown-container')) {
                 var dropdowns = document.getElementsByClassName("dropdown-menu");
                 for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
@@ -480,7 +463,6 @@
 
         // ATVT Earning Simulation
         let currentBalance = 150.00;
-        const balanceSpan = document.getElementById('atvtBalance');
 
         function earnAction(btn, amount) {
             if(btn.classList.contains('active')) return; 
@@ -489,7 +471,6 @@
             icon.classList.remove('far');
             icon.classList.add('fas');
             
-            // Re-trigger animation
             btn.style.transform = 'scale(1.1)';
             setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
@@ -498,18 +479,8 @@
 
         function simulateEarning(event, amount) {
             currentBalance += amount;
-            balanceSpan.innerText = currentBalance.toFixed(2);
+            document.getElementById('sidebarBalance').innerText = currentBalance.toFixed(2);
             
-            const walletBtn = document.getElementById('walletBtn');
-            if(walletBtn) {
-                walletBtn.style.transform = 'scale(1.1)';
-                walletBtn.style.boxShadow = '0 0 30px #e6c875';
-                setTimeout(() => {
-                    walletBtn.style.transform = 'scale(1)';
-                    walletBtn.style.boxShadow = '0 0 15px rgba(230,200,117,0.3)';
-                }, 400);
-            }
-
             const floatingText = document.createElement('div');
             floatingText.className = 'floating-reward';
             floatingText.innerText = `+${amount} ATVT`;
@@ -519,30 +490,8 @@
 
             setTimeout(() => { floatingText.remove(); }, 1200);
         }
-
-        // Google Translate Logic
-        window.translatePage = function(lang) {
-            var domainStr = window.location.hostname.replace(/^www\./i, '');
-            if (lang === "") {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            } else {
-                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
-                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-            }
-            window.location.reload(); 
-        };
     </script>
     
-    <!-- Google Translate API -->
-    <div id="google_translate_element" style="display:none;"></div>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'auto', autoDisplay: false }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <!-- 🔥 FIREBASE FETCH PROFILE DATA & DK ID 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -563,7 +512,6 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 let fullName = user.displayName || "VIP Member";
-                let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
                 // GENERATE 10-CHARACTER MIXED CASE DK ID
@@ -580,11 +528,11 @@
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
-                document.getElementById('topbarProfileName').innerText = userName;
+                document.getElementById('topbarProfileImg').src = userPhoto;
                 
                 // Update Feed Create Post Avatar & Story Avatar
                 if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = userPhoto;
-                if(document.getElementById('storyUserImg')) document.getElementById('storyUserImg').src = userPhoto;
+                if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${userPhoto}')`;
 
                 // Logout Action
                 document.querySelectorAll('.logout-action').forEach(btn => {
