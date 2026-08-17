@@ -27,7 +27,7 @@
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 
-        /* 🔥 VIP SIDEBAR (Same as Dashboard) 🔥 */
+        /* 🔥 VIP SIDEBAR 🔥 */
         .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
         .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
@@ -82,7 +82,7 @@
         .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
         .form-group.full-width { grid-column: span 2; }
         .form-group label { color: #aaa; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: bold; }
-        .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; }
+        .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 14px 15px; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; width: 100%; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
         .form-group input:disabled { background: #0a0a0a; color: #666; cursor: not-allowed; }
         
@@ -95,6 +95,20 @@
 
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
+
+        /* 🔥 OTP MODAL CSS 🔥 */
+        .otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .otp-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .otp-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 15px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+        .otp-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
+        .otp-modal-close:hover { color: #fff; }
+        .otp-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .otp-desc { color: #aaa; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
+        .otp-desc span { color: #fff; font-weight: bold; }
+        .otp-input { width: 100%; padding: 15px; background: #222; border: 1px solid #444; color: #e6c875; border-radius: 8px; font-size: 20px; text-align: center; letter-spacing: 10px; font-weight: bold; margin-bottom: 20px; outline: none; box-sizing: border-box; transition: 0.3s;}
+        .otp-input:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
+        .otp-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .otp-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         @media (max-width: 768px) {
             .sidebar { position: fixed; left: -280px; }
@@ -116,7 +130,6 @@
     <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
     <div class="sidebar" id="sidebar">
         <div style="padding: 20px 20px 0 20px; background: #1a1a1a;">
-            <!-- Simple Select styling -->
             <select class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; outline: none; cursor: pointer; text-align: center; margin-bottom: 15px;">
                 <option value="" style="background: #111;">🌐 Select Language</option>
                 <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
@@ -158,7 +171,7 @@
 
         <div class="dashboard-body">
             
-            <form id="profileUpdateForm" onsubmit="event.preventDefault(); alert('Profile Updated Successfully! ✅');">
+            <form id="profileUpdateForm">
                 
                 <!-- 1. BASIC INFORMATION -->
                 <div class="profile-card">
@@ -201,7 +214,7 @@
                     </div>
                 </div>
 
-                <!-- 2. LOCATION DETAILS (SMART ADDRESS SYSTEM) -->
+                <!-- 2. SMART LOCATION DETAILS -->
                 <div class="profile-card">
                     <div class="section-header">
                         <i class="fas fa-map-marker-alt"></i>
@@ -210,62 +223,27 @@
                     <div class="form-grid">
                         <div class="form-group full-width">
                             <label>Apartment / Society Name / Building</label>
-                            <input type="text" placeholder="e.g. DK Royal Enclave, Flat 402">
+                            <input type="text" placeholder="e.g. DK Royal Enclave, Flat 402" required>
                         </div>
                         <div class="form-group full-width">
-                            <label>Holding Number, Street Name & Area</label>
-                            <input type="text" placeholder="e.g. 15/A, MG Road, Near City Center">
+                            <label>Holding Number & Street Name</label>
+                            <input type="text" placeholder="e.g. 15/A, MG Road" required>
                         </div>
-                        <div class="form-group">
-                            <label>State</label>
-                            <select>
-                                <option value="" disabled selected>Select Your State</option>
-                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                <option value="Assam">Assam</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Chandigarh">Chandigarh</option>
-                                <option value="Chhattisgarh">Chhattisgarh</option>
-                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                <option value="Daman and Diu">Daman and Diu</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Goa">Goa</option>
-                                <option value="Gujarat">Gujarat</option>
-                                <option value="Haryana">Haryana</option>
-                                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                <option value="Jharkhand">Jharkhand</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Kerala">Kerala</option>
-                                <option value="Ladakh">Ladakh</option>
-                                <option value="Lakshadweep">Lakshadweep</option>
-                                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="Manipur">Manipur</option>
-                                <option value="Meghalaya">Meghalaya</option>
-                                <option value="Mizoram">Mizoram</option>
-                                <option value="Nagaland">Nagaland</option>
-                                <option value="Odisha">Odisha</option>
-                                <option value="Puducherry">Puducherry</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Rajasthan">Rajasthan</option>
-                                <option value="Sikkim">Sikkim</option>
-                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                <option value="Telangana">Telangana</option>
-                                <option value="Tripura">Tripura</option>
-                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                <option value="Uttarakhand">Uttarakhand</option>
-                                <option value="West Bengal">West Bengal</option>
-                            </select>
-                        </div>
+                        
+                        <!-- Pincode starts the magic -->
                         <div class="form-group">
                             <label>Pincode / ZIP Code</label>
-                            <input type="number" placeholder="e.g. 700119" maxlength="6">
+                            <input type="number" id="inputPincode" placeholder="Enter 6-digit Pincode" maxlength="6" required>
+                        </div>
+
+                        <!-- Auto-filled by JS -->
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" id="inputState" placeholder="State will auto-fill" readonly style="background: #222;">
                         </div>
                         <div class="form-group full-width">
                             <label>City / District</label>
-                            <input type="text" placeholder="Enter City Name">
+                            <input type="text" id="inputCity" placeholder="City will auto-fill" readonly style="background: #222;">
                         </div>
                     </div>
                 </div>
@@ -345,27 +323,26 @@
                     </div>
                 </div>
 
-                <!-- 6. SECURITY -->
-                <div class="profile-card">
-                    <div class="section-header">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>Security</h3>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group full-width">
-                            <button type="button" onclick="alert('Password reset link sent to your registered email.')" style="background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s;">
-                                <i class="fas fa-key"></i> Send Password Reset Link
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- SAVE BUTTON -->
                 <div class="save-btn-container">
                     <button type="submit" class="save-btn"><i class="fas fa-save"></i> Save All Changes</button>
                 </div>
 
             </form>
+        </div>
+    </div>
+
+    <!-- 🔥 OTP SECURITY MODAL 🔥 -->
+    <div id="otpModalOverlay" class="otp-modal-overlay">
+        <div class="otp-modal-box">
+            <button class="otp-modal-close" onclick="document.getElementById('otpModalOverlay').classList.remove('active')">&times;</button>
+            <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
+            <h3 class="otp-title">Security Verification</h3>
+            <p class="otp-desc">To secure your account, an OTP has been sent to your registered <span>Email, SMS & WhatsApp</span>. Please enter it below to authorize changes.</p>
+            
+            <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
+            
+            <button type="button" class="otp-btn" onclick="verifyAndSaveProfile()"><i class="fas fa-check-circle"></i> Verify & Update Profile</button>
         </div>
     </div>
 
@@ -385,7 +362,7 @@
             overlay.classList.remove('active');
         });
 
-        // Image Preview Logic
+        // Photo Preview
         document.getElementById('fileInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -397,6 +374,56 @@
                 reader.readAsDataURL(file);
             }
         });
+
+        // 🔥 PINCODE TO STATE & DISTRICT API 🔥
+        document.getElementById('inputPincode').addEventListener('input', async function() {
+            let pin = this.value;
+            if (pin.length === 6) {
+                try {
+                    let res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
+                    let data = await res.json();
+                    
+                    if (data[0].Status === "Success") {
+                        let postOffice = data[0].PostOffice[0];
+                        document.getElementById('inputState').value = postOffice.State;
+                        document.getElementById('inputCity').value = postOffice.District;
+                        
+                        // Add glow effect to show auto-fill success
+                        document.getElementById('inputState').style.borderColor = '#25d366';
+                        document.getElementById('inputCity').style.borderColor = '#25d366';
+                        setTimeout(() => {
+                            document.getElementById('inputState').style.borderColor = '#333';
+                            document.getElementById('inputCity').style.borderColor = '#333';
+                        }, 2000);
+                    } else {
+                        alert("Invalid Pincode. Please check again.");
+                        document.getElementById('inputState').value = "";
+                        document.getElementById('inputCity').value = "";
+                    }
+                } catch(e) {
+                    console.log("Error fetching pincode data.");
+                }
+            }
+        });
+
+        // 🔥 OTP FORM SUBMIT LOGIC 🔥
+        document.getElementById('profileUpdateForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop direct submission
+            
+            // Show the OTP Security Modal
+            document.getElementById('otpModalOverlay').classList.add('active');
+        });
+
+        function verifyAndSaveProfile() {
+            let otp = document.getElementById('securityOtpInput').value;
+            if(otp.length >= 4) { // Dummy check for frontend
+                document.getElementById('otpModalOverlay').classList.remove('active');
+                alert("Profile Updated Successfully! ✅");
+                document.getElementById('securityOtpInput').value = "";
+            } else {
+                alert("Please enter a valid OTP.");
+            }
+        }
     </script>
 
     <!-- Google Translate Script Initialization -->
