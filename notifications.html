@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - DK Connect</title>
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE CSS */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 65px; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e6c875; }
+
+        /* APP HEADER */
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; }
+        .fb-top-left { display: flex; align-items: center; gap: 15px; }
+        .fb-top-left h1 { margin: 0; color: #fff; font-size: 22px; font-weight: 900; }
+        .fb-icon-btn { background: transparent; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; }
+        .fb-icon-btn:hover { background: #222; }
+
+        /* 🔥 MAIN APP GRID 🔥 */
+        .app-container { display: grid; grid-template-columns: 320px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1250px; margin: 0 auto; padding: 0 10px; padding-bottom: 80px; }
+        
+        /* 🔥 SIDEBAR (LEFT) 🔥 */
+        .sidebar { position: sticky; top: 85px; height: calc(100vh - 85px); overflow-y: auto; z-index: 1600; padding-right: 10px; }
+        .sidebar::-webkit-scrollbar { display: none; }
+        .fb-menu-item { display: flex; align-items: center; gap: 15px; padding: 12px 10px; color: #ccc; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; margin-bottom: 2px; }
+        .fb-menu-item:hover { background: #222; }
+        .fb-menu-item.active { background: rgba(230,200,117,0.1); color: #e6c875; }
+        .fb-menu-item i { font-size: 20px; width: 25px; text-align: center; }
+        .fb-menu-divider { border: 0; height: 1px; background: #333; margin: 15px 0; }
+
+        /* 🔥 NOTIFICATIONS MAIN AREA 🔥 */
+        .notifications-main { background: #111; border-radius: 12px; border: 1px solid #222; overflow: hidden; margin-top: 20px; min-height: 80vh;}
+        
+        .notif-header-box { padding: 15px 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        .notif-header-box h2 { margin: 0; color: #fff; font-size: 20px; }
+        .notif-header-box i { color: #888; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .notif-header-box i:hover { color: #fff; }
+
+        .notif-tabs { display: flex; gap: 10px; padding: 10px 20px; border-bottom: 1px solid #222; }
+        .n-tab { background: transparent; border: none; color: #888; font-weight: bold; font-size: 15px; padding: 8px 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
+        .n-tab:hover { background: #222; }
+        .n-tab.active { background: rgba(24, 119, 242, 0.1); color: #1877F2; }
+
+        /* NOTIFICATION ITEM */
+        .notif-list { display: flex; flex-direction: column; }
+        .notif-item { display: flex; gap: 15px; padding: 15px 20px; cursor: pointer; transition: 0.3s; position: relative; text-decoration: none; align-items: flex-start;}
+        .notif-item:hover { background: rgba(255,255,255,0.05); }
+        .notif-item.unread { background: rgba(24, 119, 242, 0.05); }
+        
+        .notif-avatar-wrap { position: relative; flex-shrink: 0; }
+        .notif-avatar-wrap img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
+        
+        /* Icon Badges */
+        .notif-badge { position: absolute; bottom: -2px; right: -2px; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; border: 2px solid #111; }
+        .badge-like { background: #1877F2; }
+        .badge-comment { background: #25d366; }
+        .badge-atvt { background: #e6c875; color: #000; }
+        .badge-friend { background: #a855f7; }
+
+        .notif-content { flex: 1; }
+        .notif-text { margin: 0 0 5px 0; color: #ccc; font-size: 15px; line-height: 1.4; }
+        .notif-text b { color: #fff; }
+        .notif-time { color: #1877F2; font-size: 12px; font-weight: bold; }
+        .notif-time.read { color: #888; font-weight: normal; }
+
+        .notif-options { color: #888; padding: 5px; opacity: 0; transition: 0.3s; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; }
+        .notif-options:hover { background: #333; color: #fff; }
+        .notif-item:hover .notif-options { opacity: 1; }
+
+        /* Action Buttons (Friend Requests etc) */
+        .notif-actions { display: flex; gap: 10px; margin-top: 10px; }
+        .n-action-btn { flex: 1; max-width: 120px; padding: 8px 0; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 14px; }
+        .btn-confirm { background: #1877F2; color: #fff; }
+        .btn-confirm:hover { background: #166fe5; }
+        .btn-delete { background: #333; color: #fff; }
+        .btn-delete:hover { background: #444; }
+
+        /* Unread Dot */
+        .unread-dot { width: 10px; height: 10px; background: #1877F2; border-radius: 50%; margin-top: 10px; flex-shrink: 0; }
+
+        /* 🔥 RIGHT SIDEBAR 🔥 */
+        .right-sidebar { position: sticky; top: 85px; height: calc(100vh - 85px); overflow-y: auto; padding-left: 10px; }
+        .widget-box { background: #111; border-radius: 12px; padding: 15px; border: 1px solid #222; margin-bottom: 15px;}
+        .widget-title { color: #fff; font-size: 16px; margin: 0 0 15px 0; font-weight: bold; }
+        
+        .friend-sug { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+        .friend-sug img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .friend-sug-info h4 { margin: 0 0 3px 0; color: #fff; font-size: 14px; }
+        .add-btn-sm { background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;}
+        .add-btn-sm:hover { background: rgba(24, 119, 242, 0.2); }
+
+        /* 🔥 GUEST LOCK SCREEN 🔥 */
+        .guest-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .guest-lock.active { display: flex; }
+        .guest-lock i { font-size: 60px; color: #e6c875; margin-bottom: 20px; }
+        .guest-lock h2 { color: #fff; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
+        .guest-lock p { color: #aaa; margin-bottom: 25px; text-align: center; font-size: 14px; max-width: 300px; }
+        .guest-lock button { background: #e6c875; color: #000; border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 15px; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 1000px) {
+            .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; }
+            .sidebar, .right-sidebar { display: none; }
+            .notifications-main { margin-top: 0; border: none; border-radius: 0; }
+        }
+
+        /* MOBILE BOTTOM NAVIGATION */
+        .mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
+        .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 20%; position: relative; }
+        .nav-item i { font-size: 22px; }
+        .nav-item.active { color: #1877F2; }
+        .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
+        @media (max-width: 1000px) { .mobile-bottom-nav { display: flex; } }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 GUEST LOCK SCREEN 🔥 -->
+    <div class="guest-lock" id="guestLock">
+        <i class="fas fa-bell-slash"></i>
+        <h2>Notifications Locked</h2>
+        <p>Login to view your notifications, friend requests, and ATVT coin earning alerts.</p>
+        <button onclick="window.location.href='auth.html'">Login Securely</button>
+    </div>
+
+    <!-- 🔥 APP HEADER 🔥 -->
+    <header class="fb-header">
+        <div class="fb-top-left">
+            <i class="fas fa-arrow-left" style="color:#fff; font-size:20px; cursor:pointer;" onclick="window.location.href='social.html'"></i>
+            <h1>Notifications</h1>
+        </div>
+        <div>
+            <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- 🔥 MAIN APP CONTAINER 🔥 -->
+    <div class="app-container">
+        
+        <!-- 🔥 LEFT SIDEBAR (Desktop Only) 🔥 -->
+        <aside class="sidebar">
+            <h2 style="color: #fff; font-size: 24px; padding: 10px; margin: 0 0 10px 0;">DK Connect</h2>
+            <a href="social.html" class="fb-menu-item">
+                <i class="fas fa-home" style="color: #1877F2;"></i> Home Feed
+            </a>
+            <a href="notifications.html" class="fb-menu-item active">
+                <i class="fas fa-bell" style="color: #e6c875;"></i> Notifications <span style="background:#ff4d4d; color:#fff; font-size:11px; padding:2px 6px; border-radius:10px; margin-left:auto;">7</span>
+            </a>
+            <a href="messages.html" class="fb-menu-item">
+                <i class="fab fa-facebook-messenger" style="color: #a855f7;"></i> Messages
+            </a>
+            <a href="profile.html" class="fb-menu-item">
+                <i class="fas fa-user" style="color: #25d366;"></i> My Profile
+            </a>
+            <hr class="fb-menu-divider">
+            <a href="dashboard.html" class="fb-menu-item">
+                <i class="fas fa-th-large" style="color: #fff;"></i> VIP Dashboard
+            </a>
+        </aside>
+
+        <!-- 🔥 NOTIFICATIONS MAIN AREA 🔥 -->
+        <main class="notifications-main">
+            
+            <div class="notif-header-box">
+                <h2>Notifications</h2>
+                <i class="fas fa-ellipsis-h" title="Settings"></i>
+            </div>
+
+            <div class="notif-tabs">
+                <button class="n-tab active" id="tab-all" onclick="switchTab('all')">All</button>
+                <button class="n-tab" id="tab-unread" onclick="switchTab('unread')">Unread</button>
+            </div>
+
+            <div class="notif-list" id="notifList">
+                
+                <!-- UNREAD: ATVT Reward -->
+                <div class="notif-item unread notif-type-unread">
+                    <div class="notif-avatar-wrap">
+                        <img src="images/logo/logo.png" alt="DK Atovitt" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                        <div class="notif-badge badge-atvt"><i class="fas fa-coins"></i></div>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text"><b>Congratulations!</b> You just earned <b>15 ATVT coins</b> for uploading a new reel. Check your wallet balance.</p>
+                        <span class="notif-time">10 minutes ago</span>
+                    </div>
+                    <div class="unread-dot"></div>
+                    <i class="fas fa-ellipsis-h notif-options"></i>
+                </div>
+
+                <!-- UNREAD: Friend Request -->
+                <div class="notif-item unread notif-type-unread">
+                    <div class="notif-avatar-wrap">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <div class="notif-badge badge-friend"><i class="fas fa-user-plus"></i></div>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text"><b>Rahul Sharma</b> sent you a friend request.</p>
+                        <span class="notif-time">2 hours ago</span>
+                        <div class="notif-actions">
+                            <button class="n-action-btn btn-confirm" onclick="event.preventDefault(); this.parentElement.innerHTML='<span style=\'color:#aaa; font-size:13px; font-weight:bold;\'>Request Accepted</span>'">Confirm</button>
+                            <button class="n-action-btn btn-delete" onclick="event.preventDefault(); this.parentElement.innerHTML='<span style=\'color:#888; font-size:13px;\'>Request Deleted</span>'">Delete</button>
+                        </div>
+                    </div>
+                    <div class="unread-dot"></div>
+                    <i class="fas fa-ellipsis-h notif-options"></i>
+                </div>
+
+                <!-- UNREAD: Comment -->
+                <div class="notif-item unread notif-type-unread">
+                    <div class="notif-avatar-wrap">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <div class="notif-badge badge-comment"><i class="fas fa-comment"></i></div>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text"><b>Priya Singh</b> commented on your photo: "Super excited for this! 🔥"</p>
+                        <span class="notif-time">5 hours ago</span>
+                    </div>
+                    <div class="unread-dot"></div>
+                    <i class="fas fa-ellipsis-h notif-options"></i>
+                </div>
+
+                <!-- READ: Like -->
+                <div class="notif-item notif-type-read">
+                    <div class="notif-avatar-wrap">
+                        <img src="images/movies/gallery1.png" alt="User">
+                        <div class="notif-badge badge-like"><i class="fas fa-thumbs-up"></i></div>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text"><b>DK Atovitt Support</b> liked your post.</p>
+                        <span class="notif-time read">Yesterday at 9:42 PM</span>
+                    </div>
+                    <i class="fas fa-ellipsis-h notif-options"></i>
+                </div>
+
+                <!-- READ: System Update -->
+                <div class="notif-item notif-type-read">
+                    <div class="notif-avatar-wrap">
+                        <img src="images/movies/yakshini-poster.png" alt="User">
+                        <div class="notif-badge" style="background:#000;"><i class="fas fa-film" style="color:#e6c875;"></i></div>
+                    </div>
+                    <div class="notif-content">
+                        <p class="notif-text"><b>DK Films</b> just uploaded a new teaser for <b>Yakshini</b>. Watch it now!</p>
+                        <span class="notif-time read">Aug 14 at 10:00 AM</span>
+                    </div>
+                    <i class="fas fa-ellipsis-h notif-options"></i>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- 🔥 RIGHT SIDEBAR (Desktop Only) 🔥 -->
+        <aside class="right-sidebar">
+            <div class="widget-box">
+                <h3 class="widget-title">People you may know</h3>
+                
+                <div class="friend-sug">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg">
+                    <div class="friend-sug-info">
+                        <h4>Neha Gupta</h4>
+                        <button class="add-btn-sm">Add Friend</button>
+                    </div>
+                </div>
+                
+                <div class="friend-sug">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg">
+                    <div class="friend-sug-info">
+                        <h4>Vikram Roy</h4>
+                        <button class="add-btn-sm">Add Friend</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="font-size: 12px; color: #666; padding: 10px;">
+                Privacy • Terms • Advertising • Cookies • DK Atovitt © 2026
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
+    <nav class="mobile-bottom-nav">
+        <a href="social.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-item" onclick="alert('Video feed coming soon')">
+            <i class="fas fa-video"></i>
+            <span>Video</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-th-large" style="font-size: 24px;"></i>
+            <span>Dash</span>
+        </a>
+        <a href="notifications.html" class="nav-item active">
+            <div style="position: relative;">
+                <i class="fas fa-bell"></i>
+                <span class="badge">7</span>
+            </div>
+            <span>Alerts</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <div style="position: relative;">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
+            </div>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- LOGIC FOR TABS -->
+    <script>
+        function switchTab(tabType) {
+            document.getElementById('tab-all').classList.remove('active');
+            document.getElementById('tab-unread').classList.remove('active');
+            
+            const allItems = document.querySelectorAll('.notif-item');
+            
+            if(tabType === 'unread') {
+                document.getElementById('tab-unread').classList.add('active');
+                allItems.forEach(item => {
+                    if(item.classList.contains('notif-type-unread')) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            } else {
+                document.getElementById('tab-all').classList.add('active');
+                allItems.forEach(item => {
+                    item.style.display = 'flex';
+                });
+            }
+        }
+    </script>
+
+    <!-- FIREBASE AUTH (GUEST CHECK) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is Logged In
+                const photo = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = photo; });
+            } else {
+                // User is a Guest -> LOCK THE SCREEN
+                document.getElementById('guestLock').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
