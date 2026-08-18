@@ -66,6 +66,20 @@
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
+        /* 🔥 FRIEND REQUESTS DROPDOWN MENU 🔥 */
+        .friend-requests-menu { display: none; position: absolute; left: 20%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 340px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
+        .friend-requests-menu.show { display: block; animation: dropFade 0.2s ease; }
+        .fr-header { font-size: 18px; font-weight: bold; color: #050505; padding-bottom: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .fr-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; }
+        .fr-item img { width: 55px; height: 55px; border-radius: 50%; object-fit: border; border: 1px solid #ddd; }
+        .fr-info { flex: 1; }
+        .fr-info h4 { margin: 0; font-size: 15px; color: #050505; font-weight: bold; }
+        .fr-info p { margin: 3px 0 8px 0; font-size: 12px; color: #65676b; }
+        .fr-actions { display: flex; gap: 8px; }
+        .fr-btn { padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold; border: none; cursor: pointer; flex: 1; text-align: center; }
+        .fr-btn.confirm { background: #1877F2; color: #fff; }
+        .fr-btn.delete { background: #e4e6eb; color: #050505; }
+
         /* 🔥 DK ATOVITT ECOSYSTEM MENU 🔥 */
         .ecosystem-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 320px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 10px; }
         .ecosystem-menu.show { display: block; animation: dropFade 0.2s ease; }
@@ -304,7 +318,52 @@
             
             <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
             
-            <a href="profile.html" class="fb-tab" title="Friend Requests"><i class="fas fa-user-friends"></i><span class="badge" style="background:#1877F2;">3</span></a>
+            <div class="fb-tab" onclick="toggleFriendRequestsMenu(event)" title="Friend Requests">
+                <i class="fas fa-user-friends"></i>
+                <span class="badge" style="background:#1877F2;">3</span>
+            </div>
+            
+            <div class="friend-requests-menu" id="friendRequestsMenu">
+                <div class="fr-header">
+                    <span>Friend Requests</span>
+                    <a href="profile.html" style="font-size:13px; color:#1877F2; text-decoration:none;">See All</a>
+                </div>
+                <div style="max-height: 280px; overflow-y: auto; padding-top: 8px;" id="friendRequestsList">
+                    <div class="fr-item">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                        <div class="fr-info">
+                            <h4>Priya Sharma</h4>
+                            <p>3 mutual friends</p>
+                            <div class="fr-actions">
+                                <button class="fr-btn confirm" onclick="handleFriendAction(this, 'Confirm')">Confirm</button>
+                                <button class="fr-btn delete" onclick="handleFriendAction(this, 'Delete')">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr-item">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="User">
+                        <div class="fr-info">
+                            <h4>Amit Verma</h4>
+                            <p>5 mutual friends</p>
+                            <div class="fr-actions">
+                                <button class="fr-btn confirm" onclick="handleFriendAction(this, 'Confirm')">Confirm</button>
+                                <button class="fr-btn delete" onclick="handleFriendAction(this, 'Delete')">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr-item">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User">
+                        <div class="fr-info">
+                            <h4>Anjali Singh</h4>
+                            <p>1 mutual friend</p>
+                            <div class="fr-actions">
+                                <button class="fr-btn confirm" onclick="handleFriendAction(this, 'Confirm')">Confirm</button>
+                                <button class="fr-btn delete" onclick="handleFriendAction(this, 'Delete')">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="fb-tab" onclick="toggleEcosystemMenu(event)" title="DK ATOVITT Ecosystem">
                 <i class="fas fa-globe" style="color: #45bd62;"></i>
@@ -342,7 +401,7 @@
             <a href="notifications.html" class="fb-tab" title="Notifications"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" class="current-user-avatar" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                <img src="1001120580.jpg" id="topbarProfileImg" class="current-user-avatar" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
@@ -357,7 +416,7 @@
         <aside class="sidebar">
             <div class="fb-menu-header">
                 <div class="fb-menu-profile" onclick="window.location.href='profile.html'">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" class="current-user-avatar">
+                    <img src="1001120580.jpg" id="sidebarProfileImg" class="current-user-avatar">
                     <div class="fb-menu-profile-info">
                         <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
                         <p>Welcome to DK Connect</p>
@@ -376,7 +435,7 @@
 
         <main class="feed">
             <div class="fb-create-post">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
+                <img src="1001120580.jpg" class="current-user-avatar">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
                 <i class="fas fa-images" style="color: #45bd62;" onclick="openCreatePostModal()"></i>
             </div>
@@ -389,7 +448,7 @@
                 
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
-                        <div class="create-bg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');" class="current-user-avatar"></div>
+                        <div class="create-bg" style="background-image: url('1001120580.jpg');" class="current-user-avatar"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
                             <span>Create story</span>
@@ -397,7 +456,7 @@
                     </div>
                     <div class="story-card user-card">
                         <img src="images/movies/yakshini-poster.png" class="bg">
-                        <div class="user-ring"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar"></div>
+                        <div class="user-ring"><img src="1001120580.jpg" class="current-user-avatar"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
                 </div>
@@ -428,7 +487,7 @@
         <a href="social.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dash</span></a>
         <a href="wallet.html" class="nav-item"><i class="fas fa-wallet"></i><span>Wallet</span></a>
-        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
+        <a href="profile.html" class="nav-item"><img src="1001120580.jpg" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
     </nav>
 
     <div id="shareModalOverlay" class="share-modal-overlay">
@@ -456,7 +515,7 @@
 
     <script>
         let currentUserName = "Guest User";
-        let currentUserPhoto = localStorage.getItem('dk_user_dp') || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+        let currentUserPhoto = localStorage.getItem('dk_user_dp') || "1001120580.jpg";
         let isGuest = true;
 
         function updateAvatars() {
@@ -470,16 +529,39 @@
             initAndLoadPosts();
         });
 
+        function toggleFriendRequestsMenu(event) {
+            event.stopPropagation();
+            const eco = document.getElementById('ecosystemMenu');
+            if(eco) eco.classList.remove('show');
+            const menu = document.getElementById('friendRequestsMenu');
+            menu.classList.toggle('show');
+        }
+
         function toggleEcosystemMenu(event) {
             event.stopPropagation();
+            const fr = document.getElementById('friendRequestsMenu');
+            if(fr) fr.classList.remove('show');
             const menu = document.getElementById('ecosystemMenu');
             menu.classList.toggle('show');
         }
 
         window.addEventListener('click', () => {
-            const menu = document.getElementById('ecosystemMenu');
-            if(menu && menu.classList.contains('show')) menu.classList.remove('show');
+            const frMenu = document.getElementById('friendRequestsMenu');
+            if(frMenu && frMenu.classList.contains('show')) frMenu.classList.remove('show');
+            const ecoMenu = document.getElementById('ecosystemMenu');
+            if(ecoMenu && ecoMenu.classList.contains('show')) ecoMenu.classList.remove('show');
         });
+
+        function handleFriendAction(btn, action) {
+            const item = btn.closest('.fr-item');
+            if(action === 'Confirm') {
+                btn.parentElement.innerHTML = '<span style="color:#1877F2; font-weight:bold; font-size:13px;"><i class="fas fa-check"></i> Friend Added</span>';
+                simulateEarning({clientX: btn.getBoundingClientRect().left, clientY: btn.getBoundingClientRect().top}, 5);
+            } else {
+                item.style.opacity = '0';
+                setTimeout(() => item.remove(), 300);
+            }
+        }
 
         function checkGuest() {
             if(isGuest) {
@@ -812,7 +894,7 @@
             if (user) {
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
-                currentUserPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                currentUserPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || "1001120580.jpg";
                 updateAvatars();
 
                 document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
@@ -823,7 +905,7 @@
                 });
             } else {
                 isGuest = true;
-                currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                currentUserPhoto = "1001120580.jpg";
                 updateAvatars();
 
                 document.querySelectorAll('.logout-action').forEach(btn => {
