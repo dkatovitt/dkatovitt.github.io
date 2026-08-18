@@ -49,7 +49,7 @@
         
         /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX 🔥 */
         .fb-icon-btn .badge, .fb-tab .badge { 
-            position: absolute; top: -3px; right: -3px; 
+            position: absolute; top: -5px; right: -8px; 
             background: #e41e3f; color: #fff; 
             font-size: 10px; font-weight: bold; 
             min-width: 18px; height: 18px; padding: 0 3px;
@@ -66,12 +66,12 @@
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
-        /* 🔥 FRIEND REQUESTS DROPDOWN MENU 🔥 */
-        .friend-requests-menu { display: none; position: absolute; left: 20%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 340px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
+        /* 🔥 FRIEND REQUESTS DROPDOWN MENU (FIXED POSITION) 🔥 */
+        .friend-requests-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 340px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
         .friend-requests-menu.show { display: block; animation: dropFade 0.2s ease; }
         .fr-header { font-size: 18px; font-weight: bold; color: #050505; padding-bottom: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .fr-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; }
-        .fr-item img { width: 55px; height: 55px; border-radius: 50%; object-fit: border; border: 1px solid #ddd; }
+        .fr-item img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
         .fr-info { flex: 1; }
         .fr-info h4 { margin: 0; font-size: 15px; color: #050505; font-weight: bold; }
         .fr-info p { margin: 3px 0 8px 0; font-size: 12px; color: #65676b; }
@@ -319,8 +319,10 @@
             <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
             
             <div class="fb-tab" onclick="toggleFriendRequestsMenu(event)" title="Friend Requests">
-                <i class="fas fa-user-friends"></i>
-                <span class="badge" style="background:#1877F2;">3</span>
+                <div style="position: relative; display: inline-flex;">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="badge" style="background:#1877F2;">3</span>
+                </div>
             </div>
             
             <div class="friend-requests-menu" id="friendRequestsMenu">
@@ -398,7 +400,12 @@
                 </div>
             </div>
 
-            <a href="notifications.html" class="fb-tab" title="Notifications"><i class="fas fa-bell"></i><span class="badge">7</span></a>
+            <a href="notifications.html" class="fb-tab" title="Notifications">
+                <div style="position: relative; display: inline-flex;">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">7</span>
+                </div>
+            </a>
             
             <div class="fb-tab">
                 <img src="1001120580.jpg" id="topbarProfileImg" class="current-user-avatar" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
