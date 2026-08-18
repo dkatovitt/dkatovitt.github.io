@@ -13,295 +13,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK Connect - Feed</title>
-    <meta name="theme-color" content="#111111">
+    <meta name="theme-color" content="#ffffff">
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 BASE VIP CSS 🔥 */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 115px; overflow-x: hidden; }
+        /* 🔥 LIGHT THEME BASE CSS 🔥 */
+        body { background-color: #f0f2f5; color: #050505; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 115px; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #e6c875; }
+        ::-webkit-scrollbar-track { background: #f0f2f5; }
+        ::-webkit-scrollbar-thumb { background: #bcc0c4; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8a8d91; }
 
         /* GOOGLE TRANSLATE HIDE BAR CSS */
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 
-        /* 🔥 MENU OVERLAY FIX 🔥 */
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1500; display: none; backdrop-filter: blur(2px); }
+        /* 🔥 MENU OVERLAY 🔥 */
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.8); z-index: 1500; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 FB STYLE APP HEADER 🔥 */
-        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; border-bottom: 1px solid #222; }
+        /* 🔥 WHITE APP HEADER 🔥 */
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 2000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
         
         .fb-top-left { display: flex; align-items: center; gap: 15px; }
-        .fb-top-left .menu-btn { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; padding: 0; display: none; }
-        .fb-top-left h1 { margin: 0; color: #fff; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
-        .fb-top-left video { height: 35px; mix-blend-mode: screen; transform: scale(1.5); transform-origin: left center; margin-left: 10px; }
+        .fb-top-left .menu-btn { background: none; border: none; color: #050505; font-size: 22px; cursor: pointer; padding: 0; display: none; }
+        .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
+        .fb-top-left video { height: 35px; mix-blend-mode: multiply; transform: scale(1.5); transform-origin: left center; margin-left: 10px; }
         
         .fb-top-right { display: flex; align-items: center; gap: 10px; }
-        .fb-icon-btn { background: transparent; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
-        .fb-icon-btn:hover { background: #222; }
-        .fb-icon-btn.fill { background: #333; }
-        .fb-icon-btn .badge { position: absolute; top: 0px; right: 0px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
+        .fb-icon-btn { background: transparent; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #e4e6eb; }
+        .fb-icon-btn.fill { background: #e4e6eb; }
+        .fb-icon-btn.fill:hover { background: #d8dadf; }
+        .fb-icon-btn .badge { position: absolute; top: 0px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
         
-        /* FB TABS ROW */
-        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; }
-        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #888; font-size: 24px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
-        .fb-tab:hover { background: rgba(255,255,255,0.05); border-radius: 8px; }
+        /* WHITE FB TABS ROW */
+        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; border-top: 1px solid #ddd; }
+        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #65676b; font-size: 24px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
+        .fb-tab:hover { background: #f2f2f2; border-radius: 8px; }
         .fb-tab.active { color: #1877F2; } 
         .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
-        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 2px solid #111; font-weight: bold;}
+        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 2px solid #fff; font-weight: bold;}
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
         /* SMART DROPDOWN PROFILE MENU */
-        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #1a1a1a; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; text-align: left; }
+        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; animation: dropFade 0.2s ease; text-align: left; }
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .dropdown-menu.show { display: block; }
-        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; transition: 0.3s; }
-        .dropdown-menu a:hover { background: #2a2a2a; color: #fff; }
-        .dropdown-menu a i { color: #e6c875; width: 20px; text-align: center; }
+        .dropdown-menu a { color: #050505; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; transition: 0.3s; }
+        .dropdown-menu a:hover { background: #f2f2f2; }
+        .dropdown-menu a i { color: #1877F2; width: 20px; text-align: center; }
 
         /* 🔥 MAIN APP GRID (3 COLUMNS) 🔥 */
         .app-container { display: grid; grid-template-columns: 320px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1250px; margin: 0 auto; padding: 0 10px; }
         
-        /* 🔥 FACEBOOK STYLE SIDEBAR MENU 🔥 */
+        /* 🔥 WHITE SIDEBAR MENU 🔥 */
         .sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; z-index: 1600; padding-right: 10px; }
         .sidebar::-webkit-scrollbar { display: none; }
         
         .fb-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .fb-menu-profile { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .fb-menu-profile img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; }
-        .fb-menu-profile-info h3 { margin: 0; font-size: 16px; color: #fff; font-weight: bold; }
-        .fb-menu-actions { display: flex; gap: 10px; }
-        .fb-menu-actions i { background: #222; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        .fb-menu-actions i:hover { background: #333; }
-
-        .fb-menu-section-title { color: #aaa; font-size: 14px; font-weight: bold; margin: 15px 0 10px 0; }
+        .fb-menu-profile-info h3 { margin: 0; font-size: 16px; color: #050505; font-weight: bold; }
+        .fb-menu-profile-info p { color: #65676b; font-size: 12px; margin: 2px 0 0 0; }
+        
+        .fb-menu-section-title { color: #65676b; font-size: 14px; font-weight: bold; margin: 15px 0 10px 0; }
         
         .fb-shortcuts-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 10px; }
         .fb-shortcuts-row::-webkit-scrollbar { display: none; }
         .shortcut-card { min-width: 75px; max-width: 75px; display: flex; flex-direction: column; gap: 5px; cursor: pointer; transition: 0.3s; }
-        .shortcut-card:hover { filter: brightness(1.2); }
-        .shortcut-card img, .shortcut-card .icon-box { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; border: 1px solid #333; }
-        .shortcut-card .icon-box { background: rgba(230,200,117,0.1); border-color: rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; font-size: 28px; color: #e6c875; }
-        .shortcut-card span { color: #ccc; font-size: 12px; font-weight: bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .shortcut-card:hover { transform: scale(1.02); }
+        .shortcut-card img, .shortcut-card .icon-box { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; border: 1px solid #ddd; background: #fff;}
+        .shortcut-card .icon-box { display: flex; align-items: center; justify-content: center; font-size: 28px; color: #1877F2; }
+        .shortcut-card span { color: #050505; font-size: 12px; font-weight: bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .fb-menu-item { display: flex; align-items: center; gap: 15px; padding: 12px 10px; color: #ccc; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; margin-bottom: 2px; }
-        .fb-menu-item:hover { background: #222; }
+        .fb-menu-item { display: flex; align-items: center; gap: 15px; padding: 12px 10px; color: #050505; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; margin-bottom: 2px; }
+        .fb-menu-item:hover { background: #e4e6eb; }
         .fb-menu-item i { font-size: 20px; width: 25px; text-align: center; }
 
-        .fb-menu-see-more { width: 100%; background: #222; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
-        .fb-menu-see-more:hover { background: #333; }
+        .fb-menu-see-more { width: 100%; background: #e4e6eb; color: #050505; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
+        .fb-menu-see-more:hover { background: #d8dadf; }
 
-        .fb-menu-divider { border: 0; height: 1px; background: #333; margin: 15px 0; }
+        .fb-menu-divider { border: 0; height: 1px; background: #ddd; margin: 15px 0; }
 
-        .fb-accordion { margin-bottom: 5px; }
-        .fb-accordion summary { display: flex; align-items: center; gap: 15px; padding: 12px 10px; color: #fff; font-size: 15px; font-weight: bold; cursor: pointer; list-style: none; transition: 0.3s; border-radius: 8px; }
-        .fb-accordion summary::-webkit-details-marker { display: none; }
-        .fb-accordion summary:hover { background: #222; }
-        .fb-accordion summary i:first-child { font-size: 20px; width: 25px; text-align: center; color: #ccc; }
-        .fb-accordion summary .arrow { margin-left: auto; color: #888; transition: 0.3s; }
-        .fb-accordion[open] summary .arrow { transform: rotate(180deg); }
+        .fb-logout-btn { width: 100%; background: #fff; color: #1877F2; border: 1px solid #1877F2; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; margin-bottom: 20px; transition: 0.3s; }
+        .fb-logout-btn:hover { background: rgba(24,119,242,0.1); }
+
+        /* 🔥 WHITE MIDDLE FEED AREA 🔥 */
+        .feed { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        .accordion-content { padding: 5px 10px 5px 45px; display: flex; flex-direction: column; gap: 5px; }
-        .accordion-content a { color: #aaa; text-decoration: none; font-size: 14px; padding: 10px; border-radius: 8px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 10px;}
-        .accordion-content a:hover { background: #222; color: #fff; }
+        .fb-create-post { background: #ffffff; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);}
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; flex-shrink: 0; cursor: pointer;}
+        .fb-create-post .input-box { flex: 1; background: #f0f2f5; padding: 10px 15px; border-radius: 30px; color: #65676b; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .fb-create-post .input-box:hover { background: #e4e6eb; }
+        .fb-create-post i { color: #45bd62; font-size: 24px; cursor: pointer; padding: 5px; flex-shrink: 0; transition: 0.3s; }
+        .fb-create-post i:hover { transform: scale(1.1); }
 
-        .fb-logout-btn { width: 100%; background: #222; color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; margin-bottom: 20px; transition: 0.3s; }
-        .fb-logout-btn:hover { background: #333; }
-
-        /* 🔥 MIDDLE FEED AREA 🔥 */
-        .feed { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; width: 100%; }
-        
-        .fb-create-post { background: #111; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #222; border-radius: 8px;}
-        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; flex-shrink: 0; cursor: pointer;}
-        .fb-create-post .input-box { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 30px; color: #aaa; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
-        .fb-create-post .input-box:hover { background: #333; color: #fff; }
-        .fb-create-post i { color: #888; font-size: 24px; cursor: pointer; padding: 5px; flex-shrink: 0; transition: 0.3s; }
-        .fb-create-post i:hover { color: #45bd62; }
-
-        .fb-stories-wrapper { background: #111; overflow: hidden; padding-bottom: 15px; margin-bottom: 5px; border-bottom: 5px solid #000;}
-        .fb-story-tabs { display: flex; border-bottom: 1px solid #222; }
-        .story-tab { flex: 1; text-align: center; padding: 15px; color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
+        .fb-stories-wrapper { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); overflow: hidden; padding-bottom: 15px;}
+        .fb-story-tabs { display: flex; border-bottom: 1px solid #ddd; }
+        .story-tab { flex: 1; text-align: center; padding: 15px; color: #65676b; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
         .story-tab.active { color: #1877F2; border-bottom: 3px solid #1877F2; }
-        .story-tab:hover { background: rgba(255,255,255,0.05); }
+        .story-tab:hover { background: #f2f2f2; }
 
         .fb-stories-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 15px 15px 5px 15px; scroll-snap-type: x mandatory; scroll-behavior: smooth; }
         .fb-stories-scroll::-webkit-scrollbar { display: none; }
         
-        .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
-        .story-card:hover { filter: brightness(1.1); }
+        .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #e4e6eb; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #ddd; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: 0.3s; }
+        .story-card:hover { filter: brightness(0.95); }
         
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
-        .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
-        .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 20px; font-weight: bold; }
+        .story-card.create-card .create-bottom { height: 35%; background: #ffffff; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
+        .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #fff; font-size: 20px; font-weight: bold; }
         .story-card.create-card.reel-btn .plus-btn { background: #ff4d4d; }
-        .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
+        .story-card.create-card span { color: #050505; font-size: 13px; font-weight: bold; }
 
         .story-card.user-card img.bg, .story-card.user-card video.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
-        .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1px solid #fff;}
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
         
-        .story-overlay-loading { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 5; color: #fff; }
-        .story-overlay-loading .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid #1877F2; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* POST CARDS */
-        .post-card { background: #111; border-bottom: 5px solid #000; padding-top: 5px; animation: fadeInForm 0.4s ease; }
-        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 15px; }
+        /* WHITE POST CARDS */
+        .post-card { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); animation: fadeInForm 0.4s ease; overflow: hidden; }
+        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
         .post-user { display: flex; gap: 10px; cursor: pointer; }
-        .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
-        .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
-        .post-user-info h4 span.action { color: #aaa; font-weight: normal; font-size: 14px; }
-        .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; display: flex; align-items: center; gap: 5px; }
-        .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; padding-top: 5px;}
+        .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .post-user-info h4 { margin: 0; color: #050505; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
+        .post-user-info h4 span.action { color: #65676b; font-weight: normal; font-size: 14px; }
+        .post-user-info p { margin: 2px 0 0 0; color: #65676b; font-size: 12px; display: flex; align-items: center; gap: 5px; }
+        .post-options { display: flex; gap: 15px; color: #65676b; font-size: 18px; cursor: pointer; padding-top: 5px;}
         
-        .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
+        .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #050505; line-height: 1.5; }
         .post-media { width: 100%; }
-        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; display: block; }
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; display: block; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
         
-        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; border-bottom: 1px solid #222; }
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #65676b; font-size: 13px; border-bottom: 1px solid #ced0d4; }
         .post-stats .reactions { display: flex; align-items: center; gap: 5px; }
-        .post-stats .reactions img { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #111; margin-left: -5px; }
+        .post-stats .reactions img { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #fff; margin-left: -5px; }
         
         .post-actions { display: flex; justify-content: space-between; padding: 4px 15px; margin: 0 10px; }
-        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 4px; transition: 0.3s; }
-        .action-btn:hover { background: #222; }
+        .action-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; border: none; color: #65676b; font-size: 14px; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 4px; transition: 0.3s; }
+        .action-btn:hover { background: #f2f2f2; }
         .action-btn.active { color: #1877F2; }
-        .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 5px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); margin-left: 2px; }
-
-        .post-comments-section { padding: 10px 15px 15px 15px; background: #0a0a0a; display: none; border-bottom: 1px solid #222; }
+        
+        /* WHITE COMMENTS SECTION */
+        .post-comments-section { padding: 10px 15px 15px 15px; background: #ffffff; display: none; border-top: 1px solid #ced0d4; }
         .comments-list { max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
         .comments-list::-webkit-scrollbar { width: 4px; }
-        .comments-list::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        .comments-list::-webkit-scrollbar-thumb { background: #bcc0c4; border-radius: 10px; }
         .comment-item { display: flex; gap: 10px; }
         .comment-item img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
-        .comment-bubble { background: #222; padding: 10px 12px; border-radius: 18px; border-top-left-radius: 4px; max-width: 85%; }
-        .comment-bubble h5 { margin: 0 0 3px 0; color: #fff; font-size: 13px; font-weight: bold; }
-        .comment-bubble p { margin: 0; color: #e4e6eb; font-size: 13px; line-height: 1.4; }
+        .comment-bubble { background: #f0f2f5; padding: 10px 12px; border-radius: 18px; border-top-left-radius: 4px; max-width: 85%; }
+        .comment-bubble h5 { margin: 0 0 3px 0; color: #050505; font-size: 13px; font-weight: bold; }
+        .comment-bubble p { margin: 0; color: #050505; font-size: 13px; line-height: 1.4; }
         
         .add-comment-box { display: flex; gap: 10px; align-items: center; }
         .add-comment-box img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
-        .add-comment-box input { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 20px; color: #fff; outline: none; font-size: 14px; }
+        .add-comment-box input { flex: 1; background: #f0f2f5; border: none; padding: 10px 15px; border-radius: 20px; color: #050505; outline: none; font-size: 14px; }
         .add-comment-box button { background: transparent; border: none; color: #1877F2; font-size: 18px; cursor: pointer; padding: 5px 10px; transition: 0.3s; }
 
-        /* 🔥 GUEST LOGIN POPUP 🔥 */
-        .guest-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .guest-popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
-        .guest-popup-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .guest-popup-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .guest-popup-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .guest-popup-btn { background: #e6c875; color: #000; padding: 12px 20px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .guest-popup-btn:hover { background: #d4b561; transform: scale(1.05); }
+        /* 🔥 WHITE RIGHT SIDEBAR 🔥 */
+        .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
+        .widget-title { color: #65676b; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
+        .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
+        .contact-item:hover { background: #e4e6eb; }
+        .contact-item .img-wrap { position: relative; }
+        .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;}
+        .contact-item .status { width: 9px; height: 9px; background: #31a24c; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #fff; }
+        .contact-item span { color: #050505; font-size: 14px; font-weight: bold; }
 
-        /* 🔥 CREATE POST MODAL 🔥 */
-        .create-post-modal { background: #1a1a1a; border: 1px solid #333; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.9); position: relative; }
-        .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
-        .create-post-header h3 { color: #fff; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
-        .create-post-close { background: #333; color: #aaa; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 18px; cursor: pointer; position: absolute; right: 20px; top: 15px; transition: 0.3s; }
-        .create-post-close:hover { background: #444; color: #fff; }
+        /* SUGGESTION BOX (WHITE) */
+        .friend-sug-box { background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #ddd; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .friend-sug-box h3 { color: #65676b; margin-top:0; }
+
+        /* 🔥 WHITE CREATE POST MODAL 🔥 */
+        .create-post-modal { background: #ffffff; border: 1px solid #ddd; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; }
+        .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 15px; margin-bottom: 15px; }
+        .create-post-header h3 { color: #050505; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
+        .create-post-close { background: #e4e6eb; color: #65676b; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 18px; cursor: pointer; position: absolute; right: 20px; top: 15px; transition: 0.3s; }
+        .create-post-close:hover { background: #d8dadf; color: #050505; }
         .create-post-user { display: flex; gap: 12px; align-items: center; margin-bottom: 15px; }
-        .create-post-user img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
-        .create-post-user-info h4 { color: #fff; margin: 0 0 4px 0; font-size: 15px; }
-        .create-post-user-info span { background: #333; color: #ccc; font-size: 11px; padding: 4px 8px; border-radius: 5px; font-weight: bold; display: flex; align-items: center; gap: 5px; width: fit-content; }
+        .create-post-user img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+        .create-post-user-info h4 { color: #050505; margin: 0 0 4px 0; font-size: 15px; }
+        .create-post-user-info span { background: #e4e6eb; color: #050505; font-size: 11px; padding: 4px 8px; border-radius: 5px; font-weight: bold; display: flex; align-items: center; gap: 5px; width: fit-content; }
         
-        #newPostText { width: 100%; background: transparent; border: none; color: #fff; font-size: 18px; outline: none; resize: none; min-height: 100px; font-family: Arial, sans-serif; }
+        #newPostText { width: 100%; background: transparent; border: none; color: #050505; font-size: 18px; outline: none; resize: none; min-height: 100px; font-family: Arial, sans-serif; }
         #newPostText::placeholder { color: #888; }
         
-        #newPostImgPreview { display: none; position: relative; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; padding: 8px; background: #111; }
-        #previewSelectedImg { width: 100%; border-radius: 8px; max-height: 250px; object-fit: contain; background: #000; }
-        .remove-img-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        .remove-img-btn:hover { background: #ff4d4d; }
-
-        .add-to-post-box { border: 1px solid #333; border-radius: 8px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .add-to-post-box { border: 1px solid #ced0d4; border-radius: 8px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .add-to-post-icons { display: flex; gap: 20px; font-size: 22px; cursor: pointer; }
         .add-to-post-icons i { transition: 0.3s; }
         .add-to-post-icons i:hover { transform: scale(1.2); }
         
         .publish-btn { width: 100%; background: #1877F2; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
         .publish-btn:hover { background: #166fe5; }
-        .publish-btn:disabled { background: #444; color: #888; cursor: not-allowed; }
 
-        /* SHARE MODAL */
-        .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
-        .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
-        .share-modal-box { background: #1a1a1a; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.8); }
-        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #333; color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
-        .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; margin-top: 15px;}
-        .share-opt { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: 0.3s; }
-        .share-opt:hover { transform: translateY(-5px); }
-        .share-opt .icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; }
+        /* WHITE SHARE MODAL */
+        .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); }
+        .share-modal-box h3 { color: #050505; }
+        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+        .share-opt span { color: #050505; font-weight: bold; }
 
-        /* RIGHT SIDEBAR */
-        .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
-        .widget-title { color: #888; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
-        .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
-        .contact-item:hover { background: #222; }
-        .contact-item .img-wrap { position: relative; }
-        .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
-        .contact-item .status { width: 9px; height: 9px; background: #25d366; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #111; }
-        .contact-item span { color: #ccc; font-size: 14px; font-weight: bold; }
-
-        .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
-        @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
-
-        /* FULLSCREEN VIEWS */
-        .reels-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none; flex-direction: column; }
-        .reels-view.active { display: flex; animation: slideUp 0.3s ease; }
-        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        .reels-header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 10; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
-        .reels-header i { color: #fff; font-size: 22px; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        .reels-header h2 { color: #fff; margin: 0; font-size: 18px; font-weight: bold; }
-        
-        .reel-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; overflow: hidden; }
-        
-        .reel-editor-bottom { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; justify-content: space-between; align-items: flex-end; z-index: 20; }
-        .reel-tools { display: flex; gap: 20px; }
-        .reel-tools .tool { display: flex; flex-direction: column; align-items: center; gap: 8px; color: #fff; cursor: pointer; transition: 0.3s; }
-        .reel-tools .tool:hover { color: #e6c875; transform: scale(1.1); }
-        .next-btn { background: #1877F2; color: #fff; border: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-
-        .settings-list { display: flex; flex-direction: column; gap: 20px; padding-top: 15px; }
-        .settings-item { display: flex; align-items: center; gap: 15px; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .settings-item > i:first-child { font-size: 22px; color: #aaa; width: 30px; text-align: center; }
-        .settings-item .text { flex: 1; }
-        .settings-item .text h4 { margin: 0; color: #fff; font-size: 16px; }
-        .settings-item .text p { margin: 4px 0 0 0; color: #888; font-size: 13px; }
-        
-        .story-preview-img { width: 100%; height: 100%; object-fit: contain; }
-        .story-editor-tools { position: absolute; right: 15px; top: 80px; display: flex; flex-direction: column; gap: 25px; z-index: 10; }
-        .story-editor-tools .tool-btn { color: #fff; font-size: 26px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap:5px; transition:0.3s;}
-        .story-editor-tools .tool-btn span { font-size: 10px; font-weight: bold; }
-        .story-editor-tools .tool-btn:hover { color: #e6c875; transform: scale(1.1); }
-        .story-share-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #111; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; z-index: 20; }
-        .story-share-bar .share-btn { background: #1877F2; color: #fff; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
-
+        /* WHITE MOBILE BOTTOM NAV */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
-            .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
+            .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #ffffff; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
             .fb-top-left .menu-btn { display: none; } 
             
-            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
-            .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
+            .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #ddd; z-index: 2000; justify-content: space-around; padding: 10px 0; }
+            .nav-item { color: #65676b; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
             .nav-item.active { color: #1877F2; }
             .nav-item.active i { transform: scale(1.1); }
-            .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
+            .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
         }
+
+        .floating-reward { position: fixed; color: #1877F2; font-size: 22px; font-weight: 900; pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
+        @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
     </style>
 </head>
 <body>
@@ -309,22 +247,22 @@
     <div id="overlay"></div>
 
     <!-- 🔥 GUEST LOGIN POPUP 🔥 -->
-    <div class="guest-popup-overlay" id="guestPopupOverlay">
-        <div class="guest-popup-box custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+    <div class="guest-popup-overlay" id="guestPopupOverlay" style="background:rgba(255,255,255,0.9);">
+        <div class="guest-popup-box custom-alert-box" style="background:#fff; box-shadow:0 10px 40px rgba(0,0,0,0.2);">
+            <div class="custom-alert-logo" style="background:#f0f2f5; border:1px solid #ddd;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="mix-blend-mode: multiply;"></video>
             </div>
-            <h3 class="custom-alert-title" style="color: #e6c875;">Login Required</h3>
-            <p class="custom-alert-msg" style="margin-bottom: 20px;">Unlock premium features! Login or create a free VIP account to Earn ATVT coins by liking, commenting, and posting.</p>
+            <h3 class="custom-alert-title" style="color: #1877F2;">Login Required</h3>
+            <p class="custom-alert-msg" style="color:#65676b; margin-bottom: 20px;">Unlock premium features! Login or create a free VIP account to Earn ATVT coins by liking, commenting, and posting.</p>
             <div style="display:flex; gap:10px;">
-                <button class="guest-popup-btn" onclick="document.getElementById('guestPopupOverlay').classList.remove('active')" style="background:transparent; border:1px solid #888; color:#888;">Cancel</button>
-                <button class="guest-popup-btn" onclick="window.location.href='auth.html'" style="flex:1;">Login / Sign Up</button>
+                <button class="guest-popup-btn" onclick="document.getElementById('guestPopupOverlay').classList.remove('active')" style="background:#e4e6eb; border:none; color:#050505; box-shadow:none;">Cancel</button>
+                <button class="guest-popup-btn" onclick="window.location.href='auth.html'" style="background:#1877F2; color:#fff; flex:1; box-shadow:none;">Login / Sign Up</button>
             </div>
         </div>
     </div>
 
     <!-- 🔥 CREATE POST MODAL 🔥 -->
-    <div class="guest-popup-overlay" id="createPostModalOverlay">
+    <div class="guest-popup-overlay" id="createPostModalOverlay" style="background:rgba(255,255,255,0.9);">
         <div class="create-post-modal">
             <div class="create-post-header">
                 <h3>Create post</h3>
@@ -341,13 +279,14 @@
             
             <textarea id="newPostText" placeholder="What's on your mind?"></textarea>
             
-            <div id="newPostImgPreview">
-                <img src="" id="previewSelectedImg">
+            <div id="newPostImgPreview" style="display:none; position:relative; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; padding:8px; background:#f0f2f5;">
+                <img src="" id="previewSelectedImg" style="display:none;">
+                <video id="previewSelectedVid" style="display:none; width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video>
                 <button class="remove-img-btn" onclick="removePostImg()">&times;</button>
             </div>
             
             <div class="add-to-post-box">
-                <span style="color: #ccc; font-size: 15px; font-weight: bold;">Add to your post</span>
+                <span style="color: #050505; font-size: 15px; font-weight: bold;">Add to your post</span>
                 <div class="add-to-post-icons">
                     <i class="fas fa-images" style="color: #45bd62;" onclick="document.getElementById('postMediaInput').click()"></i>
                     <i class="fas fa-user-tag" style="color: #1877f2;" onclick="alert('Feature coming soon')"></i>
@@ -365,12 +304,11 @@
     <header class="fb-header">
         <div class="fb-top-row">
             <div class="fb-top-left">
-                <h1>Feed</h1>
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                <h1>facebook</h1>
             </div>
             <div class="fb-top-right">
-                <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
-                <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+                <button class="fb-icon-btn fill" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
+                <button class="fb-icon-btn fill"><i class="fas fa-search"></i></button>
                 <button class="fb-icon-btn fill" onclick="window.location.href='messages.html'">
                     <i class="fab fa-facebook-messenger"></i>
                     <span class="badge">2</span>
@@ -391,7 +329,7 @@
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Login / Sign Up</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -403,7 +341,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-inner" style="padding-bottom: 80px;">
                 <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: -15px;" class="mobile-only-close">
-                    <i class="fas fa-times" onclick="document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active');" style="color: #888; font-size: 24px; cursor: pointer;"></i>
+                    <i class="fas fa-times" onclick="document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active');" style="color: #65676b; font-size: 24px; cursor: pointer;"></i>
                 </div>
 
                 <div class="fb-menu-header">
@@ -411,53 +349,37 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
                         <div class="fb-menu-profile-info">
                             <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
-                            <p id="sidebarDkId" style="color:#e6c875; font-size:12px; margin: 2px 0 0 0;">Login to Earn ATVT</p>
+                            <p id="sidebarDkId">Login to Earn ATVT</p>
                         </div>
-                    </div>
-                    <div class="fb-menu-actions">
-                        <i class="fas fa-cog" onclick="window.location.href='profile-edit.html'"></i>
-                        <i class="fas fa-search"></i>
-                    </div>
-                </div>
-
-                <h4 class="fb-menu-section-title">Your shortcuts</h4>
-                <div class="fb-shortcuts-row">
-                    <div class="shortcut-card" onclick="window.location.href='index.html?v=fresh'">
-                        <img src="images/movies/yakshini-poster.png" alt="DK Films">
-                        <span>DK Films</span>
-                    </div>
-                    <div class="shortcut-card" onclick="window.location.href='wallet.html'">
-                        <div class="icon-box"><i class="fas fa-wallet"></i></div>
-                        <span>Wallet</span>
-                    </div>
-                    <div class="shortcut-card">
-                        <div class="icon-box" style="background:#222; border-color:#333; color:#ccc;"><i class="fas fa-shopping-cart"></i></div>
-                        <span>DK Mart</span>
-                    </div>
-                    <div class="shortcut-card" onclick="window.location.href='dashboard.html'">
-                        <div class="icon-box" style="background:rgba(37,211,102,0.1); border-color:rgba(37,211,102,0.3); color:#25d366;"><i class="fas fa-tachometer-alt"></i></div>
-                        <span>Dashboard</span>
                     </div>
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 2px;">
+                    <a href="profile.html" class="fb-menu-item">
+                        <i class="fas fa-user-circle" style="color: #1877F2;"></i>
+                        <span>Find Friends</span>
+                    </a>
                     <a href="social.html" class="fb-menu-item">
                         <i class="fas fa-newspaper" style="color: #1877F2;"></i>
-                        <span>News Feed</span>
+                        <span>Feeds</span>
                     </a>
                     <a href="#" class="fb-menu-item">
-                        <i class="fas fa-user-friends" style="color: #25d366;"></i>
-                        <span>Friends (11 online)</span>
+                        <i class="fas fa-store" style="color: #1877F2;"></i>
+                        <span>Marketplace</span>
+                    </a>
+                    <a href="video.html" class="fb-menu-item">
+                        <i class="fas fa-video" style="color: #1877F2;"></i>
+                        <span>Video</span>
                     </a>
                     <a href="dashboard.html" class="fb-menu-item">
-                        <i class="fas fa-th-large" style="color: #e6c875;"></i>
-                        <span>VIP Dashboard</span>
+                        <i class="fas fa-th-large" style="color: #1877F2;"></i>
+                        <span>Dashboard</span>
                     </a>
                 </div>
                 <button class="fb-menu-see-more">See more</button>
                 <hr class="fb-menu-divider">
 
-                <button class="fb-logout-btn logout-action" style="color: #e6c875; border: 1px solid #e6c875; background: transparent;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
+                <button class="fb-logout-btn logout-action"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
             </div>
         </aside>
 
@@ -468,7 +390,6 @@
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="User">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
-                <i class="fas fa-images" onclick="openCreatePostModal()"></i>
             </div>
 
             <!-- STORIES & REELS SECTION -->
@@ -492,11 +413,6 @@
                         <div class="user-ring"><img src="images/movies/gallery1.png"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
-                    <div class="story-card user-card">
-                        <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
-                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/women/44.jpg"></div>
-                        <span class="story-name">Priya Singh</span>
-                    </div>
                 </div>
 
                 <div class="fb-stories-scroll" id="reelsContainer" style="display:none;">
@@ -517,14 +433,14 @@
             </div>
 
             <!-- 🔥 POSTS CONTAINER 🔥 -->
-            <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 10px;">
+            <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;">
                 
                 <div class="post-card" id="post-1">
                     <div class="post-header">
                         <div class="post-user">
                             <img src="images/movies/gallery1.png" alt="DK Atovitt">
                             <div class="post-user-info">
-                                <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
+                                <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge" style="color:#1877F2;"></i></h4>
                                 <p>18h • <i class="fas fa-globe-americas"></i></p>
                             </div>
                         </div>
@@ -533,15 +449,14 @@
                         </div>
                     </div>
                     <div class="post-text">
-                        Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
+                        Get ready for the grand launch! Like and share to spread the word! 🎬
                     </div>
                     <div class="post-media">
                         <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
                     </div>
                     <div class="post-stats">
                         <div class="reactions">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1200px-Love_Heart_symbol.svg.png" style="background:#fff;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
                             <span id="like-count-post-1">1245</span>
                         </div>
                         <span><span id="comment-count-post-1">450</span> Comments</span>
@@ -564,14 +479,14 @@
                             <div class="comment-item">
                                 <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
                                 <div class="comment-bubble">
-                                    <h5>Rahul Sharma</h5>
-                                    <p>Super excited for this movie! 🔥</p>
+                                    <h5 style="color:#050505;">Rahul Sharma</h5>
+                                    <p style="color:#050505;">Super excited for this! 🔥</p>
                                 </div>
                             </div>
                         </div>
                         <div class="add-comment-box">
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
-                            <input type="text" id="comment-input-post-1" placeholder="Write a comment...">
+                            <input type="text" id="comment-input-post-1" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${postId}', 2)">
                             <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
                         </div>
                     </div>
@@ -580,7 +495,7 @@
             </div>
         </main>
 
-        <!-- 🔥 NEW RIGHT SIDEBAR (ADD FRIEND WIDGET) 🔥 -->
+        <!-- RIGHT SIDEBAR -->
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
             <div class="contact-item" onclick="window.location.href='messages.html'">
@@ -593,39 +508,16 @@
             </div>
 
             <!-- Add Friend Suggestions Box -->
-            <div style="background: #111; border-radius: 12px; padding: 15px; border: 1px solid #222; margin-top: 20px; margin-bottom: 20px;">
-                <h3 class="widget-title" style="color: #fff; margin-top:0;">People you may know</h3>
-                
+            <div class="friend-sug-box">
+                <h3 class="widget-title">People you may know</h3>
                 <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
                     <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                     <div style="flex: 1;">
-                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Neha Gupta</h4>
+                        <h4 style="margin: 0 0 3px 0; color: #050505; font-size: 14px;">Neha Gupta</h4>
                     </div>
-                    <button onclick="addFriend(this, 'Neha Gupta')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
-                </div>
-                
-                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                    <div style="flex: 1;">
-                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Vikram Roy</h4>
-                    </div>
-                    <button onclick="addFriend(this, 'Vikram Roy')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
-                </div>
-                
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                    <div style="flex: 1;">
-                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Priya Singh</h4>
-                    </div>
-                    <button onclick="addFriend(this, 'Priya Singh')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
+                    <button onclick="addFriend(this, 'Neha Gupta')" data-earned="false" style="background: #e4e6eb; color: #050505; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
                 </div>
             </div>
-
-            <div class="menu-divider" style="margin: 20px 0;"></div>
-
-            <h3 class="widget-title">Trending Hashtags</h3>
-            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#DKAtovitt</p>
-            <p style="color: #1da1f2; font-size: 14px; font-weight: bold; margin-bottom: 12px; cursor: pointer;">#YakshiniMovie</p>
         </aside>
 
     </div>
@@ -654,7 +546,7 @@
         <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active');">
             <div style="position: relative;">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="bottomNavImg" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
-                <div style="position: absolute; bottom: -2px; right: -5px; background: #222; border-radius: 50%; padding: 2px;"><i class="fas fa-bars" style="font-size: 10px;"></i></div>
+                <div style="position: absolute; bottom: -2px; right: -5px; background: #fff; border-radius: 50%; padding: 2px;"><i class="fas fa-bars" style="font-size: 10px; color:#050505;"></i></div>
             </div>
             <span>Menu</span>
         </a>
@@ -664,7 +556,7 @@
     <div id="shareModalOverlay" class="share-modal-overlay">
         <div class="share-modal-box">
             <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
-            <h3>Share this Post</h3>
+            <h3>Share</h3>
             <div class="share-options">
                 <div class="share-opt" onclick="executeShare('whatsapp')">
                     <div class="icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div>
@@ -673,10 +565,6 @@
                 <div class="share-opt" onclick="executeShare('facebook')">
                     <div class="icon" style="background:#1877F2;"><i class="fab fa-facebook-f"></i></div>
                     <span>Facebook</span>
-                </div>
-                <div class="share-opt" onclick="executeShare('copy')">
-                    <div class="icon" style="background:#555;"><i class="fas fa-link"></i></div>
-                    <span>Copy Link</span>
                 </div>
             </div>
         </div>
@@ -687,35 +575,18 @@
     <input type="file" id="reelFileInput" accept="video/*" style="display: none;">
 
     <!-- STORY EDITOR MODAL -->
-    <div id="storyPreviewModal" class="reels-view">
+    <div id="storyPreviewModal" class="reels-view" style="background:#fff;">
         <div class="reels-header">
-            <i class="fas fa-times" onclick="closeStoryPreview()"></i>
-            <h2>Create story</h2>
+            <i class="fas fa-times" style="color:#050505; text-shadow:none;" onclick="closeStoryPreview()"></i>
+            <h2 style="color:#050505; text-shadow:none;">Create story</h2>
         </div>
-        <div class="reel-container" style="background: #000;">
+        <div class="reel-container" style="background: #f0f2f5;">
             <img id="storyPreviewImg" src="" class="story-preview-img" style="display: none;">
             <video id="storyPreviewVid" src="" class="story-preview-img" autoplay loop muted playsinline style="display: none;"></video>
-            
-            <div class="story-share-bar">
-                <div class="privacy"><i class="fas fa-globe-americas"></i> Public</div>
+            <div class="story-share-bar" style="background:#fff; border-top:1px solid #ddd;">
+                <div class="privacy" style="color:#050505;"><i class="fas fa-globe-americas"></i> Public</div>
                 <button class="share-btn" onclick="shareStory()">Share</button>
             </div>
-        </div>
-    </div>
-
-    <!-- REEL EDITOR MODAL -->
-    <div id="reelEditorModal" class="reels-view">
-        <div class="reels-header" style="background: transparent;">
-            <i class="fas fa-arrow-left" onclick="closeReelEditor()"></i>
-        </div>
-        <div class="reel-container" style="background: #000;">
-            <video id="reelPreviewVideo" src="" class="story-preview-img" autoplay loop muted></video>
-        </div>
-        <div class="reel-editor-bottom">
-            <div class="reel-tools">
-                <div class="tool"><i class="fas fa-music"></i><span>Audio</span></div>
-            </div>
-            <button class="next-btn" onclick="publishReel()">Next <i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 
@@ -750,21 +621,18 @@
         // 🔥 ADD FRIEND LOGIC 🔥
         function addFriend(btn, friendName) {
             if(checkGuest()) return;
-
             if(btn.innerText === "Add Friend") {
                 btn.innerText = "Requested";
-                btn.style.background = "#333";
+                btn.style.background = "#1877F2";
                 btn.style.color = "#fff";
-                
-                // Earn ATVT for sending friend request
                 if(btn.getAttribute('data-earned') === 'false') {
                     simulateEarning({clientX: btn.getBoundingClientRect().left - 20, clientY: btn.getBoundingClientRect().top}, 10);
                     btn.setAttribute('data-earned', 'true');
                 }
             } else {
                 btn.innerText = "Add Friend";
-                btn.style.background = "rgba(24, 119, 242, 0.1)";
-                btn.style.color = "#1877F2";
+                btn.style.background = "#e4e6eb";
+                btn.style.color = "#050505";
             }
         }
 
@@ -791,13 +659,23 @@
                 reader.onload = function(e) {
                     postMediaData = e.target.result;
                     const previewBox = document.getElementById('newPostImgPreview');
+                    const imgTag = document.getElementById('previewSelectedImg');
+                    const vidTag = document.getElementById('previewSelectedVid');
                     
                     if(file.type.startsWith('video/')) {
                         postMediaType = "video";
-                        previewBox.innerHTML = `<video src="${postMediaData}" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                        imgTag.style.display = 'none';
+                        vidTag.style.display = 'block';
+                        vidTag.src = postMediaData;
                     } else {
                         postMediaType = "image";
-                        previewBox.innerHTML = `<img src="${postMediaData}" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                        vidTag.style.display = 'none';
+                        imgTag.style.display = 'block';
+                        imgTag.src = postMediaData;
+                        imgTag.style.width = '100%';
+                        imgTag.style.borderRadius = '8px';
+                        imgTag.style.maxHeight = '250px';
+                        imgTag.style.objectFit = 'contain';
                     }
                     previewBox.style.display = 'block';
                 }
@@ -810,6 +688,8 @@
             postMediaType = "";
             document.getElementById('newPostImgPreview').style.display = 'none';
             document.getElementById('postMediaInput').value = "";
+            document.getElementById('previewSelectedVid').src = "";
+            document.getElementById('previewSelectedImg').src = "";
         }
 
         function publishNewPost() {
@@ -840,7 +720,7 @@
                         <div class="post-user">
                             <img src="${currentUserPhoto}" alt="User">
                             <div class="post-user-info">
-                                <h4>${currentUserName} <i class="fas fa-check-circle verify-badge" style="color: #e6c875;"></i></h4>
+                                <h4>${currentUserName} <i class="fas fa-check-circle verify-badge" style="color: #1877F2;"></i></h4>
                                 <p>Just now • <i class="fas fa-globe-americas"></i></p>
                             </div>
                         </div>
@@ -849,7 +729,10 @@
                     ${text !== "" ? `<div class="post-text">${text.replace(/\n/g, '<br>')}</div>` : ""}
                     ${mediaHTML}
                     <div class="post-stats">
-                        <div class="reactions"><span id="like-count-${postId}">0</span> Likes</div>
+                        <div class="reactions">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
+                            <span id="like-count-${postId}">0</span>
+                        </div>
                         <span><span id="comment-count-${postId}">0</span> Comments</span>
                     </div>
                     <div class="post-actions">
@@ -910,6 +793,9 @@
                     vidTag.style.display = 'none';
                     imgTag.style.display = 'block';
                     imgTag.src = storyMediaUrl;
+                    imgTag.style.width = '100%';
+                    imgTag.style.height = '100%';
+                    imgTag.style.objectFit = 'contain';
                 }
                 document.getElementById('storyPreviewModal').classList.add('active');
             }
@@ -956,39 +842,6 @@
             }, 2000);
 
             document.getElementById('storyFileInput').value = "";
-        }
-
-        // REELS LOGIC
-        function openReelPicker() { 
-            if(checkGuest()) return;
-            document.getElementById('reelFileInput').click(); 
-        }
-        document.getElementById('reelFileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) {
-                document.getElementById('reelPreviewVideo').src = URL.createObjectURL(file);
-                document.getElementById('reelEditorModal').classList.add('active');
-            }
-        });
-        function closeReelEditor() {
-            document.getElementById('reelEditorModal').classList.remove('active');
-            document.getElementById('reelPreviewVideo').pause();
-        }
-        function publishReel() {
-            document.getElementById('reelEditorModal').classList.remove('active');
-            const vidSrc = document.getElementById('reelPreviewVideo').src;
-            const reelId = 'reel-' + Date.now();
-            const newReelHTML = `<div class="story-card user-card" id="${reelId}"><video src="${vidSrc}" class="bg" style="opacity:0.5;" muted autoplay loop playsinline></video><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${reelId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Uploading...</span></div><span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span></div>`;
-            document.querySelector('#reelsContainer .create-card').insertAdjacentHTML('afterend', newReelHTML);
-            switchTab('reels');
-            document.getElementById('reelsContainer').scrollLeft = 0;
-            document.getElementById('reelPreviewVideo').src = "";
-            setTimeout(() => {
-                document.getElementById('loading-' + reelId).style.display = 'none';
-                document.getElementById('name-' + reelId).style.display = 'block';
-                document.querySelector(`#${reelId} .bg`).style.opacity = '1';
-                simulateEarning(null, 15);
-            }, 2500);
         }
 
         document.getElementById('overlay').addEventListener('click', () => {
@@ -1058,7 +911,7 @@
             const countSpan = document.getElementById('comment-count-' + postId);
             const commentBtn = document.getElementById('comment-btn-' + postId);
 
-            const newCommentHTML = `<div class="comment-item" style="animation:fadeIn 0.3s ease;"><img src="${currentUserPhoto}"><div class="comment-bubble" style="border:1px solid #e6c875;"><h5 style="color:#e6c875;">${currentUserName}</h5><p>${commentText}</p></div></div>`;
+            const newCommentHTML = `<div class="comment-item" style="animation:fadeIn 0.3s ease;"><img src="${currentUserPhoto}"><div class="comment-bubble"><h5 style="color:#050505;">${currentUserName}</h5><p style="color:#050505;">${commentText}</p></div></div>`;
             commentList.insertAdjacentHTML('beforeend', newCommentHTML);
             commentList.scrollTop = commentList.scrollHeight;
             countSpan.innerText = parseInt(countSpan.innerText) + 1;
@@ -1135,7 +988,7 @@
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
                     btn.style.color = '#ff4d4d';
-                    btn.style.borderColor = 'transparent';
+                    btn.style.border = '1px solid #ff4d4d';
                     btn.addEventListener('click', () => {
                         if(confirm("Are you sure you want to Logout?")) {
                             signOut(auth).then(() => window.location.reload());
@@ -1147,9 +1000,8 @@
                 isGuest = true;
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
-                    btn.style.color = '#e6c875';
-                    btn.style.border = '1px solid #e6c875';
-                    btn.style.background = 'transparent';
+                    btn.style.color = '#1877F2';
+                    btn.style.border = '1px solid #1877F2';
                     btn.addEventListener('click', () => { window.location.href = "auth.html"; });
                 });
             }
