@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK Connect - Feed</title>
+    <title>DK Connect - Feed & Ecosystem</title>
     <meta name="theme-color" content="#ffffff">
     
     <link rel="stylesheet" href="css/style.css">
@@ -58,13 +58,24 @@
         }
         
         /* WHITE FB TABS ROW */
-        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; border-top: 1px solid #ddd; }
+        .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; border-top: 1px solid #ddd; position: relative; }
         .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #65676b; font-size: 22px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
         .fb-tab:hover { background: #f2f2f2; border-radius: 8px; }
         .fb-tab.active { color: #1877F2; } 
         .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
+
+        /* 🔥 DK ATOVITT ECOSYSTEM MENU 🔥 */
+        .ecosystem-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 320px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 10px; }
+        .ecosystem-menu.show { display: block; animation: dropFade 0.2s ease; }
+        .eco-header { font-size: 15px; font-weight: bold; color: #1877F2; padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .eco-item { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 8px; text-decoration: none; transition: 0.2s; margin-top: 5px; background: #f9f9f9; border: 1px solid #eee; }
+        .eco-item:hover { background: #f0f2f5; }
+        .eco-item .title { font-size: 13px; font-weight: bold; color: #050505; display: flex; align-items: center; justify-content: space-between; }
+        .eco-item .status { font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-top: 4px; width: fit-content; }
+        .status.live { background: #e7f3ff; color: #1877F2; }
+        .status.coming { background: #e4e6eb; color: #65676b; }
 
         /* SMART DROPDOWN PROFILE MENU */
         .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; }
@@ -203,7 +214,7 @@
         .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .guest-popup-btn { background: #1877F2; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        /* MOBILE BOTTOM NAV (REMOVED VIDEO & NOTIFICATIONS) */
+        /* MOBILE BOTTOM NAV */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
@@ -284,17 +295,51 @@
             <div class="fb-top-right">
                 <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
                 <button class="fb-icon-btn" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
-                <button class="fb-icon-btn" onclick="window.location.href='messages.html'">
-                    <i class="fas fa-comments"></i>
-                </button>
+                <button class="fb-icon-btn" onclick="window.location.href='messages.html'"><i class="fas fa-comments"></i></button>
             </div>
         </div>
 
         <div class="fb-tabs-row">
-            <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <a href="video.html" class="fb-tab"><i class="fas fa-video"></i></a>
-            <a href="#" class="fb-tab"><i class="fas fa-users"></i></a>
-            <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
+            <a href="social.html" class="fb-tab active" title="Home"><i class="fas fa-home"></i></a>
+            
+            <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
+            
+            <a href="profile.html" class="fb-tab" title="Friend Requests"><i class="fas fa-user-friends"></i><span class="badge" style="background:#1877F2;">3</span></a>
+            
+            <div class="fb-tab" onclick="toggleEcosystemMenu(event)" title="DK ATOVITT Ecosystem">
+                <i class="fas fa-globe" style="color: #45bd62;"></i>
+            </div>
+            
+            <div class="ecosystem-menu" id="ecosystemMenu">
+                <div class="eco-header">
+                    <span>DK ATOVITT Ecosystem</span>
+                    <i class="fas fa-times" style="cursor:pointer;" onclick="toggleEcosystemMenu(event)"></i>
+                </div>
+                <div style="max-height: 280px; overflow-y: auto; padding: 5px;">
+                    <a href="video.html" class="eco-item">
+                        <div class="title">DK ATOVITT Official Movie Production House <i class="fas fa-external-link-alt" style="font-size:11px; color:#1877F2;"></i></div>
+                        <span class="status live">Live</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="alert('DK Browser is coming soon!')" class="eco-item">
+                        <div class="title">DK Browser</div>
+                        <span class="status coming">Coming Soon</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="alert('DK Trading Exchange is coming soon!')" class="eco-item">
+                        <div class="title">DK Trading Exchange</div>
+                        <span class="status coming">Coming Soon</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="alert('DK Mart is coming soon!')" class="eco-item">
+                        <div class="title">DK Mart</div>
+                        <span class="status coming">Coming Soon</span>
+                    </a>
+                    <a href="wallet.html" class="eco-item">
+                        <div class="title">DK ATVT Coin</div>
+                        <span class="status coming">Coming Soon</span>
+                    </a>
+                </div>
+            </div>
+
+            <a href="notifications.html" class="fb-tab" title="Notifications"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" class="current-user-avatar" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
@@ -309,8 +354,7 @@
     </header>
 
     <div class="app-container">
-        
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar">
             <div class="fb-menu-header">
                 <div class="fb-menu-profile" onclick="window.location.href='profile.html'">
                     <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" class="current-user-avatar">
@@ -320,11 +364,10 @@
                     </div>
                 </div>
             </div>
-
             <div style="display: flex; flex-direction: column; gap: 2px;">
                 <a href="profile.html" class="fb-menu-item"><i class="fas fa-user-circle" style="color: #1877F2;"></i><span>Find Friends</span></a>
                 <a href="social.html" class="fb-menu-item"><i class="fas fa-newspaper" style="color: #1877F2;"></i><span>Feeds</span></a>
-                <a href="video.html" class="fb-menu-item"><i class="fas fa-video" style="color: #1877F2;"></i><span>Video</span></a>
+                <a href="video.html" class="fb-menu-item"><i class="fas fa-video" style="color: #e41e3f;"></i><span>Reels & Video</span></a>
                 <a href="dashboard.html" class="fb-menu-item"><i class="fas fa-th-large" style="color: #1877F2;"></i><span>Dashboard</span></a>
             </div>
             <hr class="fb-menu-divider">
@@ -379,7 +422,6 @@
                 </div>
             </div>
         </aside>
-
     </div>
 
     <nav class="mobile-bottom-nav">
@@ -428,6 +470,17 @@
             initAndLoadPosts();
         });
 
+        function toggleEcosystemMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById('ecosystemMenu');
+            menu.classList.toggle('show');
+        }
+
+        window.addEventListener('click', () => {
+            const menu = document.getElementById('ecosystemMenu');
+            if(menu && menu.classList.contains('show')) menu.classList.remove('show');
+        });
+
         function checkGuest() {
             if(isGuest) {
                 document.getElementById('guestPopupOverlay').classList.add('active');
@@ -436,11 +489,6 @@
             return false;
         }
 
-        document.getElementById('overlay').addEventListener('click', () => {
-            document.getElementById('overlay').classList.remove('active');
-        });
-
-        // 🔥 WORKING SEARCH FUNCTION 🔥
         function toggleSearch() {
             let query = prompt("Search posts by keyword:");
             if(query !== null && query.trim() !== "") {
@@ -452,7 +500,7 @@
                     alert("No posts found matching '" + query + "'");
                 }
             } else if(query === "") {
-                initAndLoadPosts(); // Reset if empty
+                initAndLoadPosts();
             }
         }
 
@@ -764,7 +812,6 @@
             if (user) {
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
-                // Agar localStorage me custom DP save hai to woh lo, warna Firebase ki photo ya default placeholder
                 currentUserPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 updateAvatars();
 
@@ -776,7 +823,6 @@
                 });
             } else {
                 isGuest = true;
-                // Guest mode ke liye generic user placeholder icon
                 currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 updateAvatars();
 
