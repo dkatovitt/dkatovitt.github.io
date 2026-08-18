@@ -36,20 +36,31 @@
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 WHITE APP HEADER 🔥 */
+        /* 🔥 WHITE APP HEADER (DK CONNECT & LOGO FIX) 🔥 */
         .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 2000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
-        .fb-top-left { display: flex; align-items: center; gap: 15px; }
-        .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
         
-        .fb-top-right { display: flex; align-items: center; gap: 10px; }
-        .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
+        .fb-top-left { display: flex; align-items: center; gap: 8px; }
+        .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
+        .fb-top-left video { height: 32px; width: 32px; mix-blend-mode: multiply; border-radius: 50%; object-fit: cover; }
+        
+        .fb-top-right { display: flex; align-items: center; gap: 8px; }
+        .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
         .fb-icon-btn:hover { background: #d8dadf; }
-        .fb-icon-btn .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+        
+        /* 🔥 CLEAN NOTIFICATION BADGE FIX (NO MORE GLITCH) 🔥 */
+        .fb-icon-btn .badge, .nav-item .badge, .fb-tab .badge { 
+            position: absolute; top: -3px; right: -3px; 
+            background: #e41e3f; color: #fff; 
+            font-size: 10px; font-weight: bold; 
+            min-width: 18px; height: 18px; padding: 0 3px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
         
         /* WHITE FB TABS ROW */
         .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; border-top: 1px solid #ddd; }
-        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #65676b; font-size: 24px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
+        .fb-tab { flex: 1; display: flex; justify-content: center; align-items: center; padding: 12px 0; color: #65676b; font-size: 22px; cursor: pointer; position: relative; transition: 0.3s; text-decoration: none; }
         .fb-tab:hover { background: #f2f2f2; border-radius: 8px; }
         .fb-tab.active { color: #1877F2; } 
         .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
@@ -84,14 +95,14 @@
         /* 🔥 WHITE MIDDLE FEED AREA 🔥 */
         .feed { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        .fb-create-post { background: #ffffff; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);}
-        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; cursor: pointer;}
+        .fb-create-post { background: #ffffff; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; cursor: pointer; }
         .fb-create-post .input-box { flex: 1; background: #f0f2f5; padding: 10px 15px; border-radius: 30px; color: #65676b; font-size: 15px; cursor: pointer; transition: 0.3s; }
         .fb-create-post .input-box:hover { background: #e4e6eb; }
         .fb-create-post i { color: #45bd62; font-size: 24px; cursor: pointer; padding: 5px; transition: 0.3s; }
         .fb-create-post i:hover { transform: scale(1.1); }
 
-        .fb-stories-wrapper { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); overflow: hidden; padding-bottom: 15px;}
+        .fb-stories-wrapper { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); overflow: hidden; padding-bottom: 15px; }
         .fb-story-tabs { display: flex; border-bottom: 1px solid #ddd; }
         .story-tab { flex: 1; text-align: center; padding: 15px; color: #65676b; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
         .story-tab.active { color: #1877F2; border-bottom: 3px solid #1877F2; }
@@ -109,7 +120,7 @@
 
         .story-card.user-card img.bg, .story-card.user-card video.bg { width: 100%; height: 100%; object-fit: cover; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
-        .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1px solid #fff;}
+        .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
 
         /* POST CARDS */
@@ -122,7 +133,7 @@
         
         .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #050505; line-height: 1.5; }
         .post-media { width: 100%; }
-        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; display: block; border-top: 1px solid #eee; border-bottom: 1px solid #eee;}
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; display: block; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
         
         .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #65676b; font-size: 13px; border-bottom: 1px solid #ced0d4; }
         .post-stats .reactions { display: flex; align-items: center; gap: 5px; }
@@ -152,17 +163,17 @@
         .widget-title { color: #65676b; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
         .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
         .contact-item:hover { background: #e4e6eb; }
-        .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;}
+        .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
         .contact-item span { color: #050505; font-size: 14px; font-weight: bold; }
 
         .friend-sug-box { background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #ddd; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         
-        /* 🔥 FULL SCREEN IMAGE VIEWER 🔥 */
+        /* FULL SCREEN IMAGE VIEWER */
         #imageViewerModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column; }
         #imageViewerModal i { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 35px; cursor: pointer; padding: 10px; }
         #fullScreenImage { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
 
-        /* 🔥 SHARE MODAL (NEW BOTTOM SHEET) 🔥 */
+        /* SHARE MODAL */
         .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
         .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); text-align: center; }
@@ -177,7 +188,7 @@
         .icon-copy { background: #65676b; }
         .share-opt span { color: #050505; font-weight: bold; font-size: 13px; }
 
-        /* 🔥 CREATE POST MODAL 🔥 */
+        /* CREATE POST MODAL */
         .create-post-modal { background: #ffffff; border: 1px solid #ddd; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; }
         .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 15px; margin-bottom: 15px; }
         .create-post-header h3 { color: #050505; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
@@ -187,7 +198,7 @@
         #newPostText { width: 100%; background: transparent; border: none; color: #050505; font-size: 18px; outline: none; resize: none; min-height: 100px; font-family: Arial, sans-serif; }
         .publish-btn { width: 100%; background: #1877F2; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; }
 
-        /* 🔥 GUEST LOGIN POPUP 🔥 */
+        /* GUEST LOGIN POPUP */
         .guest-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .guest-popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
@@ -213,13 +224,13 @@
 
     <div id="overlay"></div>
 
-    <!-- 🔥 FULL SCREEN IMAGE VIEWER (NEW) 🔥 -->
+    <!-- FULL SCREEN IMAGE VIEWER -->
     <div id="imageViewerModal">
         <i class="fas fa-times" onclick="closeImageViewer()"></i>
         <img id="fullScreenImage" src="">
     </div>
 
-    <!-- 🔥 GUEST LOGIN POPUP (FIXED) 🔥 -->
+    <!-- GUEST LOGIN POPUP -->
     <div class="guest-popup-overlay" id="guestPopupOverlay">
         <div class="guest-popup-box">
             <i class="fas fa-user-lock" style="font-size: 50px; color: #1877F2; margin-bottom: 15px;"></i>
@@ -232,7 +243,7 @@
         </div>
     </div>
 
-    <!-- 🔥 CREATE POST MODAL 🔥 -->
+    <!-- CREATE POST MODAL -->
     <div class="guest-popup-overlay" id="createPostModalOverlay">
         <div class="create-post-modal">
             <div class="create-post-header">
@@ -267,11 +278,14 @@
         </div>
     </div>
 
-    <!-- 🔥 APP HEADER 🔥 -->
+    <!-- 🔥 APP HEADER WITH DK CONNECT & LOOPING VIDEO LOGO 🔥 -->
     <header class="fb-header">
         <div class="fb-top-row">
             <div class="fb-top-left">
-                <h1>facebook</h1>
+                <h1>
+                    DK Connect
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                </h1>
             </div>
             <div class="fb-top-right">
                 <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
@@ -301,7 +315,7 @@
         </div>
     </header>
 
-    <!-- 🔥 MAIN APP CONTAINER 🔥 -->
+    <!-- MAIN APP CONTAINER -->
     <div class="app-container">
         
         <aside class="sidebar" id="sidebar">
@@ -327,14 +341,12 @@
 
         <!-- MIDDLE FEED -->
         <main class="feed">
-            <!-- CREATE POST BUTTON -->
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
                 <i class="fas fa-images" style="color: #45bd62;" onclick="openCreatePostModal()"></i>
             </div>
 
-            <!-- STORIES SECTION -->
             <div class="fb-stories-wrapper">
                 <div class="fb-story-tabs">
                     <div class="story-tab active">Stories</div>
@@ -357,10 +369,7 @@
                 </div>
             </div>
 
-            <!-- 🔥 DYNAMIC POSTS CONTAINER 🔥 -->
-            <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;">
-                <!-- Posts will load here via JavaScript -->
-            </div>
+            <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;"></div>
         </main>
 
         <!-- RIGHT SIDEBAR -->
@@ -371,7 +380,6 @@
                 <span>DK Atovitt Support</span>
             </div>
             
-            <!-- Add Friend Suggestions Box -->
             <div class="friend-sug-box">
                 <h3 class="widget-title">People you may know</h3>
                 <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
@@ -384,7 +392,7 @@
 
     </div>
 
-    <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
+    <!-- MOBILE BOTTOM NAVIGATION -->
     <nav class="mobile-bottom-nav">
         <a href="social.html" class="nav-item active"><i class="fas fa-home"></i></a>
         <a href="video.html" class="nav-item"><i class="fas fa-video"></i></a>
@@ -393,7 +401,7 @@
         <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%;"></a>
     </nav>
 
-    <!-- 🔥 SHARE MODAL (NEW BOTTOM SHEET UI) 🔥 -->
+    <!-- SHARE MODAL -->
     <div id="shareModalOverlay" class="share-modal-overlay">
         <div class="share-modal-box">
             <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
@@ -415,16 +423,13 @@
         </div>
     </div>
 
-    <!-- HIDDEN FILE INPUT FOR STORY -->
     <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
 
-    <!-- JAVASCRIPT FOR LOGIC -->
     <script>
         let currentUserName = "Guest User";
         let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
         let isGuest = true;
 
-        // Overlay & Guest Check
         function checkGuest() {
             if(isGuest) {
                 document.getElementById('guestPopupOverlay').classList.add('active');
@@ -437,7 +442,6 @@
             document.getElementById('overlay').classList.remove('active');
         });
 
-        // 🔥 FULL SCREEN IMAGE VIEWER LOGIC 🔥
         function openImageViewer(src) {
             document.getElementById('fullScreenImage').src = src;
             document.getElementById('imageViewerModal').style.display = 'flex';
@@ -446,7 +450,6 @@
             document.getElementById('imageViewerModal').style.display = 'none';
         }
 
-        // 🔥 LOCAL STORAGE DB FOR POSTS, LIKES & COMMENTS 🔥
         const defaultPost = {
             id: 'post-yakshini-1',
             text: 'Get ready for the grand launch! Like and share to spread the word! 🎬',
@@ -464,7 +467,6 @@
 
         function initAndLoadPosts() {
             let posts = JSON.parse(localStorage.getItem('dk_posts'));
-            // Agar pehli baar website khul rahi hai, toh default post daal do
             if (!posts || posts.length === 0) {
                 posts = [defaultPost];
                 localStorage.setItem('dk_posts', JSON.stringify(posts));
@@ -474,7 +476,7 @@
 
         function renderAllPosts(posts) {
             const feedContainer = document.getElementById('postsFeedContainer');
-            feedContainer.innerHTML = ""; // Clear existing
+            feedContainer.innerHTML = "";
 
             posts.forEach(data => {
                 let mediaHTML = "";
@@ -486,12 +488,10 @@
                     }
                 }
 
-                // Likes checking
                 let heartClass = data.isLiked ? 'fas fa-heart' : 'far fa-thumbs-up';
                 let btnActive = data.isLiked ? 'active' : '';
                 let likeColor = data.isLiked ? 'color: #ff4d4d;' : '';
 
-                // Comments building
                 let commentsHTML = "";
                 if(data.comments) {
                     data.comments.forEach(c => {
@@ -547,10 +547,8 @@
             });
         }
 
-        // Like Logic (Saves to DB)
         function toggleLike(btn, postId) {
             if(checkGuest()) return;
-            
             let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
             let postIndex = posts.findIndex(p => p.id === postId);
             if(postIndex === -1) return;
@@ -561,14 +559,12 @@
             } else {
                 posts[postIndex].isLiked = true;
                 posts[postIndex].likes++;
-                simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, 2); // Earn 2 coins for like
+                simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, 2);
             }
-            
             localStorage.setItem('dk_posts', JSON.stringify(posts));
-            initAndLoadPosts(); // Refresh Feed instantly
+            initAndLoadPosts();
         }
 
-        // Comment Logic (Saves to DB)
         function toggleCommentSection(postId) {
             if(checkGuest()) return;
             const section = document.getElementById('comments-section-' + postId);
@@ -587,33 +583,24 @@
             if(postIndex === -1) return;
 
             if(!posts[postIndex].comments) posts[postIndex].comments = [];
-            
-            posts[postIndex].comments.push({
-                userName: currentUserName,
-                userPhoto: currentUserPhoto,
-                text: text
-            });
+            posts[postIndex].comments.push({ userName: currentUserName, userPhoto: currentUserPhoto, text: text });
 
             localStorage.setItem('dk_posts', JSON.stringify(posts));
-            simulateEarning({clientX: inputField.getBoundingClientRect().left, clientY: inputField.getBoundingClientRect().top}, 5); // Earn 5 coins for comment
-            initAndLoadPosts(); // Refresh Feed instantly
+            simulateEarning({clientX: inputField.getBoundingClientRect().left, clientY: inputField.getBoundingClientRect().top}, 5);
+            initAndLoadPosts();
         }
 
-        // Delete Post Logic
         function deletePost(postId) {
             if(confirm("Are you sure you want to delete this post?")) {
                 let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
                 posts = posts.filter(p => p.id !== postId);
                 localStorage.setItem('dk_posts', JSON.stringify(posts));
-                initAndLoadPosts(); // Refresh feed
+                initAndLoadPosts();
             }
         }
 
-        // Initialize on page load
         window.addEventListener('DOMContentLoaded', initAndLoadPosts);
 
-
-        // 🔥 CREATE NEW POST LOGIC 🔥
         let postMediaData = "";
         let postMediaType = ""; 
 
@@ -690,19 +677,16 @@
 
             setTimeout(() => {
                 let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-                posts.unshift(postObj); // Put new post at top
+                posts.unshift(postObj);
                 localStorage.setItem('dk_posts', JSON.stringify(posts));
-                
-                initAndLoadPosts(); // Refresh Feed
-                
+                initAndLoadPosts();
                 closeCreatePostModal();
                 publishBtn.innerHTML = 'Post';
                 publishBtn.disabled = false;
-                simulateEarning(null, 10); // 10 coins for posting
+                simulateEarning(null, 10);
             }, 1000);
         }
 
-        // 🔥 ADD FRIEND LOGIC 🔥
         function addFriend(btn) {
             if(checkGuest()) return;
             if(btn.innerText === "Add Friend") {
@@ -720,7 +704,6 @@
             }
         }
 
-        // SHARE UI LOGIC
         let currentSharePostId = null;
         function openShareModal(postId) {
             if(checkGuest()) return;
@@ -734,7 +717,6 @@
             simulateEarning(null, 5); 
         }
 
-        // FLOATING REWARD
         let currentBalance = 150.00;
         function simulateEarning(event, amount) {
             currentBalance += amount;
@@ -769,7 +751,6 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // LOGGED IN
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
                 currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
@@ -781,7 +762,6 @@
                     btn.addEventListener('click', () => { if(confirm("Logout?")) signOut(auth).then(() => window.location.reload()); });
                 });
             } else {
-                // GUEST
                 isGuest = true;
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
