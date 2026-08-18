@@ -131,7 +131,7 @@
         .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
         .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
-        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
@@ -390,6 +390,11 @@
                     </button>
                 </div>
 
+                <!-- 🔥 NEW GUEST BUTTON HERE 🔥 -->
+                <button type="button" class="auth-btn" onclick="window.location.href='index.html'" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login
+                </button>
+
                 <div class="auth-switch">
                     Don't have an account? <a onclick="toggleAuth('register')">Sign Up Here</a>
                 </div>
@@ -462,6 +467,11 @@
                         <i class="fab fa-facebook-f" style="font-size: 16px;"></i> Facebook
                     </button>
                 </div>
+
+                <!-- 🔥 NEW GUEST BUTTON HERE 🔥 -->
+                <button type="button" class="auth-btn" onclick="window.location.href='index.html'" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login
+                </button>
 
                 <div class="auth-switch">
                     Already have an account? <a onclick="toggleAuth('login')">Login Here</a>
@@ -1007,9 +1017,9 @@
             if(type === 'Audition') {
                 userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
             } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है!占 इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
             } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल float कर सकते हैं।";
+                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल कर सकते हैं।";
             } else if(type === 'Join') {
                 userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
             }
