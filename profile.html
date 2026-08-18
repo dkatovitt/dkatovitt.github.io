@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - DK Connect</title>
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE CSS */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 65px; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        
+        /* APP HEADER */
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; flex-direction: column; border-bottom: 1px solid #222; }
+        .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
+        .fb-top-left { display: flex; align-items: center; gap: 15px; }
+        .fb-top-left h1 { margin: 0; color: #fff; font-size: 22px; font-weight: 900; }
+        .fb-top-right { display: flex; align-items: center; gap: 10px; }
+        .fb-icon-btn { background: transparent; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; cursor: pointer; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #222; }
+        
+        /* APP GRID */
+        .app-container { max-width: 900px; margin: 0 auto; width: 100%; padding-bottom: 80px; }
+        
+        /* 🔥 PROFILE HEADER SECTION 🔥 */
+        .profile-header-container { background: #111; border-bottom: 1px solid #222; margin-bottom: 15px; border-radius: 0 0 12px 12px; overflow: hidden; }
+        
+        .cover-photo { width: 100%; height: 300px; background: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113') center/cover; position: relative; }
+        .edit-cover-btn { position: absolute; bottom: 15px; right: 15px; background: #fff; color: #000; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        
+        .profile-info-section { padding: 0 20px 20px 20px; position: relative; }
+        .profile-avatar-wrapper { position: relative; width: 150px; height: 150px; margin-top: -75px; border-radius: 50%; border: 4px solid #111; background: #000; display: inline-block; }
+        .profile-avatar-wrapper img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .edit-avatar-btn { position: absolute; bottom: 5px; right: 5px; background: #333; color: #fff; border: 2px solid #111; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; }
+        
+        .profile-details { margin-top: 10px; }
+        .profile-name { color: #fff; font-size: 28px; font-weight: bold; margin: 0; display: flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif; }
+        .profile-friends-count { color: #888; font-size: 14px; margin: 5px 0 15px 0; font-weight: bold; }
+        
+        .profile-actions-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 20px;}
+        .p-btn { flex: 1; padding: 10px 15px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; border: none; transition: 0.3s; }
+        .btn-add-story { background: #1877F2; color: #fff; }
+        .btn-add-story:hover { background: #166fe5; }
+        .btn-edit-profile { background: #333; color: #fff; }
+        .btn-edit-profile:hover { background: #444; }
+        .btn-dropdown { background: #333; color: #fff; width: 40px; flex: none; }
+        
+        /* TABS */
+        .profile-tabs { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 5px; }
+        .profile-tabs::-webkit-scrollbar { display: none; }
+        .p-tab { background: transparent; color: #888; border: none; padding: 15px 20px; font-size: 15px; font-weight: bold; cursor: pointer; white-space: nowrap; border-radius: 8px; transition: 0.3s; }
+        .p-tab:hover { background: #222; }
+        .p-tab.active { color: #1877F2; border-bottom: 3px solid #1877F2; border-radius: 8px 8px 0 0; }
+
+        /* 🔥 CONTENT GRIDS 🔥 */
+        .content-layout { display: grid; grid-template-columns: 350px 1fr; gap: 15px; padding: 0 10px; }
+        
+        /* Intro Widget */
+        .intro-widget { background: #111; border-radius: 12px; padding: 15px; border: 1px solid #222; }
+        .intro-widget h3 { color: #fff; margin: 0 0 15px 0; font-size: 18px; }
+        .intro-bio { text-align: center; color: #ccc; font-size: 14px; margin-bottom: 15px; }
+        .intro-edit-bio { width: 100%; background: #222; color: #fff; border: none; padding: 8px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+        .intro-details { display: flex; flex-direction: column; gap: 12px; }
+        .intro-item { display: flex; align-items: center; gap: 10px; color: #aaa; font-size: 14px; }
+        .intro-item i { font-size: 18px; color: #888; width: 20px; text-align: center; }
+        
+        /* Posts Feed */
+        .post-card { background: #111; border-radius: 12px; border: 1px solid #222; margin-bottom: 15px; overflow: hidden; }
+        .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
+        .post-user { display: flex; gap: 10px; align-items: center; }
+        .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .post-user-info h4 { margin: 0; color: #fff; font-size: 15px; }
+        .post-user-info p { margin: 2px 0 0 0; color: #888; font-size: 12px; }
+        .post-text { padding: 0 15px 10px 15px; font-size: 14px; color: #e4e6eb; }
+        .post-media img { width: 100%; max-height: 400px; object-fit: cover; }
+        
+        .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; border-bottom: 1px solid #222; }
+        .post-actions { display: flex; justify-content: space-between; padding: 4px 15px; }
+        .action-btn { flex: 1; display: flex; justify-content: center; gap: 8px; background: transparent; border: none; color: #aaa; font-weight: bold; cursor: pointer; padding: 10px 0; border-radius: 4px; }
+        .action-btn:hover { background: #222; }
+
+        /* Photos Grid Tab */
+        .photos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; display: none; }
+        .photos-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .photos-grid img:hover { filter: brightness(1.2); }
+
+        @media (max-width: 850px) {
+            .content-layout { grid-template-columns: 1fr; }
+            .cover-photo { height: 200px; }
+            .profile-avatar-wrapper { width: 120px; height: 120px; margin-top: -60px; }
+        }
+
+        /* MOBILE BOTTOM NAVIGATION */
+        .mobile-bottom-nav { display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
+        .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 20%; }
+        .nav-item i { font-size: 22px; }
+        .nav-item.active { color: #1877F2; }
+        
+        @media (max-width: 1000px) { .mobile-bottom-nav { display: flex; } }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 APP HEADER 🔥 -->
+    <header class="fb-header">
+        <div class="fb-top-row">
+            <div class="fb-top-left">
+                <i class="fas fa-arrow-left" style="color:#fff; font-size:20px; cursor:pointer;" onclick="window.location.href='social.html'"></i>
+                <h1 class="current-user-name">Profile</h1>
+            </div>
+            <div class="fb-top-right">
+                <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+                <button class="fb-icon-btn" onclick="window.location.href='wallet.html'"><i class="fas fa-wallet" style="color: #e6c875;"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🔥 PROFILE CONTENT 🔥 -->
+    <div class="app-container">
+        
+        <!-- Header / Info -->
+        <div class="profile-header-container">
+            <div class="cover-photo">
+                <button class="edit-cover-btn" onclick="alert('Cover upload feature coming soon!')"><i class="fas fa-camera"></i> Edit cover photo</button>
+            </div>
+            
+            <div class="profile-info-section">
+                <div class="profile-avatar-wrapper">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" id="mainProfilePic">
+                    <div class="edit-avatar-btn" onclick="window.location.href='profile-edit.html'"><i class="fas fa-camera"></i></div>
+                </div>
+                
+                <div class="profile-details">
+                    <h2 class="profile-name"><span class="current-user-name">VIP Member</span> <i class="fas fa-check-circle" style="color: #e6c875; font-size: 18px;" title="VIP Verified"></i></h2>
+                    <p class="profile-friends-count">1.2K Friends • <span style="color:#e6c875;">150 ATVT Earned</span></p>
+                    
+                    <div class="profile-actions-row">
+                        <button class="p-btn btn-add-story" onclick="window.location.href='social.html'"><i class="fas fa-plus-circle"></i> Add to story</button>
+                        <button class="p-btn btn-edit-profile" onclick="window.location.href='profile-edit.html'"><i class="fas fa-pen"></i> Edit profile</button>
+                        <button class="p-btn btn-dropdown"><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
+
+                    <div class="profile-tabs">
+                        <button class="p-tab active" onclick="switchProfileTab('posts', this)">Posts</button>
+                        <button class="p-tab" onclick="switchProfileTab('photos', this)">Photos</button>
+                        <button class="p-tab" onclick="switchProfileTab('reels', this)">Reels</button>
+                        <button class="p-tab" onclick="alert('Friends list coming soon')">Friends</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Grid -->
+        <div class="content-layout">
+            
+            <!-- LEFT: Intro Widget -->
+            <div class="left-column">
+                <div class="intro-widget">
+                    <h3>Intro</h3>
+                    <p class="intro-bio">Creator | Movie Enthusiast | Proud member of DK Atovitt Ecosystem 🎬🔥</p>
+                    <button class="intro-edit-bio" onclick="window.location.href='profile-edit.html'">Edit bio</button>
+                    
+                    <div class="intro-details">
+                        <div class="intro-item"><i class="fas fa-briefcase"></i> Works at <b>DK Atovitt VIP</b></div>
+                        <div class="intro-item"><i class="fas fa-graduation-cap"></i> Studied Acting & Media</div>
+                        <div class="intro-item"><i class="fas fa-home"></i> Lives in <b>India</b></div>
+                        <div class="intro-item"><i class="fas fa-clock"></i> Joined August 2026</div>
+                        <div class="intro-item"><i class="fas fa-id-card" style="color: #e6c875;"></i> <b id="profileDkId" style="color: #e6c875;">DK-..........</b></div>
+                    </div>
+                    
+                    <button class="intro-edit-bio" style="margin-top: 15px; background: transparent; border: 1px solid #333;" onclick="window.location.href='profile-edit.html'">Edit details</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Posts Feed & Photo Grid -->
+            <div class="right-column">
+                
+                <!-- Posts View -->
+                <div id="postsView">
+                    <!-- Create Post Box (Mini) -->
+                    <div class="post-card" style="display:flex; align-items:center; padding: 15px; gap: 15px; cursor:pointer;" onclick="window.location.href='social.html'">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width:40px; height:40px; border-radius:50%;">
+                        <div style="background:#222; flex:1; padding:10px 15px; border-radius:20px; color:#aaa; font-size:14px;">What's on your mind?</div>
+                        <i class="fas fa-images" style="color:#45bd62; font-size:20px;"></i>
+                    </div>
+
+                    <!-- User Post 1 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
+                                <div class="post-user-info">
+                                    <h4 class="current-user-name">VIP Member</h4>
+                                    <p>August 16 • <i class="fas fa-user-friends"></i></p>
+                                </div>
+                            </div>
+                            <i class="fas fa-ellipsis-h" style="color:#888;"></i>
+                        </div>
+                        <div class="post-text">Super excited to join the DK Atovitt Ecosystem! Earned my first ATVT coins today! 🪙🚀</div>
+                        <div class="post-stats">
+                            <div class="reactions"><i class="fas fa-thumbs-up" style="color:#1877F2;"></i> 45</div>
+                            <span>12 Comments</span>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn"><i class="far fa-thumbs-up"></i> Like</button>
+                            <button class="action-btn"><i class="far fa-comment"></i> Comment</button>
+                            <button class="action-btn"><i class="fas fa-share"></i> Share</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photos View -->
+                <div class="photos-grid" id="photosView">
+                    <img src="images/movies/yakshini-bg.jpg" alt="Photo">
+                    <img src="images/movies/gallery1.png" alt="Photo">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="Photo">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113" alt="Photo">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔥 MOBILE BOTTOM NAV 🔥 -->
+    <nav class="mobile-bottom-nav">
+        <a href="social.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="javascript:void(0)" class="nav-item" onclick="alert('Video feed coming soon')">
+            <i class="fas fa-video"></i>
+            <span>Video</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-th-large" style="font-size: 24px;"></i>
+            <span>Dash</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+            <div style="position: relative;">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid #1877F2;">
+            </div>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- FIREBASE FETCH PROFILE DATA -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const name = user.displayName || "VIP Member";
+                const photo = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                let uidSnippet = user.uid ? user.uid.substring(0, 10) : "1039AJD83";
+                let userDkId = "DK-" + uidSnippet;
+
+                document.querySelectorAll('.current-user-name').forEach(el => el.innerText = name);
+                document.querySelectorAll('.current-user-avatar').forEach(img => img.src = photo);
+                document.getElementById('profileDkId').innerText = userDkId;
+            } else {
+                // Not logged in -> Guest View
+                document.getElementById('profileDkId').innerText = "Login to earn ATVT";
+            }
+        });
+
+        // Tab Switching Logic
+        window.switchProfileTab = function(tabName, btn) {
+            document.querySelectorAll('.p-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if(tabName === 'posts') {
+                document.getElementById('postsView').style.display = 'block';
+                document.getElementById('photosView').style.display = 'none';
+            } else if(tabName === 'photos') {
+                document.getElementById('postsView').style.display = 'none';
+                document.getElementById('photosView').style.display = 'grid';
+            } else {
+                alert(tabName + " section is coming soon!");
+            }
+        };
+    </script>
+</body>
+</html>
