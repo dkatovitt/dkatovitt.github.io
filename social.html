@@ -27,7 +27,6 @@
         ::-webkit-scrollbar-thumb { background: #bcc0c4; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #8a8d91; }
 
-        /* GOOGLE TRANSLATE HIDE BAR CSS */
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
@@ -39,20 +38,14 @@
         
         /* 🔥 WHITE APP HEADER 🔥 */
         .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 2000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
-        
         .fb-top-left { display: flex; align-items: center; gap: 15px; }
-        .fb-top-left .menu-btn { background: none; border: none; color: #050505; font-size: 22px; cursor: pointer; padding: 0; display: none; }
         .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 26px; font-weight: 900; letter-spacing: -0.5px; }
-        .fb-top-left video { height: 35px; mix-blend-mode: multiply; transform: scale(1.5); transform-origin: left center; margin-left: 10px; }
         
         .fb-top-right { display: flex; align-items: center; gap: 10px; }
-        .fb-icon-btn { background: transparent; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
-        .fb-icon-btn:hover { background: #e4e6eb; }
-        .fb-icon-btn.fill { background: #e4e6eb; }
-        .fb-icon-btn.fill:hover { background: #d8dadf; }
-        .fb-icon-btn .badge { position: absolute; top: 0px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+        .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #d8dadf; }
+        .fb-icon-btn .badge { position: absolute; top: -2px; right: -2px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
         
         /* WHITE FB TABS ROW */
         .fb-tabs-row { display: flex; justify-content: space-between; padding: 0 10px; border-top: 1px solid #ddd; }
@@ -60,14 +53,13 @@
         .fb-tab:hover { background: #f2f2f2; border-radius: 8px; }
         .fb-tab.active { color: #1877F2; } 
         .fb-tab.active::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px; background: #1877F2; border-radius: 3px 3px 0 0; }
-        .fb-tab .badge { position: absolute; top: 5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 10px; border: 2px solid #fff; font-weight: bold;}
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
         /* SMART DROPDOWN PROFILE MENU */
-        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; animation: dropFade 0.2s ease; text-align: left; }
+        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; }
+        .dropdown-menu.show { display: block; animation: dropFade 0.2s ease; }
         @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .dropdown-menu.show { display: block; }
         .dropdown-menu a { color: #050505; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; transition: 0.3s; }
         .dropdown-menu a:hover { background: #f2f2f2; }
         .dropdown-menu a i { color: #1877F2; width: 20px; text-align: center; }
@@ -78,43 +70,25 @@
         /* 🔥 WHITE SIDEBAR MENU 🔥 */
         .sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; z-index: 1600; padding-right: 10px; }
         .sidebar::-webkit-scrollbar { display: none; }
-        
         .fb-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .fb-menu-profile { display: flex; align-items: center; gap: 12px; cursor: pointer; }
         .fb-menu-profile img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; }
         .fb-menu-profile-info h3 { margin: 0; font-size: 16px; color: #050505; font-weight: bold; }
         .fb-menu-profile-info p { color: #65676b; font-size: 12px; margin: 2px 0 0 0; }
         
-        .fb-menu-section-title { color: #65676b; font-size: 14px; font-weight: bold; margin: 15px 0 10px 0; }
-        
-        .fb-shortcuts-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 10px; }
-        .fb-shortcuts-row::-webkit-scrollbar { display: none; }
-        .shortcut-card { min-width: 75px; max-width: 75px; display: flex; flex-direction: column; gap: 5px; cursor: pointer; transition: 0.3s; }
-        .shortcut-card:hover { transform: scale(1.02); }
-        .shortcut-card img, .shortcut-card .icon-box { width: 75px; height: 75px; border-radius: 12px; object-fit: cover; border: 1px solid #ddd; background: #fff;}
-        .shortcut-card .icon-box { display: flex; align-items: center; justify-content: center; font-size: 28px; color: #1877F2; }
-        .shortcut-card span { color: #050505; font-size: 12px; font-weight: bold; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
         .fb-menu-item { display: flex; align-items: center; gap: 15px; padding: 12px 10px; color: #050505; text-decoration: none; font-size: 15px; font-weight: bold; border-radius: 10px; transition: 0.3s; margin-bottom: 2px; }
         .fb-menu-item:hover { background: #e4e6eb; }
         .fb-menu-item i { font-size: 20px; width: 25px; text-align: center; }
-
-        .fb-menu-see-more { width: 100%; background: #e4e6eb; color: #050505; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; margin-top: 5px; transition: 0.3s; }
-        .fb-menu-see-more:hover { background: #d8dadf; }
-
         .fb-menu-divider { border: 0; height: 1px; background: #ddd; margin: 15px 0; }
-
-        .fb-logout-btn { width: 100%; background: #fff; color: #1877F2; border: 1px solid #1877F2; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; margin-bottom: 20px; transition: 0.3s; }
-        .fb-logout-btn:hover { background: rgba(24,119,242,0.1); }
 
         /* 🔥 WHITE MIDDLE FEED AREA 🔥 */
         .feed { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; width: 100%; }
         
         .fb-create-post { background: #ffffff; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2);}
-        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; flex-shrink: 0; cursor: pointer;}
-        .fb-create-post .input-box { flex: 1; background: #f0f2f5; padding: 10px 15px; border-radius: 30px; color: #65676b; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; cursor: pointer;}
+        .fb-create-post .input-box { flex: 1; background: #f0f2f5; padding: 10px 15px; border-radius: 30px; color: #65676b; font-size: 15px; cursor: pointer; transition: 0.3s; }
         .fb-create-post .input-box:hover { background: #e4e6eb; }
-        .fb-create-post i { color: #45bd62; font-size: 24px; cursor: pointer; padding: 5px; flex-shrink: 0; transition: 0.3s; }
+        .fb-create-post i { color: #45bd62; font-size: 24px; cursor: pointer; padding: 5px; transition: 0.3s; }
         .fb-create-post i:hover { transform: scale(1.1); }
 
         .fb-stories-wrapper { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); overflow: hidden; padding-bottom: 15px;}
@@ -128,27 +102,23 @@
         
         .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #e4e6eb; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #ddd; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 1px 3px rgba(0,0,0,0.1); transition: 0.3s; }
         .story-card:hover { filter: brightness(0.95); }
-        
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
         .story-card.create-card .create-bottom { height: 35%; background: #ffffff; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
         .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #fff; font-size: 20px; font-weight: bold; }
-        .story-card.create-card.reel-btn .plus-btn { background: #ff4d4d; }
         .story-card.create-card span { color: #050505; font-size: 13px; font-weight: bold; }
 
-        .story-card.user-card img.bg, .story-card.user-card video.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+        .story-card.user-card img.bg, .story-card.user-card video.bg { width: 100%; height: 100%; object-fit: cover; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1px solid #fff;}
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
-        
-        /* WHITE POST CARDS */
+
+        /* POST CARDS */
         .post-card { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); animation: fadeInForm 0.4s ease; overflow: hidden; position: relative; }
         .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
         .post-user { display: flex; gap: 10px; cursor: pointer; }
         .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
         .post-user-info h4 { margin: 0; color: #050505; font-size: 15px; display: flex; align-items: center; gap: 5px; font-weight: bold; }
-        .post-user-info h4 span.action { color: #65676b; font-weight: normal; font-size: 14px; }
-        .post-user-info p { margin: 2px 0 0 0; color: #65676b; font-size: 12px; display: flex; align-items: center; gap: 5px; }
-        .post-options { display: flex; gap: 15px; color: #65676b; font-size: 18px; cursor: pointer; padding-top: 5px;}
+        .post-user-info p { margin: 2px 0 0 0; color: #65676b; font-size: 12px; }
         
         .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #050505; line-height: 1.5; }
         .post-media { width: 100%; }
@@ -163,11 +133,9 @@
         .action-btn:hover { background: #f2f2f2; }
         .action-btn.active { color: #1877F2; }
         
-        /* WHITE COMMENTS SECTION */
-        .post-comments-section { padding: 10px 15px 15px 15px; background: #ffffff; display: none; border-top: 1px solid #ced0d4; }
+        /* COMMENTS SECTION */
+        .post-comments-section { padding: 10px 15px 15px 15px; background: #ffffff; display: none; }
         .comments-list { max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
-        .comments-list::-webkit-scrollbar { width: 4px; }
-        .comments-list::-webkit-scrollbar-thumb { background: #bcc0c4; border-radius: 10px; }
         .comment-item { display: flex; gap: 10px; }
         .comment-item img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
         .comment-bubble { background: #f0f2f5; padding: 10px 12px; border-radius: 18px; border-top-left-radius: 4px; max-width: 85%; }
@@ -184,60 +152,59 @@
         .widget-title { color: #65676b; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
         .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
         .contact-item:hover { background: #e4e6eb; }
-        .contact-item .img-wrap { position: relative; }
         .contact-item img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;}
-        .contact-item .status { width: 9px; height: 9px; background: #31a24c; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #fff; }
         .contact-item span { color: #050505; font-size: 14px; font-weight: bold; }
 
-        /* SUGGESTION BOX (WHITE) */
         .friend-sug-box { background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #ddd; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .friend-sug-box h3 { color: #65676b; margin-top:0; }
+        
+        /* 🔥 FULL SCREEN IMAGE VIEWER 🔥 */
+        #imageViewerModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column; }
+        #imageViewerModal i { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 35px; cursor: pointer; padding: 10px; }
+        #fullScreenImage { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
 
-        /* 🔥 WHITE CREATE POST MODAL 🔥 */
+        /* 🔥 SHARE MODAL (NEW BOTTOM SHEET) 🔥 */
+        .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
+        .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); text-align: center; }
+        .share-modal-box h3 { color: #050505; margin: 0 0 20px 0; font-size: 18px; }
+        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+        .share-options { display: flex; justify-content: space-around; padding: 10px 0; }
+        .share-opt { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; transition: 0.3s; }
+        .share-opt:hover { transform: translateY(-5px); }
+        .share-opt .icon { width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .icon-whatsapp { background: #25D366; }
+        .icon-facebook { background: #1877F2; }
+        .icon-copy { background: #65676b; }
+        .share-opt span { color: #050505; font-weight: bold; font-size: 13px; }
+
+        /* 🔥 CREATE POST MODAL 🔥 */
         .create-post-modal { background: #ffffff; border: 1px solid #ddd; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; }
         .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 15px; margin-bottom: 15px; }
         .create-post-header h3 { color: #050505; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
-        .create-post-close { background: #e4e6eb; color: #65676b; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 18px; cursor: pointer; position: absolute; right: 20px; top: 15px; transition: 0.3s; }
-        .create-post-close:hover { background: #d8dadf; color: #050505; }
+        .create-post-close { background: #e4e6eb; color: #65676b; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 18px; cursor: pointer; position: absolute; right: 20px; top: 15px; }
         .create-post-user { display: flex; gap: 12px; align-items: center; margin-bottom: 15px; }
         .create-post-user img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
-        .create-post-user-info h4 { color: #050505; margin: 0 0 4px 0; font-size: 15px; }
-        .create-post-user-info span { background: #e4e6eb; color: #050505; font-size: 11px; padding: 4px 8px; border-radius: 5px; font-weight: bold; display: flex; align-items: center; gap: 5px; width: fit-content; }
-        
         #newPostText { width: 100%; background: transparent; border: none; color: #050505; font-size: 18px; outline: none; resize: none; min-height: 100px; font-family: Arial, sans-serif; }
-        #newPostText::placeholder { color: #888; }
-        
-        .add-to-post-box { border: 1px solid #ced0d4; border-radius: 8px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .add-to-post-icons { display: flex; gap: 20px; font-size: 22px; cursor: pointer; }
-        .add-to-post-icons i { transition: 0.3s; }
-        .add-to-post-icons i:hover { transform: scale(1.2); }
-        
-        .publish-btn { width: 100%; background: #1877F2; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
-        .publish-btn:hover { background: #166fe5; }
+        .publish-btn { width: 100%; background: #1877F2; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; }
 
-        /* WHITE SHARE MODAL */
-        .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); }
-        .share-modal-box h3 { color: #050505; }
-        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
-        .share-opt span { color: #050505; font-weight: bold; }
+        /* 🔥 GUEST LOGIN POPUP 🔥 */
+        .guest-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .guest-popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .guest-popup-btn { background: #1877F2; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        /* WHITE MOBILE BOTTOM NAV */
+        /* MOBILE BOTTOM NAV */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
-            .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #ffffff; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
-            .sidebar.active { right: 0; }
-            .right-sidebar { display: none; }
+            .sidebar, .right-sidebar { display: none; }
             .fb-top-left .menu-btn { display: none; } 
-            
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #ddd; z-index: 2000; justify-content: space-around; padding: 10px 0; }
-            .nav-item { color: #65676b; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; transition: 0.3s; width: 20%; position: relative; }
+            .nav-item { color: #65676b; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 20%; position: relative; }
             .nav-item i { font-size: 22px; }
             .nav-item.active { color: #1877F2; }
-            .nav-item.active i { transform: scale(1.1); }
-            .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+            .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         }
-
         .floating-reward { position: fixed; color: #1877F2; font-size: 22px; font-weight: 900; pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
     </style>
@@ -246,55 +213,55 @@
 
     <div id="overlay"></div>
 
-    <!-- 🔥 GUEST LOGIN POPUP 🔥 -->
-    <div class="guest-popup-overlay" id="guestPopupOverlay" style="background:rgba(255,255,255,0.9);">
-        <div class="guest-popup-box custom-alert-box" style="background:#fff; box-shadow:0 10px 40px rgba(0,0,0,0.2);">
-            <div class="custom-alert-logo" style="background:#f0f2f5; border:1px solid #ddd;">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="mix-blend-mode: multiply;"></video>
-            </div>
-            <h3 class="custom-alert-title" style="color: #1877F2;">Login Required</h3>
-            <p class="custom-alert-msg" style="color:#65676b; margin-bottom: 20px;">Unlock premium features! Login or create a free VIP account to Earn ATVT coins by liking, commenting, and posting.</p>
+    <!-- 🔥 FULL SCREEN IMAGE VIEWER (NEW) 🔥 -->
+    <div id="imageViewerModal">
+        <i class="fas fa-times" onclick="closeImageViewer()"></i>
+        <img id="fullScreenImage" src="">
+    </div>
+
+    <!-- 🔥 GUEST LOGIN POPUP (FIXED) 🔥 -->
+    <div class="guest-popup-overlay" id="guestPopupOverlay">
+        <div class="guest-popup-box">
+            <i class="fas fa-user-lock" style="font-size: 50px; color: #1877F2; margin-bottom: 15px;"></i>
+            <h3 style="color: #1877F2; margin:0 0 10px 0;">Login Required</h3>
+            <p style="color:#65676b; margin-bottom: 20px; font-size:14px;">Unlock premium features! Login or create a free VIP account to Earn ATVT coins by liking, commenting, and posting.</p>
             <div style="display:flex; gap:10px;">
-                <button class="guest-popup-btn" onclick="document.getElementById('guestPopupOverlay').classList.remove('active')" style="background:#e4e6eb; border:none; color:#050505; box-shadow:none;">Cancel</button>
-                <button class="guest-popup-btn" onclick="window.location.href='auth.html'" style="background:#1877F2; color:#fff; flex:1; box-shadow:none;">Login / Sign Up</button>
+                <button class="guest-popup-btn" onclick="document.getElementById('guestPopupOverlay').classList.remove('active')" style="background:#e4e6eb; color:#050505;">Cancel</button>
+                <button class="guest-popup-btn" onclick="window.location.href='auth.html'">Login / Sign Up</button>
             </div>
         </div>
     </div>
 
     <!-- 🔥 CREATE POST MODAL 🔥 -->
-    <div class="guest-popup-overlay" id="createPostModalOverlay" style="background:rgba(255,255,255,0.9);">
+    <div class="guest-popup-overlay" id="createPostModalOverlay">
         <div class="create-post-modal">
             <div class="create-post-header">
                 <h3>Create post</h3>
                 <button class="create-post-close" onclick="closeCreatePostModal()">&times;</button>
             </div>
-            
             <div class="create-post-user">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
-                <div class="create-post-user-info">
-                    <h4 class="current-user-name">User Name</h4>
-                    <span><i class="fas fa-globe-americas"></i> Public <i class="fas fa-caret-down" style="margin-left: 2px;"></i></span>
+                <div>
+                    <h4 class="current-user-name" style="margin:0;">User Name</h4>
+                    <span style="font-size:11px; background:#e4e6eb; padding:2px 6px; border-radius:4px; font-weight:bold;">Public</span>
                 </div>
             </div>
-            
             <textarea id="newPostText" placeholder="What's on your mind?"></textarea>
             
             <div id="newPostImgPreview" style="display:none; position:relative; margin-bottom:15px; border-radius:8px; border:1px solid #ddd; padding:8px; background:#f0f2f5;">
                 <img src="" id="previewSelectedImg" style="display:none;">
                 <video id="previewSelectedVid" style="display:none; width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video>
-                <button class="remove-img-btn" onclick="removePostImg()">&times;</button>
+                <button onclick="removePostImg()" style="position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.6); color:#fff; border:none; border-radius:50%; width:30px; height:30px; cursor:pointer;">&times;</button>
             </div>
             
-            <div class="add-to-post-box">
+            <div style="border: 1px solid #ced0d4; border-radius: 8px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                 <span style="color: #050505; font-size: 15px; font-weight: bold;">Add to your post</span>
-                <div class="add-to-post-icons">
+                <div style="display: flex; gap: 20px; font-size: 22px; cursor: pointer;">
                     <i class="fas fa-images" style="color: #45bd62;" onclick="document.getElementById('postMediaInput').click()"></i>
-                    <i class="fas fa-user-tag" style="color: #1877f2;" onclick="alert('Feature coming soon')"></i>
+                    <i class="fas fa-user-tag" style="color: #1877f2;"></i>
                     <i class="fas fa-smile" style="color: #f7b928;"></i>
-                    <i class="fas fa-map-marker-alt" style="color: #f5533d;"></i>
                 </div>
             </div>
-            
             <button class="publish-btn" id="publishBtn" onclick="publishNewPost()">Post</button>
             <input type="file" id="postMediaInput" accept="image/*,video/*" style="display: none;" onchange="previewPostMedia(this)">
         </div>
@@ -307,9 +274,9 @@
                 <h1>facebook</h1>
             </div>
             <div class="fb-top-right">
-                <button class="fb-icon-btn fill" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
-                <button class="fb-icon-btn fill"><i class="fas fa-search"></i></button>
-                <button class="fb-icon-btn fill" onclick="window.location.href='messages.html'">
+                <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
+                <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+                <button class="fb-icon-btn" onclick="window.location.href='messages.html'">
                     <i class="fab fa-facebook-messenger"></i>
                     <span class="badge">2</span>
                 </button>
@@ -319,17 +286,16 @@
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
             <a href="video.html" class="fb-tab"><i class="fas fa-video"></i></a>
-            <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
-            <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
+            <a href="#" class="fb-tab"><i class="fas fa-users"></i></a>
             <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
-            <div class="fb-tab profile-dropdown-container">
+            <div class="fb-tab">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Login / Sign Up</a>
+                    <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -339,160 +305,61 @@
     <div class="app-container">
         
         <aside class="sidebar" id="sidebar">
-            <div class="sidebar-inner" style="padding-bottom: 80px;">
-                <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: -15px;" class="mobile-only-close">
-                    <i class="fas fa-times" onclick="document.getElementById('sidebar').classList.remove('active'); document.getElementById('overlay').classList.remove('active');" style="color: #65676b; font-size: 24px; cursor: pointer;"></i>
-                </div>
-
-                <div class="fb-menu-header">
-                    <div class="fb-menu-profile" onclick="window.location.href='auth.html'">
-                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
-                        <div class="fb-menu-profile-info">
-                            <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
-                            <p id="sidebarDkId">Login to Earn ATVT</p>
-                        </div>
+            <div class="fb-menu-header">
+                <div class="fb-menu-profile" onclick="window.location.href='profile.html'">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" class="current-user-avatar">
+                    <div class="fb-menu-profile-info">
+                        <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
+                        <p>Welcome to DK Connect</p>
                     </div>
                 </div>
-
-                <div style="display: flex; flex-direction: column; gap: 2px;">
-                    <a href="profile.html" class="fb-menu-item">
-                        <i class="fas fa-user-circle" style="color: #1877F2;"></i>
-                        <span>Find Friends</span>
-                    </a>
-                    <a href="social.html" class="fb-menu-item">
-                        <i class="fas fa-newspaper" style="color: #1877F2;"></i>
-                        <span>Feeds</span>
-                    </a>
-                    <a href="#" class="fb-menu-item">
-                        <i class="fas fa-store" style="color: #1877F2;"></i>
-                        <span>Marketplace</span>
-                    </a>
-                    <a href="video.html" class="fb-menu-item">
-                        <i class="fas fa-video" style="color: #1877F2;"></i>
-                        <span>Video</span>
-                    </a>
-                    <a href="dashboard.html" class="fb-menu-item">
-                        <i class="fas fa-th-large" style="color: #1877F2;"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </div>
-                <button class="fb-menu-see-more">See more</button>
-                <hr class="fb-menu-divider">
-
-                <button class="fb-logout-btn logout-action"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
             </div>
+
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <a href="profile.html" class="fb-menu-item"><i class="fas fa-user-circle" style="color: #1877F2;"></i><span>Find Friends</span></a>
+                <a href="social.html" class="fb-menu-item"><i class="fas fa-newspaper" style="color: #1877F2;"></i><span>Feeds</span></a>
+                <a href="video.html" class="fb-menu-item"><i class="fas fa-video" style="color: #1877F2;"></i><span>Video</span></a>
+                <a href="dashboard.html" class="fb-menu-item"><i class="fas fa-th-large" style="color: #1877F2;"></i><span>Dashboard</span></a>
+            </div>
+            <hr class="fb-menu-divider">
+            <button class="fb-logout-btn logout-action"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
         </aside>
 
         <!-- MIDDLE FEED -->
         <main class="feed">
-            
-            <!-- 🔥 CREATE POST BUTTON 🔥 -->
+            <!-- CREATE POST BUTTON -->
             <div class="fb-create-post">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="User">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
+                <i class="fas fa-images" style="color: #45bd62;" onclick="openCreatePostModal()"></i>
             </div>
 
-            <!-- STORIES & REELS SECTION -->
+            <!-- STORIES SECTION -->
             <div class="fb-stories-wrapper">
                 <div class="fb-story-tabs">
-                    <div class="story-tab active" id="tab-stories" onclick="switchTab('stories')">Stories</div>
-                    <div class="story-tab" id="tab-reels" onclick="switchTab('reels')">Reels</div>
+                    <div class="story-tab active">Stories</div>
+                    <div class="story-tab" onclick="window.location.href='video.html'">Reels</div>
                 </div>
                 
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
-                        <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
+                        <div class="create-bg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
                             <span>Create story</span>
                         </div>
                     </div>
-                    
                     <div class="story-card user-card">
-                        <img src="images/movies/yakshini-poster.png" class="bg" alt="Story">
+                        <img src="images/movies/yakshini-poster.png" class="bg">
                         <div class="user-ring"><img src="images/movies/gallery1.png"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
                 </div>
-
-                <div class="fb-stories-scroll" id="reelsContainer" style="display:none;">
-                    <div class="story-card create-card reel-btn" onclick="openReelPicker()">
-                        <div class="create-bg" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113'); opacity:0.8;"></div>
-                        <div class="create-bottom">
-                            <div class="plus-btn"><i class="fas fa-video"></i></div>
-                            <span>Create reel</span>
-                        </div>
-                    </div>
-                    
-                    <div class="story-card user-card" onclick="window.location.href='video.html'">
-                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Reel">
-                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
-                        <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 1.2M</span>
-                    </div>
-                </div>
             </div>
 
-            <!-- 🔥 POSTS CONTAINER 🔥 -->
+            <!-- 🔥 DYNAMIC POSTS CONTAINER 🔥 -->
             <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;">
-                
-                <!-- DEFAULT STATIC POST -->
-                <div class="post-card" id="post-1">
-                    <div class="post-header">
-                        <div class="post-user">
-                            <img src="images/movies/gallery1.png" alt="DK Atovitt">
-                            <div class="post-user-info">
-                                <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge" style="color:#1877F2;"></i></h4>
-                                <p>18h • <i class="fas fa-globe-americas"></i></p>
-                            </div>
-                        </div>
-                        <div class="post-options">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </div>
-                    </div>
-                    <div class="post-text">
-                        Get ready for the grand launch! Like and share to spread the word! 🎬
-                    </div>
-                    <div class="post-media">
-                        <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
-                    </div>
-                    <div class="post-stats">
-                        <div class="reactions">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
-                            <span id="like-count-post-1">1245</span>
-                        </div>
-                        <span><span id="comment-count-post-1">450</span> Comments</span>
-                    </div>
-                    
-                    <div class="post-actions">
-                        <button class="action-btn" onclick="toggleLike(this, 'post-1', 1)" data-earned="false">
-                            <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
-                        </button>
-                        <button class="action-btn" onclick="toggleCommentSection('post-1')" data-earned="false" id="comment-btn-post-1">
-                            <i class="far fa-comment" style="font-size: 18px;"></i> Comment
-                        </button>
-                        <button class="action-btn" onclick="openShareModal('post-1')" data-earned="false" id="share-btn-post-1">
-                            <i class="fas fa-share" style="font-size: 18px;"></i> Share
-                        </button>
-                    </div>
-                    
-                    <div class="post-comments-section" id="comments-section-post-1">
-                        <div class="comments-list" id="comment-list-post-1">
-                            <div class="comment-item">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
-                                <div class="comment-bubble">
-                                    <h5 style="color:#050505;">Rahul Sharma</h5>
-                                    <p style="color:#050505;">Super excited for this! 🔥</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="add-comment-box">
-                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
-                            <input type="text" id="comment-input-post-1" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('post-1', 2)">
-                            <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Posts will load here via JavaScript -->
             </div>
         </main>
 
@@ -500,23 +367,17 @@
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
             <div class="contact-item" onclick="window.location.href='messages.html'">
-                <div class="img-wrap"><img src="images/movies/gallery1.png"><div class="status"></div></div>
+                <img src="images/movies/gallery1.png">
                 <span>DK Atovitt Support</span>
             </div>
-            <div class="contact-item" onclick="window.location.href='messages.html'">
-                <div class="img-wrap"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div class="status"></div></div>
-                <span>Rahul Sharma</span>
-            </div>
-
+            
             <!-- Add Friend Suggestions Box -->
             <div class="friend-sug-box">
                 <h3 class="widget-title">People you may know</h3>
                 <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
                     <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                    <div style="flex: 1;">
-                        <h4 style="margin: 0 0 3px 0; color: #050505; font-size: 14px;">Neha Gupta</h4>
-                    </div>
-                    <button onclick="addFriend(this, 'Neha Gupta')" data-earned="false" style="background: #e4e6eb; color: #050505; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
+                    <div style="flex: 1;"><h4 style="margin: 0; color: #050505; font-size: 14px;">Neha Gupta</h4></div>
+                    <button onclick="addFriend(this)" data-earned="false" style="background: #e4e6eb; border: none; padding: 6px 12px; border-radius: 6px; font-weight: bold; cursor: pointer;">Add Friend</button>
                 </div>
             </div>
         </aside>
@@ -525,92 +386,45 @@
 
     <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
     <nav class="mobile-bottom-nav">
-        <a href="social.html" class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="video.html" class="nav-item">
-            <i class="fas fa-video"></i>
-            <span>Video</span>
-        </a>
-        <a href="dashboard.html" class="nav-item">
-            <i class="fas fa-th-large" style="font-size: 24px;"></i>
-            <span>Dash</span>
-        </a>
-        <a href="notifications.html" class="nav-item">
-            <div style="position: relative;">
-                <i class="fas fa-bell"></i>
-                <span class="badge">7</span>
-            </div>
-            <span>Alerts</span>
-        </a>
-        <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active');">
-            <div style="position: relative;">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="bottomNavImg" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
-                <div style="position: absolute; bottom: -2px; right: -5px; background: #fff; border-radius: 50%; padding: 2px;"><i class="fas fa-bars" style="font-size: 10px; color:#050505;"></i></div>
-            </div>
-            <span>Menu</span>
-        </a>
+        <a href="social.html" class="nav-item active"><i class="fas fa-home"></i></a>
+        <a href="video.html" class="nav-item"><i class="fas fa-video"></i></a>
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i></a>
+        <a href="notifications.html" class="nav-item"><div style="position: relative;"><i class="fas fa-bell"></i><span class="badge">7</span></div></a>
+        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%;"></a>
     </nav>
 
-    <!-- SHARE MODAL -->
+    <!-- 🔥 SHARE MODAL (NEW BOTTOM SHEET UI) 🔥 -->
     <div id="shareModalOverlay" class="share-modal-overlay">
         <div class="share-modal-box">
             <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
-            <h3>Share</h3>
+            <h3>Share to</h3>
             <div class="share-options">
                 <div class="share-opt" onclick="executeShare('whatsapp')">
-                    <div class="icon" style="background:#25d366;"><i class="fab fa-whatsapp"></i></div>
+                    <div class="icon icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
                     <span>WhatsApp</span>
                 </div>
                 <div class="share-opt" onclick="executeShare('facebook')">
-                    <div class="icon" style="background:#1877F2;"><i class="fab fa-facebook-f"></i></div>
+                    <div class="icon icon-facebook"><i class="fab fa-facebook-f"></i></div>
                     <span>Facebook</span>
+                </div>
+                <div class="share-opt" onclick="executeShare('copy')">
+                    <div class="icon icon-copy"><i class="fas fa-link"></i></div>
+                    <span>Copy Link</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- HIDDEN FILE INPUTS -->
+    <!-- HIDDEN FILE INPUT FOR STORY -->
     <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
-    <input type="file" id="reelFileInput" accept="video/*" style="display: none;">
-
-    <!-- STORY EDITOR MODAL -->
-    <div id="storyPreviewModal" class="reels-view" style="background:#fff;">
-        <div class="reels-header">
-            <i class="fas fa-times" style="color:#050505; text-shadow:none;" onclick="closeStoryPreview()"></i>
-            <h2 style="color:#050505; text-shadow:none;">Create story</h2>
-        </div>
-        <div class="reel-container" style="background: #f0f2f5;">
-            <img id="storyPreviewImg" src="" class="story-preview-img" style="display: none;">
-            <video id="storyPreviewVid" src="" class="story-preview-img" autoplay loop muted playsinline style="display: none;"></video>
-            <div class="story-share-bar" style="background:#fff; border-top:1px solid #ddd;">
-                <div class="privacy" style="color:#050505;"><i class="fas fa-globe-americas"></i> Public</div>
-                <button class="share-btn" onclick="shareStory()">Share</button>
-            </div>
-        </div>
-    </div>
 
     <!-- JAVASCRIPT FOR LOGIC -->
     <script>
         let currentUserName = "Guest User";
         let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-        let isGuest = true; // Main Guest Flag
+        let isGuest = true;
 
-        function switchTab(tab) {
-            if(tab === 'stories') {
-                document.getElementById('tab-stories').classList.add('active');
-                document.getElementById('tab-reels').classList.remove('active');
-                document.getElementById('storiesContainer').style.display = 'flex';
-                document.getElementById('reelsContainer').style.display = 'none';
-            } else {
-                document.getElementById('tab-reels').classList.add('active');
-                document.getElementById('tab-stories').classList.remove('active');
-                document.getElementById('reelsContainer').style.display = 'flex';
-                document.getElementById('storiesContainer').style.display = 'none';
-            }
-        }
-
+        // Overlay & Guest Check
         function checkGuest() {
             if(isGuest) {
                 document.getElementById('guestPopupOverlay').classList.add('active');
@@ -619,25 +433,187 @@
             return false;
         }
 
-        // 🔥 ADD FRIEND LOGIC 🔥
-        function addFriend(btn, friendName) {
-            if(checkGuest()) return;
-            if(btn.innerText === "Add Friend") {
-                btn.innerText = "Requested";
-                btn.style.background = "#1877F2";
-                btn.style.color = "#fff";
-                if(btn.getAttribute('data-earned') === 'false') {
-                    simulateEarning({clientX: btn.getBoundingClientRect().left - 20, clientY: btn.getBoundingClientRect().top}, 10);
-                    btn.setAttribute('data-earned', 'true');
+        document.getElementById('overlay').addEventListener('click', () => {
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        // 🔥 FULL SCREEN IMAGE VIEWER LOGIC 🔥
+        function openImageViewer(src) {
+            document.getElementById('fullScreenImage').src = src;
+            document.getElementById('imageViewerModal').style.display = 'flex';
+        }
+        function closeImageViewer() {
+            document.getElementById('imageViewerModal').style.display = 'none';
+        }
+
+        // 🔥 LOCAL STORAGE DB FOR POSTS, LIKES & COMMENTS 🔥
+        const defaultPost = {
+            id: 'post-yakshini-1',
+            text: 'Get ready for the grand launch! Like and share to spread the word! 🎬',
+            mediaData: 'images/movies/yakshini-poster.png',
+            mediaType: 'image',
+            userName: 'DK ATOVITT',
+            userPhoto: 'images/movies/gallery1.png',
+            timeString: '18h',
+            likes: 1245,
+            isLiked: false,
+            comments: [
+                { userName: 'Rahul Sharma', userPhoto: 'https://randomuser.me/api/portraits/men/32.jpg', text: 'Super excited for this! 🔥' }
+            ]
+        };
+
+        function initAndLoadPosts() {
+            let posts = JSON.parse(localStorage.getItem('dk_posts'));
+            // Agar pehli baar website khul rahi hai, toh default post daal do
+            if (!posts || posts.length === 0) {
+                posts = [defaultPost];
+                localStorage.setItem('dk_posts', JSON.stringify(posts));
+            }
+            renderAllPosts(posts);
+        }
+
+        function renderAllPosts(posts) {
+            const feedContainer = document.getElementById('postsFeedContainer');
+            feedContainer.innerHTML = ""; // Clear existing
+
+            posts.forEach(data => {
+                let mediaHTML = "";
+                if(data.mediaData) {
+                    if(data.mediaType === "video") {
+                        mediaHTML = `<div class="post-media"><video src="${data.mediaData}" controls style="width:100%; max-height:500px; background:#000;"></video></div>`;
+                    } else {
+                        mediaHTML = `<div class="post-media"><img src="${data.mediaData}" onclick="openImageViewer(this.src)" style="cursor:pointer; width:100%;"></div>`;
+                    }
                 }
+
+                // Likes checking
+                let heartClass = data.isLiked ? 'fas fa-heart' : 'far fa-thumbs-up';
+                let btnActive = data.isLiked ? 'active' : '';
+                let likeColor = data.isLiked ? 'color: #ff4d4d;' : '';
+
+                // Comments building
+                let commentsHTML = "";
+                if(data.comments) {
+                    data.comments.forEach(c => {
+                        commentsHTML += `<div class="comment-item"><img src="${c.userPhoto}"><div class="comment-bubble"><h5>${c.userName}</h5><p>${c.text}</p></div></div>`;
+                    });
+                }
+
+                const postHTML = `
+                    <div class="post-card" id="${data.id}">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="${data.userPhoto}" alt="User">
+                                <div class="post-user-info">
+                                    <h4>${data.userName} <i class="fas fa-check-circle" style="color: #1877F2; font-size:12px;"></i></h4>
+                                    <p>${data.timeString} • <i class="fas fa-globe-americas"></i></p>
+                                </div>
+                            </div>
+                            <div class="post-options">
+                                <i class="fas fa-trash-alt" style="color:#ff4d4d; font-size:16px; cursor:pointer;" onclick="deletePost('${data.id}')" title="Delete Post"></i>
+                            </div>
+                        </div>
+                        ${data.text ? `<div class="post-text">${data.text.replace(/\n/g, '<br>')}</div>` : ""}
+                        ${mediaHTML}
+                        <div class="post-stats">
+                            <div class="reactions">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
+                                <span id="like-count-${data.id}">${data.likes || 0}</span>
+                            </div>
+                            <span><span id="comment-count-${data.id}">${data.comments ? data.comments.length : 0}</span> Comments</span>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn ${btnActive}" onclick="toggleLike(this, '${data.id}')">
+                                <i class="${heartClass}" style="${likeColor} font-size: 18px;"></i> Like
+                            </button>
+                            <button class="action-btn" onclick="toggleCommentSection('${data.id}')">
+                                <i class="far fa-comment" style="font-size: 18px;"></i> Comment
+                            </button>
+                            <button class="action-btn" onclick="openShareModal('${data.id}')">
+                                <i class="fas fa-share" style="font-size: 18px;"></i> Share
+                            </button>
+                        </div>
+                        <div class="post-comments-section" id="comments-section-${data.id}">
+                            <div class="comments-list" id="comment-list-${data.id}">${commentsHTML}</div>
+                            <div class="add-comment-box">
+                                <img src="${currentUserPhoto}" class="current-user-avatar">
+                                <input type="text" id="comment-input-${data.id}" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${data.id}')">
+                                <button onclick="postComment('${data.id}')"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                feedContainer.insertAdjacentHTML('beforeend', postHTML);
+            });
+        }
+
+        // Like Logic (Saves to DB)
+        function toggleLike(btn, postId) {
+            if(checkGuest()) return;
+            
+            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            let postIndex = posts.findIndex(p => p.id === postId);
+            if(postIndex === -1) return;
+
+            if(posts[postIndex].isLiked) {
+                posts[postIndex].isLiked = false;
+                posts[postIndex].likes--;
             } else {
-                btn.innerText = "Add Friend";
-                btn.style.background = "#e4e6eb";
-                btn.style.color = "#050505";
+                posts[postIndex].isLiked = true;
+                posts[postIndex].likes++;
+                simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, 2); // Earn 2 coins for like
+            }
+            
+            localStorage.setItem('dk_posts', JSON.stringify(posts));
+            initAndLoadPosts(); // Refresh Feed instantly
+        }
+
+        // Comment Logic (Saves to DB)
+        function toggleCommentSection(postId) {
+            if(checkGuest()) return;
+            const section = document.getElementById('comments-section-' + postId);
+            section.style.display = section.style.display === 'block' ? 'none' : 'block';
+            if(section.style.display === 'block') document.getElementById('comment-input-' + postId).focus();
+        }
+
+        function postComment(postId) {
+            if(checkGuest()) return;
+            const inputField = document.getElementById('comment-input-' + postId);
+            const text = inputField.value.trim();
+            if(!text) return; 
+
+            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            let postIndex = posts.findIndex(p => p.id === postId);
+            if(postIndex === -1) return;
+
+            if(!posts[postIndex].comments) posts[postIndex].comments = [];
+            
+            posts[postIndex].comments.push({
+                userName: currentUserName,
+                userPhoto: currentUserPhoto,
+                text: text
+            });
+
+            localStorage.setItem('dk_posts', JSON.stringify(posts));
+            simulateEarning({clientX: inputField.getBoundingClientRect().left, clientY: inputField.getBoundingClientRect().top}, 5); // Earn 5 coins for comment
+            initAndLoadPosts(); // Refresh Feed instantly
+        }
+
+        // Delete Post Logic
+        function deletePost(postId) {
+            if(confirm("Are you sure you want to delete this post?")) {
+                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+                posts = posts.filter(p => p.id !== postId);
+                localStorage.setItem('dk_posts', JSON.stringify(posts));
+                initAndLoadPosts(); // Refresh feed
             }
         }
 
-        // 🔥 CREATE POST LOGIC WITH LOCAL STORAGE SAVE 🔥
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', initAndLoadPosts);
+
+
+        // 🔥 CREATE NEW POST LOGIC 🔥
         let postMediaData = "";
         let postMediaType = ""; 
 
@@ -689,218 +665,76 @@
             postMediaType = "";
             document.getElementById('newPostImgPreview').style.display = 'none';
             document.getElementById('postMediaInput').value = "";
-            document.getElementById('previewSelectedVid').src = "";
-            document.getElementById('previewSelectedImg').src = "";
-        }
-
-        // 🔥 SAVE POST TO DATABASE (LOCAL STORAGE) 🔥
-        function savePostLocally(postObj) {
-            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-            posts.unshift(postObj); // Sabse upar add karo
-            localStorage.setItem('dk_posts', JSON.stringify(posts));
-        }
-
-        // 🔥 LOAD SAVED POSTS FROM DATABASE 🔥
-        function loadLocalPosts() {
-            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-            const feedContainer = document.getElementById('postsFeedContainer');
-            
-            // Delete old dynamic posts before reloading to prevent duplicates
-            document.querySelectorAll('.dynamic-post').forEach(el => el.remove());
-
-            posts.reverse().forEach(data => {
-                let mediaHTML = "";
-                if(data.mediaData !== "") {
-                    if(data.mediaType === "video") {
-                        mediaHTML = `<div class="post-media"><video src="${data.mediaData}" controls></video></div>`;
-                    } else {
-                        mediaHTML = `<div class="post-media"><img src="${data.mediaData}" alt="Post Image"></div>`;
-                    }
-                }
-
-                const postHTML = `
-                    <div class="post-card dynamic-post" id="${data.id}" style="animation: fadeInForm 0.4s ease;">
-                        <div class="post-header">
-                            <div class="post-user">
-                                <img src="${data.userPhoto}" alt="User">
-                                <div class="post-user-info">
-                                    <h4>${data.userName} <i class="fas fa-check-circle verify-badge" style="color: #1877F2;"></i></h4>
-                                    <p>${data.timeString} • <i class="fas fa-globe-americas"></i></p>
-                                </div>
-                            </div>
-                            <div class="post-options">
-                                <i class="fas fa-trash-alt" style="color:#ff4d4d; font-size:16px; cursor:pointer;" onclick="deletePost('${data.id}')" title="Delete Post"></i>
-                            </div>
-                        </div>
-                        ${data.text !== "" ? `<div class="post-text">${data.text.replace(/\n/g, '<br>')}</div>` : ""}
-                        ${mediaHTML}
-                        <div class="post-stats">
-                            <div class="reactions">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
-                                <span id="like-count-${data.id}">${data.likes || 0}</span>
-                            </div>
-                            <span><span id="comment-count-${data.id}">0</span> Comments</span>
-                        </div>
-                        <div class="post-actions">
-                            <button class="action-btn" onclick="toggleLike(this, '${data.id}', 1)" data-earned="false">
-                                <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
-                            </button>
-                            <button class="action-btn" onclick="toggleCommentSection('${data.id}')" data-earned="false" id="comment-btn-${data.id}">
-                                <i class="far fa-comment" style="font-size: 18px;"></i> Comment
-                            </button>
-                            <button class="action-btn" onclick="openShareModal('${data.id}')" data-earned="false" id="share-btn-${data.id}">
-                                <i class="fas fa-share" style="font-size: 18px;"></i> Share
-                            </button>
-                        </div>
-                        <div class="post-comments-section" id="comments-section-${data.id}">
-                            <div class="comments-list" id="comment-list-${data.id}"></div>
-                            <div class="add-comment-box">
-                                <img src="${currentUserPhoto}" class="current-user-avatar">
-                                <input type="text" id="comment-input-${data.id}" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${data.id}', 2)">
-                                <button onclick="postComment('${data.id}', 2)"><i class="fas fa-paper-plane"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                feedContainer.insertAdjacentHTML('afterbegin', postHTML);
-            });
-        }
-
-        // 🔥 DELETE POST LOGIC 🔥
-        function deletePost(id) {
-            if(confirm("Are you sure you want to delete this post?")) {
-                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-                posts = posts.filter(p => p.id !== id);
-                localStorage.setItem('dk_posts', JSON.stringify(posts));
-                document.getElementById(id).remove();
-            }
         }
 
         function publishNewPost() {
             const text = document.getElementById('newPostText').value.trim();
-            if(text === "" && postMediaData === "") {
-                alert("Please write something or add a photo/video!");
-                return;
-            }
+            if(text === "" && postMediaData === "") return alert("Please write something or add a photo/video!");
 
             const publishBtn = document.getElementById('publishBtn');
             publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
             publishBtn.disabled = true;
 
-            const postId = 'post-' + Date.now();
-            
             const postObj = {
-                id: postId,
+                id: 'post-' + Date.now(),
                 text: text,
                 mediaData: postMediaData,
                 mediaType: postMediaType,
                 userName: currentUserName,
                 userPhoto: currentUserPhoto,
                 timeString: "Just now",
-                likes: 0
+                likes: 0,
+                isLiked: false,
+                comments: []
             };
 
             setTimeout(() => {
-                savePostLocally(postObj); // Save To Memory
+                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+                posts.unshift(postObj); // Put new post at top
+                localStorage.setItem('dk_posts', JSON.stringify(posts));
                 
-                // Clear feed and reload to show new post
-                document.querySelectorAll('.dynamic-post').forEach(el => el.remove());
-                loadLocalPosts(); // Load from Memory
+                initAndLoadPosts(); // Refresh Feed
                 
                 closeCreatePostModal();
                 publishBtn.innerHTML = 'Post';
                 publishBtn.disabled = false;
-                
-                simulateEarning(null, 5); // Earn ATVT for posting
+                simulateEarning(null, 10); // 10 coins for posting
             }, 1000);
         }
 
-        // Load Posts when Page Opens
-        window.addEventListener('DOMContentLoaded', loadLocalPosts);
-
-        // 🔥 STORIES LOGIC 🔥
-        let storyMediaUrl = "";
-        let storyIsVideo = false;
-
-        function openStoryPicker() { 
+        // 🔥 ADD FRIEND LOGIC 🔥
+        function addFriend(btn) {
             if(checkGuest()) return;
-            document.getElementById('storyFileInput').click(); 
-        }
-
-        document.getElementById('storyFileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if(file) {
-                storyMediaUrl = URL.createObjectURL(file);
-                const imgTag = document.getElementById('storyPreviewImg');
-                const vidTag = document.getElementById('storyPreviewVid');
-
-                if(file.type.startsWith('video/')) {
-                    storyIsVideo = true;
-                    imgTag.style.display = 'none';
-                    vidTag.style.display = 'block';
-                    vidTag.src = storyMediaUrl;
-                } else {
-                    storyIsVideo = false;
-                    vidTag.style.display = 'none';
-                    imgTag.style.display = 'block';
-                    imgTag.src = storyMediaUrl;
-                    imgTag.style.width = '100%';
-                    imgTag.style.height = '100%';
-                    imgTag.style.objectFit = 'contain';
+            if(btn.innerText === "Add Friend") {
+                btn.innerText = "Requested";
+                btn.style.background = "#1877F2";
+                btn.style.color = "#fff";
+                if(btn.getAttribute('data-earned') === 'false') {
+                    simulateEarning({clientX: btn.getBoundingClientRect().left - 20, clientY: btn.getBoundingClientRect().top}, 5);
+                    btn.setAttribute('data-earned', 'true');
                 }
-                document.getElementById('storyPreviewModal').classList.add('active');
-            }
-        });
-
-        function closeStoryPreview() {
-            document.getElementById('storyPreviewModal').classList.remove('active');
-            document.getElementById('storyFileInput').value = ""; 
-            const vidTag = document.getElementById('storyPreviewVid');
-            vidTag.pause();
-            vidTag.src = "";
-            document.getElementById('storyPreviewImg').src = "";
-        }
-
-        function shareStory() {
-            document.getElementById('storyPreviewModal').classList.remove('active');
-            const storyId = 'story-' + Date.now();
-            let mediaHtml = "";
-
-            if(storyIsVideo) {
-                mediaHtml = `<video src="${storyMediaUrl}" class="bg" style="opacity:0.5; object-fit:cover;" autoplay loop muted playsinline></video>`;
             } else {
-                mediaHtml = `<img src="${storyMediaUrl}" class="bg" style="opacity:0.5;">`;
+                btn.innerText = "Add Friend";
+                btn.style.background = "#e4e6eb";
+                btn.style.color = "#050505";
             }
-
-            const newStoryHTML = `
-            <div class="story-card user-card" id="${storyId}">
-                ${mediaHtml}
-                <div class="user-ring"><img src="${currentUserPhoto}"></div>
-                <div class="story-overlay-loading" id="loading-${storyId}">
-                    <div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Sharing...</span>
-                </div>
-                <span class="story-name" id="name-${storyId}" style="display:none;">Your story</span>
-            </div>`;
-
-            document.querySelector('#storiesContainer .create-card').insertAdjacentHTML('afterend', newStoryHTML);
-            document.getElementById('storiesContainer').scrollLeft = 0;
-            
-            setTimeout(() => {
-                document.getElementById('loading-' + storyId).style.display = 'none';
-                document.getElementById('name-' + storyId).style.display = 'block';
-                document.querySelector(`#${storyId} .bg`).style.opacity = '1';
-                simulateEarning(null, 10);
-            }, 2000);
-
-            document.getElementById('storyFileInput').value = "";
         }
 
-        document.getElementById('overlay').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
-        });
+        // SHARE UI LOGIC
+        let currentSharePostId = null;
+        function openShareModal(postId) {
+            if(checkGuest()) return;
+            currentSharePostId = postId;
+            document.getElementById('shareModalOverlay').classList.add('active');
+        }
+        function closeShareModal() { document.getElementById('shareModalOverlay').classList.remove('active'); }
+        function executeShare(platform) {
+            closeShareModal();
+            alert(platform + " share menu opening...");
+            simulateEarning(null, 5); 
+        }
 
-        // REWARDS AND INTERACTIONS
+        // FLOATING REWARD
         let currentBalance = 150.00;
         function simulateEarning(event, amount) {
             currentBalance += amount;
@@ -913,88 +747,6 @@
             floatingText.style.top = y + 'px';
             document.body.appendChild(floatingText);
             setTimeout(() => { floatingText.remove(); }, 1200);
-        }
-
-        function toggleLike(btn, postId, earnAmount) {
-            if(checkGuest()) return;
-            const icon = btn.querySelector('i');
-            const countSpan = document.getElementById('like-count-' + postId);
-            let currentCount = parseInt(countSpan.innerText);
-
-            if(btn.classList.contains('active')) {
-                btn.classList.remove('active');
-                icon.classList.remove('fas');
-                icon.classList.add('far');
-                countSpan.innerText = currentCount - 1;
-            } else {
-                btn.classList.add('active');
-                icon.classList.remove('far');
-                icon.classList.add('fas');
-                countSpan.innerText = currentCount + 1;
-                btn.style.transform = 'scale(1.2)';
-                setTimeout(()=> btn.style.transform = 'scale(1)', 200);
-
-                if(btn.getAttribute('data-earned') === 'false') {
-                    simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, earnAmount);
-                    btn.setAttribute('data-earned', 'true');
-                }
-            }
-        }
-
-        function toggleCommentSection(postId) {
-            if(checkGuest()) return;
-            const section = document.getElementById('comments-section-' + postId);
-            if(section.style.display === 'block') {
-                section.style.display = 'none';
-            } else {
-                section.style.display = 'block';
-                document.getElementById('comment-input-' + postId).focus();
-            }
-        }
-
-        function postComment(postId, earnAmount) {
-            if(checkGuest()) return;
-            const inputField = document.getElementById('comment-input-' + postId);
-            const commentText = inputField.value.trim();
-            if(commentText === "") return; 
-
-            const commentList = document.getElementById('comment-list-' + postId);
-            const countSpan = document.getElementById('comment-count-' + postId);
-            const commentBtn = document.getElementById('comment-btn-' + postId);
-
-            const newCommentHTML = `<div class="comment-item" style="animation:fadeIn 0.3s ease;"><img src="${currentUserPhoto}"><div class="comment-bubble"><h5 style="color:#050505;">${currentUserName}</h5><p style="color:#050505;">${commentText}</p></div></div>`;
-            commentList.insertAdjacentHTML('beforeend', newCommentHTML);
-            commentList.scrollTop = commentList.scrollHeight;
-            countSpan.innerText = parseInt(countSpan.innerText) + 1;
-            inputField.value = "";
-
-            if(commentBtn.getAttribute('data-earned') === 'false') {
-                simulateEarning({clientX: commentBtn.getBoundingClientRect().left + 20, clientY: commentBtn.getBoundingClientRect().top}, earnAmount);
-                commentBtn.setAttribute('data-earned', 'true');
-                commentBtn.classList.add('active');
-            }
-        }
-
-        let currentSharePostId = null;
-        function openShareModal(postId) {
-            if(checkGuest()) return;
-            currentSharePostId = postId;
-            document.getElementById('shareModalOverlay').classList.add('active');
-        }
-        function closeShareModal() { document.getElementById('shareModalOverlay').classList.remove('active'); }
-        function executeShare(platform) {
-            closeShareModal();
-            if(platform === 'copy') alert("Link Copied to Clipboard!");
-            else alert("Redirecting to " + platform + "...");
-
-            if(currentSharePostId) {
-                const shareBtn = document.getElementById('share-btn-' + currentSharePostId);
-                if(shareBtn && shareBtn.getAttribute('data-earned') === 'false') {
-                    simulateEarning(null, 5); 
-                    shareBtn.setAttribute('data-earned', 'true');
-                    shareBtn.classList.add('active');
-                }
-            }
         }
     </script>
     
@@ -1017,42 +769,22 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // 🔥 USER IS LOGGED IN 🔥
+                // LOGGED IN
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
                 currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-
-                let uidSnippet = user.uid ? user.uid.substring(0, 10) : "1039AJD83";
-                let userDkId = "DK-" + uidSnippet;
-
-                document.getElementById('sidebarProfileName').innerText = currentUserName;
-                document.getElementById('sidebarProfileImg').src = currentUserPhoto;
-                document.getElementById('sidebarDkId').innerText = userDkId;
-                
                 document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
                 document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
 
-                if(document.getElementById('topbarProfileImg')) document.getElementById('topbarProfileImg').src = currentUserPhoto;
-                if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${currentUserPhoto}')`;
-                if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = currentUserPhoto;
-
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
-                    btn.style.color = '#ff4d4d';
-                    btn.style.border = '1px solid #ff4d4d';
-                    btn.addEventListener('click', () => {
-                        if(confirm("Are you sure you want to Logout?")) {
-                            signOut(auth).then(() => window.location.reload());
-                        }
-                    });
+                    btn.addEventListener('click', () => { if(confirm("Logout?")) signOut(auth).then(() => window.location.reload()); });
                 });
             } else {
-                // 🔥 USER IS A GUEST (NOT LOGGED IN) 🔥
+                // GUEST
                 isGuest = true;
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
-                    btn.style.color = '#1877F2';
-                    btn.style.border = '1px solid #1877F2';
                     btn.addEventListener('click', () => { window.location.href = "auth.html"; });
                 });
             }
