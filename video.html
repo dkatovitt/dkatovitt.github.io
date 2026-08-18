@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Video Feed - DK Connect</title>
+    <meta name="theme-color" content="#000000">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE CSS FOR REELS */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; font-family: Arial, sans-serif; }
+        
+        /* 🔥 GUEST LOCK SCREEN 🔥 */
+        .guest-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .guest-lock.active { display: flex; }
+        .guest-lock i { font-size: 60px; color: #e6c875; margin-bottom: 20px; }
+        .guest-lock h2 { color: #fff; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
+        .guest-lock p { color: #aaa; margin-bottom: 25px; text-align: center; font-size: 14px; max-width: 300px; }
+        .guest-lock button { background: #e6c875; color: #000; border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 15px; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+
+        /* HEADER */
+        .video-header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%); box-sizing: border-box; }
+        .video-header h2 { color: #fff; margin: 0; font-size: 22px; font-weight: 900; text-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px; }
+        .video-header i { color: #fff; font-size: 24px; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        
+        /* REELS CONTAINER (SWIPE SCROLL) */
+        .reels-container { width: 100%; height: calc(100vh - 60px); scroll-snap-type: y mandatory; overflow-y: scroll; scroll-behavior: smooth; position: relative; }
+        .reels-container::-webkit-scrollbar { display: none; }
+        
+        /* INDIVIDUAL REEL ITEM */
+        .reel-item { width: 100%; height: 100%; scroll-snap-align: start; position: relative; background: #111; display: flex; justify-content: center; align-items: center; }
+        
+        /* The Video */
+        .reel-video { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+        
+        /* Play/Pause Overlay Icon */
+        .play-pause-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 60px; color: rgba(255,255,255,0.7); display: none; pointer-events: none; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        
+        /* RIGHT SIDE ACTIONS */
+        .reel-actions { position: absolute; right: 15px; bottom: 20px; display: flex; flex-direction: column; gap: 20px; align-items: center; z-index: 10; }
+        .r-action-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: #fff; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.8); transition: 0.3s; }
+        .r-action-btn i { font-size: 30px; transition: 0.3s; }
+        .r-action-btn i:hover { transform: scale(1.1); }
+        .r-action-btn.active i { color: #ff4d4d; animation: popHeart 0.3s ease; }
+        .r-action-btn span { font-size: 13px; font-weight: bold; }
+        @keyframes popHeart { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+        
+        .r-avatar-wrap { position: relative; width: 45px; height: 45px; border-radius: 50%; border: 2px solid #fff; }
+        .r-avatar-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .r-avatar-add { position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); background: #ff4d4d; color: #fff; width: 16px; height: 16px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: bold; border: 2px solid #000; cursor: pointer; }
+
+        /* BOTTOM INFO (USER & CAPTION) */
+        .reel-info { position: absolute; left: 15px; bottom: 20px; width: calc(100% - 90px); z-index: 10; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        .r-user-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .r-username { color: #fff; font-size: 16px; font-weight: bold; margin: 0; display: flex; align-items: center; gap: 5px; }
+        .r-follow-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .r-follow-btn:hover { background: #fff; color: #000; }
+        
+        .r-caption { color: #fff; font-size: 14px; margin: 0 0 10px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        .r-audio-row { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 13px; }
+        .r-audio-row i { animation: spinRecord 3s linear infinite; }
+        .r-audio-marquee { overflow: hidden; white-space: nowrap; width: 150px; position: relative; }
+        .r-audio-marquee span { display: inline-block; animation: marquee 5s linear infinite; }
+        @keyframes spinRecord { 100% { transform: rotate(360deg); } }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* FLOATING ATVT REWARD */
+        .floating-reward { position: fixed; color: #e6c875; font-size: 24px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
+        @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
+
+        /* MOBILE BOTTOM NAVIGATION */
+        .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #000; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; }
+        .nav-item { color: #888; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 20%; transition: 0.3s; position: relative;}
+        .nav-item i { font-size: 22px; }
+        .nav-item.active { color: #fff; }
+        .nav-item.active i { transform: scale(1.1); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #111; }
+
+        @media (min-width: 850px) {
+            .reels-container { width: 450px; margin: 0 auto; border-left: 1px solid #333; border-right: 1px solid #333; }
+            .mobile-bottom-nav { display: none; }
+            .reels-container { height: 100vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 GUEST LOCK SCREEN 🔥 -->
+    <div class="guest-lock" id="guestLock">
+        <i class="fas fa-video-slash"></i>
+        <h2>Video Feed Locked</h2>
+        <p>Login to watch exclusive DK Films, Trailers, Reels, and earn ATVT coins by interacting.</p>
+        <button onclick="window.location.href='auth.html'">Login Securely</button>
+    </div>
+
+    <!-- HEADER -->
+    <div class="video-header">
+        <h2><i class="fas fa-arrow-left" onclick="window.location.href='social.html'"></i> Watch</h2>
+        <i class="fas fa-camera" onclick="alert('Create Reel feature available on Profile page!')"></i>
+    </div>
+
+    <!-- REELS CONTAINER -->
+    <div class="reels-container" id="reelsContainer">
+        
+        <!-- 🔥 REEL 1 🔥 -->
+        <div class="reel-item">
+            <!-- Using logo.mp4 as placeholder, you can replace with real video links later -->
+            <video class="reel-video" src="images/logo/logo.mp4" loop playsinline></video>
+            <i class="fas fa-play play-pause-icon"></i>
+            
+            <div class="reel-actions">
+                <div class="r-avatar-wrap">
+                    <img src="images/movies/gallery1.png" alt="User">
+                    <div class="r-avatar-add"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="r-action-btn" onclick="toggleLike(this, 15)">
+                    <i class="fas fa-heart"></i>
+                    <span class="count">12.5K</span>
+                </div>
+                <div class="r-action-btn" onclick="alert('Comments opening soon!')">
+                    <i class="fas fa-comment-dots"></i>
+                    <span class="count">450</span>
+                </div>
+                <div class="r-action-btn" onclick="shareReel()">
+                    <i class="fas fa-share"></i>
+                    <span class="count">Share</span>
+                </div>
+                <div class="r-action-btn">
+                    <img src="images/movies/gallery1.png" style="width:30px; height:30px; border-radius:5px; border:2px solid #fff; animation: spinRecord 4s linear infinite;">
+                </div>
+            </div>
+            
+            <div class="reel-info">
+                <div class="r-user-row">
+                    <h3 class="r-username">DK Atovitt <i class="fas fa-check-circle" style="color:#e6c875; font-size:12px;"></i></h3>
+                    <button class="r-follow-btn">Follow</button>
+                </div>
+                <p class="r-caption">Wait is over! The official teaser of India's biggest Horror Romance "Yakshini" is here. Turn up the volume! 👻🎬 #Yakshini #DKFilms</p>
+                <div class="r-audio-row">
+                    <i class="fas fa-music"></i>
+                    <div class="r-audio-marquee"><span>Yakshini Official BGM - DK Atovitt</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔥 REEL 2 🔥 -->
+        <div class="reel-item">
+            <video class="reel-video" src="https://www.w3schools.com/html/mov_bbb.mp4" loop playsinline></video>
+            <i class="fas fa-play play-pause-icon"></i>
+            
+            <div class="reel-actions">
+                <div class="r-avatar-wrap">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                    <div class="r-avatar-add"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="r-action-btn" onclick="toggleLike(this, 15)">
+                    <i class="fas fa-heart"></i>
+                    <span class="count">8.2K</span>
+                </div>
+                <div class="r-action-btn" onclick="alert('Comments opening soon!')">
+                    <i class="fas fa-comment-dots"></i>
+                    <span class="count">120</span>
+                </div>
+                <div class="r-action-btn" onclick="shareReel()">
+                    <i class="fas fa-share"></i>
+                    <span class="count">Share</span>
+                </div>
+                <div class="r-action-btn">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:30px; height:30px; border-radius:5px; border:2px solid #fff; animation: spinRecord 4s linear infinite;">
+                </div>
+            </div>
+            
+            <div class="reel-info">
+                <div class="r-user-row">
+                    <h3 class="r-username">Priya Singh</h3>
+                    <button class="r-follow-btn">Follow</button>
+                </div>
+                <p class="r-caption">Just earned my first 50 ATVT coins from the ecosystem! Unbelievable experience! 💰😍 #EarnWithDK</p>
+                <div class="r-audio-row">
+                    <i class="fas fa-music"></i>
+                    <div class="r-audio-marquee"><span>Original Audio - Priya Singh</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 🔥 MOBILE BOTTOM NAVIGATION 🔥 -->
+    <nav class="mobile-bottom-nav">
+        <a href="social.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="video.html" class="nav-item active">
+            <i class="fas fa-video"></i>
+            <span>Video</span>
+        </a>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-th-large" style="font-size: 24px;"></i>
+            <span>Dash</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <div style="position: relative;">
+                <i class="fas fa-bell"></i>
+                <span class="badge">7</span>
+            </div>
+            <span>Alerts</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <div style="position: relative;">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid transparent;">
+            </div>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- LOGIC FOR REELS -->
+    <script>
+        // Play/Pause Video Logic
+        const videos = document.querySelectorAll('.reel-video');
+        
+        videos.forEach(video => {
+            video.addEventListener('click', function() {
+                const icon = this.nextElementSibling; // The play/pause icon
+                if (this.paused) {
+                    this.play();
+                    icon.style.display = 'none';
+                } else {
+                    this.pause();
+                    icon.className = 'fas fa-play play-pause-icon';
+                    icon.style.display = 'block';
+                }
+            });
+        });
+
+        // Auto-play video currently in viewport (Intersection Observer)
+        const observerOptions = { root: document.getElementById('reelsContainer'), threshold: 0.7 };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('.reel-video');
+                const icon = entry.target.querySelector('.play-pause-icon');
+                
+                if (entry.isIntersecting) {
+                    // Video is fully visible, play it
+                    video.play().catch(e => console.log("Auto-play blocked by browser."));
+                    icon.style.display = 'none';
+                } else {
+                    // Video is out of view, pause it and reset time
+                    video.pause();
+                    video.currentTime = 0;
+                    icon.style.display = 'block';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reel-item').forEach(item => { observer.observe(item); });
+
+        // Interactions and ATVT Rewards
+        let currentBalance = 150.00;
+        function simulateEarning(event, amount) {
+            currentBalance += amount;
+            const floatingText = document.createElement('div');
+            floatingText.className = 'floating-reward';
+            floatingText.innerText = `+${amount} ATVT`;
+            let x = event ? (event.clientX || event.pageX) : window.innerWidth / 2;
+            let y = event ? (event.clientY || event.pageY) : window.innerHeight / 2;
+            floatingText.style.left = x + 'px';
+            floatingText.style.top = y + 'px';
+            document.body.appendChild(floatingText);
+            setTimeout(() => { floatingText.remove(); }, 1200);
+        }
+
+        function toggleLike(btn, earnAmount) {
+            const countSpan = btn.querySelector('.count');
+            let currentText = countSpan.innerText;
+            
+            if(btn.classList.contains('active')) {
+                btn.classList.remove('active');
+                // Basic logic to reduce count (ignoring 'K' for simplicity in demo)
+            } else {
+                btn.classList.add('active');
+                
+                if(btn.getAttribute('data-earned') !== 'true') {
+                    let rect = btn.getBoundingClientRect();
+                    simulateEarning({clientX: rect.left - 50, clientY: rect.top}, earnAmount);
+                    btn.setAttribute('data-earned', 'true');
+                }
+            }
+        }
+
+        function shareReel() {
+            alert("Share panel opening...");
+            simulateEarning(null, 5); // Reward for sharing
+        }
+    </script>
+
+    <!-- FIREBASE AUTH (GUEST CHECK) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Logged In
+                const photo = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = photo; });
+            } else {
+                // Guest -> LOCK SCREEN
+                document.getElementById('guestLock').classList.add('active');
+                // Pause all videos so guests don't hear audio in background
+                document.querySelectorAll('.reel-video').forEach(vid => vid.pause());
+            }
+        });
+    </script>
+</body>
+</html>
