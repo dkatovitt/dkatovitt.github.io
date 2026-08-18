@@ -41,7 +41,6 @@
         
         .fb-top-left { display: flex; align-items: center; gap: 8px; }
         .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
-        /* Logo widened rectangular shape */
         .fb-top-left video { height: 35px; width: auto; max-width: 90px; mix-blend-mode: multiply; border-radius: 6px; object-fit: contain; }
         
         .fb-top-right { display: flex; align-items: center; gap: 8px; }
@@ -247,7 +246,7 @@
                 <button class="create-post-close" onclick="closeCreatePostModal()">&times;</button>
             </div>
             <div class="create-post-user">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
+                <img src="1001120580.jpg" class="current-user-avatar">
                 <div>
                     <h4 class="current-user-name" style="margin:0;">User Name</h4>
                     <span style="font-size:11px; background:#e4e6eb; padding:2px 6px; border-radius:4px; font-weight:bold;">Public</span>
@@ -298,7 +297,7 @@
             <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                <img src="1001120580.jpg" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
@@ -314,7 +313,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="fb-menu-header">
                 <div class="fb-menu-profile" onclick="window.location.href='profile.html'">
-                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" class="current-user-avatar">
+                    <img src="1001120580.jpg" id="sidebarProfileImg" class="current-user-avatar">
                     <div class="fb-menu-profile-info">
                         <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
                         <p>Welcome to DK Connect</p>
@@ -334,7 +333,7 @@
 
         <main class="feed">
             <div class="fb-create-post">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
+                <img src="1001120580.jpg" class="current-user-avatar">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
                 <i class="fas fa-images" style="color: #45bd62;" onclick="openCreatePostModal()"></i>
             </div>
@@ -347,7 +346,7 @@
                 
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
-                        <div class="create-bg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
+                        <div class="create-bg" style="background-image: url('1001120580.jpg');"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
                             <span>Create story</span>
@@ -355,7 +354,7 @@
                     </div>
                     <div class="story-card user-card">
                         <img src="images/movies/yakshini-poster.png" class="bg">
-                        <div class="user-ring"><img src="images/movies/gallery1.png"></div>
+                        <div class="user-ring"><img src="1001120580.jpg"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
                 </div>
@@ -387,7 +386,7 @@
         <a href="social.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dash</span></a>
         <a href="wallet.html" class="nav-item"><i class="fas fa-wallet"></i><span>Wallet</span></a>
-        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
+        <a href="profile.html" class="nav-item"><img src="1001120580.jpg" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
     </nav>
 
     <div id="shareModalOverlay" class="share-modal-overlay">
@@ -415,7 +414,7 @@
 
     <script>
         let currentUserName = "Guest User";
-        let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+        let currentUserPhoto = "1001120580.jpg";
         let isGuest = true;
 
         function checkGuest() {
@@ -460,7 +459,7 @@
             mediaData: 'images/movies/yakshini-poster.png',
             mediaType: 'image',
             userName: 'DK ATOVITT',
-            userPhoto: 'images/movies/gallery1.png',
+            userPhoto: '1001120580.jpg',
             timeString: '18h',
             likes: 1245,
             isLiked: false,
@@ -756,7 +755,8 @@
             if (user) {
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
-                currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                // Agar user logged in hai toh Firebase ki photo rahegi, warna apni uploaded DP '1001120580.jpg' rahegi
+                currentUserPhoto = user.photoURL ? user.photoURL : '1001120580.jpg';
                 document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
                 document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
 
