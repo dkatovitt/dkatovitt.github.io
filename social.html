@@ -205,7 +205,7 @@
         .guest-popup-btn { background: #e6c875; color: #000; padding: 12px 20px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .guest-popup-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🔥 CREATE POST MODAL (NEW) 🔥 */
+        /* 🔥 CREATE POST MODAL 🔥 */
         .create-post-modal { background: #1a1a1a; border: 1px solid #333; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.9); position: relative; }
         .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
         .create-post-header h3 { color: #fff; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
@@ -323,7 +323,7 @@
         </div>
     </div>
 
-    <!-- 🔥 CREATE POST MODAL (NEW FACEBOOK STYLE) 🔥 -->
+    <!-- 🔥 CREATE POST MODAL 🔥 -->
     <div class="guest-popup-overlay" id="createPostModalOverlay">
         <div class="create-post-modal">
             <div class="create-post-header">
@@ -380,11 +380,9 @@
 
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <!-- 🔥 UPDATED TOP VIDEO LINK 🔥 -->
             <a href="video.html" class="fb-tab"><i class="fas fa-video"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
-            <!-- 🔥 UPDATED TOP NOTIFICATIONS LINK 🔥 -->
             <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab profile-dropdown-container">
@@ -393,7 +391,7 @@
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -609,7 +607,6 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <!-- 🔥 UPDATED BOTTOM VIDEO LINK 🔥 -->
         <a href="video.html" class="nav-item">
             <i class="fas fa-video"></i>
             <span>Video</span>
@@ -618,7 +615,6 @@
             <i class="fas fa-th-large" style="font-size: 24px;"></i>
             <span>Dash</span>
         </a>
-        <!-- 🔥 UPDATED BOTTOM NOTIFICATIONS LINK 🔥 -->
         <a href="notifications.html" class="nav-item">
             <div style="position: relative;">
                 <i class="fas fa-bell"></i>
@@ -668,7 +664,10 @@
             <h2>Create story</h2>
         </div>
         <div class="reel-container" style="background: #000;">
-            <img id="storyPreviewImg" src="" class="story-preview-img">
+            <!-- Support Both Image and Video -->
+            <img id="storyPreviewImg" src="" class="story-preview-img" style="display: none;">
+            <video id="storyPreviewVid" src="" class="story-preview-img" autoplay loop muted playsinline style="display: none;"></video>
+            
             <div class="story-share-bar">
                 <div class="privacy"><i class="fas fa-globe-americas"></i> Public</div>
                 <button class="share-btn" onclick="shareStory()">Share</button>
@@ -712,7 +711,6 @@
             }
         }
 
-        // GUEST INTERCEPTION LOGIC
         function checkGuest() {
             if(isGuest) {
                 document.getElementById('guestPopupOverlay').classList.add('active');
@@ -721,9 +719,9 @@
             return false;
         }
 
-        // 🔥 CREATE POST LOGIC (NEW) 🔥
+        // 🔥 CREATE POST LOGIC 🔥
         let postMediaData = "";
-        let postMediaType = ""; // "image" or "video"
+        let postMediaType = ""; 
 
         function openCreatePostModal() {
             if(checkGuest()) return;
@@ -744,16 +742,14 @@
                 reader.onload = function(e) {
                     postMediaData = e.target.result;
                     const previewBox = document.getElementById('newPostImgPreview');
-                    const imgPreview = document.getElementById('previewSelectedImg');
                     
                     if(file.type.startsWith('video/')) {
                         postMediaType = "video";
-                        previewBox.innerHTML = `<video src="${postMediaData}" id="previewSelectedImg" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                        previewBox.innerHTML = `<video src="${postMediaData}" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
                     } else {
                         postMediaType = "image";
-                        previewBox.innerHTML = `<img src="${postMediaData}" id="previewSelectedImg" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                        previewBox.innerHTML = `<img src="${postMediaData}" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
                     }
-                    
                     previewBox.style.display = 'block';
                 }
                 reader.readAsDataURL(file);
@@ -765,7 +761,6 @@
             postMediaType = "";
             document.getElementById('newPostImgPreview').style.display = 'none';
             document.getElementById('postMediaInput').value = "";
-            document.getElementById('newPostImgPreview').innerHTML = `<img src="" id="previewSelectedImg"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
         }
 
         function publishNewPost() {
@@ -833,46 +828,89 @@
             setTimeout(() => {
                 const feedContainer = document.getElementById('postsFeedContainer');
                 feedContainer.insertAdjacentHTML('afterbegin', newPostHTML);
-                
                 closeCreatePostModal();
                 publishBtn.innerHTML = 'Post';
                 publishBtn.disabled = false;
-                
-                simulateEarning(null, 5); // Earn ATVT for posting
+                simulateEarning(null, 5); 
             }, 1500);
         }
 
-        // STORIES & REELS LOGIC
+        // 🔥 STORIES LOGIC (FIXED FOR VIDEO) 🔥
+        let storyMediaUrl = "";
+        let storyIsVideo = false;
+
         function openStoryPicker() { 
             if(checkGuest()) return;
             document.getElementById('storyFileInput').click(); 
         }
+
         document.getElementById('storyFileInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if(file) {
-                document.getElementById('storyPreviewImg').src = URL.createObjectURL(file);
+                storyMediaUrl = URL.createObjectURL(file);
+                const imgTag = document.getElementById('storyPreviewImg');
+                const vidTag = document.getElementById('storyPreviewVid');
+
+                if(file.type.startsWith('video/')) {
+                    storyIsVideo = true;
+                    imgTag.style.display = 'none';
+                    vidTag.style.display = 'block';
+                    vidTag.src = storyMediaUrl;
+                } else {
+                    storyIsVideo = false;
+                    vidTag.style.display = 'none';
+                    imgTag.style.display = 'block';
+                    imgTag.src = storyMediaUrl;
+                }
                 document.getElementById('storyPreviewModal').classList.add('active');
             }
         });
+
         function closeStoryPreview() {
             document.getElementById('storyPreviewModal').classList.remove('active');
             document.getElementById('storyFileInput').value = ""; 
+            const vidTag = document.getElementById('storyPreviewVid');
+            vidTag.pause();
+            vidTag.src = "";
+            document.getElementById('storyPreviewImg').src = "";
         }
+
         function shareStory() {
-            closeStoryPreview();
-            const imgSrc = document.getElementById('storyPreviewImg').src;
+            document.getElementById('storyPreviewModal').classList.remove('active');
             const storyId = 'story-' + Date.now();
-            const newStoryHTML = `<div class="story-card user-card" id="${storyId}"><img src="${imgSrc}" class="bg" style="opacity:0.5;"><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${storyId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Sharing...</span></div><span class="story-name" id="name-${storyId}" style="display:none;">Your story</span></div>`;
+            let mediaHtml = "";
+
+            if(storyIsVideo) {
+                mediaHtml = `<video src="${storyMediaUrl}" class="bg" style="opacity:0.5; object-fit:cover;" autoplay loop muted playsinline></video>`;
+            } else {
+                mediaHtml = `<img src="${storyMediaUrl}" class="bg" style="opacity:0.5;">`;
+            }
+
+            const newStoryHTML = `
+            <div class="story-card user-card" id="${storyId}">
+                ${mediaHtml}
+                <div class="user-ring"><img src="${currentUserPhoto}"></div>
+                <div class="story-overlay-loading" id="loading-${storyId}">
+                    <div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Sharing...</span>
+                </div>
+                <span class="story-name" id="name-${storyId}" style="display:none;">Your story</span>
+            </div>`;
+
             document.querySelector('#storiesContainer .create-card').insertAdjacentHTML('afterend', newStoryHTML);
             document.getElementById('storiesContainer').scrollLeft = 0;
+            
             setTimeout(() => {
                 document.getElementById('loading-' + storyId).style.display = 'none';
                 document.getElementById('name-' + storyId).style.display = 'block';
                 document.querySelector(`#${storyId} .bg`).style.opacity = '1';
                 simulateEarning(null, 10);
             }, 2000);
+
+            // Cleanup
+            document.getElementById('storyFileInput').value = "";
         }
 
+        // REELS LOGIC
         function openReelPicker() { 
             if(checkGuest()) return;
             document.getElementById('reelFileInput').click(); 
@@ -892,7 +930,7 @@
             document.getElementById('reelEditorModal').classList.remove('active');
             const vidSrc = document.getElementById('reelPreviewVideo').src;
             const reelId = 'reel-' + Date.now();
-            const newReelHTML = `<div class="story-card user-card" id="${reelId}"><video src="${vidSrc}" class="bg" style="opacity:0.5;" muted></video><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${reelId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Uploading...</span></div><span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span></div>`;
+            const newReelHTML = `<div class="story-card user-card" id="${reelId}"><video src="${vidSrc}" class="bg" style="opacity:0.5;" muted autoplay loop playsinline></video><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${reelId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Uploading...</span></div><span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span></div>`;
             document.querySelector('#reelsContainer .create-card').insertAdjacentHTML('afterend', newReelHTML);
             switchTab('reels');
             document.getElementById('reelsContainer').scrollLeft = 0;
