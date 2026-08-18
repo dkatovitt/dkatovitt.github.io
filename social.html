@@ -71,7 +71,7 @@
         .dropdown-menu a:hover { background: #2a2a2a; color: #fff; }
         .dropdown-menu a i { color: #e6c875; width: 20px; text-align: center; }
 
-        /* 🔥 MAIN APP GRID 🔥 */
+        /* 🔥 MAIN APP GRID (3 COLUMNS) 🔥 */
         .app-container { display: grid; grid-template-columns: 320px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1250px; margin: 0 auto; padding: 0 10px; }
         
         /* 🔥 FACEBOOK STYLE SIDEBAR MENU 🔥 */
@@ -123,15 +123,13 @@
         /* 🔥 MIDDLE FEED AREA 🔥 */
         .feed { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; width: 100%; }
         
-        /* 1. FB CREATE POST BOX */
-        .fb-create-post { background: #111; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #222; }
-        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
-        .fb-create-post .input-box { flex: 1; background: transparent; border: 1px solid #444; padding: 10px 15px; border-radius: 30px; color: #fff; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
-        .fb-create-post .input-box:hover { background: #222; }
+        .fb-create-post { background: #111; padding: 12px 15px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #222; border-radius: 8px;}
+        .fb-create-post img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; flex-shrink: 0; cursor: pointer;}
+        .fb-create-post .input-box { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 30px; color: #aaa; font-size: 15px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; }
+        .fb-create-post .input-box:hover { background: #333; color: #fff; }
         .fb-create-post i { color: #888; font-size: 24px; cursor: pointer; padding: 5px; flex-shrink: 0; transition: 0.3s; }
-        .fb-create-post i:hover { color: #e6c875; }
+        .fb-create-post i:hover { color: #45bd62; }
 
-        /* 2. STORIES & REELS SECTION */
         .fb-stories-wrapper { background: #111; overflow: hidden; padding-bottom: 15px; margin-bottom: 5px; border-bottom: 5px solid #000;}
         .fb-story-tabs { display: flex; border-bottom: 1px solid #222; }
         .story-tab { flex: 1; text-align: center; padding: 15px; color: #888; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
@@ -144,27 +142,23 @@
         .story-card { min-width: 115px; height: 200px; border-radius: 12px; background: #222; position: relative; overflow: hidden; cursor: pointer; border: 1px solid #333; flex-shrink: 0; scroll-snap-align: start; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.3s; }
         .story-card:hover { filter: brightness(1.1); }
         
-        /* Create Card */
         .story-card.create-card .create-bg { width: 100%; height: 65%; background-size: cover; background-position: center; }
         .story-card.create-card .create-bottom { height: 35%; background: #222; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 12px; position: relative; }
         .story-card.create-card .plus-btn { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); width: 32px; height: 32px; background: #1877F2; color: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center; border: 3px solid #222; font-size: 20px; font-weight: bold; }
-        /* Special Reel Icon Style */
         .story-card.create-card.reel-btn .plus-btn { background: #ff4d4d; }
         .story-card.create-card span { color: #fff; font-size: 13px; font-weight: bold; }
 
-        /* Standard Card */
-        .story-card.user-card img.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
+        .story-card.user-card img.bg, .story-card.user-card video.bg { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.3s; }
         .story-card.user-card .user-ring { position: absolute; top: 8px; left: 8px; width: 35px; height: 35px; border-radius: 50%; border: 3px solid #1877F2; padding: 2px; background: transparent; z-index: 10; }
         .story-card.user-card .user-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
         
-        /* 🔥 STORY / REEL LOADING SPINNER CSS 🔥 */
         .story-overlay-loading { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 5; color: #fff; }
         .story-overlay-loading .spinner { border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid #1877F2; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* 3. POST CARDS */
-        .post-card { background: #111; border-bottom: 5px solid #000; padding-top: 5px; }
+        /* POST CARDS */
+        .post-card { background: #111; border-bottom: 5px solid #000; padding-top: 5px; animation: fadeInForm 0.4s ease; }
         .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 10px 15px; }
         .post-user { display: flex; gap: 10px; cursor: pointer; }
         .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
@@ -174,9 +168,9 @@
         .post-options { display: flex; gap: 15px; color: #888; font-size: 18px; cursor: pointer; padding-top: 5px;}
         
         .post-text { padding: 0 15px 10px 15px; font-size: 15px; color: #e4e6eb; line-height: 1.5; }
-        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; }
+        .post-media { width: 100%; }
+        .post-media img, .post-media video { width: 100%; max-height: 600px; object-fit: cover; cursor: pointer; display: block; }
         
-        /* Post Interactions */
         .post-stats { display: flex; justify-content: space-between; padding: 10px 15px; color: #aaa; font-size: 13px; border-bottom: 1px solid #222; }
         .post-stats .reactions { display: flex; align-items: center; gap: 5px; }
         .post-stats .reactions img { width: 18px; height: 18px; border-radius: 50%; border: 1px solid #111; margin-left: -5px; }
@@ -187,7 +181,6 @@
         .action-btn.active { color: #1877F2; }
         .reward-hint { font-size: 10px; background: rgba(230,200,117,0.15); color: #e6c875; padding: 2px 5px; border-radius: 10px; border: 1px solid rgba(230,200,117,0.4); margin-left: 2px; }
 
-        /* 🔥 LIVE COMMENTS SECTION 🔥 */
         .post-comments-section { padding: 10px 15px 15px 15px; background: #0a0a0a; display: none; border-bottom: 1px solid #222; }
         .comments-list { max-height: 250px; overflow-y: auto; margin-bottom: 15px; display: flex; flex-direction: column; gap: 12px; }
         .comments-list::-webkit-scrollbar { width: 4px; }
@@ -202,24 +195,57 @@
         .add-comment-box img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; }
         .add-comment-box input { flex: 1; background: #222; border: 1px solid #333; padding: 10px 15px; border-radius: 20px; color: #fff; outline: none; font-size: 14px; }
         .add-comment-box button { background: transparent; border: none; color: #1877F2; font-size: 18px; cursor: pointer; padding: 5px 10px; transition: 0.3s; }
-        .add-comment-box button:hover { transform: scale(1.1); }
 
-        /* 🔥 SHARE MODAL 🔥 */
+        /* 🔥 GUEST LOGIN POPUP 🔥 */
+        .guest-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .guest-popup-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .guest-popup-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .guest-popup-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .guest-popup-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .guest-popup-btn { background: #e6c875; color: #000; padding: 12px 20px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .guest-popup-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        /* 🔥 CREATE POST MODAL (NEW) 🔥 */
+        .create-post-modal { background: #1a1a1a; border: 1px solid #333; width: 95%; max-width: 500px; border-radius: 12px; padding: 20px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.9); position: relative; }
+        .create-post-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
+        .create-post-header h3 { color: #fff; margin: 0; font-size: 20px; font-weight: bold; width: 100%; text-align: center; }
+        .create-post-close { background: #333; color: #aaa; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 18px; cursor: pointer; position: absolute; right: 20px; top: 15px; transition: 0.3s; }
+        .create-post-close:hover { background: #444; color: #fff; }
+        .create-post-user { display: flex; gap: 12px; align-items: center; margin-bottom: 15px; }
+        .create-post-user img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
+        .create-post-user-info h4 { color: #fff; margin: 0 0 4px 0; font-size: 15px; }
+        .create-post-user-info span { background: #333; color: #ccc; font-size: 11px; padding: 4px 8px; border-radius: 5px; font-weight: bold; display: flex; align-items: center; gap: 5px; width: fit-content; }
+        
+        #newPostText { width: 100%; background: transparent; border: none; color: #fff; font-size: 18px; outline: none; resize: none; min-height: 100px; font-family: Arial, sans-serif; }
+        #newPostText::placeholder { color: #888; }
+        
+        #newPostImgPreview { display: none; position: relative; margin-bottom: 15px; border-radius: 8px; border: 1px solid #333; padding: 8px; background: #111; }
+        #previewSelectedImg { width: 100%; border-radius: 8px; max-height: 250px; object-fit: contain; background: #000; }
+        .remove-img-btn { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+        .remove-img-btn:hover { background: #ff4d4d; }
+
+        .add-to-post-box { border: 1px solid #333; border-radius: 8px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .add-to-post-icons { display: flex; gap: 20px; font-size: 22px; cursor: pointer; }
+        .add-to-post-icons i { transition: 0.3s; }
+        .add-to-post-icons i:hover { transform: scale(1.2); }
+        
+        .publish-btn { width: 100%; background: #1877F2; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
+        .publish-btn:hover { background: #166fe5; }
+        .publish-btn:disabled { background: #444; color: #888; cursor: not-allowed; }
+
+        /* SHARE MODAL */
         .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
         .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .share-modal-box { background: #1a1a1a; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.8); }
         .share-modal-close { position: absolute; top: 15px; right: 20px; background: #333; color: #fff; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
-        .share-modal-box h3 { margin: 0 0 20px 0; color: #fff; font-size: 18px; text-align: center; }
-        .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
+        .share-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; margin-top: 15px;}
         .share-opt { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: 0.3s; }
         .share-opt:hover { transform: translateY(-5px); }
         .share-opt .icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; }
-        .share-opt span { color: #ccc; font-size: 12px; font-weight: bold; }
 
-        /* 🔥 RIGHT SIDEBAR (WIDGETS) 🔥 */
+        /* RIGHT SIDEBAR */
         .right-sidebar { position: sticky; top: 135px; height: calc(100vh - 135px); overflow-y: auto; padding-left: 10px; }
         .widget-title { color: #888; font-size: 16px; margin: 0 0 10px 0; font-weight: bold; }
-        
         .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; }
         .contact-item:hover { background: #222; }
         .contact-item .img-wrap { position: relative; }
@@ -227,60 +253,46 @@
         .contact-item .status { width: 9px; height: 9px; background: #25d366; border-radius: 50%; position: absolute; bottom: 0; right: 0; border: 2px solid #111; }
         .contact-item span { color: #ccc; font-size: 14px; font-weight: bold; }
 
-        /* Floating ATVT Animation */
         .floating-reward { position: fixed; color: #e6c875; font-size: 22px; font-weight: 900; text-shadow: 0 0 15px rgba(230,200,117,1); pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
 
-        /* 🔥 FULLSCREEN VIEWS (STORY/REEL EDITOR & SETTINGS) 🔥 */
+        /* FULLSCREEN VIEWS */
         .reels-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none; flex-direction: column; }
         .reels-view.active { display: flex; animation: slideUp 0.3s ease; }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-        
         .reels-header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 10; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .reels-header i { color: #fff; font-size: 22px; cursor: pointer; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        .reels-header h2 { color: #fff; margin: 0; font-size: 18px; font-weight: bold; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .reels-header h2 { color: #fff; margin: 0; font-size: 18px; font-weight: bold; }
         
         .reel-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #111; overflow: hidden; }
         
-        /* Reel Editor Bottom Tools */
         .reel-editor-bottom { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); display: flex; justify-content: space-between; align-items: flex-end; z-index: 20; }
         .reel-tools { display: flex; gap: 20px; }
         .reel-tools .tool { display: flex; flex-direction: column; align-items: center; gap: 8px; color: #fff; cursor: pointer; transition: 0.3s; }
         .reel-tools .tool:hover { color: #e6c875; transform: scale(1.1); }
-        .reel-tools .tool i { font-size: 24px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-        .reel-tools .tool span { font-size: 12px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
         .next-btn { background: #1877F2; color: #fff; border: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .next-btn:hover { background: #166fe5; }
 
-        /* Reel Settings Page */
         .settings-list { display: flex; flex-direction: column; gap: 20px; padding-top: 15px; }
         .settings-item { display: flex; align-items: center; gap: 15px; cursor: pointer; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .settings-item > i:first-child { font-size: 22px; color: #aaa; width: 30px; text-align: center; }
         .settings-item .text { flex: 1; }
         .settings-item .text h4 { margin: 0; color: #fff; font-size: 16px; }
         .settings-item .text p { margin: 4px 0 0 0; color: #888; font-size: 13px; }
-        .settings-item .arrow { color: #555; font-size: 18px; }
-
-        /* Story Editor (From previous) */
+        
         .story-preview-img { width: 100%; height: 100%; object-fit: contain; }
         .story-editor-tools { position: absolute; right: 15px; top: 80px; display: flex; flex-direction: column; gap: 25px; z-index: 10; }
-        .story-editor-tools .tool-btn { color: #fff; font-size: 26px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; gap:5px;}
+        .story-editor-tools .tool-btn { color: #fff; font-size: 26px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap:5px; transition:0.3s;}
         .story-editor-tools .tool-btn span { font-size: 10px; font-weight: bold; }
         .story-editor-tools .tool-btn:hover { color: #e6c875; transform: scale(1.1); }
         .story-share-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #111; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; z-index: 20; }
-        .story-share-bar .privacy { color: #fff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: bold; }
         .story-share-bar .share-btn { background: #1877F2; color: #fff; border: none; padding: 10px 30px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s; }
-        .story-share-bar .share-btn:hover { background: #166fe5; }
 
-        /* 🔥 MOBILE RESPONSIVE 🔥 */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
-            
             .sidebar { position: fixed; right: -100%; left: auto; top: 0; height: 100vh; width: 90%; max-width: 350px; background: #111; padding-top: 10px; padding-left: 10px; transition: 0.3s; z-index: 2500; box-shadow: -5px 0 15px rgba(0,0,0,0.9); }
             .sidebar.active { right: 0; }
             .right-sidebar { display: none; }
-            
             .fb-top-left .menu-btn { display: none; } 
             
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #111; border-top: 1px solid #222; z-index: 2000; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.9); }
@@ -294,10 +306,62 @@
 </head>
 <body>
 
-    <!-- OVERLAY FOR MOBILE MENU -->
     <div id="overlay"></div>
 
-    <!-- 🔥 APP HEADER (FACEBOOK STYLE) 🔥 -->
+    <!-- 🔥 GUEST LOGIN POPUP 🔥 -->
+    <div class="guest-popup-overlay" id="guestPopupOverlay">
+        <div class="guest-popup-box custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" style="color: #e6c875;">Login Required</h3>
+            <p class="custom-alert-msg" style="margin-bottom: 20px;">Unlock premium features! Login or create a free VIP account to Earn ATVT coins by liking, commenting, and posting.</p>
+            <div style="display:flex; gap:10px;">
+                <button class="guest-popup-btn" onclick="document.getElementById('guestPopupOverlay').classList.remove('active')" style="background:transparent; border:1px solid #888; color:#888;">Cancel</button>
+                <button class="guest-popup-btn" onclick="window.location.href='auth.html'" style="flex:1;">Login / Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔥 CREATE POST MODAL (NEW FACEBOOK STYLE) 🔥 -->
+    <div class="guest-popup-overlay" id="createPostModalOverlay">
+        <div class="create-post-modal">
+            <div class="create-post-header">
+                <h3>Create post</h3>
+                <button class="create-post-close" onclick="closeCreatePostModal()">&times;</button>
+            </div>
+            
+            <div class="create-post-user">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
+                <div class="create-post-user-info">
+                    <h4 class="current-user-name">User Name</h4>
+                    <span><i class="fas fa-globe-americas"></i> Public <i class="fas fa-caret-down" style="margin-left: 2px;"></i></span>
+                </div>
+            </div>
+            
+            <textarea id="newPostText" placeholder="What's on your mind?"></textarea>
+            
+            <div id="newPostImgPreview">
+                <img src="" id="previewSelectedImg">
+                <button class="remove-img-btn" onclick="removePostImg()">&times;</button>
+            </div>
+            
+            <div class="add-to-post-box">
+                <span style="color: #ccc; font-size: 15px; font-weight: bold;">Add to your post</span>
+                <div class="add-to-post-icons">
+                    <i class="fas fa-images" style="color: #45bd62;" onclick="document.getElementById('postMediaInput').click()"></i>
+                    <i class="fas fa-user-tag" style="color: #1877f2;" onclick="alert('Feature coming soon')"></i>
+                    <i class="fas fa-smile" style="color: #f7b928;"></i>
+                    <i class="fas fa-map-marker-alt" style="color: #f5533d;"></i>
+                </div>
+            </div>
+            
+            <button class="publish-btn" id="publishBtn" onclick="publishNewPost()">Post</button>
+            <input type="file" id="postMediaInput" accept="image/*,video/*" style="display: none;" onchange="previewPostMedia(this)">
+        </div>
+    </div>
+
+    <!-- 🔥 APP HEADER 🔥 -->
     <header class="fb-header">
         <div class="fb-top-row">
             <div class="fb-top-left">
@@ -305,7 +369,7 @@
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="fb-top-right">
-                <button class="fb-icon-btn" onclick="openStoryPicker()"><i class="fas fa-plus"></i></button>
+                <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
                 <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
                 <button class="fb-icon-btn fill">
                     <i class="fab fa-facebook-messenger"></i>
@@ -316,7 +380,7 @@
 
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <a href="javascript:void(0)" class="fb-tab" onclick="switchMainTab('video')"><i class="fas fa-video"></i></a>
+            <a href="javascript:void(0)" class="fb-tab" onclick="alert('Video feed coming soon')"><i class="fas fa-video"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
@@ -327,7 +391,7 @@
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -336,7 +400,6 @@
     <!-- 🔥 MAIN APP CONTAINER 🔥 -->
     <div class="app-container">
         
-        <!-- 🔥 RIGHT SIDEBAR MENU 🔥 -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-inner" style="padding-bottom: 80px;">
                 <div style="display: flex; justify-content: flex-end; padding: 5px; margin-bottom: -15px;" class="mobile-only-close">
@@ -344,11 +407,11 @@
                 </div>
 
                 <div class="fb-menu-header">
-                    <div class="fb-menu-profile" onclick="window.location.href='profile-edit.html'">
+                    <div class="fb-menu-profile" onclick="window.location.href='auth.html'">
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" alt="User">
                         <div class="fb-menu-profile-info">
-                            <h3 id="sidebarProfileName">VIP Member</h3>
-                            <p id="sidebarDkId" style="color:#e6c875; font-size:12px; margin: 2px 0 0 0;">DK-..........</p>
+                            <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
+                            <p id="sidebarDkId" style="color:#e6c875; font-size:12px; margin: 2px 0 0 0;">Login to Earn ATVT</p>
                         </div>
                     </div>
                     <div class="fb-menu-actions">
@@ -390,55 +453,31 @@
                         <i class="fas fa-th-large" style="color: #e6c875;"></i>
                         <span>VIP Dashboard</span>
                     </a>
-                    <a href="#" class="fb-menu-item">
-                        <i class="fas fa-robot" style="color: #a855f7;"></i>
-                        <span>DK AI</span>
-                    </a>
-                    <a href="#" class="fb-menu-item">
-                        <i class="fas fa-bookmark" style="color: #b8860b;"></i>
-                        <span>Saved</span>
-                    </a>
                 </div>
                 <button class="fb-menu-see-more">See more</button>
                 <hr class="fb-menu-divider">
 
-                <details class="fb-accordion">
-                    <summary><i class="fas fa-question-circle"></i> Help and support <i class="fas fa-chevron-down arrow"></i></summary>
-                    <div class="accordion-content">
-                        <a href="#"><i class="fas fa-life-ring"></i> Help Center</a>
-                        <a href="#"><i class="fas fa-envelope"></i> Support Inbox</a>
-                    </div>
-                </details>
-
-                <details class="fb-accordion">
-                    <summary><i class="fas fa-cog"></i> Settings and privacy <i class="fas fa-chevron-down arrow"></i></summary>
-                    <div class="accordion-content">
-                        <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
-                    </div>
-                </details>
-
-                <button class="fb-logout-btn logout-action">Log out</button>
+                <button class="fb-logout-btn logout-action" style="color: #e6c875; border: 1px solid #e6c875; background: transparent;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
             </div>
         </aside>
 
         <!-- MIDDLE FEED -->
         <main class="feed">
             
-            <!-- 1. FB CREATE POST BOX -->
+            <!-- 🔥 CREATE POST BUTTON 🔥 -->
             <div class="fb-create-post">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="createPostImg" alt="User">
-                <div class="input-box" onclick="openStoryPicker()">What's on your mind?</div>
-                <i class="fas fa-images" onclick="openStoryPicker()"></i>
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="User">
+                <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
+                <i class="fas fa-images" onclick="openCreatePostModal()"></i>
             </div>
 
-            <!-- 2. STORIES & REELS SECTION -->
+            <!-- STORIES & REELS SECTION -->
             <div class="fb-stories-wrapper">
                 <div class="fb-story-tabs">
                     <div class="story-tab active" id="tab-stories" onclick="switchTab('stories')">Stories</div>
                     <div class="story-tab" id="tab-reels" onclick="switchTab('reels')">Reels</div>
                 </div>
                 
-                <!-- STORIES CONTAINER -->
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
                         <div class="create-bg" id="storyUserBg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');"></div>
@@ -453,7 +492,6 @@
                         <div class="user-ring"><img src="images/movies/gallery1.png"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
-                    
                     <div class="story-card user-card">
                         <img src="https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a" class="bg" alt="Story">
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/women/44.jpg"></div>
@@ -461,7 +499,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 REELS CONTAINER (NEW) 🔥 -->
                 <div class="fb-stories-scroll" id="reelsContainer" style="display:none;">
                     <div class="story-card create-card reel-btn" onclick="openReelPicker()">
                         <div class="create-bg" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113'); opacity:0.8;"></div>
@@ -476,78 +513,74 @@
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
                         <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 1.2M</span>
                     </div>
-
-                    <div class="story-card user-card" onclick="alert('Playing Reel...')">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30" class="bg" alt="Reel">
-                        <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/75.jpg"></div>
-                        <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 450K</span>
-                    </div>
                 </div>
             </div>
 
-            <!-- 3. FEED POSTS -->
-            <div class="post-card" id="post-1">
-                <div class="post-header">
-                    <div class="post-user">
-                        <img src="images/movies/gallery1.png" alt="DK Atovitt">
-                        <div class="post-user-info">
-                            <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
-                            <p>18h • <i class="fas fa-user-friends"></i></p>
-                        </div>
-                    </div>
-                    <div class="post-options">
-                        <i class="fas fa-ellipsis-h"></i>
-                        <i class="fas fa-times" style="margin-left: 10px;"></i>
-                    </div>
-                </div>
-                <div class="post-text">
-                    Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
-                </div>
-                <div class="post-media">
-                    <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
-                </div>
-                <div class="post-stats">
-                    <div class="reactions">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1200px-Love_Heart_symbol.svg.png" style="background:#fff;">
-                        <span id="like-count-post-1">1245</span>
-                    </div>
-                    <span><span id="comment-count-post-1">450</span> Comments • 120 Shares</span>
-                </div>
+            <!-- 🔥 POSTS CONTAINER 🔥 -->
+            <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 10px;">
                 
-                <div class="post-actions">
-                    <button class="action-btn" onclick="toggleLike(this, 'post-1', 1)" data-earned="false">
-                        <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like <span class="reward-hint">+1 ATVT</span>
-                    </button>
-                    <button class="action-btn" onclick="toggleCommentSection('post-1')" data-earned="false" id="comment-btn-post-1">
-                        <i class="far fa-comment" style="font-size: 18px;"></i> Comment <span class="reward-hint">+2 ATVT</span>
-                    </button>
-                    <button class="action-btn" onclick="openShareModal('post-1')" data-earned="false" id="share-btn-post-1">
-                        <i class="fas fa-share" style="font-size: 18px;"></i> Share <span class="reward-hint">+5 ATVT</span>
-                    </button>
-                </div>
-                
-                <div class="post-comments-section" id="comments-section-post-1">
-                    <div class="comments-list" id="comment-list-post-1">
-                        <div class="comment-item">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
-                            <div class="comment-bubble">
-                                <h5>Rahul Sharma</h5>
-                                <p>Super excited for this movie! 🔥</p>
+                <div class="post-card" id="post-1">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="images/movies/gallery1.png" alt="DK Atovitt">
+                            <div class="post-user-info">
+                                <h4>DK ATOVITT <i class="fas fa-check-circle verify-badge"></i></h4>
+                                <p>18h • <i class="fas fa-globe-americas"></i></p>
                             </div>
                         </div>
+                        <div class="post-options">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
                     </div>
-                    <div class="add-comment-box">
-                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
-                        <input type="text" id="comment-input-post-1" placeholder="Write a comment...">
-                        <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
+                    <div class="post-text">
+                        Get ready for the grand launch of "Yakshini"! India's most terrifying horror-romance cinematic experience is coming soon. Like and share to spread the word! 🎬👻 #Yakshini #DKAtovitt #Bollywood
+                    </div>
+                    <div class="post-media">
+                        <img src="images/movies/yakshini-poster.png" alt="Yakshini Poster">
+                    </div>
+                    <div class="post-stats">
+                        <div class="reactions">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png" style="background:#fff;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Love_Heart_symbol.svg/1200px-Love_Heart_symbol.svg.png" style="background:#fff;">
+                            <span id="like-count-post-1">1245</span>
+                        </div>
+                        <span><span id="comment-count-post-1">450</span> Comments</span>
+                    </div>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this, 'post-1', 1)" data-earned="false">
+                            <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
+                        </button>
+                        <button class="action-btn" onclick="toggleCommentSection('post-1')" data-earned="false" id="comment-btn-post-1">
+                            <i class="far fa-comment" style="font-size: 18px;"></i> Comment
+                        </button>
+                        <button class="action-btn" onclick="openShareModal('post-1')" data-earned="false" id="share-btn-post-1">
+                            <i class="fas fa-share" style="font-size: 18px;"></i> Share
+                        </button>
+                    </div>
+                    
+                    <div class="post-comments-section" id="comments-section-post-1">
+                        <div class="comments-list" id="comment-list-post-1">
+                            <div class="comment-item">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                                <div class="comment-bubble">
+                                    <h5>Rahul Sharma</h5>
+                                    <p>Super excited for this movie! 🔥</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-comment-box">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
+                            <input type="text" id="comment-input-post-1" placeholder="Write a comment...">
+                            <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </main>
 
-        <!-- RIGHT SIDEBAR (Contacts & Trending) -->
+        <!-- RIGHT SIDEBAR -->
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
             <div class="contact-item">
@@ -574,7 +607,7 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="javascript:void(0)" class="nav-item" onclick="switchMainTab('video')">
+        <a href="javascript:void(0)" class="nav-item" onclick="alert('Video feed coming soon')">
             <i class="fas fa-video"></i>
             <span>Video</span>
         </a>
@@ -598,7 +631,7 @@
         </a>
     </nav>
 
-    <!-- 🔥 SHARE MODAL 🔥 -->
+    <!-- SHARE MODAL -->
     <div id="shareModalOverlay" class="share-modal-overlay">
         <div class="share-modal-box">
             <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
@@ -612,10 +645,6 @@
                     <div class="icon" style="background:#1877F2;"><i class="fab fa-facebook-f"></i></div>
                     <span>Facebook</span>
                 </div>
-                <div class="share-opt" onclick="executeShare('twitter')">
-                    <div class="icon" style="background:#1da1f2;"><i class="fab fa-twitter"></i></div>
-                    <span>Twitter</span>
-                </div>
                 <div class="share-opt" onclick="executeShare('copy')">
                     <div class="icon" style="background:#555;"><i class="fas fa-link"></i></div>
                     <span>Copy Link</span>
@@ -624,25 +653,18 @@
         </div>
     </div>
 
-    <!-- 🔥 HIDDEN FILE INPUTS 🔥 -->
+    <!-- HIDDEN FILE INPUTS -->
     <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
     <input type="file" id="reelFileInput" accept="video/*" style="display: none;">
 
-    <!-- 🔥 STORY EDITOR MODAL 🔥 -->
+    <!-- STORY EDITOR MODAL -->
     <div id="storyPreviewModal" class="reels-view">
         <div class="reels-header">
             <i class="fas fa-times" onclick="closeStoryPreview()"></i>
             <h2>Create story</h2>
-            <i class="fas fa-cog"></i>
         </div>
         <div class="reel-container" style="background: #000;">
             <img id="storyPreviewImg" src="" class="story-preview-img">
-            <div class="story-editor-tools">
-                <div class="tool-btn"><i class="fas fa-music"></i><span>Music</span></div>
-                <div class="tool-btn"><i class="fas fa-font"></i><span>Text</span></div>
-                <div class="tool-btn"><i class="fas fa-sticky-note"></i><span>Stickers</span></div>
-                <div class="tool-btn"><i class="fas fa-magic"></i><span>Effects</span></div>
-            </div>
             <div class="story-share-bar">
                 <div class="privacy"><i class="fas fa-globe-americas"></i> Public</div>
                 <button class="share-btn" onclick="shareStory()">Share</button>
@@ -650,7 +672,7 @@
         </div>
     </div>
 
-    <!-- 🔥 REEL EDITOR MODAL (NEW) 🔥 -->
+    <!-- REEL EDITOR MODAL -->
     <div id="reelEditorModal" class="reels-view">
         <div class="reels-header" style="background: transparent;">
             <i class="fas fa-arrow-left" onclick="closeReelEditor()"></i>
@@ -658,89 +680,20 @@
         <div class="reel-container" style="background: #000;">
             <video id="reelPreviewVideo" src="" class="story-preview-img" autoplay loop muted></video>
         </div>
-        <!-- FB Reel Bottom Tools -->
         <div class="reel-editor-bottom">
             <div class="reel-tools">
                 <div class="tool"><i class="fas fa-music"></i><span>Audio</span></div>
-                <div class="tool"><i class="fas fa-cut"></i><span>Edit</span></div>
-                <div class="tool"><i class="fas fa-magic"></i><span>Effects</span></div>
-                <div class="tool"><i class="fas fa-font"></i><span>Text</span></div>
-                <div class="tool"><i class="fas fa-smile"></i><span>Stickers</span></div>
             </div>
-            <button class="next-btn" onclick="goToReelSettings()">Next <i class="fas fa-chevron-right"></i></button>
+            <button class="next-btn" onclick="publishReel()">Next <i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 
-    <!-- 🔥 REEL SETTINGS MODAL (NEW) 🔥 -->
-    <div id="reelSettingsModal" class="reels-view" style="background: #111; flex-direction: column;">
-        <div class="fb-top-row" style="border-bottom: 1px solid #222; background: #111;">
-            <div class="fb-top-left">
-                <i class="fas fa-arrow-left" onclick="backToReelEditor()" style="font-size: 20px; cursor: pointer; color: #fff;"></i>
-                <h2 style="margin:0 0 0 15px; font-size: 18px; color: #fff;">Reel Settings</h2>
-            </div>
-        </div>
-        
-        <div style="padding: 15px; flex: 1; overflow-y: auto;">
-            <!-- Description Box -->
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 40px; height: 40px; border-radius: 50%;">
-                <textarea id="reelDescription" placeholder="Describe your reel. You can also add hashtags here..." style="flex:1; background: transparent; border: none; color: #fff; font-size: 15px; outline: none; resize: none; height: 60px;"></textarea>
-            </div>
-            
-            <!-- Settings Options -->
-            <div class="settings-list">
-                <div class="settings-item">
-                    <i class="fas fa-share-square"></i>
-                    <div class="text"><h4>Share to groups</h4></div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-                <div class="settings-item">
-                    <i class="fas fa-layer-group"></i>
-                    <div class="text">
-                        <h4>Share to your story</h4>
-                        <p>Help this reach your followers</p>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-                <div class="settings-item">
-                    <i class="fab fa-instagram" style="color:#E1306C;"></i>
-                    <div class="text">
-                        <h4>Instagram</h4>
-                        <p>Sharing as @vip_creator</p>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-                <div class="settings-item">
-                    <i class="fas fa-user-tag"></i>
-                    <div class="text">
-                        <h4>Tag people</h4>
-                        <p>This also includes Pages.</p>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-                <div class="settings-item">
-                    <i class="fas fa-shopping-bag"></i>
-                    <div class="text">
-                        <h4>Add product</h4>
-                        <p>Add products to your reel</p>
-                    </div>
-                    <i class="fas fa-chevron-right arrow"></i>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Bottom Share Button -->
-        <div style="padding: 15px; border-top: 1px solid #222; background: #111;">
-            <button onclick="publishReel()" style="width: 100%; background: #1877F2; color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; transition: 0.3s;">Share now</button>
-        </div>
-    </div>
-
-    <!-- 🔥 JAVASCRIPT FOR LOGIC 🔥 -->
+    <!-- JAVASCRIPT FOR LOGIC -->
     <script>
-        let currentUserName = "VIP Member";
+        let currentUserName = "Guest User";
         let currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+        let isGuest = true; // Main Guest Flag
 
-        // --- TAB SWITCHING (Stories vs Reels) ---
         function switchTab(tab) {
             if(tab === 'stories') {
                 document.getElementById('tab-stories').classList.add('active');
@@ -755,8 +708,141 @@
             }
         }
 
-        // --- STORY LOGIC ---
-        function openStoryPicker() { document.getElementById('storyFileInput').click(); }
+        // GUEST INTERCEPTION LOGIC
+        function checkGuest() {
+            if(isGuest) {
+                document.getElementById('guestPopupOverlay').classList.add('active');
+                return true;
+            }
+            return false;
+        }
+
+        // 🔥 CREATE POST LOGIC (NEW) 🔥
+        let postMediaData = "";
+        let postMediaType = ""; // "image" or "video"
+
+        function openCreatePostModal() {
+            if(checkGuest()) return;
+            document.getElementById('createPostModalOverlay').classList.add('active');
+            document.getElementById('newPostText').focus();
+        }
+
+        function closeCreatePostModal() {
+            document.getElementById('createPostModalOverlay').classList.remove('active');
+            document.getElementById('newPostText').value = "";
+            removePostImg();
+        }
+
+        function previewPostMedia(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    postMediaData = e.target.result;
+                    const previewBox = document.getElementById('newPostImgPreview');
+                    const imgPreview = document.getElementById('previewSelectedImg');
+                    
+                    if(file.type.startsWith('video/')) {
+                        postMediaType = "video";
+                        previewBox.innerHTML = `<video src="${postMediaData}" id="previewSelectedImg" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;" controls></video><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                    } else {
+                        postMediaType = "image";
+                        previewBox.innerHTML = `<img src="${postMediaData}" id="previewSelectedImg" style="width:100%; border-radius:8px; max-height:250px; object-fit:contain; background:#000;"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+                    }
+                    
+                    previewBox.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removePostImg() {
+            postMediaData = "";
+            postMediaType = "";
+            document.getElementById('newPostImgPreview').style.display = 'none';
+            document.getElementById('postMediaInput').value = "";
+            document.getElementById('newPostImgPreview').innerHTML = `<img src="" id="previewSelectedImg"><button class="remove-img-btn" onclick="removePostImg()">&times;</button>`;
+        }
+
+        function publishNewPost() {
+            const text = document.getElementById('newPostText').value.trim();
+            if(text === "" && postMediaData === "") {
+                alert("Please write something or add a photo/video!");
+                return;
+            }
+
+            const publishBtn = document.getElementById('publishBtn');
+            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+            publishBtn.disabled = true;
+
+            const postId = 'post-' + Date.now();
+            let mediaHTML = "";
+            
+            if(postMediaData !== "") {
+                if(postMediaType === "video") {
+                    mediaHTML = `<div class="post-media"><video src="${postMediaData}" controls></video></div>`;
+                } else {
+                    mediaHTML = `<div class="post-media"><img src="${postMediaData}" alt="Post Image"></div>`;
+                }
+            }
+
+            const newPostHTML = `
+                <div class="post-card" id="${postId}">
+                    <div class="post-header">
+                        <div class="post-user">
+                            <img src="${currentUserPhoto}" alt="User">
+                            <div class="post-user-info">
+                                <h4>${currentUserName} <i class="fas fa-check-circle verify-badge" style="color: #e6c875;"></i></h4>
+                                <p>Just now • <i class="fas fa-globe-americas"></i></p>
+                            </div>
+                        </div>
+                        <div class="post-options"><i class="fas fa-ellipsis-h"></i></div>
+                    </div>
+                    ${text !== "" ? `<div class="post-text">${text.replace(/\n/g, '<br>')}</div>` : ""}
+                    ${mediaHTML}
+                    <div class="post-stats">
+                        <div class="reactions"><span id="like-count-${postId}">0</span> Likes</div>
+                        <span><span id="comment-count-${postId}">0</span> Comments</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn" onclick="toggleLike(this, '${postId}', 1)" data-earned="false">
+                            <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
+                        </button>
+                        <button class="action-btn" onclick="toggleCommentSection('${postId}')" data-earned="false" id="comment-btn-${postId}">
+                            <i class="far fa-comment" style="font-size: 18px;"></i> Comment
+                        </button>
+                        <button class="action-btn" onclick="openShareModal('${postId}')" data-earned="false" id="share-btn-${postId}">
+                            <i class="fas fa-share" style="font-size: 18px;"></i> Share
+                        </button>
+                    </div>
+                    <div class="post-comments-section" id="comments-section-${postId}">
+                        <div class="comments-list" id="comment-list-${postId}"></div>
+                        <div class="add-comment-box">
+                            <img src="${currentUserPhoto}" class="current-user-avatar">
+                            <input type="text" id="comment-input-${postId}" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${postId}', 2)">
+                            <button onclick="postComment('${postId}', 2)"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                const feedContainer = document.getElementById('postsFeedContainer');
+                feedContainer.insertAdjacentHTML('afterbegin', newPostHTML);
+                
+                closeCreatePostModal();
+                publishBtn.innerHTML = 'Post';
+                publishBtn.disabled = false;
+                
+                simulateEarning(null, 5); // Earn ATVT for posting
+            }, 1500);
+        }
+
+        // STORIES & REELS LOGIC
+        function openStoryPicker() { 
+            if(checkGuest()) return;
+            document.getElementById('storyFileInput').click(); 
+        }
         document.getElementById('storyFileInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if(file) {
@@ -772,23 +858,9 @@
             closeStoryPreview();
             const imgSrc = document.getElementById('storyPreviewImg').src;
             const storyId = 'story-' + Date.now();
-            
-            const newStoryHTML = `
-                <div class="story-card user-card" id="${storyId}">
-                    <img src="${imgSrc}" class="bg" alt="Story" style="opacity: 0.5;">
-                    <div class="user-ring"><img src="${currentUserPhoto}"></div>
-                    <div class="story-overlay-loading" id="loading-${storyId}">
-                        <div class="spinner"></div>
-                        <span style="font-size: 11px; margin-top: 8px; font-weight: bold;">Sharing...</span>
-                    </div>
-                    <span class="story-name" id="name-${storyId}" style="display:none;">Your story</span>
-                </div>
-            `;
-            
-            const createCard = document.querySelector('#storiesContainer .create-card');
-            createCard.insertAdjacentHTML('afterend', newStoryHTML);
+            const newStoryHTML = `<div class="story-card user-card" id="${storyId}"><img src="${imgSrc}" class="bg" style="opacity:0.5;"><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${storyId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Sharing...</span></div><span class="story-name" id="name-${storyId}" style="display:none;">Your story</span></div>`;
+            document.querySelector('#storiesContainer .create-card').insertAdjacentHTML('afterend', newStoryHTML);
             document.getElementById('storiesContainer').scrollLeft = 0;
-
             setTimeout(() => {
                 document.getElementById('loading-' + storyId).style.display = 'none';
                 document.getElementById('name-' + storyId).style.display = 'block';
@@ -797,9 +869,10 @@
             }, 2000);
         }
 
-        // --- NEW: REEL CREATION LOGIC ---
-        function openReelPicker() { document.getElementById('reelFileInput').click(); }
-        
+        function openReelPicker() { 
+            if(checkGuest()) return;
+            document.getElementById('reelFileInput').click(); 
+        }
         document.getElementById('reelFileInput').addEventListener('change', function(e) {
             const file = e.target.files[0];
             if(file) {
@@ -807,72 +880,33 @@
                 document.getElementById('reelEditorModal').classList.add('active');
             }
         });
-
         function closeReelEditor() {
             document.getElementById('reelEditorModal').classList.remove('active');
             document.getElementById('reelPreviewVideo').pause();
-            document.getElementById('reelPreviewVideo').src = "";
-            document.getElementById('reelFileInput').value = "";
         }
-
-        function goToReelSettings() {
-            document.getElementById('reelEditorModal').classList.remove('active');
-            document.getElementById('reelSettingsModal').classList.add('active');
-            // Keep video playing in background or pause it (pausing for performance)
-            document.getElementById('reelPreviewVideo').pause();
-        }
-
-        function backToReelEditor() {
-            document.getElementById('reelSettingsModal').classList.remove('active');
-            document.getElementById('reelEditorModal').classList.add('active');
-            document.getElementById('reelPreviewVideo').play();
-        }
-
         function publishReel() {
-            document.getElementById('reelSettingsModal').classList.remove('active');
-            
-            // Create dummy reel card in Reels tab
+            document.getElementById('reelEditorModal').classList.remove('active');
             const vidSrc = document.getElementById('reelPreviewVideo').src;
             const reelId = 'reel-' + Date.now();
-            
-            const newReelHTML = `
-                <div class="story-card user-card" id="${reelId}" onclick="alert('Playing your Reel...')">
-                    <video src="${vidSrc}" class="bg" style="opacity: 0.5;" muted></video>
-                    <div class="user-ring"><img src="${currentUserPhoto}"></div>
-                    <div class="story-overlay-loading" id="loading-${reelId}">
-                        <div class="spinner"></div>
-                        <span style="font-size: 11px; margin-top: 8px; font-weight: bold;">Uploading...</span>
-                    </div>
-                    <span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span>
-                </div>
-            `;
-            
-            const createReelCard = document.querySelector('#reelsContainer .create-card');
-            createReelCard.insertAdjacentHTML('afterend', newReelHTML);
-            
-            // Auto switch to reels tab
+            const newReelHTML = `<div class="story-card user-card" id="${reelId}"><video src="${vidSrc}" class="bg" style="opacity:0.5;" muted></video><div class="user-ring"><img src="${currentUserPhoto}"></div><div class="story-overlay-loading" id="loading-${reelId}"><div class="spinner"></div><span style="font-size:11px; margin-top:8px;">Uploading...</span></div><span class="story-name" id="name-${reelId}" style="display:none;"><i class="fas fa-play" style="font-size:10px;"></i> 0</span></div>`;
+            document.querySelector('#reelsContainer .create-card').insertAdjacentHTML('afterend', newReelHTML);
             switchTab('reels');
             document.getElementById('reelsContainer').scrollLeft = 0;
-
-            // Cleanup
             document.getElementById('reelPreviewVideo').src = "";
-            document.getElementById('reelFileInput').value = "";
-            document.getElementById('reelDescription').value = "";
-
             setTimeout(() => {
                 document.getElementById('loading-' + reelId).style.display = 'none';
                 document.getElementById('name-' + reelId).style.display = 'block';
                 document.querySelector(`#${reelId} .bg`).style.opacity = '1';
-                simulateEarning(null, 15); // Bonus for Reel
+                simulateEarning(null, 15);
             }, 2500);
         }
 
-        // --- OTHER LIVE LOGIC ---
         document.getElementById('overlay').addEventListener('click', () => {
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('overlay').classList.remove('active');
         });
 
+        // REWARDS AND INTERACTIONS
         let currentBalance = 150.00;
         function simulateEarning(event, amount) {
             currentBalance += amount;
@@ -888,6 +922,7 @@
         }
 
         function toggleLike(btn, postId, earnAmount) {
+            if(checkGuest()) return;
             const icon = btn.querySelector('i');
             const countSpan = document.getElementById('like-count-' + postId);
             let currentCount = parseInt(countSpan.innerText);
@@ -906,14 +941,14 @@
                 setTimeout(()=> btn.style.transform = 'scale(1)', 200);
 
                 if(btn.getAttribute('data-earned') === 'false') {
-                    let rect = btn.getBoundingClientRect();
-                    simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
+                    simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, earnAmount);
                     btn.setAttribute('data-earned', 'true');
                 }
             }
         }
 
         function toggleCommentSection(postId) {
+            if(checkGuest()) return;
             const section = document.getElementById('comments-section-' + postId);
             if(section.style.display === 'block') {
                 section.style.display = 'none';
@@ -924,6 +959,7 @@
         }
 
         function postComment(postId, earnAmount) {
+            if(checkGuest()) return;
             const inputField = document.getElementById('comment-input-' + postId);
             const commentText = inputField.value.trim();
             if(commentText === "") return; 
@@ -932,40 +968,22 @@
             const countSpan = document.getElementById('comment-count-' + postId);
             const commentBtn = document.getElementById('comment-btn-' + postId);
 
-            const newCommentHTML = `
-                <div class="comment-item" style="animation: fadeIn 0.3s ease;">
-                    <img src="${currentUserPhoto}" alt="Me">
-                    <div class="comment-bubble" style="border: 1px solid #e6c875;">
-                        <h5 style="color: #e6c875;">${currentUserName}</h5>
-                        <p>${commentText}</p>
-                    </div>
-                </div>
-            `;
-            
+            const newCommentHTML = `<div class="comment-item" style="animation:fadeIn 0.3s ease;"><img src="${currentUserPhoto}"><div class="comment-bubble" style="border:1px solid #e6c875;"><h5 style="color:#e6c875;">${currentUserName}</h5><p>${commentText}</p></div></div>`;
             commentList.insertAdjacentHTML('beforeend', newCommentHTML);
             commentList.scrollTop = commentList.scrollHeight;
             countSpan.innerText = parseInt(countSpan.innerText) + 1;
             inputField.value = "";
 
             if(commentBtn.getAttribute('data-earned') === 'false') {
-                let rect = commentBtn.getBoundingClientRect();
-                simulateEarning({clientX: rect.left + 20, clientY: rect.top}, earnAmount);
+                simulateEarning({clientX: commentBtn.getBoundingClientRect().left + 20, clientY: commentBtn.getBoundingClientRect().top}, earnAmount);
                 commentBtn.setAttribute('data-earned', 'true');
                 commentBtn.classList.add('active');
             }
         }
 
-        document.querySelectorAll('input[id^="comment-input-"]').forEach(input => {
-            input.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    let postId = this.id.replace('comment-input-', '');
-                    postComment(postId, 2);
-                }
-            });
-        });
-
         let currentSharePostId = null;
         function openShareModal(postId) {
+            if(checkGuest()) return;
             currentSharePostId = postId;
             document.getElementById('shareModalOverlay').classList.add('active');
         }
@@ -986,7 +1004,7 @@
         }
     </script>
     
-    <!-- FIREBASE FETCH PROFILE DATA & DK ID -->
+    <!-- FIREBASE GUEST & LOGIN AUTH -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1005,6 +1023,8 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                // 🔥 USER IS LOGGED IN 🔥
+                isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
                 currentUserPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
@@ -1014,23 +1034,34 @@
                 document.getElementById('sidebarProfileName').innerText = currentUserName;
                 document.getElementById('sidebarProfileImg').src = currentUserPhoto;
                 document.getElementById('sidebarDkId').innerText = userDkId;
-                if(document.getElementById('topbarProfileImg')) document.getElementById('topbarProfileImg').src = currentUserPhoto;
                 
-                if(document.getElementById('createPostImg')) document.getElementById('createPostImg').src = currentUserPhoto;
+                document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
+                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
+
+                if(document.getElementById('topbarProfileImg')) document.getElementById('topbarProfileImg').src = currentUserPhoto;
                 if(document.getElementById('storyUserBg')) document.getElementById('storyUserBg').style.backgroundImage = `url('${currentUserPhoto}')`;
                 if(document.getElementById('bottomNavImg')) document.getElementById('bottomNavImg').src = currentUserPhoto;
 
-                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
-
                 document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                    btn.style.color = '#ff4d4d';
+                    btn.style.borderColor = 'transparent';
                     btn.addEventListener('click', () => {
                         if(confirm("Are you sure you want to Logout?")) {
-                            signOut(auth).then(() => window.location.href = "auth.html");
+                            signOut(auth).then(() => window.location.reload());
                         }
                     });
                 });
             } else {
-                window.location.href = "auth.html";
+                // 🔥 USER IS A GUEST (NOT LOGGED IN) 🔥
+                isGuest = true;
+                document.querySelectorAll('.logout-action').forEach(btn => {
+                    btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
+                    btn.style.color = '#e6c875';
+                    btn.style.border = '1px solid #e6c875';
+                    btn.style.background = 'transparent';
+                    btn.addEventListener('click', () => { window.location.href = "auth.html"; });
+                });
             }
         });
     </script>
