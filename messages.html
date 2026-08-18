@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger - DK Connect</title>
+    <meta name="theme-color" content="#111111">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE CSS */
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; padding-top: 65px; height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e6c875; }
+
+        /* APP HEADER */
+        .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #111; z-index: 2000; box-shadow: 0 2px 5px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid #222; }
+        .fb-top-left { display: flex; align-items: center; gap: 15px; }
+        .fb-top-left h1 { margin: 0; color: #fff; font-size: 22px; font-weight: 900; }
+        .fb-icon-btn { background: transparent; color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; cursor: pointer; transition: 0.3s; }
+        .fb-icon-btn:hover { background: #222; }
+
+        /* 🔥 MESSENGER LAYOUT 🔥 */
+        .messenger-container { display: flex; flex: 1; height: calc(100vh - 65px); max-width: 1400px; margin: 0 auto; width: 100%; }
+
+        /* LEFT SIDEBAR: CHAT LIST */
+        .chat-sidebar { width: 350px; background: #111; border-right: 1px solid #222; display: flex; flex-direction: column; height: 100%; }
+        
+        .chat-sidebar-header { padding: 15px; border-bottom: 1px solid #222; }
+        .chat-sidebar-header h2 { margin: 0 0 15px 0; color: #fff; font-size: 24px; display: flex; justify-content: space-between; align-items: center; }
+        .search-box { display: flex; align-items: center; background: #222; padding: 10px 15px; border-radius: 20px; border: 1px solid #333; }
+        .search-box i { color: #888; margin-right: 10px; }
+        .search-box input { background: transparent; border: none; color: #fff; outline: none; width: 100%; font-size: 14px; }
+        
+        .chat-list { flex: 1; overflow-y: auto; padding: 10px 5px; }
+        .chat-item { display: flex; align-items: center; gap: 15px; padding: 12px 10px; cursor: pointer; border-radius: 8px; transition: 0.3s; position: relative; }
+        .chat-item:hover { background: #222; }
+        .chat-item.active { background: rgba(230,200,117,0.1); }
+        .chat-item-avatar { position: relative; }
+        .chat-item-avatar img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .online-dot { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; background: #25d366; border: 2px solid #111; border-radius: 50%; }
+        .chat-item-info { flex: 1; overflow: hidden; }
+        .chat-item-info h4 { margin: 0 0 4px 0; color: #fff; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-item-info p { margin: 0; color: #888; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-time { font-size: 11px; color: #666; position: absolute; right: 15px; top: 15px; }
+        .unread-badge { background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; right: 15px; bottom: 15px; }
+
+        /* RIGHT: ACTIVE CHAT AREA */
+        .chat-main { flex: 1; display: flex; flex-direction: column; background: #0a0a0a; position: relative; }
+        
+        /* Chat Header */
+        .active-chat-header { padding: 15px 20px; background: #111; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.5); z-index: 10;}
+        .active-chat-user { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .active-chat-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+        .active-chat-user h3 { margin: 0; color: #fff; font-size: 16px; }
+        .active-chat-user p { margin: 2px 0 0 0; color: #25d366; font-size: 12px; font-weight: bold; }
+        .active-chat-options { display: flex; gap: 15px; }
+        .active-chat-options i { color: #1877F2; font-size: 20px; cursor: pointer; transition: 0.3s; }
+        .active-chat-options i:hover { color: #fff; }
+
+        /* Messages View */
+        .messages-view { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: url('images/movies/yakshini-bg.jpg') center/cover; position: relative;}
+        .messages-view::before { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:0; }
+        
+        .msg-bubble-wrap { display: flex; align-items: flex-end; gap: 10px; z-index: 1; position: relative;}
+        .msg-bubble-wrap.me { justify-content: flex-end; }
+        
+        .msg-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+        
+        .msg-bubble { max-width: 65%; padding: 12px 15px; border-radius: 18px; font-size: 14px; line-height: 1.4; position: relative; }
+        .msg-bubble.friend { background: #222; color: #fff; border-bottom-left-radius: 4px; }
+        .msg-bubble.me { background: #1877F2; color: #fff; border-bottom-right-radius: 4px; }
+        .msg-time { display: block; font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 5px; text-align: right; }
+
+        /* Chat Input Area */
+        .chat-input-area { background: #111; padding: 15px 20px; border-top: 1px solid #222; display: flex; align-items: center; gap: 15px; z-index: 10; }
+        .chat-tools { display: flex; gap: 15px; color: #1877F2; font-size: 22px; cursor: pointer; }
+        .chat-input-box { flex: 1; background: #222; border-radius: 20px; display: flex; align-items: center; padding: 8px 15px; }
+        .chat-input-box input { flex: 1; background: transparent; border: none; color: #fff; outline: none; font-size: 15px; }
+        .chat-input-box i { color: #888; font-size: 20px; cursor: pointer; }
+        .send-btn { color: #1877F2; font-size: 24px; cursor: pointer; background: transparent; border: none; transition: 0.3s; display: none; }
+        .send-btn.active { display: block; animation: popIn 0.2s ease; }
+        @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+        
+        .like-btn-big { color: #1877F2; font-size: 24px; cursor: pointer; display: block; transition: 0.3s; }
+
+        /* 🔥 GUEST LOCK SCREEN 🔥 */
+        .guest-lock { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .guest-lock.active { display: flex; }
+        .guest-lock i { font-size: 60px; color: #e6c875; margin-bottom: 20px; }
+        .guest-lock h2 { color: #fff; margin: 0 0 10px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; }
+        .guest-lock p { color: #aaa; margin-bottom: 25px; text-align: center; font-size: 14px; max-width: 300px; }
+        .guest-lock button { background: #e6c875; color: #000; border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 15px; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 850px) {
+            .messenger-container { flex-direction: column; }
+            .chat-sidebar { width: 100%; height: auto; flex: none; border-right: none; border-bottom: 1px solid #222; }
+            .chat-main { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3000; }
+            .chat-main.active { display: flex; animation: slideIn 0.3s ease; }
+            @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+            
+            .back-to-list-btn { display: block !important; margin-right: 15px; color: #1877F2; font-size: 20px; }
+            .chat-list { max-height: calc(100vh - 130px); }
+        }
+        .back-to-list-btn { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- 🔥 APP HEADER 🔥 -->
+    <header class="fb-header">
+        <div class="fb-top-left">
+            <i class="fas fa-arrow-left" style="color:#fff; font-size:20px; cursor:pointer;" onclick="window.location.href='social.html'"></i>
+            <h1>Chats</h1>
+        </div>
+        <div>
+            <i class="fas fa-edit" style="color: #fff; font-size: 20px; cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <!-- 🔥 MESSENGER CONTAINER 🔥 -->
+    <div class="messenger-container">
+        
+        <!-- LEFT: CHAT LIST -->
+        <div class="chat-sidebar">
+            <div class="chat-sidebar-header">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search Messenger">
+                </div>
+            </div>
+            
+            <div class="chat-list" id="chatList">
+                <div class="chat-item active" onclick="openChat('Rahul Sharma', 'https://randomuser.me/api/portraits/men/32.jpg', 'Active now')">
+                    <div class="chat-item-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                        <div class="online-dot"></div>
+                    </div>
+                    <div class="chat-item-info">
+                        <h4>Rahul Sharma</h4>
+                        <p>Super excited for the movie! 🔥</p>
+                    </div>
+                    <span class="chat-time">10:42 AM</span>
+                </div>
+
+                <div class="chat-item" onclick="openChat('Priya Singh', 'https://randomuser.me/api/portraits/women/44.jpg', 'Active 2h ago')">
+                    <div class="chat-item-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                    </div>
+                    <div class="chat-item-info">
+                        <h4>Priya Singh</h4>
+                        <p style="font-weight: bold; color: #fff;">Are you giving out ATVT coins?</p>
+                    </div>
+                    <span class="chat-time" style="color: #1877F2; font-weight: bold;">Yesterday</span>
+                    <div class="unread-badge">1</div>
+                </div>
+
+                <div class="chat-item" onclick="openChat('DK Atovitt Support', 'images/movies/gallery1.png', 'Active now')">
+                    <div class="chat-item-avatar">
+                        <img src="images/movies/gallery1.png" alt="DK Support">
+                        <div class="online-dot" style="background:#e6c875;"></div>
+                    </div>
+                    <div class="chat-item-info">
+                        <h4 style="color:#e6c875;">DK Atovitt Support <i class="fas fa-check-circle" style="font-size:12px;"></i></h4>
+                        <p>Welcome to our Ecosystem! 🎬</p>
+                    </div>
+                    <span class="chat-time">Mon</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: ACTIVE CHAT -->
+        <div class="chat-main" id="chatMainView">
+            
+            <!-- GUEST LOCK SCREEN -->
+            <div class="guest-lock" id="guestLock">
+                <i class="fas fa-lock"></i>
+                <h2>Private Messages Locked</h2>
+                <p>Login to view your messages and chat with friends in the DK Atovitt Ecosystem.</p>
+                <button onclick="window.location.href='auth.html'">Login Securely</button>
+            </div>
+
+            <!-- Active Header -->
+            <div class="active-chat-header">
+                <div class="active-chat-user">
+                    <i class="fas fa-arrow-left back-to-list-btn" onclick="closeChatMobile()"></i>
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" id="activeChatImg">
+                    <div>
+                        <h3 id="activeChatName">Rahul Sharma</h3>
+                        <p id="activeChatStatus">Active now</p>
+                    </div>
+                </div>
+                <div class="active-chat-options">
+                    <i class="fas fa-phone-alt" onclick="alert('Voice Call Feature Coming Soon!')"></i>
+                    <i class="fas fa-video" onclick="alert('Video Call Feature Coming Soon!')"></i>
+                    <i class="fas fa-info-circle"></i>
+                </div>
+            </div>
+
+            <!-- Messages Stream -->
+            <div class="messages-view" id="messagesBox">
+                <div style="text-align: center; color: #888; font-size: 12px; margin-bottom: 20px; position:relative; z-index:1;">AUG 16, 2026, 10:30 AM</div>
+                
+                <div class="msg-bubble-wrap friend">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="msg-avatar" id="activeMsgImg">
+                    <div class="msg-bubble friend">
+                        Bhai, maine DK Atovitt join kar liya! 😍
+                        <span class="msg-time">10:30 AM</span>
+                    </div>
+                </div>
+
+                <div class="msg-bubble-wrap me">
+                    <div class="msg-bubble me">
+                        Bahut badhiya! Wallet check kiya? 💸
+                        <span class="msg-time">10:35 AM</span>
+                    </div>
+                </div>
+                
+                <div class="msg-bubble-wrap friend">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="msg-avatar" id="activeMsgImg2">
+                    <div class="msg-bubble friend">
+                        Super excited for the movie! 🔥
+                        <span class="msg-time">10:42 AM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-area">
+                <div class="chat-tools">
+                    <i class="fas fa-plus-circle" onclick="document.getElementById('attachFileInput').click()"></i>
+                    <i class="fas fa-camera"></i>
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="chat-input-box">
+                    <input type="text" id="msgInput" placeholder="Aa" oninput="checkInput()">
+                    <i class="fas fa-smile"></i>
+                </div>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                <i class="fas fa-thumbs-up like-btn-big" id="likeBtnBig" onclick="sendLike()"></i>
+                
+                <input type="file" id="attachFileInput" style="display:none;" accept="image/*,video/*" onchange="sendFile(this)">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR CHAT LOGIC -->
+    <script>
+        function openChat(name, img, status) {
+            document.getElementById('activeChatName').innerText = name;
+            document.getElementById('activeChatImg').src = img;
+            document.getElementById('activeChatStatus').innerText = status;
+            document.getElementById('activeMsgImg').src = img;
+            document.getElementById('activeMsgImg2').src = img;
+            
+            // For Mobile View
+            if(window.innerWidth <= 850) {
+                document.getElementById('chatMainView').classList.add('active');
+            }
+        }
+
+        function closeChatMobile() {
+            document.getElementById('chatMainView').classList.remove('active');
+        }
+
+        function checkInput() {
+            const input = document.getElementById('msgInput').value.trim();
+            const sendBtn = document.getElementById('sendBtn');
+            const likeBtn = document.getElementById('likeBtnBig');
+            
+            if(input.length > 0) {
+                sendBtn.classList.add('active');
+                likeBtn.style.display = 'none';
+            } else {
+                sendBtn.classList.remove('active');
+                likeBtn.style.display = 'block';
+            }
+        }
+
+        function appendMessage(html) {
+            const box = document.getElementById('messagesBox');
+            box.insertAdjacentHTML('beforeend', html);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('msgInput');
+            const msg = inputField.value.trim();
+            if(!msg) return;
+
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const html = `
+                <div class="msg-bubble-wrap me" style="animation: popIn 0.2s ease;">
+                    <div class="msg-bubble me">
+                        ${msg}
+                        <span class="msg-time">${time}</span>
+                    </div>
+                </div>
+            `;
+            appendMessage(html);
+            inputField.value = "";
+            checkInput();
+        }
+
+        function sendLike() {
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const html = `
+                <div class="msg-bubble-wrap me" style="animation: popIn 0.2s ease;">
+                    <div style="font-size: 40px; color: #1877F2;">👍</div>
+                </div>
+            `;
+            appendMessage(html);
+        }
+
+        function sendFile(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                    const html = `
+                        <div class="msg-bubble-wrap me" style="animation: popIn 0.2s ease;">
+                            <div class="msg-bubble me" style="padding: 5px;">
+                                <img src="${e.target.result}" style="width: 150px; border-radius: 12px; display: block;">
+                                <span class="msg-time">${time}</span>
+                            </div>
+                        </div>
+                    `;
+                    appendMessage(html);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Enter key to send
+        document.getElementById('msgInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+
+    <!-- FIREBASE AUTH (GUEST CHECK) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
+            authDomain: "dk-atovitt.firebaseapp.com",
+            projectId: "dk-atovitt",
+            storageBucket: "dk-atovitt.firebasestorage.app",
+            messagingSenderId: "234274941441",
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // LOCK THE SCREEN FOR GUESTS
+                document.getElementById('guestLock').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
