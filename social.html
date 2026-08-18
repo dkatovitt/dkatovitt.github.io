@@ -141,7 +141,7 @@
         .story-card.user-card span.story-name { position: absolute; bottom: 8px; left: 8px; color: #fff; font-size: 13px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); z-index: 10; }
         
         /* WHITE POST CARDS */
-        .post-card { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); animation: fadeInForm 0.4s ease; overflow: hidden; }
+        .post-card { background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.2); animation: fadeInForm 0.4s ease; overflow: hidden; position: relative; }
         .post-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 15px; }
         .post-user { display: flex; gap: 10px; cursor: pointer; }
         .post-user img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
@@ -329,7 +329,7 @@
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -435,6 +435,7 @@
             <!-- 🔥 POSTS CONTAINER 🔥 -->
             <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;">
                 
+                <!-- DEFAULT STATIC POST -->
                 <div class="post-card" id="post-1">
                     <div class="post-header">
                         <div class="post-user">
@@ -486,7 +487,7 @@
                         </div>
                         <div class="add-comment-box">
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" alt="Me">
-                            <input type="text" id="comment-input-post-1" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${postId}', 2)">
+                            <input type="text" id="comment-input-post-1" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('post-1', 2)">
                             <button onclick="postComment('post-1', 2)"><i class="fas fa-paper-plane"></i></button>
                         </div>
                     </div>
@@ -636,7 +637,7 @@
             }
         }
 
-        // 🔥 CREATE POST LOGIC 🔥
+        // 🔥 CREATE POST LOGIC WITH LOCAL STORAGE SAVE 🔥
         let postMediaData = "";
         let postMediaType = ""; 
 
@@ -692,6 +693,89 @@
             document.getElementById('previewSelectedImg').src = "";
         }
 
+        // 🔥 SAVE POST TO DATABASE (LOCAL STORAGE) 🔥
+        function savePostLocally(postObj) {
+            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            posts.unshift(postObj); // Sabse upar add karo
+            localStorage.setItem('dk_posts', JSON.stringify(posts));
+        }
+
+        // 🔥 LOAD SAVED POSTS FROM DATABASE 🔥
+        function loadLocalPosts() {
+            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            const feedContainer = document.getElementById('postsFeedContainer');
+            
+            // Delete old dynamic posts before reloading to prevent duplicates
+            document.querySelectorAll('.dynamic-post').forEach(el => el.remove());
+
+            posts.reverse().forEach(data => {
+                let mediaHTML = "";
+                if(data.mediaData !== "") {
+                    if(data.mediaType === "video") {
+                        mediaHTML = `<div class="post-media"><video src="${data.mediaData}" controls></video></div>`;
+                    } else {
+                        mediaHTML = `<div class="post-media"><img src="${data.mediaData}" alt="Post Image"></div>`;
+                    }
+                }
+
+                const postHTML = `
+                    <div class="post-card dynamic-post" id="${data.id}" style="animation: fadeInForm 0.4s ease;">
+                        <div class="post-header">
+                            <div class="post-user">
+                                <img src="${data.userPhoto}" alt="User">
+                                <div class="post-user-info">
+                                    <h4>${data.userName} <i class="fas fa-check-circle verify-badge" style="color: #1877F2;"></i></h4>
+                                    <p>${data.timeString} • <i class="fas fa-globe-americas"></i></p>
+                                </div>
+                            </div>
+                            <div class="post-options">
+                                <i class="fas fa-trash-alt" style="color:#ff4d4d; font-size:16px; cursor:pointer;" onclick="deletePost('${data.id}')" title="Delete Post"></i>
+                            </div>
+                        </div>
+                        ${data.text !== "" ? `<div class="post-text">${data.text.replace(/\n/g, '<br>')}</div>` : ""}
+                        ${mediaHTML}
+                        <div class="post-stats">
+                            <div class="reactions">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
+                                <span id="like-count-${data.id}">${data.likes || 0}</span>
+                            </div>
+                            <span><span id="comment-count-${data.id}">0</span> Comments</span>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn" onclick="toggleLike(this, '${data.id}', 1)" data-earned="false">
+                                <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
+                            </button>
+                            <button class="action-btn" onclick="toggleCommentSection('${data.id}')" data-earned="false" id="comment-btn-${data.id}">
+                                <i class="far fa-comment" style="font-size: 18px;"></i> Comment
+                            </button>
+                            <button class="action-btn" onclick="openShareModal('${data.id}')" data-earned="false" id="share-btn-${data.id}">
+                                <i class="fas fa-share" style="font-size: 18px;"></i> Share
+                            </button>
+                        </div>
+                        <div class="post-comments-section" id="comments-section-${data.id}">
+                            <div class="comments-list" id="comment-list-${data.id}"></div>
+                            <div class="add-comment-box">
+                                <img src="${currentUserPhoto}" class="current-user-avatar">
+                                <input type="text" id="comment-input-${data.id}" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${data.id}', 2)">
+                                <button onclick="postComment('${data.id}', 2)"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                feedContainer.insertAdjacentHTML('afterbegin', postHTML);
+            });
+        }
+
+        // 🔥 DELETE POST LOGIC 🔥
+        function deletePost(id) {
+            if(confirm("Are you sure you want to delete this post?")) {
+                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+                posts = posts.filter(p => p.id !== id);
+                localStorage.setItem('dk_posts', JSON.stringify(posts));
+                document.getElementById(id).remove();
+            }
+        }
+
         function publishNewPost() {
             const text = document.getElementById('newPostText').value.trim();
             if(text === "" && postMediaData === "") {
@@ -704,68 +788,35 @@
             publishBtn.disabled = true;
 
             const postId = 'post-' + Date.now();
-            let mediaHTML = "";
             
-            if(postMediaData !== "") {
-                if(postMediaType === "video") {
-                    mediaHTML = `<div class="post-media"><video src="${postMediaData}" controls></video></div>`;
-                } else {
-                    mediaHTML = `<div class="post-media"><img src="${postMediaData}" alt="Post Image"></div>`;
-                }
-            }
-
-            const newPostHTML = `
-                <div class="post-card" id="${postId}">
-                    <div class="post-header">
-                        <div class="post-user">
-                            <img src="${currentUserPhoto}" alt="User">
-                            <div class="post-user-info">
-                                <h4>${currentUserName} <i class="fas fa-check-circle verify-badge" style="color: #1877F2;"></i></h4>
-                                <p>Just now • <i class="fas fa-globe-americas"></i></p>
-                            </div>
-                        </div>
-                        <div class="post-options"><i class="fas fa-ellipsis-h"></i></div>
-                    </div>
-                    ${text !== "" ? `<div class="post-text">${text.replace(/\n/g, '<br>')}</div>` : ""}
-                    ${mediaHTML}
-                    <div class="post-stats">
-                        <div class="reactions">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/thumb/2/23/Facebook_Like_button.svg/1024px-Facebook_Like_button.svg.png">
-                            <span id="like-count-${postId}">0</span>
-                        </div>
-                        <span><span id="comment-count-${postId}">0</span> Comments</span>
-                    </div>
-                    <div class="post-actions">
-                        <button class="action-btn" onclick="toggleLike(this, '${postId}', 1)" data-earned="false">
-                            <i class="far fa-thumbs-up" style="font-size: 18px;"></i> Like
-                        </button>
-                        <button class="action-btn" onclick="toggleCommentSection('${postId}')" data-earned="false" id="comment-btn-${postId}">
-                            <i class="far fa-comment" style="font-size: 18px;"></i> Comment
-                        </button>
-                        <button class="action-btn" onclick="openShareModal('${postId}')" data-earned="false" id="share-btn-${postId}">
-                            <i class="fas fa-share" style="font-size: 18px;"></i> Share
-                        </button>
-                    </div>
-                    <div class="post-comments-section" id="comments-section-${postId}">
-                        <div class="comments-list" id="comment-list-${postId}"></div>
-                        <div class="add-comment-box">
-                            <img src="${currentUserPhoto}" class="current-user-avatar">
-                            <input type="text" id="comment-input-${postId}" placeholder="Write a comment..." onkeypress="if(event.key==='Enter') postComment('${postId}', 2)">
-                            <button onclick="postComment('${postId}', 2)"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </div>
-            `;
+            const postObj = {
+                id: postId,
+                text: text,
+                mediaData: postMediaData,
+                mediaType: postMediaType,
+                userName: currentUserName,
+                userPhoto: currentUserPhoto,
+                timeString: "Just now",
+                likes: 0
+            };
 
             setTimeout(() => {
-                const feedContainer = document.getElementById('postsFeedContainer');
-                feedContainer.insertAdjacentHTML('afterbegin', newPostHTML);
+                savePostLocally(postObj); // Save To Memory
+                
+                // Clear feed and reload to show new post
+                document.querySelectorAll('.dynamic-post').forEach(el => el.remove());
+                loadLocalPosts(); // Load from Memory
+                
                 closeCreatePostModal();
                 publishBtn.innerHTML = 'Post';
                 publishBtn.disabled = false;
-                simulateEarning(null, 5); 
-            }, 1500);
+                
+                simulateEarning(null, 5); // Earn ATVT for posting
+            }, 1000);
         }
+
+        // Load Posts when Page Opens
+        window.addEventListener('DOMContentLoaded', loadLocalPosts);
 
         // 🔥 STORIES LOGIC 🔥
         let storyMediaUrl = "";
