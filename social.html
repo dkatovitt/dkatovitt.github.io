@@ -580,7 +580,7 @@
             </div>
         </main>
 
-        <!-- RIGHT SIDEBAR -->
+        <!-- 🔥 NEW RIGHT SIDEBAR (ADD FRIEND WIDGET) 🔥 -->
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
             <div class="contact-item" onclick="window.location.href='messages.html'">
@@ -590,6 +590,35 @@
             <div class="contact-item" onclick="window.location.href='messages.html'">
                 <div class="img-wrap"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div class="status"></div></div>
                 <span>Rahul Sharma</span>
+            </div>
+
+            <!-- Add Friend Suggestions Box -->
+            <div style="background: #111; border-radius: 12px; padding: 15px; border: 1px solid #222; margin-top: 20px; margin-bottom: 20px;">
+                <h3 class="widget-title" style="color: #fff; margin-top:0;">People you may know</h3>
+                
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Neha Gupta</h4>
+                    </div>
+                    <button onclick="addFriend(this, 'Neha Gupta')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Vikram Roy</h4>
+                    </div>
+                    <button onclick="addFriend(this, 'Vikram Roy')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
+                </div>
+                
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0 0 3px 0; color: #fff; font-size: 14px;">Priya Singh</h4>
+                    </div>
+                    <button onclick="addFriend(this, 'Priya Singh')" data-earned="false" style="background: rgba(24, 119, 242, 0.1); color: #1877F2; border: none; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s;">Add Friend</button>
+                </div>
             </div>
 
             <div class="menu-divider" style="margin: 20px 0;"></div>
@@ -664,7 +693,6 @@
             <h2>Create story</h2>
         </div>
         <div class="reel-container" style="background: #000;">
-            <!-- Support Both Image and Video -->
             <img id="storyPreviewImg" src="" class="story-preview-img" style="display: none;">
             <video id="storyPreviewVid" src="" class="story-preview-img" autoplay loop muted playsinline style="display: none;"></video>
             
@@ -717,6 +745,27 @@
                 return true;
             }
             return false;
+        }
+
+        // 🔥 ADD FRIEND LOGIC 🔥
+        function addFriend(btn, friendName) {
+            if(checkGuest()) return;
+
+            if(btn.innerText === "Add Friend") {
+                btn.innerText = "Requested";
+                btn.style.background = "#333";
+                btn.style.color = "#fff";
+                
+                // Earn ATVT for sending friend request
+                if(btn.getAttribute('data-earned') === 'false') {
+                    simulateEarning({clientX: btn.getBoundingClientRect().left - 20, clientY: btn.getBoundingClientRect().top}, 10);
+                    btn.setAttribute('data-earned', 'true');
+                }
+            } else {
+                btn.innerText = "Add Friend";
+                btn.style.background = "rgba(24, 119, 242, 0.1)";
+                btn.style.color = "#1877F2";
+            }
         }
 
         // 🔥 CREATE POST LOGIC 🔥
@@ -835,7 +884,7 @@
             }, 1500);
         }
 
-        // 🔥 STORIES LOGIC (FIXED FOR VIDEO) 🔥
+        // 🔥 STORIES LOGIC 🔥
         let storyMediaUrl = "";
         let storyIsVideo = false;
 
@@ -906,7 +955,6 @@
                 simulateEarning(null, 10);
             }, 2000);
 
-            // Cleanup
             document.getElementById('storyFileInput').value = "";
         }
 
