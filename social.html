@@ -371,7 +371,6 @@
             <div class="fb-top-right">
                 <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
                 <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
-                <!-- 🔥 MESSENGER BUTTON UPDATED HERE 🔥 -->
                 <button class="fb-icon-btn fill" onclick="window.location.href='messages.html'">
                     <i class="fab fa-facebook-messenger"></i>
                     <span class="badge">2</span>
@@ -381,18 +380,20 @@
 
         <div class="fb-tabs-row">
             <a href="social.html" class="fb-tab active"><i class="fas fa-home"></i></a>
-            <a href="javascript:void(0)" class="fb-tab" onclick="alert('Video feed coming soon')"><i class="fas fa-video"></i></a>
+            <!-- 🔥 UPDATED TOP VIDEO LINK 🔥 -->
+            <a href="video.html" class="fb-tab"><i class="fas fa-video"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-user-friends"></i></a>
             <a href="#" class="fb-tab"><i class="fas fa-store"></i></a>
-            <a href="#" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
+            <!-- 🔥 UPDATED TOP NOTIFICATIONS LINK 🔥 -->
+            <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab profile-dropdown-container">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                    <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
                     <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Login / Sign Up</a>
+                    <a href="javascript:void(0)" class="logout-action drop-logout" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
                 </div>
             </div>
         </div>
@@ -509,7 +510,7 @@
                         </div>
                     </div>
                     
-                    <div class="story-card user-card" onclick="alert('Playing Reel...')">
+                    <div class="story-card user-card" onclick="window.location.href='video.html'">
                         <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" class="bg" alt="Reel">
                         <div class="user-ring"><img src="https://randomuser.me/api/portraits/men/32.jpg"></div>
                         <span class="story-name"><i class="fas fa-play" style="font-size:10px;"></i> 1.2M</span>
@@ -584,11 +585,11 @@
         <!-- RIGHT SIDEBAR -->
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
-            <div class="contact-item">
+            <div class="contact-item" onclick="window.location.href='messages.html'">
                 <div class="img-wrap"><img src="images/movies/gallery1.png"><div class="status"></div></div>
                 <span>DK Atovitt Support</span>
             </div>
-            <div class="contact-item">
+            <div class="contact-item" onclick="window.location.href='messages.html'">
                 <div class="img-wrap"><img src="https://randomuser.me/api/portraits/men/32.jpg"><div class="status"></div></div>
                 <span>Rahul Sharma</span>
             </div>
@@ -608,7 +609,8 @@
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
-        <a href="javascript:void(0)" class="nav-item" onclick="alert('Video feed coming soon')">
+        <!-- 🔥 UPDATED BOTTOM VIDEO LINK 🔥 -->
+        <a href="video.html" class="nav-item">
             <i class="fas fa-video"></i>
             <span>Video</span>
         </a>
@@ -616,12 +618,13 @@
             <i class="fas fa-th-large" style="font-size: 24px;"></i>
             <span>Dash</span>
         </a>
-        <a href="#" class="nav-item">
+        <!-- 🔥 UPDATED BOTTOM NOTIFICATIONS LINK 🔥 -->
+        <a href="notifications.html" class="nav-item">
             <div style="position: relative;">
                 <i class="fas fa-bell"></i>
                 <span class="badge">7</span>
             </div>
-            <span>Notifications</span>
+            <span>Alerts</span>
         </a>
         <a href="javascript:void(0)" class="nav-item" onclick="document.getElementById('sidebar').classList.add('active'); document.getElementById('overlay').classList.add('active');">
             <div style="position: relative;">
