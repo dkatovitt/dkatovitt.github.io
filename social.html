@@ -47,14 +47,14 @@
         .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
         .fb-icon-btn:hover { background: #d8dadf; }
         
-        /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX 🔥 */
+        /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX (NEAR ICON) 🔥 */
         .fb-icon-btn .badge, .fb-tab .badge { 
-            position: absolute; top: -5px; right: -8px; 
+            position: absolute; top: -2px; right: -2px; 
             background: #e41e3f; color: #fff; 
             font-size: 10px; font-weight: bold; 
-            min-width: 18px; height: 18px; padding: 0 3px;
+            min-width: 17px; height: 17px; padding: 0 2px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         /* WHITE FB TABS ROW */
@@ -66,8 +66,8 @@
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
-        /* 🔥 FRIEND REQUESTS DROPDOWN MENU (FIXED POSITION) 🔥 */
-        .friend-requests-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 340px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
+        /* 🔥 FRIEND REQUESTS DROPDOWN MENU (PERFECTLY CENTERED) 🔥 */
+        .friend-requests-menu { display: none; position: fixed; left: 50%; transform: translateX(-50%); top: 110px; background: #ffffff; width: 92%; max-width: 360px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
         .friend-requests-menu.show { display: block; animation: dropFade 0.2s ease; }
         .fr-header { font-size: 18px; font-weight: bold; color: #050505; padding-bottom: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .fr-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0f2f5; }
@@ -81,7 +81,7 @@
         .fr-btn.delete { background: #e4e6eb; color: #050505; }
 
         /* 🔥 DK ATOVITT ECOSYSTEM MENU 🔥 */
-        .ecosystem-menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: 55px; background: #ffffff; width: 320px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 10px; }
+        .ecosystem-menu { display: none; position: fixed; left: 50%; transform: translateX(-50%); top: 110px; background: #ffffff; width: 92%; max-width: 340px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 10px; }
         .ecosystem-menu.show { display: block; animation: dropFade 0.2s ease; }
         .eco-header { font-size: 15px; font-weight: bold; color: #1877F2; padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .eco-item { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 8px; text-decoration: none; transition: 0.2s; margin-top: 5px; background: #f9f9f9; border: 1px solid #eee; }
@@ -202,11 +202,11 @@
         .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); text-align: center; }
         .share-modal-box h3 { color: #050505; margin: 0 0 20px 0; font-size: 18px; }
-        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
         .share-options { display: flex; justify-content: space-around; padding: 10px 0; }
         .share-opt { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; transition: 0.3s; }
         .share-opt:hover { transform: translateY(-5px); }
-        .share-opt .icon { width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .share-opt .icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .icon-whatsapp { background: #25D366; }
         .icon-facebook { background: #1877F2; }
         .icon-copy { background: #65676b; }
@@ -318,8 +318,9 @@
             
             <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
             
+            <!-- FRIEND REQUEST TAB WITH AUTO-DISMISS BADGE -->
             <div class="fb-tab" onclick="toggleFriendRequestsMenu(event)" title="Friend Requests">
-                <div style="position: relative; display: inline-flex;">
+                <div style="position: relative; display: inline-flex;" id="friendBadgeContainer">
                     <i class="fas fa-user-friends"></i>
                     <span class="badge" style="background:#1877F2;">3</span>
                 </div>
@@ -400,7 +401,8 @@
                 </div>
             </div>
 
-            <a href="notifications.html" class="fb-tab" title="Notifications">
+            <!-- NOTIFICATIONS TAB WITH AUTO-DISMISS BADGE -->
+            <a href="notifications.html" class="fb-tab" title="Notifications" onclick="dismissBadge(this)">
                 <div style="position: relative; display: inline-flex;">
                     <i class="fas fa-bell"></i>
                     <span class="badge">7</span>
@@ -542,6 +544,10 @@
             if(eco) eco.classList.remove('show');
             const menu = document.getElementById('friendRequestsMenu');
             menu.classList.toggle('show');
+            
+            // Remove badge on click
+            const badge = document.querySelector('#friendBadgeContainer .badge');
+            if(badge) badge.style.display = 'none';
         }
 
         function toggleEcosystemMenu(event) {
@@ -550,6 +556,11 @@
             if(fr) fr.classList.remove('show');
             const menu = document.getElementById('ecosystemMenu');
             menu.classList.toggle('show');
+        }
+
+        function dismissBadge(el) {
+            const badge = el.querySelector('.badge');
+            if(badge) badge.style.display = 'none';
         }
 
         window.addEventListener('click', () => {
