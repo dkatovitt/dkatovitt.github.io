@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -36,20 +35,21 @@
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 WHITE APP HEADER (DK CONNECT & LOGO FIX) 🔥 */
+        /* 🔥 WHITE APP HEADER (WIDER LOGO FIX) 🔥 */
         .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 2000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
         
         .fb-top-left { display: flex; align-items: center; gap: 8px; }
-        .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
-        .fb-top-left video { height: 32px; width: 32px; mix-blend-mode: multiply; border-radius: 50%; object-fit: cover; }
+        .fb-top-left h1 { margin: 0; color: #1877F2; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px; }
+        /* Logo widened rectangular shape */
+        .fb-top-left video { height: 35px; width: auto; max-width: 90px; mix-blend-mode: multiply; border-radius: 6px; object-fit: contain; }
         
         .fb-top-right { display: flex; align-items: center; gap: 8px; }
         .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
         .fb-icon-btn:hover { background: #d8dadf; }
         
-        /* 🔥 CLEAN NOTIFICATION BADGE FIX (NO MORE GLITCH) 🔥 */
-        .fb-icon-btn .badge, .nav-item .badge, .fb-tab .badge { 
+        /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX 🔥 */
+        .fb-icon-btn .badge, .fb-tab .badge { 
             position: absolute; top: -3px; right: -3px; 
             background: #e41e3f; color: #fff; 
             font-size: 10px; font-weight: bold; 
@@ -204,17 +204,16 @@
         .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .guest-popup-btn { background: #1877F2; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        /* MOBILE BOTTOM NAV */
+        /* MOBILE BOTTOM NAV (REMOVED VIDEO & NOTIFICATION ICONS) */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
             .sidebar, .right-sidebar { display: none; }
             .fb-top-left .menu-btn { display: none; } 
             .mobile-bottom-nav { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #ddd; z-index: 2000; justify-content: space-around; padding: 10px 0; }
-            .nav-item { color: #65676b; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 20%; position: relative; }
+            .nav-item { color: #65676b; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 4px; width: 25%; position: relative; }
             .nav-item i { font-size: 22px; }
             .nav-item.active { color: #1877F2; }
-            .nav-item .badge { position: absolute; top: -5px; right: 15px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         }
         .floating-reward { position: fixed; color: #1877F2; font-size: 22px; font-weight: 900; pointer-events: none; animation: floatUp 1.2s ease-out forwards; z-index: 10000; }
         @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-100px) scale(1.5); } }
@@ -224,13 +223,11 @@
 
     <div id="overlay"></div>
 
-    <!-- FULL SCREEN IMAGE VIEWER -->
     <div id="imageViewerModal">
         <i class="fas fa-times" onclick="closeImageViewer()"></i>
         <img id="fullScreenImage" src="">
     </div>
 
-    <!-- GUEST LOGIN POPUP -->
     <div class="guest-popup-overlay" id="guestPopupOverlay">
         <div class="guest-popup-box">
             <i class="fas fa-user-lock" style="font-size: 50px; color: #1877F2; margin-bottom: 15px;"></i>
@@ -243,7 +240,6 @@
         </div>
     </div>
 
-    <!-- CREATE POST MODAL -->
     <div class="guest-popup-overlay" id="createPostModalOverlay">
         <div class="create-post-modal">
             <div class="create-post-header">
@@ -278,7 +274,6 @@
         </div>
     </div>
 
-    <!-- 🔥 APP HEADER WITH DK CONNECT & LOOPING VIDEO LOGO 🔥 -->
     <header class="fb-header">
         <div class="fb-top-row">
             <div class="fb-top-left">
@@ -289,10 +284,9 @@
             </div>
             <div class="fb-top-right">
                 <button class="fb-icon-btn" onclick="openCreatePostModal()"><i class="fas fa-plus"></i></button>
-                <button class="fb-icon-btn"><i class="fas fa-search"></i></button>
+                <button class="fb-icon-btn" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
                 <button class="fb-icon-btn" onclick="window.location.href='messages.html'">
-                    <i class="fab fa-facebook-messenger"></i>
-                    <span class="badge">2</span>
+                    <i class="fas fa-comments"></i>
                 </button>
             </div>
         </div>
@@ -315,7 +309,6 @@
         </div>
     </header>
 
-    <!-- MAIN APP CONTAINER -->
     <div class="app-container">
         
         <aside class="sidebar" id="sidebar">
@@ -339,7 +332,6 @@
             <button class="fb-logout-btn logout-action"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</button>
         </aside>
 
-        <!-- MIDDLE FEED -->
         <main class="feed">
             <div class="fb-create-post">
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
@@ -372,7 +364,6 @@
             <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;"></div>
         </main>
 
-        <!-- RIGHT SIDEBAR -->
         <aside class="right-sidebar">
             <h3 class="widget-title">Contacts</h3>
             <div class="contact-item" onclick="window.location.href='messages.html'">
@@ -392,16 +383,13 @@
 
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
     <nav class="mobile-bottom-nav">
-        <a href="social.html" class="nav-item active"><i class="fas fa-home"></i></a>
-        <a href="video.html" class="nav-item"><i class="fas fa-video"></i></a>
-        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i></a>
-        <a href="notifications.html" class="nav-item"><div style="position: relative;"><i class="fas fa-bell"></i><span class="badge">7</span></div></a>
-        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 26px; height: 26px; border-radius: 50%;"></a>
+        <a href="social.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dash</span></a>
+        <a href="wallet.html" class="nav-item"><i class="fas fa-wallet"></i><span>Wallet</span></a>
+        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
     </nav>
 
-    <!-- SHARE MODAL -->
     <div id="shareModalOverlay" class="share-modal-overlay">
         <div class="share-modal-box">
             <button class="share-modal-close" onclick="closeShareModal()">&times;</button>
@@ -441,6 +429,22 @@
         document.getElementById('overlay').addEventListener('click', () => {
             document.getElementById('overlay').classList.remove('active');
         });
+
+        // 🔥 WORKING SEARCH FUNCTION 🔥
+        function toggleSearch() {
+            let query = prompt("Search posts by keyword:");
+            if(query !== null && query.trim() !== "") {
+                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+                let filtered = posts.filter(p => p.text.toLowerCase().includes(query.toLowerCase()));
+                if(filtered.length > 0) {
+                    renderAllPosts(filtered);
+                } else {
+                    alert("No posts found matching '" + query + "'");
+                }
+            } else if(query === "") {
+                initAndLoadPosts(); // Reset if empty
+            }
+        }
 
         function openImageViewer(src) {
             document.getElementById('fullScreenImage').src = src;
@@ -732,7 +736,6 @@
         }
     </script>
     
-    <!-- FIREBASE GUEST & LOGIN AUTH -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
