@@ -35,7 +35,7 @@
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        /* 🔥 WHITE APP HEADER (WIDER LOGO FIX) 🔥 */
+        /* 🔥 WHITE APP HEADER (WIDER RECTANGULAR LOGO FIX) 🔥 */
         .fb-header { position: fixed; top: 0; left: 0; width: 100%; background: #ffffff; z-index: 2000; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         .fb-top-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; }
         
@@ -203,7 +203,7 @@
         .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .guest-popup-btn { background: #1877F2; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        /* MOBILE BOTTOM NAV (REMOVED VIDEO & NOTIFICATION ICONS) */
+        /* MOBILE BOTTOM NAV (REMOVED VIDEO & NOTIFICATIONS) */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
             .app-container { grid-template-columns: 1fr; margin-top: 0; padding: 0; gap: 0; padding-bottom: 70px; }
@@ -246,7 +246,7 @@
                 <button class="create-post-close" onclick="closeCreatePostModal()">&times;</button>
             </div>
             <div class="create-post-user">
-                <img src="1001120580.jpg" class="current-user-avatar">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
                 <div>
                     <h4 class="current-user-name" style="margin:0;">User Name</h4>
                     <span style="font-size:11px; background:#e4e6eb; padding:2px 6px; border-radius:4px; font-weight:bold;">Public</span>
@@ -297,7 +297,7 @@
             <a href="notifications.html" class="fb-tab"><i class="fas fa-bell"></i><span class="badge">7</span></a>
             
             <div class="fb-tab">
-                <img src="1001120580.jpg" id="topbarProfileImg" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="topbarProfileImg" class="current-user-avatar" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
                 <div class="dropdown-menu" id="profileDropdown">
                     <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                     <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
@@ -313,7 +313,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="fb-menu-header">
                 <div class="fb-menu-profile" onclick="window.location.href='profile.html'">
-                    <img src="1001120580.jpg" id="sidebarProfileImg" class="current-user-avatar">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="sidebarProfileImg" class="current-user-avatar">
                     <div class="fb-menu-profile-info">
                         <h3 id="sidebarProfileName" class="current-user-name">Guest User</h3>
                         <p>Welcome to DK Connect</p>
@@ -333,7 +333,7 @@
 
         <main class="feed">
             <div class="fb-create-post">
-                <img src="1001120580.jpg" class="current-user-avatar">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar">
                 <div class="input-box" onclick="openCreatePostModal()">What's on your mind?</div>
                 <i class="fas fa-images" style="color: #45bd62;" onclick="openCreatePostModal()"></i>
             </div>
@@ -346,7 +346,7 @@
                 
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
-                        <div class="create-bg" style="background-image: url('1001120580.jpg');"></div>
+                        <div class="create-bg" style="background-image: url('https://cdn-icons-png.flaticon.com/512/149/149071.png');" class="current-user-avatar"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
                             <span>Create story</span>
@@ -354,7 +354,7 @@
                     </div>
                     <div class="story-card user-card">
                         <img src="images/movies/yakshini-poster.png" class="bg">
-                        <div class="user-ring"><img src="1001120580.jpg"></div>
+                        <div class="user-ring"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar"></div>
                         <span class="story-name">DK Atovitt</span>
                     </div>
                 </div>
@@ -386,7 +386,7 @@
         <a href="social.html" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dash</span></a>
         <a href="wallet.html" class="nav-item"><i class="fas fa-wallet"></i><span>Wallet</span></a>
-        <a href="profile.html" class="nav-item"><img src="1001120580.jpg" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
+        <a href="profile.html" class="nav-item"><img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="current-user-avatar" style="width: 24px; height: 24px; border-radius: 50%;"><span>Profile</span></a>
     </nav>
 
     <div id="shareModalOverlay" class="share-modal-overlay">
@@ -414,8 +414,19 @@
 
     <script>
         let currentUserName = "Guest User";
-        let currentUserPhoto = "1001120580.jpg";
+        let currentUserPhoto = localStorage.getItem('dk_user_dp') || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
         let isGuest = true;
+
+        function updateAvatars() {
+            document.querySelectorAll('.current-user-avatar').forEach(img => {
+                if(img.tagName === 'IMG') img.src = currentUserPhoto;
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateAvatars();
+            initAndLoadPosts();
+        });
 
         function checkGuest() {
             if(isGuest) {
@@ -602,8 +613,6 @@
             }
         }
 
-        window.addEventListener('DOMContentLoaded', initAndLoadPosts);
-
         let postMediaData = "";
         let postMediaType = ""; 
 
@@ -755,10 +764,11 @@
             if (user) {
                 isGuest = false;
                 currentUserName = user.displayName || "VIP Member";
-                // Agar user logged in hai toh Firebase ki photo rahegi, warna apni uploaded DP '1001120580.jpg' rahegi
-                currentUserPhoto = user.photoURL ? user.photoURL : '1001120580.jpg';
+                // Agar localStorage me custom DP save hai to woh lo, warna Firebase ki photo ya default placeholder
+                currentUserPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                updateAvatars();
+
                 document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
-                document.querySelectorAll('.current-user-avatar').forEach(img => { img.src = currentUserPhoto; });
 
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
@@ -766,6 +776,10 @@
                 });
             } else {
                 isGuest = true;
+                // Guest mode ke liye generic user placeholder icon
+                currentUserPhoto = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                updateAvatars();
+
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
                     btn.addEventListener('click', () => { window.location.href = "auth.html"; });
