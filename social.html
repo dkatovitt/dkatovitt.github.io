@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -279,7 +278,6 @@
 </head>
 <body>
 
-    <!-- 🔥 STYLISH COMING SOON OVERLAY 🔥 -->
     <div class="coming-soon-page" id="comingSoonPage">
         <div class="cs-header">
             <button class="cs-back-btn" onclick="closeComingSoon()"><i class="fas fa-arrow-left"></i></button>
@@ -366,7 +364,6 @@
             
             <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
             
-            <!-- FRIEND REQUEST TAB WITH AUTO-DISMISS BADGE -->
             <div class="fb-tab" onclick="toggleFriendRequestsMenu(event)" title="Friend Requests">
                 <div style="position: relative; display: inline-flex;" id="friendBadgeContainer">
                     <i class="fas fa-user-friends"></i>
@@ -420,7 +417,6 @@
                 <i class="fas fa-globe" style="color: #45bd62;"></i>
             </div>
             
-            <!-- 🔥 DK ATOVITT ECOSYSTEM MENU WITH PROPER LINKS 🔥 -->
             <div class="ecosystem-menu" id="ecosystemMenu">
                 <div class="eco-header">
                     <span>DK ATOVITT Ecosystem</span>
@@ -436,7 +432,6 @@
                         </div>
                     </a>
                     
-                    <!-- 🔥 BEAUTIFUL COMING SOON PAGES 🔥 -->
                     <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-compass')" class="eco-item">
                         <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
                         <div class="eco-details">
@@ -468,7 +463,6 @@
                 </div>
             </div>
 
-            <!-- NOTIFICATIONS TAB WITH AUTO-DISMISS BADGE -->
             <a href="notifications.html" class="fb-tab" title="Notifications" onclick="dismissBadge(this)">
                 <div style="position: relative; display: inline-flex;">
                     <i class="fas fa-bell"></i>
@@ -714,6 +708,11 @@
             document.getElementById('imageViewerModal').style.display = 'none';
         }
 
+        function openStoryPicker() {
+            if(checkGuest()) return;
+            document.getElementById('storyFileInput').click();
+        }
+
         const defaultPost = {
             id: 'post-yakshini-1',
             text: 'Get ready for the grand launch! Like and share to spread the word! 🎬',
@@ -736,6 +735,28 @@
                 localStorage.setItem('dk_posts', JSON.stringify(posts));
             }
             renderAllPosts(posts);
+        }
+
+        function formatPostContent(text) {
+            let formattedText = text.replace(/\n/g, '<br>');
+            const ytRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\S+)?/gi;
+            
+            return formattedText.replace(ytRegex, function(match, videoId) {
+                const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                return `
+                    <div style="margin-top: 10px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <a href="${match}" target="_blank" style="text-decoration: none; display: block;">
+                            <div style="position: relative; background: #000; min-height: 150px;">
+                                <img src="${thumbnailUrl}" style="width: 100%; display: block; opacity: 0.85; object-fit: cover;">
+                                <i class="fab fa-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff0000; font-size: 55px; background: #fff; border-radius: 12px; line-height: 0.9; box-shadow: 0 0 10px rgba(0,0,0,0.5);"></i>
+                            </div>
+                            <div style="padding: 10px 15px; background: #f0f2f5; color: #050505; font-size: 14px; font-weight: bold; border-top: 1px solid #ddd;">
+                                🎬 YouTube Video - Click to Watch
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
         }
 
         function renderAllPosts(posts) {
@@ -777,7 +798,7 @@
                                 <i class="fas fa-trash-alt" style="color:#ff4d4d; font-size:16px; cursor:pointer;" onclick="deletePost('${data.id}')" title="Delete Post"></i>
                             </div>
                         </div>
-                        ${data.text ? `<div class="post-text">${data.text.replace(/\n/g, '<br>')}</div>` : ""}
+                        ${data.text ? `<div class="post-text">${formatPostContent(data.text)}</div>` : ""} 
                         ${mediaHTML}
                         <div class="post-stats">
                             <div class="reactions">
@@ -883,7 +904,7 @@
                 const file = input.files[0];
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    postMediaData = e.target.result;
+                    postMediaData = e.target.result; // This holds the base64 for both image and video now.
                     const previewBox = document.getElementById('newPostImgPreview');
                     const imgTag = document.getElementById('previewSelectedImg');
                     const vidTag = document.getElementById('previewSelectedVid');
@@ -891,12 +912,8 @@
                     if(file.type.startsWith('video/')) {
                         postMediaType = "video";
                         
-                        // 🔥 FIX FOR STORAGE FULL ISSUE ON VIDEOS 🔥
-                        try {
-                            postMediaData = URL.createObjectURL(file); // Virtual URL instead of heavy base64
-                        } catch(err) {
-                            console.error("Video processing error", err);
-                        }
+                        // 🔥 FIX: Using base64 directly so video stays after refresh 🔥
+                        // postMediaData is already set to e.target.result above
                         
                         imgTag.style.display = 'none';
                         vidTag.style.display = 'block';
