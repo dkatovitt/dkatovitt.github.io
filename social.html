@@ -751,7 +751,7 @@
         }
 
         // ==========================================
-        // 🔥 NEW: STORY PREVIEW & UPLOAD SYSTEM 🔥
+        // 🔥 NEW: STORY PREVIEW & LOCAL UPLOAD SYSTEM 🔥
         // ==========================================
         let storyMediaData = "";
         let storyMediaType = "";
@@ -764,21 +764,25 @@
                 const imgTag = document.getElementById('storyPreviewImg');
                 const vidTag = document.getElementById('storyPreviewVid');
                 
-                storyMediaData = URL.createObjectURL(selectedStoryFile); 
-                
-                if(selectedStoryFile.type.startsWith('video/')) {
-                    storyMediaType = "video";
-                    imgTag.style.display = 'none';
-                    vidTag.style.display = 'block';
-                    vidTag.src = storyMediaData;
-                } else {
-                    storyMediaType = "image";
-                    vidTag.style.display = 'none';
-                    imgTag.style.display = 'block';
-                    imgTag.src = storyMediaData;
+                // Read File as Base64 format for Local Storage
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    storyMediaData = e.target.result;
+                    
+                    if(selectedStoryFile.type.startsWith('video/')) {
+                        storyMediaType = "video";
+                        imgTag.style.display = 'none';
+                        vidTag.style.display = 'block';
+                        vidTag.src = storyMediaData;
+                    } else {
+                        storyMediaType = "image";
+                        vidTag.style.display = 'none';
+                        imgTag.style.display = 'block';
+                        imgTag.src = storyMediaData;
+                    }
+                    previewModal.style.display = 'flex';
                 }
-                
-                previewModal.style.display = 'flex';
+                reader.readAsDataURL(selectedStoryFile);
             }
         }
 
@@ -797,13 +801,27 @@
             shareBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sharing...';
             shareBtn.disabled = true;
 
-            if (window.uploadToFirebaseAndAddStory) {
-                window.uploadToFirebaseAndAddStory(selectedStoryFile, storyMediaType);
-            } else {
-                alert("Firebase loading... please try again.");
-                shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
-                shareBtn.disabled = false;
-            }
+            const createCardText = document.getElementById('createStoryText');
+            if(createCardText) createCardText.innerText = "Finishing up...";
+            
+            closeStoryPreview(); 
+
+            // Fake Upload Delay for realistic feel
+            setTimeout(() => {
+                try {
+                    window.saveStoryToFeed(storyMediaData, storyMediaType);
+                    if(createCardText) createCardText.innerText = "Create story"; 
+                } catch(error) {
+                    console.error(error);
+                    alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai. Kripya chhoti file chunein.");
+                    if(createCardText) createCardText.innerText = "Create story"; 
+                }
+                
+                if(shareBtn) {
+                    shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
+                    shareBtn.disabled = false;
+                }
+            }, 1000);
         }
 
         window.saveStoryToFeed = function(url, type) {
@@ -1020,24 +1038,29 @@
                 const imgTag = document.getElementById('previewSelectedImg');
                 const vidTag = document.getElementById('previewSelectedVid');
                 
-                postMediaData = URL.createObjectURL(file); 
-                
-                if(file.type.startsWith('video/')) {
-                    postMediaType = "video";
-                    imgTag.style.display = 'none';
-                    vidTag.style.display = 'block';
-                    vidTag.src = postMediaData;
-                } else {
-                    postMediaType = "image";
-                    vidTag.style.display = 'none';
-                    imgTag.style.display = 'block';
-                    imgTag.src = postMediaData;
-                    imgTag.style.width = '100%';
-                    imgTag.style.borderRadius = '8px';
-                    imgTag.style.maxHeight = '250px';
-                    imgTag.style.objectFit = 'contain';
+                // Read File as Base64 format for Local Storage
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    postMediaData = e.target.result;
+                    
+                    if(file.type.startsWith('video/')) {
+                        postMediaType = "video";
+                        imgTag.style.display = 'none';
+                        vidTag.style.display = 'block';
+                        vidTag.src = postMediaData;
+                    } else {
+                        postMediaType = "image";
+                        vidTag.style.display = 'none';
+                        imgTag.style.display = 'block';
+                        imgTag.src = postMediaData;
+                        imgTag.style.width = '100%';
+                        imgTag.style.borderRadius = '8px';
+                        imgTag.style.maxHeight = '250px';
+                        imgTag.style.objectFit = 'contain';
+                    }
+                    previewBox.style.display = 'block';
                 }
-                previewBox.style.display = 'block';
+                reader.readAsDataURL(file);
             }
         }
 
@@ -1053,15 +1076,17 @@
             const text = document.getElementById('newPostText').value.trim();
             if(text === "" && !selectedMediaFile) return alert("Please write something or add a photo/video!");
 
-            if (selectedMediaFile) {
-                if (window.uploadToFirebaseAndPost) {
-                    window.uploadToFirebaseAndPost(selectedMediaFile, text, postMediaType);
+            const publishBtn = document.getElementById('publishBtn');
+            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+            publishBtn.disabled = true;
+
+            setTimeout(() => {
+                if (selectedMediaFile) {
+                    window.savePostToFeed(text, postMediaData, postMediaType);
                 } else {
-                    alert("Firebase is loading... Please wait a second and try again.");
+                    window.savePostToFeed(text, "", "");
                 }
-            } else {
-                window.savePostToFeed(text, "", "");
-            }
+            }, 500);
         }
 
         window.savePostToFeed = function(text, mediaUrl, mediaType) {
@@ -1079,15 +1104,22 @@
                 comments: []
             };
 
-            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-            posts.unshift(postObj);
-            localStorage.setItem('dk_posts', JSON.stringify(posts));
-            
-            initAndLoadPosts();
-            closeCreatePostModal();
-            publishBtn.innerHTML = 'Post';
-            publishBtn.disabled = false;
-            simulateEarning(null, 10);
+            try {
+                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+                posts.unshift(postObj);
+                localStorage.setItem('dk_posts', JSON.stringify(posts));
+                
+                initAndLoadPosts();
+                closeCreatePostModal();
+                publishBtn.innerHTML = 'Post';
+                publishBtn.disabled = false;
+                simulateEarning(null, 10);
+            } catch(error) {
+                console.error(error);
+                alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai. Kripya chhoti file chunein.");
+                publishBtn.innerHTML = 'Post';
+                publishBtn.disabled = false;
+            }
         }
 
         function addFriend(btn) {
@@ -1138,9 +1170,8 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-        // 🔥 Firebase Storage ki files Import kar li 🔥
-        import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
+        // 🔥 Sirf Authentication rakha hai, Storage wala hissa hata diya 🔥
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
             authDomain: "dk-atovitt.firebaseapp.com",
@@ -1152,69 +1183,6 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const storage = getStorage(app); 
-
-        // 🔥 YEH FUNCTION FILE KO FIREBASE ME UPLOAD KAREGA 🔥
-        window.uploadToFirebaseAndPost = function(file, postText, postType) {
-            const publishBtn = document.getElementById('publishBtn');
-            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... 0%';
-            publishBtn.disabled = true;
-
-            const uniqueFileName = 'posts/' + Date.now() + '_' + file.name;
-            const storageRef = ref(storage, uniqueFileName);
-            
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-            uploadTask.on('state_changed',
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... ' + Math.floor(progress) + '%';
-                },
-                (error) => {
-                    console.error("Firebase Upload Error: ", error);
-                    alert("Upload failed! Please check if your Firebase Storage Rules allow writing.");
-                    publishBtn.innerHTML = 'Post';
-                    publishBtn.disabled = false;
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        window.savePostToFeed(postText, downloadURL, postType);
-                    });
-                }
-            );
-        };
-
-        // 🔥 FIREBASE FOR STORIES 🔥
-        window.uploadToFirebaseAndAddStory = function(file, type) {
-            const createCardText = document.getElementById('createStoryText');
-            if(createCardText) createCardText.innerText = "Finishing up...";
-            
-            closeStoryPreview(); 
-            
-            const uniqueFileName = 'stories/' + Date.now() + '_' + file.name;
-            const storageRef = ref(storage, uniqueFileName);
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-            uploadTask.on('state_changed',
-                (snapshot) => { }, 
-                (error) => {
-                    alert("Story upload failed!");
-                    if(createCardText) createCardText.innerText = "Create story";
-                },
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        window.saveStoryToFeed(downloadURL, type);
-                        if(createCardText) createCardText.innerText = "Create story"; 
-                        
-                        const shareBtn = document.querySelector('.share-story-btn');
-                        if(shareBtn) {
-                            shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
-                            shareBtn.disabled = false;
-                        }
-                    });
-                }
-            );
-        };
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
