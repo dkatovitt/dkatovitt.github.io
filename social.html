@@ -262,6 +262,17 @@
         .guest-popup-box { background: #fff; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
         .guest-popup-btn { background: #1877F2; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
 
+        /* 🔥 NEW: STORY PREVIEW MODAL CSS (INSTA/FB STYLE) 🔥 */
+        .story-preview-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999999; display: none; flex-direction: column; animation: slideUp 0.3s ease; }
+        .story-preview-header { padding: 20px 15px; display: flex; justify-content: space-between; align-items: center; position: absolute; top: 0; left: 0; width: 100%; z-index: 10; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8); background: linear-gradient(rgba(0,0,0,0.6), transparent); }
+        .story-preview-header button { background: transparent; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 5px; }
+        .story-tools { display: flex; gap: 20px; font-size: 24px; color: #fff; }
+        .story-media-container { flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; position: relative; height: 100vh; background: #111; }
+        .story-media-container img, .story-media-container video { width: 100%; height: 100%; object-fit: contain; }
+        .story-preview-footer { padding: 20px 15px; display: flex; justify-content: flex-end; position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); z-index: 10; }
+        .share-story-btn { background: #1877F2; color: #fff; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.2s; }
+        .share-story-btn:hover { background: #166fe5; transform: scale(1.05); }
+
         /* MOBILE BOTTOM NAV */
         @media (max-width: 1000px) {
             body { padding-top: 105px; }
@@ -298,6 +309,26 @@
     <div id="imageViewerModal">
         <i class="fas fa-times" onclick="closeImageViewer()"></i>
         <img id="fullScreenImage" src="">
+    </div>
+
+    <!-- 🔥 NEW: STORY PREVIEW MODAL (FACEBOOK / INSTAGRAM STYLE) 🔥 -->
+    <div id="storyPreviewModal" class="story-preview-overlay">
+        <div class="story-preview-header">
+            <button onclick="closeStoryPreview()"><i class="fas fa-arrow-left"></i></button>
+            <div class="story-tools">
+                <i class="fas fa-music"></i>
+                <i class="fas fa-font"></i>
+                <i class="fas fa-smile"></i>
+                <i class="fas fa-cut"></i>
+            </div>
+        </div>
+        <div class="story-media-container">
+            <img id="storyPreviewImg" style="display:none;">
+            <video id="storyPreviewVid" style="display:none;" autoplay loop muted playsinline></video>
+        </div>
+        <div class="story-preview-footer">
+            <button class="share-story-btn" onclick="uploadStoryBtnClick()"><i class="fas fa-paper-plane"></i> Share</button>
+        </div>
     </div>
 
     <div class="guest-popup-overlay" id="guestPopupOverlay">
@@ -527,7 +558,7 @@
                         <div class="create-bg current-user-avatar" style="background-image: url('1001120580.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
-                            <span>Create story</span>
+                            <span id="createStoryText">Create story</span>
                         </div>
                     </div>
                     <div class="story-card user-card">
@@ -587,7 +618,7 @@
         </div>
     </div>
 
-    <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;">
+    <input type="file" id="storyFileInput" accept="image/*,video/*" style="display: none;" onchange="handleStoryFileSelect(this)">
 
     <script>
         let currentUserName = "Guest User";
@@ -718,6 +749,81 @@
             if(checkGuest()) return;
             document.getElementById('storyFileInput').click();
         }
+
+        // ==========================================
+        // 🔥 NEW: STORY PREVIEW & UPLOAD SYSTEM 🔥
+        // ==========================================
+        let storyMediaData = "";
+        let storyMediaType = "";
+        let selectedStoryFile = null;
+
+        function handleStoryFileSelect(input) {
+            if (input.files && input.files[0]) {
+                selectedStoryFile = input.files[0];
+                const previewModal = document.getElementById('storyPreviewModal');
+                const imgTag = document.getElementById('storyPreviewImg');
+                const vidTag = document.getElementById('storyPreviewVid');
+                
+                storyMediaData = URL.createObjectURL(selectedStoryFile); 
+                
+                if(selectedStoryFile.type.startsWith('video/')) {
+                    storyMediaType = "video";
+                    imgTag.style.display = 'none';
+                    vidTag.style.display = 'block';
+                    vidTag.src = storyMediaData;
+                } else {
+                    storyMediaType = "image";
+                    vidTag.style.display = 'none';
+                    imgTag.style.display = 'block';
+                    imgTag.src = storyMediaData;
+                }
+                
+                previewModal.style.display = 'flex';
+            }
+        }
+
+        function closeStoryPreview() {
+            document.getElementById('storyPreviewModal').style.display = 'none';
+            document.getElementById('storyFileInput').value = ""; // Reset
+            selectedStoryFile = null;
+            const vid = document.getElementById('storyPreviewVid');
+            if(vid) vid.pause();
+        }
+
+        function uploadStoryBtnClick() {
+            if(!selectedStoryFile) return;
+            
+            const shareBtn = document.querySelector('.share-story-btn');
+            shareBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sharing...';
+            shareBtn.disabled = true;
+
+            if (window.uploadToFirebaseAndAddStory) {
+                window.uploadToFirebaseAndAddStory(selectedStoryFile, storyMediaType);
+            } else {
+                alert("Firebase loading... please try again.");
+                shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
+                shareBtn.disabled = false;
+            }
+        }
+
+        window.saveStoryToFeed = function(url, type) {
+            let mediaHtml = type === 'video' 
+                ? `<video src="${url}" class="bg" autoplay loop muted playsinline style="object-fit: cover;"></video>` 
+                : `<img src="${url}" class="bg" style="object-fit: cover;">`;
+
+            const newStoryHtml = `
+                <div class="story-card user-card">
+                    ${mediaHtml}
+                    <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar"></div>
+                    <span class="story-name">Your Story</span>
+                </div>
+            `;
+            
+            const createCard = document.querySelector('.story-card.create-card');
+            createCard.insertAdjacentHTML('afterend', newStoryHtml);
+            simulateEarning(null, 5);
+        };
+        // ==========================================
 
         const defaultPost = {
             id: 'post-yakshini-1',
@@ -890,10 +996,9 @@
             }
         }
 
-        // 🔥 FIREBASE UPLOAD VARIABLES 🔥
-        let postMediaData = ""; // Sirf preview ke liye
+        let postMediaData = "";
         let postMediaType = ""; 
-        let selectedMediaFile = null; // Asli file yahan save hogi firebase ke liye
+        let selectedMediaFile = null; 
 
         function openCreatePostModal() {
             if(checkGuest()) return;
@@ -910,14 +1015,11 @@
         function previewPostMedia(input) {
             if (input.files && input.files[0]) {
                 const file = input.files[0];
-                selectedMediaFile = file; // 🔥 Asli file ko save kar liya
-                
+                selectedMediaFile = file; 
                 const previewBox = document.getElementById('newPostImgPreview');
                 const imgTag = document.getElementById('previewSelectedImg');
                 const vidTag = document.getElementById('previewSelectedVid');
                 
-                // 🔥 URL.createObjectURL ab sirf "Local Preview" ke liye use hoga, 
-                // jisse browser hang na ho aur instant preview dikh jaye.
                 postMediaData = URL.createObjectURL(file); 
                 
                 if(file.type.startsWith('video/')) {
@@ -942,7 +1044,7 @@
         function removePostImg() {
             postMediaData = "";
             postMediaType = "";
-            selectedMediaFile = null; // 🔥 File ko reset kiya
+            selectedMediaFile = null; 
             document.getElementById('newPostImgPreview').style.display = 'none';
             document.getElementById('postMediaInput').value = "";
         }
@@ -952,25 +1054,22 @@
             if(text === "" && !selectedMediaFile) return alert("Please write something or add a photo/video!");
 
             if (selectedMediaFile) {
-                // Agar file select ki hai toh Firebase wala function chalega
                 if (window.uploadToFirebaseAndPost) {
                     window.uploadToFirebaseAndPost(selectedMediaFile, text, postMediaType);
                 } else {
                     alert("Firebase is loading... Please wait a second and try again.");
                 }
             } else {
-                // Agar sirf text hai toh direct local feed me daal do
                 window.savePostToFeed(text, "", "");
             }
         }
 
-        // 🔥 YEH NAYA FUNCTION HAI JO UPLOAD KE BAAD FEED ME DIKHAYEGA 🔥
         window.savePostToFeed = function(text, mediaUrl, mediaType) {
             const publishBtn = document.getElementById('publishBtn');
             const postObj = {
                 id: 'post-' + Date.now(),
                 text: text,
-                mediaData: mediaUrl, // Yahan aayega Firebase ka Permanent URL
+                mediaData: mediaUrl, 
                 mediaType: mediaType,
                 userName: currentUserName,
                 userPhoto: currentUserPhoto,
@@ -1053,7 +1152,7 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const storage = getStorage(app); // 🔥 Storage chalu kiya
+        const storage = getStorage(app); 
 
         // 🔥 YEH FUNCTION FILE KO FIREBASE ME UPLOAD KAREGA 🔥
         window.uploadToFirebaseAndPost = function(file, postText, postType) {
@@ -1061,16 +1160,13 @@
             publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... 0%';
             publishBtn.disabled = true;
 
-            // Har file ka unique naam banane ke liye date add kar di
             const uniqueFileName = 'posts/' + Date.now() + '_' + file.name;
             const storageRef = ref(storage, uniqueFileName);
             
-            // Upload shuru
             const uploadTask = uploadBytesResumable(storageRef, file);
 
             uploadTask.on('state_changed',
                 (snapshot) => {
-                    // Upload ka % dikhane ke liye
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... ' + Math.floor(progress) + '%';
                 },
@@ -1081,10 +1177,40 @@
                     publishBtn.disabled = false;
                 },
                 () => {
-                    // Upload pura hone ke baad link (URL) lena
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        // Link milne par local feed me save karna
                         window.savePostToFeed(postText, downloadURL, postType);
+                    });
+                }
+            );
+        };
+
+        // 🔥 FIREBASE FOR STORIES 🔥
+        window.uploadToFirebaseAndAddStory = function(file, type) {
+            const createCardText = document.getElementById('createStoryText');
+            if(createCardText) createCardText.innerText = "Finishing up...";
+            
+            closeStoryPreview(); 
+            
+            const uniqueFileName = 'stories/' + Date.now() + '_' + file.name;
+            const storageRef = ref(storage, uniqueFileName);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            uploadTask.on('state_changed',
+                (snapshot) => { }, 
+                (error) => {
+                    alert("Story upload failed!");
+                    if(createCardText) createCardText.innerText = "Create story";
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        window.saveStoryToFeed(downloadURL, type);
+                        if(createCardText) createCardText.innerText = "Create story"; 
+                        
+                        const shareBtn = document.querySelector('.share-story-btn');
+                        if(shareBtn) {
+                            shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
+                            shareBtn.disabled = false;
+                        }
                     });
                 }
             );
