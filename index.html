@@ -87,34 +87,41 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 BEAUTIFUL DK ATOVITT ECOSYSTEM MENU 🔥 */
-        .ecosystem-menu { display: none; position: fixed; right: 20px; top: 75px; background: #ffffff; width: 92%; max-width: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-radius: 16px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 0; padding-bottom: 10px; font-family: Arial, sans-serif; }
-        .ecosystem-menu.show { display: block; animation: dropFade 0.2s ease forwards; }
-        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .eco-header { font-size: 16px; font-weight: bold; color: #050505; padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; }
-        .eco-close-btn { background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
-        .eco-close-btn:hover { background: #d8dadf; }
-        
-        .eco-item { display: flex; align-items: center; gap: 15px; padding: 12px 15px; text-decoration: none; transition: 0.2s; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
-        .eco-item:last-child { border-bottom: none; }
-        .eco-item:hover { background: #f0f2f5; }
-        
-        .eco-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #fff; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .bg-browser { background: linear-gradient(135deg, #1cb5e0, #000046); }
-        .bg-trading { background: linear-gradient(135deg, #11998e, #38ef7d); }
-        .bg-mart { background: linear-gradient(135deg, #f7971e, #ffd200); }
-        .bg-coin { background: linear-gradient(135deg, #f2c94c, #f2994a); }
-
-        .eco-details { flex: 1; display: flex; flex-direction: column; text-align: left; }
-        .eco-details .title { font-size: 14px; font-weight: bold; color: #050505; display: flex; align-items: center; justify-content: space-between; }
-        .eco-details .status { font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 12px; margin-top: 4px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .status.coming { background: #f0f2f5; color: #65676b; border: 1px solid #ddd; }
+        /* 🔥 PERFECT ECOSYSTEM MENU (MATCHING 1ST SCREENSHOT) 🔥 */
+        .ecosystem-menu { display: none; position: fixed; right: 20px; top: 75px; background: #ffffff; width: 92%; max-width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 0; padding-bottom: 10px; font-family: Arial, sans-serif; }
+        .ecosystem-menu.show { display: block; animation: dropFadeCenter 0.2s ease forwards; }
+        @keyframes dropFadeCenter { from { opacity: 0; transform: translate(-50%, -10px); } to { opacity: 1; transform: translate(-50%, 0); } }
         
         @media (max-width: 768px) {
             .ecosystem-menu { left: 50%; transform: translateX(-50%); right: auto; top: 65px; }
         }
+
+        .eco-header { font-size: 16px; font-weight: 900; color: #050505; padding: 15px 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        .eco-close-btn { background: #f0f2f5; color: #050505; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+        .eco-close-btn:hover { background: #e4e6eb; }
+        
+        .eco-item { display: flex; align-items: center; gap: 15px; padding: 15px 20px; text-decoration: none; transition: 0.2s; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+        .eco-item:last-child { border-bottom: none; }
+        .eco-item:hover { background: #f8f9fa; }
+        
+        .eco-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #fff; flex-shrink: 0; }
+        
+        /* Solid colors based exactly on your screenshot */
+        .bg-connect { background: #1877F2; } 
+        .bg-browser { background: #003262; } 
+        .bg-trading { background: #20c997; } 
+        .bg-mart { background: #ffc107; } 
+        .bg-coin { background: #fd7e14; } 
+
+        .eco-details { flex: 1; display: flex; flex-direction: column; text-align: left; justify-content: center; }
+        .eco-details .title { font-size: 15px; font-weight: bold; color: #050505; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
+        
+        /* Badges based exactly on your screenshot */
+        .eco-details .status { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 12px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px; }
+        .status.live { background: #e7f3ff; color: #1877F2; }
+        .status.live i { font-size: 8px; }
+        .status.coming { background: #f0f2f5; color: #65676b; }
+        .status.coming i { font-size: 11px; }
 
         /* 🔥 STYLISH COMING SOON FULL PAGE OVERLAY 🔥 */
         .coming-soon-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: none; flex-direction: column; animation: slideUpIn 0.4s ease; font-family: Arial, sans-serif; }
@@ -143,17 +150,24 @@
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
         #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
-        .side-menu a { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .side-menu a:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; }
+        .side-menu a.normal-link { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a.normal-link:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
+        
+        /* New Style for DK Connect in Side Menu */
+        .side-menu-dkconnect { background: #0d213b; border-left: 4px solid #1877F2; color: #fff; font-weight: bold; font-size: 15px; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; text-decoration: none; margin-bottom: 5px; transition: 0.3s; }
+        .side-menu-dkconnect:hover { background: #122b4f; padding-left: 25px; }
+        
+        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #222; color: #ccc; font-size: 15px; transition: 0.3s; }
+        .menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
         .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
         .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; }
-        .sub-menu a:hover { color: #fff !important; }
+        .sub-menu a { display: block; font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; text-decoration: none; transition: 0.3s; }
+        .sub-menu a:hover { color: #fff !important; padding-left: 15px !important; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
@@ -411,6 +425,7 @@
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
+                    <!-- Preloaded logo -->
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -420,6 +435,62 @@
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 
+                <!-- 🔥 NEW ECOSYSTEM BUTTON IN HEADER 🔥 -->
+                <button class="eco-header-btn" onclick="toggleEcosystemMenu(event)" title="Explore DK Ecosystem">
+                    <i class="fas fa-globe"></i>
+                </button>
+
+                <!-- 🔥 PERFECT DK ATOVITT ECOSYSTEM MENU 🔥 -->
+                <div class="ecosystem-menu" id="ecosystemMenu">
+                    <div class="eco-header">
+                        <span>DK ATOVITT Ecosystem</span>
+                        <button class="eco-close-btn" onclick="toggleEcosystemMenu(event)"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div style="max-height: 320px; overflow-y: auto;">
+                        
+                        <a href="social.html" class="eco-item">
+                            <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Connect (Social App)</div>
+                                <span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                            </div>
+                        </a>
+                        
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-compass')" class="eco-item">
+                            <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Browser</div>
+                                <span class="status coming"><i class="fas fa-clock"></i> COMING SOON</span>
+                            </div>
+                        </a>
+                        
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Trading Exchange', 'bg-trading', 'fas fa-chart-line')" class="eco-item">
+                            <div class="eco-icon bg-trading"><i class="fas fa-chart-line"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Trading Exchange</div>
+                                <span class="status coming"><i class="fas fa-clock"></i> COMING SOON</span>
+                            </div>
+                        </a>
+                        
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Mart', 'bg-mart', 'fas fa-shopping-cart')" class="eco-item">
+                            <div class="eco-icon bg-mart"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Mart</div>
+                                <span class="status coming"><i class="fas fa-clock"></i> COMING SOON</span>
+                            </div>
+                        </a>
+                        
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK ATVT Coin', 'bg-coin', 'fas fa-coins')" class="eco-item">
+                            <div class="eco-icon bg-coin"><i class="fas fa-coins"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK ATVT Coin</div>
+                                <span class="status coming"><i class="fas fa-clock"></i> COMING SOON</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                </div>
+
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -465,13 +536,16 @@
         <div id="menuProfileArea"></div>
 
         <!-- 🔥 DK CONNECT SIDE MENU HIGHLIGHT (PERFECT PLACEMENT) 🔥 -->
-        <a href="social.html" style="background: rgba(24, 119, 242, 0.15); border-left: 4px solid #1877F2; color: #fff; font-weight: bold; font-size: 16px;">
-            <i class="fas fa-users" style="color:#1877F2; margin-right:12px;"></i> DK Connect
-            <span style="background: #1877F2; color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 12px; float: right; margin-top: 1px; letter-spacing: 0.5px;">LIVE</span>
+        <a href="social.html" class="side-menu-dkconnect">
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-users" style="color:#7baaf7; font-size: 18px; margin-right: 15px; width: 20px; text-align: center;"></i>
+                <span style="letter-spacing: 0.5px;">DK Connect</span>
+            </div>
+            <span style="background: #1877F2; color: #fff; font-size: 10px; padding: 4px 10px; border-radius: 12px; font-weight: 900; letter-spacing: 0.5px;">LIVE</span>
         </a>
 
-        <a href="auth.html" id="sideMenuAuthBtn"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
-        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="auth.html" id="sideMenuAuthBtn" class="normal-link"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
+        <a href="index.html#home" class="normal-link"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
             <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
@@ -490,7 +564,7 @@
             <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
         </div>
 
-        <a href="trailers.html"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
+        <a href="trailers.html" class="normal-link"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
             <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
@@ -502,9 +576,9 @@
             <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
         </div>
 
-        <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="celebrity.html"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
-        <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
+        <a href="gallery.html" class="normal-link"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
+        <a href="celebrity.html" class="normal-link"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
+        <a href="auditions.html" class="normal-link"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
             <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
@@ -517,8 +591,8 @@
             <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
         </div>
         
-        <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="contact.html"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
+        <a href="news.html" class="normal-link"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
+        <a href="contact.html" class="normal-link"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     <div id="overlay"></div>
 
@@ -1265,7 +1339,7 @@
         menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
         closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
         
-        document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)').forEach(link => { 
+        document.querySelectorAll('.side-menu a.normal-link:not(.menu-dropdown-btn)').forEach(link => { 
             link.addEventListener('click', () => { 
                 sideMenu.classList.remove('active'); overlay.classList.remove('active'); 
             }); 
@@ -1312,7 +1386,7 @@
             let currentPage = window.location.pathname.split("/").pop();
             if (currentPage === "" || currentPage === "/") currentPage = "index.html";
 
-            let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
+            let menuLinks = document.querySelectorAll('.side-menu a.normal-link:not(.menu-dropdown-btn)');
             
             menuLinks.forEach(link => {
                 let href = link.getAttribute('href');
@@ -1569,8 +1643,8 @@
                 const sideMenuBtn = document.getElementById('sideMenuAuthBtn');
                 if(sideMenuBtn) {
                     sideMenuBtn.outerHTML = `
-                        <a href="dashboard.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> My Dashboard</a>
-                        <a href="javascript:void(0)" class="logout-action"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
+                        <a href="dashboard.html" class="normal-link"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> My Dashboard</a>
+                        <a href="javascript:void(0)" class="normal-link logout-action"><i class="fas fa-sign-out-alt" style="color:#ff4d4d; margin-right:12px;"></i> Logout</a>
                     `;
                 }
 
