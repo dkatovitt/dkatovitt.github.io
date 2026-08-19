@@ -47,14 +47,14 @@
         .fb-icon-btn { background: #e4e6eb; color: #050505; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 18px; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; transition: 0.3s; }
         .fb-icon-btn:hover { background: #d8dadf; }
         
-        /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX 🔥 */
+        /* 🔥 CLEAN TOP NOTIFICATION BADGE FIX (NEAR ICON) 🔥 */
         .fb-icon-btn .badge, .fb-tab .badge { 
-            position: absolute; top: -5px; right: -8px; 
+            position: absolute; top: -2px; right: -2px; 
             background: #e41e3f; color: #fff; 
             font-size: 10px; font-weight: bold; 
-            min-width: 18px; height: 18px; padding: 0 3px;
+            min-width: 17px; height: 17px; padding: 0 2px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         /* WHITE FB TABS ROW */
@@ -71,7 +71,7 @@
             to { opacity: 1; transform: translate(-50%, 0); } 
         }
 
-        /* 🔥 FRIEND REQUESTS DROPDOWN MENU 🔥 */
+        /* 🔥 FRIEND REQUESTS DROPDOWN MENU (PERFECTLY CENTERED) 🔥 */
         .friend-requests-menu { display: none; position: fixed; left: 50%; transform: translateX(-50%); top: 110px; background: #ffffff; width: 92%; max-width: 360px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
         .friend-requests-menu.show { display: block; animation: dropFadeCenter 0.2s ease forwards; }
         .fr-header { font-size: 18px; font-weight: bold; color: #050505; padding-bottom: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
@@ -103,12 +103,26 @@
         .bg-mart { background: linear-gradient(135deg, #f7971e, #ffd200); }
         .bg-coin { background: linear-gradient(135deg, #f2c94c, #f2994a); }
 
-        .eco-details { flex: 1; display: flex; flex-direction: column; }
+        .eco-details { flex: 1; display: flex; flex-direction: column; text-align: left; }
         .eco-details .title { font-size: 14px; font-weight: bold; color: #050505; display: flex; align-items: center; justify-content: space-between; }
         .eco-details .status { font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 12px; margin-top: 4px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .status.live { background: #e7f3ff; color: #1877F2; }
         .status.coming { background: #f0f2f5; color: #65676b; border: 1px solid #ddd; }
+
+        /* 🔥 STYLISH COMING SOON FULL PAGE OVERLAY 🔥 */
+        .coming-soon-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 100000; display: none; flex-direction: column; animation: slideUpIn 0.4s ease; }
+        @keyframes slideUpIn { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
+        .cs-header { background: #ffffff; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .cs-back-btn { background: #e4e6eb; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; justify-content: center; align-items: center; color: #050505; transition: 0.3s; }
+        .cs-back-btn:hover { background: #d8dadf; }
+        .cs-header h1 { margin: 0; color: #1877F2; font-size: 20px; font-weight: 900; }
+        .cs-body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .cs-big-icon { width: 130px; height: 130px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 55px; color: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 25px; }
+        .cs-title { font-size: 28px; font-weight: 900; color: #050505; margin: 0 0 15px 0; }
+        .cs-badge { background: linear-gradient(135deg, #1877F2, #45bd62); color: #fff; padding: 10px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .cs-desc { color: #65676b; font-size: 16px; max-width: 350px; line-height: 1.5; margin-top: 20px; }
 
         /* SMART DROPDOWN PROFILE MENU */
         .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; }
@@ -264,6 +278,20 @@
 </head>
 <body>
 
+    <!-- 🔥 STYLISH COMING SOON OVERLAY (NEW) 🔥 -->
+    <div class="coming-soon-page" id="comingSoonPage">
+        <div class="cs-header">
+            <button class="cs-back-btn" onclick="closeComingSoon()"><i class="fas fa-arrow-left"></i></button>
+            <h1>DK Connect</h1>
+        </div>
+        <div class="cs-body">
+            <div id="csIcon" class="cs-big-icon bg-browser"><i id="csIconInner" class="fas fa-compass"></i></div>
+            <h2 class="cs-title" id="csTitle">DK Browser</h2>
+            <div class="cs-badge">Coming Soon</div>
+            <p class="cs-desc">We are working hard to bring this feature to you. Stay tuned for an amazing experience!</p>
+        </div>
+    </div>
+
     <div id="overlay"></div>
 
     <div id="imageViewerModal">
@@ -390,42 +418,45 @@
                 <i class="fas fa-globe" style="color: #45bd62;"></i>
             </div>
             
-            <!-- 🔥 BEAUTIFUL DK ATOVITT ECOSYSTEM MENU 🔥 -->
+            <!-- 🔥 DK ATOVITT ECOSYSTEM MENU WITH PROPER LINKS 🔥 -->
             <div class="ecosystem-menu" id="ecosystemMenu">
                 <div class="eco-header">
                     <span>DK ATOVITT Ecosystem</span>
                     <button class="eco-close-btn" onclick="toggleEcosystemMenu(event)"><i class="fas fa-times"></i></button>
                 </div>
                 <div style="max-height: 320px; overflow-y: auto;">
-                    <a href="video.html" class="eco-item">
+                    <!-- 🔥 LINK FIXED: Changed video.html to index.html for Movie Page 🔥 -->
+                    <a href="index.html" class="eco-item">
                         <div class="eco-icon bg-movie"><i class="fas fa-film"></i></div>
                         <div class="eco-details">
                             <div class="title">DK ATOVITT Official Movie Production <i class="fas fa-external-link-alt" style="font-size:11px; color:#1877F2;"></i></div>
                             <span class="status live"><i class="fas fa-circle" style="font-size:8px; margin-right:3px;"></i> Live</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="alert('DK Browser is coming soon!')" class="eco-item">
+                    
+                    <!-- 🔥 BEAUTIFUL COMING SOON PAGES 🔥 -->
+                    <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-compass')" class="eco-item">
                         <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Browser</div>
                             <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="alert('DK Trading Exchange is coming soon!')" class="eco-item">
+                    <a href="javascript:void(0)" onclick="openComingSoon('DK Trading Exchange', 'bg-trading', 'fas fa-chart-line')" class="eco-item">
                         <div class="eco-icon bg-trading"><i class="fas fa-chart-line"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Trading Exchange</div>
                             <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="alert('DK Mart is coming soon!')" class="eco-item">
+                    <a href="javascript:void(0)" onclick="openComingSoon('DK Mart', 'bg-mart', 'fas fa-shopping-cart')" class="eco-item">
                         <div class="eco-icon bg-mart"><i class="fas fa-shopping-cart"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Mart</div>
                             <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
                         </div>
                     </a>
-                    <a href="wallet.html" class="eco-item">
+                    <a href="javascript:void(0)" onclick="openComingSoon('DK ATVT Coin', 'bg-coin', 'fas fa-coins')" class="eco-item">
                         <div class="eco-icon bg-coin"><i class="fas fa-coins"></i></div>
                         <div class="eco-details">
                             <div class="title">DK ATVT Coin</div>
@@ -585,6 +616,21 @@
                 if(nb) nb.style.display = 'none';
             }
         });
+
+        // 🔥 OPEN STYLISH COMING SOON OVERLAY 🔥
+        function openComingSoon(title, bgClass, iconClass) {
+            document.getElementById('csTitle').innerText = title;
+            document.getElementById('csIcon').className = 'cs-big-icon ' + bgClass;
+            document.getElementById('csIconInner').className = iconClass;
+            document.getElementById('comingSoonPage').style.display = 'flex';
+            
+            const menu = document.getElementById('ecosystemMenu');
+            if(menu) menu.classList.remove('show');
+        }
+
+        function closeComingSoon() {
+            document.getElementById('comingSoonPage').style.display = 'none';
+        }
 
         function toggleFriendRequestsMenu(event) {
             event.stopPropagation();
