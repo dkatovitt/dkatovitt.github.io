@@ -228,8 +228,9 @@
         
         /* FULL SCREEN IMAGE VIEWER */
         #imageViewerModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column; }
-        #imageViewerModal i { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 35px; cursor: pointer; padding: 10px; }
+        #imageViewerModal i { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 35px; cursor: pointer; padding: 10px; z-index: 100000; }
         #fullScreenImage { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
+        #fullScreenVideo { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); background: #000; }
 
         /* SHARE MODAL */
         .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
@@ -308,7 +309,8 @@
 
     <div id="imageViewerModal">
         <i class="fas fa-times" onclick="closeImageViewer()"></i>
-        <img id="fullScreenImage" src="">
+        <img id="fullScreenImage" src="" style="display:none;">
+        <video id="fullScreenVideo" src="" controls style="display:none;"></video>
     </div>
 
     <!-- 🔥 NEW: STORY PREVIEW MODAL (FACEBOOK / INSTAGRAM STYLE) 🔥 -->
@@ -561,7 +563,8 @@
                             <span id="createStoryText">Create story</span>
                         </div>
                     </div>
-                    <div class="story-card user-card">
+                    <!-- DK Atovitt Story Card (Now Clickable) -->
+                    <div class="story-card user-card" onclick="openImageViewer('images/movies/yakshini-poster.png', 'image')">
                         <img src="images/movies/yakshini-poster.png" class="bg">
                         <div class="user-ring"><img src="1001120580.jpg" class="current-user-avatar"></div>
                         <span class="story-name">DK Atovitt</span>
@@ -640,6 +643,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             updateAvatars();
             initAndLoadPosts();
+            initAndLoadStories(); // 🔥 Yeh line add ki, ab reload par story wapas aayegi
             
             if(localStorage.getItem('dk_friend_badge_read') === 'true') {
                 let fb = document.querySelector('#friendBadgeContainer .badge');
@@ -651,7 +655,6 @@
             }
         });
 
-        // 🔥 OPEN STYLISH COMING SOON OVERLAY 🔥
         function openComingSoon(title, bgClass, iconClass) {
             document.getElementById('csTitle').innerText = title;
             document.getElementById('csIcon').className = 'cs-big-icon ' + bgClass;
@@ -737,12 +740,29 @@
             }
         }
 
-        function openImageViewer(src) {
-            document.getElementById('fullScreenImage').src = src;
+        // 🔥 NAYA ADVANCE VIEWER (PHOTO & VIDEO DONO KE LIYE) 🔥
+        function openImageViewer(src, type = 'image') {
+            const img = document.getElementById('fullScreenImage');
+            const vid = document.getElementById('fullScreenVideo');
+            
+            if (type === 'video') {
+                img.style.display = 'none';
+                vid.src = src;
+                vid.style.display = 'block';
+                vid.play();
+            } else {
+                vid.style.display = 'none';
+                vid.pause();
+                img.src = src;
+                img.style.display = 'block';
+            }
             document.getElementById('imageViewerModal').style.display = 'flex';
         }
+        
         function closeImageViewer() {
             document.getElementById('imageViewerModal').style.display = 'none';
+            const vid = document.getElementById('fullScreenVideo');
+            if(vid) vid.pause(); // Band karte hi video ruk jayegi
         }
 
         function openStoryPicker() {
@@ -751,7 +771,7 @@
         }
 
         // ==========================================
-        // 🔥 NEW: STORY PREVIEW & LOCAL UPLOAD SYSTEM 🔥
+        // 🔥 NAYA: STORY SAVE AUR LOAD KARNE KA SYSTEM 🔥
         // ==========================================
         let storyMediaData = "";
         let storyMediaType = "";
@@ -764,7 +784,6 @@
                 const imgTag = document.getElementById('storyPreviewImg');
                 const vidTag = document.getElementById('storyPreviewVid');
                 
-                // Read File as Base64 format for Local Storage
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     storyMediaData = e.target.result;
@@ -788,7 +807,7 @@
 
         function closeStoryPreview() {
             document.getElementById('storyPreviewModal').style.display = 'none';
-            document.getElementById('storyFileInput').value = ""; // Reset
+            document.getElementById('storyFileInput').value = ""; 
             selectedStoryFile = null;
             const vid = document.getElementById('storyPreviewVid');
             if(vid) vid.pause();
@@ -806,16 +825,9 @@
             
             closeStoryPreview(); 
 
-            // Fake Upload Delay for realistic feel
             setTimeout(() => {
-                try {
-                    window.saveStoryToFeed(storyMediaData, storyMediaType);
-                    if(createCardText) createCardText.innerText = "Create story"; 
-                } catch(error) {
-                    console.error(error);
-                    alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai. Kripya chhoti file chunein.");
-                    if(createCardText) createCardText.innerText = "Create story"; 
-                }
+                window.saveStoryToFeed(storyMediaData, storyMediaType);
+                if(createCardText) createCardText.innerText = "Create story"; 
                 
                 if(shareBtn) {
                     shareBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Share';
@@ -824,23 +836,45 @@
             }, 1000);
         }
 
+        // 🔥 STORY KO LOCAL STORAGE ME SAVE KARNA 🔥
         window.saveStoryToFeed = function(url, type) {
-            let mediaHtml = type === 'video' 
-                ? `<video src="${url}" class="bg" autoplay loop muted playsinline style="object-fit: cover;"></video>` 
-                : `<img src="${url}" class="bg" style="object-fit: cover;">`;
+            try {
+                let stories = JSON.parse(localStorage.getItem('dk_stories')) || [];
+                stories.unshift({url: url, type: type});
+                localStorage.setItem('dk_stories', JSON.stringify(stories));
+                initAndLoadStories(); // Feed turant update ho jayegi
+                simulateEarning(null, 5);
+            } catch(error) {
+                console.error(error);
+                alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai.");
+            }
+        };
 
-            const newStoryHtml = `
-                <div class="story-card user-card">
-                    ${mediaHtml}
-                    <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar"></div>
-                    <span class="story-name">Your Story</span>
-                </div>
-            `;
+        // 🔥 STORY KO SCREEN PAR DIKHANA 🔥
+        function initAndLoadStories() {
+            let stories = JSON.parse(localStorage.getItem('dk_stories')) || [];
+            
+            // Puraani bani hui stories hata dete hain taaki double na dikhe
+            document.querySelectorAll('.dynamic-story').forEach(e => e.remove());
             
             const createCard = document.querySelector('.story-card.create-card');
-            createCard.insertAdjacentHTML('afterend', newStoryHtml);
-            simulateEarning(null, 5);
-        };
+            
+            [...stories].reverse().forEach(story => {
+                let mediaHtml = story.type === 'video' 
+                    ? `<video src="${story.url}" class="bg" autoplay loop muted playsinline style="object-fit: cover; pointer-events: none;"></video>` 
+                    : `<img src="${story.url}" class="bg" style="object-fit: cover;">`;
+
+                // onclick event laga diya story dekhne ke liye
+                const newStoryHtml = `
+                    <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}')">
+                        ${mediaHtml}
+                        <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar"></div>
+                        <span class="story-name">Your Story</span>
+                    </div>
+                `;
+                createCard.insertAdjacentHTML('afterend', newStoryHtml);
+            });
+        }
         // ==========================================
 
         const defaultPost = {
@@ -899,7 +933,7 @@
                     if(data.mediaType === "video") {
                         mediaHTML = `<div class="post-media"><video src="${data.mediaData}" controls style="width:100%; max-height:500px; background:#000;"></video></div>`;
                     } else {
-                        mediaHTML = `<div class="post-media"><img src="${data.mediaData}" onclick="openImageViewer(this.src)" style="cursor:pointer; width:100%;"></div>`;
+                        mediaHTML = `<div class="post-media"><img src="${data.mediaData}" onclick="openImageViewer(this.src, 'image')" style="cursor:pointer; width:100%;"></div>`;
                     }
                 }
 
@@ -1038,7 +1072,6 @@
                 const imgTag = document.getElementById('previewSelectedImg');
                 const vidTag = document.getElementById('previewSelectedVid');
                 
-                // Read File as Base64 format for Local Storage
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     postMediaData = e.target.result;
