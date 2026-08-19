@@ -66,13 +66,12 @@
         .fb-tab img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid transparent; object-fit: cover; }
         .fb-tab.active img { border-color: #1877F2; }
 
-        /* 🔥 CENTERED MENUS ANIMATION FIX 🔥 */
         @keyframes dropFadeCenter { 
             from { opacity: 0; transform: translate(-50%, -10px); } 
             to { opacity: 1; transform: translate(-50%, 0); } 
         }
 
-        /* 🔥 FRIEND REQUESTS DROPDOWN MENU (PERFECTLY CENTERED) 🔥 */
+        /* 🔥 FRIEND REQUESTS DROPDOWN MENU 🔥 */
         .friend-requests-menu { display: none; position: fixed; left: 50%; transform: translateX(-50%); top: 110px; background: #ffffff; width: 92%; max-width: 360px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border-radius: 12px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 12px; text-align: left; }
         .friend-requests-menu.show { display: block; animation: dropFadeCenter 0.2s ease forwards; }
         .fr-header { font-size: 18px; font-weight: bold; color: #050505; padding-bottom: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
@@ -208,11 +207,11 @@
         .share-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .share-modal-box { background: #ffffff; width: 100%; max-width: 500px; border-radius: 20px 20px 0 0; padding: 25px 20px; position: relative; animation: slideUp 0.3s ease; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); text-align: center; }
         .share-modal-box h3 { color: #050505; margin: 0 0 20px 0; font-size: 18px; }
-        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+        .share-modal-close { position: absolute; top: 15px; right: 20px; background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 16px; cursor: pointer; }
         .share-options { display: flex; justify-content: space-around; padding: 10px 0; }
         .share-opt { display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; transition: 0.3s; }
         .share-opt:hover { transform: translateY(-5px); }
-        .share-opt .icon { width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .share-opt .icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .icon-whatsapp { background: #25D366; }
         .icon-facebook { background: #1877F2; }
         .icon-copy { background: #65676b; }
@@ -461,7 +460,7 @@
                 
                 <div class="fb-stories-scroll" id="storiesContainer">
                     <div class="story-card create-card" onclick="openStoryPicker()">
-                        <div class="create-bg" style="background-image: url('1001120580.jpg');" class="current-user-avatar"></div>
+                        <div class="create-bg current-user-avatar" style="background-image: url('1001120580.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="create-bottom">
                             <div class="plus-btn"><i class="fas fa-plus"></i></div>
                             <span>Create story</span>
@@ -532,9 +531,14 @@
         let isGuest = true;
 
         function updateAvatars() {
-            document.querySelectorAll('.current-user-avatar').forEach(img => {
-                if(img.tagName === 'IMG') img.src = currentUserPhoto;
-                else img.style.backgroundImage = `url('${currentUserPhoto}')`;
+            document.querySelectorAll('.current-user-avatar').forEach(el => {
+                if(el.tagName === 'IMG') {
+                    el.src = currentUserPhoto;
+                } else {
+                    el.style.backgroundImage = `url('${currentUserPhoto}')`;
+                    el.style.backgroundSize = 'cover';
+                    el.style.backgroundPosition = 'center';
+                }
             });
         }
 
@@ -542,7 +546,6 @@
             updateAvatars();
             initAndLoadPosts();
             
-            // 🔥 CHECK LOCAL STORAGE TO KEEP BADGES HIDDEN
             if(localStorage.getItem('dk_friend_badge_read') === 'true') {
                 let fb = document.querySelector('#friendBadgeContainer .badge');
                 if(fb) fb.style.display = 'none';
@@ -560,7 +563,6 @@
             const menu = document.getElementById('friendRequestsMenu');
             menu.classList.toggle('show');
             
-            // 🔥 REMOVE BADGE ON CLICK & SAVE IN LOCAL STORAGE
             const badge = document.querySelector('#friendBadgeContainer .badge');
             if(badge) {
                 badge.style.display = 'none';
@@ -577,7 +579,6 @@
         }
 
         function dismissBadge(el) {
-            // 🔥 REMOVE NOTIFICATION BADGE ON CLICK & SAVE IN LOCAL STORAGE
             const badge = el.querySelector('.badge');
             if(badge) {
                 badge.style.display = 'none';
