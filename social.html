@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -278,6 +279,7 @@
 </head>
 <body>
 
+    <!-- 🔥 STYLISH COMING SOON OVERLAY 🔥 -->
     <div class="coming-soon-page" id="comingSoonPage">
         <div class="cs-header">
             <button class="cs-back-btn" onclick="closeComingSoon()"><i class="fas fa-arrow-left"></i></button>
@@ -364,6 +366,7 @@
             
             <a href="video.html" class="fb-tab" title="Reels"><i class="fas fa-video" style="color: #e41e3f;"></i></a>
             
+            <!-- FRIEND REQUEST TAB WITH AUTO-DISMISS BADGE -->
             <div class="fb-tab" onclick="toggleFriendRequestsMenu(event)" title="Friend Requests">
                 <div style="position: relative; display: inline-flex;" id="friendBadgeContainer">
                     <i class="fas fa-user-friends"></i>
@@ -417,6 +420,7 @@
                 <i class="fas fa-globe" style="color: #45bd62;"></i>
             </div>
             
+            <!-- 🔥 DK ATOVITT ECOSYSTEM MENU WITH PROPER LINKS 🔥 -->
             <div class="ecosystem-menu" id="ecosystemMenu">
                 <div class="eco-header">
                     <span>DK ATOVITT Ecosystem</span>
@@ -432,6 +436,7 @@
                         </div>
                     </a>
                     
+                    <!-- 🔥 BEAUTIFUL COMING SOON PAGES 🔥 -->
                     <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-compass')" class="eco-item">
                         <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
                         <div class="eco-details">
@@ -463,6 +468,7 @@
                 </div>
             </div>
 
+            <!-- NOTIFICATIONS TAB WITH AUTO-DISMISS BADGE -->
             <a href="notifications.html" class="fb-tab" title="Notifications" onclick="dismissBadge(this)">
                 <div style="position: relative; display: inline-flex;">
                     <i class="fas fa-bell"></i>
@@ -884,8 +890,10 @@
             }
         }
 
-        let postMediaData = "";
+        // 🔥 FIREBASE UPLOAD VARIABLES 🔥
+        let postMediaData = ""; // Sirf preview ke liye
         let postMediaType = ""; 
+        let selectedMediaFile = null; // Asli file yahan save hogi firebase ke liye
 
         function openCreatePostModal() {
             if(checkGuest()) return;
@@ -902,58 +910,68 @@
         function previewPostMedia(input) {
             if (input.files && input.files[0]) {
                 const file = input.files[0];
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    postMediaData = e.target.result; // This holds the base64 for both image and video now.
-                    const previewBox = document.getElementById('newPostImgPreview');
-                    const imgTag = document.getElementById('previewSelectedImg');
-                    const vidTag = document.getElementById('previewSelectedVid');
-                    
-                    if(file.type.startsWith('video/')) {
-                        postMediaType = "video";
-                        
-                        // 🔥 FIX: Using base64 directly so video stays after refresh 🔥
-                        // postMediaData is already set to e.target.result above
-                        
-                        imgTag.style.display = 'none';
-                        vidTag.style.display = 'block';
-                        vidTag.src = postMediaData;
-                    } else {
-                        postMediaType = "image";
-                        vidTag.style.display = 'none';
-                        imgTag.style.display = 'block';
-                        imgTag.src = postMediaData;
-                        imgTag.style.width = '100%';
-                        imgTag.style.borderRadius = '8px';
-                        imgTag.style.maxHeight = '250px';
-                        imgTag.style.objectFit = 'contain';
-                    }
-                    previewBox.style.display = 'block';
+                selectedMediaFile = file; // 🔥 Asli file ko save kar liya
+                
+                const previewBox = document.getElementById('newPostImgPreview');
+                const imgTag = document.getElementById('previewSelectedImg');
+                const vidTag = document.getElementById('previewSelectedVid');
+                
+                // 🔥 URL.createObjectURL ab sirf "Local Preview" ke liye use hoga, 
+                // jisse browser hang na ho aur instant preview dikh jaye.
+                postMediaData = URL.createObjectURL(file); 
+                
+                if(file.type.startsWith('video/')) {
+                    postMediaType = "video";
+                    imgTag.style.display = 'none';
+                    vidTag.style.display = 'block';
+                    vidTag.src = postMediaData;
+                } else {
+                    postMediaType = "image";
+                    vidTag.style.display = 'none';
+                    imgTag.style.display = 'block';
+                    imgTag.src = postMediaData;
+                    imgTag.style.width = '100%';
+                    imgTag.style.borderRadius = '8px';
+                    imgTag.style.maxHeight = '250px';
+                    imgTag.style.objectFit = 'contain';
                 }
-                reader.readAsDataURL(file);
+                previewBox.style.display = 'block';
             }
         }
 
         function removePostImg() {
             postMediaData = "";
             postMediaType = "";
+            selectedMediaFile = null; // 🔥 File ko reset kiya
             document.getElementById('newPostImgPreview').style.display = 'none';
             document.getElementById('postMediaInput').value = "";
         }
 
         function publishNewPost() {
             const text = document.getElementById('newPostText').value.trim();
-            if(text === "" && postMediaData === "") return alert("Please write something or add a photo/video!");
+            if(text === "" && !selectedMediaFile) return alert("Please write something or add a photo/video!");
 
+            if (selectedMediaFile) {
+                // Agar file select ki hai toh Firebase wala function chalega
+                if (window.uploadToFirebaseAndPost) {
+                    window.uploadToFirebaseAndPost(selectedMediaFile, text, postMediaType);
+                } else {
+                    alert("Firebase is loading... Please wait a second and try again.");
+                }
+            } else {
+                // Agar sirf text hai toh direct local feed me daal do
+                window.savePostToFeed(text, "", "");
+            }
+        }
+
+        // 🔥 YEH NAYA FUNCTION HAI JO UPLOAD KE BAAD FEED ME DIKHAYEGA 🔥
+        window.savePostToFeed = function(text, mediaUrl, mediaType) {
             const publishBtn = document.getElementById('publishBtn');
-            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
-            publishBtn.disabled = true;
-
             const postObj = {
                 id: 'post-' + Date.now(),
                 text: text,
-                mediaData: postMediaData,
-                mediaType: postMediaType,
+                mediaData: mediaUrl, // Yahan aayega Firebase ka Permanent URL
+                mediaType: mediaType,
                 userName: currentUserName,
                 userPhoto: currentUserPhoto,
                 timeString: "Just now",
@@ -962,25 +980,15 @@
                 comments: []
             };
 
-            setTimeout(() => {
-                // 🔥 LOCAL STORAGE SAFETY NET FOR LARGE FILES 🔥
-                try {
-                    let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-                    posts.unshift(postObj);
-                    localStorage.setItem('dk_posts', JSON.stringify(posts));
-                    
-                    initAndLoadPosts();
-                    closeCreatePostModal();
-                    publishBtn.innerHTML = 'Post';
-                    publishBtn.disabled = false;
-                    simulateEarning(null, 10);
-                } catch(e) {
-                    console.error("Storage Error: ", e);
-                    alert("⚠️ Error: File size is too large for browser memory. Please select a smaller photo/video.");
-                    publishBtn.innerHTML = 'Post';
-                    publishBtn.disabled = false;
-                }
-            }, 1000);
+            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            posts.unshift(postObj);
+            localStorage.setItem('dk_posts', JSON.stringify(posts));
+            
+            initAndLoadPosts();
+            closeCreatePostModal();
+            publishBtn.innerHTML = 'Post';
+            publishBtn.disabled = false;
+            simulateEarning(null, 10);
         }
 
         function addFriend(btn) {
@@ -1031,6 +1039,8 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        // 🔥 Firebase Storage ki files Import kar li 🔥
+        import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -1043,6 +1053,42 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const storage = getStorage(app); // 🔥 Storage chalu kiya
+
+        // 🔥 YEH FUNCTION FILE KO FIREBASE ME UPLOAD KAREGA 🔥
+        window.uploadToFirebaseAndPost = function(file, postText, postType) {
+            const publishBtn = document.getElementById('publishBtn');
+            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... 0%';
+            publishBtn.disabled = true;
+
+            // Har file ka unique naam banane ke liye date add kar di
+            const uniqueFileName = 'posts/' + Date.now() + '_' + file.name;
+            const storageRef = ref(storage, uniqueFileName);
+            
+            // Upload shuru
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    // Upload ka % dikhane ke liye
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading... ' + Math.floor(progress) + '%';
+                },
+                (error) => {
+                    console.error("Firebase Upload Error: ", error);
+                    alert("Upload failed! Please check if your Firebase Storage Rules allow writing.");
+                    publishBtn.innerHTML = 'Post';
+                    publishBtn.disabled = false;
+                },
+                () => {
+                    // Upload pura hone ke baad link (URL) lena
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        // Link milne par local feed me save karna
+                        window.savePostToFeed(postText, downloadURL, postType);
+                    });
+                }
+            );
+        };
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
