@@ -66,6 +66,10 @@
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
         
+        /* 🔥 HEADER ICONS & ECOSYSTEM BUTTON 🔥 */
+        .eco-header-btn { background: none; border: none; color: #45bd62; font-size: 22px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; }
+        .eco-header-btn:hover { background: rgba(69, 189, 98, 0.1); transform: scale(1.1); }
+        
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; white-space: nowrap !important; display: inline-flex !important; align-items: center !important; gap: 8px !important;}
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
@@ -77,18 +81,62 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
+            .eco-header-btn { font-size: 20px; width: 35px; height: 35px; }
             .login-btn-header { font-size: 11px !important; padding: 4px 8px !important; gap: 4px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
 
+        /* 🔥 BEAUTIFUL DK ATOVITT ECOSYSTEM MENU 🔥 */
+        .ecosystem-menu { display: none; position: fixed; right: 20px; top: 75px; background: #ffffff; width: 92%; max-width: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-radius: 16px; z-index: 10005; border: 1px solid #ddd; overflow: hidden; padding: 0; padding-bottom: 10px; font-family: Arial, sans-serif; }
+        .ecosystem-menu.show { display: block; animation: dropFade 0.2s ease forwards; }
+        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .eco-header { font-size: 16px; font-weight: bold; color: #050505; padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; }
+        .eco-close-btn { background: #e4e6eb; color: #050505; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 14px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
+        .eco-close-btn:hover { background: #d8dadf; }
+        
+        .eco-item { display: flex; align-items: center; gap: 15px; padding: 12px 15px; text-decoration: none; transition: 0.2s; border-bottom: 1px solid #f0f2f5; cursor: pointer; }
+        .eco-item:last-child { border-bottom: none; }
+        .eco-item:hover { background: #f0f2f5; }
+        
+        .eco-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #fff; flex-shrink: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .bg-connect { background: linear-gradient(135deg, #1877F2, #0056b3); }
+        .bg-browser { background: linear-gradient(135deg, #1cb5e0, #000046); }
+        .bg-trading { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .bg-mart { background: linear-gradient(135deg, #f7971e, #ffd200); }
+        .bg-coin { background: linear-gradient(135deg, #f2c94c, #f2994a); }
+
+        .eco-details { flex: 1; display: flex; flex-direction: column; text-align: left; }
+        .eco-details .title { font-size: 14px; font-weight: bold; color: #050505; display: flex; align-items: center; justify-content: space-between; }
+        .eco-details .status { font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 12px; margin-top: 4px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .status.live { background: #e7f3ff; color: #1877F2; }
+        .status.coming { background: #f0f2f5; color: #65676b; border: 1px solid #ddd; }
+        
+        @media (max-width: 768px) {
+            .ecosystem-menu { left: 50%; transform: translateX(-50%); right: auto; top: 65px; }
+        }
+
+        /* 🔥 STYLISH COMING SOON FULL PAGE OVERLAY 🔥 */
+        .coming-soon-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: none; flex-direction: column; animation: slideUpIn 0.4s ease; font-family: Arial, sans-serif; }
+        @keyframes slideUpIn { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
+        .cs-header { background: #111; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border-bottom: 1px solid #222; }
+        .cs-back-btn { background: #222; border: 1px solid #444; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; justify-content: center; align-items: center; color: #e6c875; transition: 0.3s; }
+        .cs-back-btn:hover { background: #e6c875; color: #000; }
+        .cs-header h1 { margin: 0; color: #e6c875; font-size: 20px; font-weight: 900; letter-spacing: 1px; }
+        .cs-body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .cs-big-icon { width: 130px; height: 130px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 55px; color: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin-bottom: 25px; }
+        .cs-title { font-size: 32px; font-weight: 900; color: #fff; margin: 0 0 15px 0; font-family: 'Playfair Display', serif; }
+        .cs-badge { background: linear-gradient(135deg, #e6c875, #f5d680); color: #000; padding: 10px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .cs-desc { color: #aaa; font-size: 16px; max-width: 400px; line-height: 1.6; margin-top: 25px; }
+
+
         /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
         .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: #e6c875; color: #000; }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
-        body { top: 0px !important; position: static !important; } 
-        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         /* 🔥 MENU CSS 🔥 */
@@ -341,6 +389,20 @@
 </head>
 <body>
 
+    <!-- 🔥 STYLISH COMING SOON OVERLAY (NEW) 🔥 -->
+    <div class="coming-soon-page" id="comingSoonPage">
+        <div class="cs-header">
+            <button class="cs-back-btn" onclick="closeComingSoon()"><i class="fas fa-arrow-left"></i></button>
+            <h1>DK ATOVITT</h1>
+        </div>
+        <div class="cs-body">
+            <div id="csIcon" class="cs-big-icon bg-browser"><i id="csIconInner" class="fas fa-compass"></i></div>
+            <h2 class="cs-title" id="csTitle">DK Browser</h2>
+            <div class="cs-badge">Coming Soon</div>
+            <p class="cs-desc">We are working hard to bring this feature to you. Stay tuned for an amazing experience!</p>
+        </div>
+    </div>
+
     <!-- 🔥 SUPER FAST PAGE LOADER 🔥 -->
     <div id="pageLoader">
         <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
@@ -361,6 +423,56 @@
             </div>
             <div class="header-icons" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 
+                <!-- 🔥 NEW ECOSYSTEM BUTTON IN HEADER 🔥 -->
+                <button class="eco-header-btn" onclick="toggleEcosystemMenu(event)" title="Explore DK Ecosystem">
+                    <i class="fas fa-globe"></i>
+                </button>
+
+                <!-- 🔥 BEAUTIFUL DK ATOVITT ECOSYSTEM MENU 🔥 -->
+                <div class="ecosystem-menu" id="ecosystemMenu">
+                    <div class="eco-header">
+                        <span>DK ATOVITT Ecosystem</span>
+                        <button class="eco-close-btn" onclick="toggleEcosystemMenu(event)"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div style="max-height: 320px; overflow-y: auto;">
+                        <a href="social.html" class="eco-item">
+                            <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Connect (Social App) <i class="fas fa-external-link-alt" style="font-size:11px; color:#1877F2;"></i></div>
+                                <span class="status live"><i class="fas fa-circle" style="font-size:8px; margin-right:3px;"></i> Live</span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-compass')" class="eco-item">
+                            <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Browser</div>
+                                <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Trading Exchange', 'bg-trading', 'fas fa-chart-line')" class="eco-item">
+                            <div class="eco-icon bg-trading"><i class="fas fa-chart-line"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Trading Exchange</div>
+                                <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK Mart', 'bg-mart', 'fas fa-shopping-cart')" class="eco-item">
+                            <div class="eco-icon bg-mart"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK Mart</div>
+                                <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="openComingSoon('DK ATVT Coin', 'bg-coin', 'fas fa-coins')" class="eco-item">
+                            <div class="eco-icon bg-coin"><i class="fas fa-coins"></i></div>
+                            <div class="eco-details">
+                                <div class="title">DK ATVT Coin</div>
+                                <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:3px;"></i> Coming Soon</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="custom-translate hide-on-mobile">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -374,7 +486,6 @@
                     </select>
                 </div>
 
-                <!-- 🔥 DROPDOWN JS INJECTS HERE 🔥 -->
                 <div id="headerAuthBtn">
                     <a href="auth.html" class="login-btn-header">
                         <i class="fas fa-user"></i> 
@@ -1030,9 +1141,36 @@
 
     <!-- JavaScript -->
     <script>
+        /* 🔥 NEW ECOSYSTEM MENU LOGIC FOR HOME PAGE 🔥 */
+        function toggleEcosystemMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById('ecosystemMenu');
+            if (menu) menu.classList.toggle('show');
+        }
+
+        function openComingSoon(title, bgClass, iconClass) {
+            document.getElementById('csTitle').innerText = title;
+            document.getElementById('csIcon').className = 'cs-big-icon ' + bgClass;
+            document.getElementById('csIconInner').className = iconClass;
+            document.getElementById('comingSoonPage').style.display = 'flex';
+            
+            const menu = document.getElementById('ecosystemMenu');
+            if(menu) menu.classList.remove('show');
+        }
+
+        function closeComingSoon() {
+            document.getElementById('comingSoonPage').style.display = 'none';
+        }
+
+        window.addEventListener('click', (event) => {
+            const ecoMenu = document.getElementById('ecosystemMenu');
+            if(ecoMenu && ecoMenu.classList.contains('show') && !event.target.closest('.eco-header-btn') && !event.target.closest('.ecosystem-menu')) {
+                ecoMenu.classList.remove('show');
+            }
+        });
+
         /* 🔥 PAGE LOADER LOGIC (REMOVES LOADER INSTANTLY WHEN DOM IS READY) 🔥 */
         document.addEventListener("DOMContentLoaded", function() {
-            // Loader hatane ka fast tarika
             setTimeout(() => {
                 document.body.classList.add('loaded');
             }, 300);
@@ -1049,7 +1187,7 @@
         
         /* 🔥 CLEAR LOCAL STORAGE & SESSION STORAGE CACHE JUGGAD 🔥 */
         if(window.location.hash === '#home' || window.location.pathname.endsWith('index.html')) {
-            localStorage.removeItem('cachedHTML'); // clear old stuff
+            localStorage.removeItem('cachedHTML'); 
             sessionStorage.clear();
         }
 
@@ -1452,7 +1590,7 @@
                 // 🔥 VIP CINEMATIC BANNER (NAME WRAP FIX) 🔥
                 const bannerContainer = document.getElementById('vipHomeBannerContainer');
                 if(bannerContainer && bannerContainer.innerHTML === "") {
-                    const userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                    const userPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
                     const vipBannerHTML = `
                         <div id="vipHomeBanner" style="background: linear-gradient(135deg, #111, #0a0a0a); border-bottom: 2px solid #e6c875; padding: 25px 20px; text-align: center; position: relative; z-index: 99; box-shadow: 0 10px 30px rgba(0,0,0,0.9);">
                             <div style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
@@ -1485,7 +1623,7 @@
 
                 const menuProfileArea = document.getElementById('menuProfileArea');
                 if(menuProfileArea && menuProfileArea.innerHTML === "") {
-                    const userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                    const userPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
                     const profileHTML = `
                         <div class="user-profile-menu" style="padding: 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
                             <img src="${userPhoto}" alt="Profile" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(230,200,117,0.3);">
