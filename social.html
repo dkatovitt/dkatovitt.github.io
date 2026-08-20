@@ -261,10 +261,10 @@
 
         .friend-sug-box { background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #ddd; margin-top: 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         
-        /* FULL SCREEN IMAGE VIEWER */
+        /* FULL SCREEN IMAGE/VIDEO VIEWER FIX */
         #imageViewerModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; justify-content: center; align-items: center; flex-direction: column; }
         #imageViewerModal i { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 35px; cursor: pointer; padding: 10px; z-index: 100000; }
-        #fullScreenImage { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
+        #fullScreenImage, #fullScreenVideo { max-width: 95%; max-height: 85%; object-fit: contain; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
         
         /* SHARE MODAL */
         .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
@@ -295,7 +295,7 @@
         .emoji-picker-container span { font-size: 26px; cursor: pointer; transition: 0.2s; }
         .emoji-picker-container span:hover { transform: scale(1.2); }
 
-        .publish-btn { width: 100%; background: #D4AF37; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 15px; }
+        .publish-btn { width: 100%; background: #D4AF37; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: margin-top: 15px; }
 
         /* GUEST LOGIN POPUP */
         .guest-popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
@@ -366,9 +366,11 @@
 
     <div id="overlay"></div>
 
+    <!-- 🔥 FULL SCREEN IMAGE/VIDEO VIEWER FIX 🔥 -->
     <div id="imageViewerModal">
         <i class="fas fa-times" onclick="closeImageViewer()"></i>
         <img id="fullScreenImage" src="" style="display:none;">
+        <video id="fullScreenVideo" src="" style="display:none;" controls autoplay playsinline loop></video>
     </div>
 
     <!-- 🔥 NEW: FULL REEL VIEWER MODAL (INSTA/FB STYLE) 🔥 -->
@@ -916,16 +918,41 @@
             }
         }
 
-        // 🔥 VIEWER FOR NORMAL IMAGES 🔥
+        // 🔥 VIEWER FOR NORMAL IMAGES AND VIDEOS FIX 🔥
         function openImageViewer(src, type = 'image') {
             const img = document.getElementById('fullScreenImage');
-            img.src = src;
-            img.style.display = 'block';
+            const vid = document.getElementById('fullScreenVideo');
+            
+            if (type === 'video') {
+                img.style.display = 'none';
+                img.src = '';
+                vid.src = src;
+                vid.style.display = 'block';
+                let playPromise = vid.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => console.log("Auto-play blocked"));
+                }
+            } else {
+                if(vid) {
+                    vid.style.display = 'none';
+                    vid.pause();
+                    vid.src = '';
+                }
+                img.src = src;
+                img.style.display = 'block';
+            }
             document.getElementById('imageViewerModal').style.display = 'flex';
         }
         
         function closeImageViewer() {
             document.getElementById('imageViewerModal').style.display = 'none';
+            const vid = document.getElementById('fullScreenVideo');
+            if(vid) {
+                vid.pause();
+                vid.src = '';
+            }
+            const img = document.getElementById('fullScreenImage');
+            if(img) img.src = '';
         }
 
         function openStoryPicker() {
