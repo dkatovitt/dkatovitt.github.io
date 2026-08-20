@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DK Atovitt - My Wallet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background: #050505; color: #ccc; font-family: Arial, sans-serif; padding: 20px; }
+        .wallet-container { max-width: 600px; margin: 0 auto; background: #111; padding: 25px; border-radius: 12px; border: 1px solid #333; }
+        .back-btn { display: inline-block; color: #e6c875; text-decoration: none; margin-bottom: 20px; font-weight: bold; }
+        .balance-card { text-align: center; padding: 30px; background: linear-gradient(135deg, #1a1a1a, #050505); border-radius: 12px; border: 1px solid #e6c875; margin-bottom: 25px; }
+        .balance-card p { color: #aaa; margin: 0; }
+        .balance-card h2 { color: #e6c875; font-size: 40px; margin: 10px 0; }
+        .tx-item { display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; padding: 15px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #222; }
+        .tx-details h4 { margin: 0; color: #fff; }
+        .tx-amount.deposit { color: #25d366; }
+        .tx-amount.withdraw { color: #ff4d4d; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    <div class="wallet-container">
+        <div class="balance-card">
+            <p>Total Balance</p>
+            <h2>150.00 <span style="font-size: 20px;">ATVT</span></h2>
+        </div>
+        <h3 style="color: #e6c875;">Transaction History</h3>
+        <div id="txList">
+            <div class="tx-item">
+                <div class="tx-details"><h4>Received from DK Connect</h4><p>16 Aug 2026, 02:30 PM</p></div>
+                <div class="tx-amount deposit"><h4>+5.00 ATVT</h4></div>
+            </div>
+            <div class="tx-item">
+                <div class="tx-details"><h4>Sent to DK-x8M2PqY9bZ</h4><p>14 Aug 2026, 09:15 AM</p></div>
+                <div class="tx-amount withdraw"><h4>-20.00 ATVT</h4></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
