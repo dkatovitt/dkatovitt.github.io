@@ -563,7 +563,7 @@
                             <span id="createStoryText">Create story</span>
                         </div>
                     </div>
-                    <!-- DK Atovitt Story Card (Now Clickable) -->
+                    <!-- DK Atovitt Story Card -->
                     <div class="story-card user-card" onclick="openImageViewer('images/movies/yakshini-poster.png', 'image')">
                         <img src="images/movies/yakshini-poster.png" class="bg">
                         <div class="user-ring"><img src="1001120580.jpg" class="current-user-avatar"></div>
@@ -640,10 +640,58 @@
             });
         }
 
+        // ==========================================
+        // 🔥 NEW: INDEXED DB (SUPER LOCAL DATABASE) 🔥
+        // Bina 5MB limit ke aaram se badi file save karega!
+        // ==========================================
+        const DKDB = {
+            db: null,
+            init: function(callback) {
+                const request = indexedDB.open("DKConnectStorage", 1);
+                request.onupgradeneeded = function(event) {
+                    const db = event.target.result;
+                    if(!db.objectStoreNames.contains("mediaStore")) {
+                        db.createObjectStore("mediaStore");
+                    }
+                };
+                request.onsuccess = function(event) {
+                    DKDB.db = event.target.result;
+                    if(callback) callback();
+                };
+                request.onerror = function(event) {
+                    console.error("Database error: ", event);
+                };
+            },
+            get: function(key, callback) {
+                if(!DKDB.db) return callback(null);
+                const transaction = DKDB.db.transaction(["mediaStore"], "readonly");
+                const request = transaction.objectStore("mediaStore").get(key);
+                request.onsuccess = function(event) {
+                    callback(event.target.result);
+                };
+                request.onerror = function() { callback(null); };
+            },
+            set: function(key, value, callback) {
+                if(!DKDB.db) return;
+                const transaction = DKDB.db.transaction(["mediaStore"], "readwrite");
+                const request = transaction.objectStore("mediaStore").put(value, key);
+                request.onsuccess = function() {
+                    if(callback) callback();
+                };
+                request.onerror = function() {
+                    alert("Aapke phone ki memory full ho chuki hai!");
+                };
+            }
+        };
+
         window.addEventListener('DOMContentLoaded', () => {
             updateAvatars();
-            initAndLoadPosts();
-            initAndLoadStories(); // 🔥 Yeh line add ki, ab reload par story wapas aayegi
+            
+            // Ab pehle DKDB (IndexedDB) chalu hoga, fir post load hongi
+            DKDB.init(() => {
+                initAndLoadPosts();
+                initAndLoadStories(); 
+            });
             
             if(localStorage.getItem('dk_friend_badge_read') === 'true') {
                 let fb = document.querySelector('#friendBadgeContainer .badge');
@@ -728,13 +776,15 @@
         function toggleSearch() {
             let query = prompt("Search posts by keyword:");
             if(query !== null && query.trim() !== "") {
-                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-                let filtered = posts.filter(p => p.text.toLowerCase().includes(query.toLowerCase()));
-                if(filtered.length > 0) {
-                    renderAllPosts(filtered);
-                } else {
-                    alert("No posts found matching '" + query + "'");
-                }
+                DKDB.get('dk_posts', function(posts) {
+                    posts = posts || [];
+                    let filtered = posts.filter(p => p.text.toLowerCase().includes(query.toLowerCase()));
+                    if(filtered.length > 0) {
+                        renderAllPosts(filtered);
+                    } else {
+                        alert("No posts found matching '" + query + "'");
+                    }
+                });
             } else if(query === "") {
                 initAndLoadPosts();
             }
@@ -762,7 +812,7 @@
         function closeImageViewer() {
             document.getElementById('imageViewerModal').style.display = 'none';
             const vid = document.getElementById('fullScreenVideo');
-            if(vid) vid.pause(); // Band karte hi video ruk jayegi
+            if(vid) vid.pause(); 
         }
 
         function openStoryPicker() {
@@ -771,7 +821,7 @@
         }
 
         // ==========================================
-        // 🔥 NAYA: STORY SAVE AUR LOAD KARNE KA SYSTEM 🔥
+        // STORY UPLOAD LOGIC
         // ==========================================
         let storyMediaData = "";
         let storyMediaType = "";
@@ -836,43 +886,39 @@
             }, 1000);
         }
 
-        // 🔥 STORY KO LOCAL STORAGE ME SAVE KARNA 🔥
+        // Ab IndexedDB use kar rahe hain
         window.saveStoryToFeed = function(url, type) {
-            try {
-                let stories = JSON.parse(localStorage.getItem('dk_stories')) || [];
+            DKDB.get('dk_stories', function(stories) {
+                stories = stories || [];
                 stories.unshift({url: url, type: type});
-                localStorage.setItem('dk_stories', JSON.stringify(stories));
-                initAndLoadStories(); // Feed turant update ho jayegi
-                simulateEarning(null, 5);
-            } catch(error) {
-                console.error(error);
-                alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai.");
-            }
+                DKDB.set('dk_stories', stories, function() {
+                    initAndLoadStories(); 
+                    simulateEarning(null, 5);
+                });
+            });
         };
 
-        // 🔥 STORY KO SCREEN PAR DIKHANA 🔥
+        // UI me Story Dikhana
         function initAndLoadStories() {
-            let stories = JSON.parse(localStorage.getItem('dk_stories')) || [];
-            
-            // Puraani bani hui stories hata dete hain taaki double na dikhe
-            document.querySelectorAll('.dynamic-story').forEach(e => e.remove());
-            
-            const createCard = document.querySelector('.story-card.create-card');
-            
-            [...stories].reverse().forEach(story => {
-                let mediaHtml = story.type === 'video' 
-                    ? `<video src="${story.url}" class="bg" autoplay loop muted playsinline style="object-fit: cover; pointer-events: none;"></video>` 
-                    : `<img src="${story.url}" class="bg" style="object-fit: cover;">`;
+            DKDB.get('dk_stories', function(stories) {
+                stories = stories || [];
+                document.querySelectorAll('.dynamic-story').forEach(e => e.remove());
+                const createCard = document.querySelector('.story-card.create-card');
+                
+                [...stories].reverse().forEach(story => {
+                    let mediaHtml = story.type === 'video' 
+                        ? `<video src="${story.url}" class="bg" autoplay loop muted playsinline style="object-fit: cover; pointer-events: none;"></video>` 
+                        : `<img src="${story.url}" class="bg" style="object-fit: cover;">`;
 
-                // onclick event laga diya story dekhne ke liye
-                const newStoryHtml = `
-                    <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}')">
-                        ${mediaHtml}
-                        <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar"></div>
-                        <span class="story-name">Your Story</span>
-                    </div>
-                `;
-                createCard.insertAdjacentHTML('afterend', newStoryHtml);
+                    const newStoryHtml = `
+                        <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}')">
+                            ${mediaHtml}
+                            <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar"></div>
+                            <span class="story-name">Your Story</span>
+                        </div>
+                    `;
+                    createCard.insertAdjacentHTML('afterend', newStoryHtml);
+                });
             });
         }
         // ==========================================
@@ -893,12 +939,16 @@
         };
 
         function initAndLoadPosts() {
-            let posts = JSON.parse(localStorage.getItem('dk_posts'));
-            if (!posts || posts.length === 0) {
-                posts = [defaultPost];
-                localStorage.setItem('dk_posts', JSON.stringify(posts));
-            }
-            renderAllPosts(posts);
+            DKDB.get('dk_posts', function(posts) {
+                if (!posts || posts.length === 0) {
+                    posts = [defaultPost];
+                    DKDB.set('dk_posts', posts, function() {
+                        renderAllPosts(posts);
+                    });
+                } else {
+                    renderAllPosts(posts);
+                }
+            });
         }
 
         function formatPostContent(text) {
@@ -998,20 +1048,23 @@
 
         function toggleLike(btn, postId) {
             if(checkGuest()) return;
-            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-            let postIndex = posts.findIndex(p => p.id === postId);
-            if(postIndex === -1) return;
+            DKDB.get('dk_posts', function(posts) {
+                posts = posts || [];
+                let postIndex = posts.findIndex(p => p.id === postId);
+                if(postIndex === -1) return;
 
-            if(posts[postIndex].isLiked) {
-                posts[postIndex].isLiked = false;
-                posts[postIndex].likes--;
-            } else {
-                posts[postIndex].isLiked = true;
-                posts[postIndex].likes++;
-                simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, 2);
-            }
-            localStorage.setItem('dk_posts', JSON.stringify(posts));
-            initAndLoadPosts();
+                if(posts[postIndex].isLiked) {
+                    posts[postIndex].isLiked = false;
+                    posts[postIndex].likes--;
+                } else {
+                    posts[postIndex].isLiked = true;
+                    posts[postIndex].likes++;
+                    simulateEarning({clientX: btn.getBoundingClientRect().left + 20, clientY: btn.getBoundingClientRect().top}, 2);
+                }
+                DKDB.set('dk_posts', posts, function() {
+                    initAndLoadPosts();
+                });
+            });
         }
 
         function toggleCommentSection(postId) {
@@ -1027,24 +1080,30 @@
             const text = inputField.value.trim();
             if(!text) return; 
 
-            let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-            let postIndex = posts.findIndex(p => p.id === postId);
-            if(postIndex === -1) return;
+            DKDB.get('dk_posts', function(posts) {
+                posts = posts || [];
+                let postIndex = posts.findIndex(p => p.id === postId);
+                if(postIndex === -1) return;
 
-            if(!posts[postIndex].comments) posts[postIndex].comments = [];
-            posts[postIndex].comments.push({ userName: currentUserName, userPhoto: currentUserPhoto, text: text });
+                if(!posts[postIndex].comments) posts[postIndex].comments = [];
+                posts[postIndex].comments.push({ userName: currentUserName, userPhoto: currentUserPhoto, text: text });
 
-            localStorage.setItem('dk_posts', JSON.stringify(posts));
-            simulateEarning({clientX: inputField.getBoundingClientRect().left, clientY: inputField.getBoundingClientRect().top}, 5);
-            initAndLoadPosts();
+                DKDB.set('dk_posts', posts, function() {
+                    simulateEarning({clientX: inputField.getBoundingClientRect().left, clientY: inputField.getBoundingClientRect().top}, 5);
+                    initAndLoadPosts();
+                });
+            });
         }
 
         function deletePost(postId) {
             if(confirm("Are you sure you want to delete this post?")) {
-                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
-                posts = posts.filter(p => p.id !== postId);
-                localStorage.setItem('dk_posts', JSON.stringify(posts));
-                initAndLoadPosts();
+                DKDB.get('dk_posts', function(posts) {
+                    posts = posts || [];
+                    posts = posts.filter(p => p.id !== postId);
+                    DKDB.set('dk_posts', posts, function() {
+                        initAndLoadPosts();
+                    });
+                });
             }
         }
 
@@ -1122,6 +1181,7 @@
             }, 500);
         }
 
+        // Ab DB me post seve hoga bina 5MB limit ke
         window.savePostToFeed = function(text, mediaUrl, mediaType) {
             const publishBtn = document.getElementById('publishBtn');
             const postObj = {
@@ -1137,22 +1197,17 @@
                 comments: []
             };
 
-            try {
-                let posts = JSON.parse(localStorage.getItem('dk_posts')) || [];
+            DKDB.get('dk_posts', function(posts) {
+                posts = posts || [];
                 posts.unshift(postObj);
-                localStorage.setItem('dk_posts', JSON.stringify(posts));
-                
-                initAndLoadPosts();
-                closeCreatePostModal();
-                publishBtn.innerHTML = 'Post';
-                publishBtn.disabled = false;
-                simulateEarning(null, 10);
-            } catch(error) {
-                console.error(error);
-                alert("⚠️ Storage Full Error! Aapki file browser memory (5MB) ke liye bahut badi hai. Kripya chhoti file chunein.");
-                publishBtn.innerHTML = 'Post';
-                publishBtn.disabled = false;
-            }
+                DKDB.set('dk_posts', posts, function() {
+                    initAndLoadPosts();
+                    closeCreatePostModal();
+                    publishBtn.innerHTML = 'Post';
+                    publishBtn.disabled = false;
+                    simulateEarning(null, 10);
+                });
+            });
         }
 
         function addFriend(btn) {
