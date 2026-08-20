@@ -308,7 +308,7 @@
         </div>
         <div class="iv-media-container" onclick="toggleImageViewerPlayPause()">
             <img id="fullScreenImage" src="" style="display:none;">
-            <video id="fullScreenVideo" src="" style="display:none;" autoplay playsinline loop></video>
+            <video id="fullScreenVideo" src="" style="display:none;" autoplay playsinline></video>
         </div>
         <!-- Right Action Sidebar -->
         <div class="iv-right-sidebar">
@@ -729,12 +729,6 @@
                             <span id="createStoryText">Create story</span>
                         </div>
                     </div>
-                    <!-- DK Atovitt Story Card -->
-                    <div class="story-card user-card" onclick="openImageViewer('images/movies/yakshini-poster.png', 'image', 'DK Atovitt', '10 hrs ago', '1001120580.jpg')">
-                        <img src="images/movies/yakshini-poster.png" class="bg">
-                        <div class="user-ring"><img src="1001120580.jpg" class="current-user-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'"></div>
-                        <span class="story-name">DK Atovitt</span>
-                    </div>
                 </div>
             </div>
             <div id="postsFeedContainer" style="display: flex; flex-direction: column; gap: 15px;"></div>
@@ -786,6 +780,9 @@
         let currentUserName = "Guest User";
         let currentUserPhoto = localStorage.getItem('dk_user_dp') || "1001120580.jpg";
         let isGuest = true;
+        let activeStoryIndex = 0;
+        let storyTimeout = null;
+        window.currentActiveStories = [];
         function updateAvatars() {
             document.querySelectorAll('.current-user-avatar').forEach(el => {
                 if(el.tagName === 'IMG') {
@@ -930,8 +927,24 @@
                 initAndLoadPosts();
             }
         }
+        // 🔥 GLOBAL STORY SEQUENCE LOGIC 🔥
+        window.openStorySequence = function(startIndex) {
+            activeStoryIndex = startIndex;
+            playCurrentStory();
+        };
+        window.playCurrentStory = function() {
+            clearTimeout(storyTimeout);
+            if (activeStoryIndex >= window.currentActiveStories.length) {
+                closeImageViewer();
+                return;
+            }
+            let story = window.currentActiveStories[activeStoryIndex];
+            let timeText = story.timestamp ? getTimeAgo(story.timestamp) : 'Just now';
+            openImageViewer(story.url, story.type, currentUserName, timeText, currentUserPhoto, true);
+        };
         // 🔥 VIEWER FOR NORMAL IMAGES AND VIDEOS FIX (STORY UI) 🔥
-        function openImageViewer(src, type = 'image', userName = "My Story", timeText = "Just now", userProfileUrl = "") {
+        function openImageViewer(src, type = 'image', userName = "My Story", timeText = "Just now", userProfileUrl = "", isSequence = false) {
+            clearTimeout(storyTimeout);
             const img = document.getElementById('fullScreenImage');
             const vid = document.getElementById('fullScreenVideo');
             document.getElementById('ivUserName').innerText = userName;
@@ -941,13 +954,11 @@
             } else {
                 document.getElementById('ivUserProfileImg').src = currentUserPhoto;
             }
-            // 👉 NEW: Check if it is "My Story" to show Viewers List, or Others story to show Comment Box
             const commentBar = document.getElementById('ivCommentBar');
             const viewersBar = document.getElementById('ivViewersBar');
             if(userName === currentUserName) {
                 commentBar.style.display = 'none';
                 viewersBar.style.display = 'flex';
-                // Set small thumbnail in viewers modal
                 document.getElementById('svPreviewImg').src = type === 'image' ? src : 'images/movies/yakshini-poster.png'; 
             } else {
                 commentBar.style.display = 'flex';
@@ -962,23 +973,38 @@
                 if (playPromise !== undefined) {
                     playPromise.catch(error => console.log("Auto-play blocked"));
                 }
+                vid.onended = () => {
+                    if(isSequence) {
+                        activeStoryIndex++;
+                        playCurrentStory();
+                    }
+                };
             } else {
                 if(vid) {
                     vid.style.display = 'none';
                     vid.pause();
                     vid.src = '';
+                    vid.onended = null;
                 }
                 img.src = src;
                 img.style.display = 'block';
+                if(isSequence) {
+                    storyTimeout = setTimeout(() => {
+                        activeStoryIndex++;
+                        playCurrentStory();
+                    }, 5000);
+                }
             }
             document.getElementById('imageViewerModal').style.display = 'flex';
         }
         function closeImageViewer() {
+            clearTimeout(storyTimeout);
             document.getElementById('imageViewerModal').style.display = 'none';
             const vid = document.getElementById('fullScreenVideo');
             if(vid) {
                 vid.pause();
                 vid.src = '';
+                vid.onended = null;
             }
             const img = document.getElementById('fullScreenImage');
             if(img) img.src = '';
@@ -1047,7 +1073,7 @@
         }
         function openViewerAction(name, img) {
             document.getElementById('vaUserName').innerText = name;
-            document.getElementById('vaMsgName').innerText = name.split(' ')[0]; // Gets first name
+            document.getElementById('vaMsgName').innerText = name.split(' ')[0];
             document.getElementById('vaUserImg').src = img;
             document.getElementById('viewerActionModal').classList.add('active');
         }
@@ -1127,7 +1153,6 @@
         window.saveStoryToFeed = function(url, type) {
             DKDB.get('dk_stories', function(stories) {
                 stories = stories || [];
-                // Add timestamp for 24 hour deletion logic
                 stories.unshift({url: url, type: type, timestamp: Date.now()});
                 DKDB.set('dk_stories', stories, function() {
                     initAndLoadStories(); 
@@ -1153,23 +1178,21 @@
                 }
                 const now = Date.now();
                 const twentyFourHours = 24 * 60 * 60 * 1000;
-                // FILTER: Remove stories older than 24 hours
                 const validStories = stories.filter(story => {
                     return (now - (story.timestamp || now)) < twentyFourHours;
                 });
-                // If some stories were deleted, update the DB
                 if(validStories.length !== stories.length) {
                     DKDB.set('dk_stories', validStories, function(){});
                 }
                 document.querySelectorAll('.dynamic-story').forEach(e => e.remove());
                 const createCard = document.querySelector('.story-card.create-card');
-                [...validStories].reverse().forEach(story => {
+                window.currentActiveStories = [...validStories].reverse();
+                window.currentActiveStories.forEach((story, index) => {
                     let mediaHtml = story.type === 'video' 
                         ? `<video src="${story.url}" class="bg" autoplay loop muted playsinline style="object-fit: cover; pointer-events: none;"></video>` 
                         : `<img src="${story.url}" class="bg" style="object-fit: cover;">`;
-                    let timeText = story.timestamp ? getTimeAgo(story.timestamp) : 'Just now';
                     const newStoryHtml = `
-                        <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}', '${currentUserName}', '${timeText}', '${currentUserPhoto}')">
+                        <div class="story-card user-card dynamic-story" onclick="openStorySequence(${index})">
                             ${mediaHtml}
                             <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'"></div>
                             <span class="story-name">My Story</span>
@@ -1187,7 +1210,6 @@
                 let post = posts.find(p => p.id === postId);
                 if(!post) return;
                 activeReelPostId = postId;
-                // Stop all other background videos
                 document.querySelectorAll('video').forEach(v => v.pause());
                 const reelVideo = document.getElementById('reelVideoPlayer');
                 reelVideo.src = post.mediaData;
@@ -1305,7 +1327,7 @@
             if(!container) return;
             let iframeHtml = '';
             if(platform === 'youtube') {
-                iframeHtml = `<iframe width="100%" height="250" src="https://www.youtube.com/embed/${idOrUrl}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display:block;"></iframe>`;
+                iframeHtml = `<iframe width="100%" style="aspect-ratio: 16/9; display:block; border:none;" src="https://www.youtube.com/embed/${idOrUrl}?autoplay=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             } else if (platform === 'instagram') {
                 iframeHtml = `<iframe width="100%" height="400" src="https://www.instagram.com/p/${idOrUrl}/embed" frameborder="0" scrolling="no" allowtransparency="true" style="display:block; background:#fff;"></iframe>`;
             } else if (platform === 'facebook') {
@@ -1316,7 +1338,6 @@
         // 🔥 UPDATED FUNCTION TO HANDLE YOUTUBE, FB, INSTA INLINE PLAY 🔥
         function formatPostContent(text) {
             let formattedText = text.replace(/\n/g, '<br>');
-            // Regex for all three platforms
             const ytRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\S+)?/gi;
             const igRegex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/(?:p|reel)\/([a-zA-Z0-9_-]+)\/?/gi;
             const fbRegex = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/(?:watch\/\?v=|video\.php\?v=|.*?\/videos\/)(\d+)/gi;
@@ -1328,7 +1349,7 @@
                 const thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 return `
                     <div style="margin-top: 10px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                        <div id="${cId}" onclick="playSocialVideo('${cId}', 'youtube', '${videoId}')" style="position: relative; background: #000; min-height: 150px; cursor: pointer;">
+                        <div id="${cId}" onclick="playSocialVideo('${cId}', 'youtube', '${videoId}')" style="position: relative; background: #000; aspect-ratio: 16/9; display: flex; align-items: center; overflow: hidden; cursor: pointer;">
                             <img src="${thumb}" style="width: 100%; display: block; opacity: 0.85; object-fit: cover;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
                             <i class="fab fa-youtube" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ff0000; font-size: 55px; background: #fff; border-radius: 12px; line-height: 0.9; box-shadow: 0 0 10px rgba(0,0,0,0.5);"></i>
                         </div>
