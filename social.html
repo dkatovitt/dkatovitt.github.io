@@ -799,7 +799,7 @@
                 img.style.display = 'none';
                 vid.src = src;
                 vid.style.display = 'block';
-                vid.play();
+                vid.play(); // Play hote hi auto-pause wala code chal jayega
             } else {
                 vid.style.display = 'none';
                 vid.pause();
@@ -898,10 +898,20 @@
             });
         };
 
-        // UI me Story Dikhana
+        // UI me Story Dikhana (Aur purani story ko recover karna)
         function initAndLoadStories() {
             DKDB.get('dk_stories', function(stories) {
-                stories = stories || [];
+                // 🔥 DATA RECOVERY SCRIPT (For Stories) 🔥
+                if (!stories || stories.length === 0) {
+                    let oldStories = localStorage.getItem('dk_stories');
+                    if (oldStories && oldStories !== "[]") {
+                        stories = JSON.parse(oldStories);
+                        DKDB.set('dk_stories', stories, function(){});
+                    } else {
+                        stories = [];
+                    }
+                }
+
                 document.querySelectorAll('.dynamic-story').forEach(e => e.remove());
                 const createCard = document.querySelector('.story-card.create-card');
                 
@@ -940,7 +950,18 @@
 
         function initAndLoadPosts() {
             DKDB.get('dk_posts', function(posts) {
+                // 🔥 DATA RECOVERY SCRIPT: Purane Post Wapas Laane Ka Jaadu 🔥
                 if (!posts || posts.length === 0) {
+                    let oldPosts = localStorage.getItem('dk_posts');
+                    if (oldPosts && oldPosts.length > 10) { 
+                        posts = JSON.parse(oldPosts);
+                        DKDB.set('dk_posts', posts, function() {
+                            renderAllPosts(posts);
+                        });
+                        return; // Yahan ruk jayega aur default load nahi karega
+                    }
+                    
+                    // Agar such me koi post nahi hai tabhi default dikhayega
                     posts = [defaultPost];
                     DKDB.set('dk_posts', posts, function() {
                         renderAllPosts(posts);
@@ -1253,6 +1274,16 @@
             document.body.appendChild(floatingText);
             setTimeout(() => { floatingText.remove(); }, 1200);
         }
+
+        // 🔥 SIRF EK VIDEO EK BAAR MEIN CHALEGA (AUTO-PAUSE FIX) 🔥
+        document.addEventListener('play', function(e){
+            var videos = document.getElementsByTagName('video');
+            for(var i = 0; i < videos.length; i++){
+                if(videos[i] != e.target){
+                    videos[i].pause();
+                }
+            }
+        }, true);
     </script>
     
     <script type="module">
