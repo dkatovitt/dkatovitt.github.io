@@ -276,9 +276,14 @@
         .iv-icon-box span { font-size: 13px; font-weight: bold; }
         
         .iv-bottom-info { position: absolute; bottom: 70px; left: 15px; right: 70px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8); z-index: 10; }
+        
+        /* General Comment Bar for Others' Story */
         .iv-comment-bar { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); display: flex; gap: 10px; align-items: center; z-index: 10; }
         .iv-comment-bar input { flex: 1; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5); color: #fff; padding: 10px 15px; border-radius: 20px; outline: none; }
         .iv-comment-bar input::placeholder { color: #ddd; }
+
+        /* Viewers Bar for "My Story" */
+        .iv-viewers-bar { display: none; position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px 15px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); justify-content: space-between; align-items: center; z-index: 10; cursor: pointer; color: #fff; }
 
         /* SHARE MODAL */
         .share-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: flex-end; justify-content: center; }
@@ -413,7 +418,7 @@
         <!-- Bottom Info -->
         <div class="iv-bottom-info">
             <div style="display:flex; align-items:center; margin-bottom:8px;">
-                <img src="1001120580.jpg" class="current-user-avatar" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; margin-right: 10px;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
+                <img src="1001120580.jpg" id="ivUserProfileImg" class="current-user-avatar" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #fff; margin-right: 10px;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'">
                 <div>
                     <div style="font-weight:bold; font-size:15px; line-height:1;"><span id="ivUserName">User Name</span> <button class="reel-follow-btn" style="padding: 2px 8px; font-size: 10px;">Follow</button></div>
                     <span style="font-size:12px; color:#ddd;" id="ivTimeText">Just now</span>
@@ -421,10 +426,106 @@
             </div>
         </div>
 
-        <!-- Bottom Comment Box -->
-        <div class="iv-comment-bar">
+        <!-- Bottom Comment Box (For Others' Stories) -->
+        <div class="iv-comment-bar" id="ivCommentBar">
             <input type="text" id="ivCommentInput" placeholder="Add comment..." onkeypress="if(event.key==='Enter') ivPostComment()">
             <i class="fas fa-paper-plane" onclick="ivPostComment()" style="color:#fff; font-size:20px; cursor:pointer;"></i>
+        </div>
+
+        <!-- 🔥 NEW: Bottom Viewers Bar (For "My Story") 🔥 -->
+        <div class="iv-viewers-bar" id="ivViewersBar" onclick="openStoryViewers()">
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 15px; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
+                <i class="fas fa-chevron-up"></i> 
+                <span>15 viewers</span>
+            </div>
+            <div style="display: flex; gap: 20px; font-size: 22px; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">
+                <i class="fas fa-plus-circle" onclick="event.stopPropagation(); openStoryPicker();"></i>
+                <i class="fas fa-ellipsis-h" onclick="event.stopPropagation(); executeShare('story');"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔥 NEW: FB STYLE STORY VIEWERS MODAL 🔥 -->
+    <div id="storyViewersModal" class="share-modal-overlay" style="z-index: 999999;">
+        <div class="share-modal-box" style="height: 85vh; display: flex; flex-direction: column; padding: 0;">
+            <div style="padding: 15px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-weight: bold; font-size: 16px; color: #050505;">Story Details</span>
+                <button class="share-modal-close" style="position: static;" onclick="closeStoryViewers()">&times;</button>
+            </div>
+            <!-- Previews Header -->
+            <div style="display: flex; gap: 10px; padding: 15px; justify-content: center; background: #f0f2f5;">
+                <div style="width: 70px; height: 110px; border-radius: 8px; overflow: hidden; background: #000; position: relative;">
+                    <img id="svPreviewImg" src="images/movies/yakshini-poster.png" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="width: 70px; height: 110px; border-radius: 8px; background: #e4e6eb; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer;" onclick="openStoryPicker(); closeStoryViewers(); closeImageViewer();">
+                    <div style="width: 30px; height: 30px; border-radius: 50%; background: #D4AF37; color: white; display: flex; justify-content: center; align-items: center; margin-bottom: 5px;"><i class="fas fa-plus"></i></div>
+                    <span style="font-size: 10px; color: #050505; font-weight: bold; text-align: center;">Add to<br>story</span>
+                </div>
+            </div>
+            <!-- Tabs -->
+            <div style="display: flex; border-bottom: 1px solid #ddd; width: 100%;">
+                <div class="story-tab active" id="tabViewers" onclick="switchSVTab('viewers')" style="padding: 12px 0;">Viewers</div>
+                <div class="story-tab" id="tabInsights" onclick="switchSVTab('insights')" style="padding: 12px 0;">Insights</div>
+            </div>
+            <!-- Viewers Content -->
+            <div id="svViewersContent" style="flex: 1; overflow-y: auto; padding: 15px;">
+                <div style="font-weight: bold; margin-bottom: 15px; color: #050505;">15 viewers</div>
+                <!-- Viewers List Container -->
+                <div id="dummyViewersList"></div>
+            </div>
+            <!-- Insights Content -->
+            <div id="svInsightsContent" style="flex: 1; overflow-y: auto; padding: 15px; display: none;">
+                <div style="background: #f0f2f5; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #050505;">Overview <i class="fas fa-info-circle" style="color: #65676b;"></i></div>
+                    <div style="display: flex; gap: 30px;">
+                        <div>
+                            <div style="font-size: 18px; font-weight: bold; color: #050505;">$0.00</div>
+                            <div style="font-size: 12px; color: #65676b;">Earnings</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 18px; font-weight: bold; color: #050505;">0</div>
+                            <div style="font-size: 12px; color: #65676b;">Interactions</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 15px; color: #050505;">
+                    <span>Viewers</span>
+                    <span>15</span>
+                </div>
+                <hr style="border: 0; height: 1px; background: #ddd; margin-bottom: 15px;">
+                <div style="font-weight: bold; margin-bottom: 15px; color: #050505;">Interactions <i class="fas fa-info-circle" style="color: #65676b;"></i></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #050505;"><span>Reactions <i class="fas fa-chevron-right" style="font-size:10px; color:#65676b;"></i></span><span>0</span></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #050505;"><span>Replies</span><span>0</span></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #050505;"><span>Shares</span><span>0</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 🔥 NEW: VIEWER ACTION MODAL (3-Dots Option) 🔥 -->
+    <div id="viewerActionModal" class="share-modal-overlay" style="z-index: 9999999;">
+        <div class="share-modal-box" style="padding-bottom: 30px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <img id="vaUserImg" src="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                <div style="text-align: left;">
+                    <h4 id="vaUserName" style="margin: 0; color: #050505; font-size: 16px;">Name</h4>
+                    <span style="font-size: 12px; color: #65676b;">Messenger connection</span>
+                </div>
+            </div>
+            <div class="eco-item" onclick="triggerViewerAction('message')" style="border-radius: 8px; border-bottom: none; cursor: pointer;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #e4e6eb; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #050505;"><i class="fab fa-facebook-messenger"></i></div>
+                <div style="flex: 1; text-align: left; font-weight: bold; font-size: 15px; color: #050505;">Message <span id="vaMsgName"></span></div>
+            </div>
+            <div class="eco-item" onclick="triggerViewerAction('profile')" style="border-radius: 8px; border-bottom: none; cursor: pointer;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #e4e6eb; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #050505;"><i class="fas fa-user-circle"></i></div>
+                <div style="flex: 1; text-align: left; font-weight: bold; font-size: 15px; color: #050505;">View profile</div>
+            </div>
+            <div class="eco-item" onclick="triggerViewerAction('report')" style="border-radius: 8px; border-bottom: none; cursor: pointer;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #e4e6eb; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #050505;"><i class="fas fa-exclamation-circle"></i></div>
+                <div style="flex: 1; text-align: left;">
+                    <div style="font-weight: bold; font-size: 15px; color: #050505;">Something's wrong</div>
+                    <div style="font-size: 12px; color: #65676b;">Find support or report conversation</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -749,7 +850,7 @@
                         </div>
                     </div>
                     <!-- DK Atovitt Story Card -->
-                    <div class="story-card user-card" onclick="openImageViewer('images/movies/yakshini-poster.png', 'image', 'DK Atovitt', '10 hrs ago')">
+                    <div class="story-card user-card" onclick="openImageViewer('images/movies/yakshini-poster.png', 'image', 'DK Atovitt', '10 hrs ago', '1001120580.jpg')">
                         <img src="images/movies/yakshini-poster.png" class="bg">
                         <div class="user-ring"><img src="1001120580.jpg" class="current-user-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'"></div>
                         <span class="story-name">DK Atovitt</span>
@@ -974,12 +1075,32 @@
         }
 
         // 🔥 VIEWER FOR NORMAL IMAGES AND VIDEOS FIX (STORY UI) 🔥
-        function openImageViewer(src, type = 'image', userName = "Your Story", timeText = "Just now") {
+        function openImageViewer(src, type = 'image', userName = "My Story", timeText = "Just now", userProfileUrl = "") {
             const img = document.getElementById('fullScreenImage');
             const vid = document.getElementById('fullScreenVideo');
             
             document.getElementById('ivUserName').innerText = userName;
             document.getElementById('ivTimeText').innerText = timeText;
+            
+            if(userProfileUrl) {
+                document.getElementById('ivUserProfileImg').src = userProfileUrl;
+            } else {
+                document.getElementById('ivUserProfileImg').src = currentUserPhoto;
+            }
+
+            // 👉 NEW: Check if it is "My Story" to show Viewers List, or Others story to show Comment Box
+            const commentBar = document.getElementById('ivCommentBar');
+            const viewersBar = document.getElementById('ivViewersBar');
+            
+            if(userName === currentUserName) {
+                commentBar.style.display = 'none';
+                viewersBar.style.display = 'flex';
+                // Set small thumbnail in viewers modal
+                document.getElementById('svPreviewImg').src = type === 'image' ? src : 'images/movies/yakshini-poster.png'; 
+            } else {
+                commentBar.style.display = 'flex';
+                viewersBar.style.display = 'none';
+            }
 
             if (type === 'video') {
                 img.style.display = 'none';
@@ -1029,6 +1150,83 @@
                 alert("Comment posted!");
             }
         }
+
+        // ==========================================
+        // 🔥 FACEBOOK STYLE STORY VIEWERS LOGIC 🔥
+        // ==========================================
+        const dummyViewers = [
+            { name: "Pintu Kumar", img: "https://randomuser.me/api/portraits/men/32.jpg" },
+            { name: "Saroj Kumar S", img: "https://randomuser.me/api/portraits/men/44.jpg" },
+            { name: "Rahul S Patel", img: "https://randomuser.me/api/portraits/men/46.jpg" },
+            { name: "Somnath Chowdhury", img: "https://randomuser.me/api/portraits/men/65.jpg" },
+            { name: "Rajeev Sharma", img: "https://randomuser.me/api/portraits/men/22.jpg" }
+        ];
+
+        function renderDummyViewers() {
+            const container = document.getElementById('dummyViewersList');
+            container.innerHTML = '';
+            dummyViewers.forEach(v => {
+                container.innerHTML += `
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <img src="${v.img}" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd;">
+                            <div style="font-weight: bold; font-size: 15px; color: #050505; display: flex; align-items: center; gap: 5px;">
+                                ${v.name} <div style="width: 8px; height: 8px; background: #1877F2; border-radius: 50%;"></div>
+                            </div>
+                        </div>
+                        <i class="fas fa-ellipsis-h" style="color: #65676b; cursor: pointer; padding: 10px; font-size: 18px;" onclick="openViewerAction('${v.name}', '${v.img}')"></i>
+                    </div>
+                `;
+            });
+        }
+
+        function openStoryViewers() {
+            document.getElementById('storyViewersModal').classList.add('active');
+            renderDummyViewers();
+        }
+
+        function closeStoryViewers() {
+            document.getElementById('storyViewersModal').classList.remove('active');
+        }
+
+        function switchSVTab(tab) {
+            document.getElementById('tabViewers').classList.remove('active');
+            document.getElementById('tabInsights').classList.remove('active');
+            document.getElementById('svViewersContent').style.display = 'none';
+            document.getElementById('svInsightsContent').style.display = 'none';
+            
+            if(tab === 'viewers') {
+                document.getElementById('tabViewers').classList.add('active');
+                document.getElementById('svViewersContent').style.display = 'block';
+            } else {
+                document.getElementById('tabInsights').classList.add('active');
+                document.getElementById('svInsightsContent').style.display = 'block';
+            }
+        }
+
+        function openViewerAction(name, img) {
+            document.getElementById('vaUserName').innerText = name;
+            document.getElementById('vaMsgName').innerText = name.split(' ')[0]; // Gets first name
+            document.getElementById('vaUserImg').src = img;
+            document.getElementById('viewerActionModal').classList.add('active');
+        }
+
+        function closeViewerAction() {
+            document.getElementById('viewerActionModal').classList.remove('active');
+        }
+
+        function triggerViewerAction(actionType) {
+            const name = document.getElementById('vaUserName').innerText;
+            if(actionType === 'message') {
+                alert(`Redirecting to Messenger to chat with ${name}...`);
+            } else if(actionType === 'profile') {
+                alert(`Opening profile of ${name}...`);
+            } else if(actionType === 'report') {
+                alert(`Report dialog opening for ${name}...`);
+            }
+            closeViewerAction();
+        }
+
 
         function openStoryPicker() {
             if(checkGuest()) return;
@@ -1155,10 +1353,10 @@
                     let timeText = story.timestamp ? getTimeAgo(story.timestamp) : 'Just now';
 
                     const newStoryHtml = `
-                        <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}', '${currentUserName}', '${timeText}')">
+                        <div class="story-card user-card dynamic-story" onclick="openImageViewer('${story.url}', '${story.type}', '${currentUserName}', '${timeText}', '${currentUserPhoto}')">
                             ${mediaHtml}
                             <div class="user-ring"><img src="${currentUserPhoto}" class="current-user-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'"></div>
-                            <span class="story-name">Your Story</span>
+                            <span class="story-name">My Story</span>
                         </div>
                     `;
                     createCard.insertAdjacentHTML('afterend', newStoryHtml);
