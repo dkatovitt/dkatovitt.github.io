@@ -69,15 +69,13 @@
     
     <style>
         /* 🔥 100% LOCKED FIXED HEADER CSS 🔥 */
-        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 99999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button { position: static !important; transform: none !important; left: auto !important; margin: 0 !important; padding: 0 !important; }
         
         .desktop-logo-img { height: 75px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
         .desktop-logo-text { font-size: 28px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
-        
-        /* 🔥 TAGLINE UPDATED FOR EMPIRE 🔥 */
         .desktop-logo-sub { font-size: 10px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; white-space: nowrap; }
         
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
@@ -92,7 +90,6 @@
             .header-left { gap: 8px !important; }
             .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
-            /* 🔥 MOBILE FONT SIZE ADJUSTED FOR LONG TAGLINE 🔥 */
             .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
             #menuBtn { font-size: 22px !important; }
             .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
@@ -101,7 +98,7 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
@@ -147,11 +144,11 @@
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); touch-action: none; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
         /* 🔥 TOP RIGHT DROPDOWN 🔥 */
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 10000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
         .topbarDropdown-content.show { display: block; }
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
@@ -205,8 +202,8 @@
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; margin-top: 10px; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
         .tseries-footer-col ul li { margin-bottom: 12px; }
@@ -286,11 +283,10 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
-                        <!-- 🔥 BRAND TAGLINE UPDATED 🔥 -->
                         <p class="desktop-logo-sub notranslate">Global Tech & Entertainment Empire</p>
                     </div>
                 </a>
@@ -407,8 +403,8 @@
 
             <div class="ceo-content-box">
                 <h3>Meet The Visionary</h3>
-                <p>Welcome to <strong class="notranslate">DK ATOVITT</strong>. As the Founder and CEO, Mr. Dipak Kumar Gupta (fondly known as DK Sir) is a visionary leader with a deep passion for cinema, business, and empowering individuals. Under his exceptional leadership, DK Atovitt is not just creating high-quality cinematic entertainment but is also building a massive digital ecosystem that spans across Web3, E-commerce, Gaming, and Finance.</p>
-                <p>उनका सपना है कि टैलेंट को सही मंच मिले। बॉलीवुड इंडस्ट्री में नए चेहरों और शानदार कहानियों (जैसे 'यक्षिणी') को सामने लाने के लिए वह लगातार मेहनत कर रहे हैं। साथ ही 'DK ATVT Blockchain', 'DK Trading', और 'DK Connect' जैसे प्रोजेक्ट्स के ज़रिये वो लोगों को आर्थिक आज़ादी (Financial Freedom) भी प्रदान कर रहे हैं।</p>
+                <p>Welcome to <strong class="notranslate">DK ATOVITT</strong>. Guided by the extraordinary vision of our Founder & CEO, <strong>Mr. Dipak Kumar Gupta (DK Sir)</strong>, we are evolving from a premier movie production house into a <strong>Global Tech & Entertainment Empire</strong>. With an unstoppable passion for innovation, DK Sir is seamlessly bridging the gap between Cinematic Magic, Web3 Crypto, and Next-Gen Digital Finance to empower millions across the globe.</p>
+                <p>उनका विजन बहुत स्पष्ट है— 'हर असली टैलेंट को मंच और हर व्यक्ति को आर्थिक आज़ादी (Financial Freedom) मिले।' एक तरफ जहाँ वह <strong>'यक्षिणी' (Yakshini)</strong> जैसी शानदार फिल्मों से हॉलीवुड स्तर का सिनेमा भारत ला रहे हैं, वहीं दूसरी तरफ <strong>'DK ATVT Blockchain', 'DK Exchange',</strong> और <strong>'DK Connect'</strong> के ज़रिये एक ऐसा डिजिटल इकोसिस्टम तैयार कर रहे हैं, जो भविष्य की दुनिया पर राज करेगा।</p>
 
                 <div class="vision-grid">
                     <div class="vision-card">
@@ -431,8 +427,7 @@
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate">DK ATOVITT</h3>
+                <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875;">DK ATOVITT</h3>
                 <p>A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
             
@@ -527,7 +522,6 @@
             <button class="app-modal-close" id="closeAppModal">&times;</button>
             <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <!-- 🔥 MODAL TAGLINE UPDATED 🔥 -->
             <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
@@ -553,7 +547,6 @@
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <!-- 🔥 AI BOT GREETING UPDATED 🔥 -->
             <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
@@ -777,6 +770,7 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
