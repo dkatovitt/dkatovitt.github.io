@@ -94,6 +94,7 @@
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
+        /* 🔥 LIVE BADGE CSS 🔥 */
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
         
@@ -106,7 +107,7 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; }
         
-        /* AUTH SECTION CSS */
+        /* Base page CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .auth-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px 20px; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; position: relative; }
         .auth-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.85); z-index: 1; }
@@ -177,17 +178,25 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
+        /* 🔥 VIP CHATBOT CSS 🔥 */
+        .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 16px; letter-spacing: 0.5px; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
         .chatbot-header button:hover { color: #fff; }
-        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        .chat-opt-btn:hover { background: #e6c875; color: #000; }
+        .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
+        .chatbot-body::-webkit-scrollbar { width: 4px; }
+        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
+        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
+        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+        .bot-inline-btn:hover { background: #e6c875; color: #000; }
+        
+        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+        
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 FLOATING BUTTONS CSS 🔥 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
@@ -247,7 +256,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
+                <a class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -266,10 +275,10 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 VIP SIDE MENU EXACTLY LIKE SCREENSHOT 🔥 -->
+    <!-- 🔥 VIP SIDE MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         
-        <!-- Language Select Box (Exactly like Movie page) -->
+        <!-- Language Select Box -->
         <div class="custom-translate" style="padding: 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
@@ -503,6 +512,17 @@
                     </button>
                 </div>
 
+                <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
+                </button>
+                
+                <div class="explore-menu">
+                    <a href="movie.html" class="explore-item"><div class="eco-icon bg-movie"><i class="fas fa-film"></i></div><div class="eco-details"><div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
+                    <a href="social.html" class="explore-item"><div class="eco-icon bg-connect"><i class="fas fa-users"></i></div><div class="eco-details"><div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
+                    <a href="ecosystem.html" class="explore-item"><div class="eco-icon bg-eco"><i class="fas fa-network-wired"></i></div><div class="eco-details"><div class="title">DK Ecosystem</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item"><div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div><div class="eco-details"><div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                </div>
+
                 <div class="auth-switch">
                     Already have an account? <a onclick="toggleAuth('login')">Login Here</a>
                 </div>
@@ -595,7 +615,7 @@
         </div>
     </div>
 
-    <!-- CHATBOT MODAL -->
+    <!-- 🔥 VIP CHATBOT MODAL 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
@@ -605,10 +625,10 @@
             <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
+            <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
+            <button class="chat-opt-btn" onclick="sendChat('Upcoming')"><i class="fas fa-clock" style="color:#e6c875;"></i> Upcoming</button>
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Auditions</button>
+            <button class="chat-opt-btn" onclick="sendChat('Support')">📞 Support</button>
         </div>
     </div>
 
@@ -787,30 +807,65 @@
             }
         });
 
+        // 🔥 VIP CHATBOT LOGIC 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
+        
         if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
         if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
 
         function sendChat(type) {
             let userText = ""; let botReply = "";
-            if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
-            } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
-            } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल कर सकते हैं।";
-            } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+
+            if(type === 'Live') {
+                userText = "What's LIVE right now?";
+                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="sendChat('DKFilm')"><i class="fas fa-film"></i> DK Film Production</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKConnect')"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+            } 
+            else if(type === 'Upcoming') {
+                userText = "Upcoming projects कौन से हैं?";
+                botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="sendChat('DKBrowser')"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKTrading')"><i class="fas fa-chart-line"></i> DK Trading Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKMart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
             }
+            else if(type === 'DKFilm') {
+                userText = "DK Film Production के बारे में बताएं।";
+                botReply = "🎬 **DK Film Production** हमारा मुख्य प्लेटफार्म है जहाँ हम अपनी अपकमिंग हॉरर-रोमांस फिल्म **'यक्षिणी (Yakshini)'** और सुपरहिट म्यूजिक एल्बम्स रिलीज़ कर रहे हैं।<br><br><a href='movie.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Go to Movie Page</a>";
+            }
+            else if(type === 'DKConnect') {
+                userText = "DK Connect क्या है?";
+                botReply = "👥 **DK Connect** एक सोशल मीडिया प्लेटफार्म है जहाँ आप पोस्ट लाइक, शेयर और कमेंट करके **ATVT Coins** कमा सकते हैं।<br><br><a href='social.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Open DK Connect</a>";
+            }
+            else if(type === 'DKBrowser' || type === 'DKTrading' || type === 'DKMart') {
+                userText = type.replace('DK', 'DK ') + " के बारे में बताएं।";
+                botReply = "🚀 यह प्रोजेक्ट अभी डेवलपमेंट फेज में है। बहुत जल्द DK Sir इसे मेगा इवेंट में लॉन्च करेंगे! Stay tuned.";
+            }
+            else if(type === 'Audition') {
+                userText = "मुझे Audition देना है।";
+                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
+            } 
+            else if(type === 'Support') {
+                userText = "मुझे Help / Support चाहिए।";
+                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
+            }
+
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            
+            // Typing Animation
+            let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
+            chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
             setTimeout(() => {
+                document.getElementById(typingId).remove();
                 chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            }, 600);
+            }, 800);
         }
     </script>
 
