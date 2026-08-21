@@ -229,6 +229,27 @@
         .auth-switch a { color: #e6c875; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-left: 5px; }
         .auth-switch a:hover { text-decoration: underline; color: #fff; }
 
+        /* 🔥 EXPLORE WITHOUT LOGIN DROPDOWN MENU 🔥 */
+        .explore-menu { display: none; flex-direction: column; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; overflow: hidden; margin-top: 10px; margin-bottom: 20px; animation: slideDown 0.3s ease; text-align: left; }
+        .explore-menu.active { display: flex; }
+        .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .explore-item:hover { background: #111; padding-left: 20px; }
+        .explore-item:last-child { border-bottom: none; }
+        
+        .eco-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; color: #fff; flex-shrink: 0; }
+        .bg-movie { background: #ff4d4d; }
+        .bg-connect { background: #1877F2; } 
+        .bg-browser { background: #003262; } 
+        .bg-trading { background: #20c997; } 
+        .bg-mart { background: #ffc107; } 
+        .bg-eco { background: #e6c875; color: #000; }
+
+        .eco-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .eco-details .title { font-size: 13px; font-weight: bold; color: #ccc; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
+        .eco-details .status { font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 12px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
+        .status.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; }
+        .status.coming { background: #1a1a1a; color: #888; border: 1px solid #333; }
+
         @media (max-width: 768px) {
             .auth-box { padding: 30px 20px; }
             .auth-header h2 { font-size: 24px; }
@@ -263,7 +284,7 @@
                         <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
-                <a href="index.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
+                <a href="movie.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
             </div>
         </div>
     </header>
@@ -287,7 +308,7 @@
         </div>
 
         <a href="auth.html"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
-        <a href="index.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
+        <a href="movie.html#home"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
         
         <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
             <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
@@ -324,15 +345,40 @@
 
         <a href="auditions.html"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
         
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
-            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+        <!-- 🔥 SIDE MENU ECOSYSTEM INTEGRATION 🔥 -->
+        <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
+            <span><i class="fas fa-globe" style="color:#e6c875; margin-right:12px;"></i> DK ATOVITT Ecosystem</span>
+            <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
         </a>
-        <div class="sub-menu" id="ecoSub">
-            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
+        <div class="sub-menu" id="mainEcoSub" style="padding-left: 0; margin-left: 0; border-left: none; background: #080808; border-bottom: 1px solid #222; overflow: hidden;">
+            <a href="movie.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a;">
+                <div class="eco-icon bg-movie"><i class="fas fa-film"></i></div>
+                <div class="eco-details">
+                    <div class="title" style="color:#fff;">DK Film Production</div>
+                    <span class="status live" style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; width: fit-content; text-transform: uppercase;"><i class="fas fa-circle" style="margin-right:4px;"></i> LIVE</span>
+                </div>
+            </a>
+            <a href="social.html" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a;">
+                <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                <div class="eco-details">
+                    <div class="title" style="color:#fff;">DK Connect (Social)</div>
+                    <span class="status live" style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; width: fit-content; text-transform: uppercase;"><i class="fas fa-circle" style="margin-right:4px;"></i> LIVE</span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a;">
+                <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                <div class="eco-details">
+                    <div class="title" style="color:#fff;">DK Browser</div>
+                    <span class="status coming" style="background: #1a1a1a; color: #888; border: 1px solid #333; padding: 2px 6px; border-radius: 12px; font-size: 9px; width: fit-content; text-transform: uppercase;"><i class="fas fa-clock" style="margin-right:4px;"></i> SOON</span>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Trading Exchange is launching very soon!', false)" style="display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a;">
+                <div class="eco-icon bg-trading"><i class="fas fa-chart-line"></i></div>
+                <div class="eco-details">
+                    <div class="title" style="color:#fff;">DK Trading Exchange</div>
+                    <span class="status coming" style="background: #1a1a1a; color: #888; border: 1px solid #333; padding: 2px 6px; border-radius: 12px; font-size: 9px; width: fit-content; text-transform: uppercase;"><i class="fas fa-clock" style="margin-right:4px;"></i> SOON</span>
+                </div>
+            </a>
         </div>
         
         <a href="news.html"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
@@ -390,10 +436,37 @@
                     </button>
                 </div>
 
-                <!-- 🔥 NEW GUEST BUTTON HERE 🔥 -->
-                <button type="button" class="auth-btn" onclick="window.location.href='index.html'" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
-                    <i class="fas fa-globe"></i> Explore Without Login
+                <!-- 🔥 NEW EXPLORE DROPDOWN BUTTON 🔥 -->
+                <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
+                
+                <div class="explore-menu">
+                    <a href="movie.html" class="explore-item">
+                        <div class="eco-icon bg-movie"><i class="fas fa-film"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="social.html" class="explore-item">
+                        <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="ecosystem.html" class="explore-item">
+                        <div class="eco-icon bg-eco"><i class="fas fa-network-wired"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Ecosystem</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+                </div>
 
                 <div class="auth-switch">
                     Don't have an account? <a onclick="toggleAuth('register')">Sign Up Here</a>
@@ -468,10 +541,37 @@
                     </button>
                 </div>
 
-                <!-- 🔥 NEW GUEST BUTTON HERE 🔥 -->
-                <button type="button" class="auth-btn" onclick="window.location.href='index.html'" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
-                    <i class="fas fa-globe"></i> Explore Without Login
+                <!-- 🔥 NEW EXPLORE DROPDOWN BUTTON 🔥 -->
+                <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
+
+                <div class="explore-menu">
+                    <a href="movie.html" class="explore-item">
+                        <div class="eco-icon bg-movie"><i class="fas fa-film"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="social.html" class="explore-item">
+                        <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="ecosystem.html" class="explore-item">
+                        <div class="eco-icon bg-eco"><i class="fas fa-network-wired"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Ecosystem</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+                </div>
 
                 <div class="auth-switch">
                     Already have an account? <a onclick="toggleAuth('login')">Login Here</a>
@@ -490,8 +590,8 @@
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
                 <ul>
-                    <li><a href="index.html#home">Home</a></li>
-                    <li><a href="index.html#movies-section">Featured Movie</a></li>
+                    <li><a href="movie.html#home">Home</a></li>
+                    <li><a href="movie.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
                     <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
@@ -632,6 +732,19 @@
                 document.title = "Login / Sign Up - DK Atovitt Official Portal";
             }
         }
+        
+        // 🔥 EXPLORE MENU TOGGLE JAVASCRIPT 🔥
+        function toggleExploreMenu(btn) {
+            const menu = btn.nextElementSibling;
+            const icon = btn.querySelector('.fa-chevron-down');
+            menu.classList.toggle('active');
+            
+            if(menu.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
 
         function sendWelcomeMessage(user) {
             console.log("Sending Welcome Email to:", user.displayName, user.email);
@@ -647,7 +760,7 @@
                 mail_message_1: "We are thrilled to have you here. Your VIP Account login was successful.",
                 mail_message_2: "You can now track your audition forms, check your ATVT wallet, upload your talent reels in Creator Studio, and explore our latest upcoming movies like Yakshini directly from your dashboard.",
                 btn_display: "block",
-                btn_link: "https://www.dkatovitt.com/account.html",
+                btn_link: "https://www.dkatovitt.com/index.html",
                 btn_text: "Go to My Dashboard"
             };
 
@@ -664,7 +777,6 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        // 🔥 NAYA FEATURE: sendPasswordResetEmail import kiya gaya hai 🔥
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
@@ -705,7 +817,7 @@
                     `;
                     authBox.appendChild(div);
 
-                    document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'dashboard.html'; });
+                    document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
                     document.getElementById('logoutAuthBtn').addEventListener('click', () => {
                         auth.signOut().then(() => window.location.reload());
                     });
@@ -721,7 +833,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Google Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "dashboard.html"; }, 1500);
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500);
                     })
                     .catch((error) => {
                         showCustomAlert("Login Failed", error.message, true);
@@ -738,7 +850,7 @@
                     .then((result) => {
                         sendWelcomeMessage(result.user);
                         showCustomAlert("Welcome!", "Facebook Login Successful! Welcome " + result.user.displayName, false);
-                        setTimeout(() => { window.location.href = "dashboard.html"; }, 1500); 
+                        setTimeout(() => { window.location.href = "index.html"; }, 1500); 
                     })
                     .catch((error) => {
                         if (error.code === 'auth/account-exists-with-different-credential') {
@@ -808,7 +920,6 @@
             }
         });
 
-        // 🔥 NAYA FEATURE: Forgot Password Logic 🔥
         const forgotPasswordLink = document.getElementById('forgotPasswordLink');
         if(forgotPasswordLink) {
             forgotPasswordLink.addEventListener('click', async (e) => {
@@ -848,7 +959,7 @@
                 }
                 sendWelcomeMessage(userCred.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "dashboard.html"; }, 1500); 
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
             } catch (error) {
                 showCustomAlert("Login Failed", "Invalid Email or Password!", true);
                 loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login';
@@ -863,7 +974,7 @@
             loginConfirmationResult.confirm(code).then((result) => {
                 sendWelcomeMessage(result.user);
                 showCustomAlert("Success", "Login Successful! Redirecting...", false);
-                setTimeout(() => { window.location.href = "dashboard.html"; }, 1500); 
+                setTimeout(() => { window.location.href = "index.html"; }, 1500); 
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
                 loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login';
@@ -983,7 +1094,7 @@
                 updateProfile(result.user, { displayName: name }).then(() => {
                     sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Mobile Account Created & Logged In!", false);
-                    setTimeout(() => { window.location.href = "dashboard.html"; }, 1500);
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
                 });
             }).catch((err) => {
                 showCustomAlert("Error", "Invalid OTP Code!", true);
@@ -1075,15 +1186,15 @@
         
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
-            if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+            if (currentPage === "" || currentPage === "/") currentPage = "auth.html";
 
             let menuLinks = document.querySelectorAll('.side-menu a:not(.menu-dropdown-btn)');
             menuLinks.forEach(link => {
                 let href = link.getAttribute('href');
                 if(!href) return;
                 let isMatch = false;
-                if (currentPage === "index.html") {
-                    if (href === "index.html#home" || href === "index.html") isMatch = true;
+                if (currentPage === "auth.html") {
+                    if (href === "auth.html#home" || href === "auth.html") isMatch = true;
                 } else {
                     if (href === currentPage) isMatch = true;
                 }
