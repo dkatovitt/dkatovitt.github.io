@@ -11,82 +11,89 @@
     </script>
     <!-- 🔥 Google AdSense 🔥 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK ATOVITT - VIP Dashboard</title>
     <meta name="description" content="Welcome to your DK Atovitt VIP Dashboard. Access DK Film Production, DK Connect (Social), Wallet, and ecosystem features to earn ATVT coins.">
-    <meta name="theme-color" content="#e6c875">
+    <meta name="theme-color" content="#111">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 DASHBOARD CORE CSS 🔥 */
+        /* 🔥 CORE CSS 🔥 */
         body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
+        
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* 🔥 MENU OVERLAY FIX 🔥 */
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(2px); }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none;}
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 🔥 VIP SIDEBAR (NEW UNIFIED MENU DESIGN) 🔥 */
-        .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
-        .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; }
-        .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
-        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; transition: 0.3s;}
-        .dk-id-badge:hover { background: #e6c875; color: #000; }
+        /* 🔥 VIP UNIVERSAL SIDEBAR MENU 🔥 */
+        .side-menu { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #e6c875; display: flex; flex-direction: column; transition: 0.3s; z-index: 100000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        
+        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0; }
-        .sidebar-menu::-webkit-scrollbar { width: 5px; }
+        .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none; }
+        .close-menu-btn:hover { color: #e6c875; }
+        
+        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        
+        .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
+        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
+
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; overscroll-behavior-y: none; }
+        .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-        .sidebar-menu a { display: flex; align-items: center; padding: 12px 25px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; border-left: 3px solid transparent; font-weight: bold; }
-        .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
-        .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
         
-        .menu-dropdown-btn { display: flex; justify-content: space-between; align-items: center; padding: 12px 25px; color: #aaa; font-size: 14px; cursor: pointer; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent; }
-        .menu-dropdown-btn:hover { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
-        .menu-dropdown-btn span { display: flex; align-items: center; }
-        .dropdown-icon { font-size: 12px; transition: transform 0.3s; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 20px 10px 20px; font-weight: bold; }
         
-        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); border-left: 2px solid #e6c875; margin-left: 25px; margin-bottom: 5px; }
-        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { padding: 10px 15px; color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; border-left: none; }
-        .sub-menu a:hover { color: #fff; background: transparent; padding-left: 20px; border-left: none; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
+        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
+        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
+        .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
+        .sidebar-menu a.normal-link:hover, .sidebar-menu a.normal-link.active { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
+        
+        .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
+        .soon-tag { color: #666; font-size: 10px; }
+        
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
-        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 5px 25px 5px 25px; font-weight: bold; }
-        .sidebar-footer { padding: 15px 20px 35px 20px; border-top: 1px solid #222; background: #111; }
-        .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; font-size: 15px; width: 100%; }
-        .logout-btn:hover { background: #cc0000; }
 
-        /* 🔥 MAIN CONTENT AREA 🔥 */
+        .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; }
+        .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+        .logout-btn-menu:hover { background: #cc0000; }
+
+        /* 🔥 MAIN DASHBOARD CONTENT AREA 🔥 */
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
-        .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
-        .topbar-left { display: flex; align-items: center; gap: 10px; }
-        .menu-toggle { display: none; background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
-        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+        
+        /* HEADER BAR */
+        .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; z-index: 100;}
+        .topbar-left { display: flex; align-items: center; gap: 15px; }
+        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: default; }
         .header-video-logo { height: 60px; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
         .header-text-container { display: flex; flex-direction: column; justify-content: center; line-height: 1.2; }
-        .mobile-header-text-1 { color: #e6c875; font-size: 24px; font-weight: 900; letter-spacing: 1px; margin: 0; }
-        .mobile-header-text-2 { color: #fff; font-size: 14px; font-family: 'Playfair Display', serif; margin: 0; }
+        .mobile-header-text-1 { color: #e6c875; font-size: 24px; font-weight: 900; letter-spacing: 1.5px; margin: 0; }
+        .mobile-header-text-2 { color: #aaa; font-size: 10px; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
         
         .topbar-right { display: flex; align-items: center; gap: 15px; }
         .profile-dropdown-container { position: relative; display: inline-block; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
-        .dropdown-menu { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: dropFade 0.2s ease; }
-        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: slideDown 0.3s ease; }
         .dropdown-menu.show { display: block; }
-        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; }
-        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; }
+        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; border-bottom: 1px solid #222;}
+        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; padding-left: 20px;}
         .dropdown-menu a i { color: #e6c875; width: 15px; }
         .dropdown-menu a.drop-logout { border-top: 1px solid #222; }
         .dropdown-menu a.drop-logout i { color: #ff4d4d; }
@@ -99,7 +106,7 @@
         .welcome-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; }
         .welcome-banner h1 { margin: 0 0 10px 0; color: #fff; font-size: 28px; font-family: 'Playfair Display', serif; }
         .welcome-banner h1 span { color: #e6c875; }
-        .welcome-banner p { margin: 0; color: #aaa; font-size: 15px; }
+        .welcome-banner p { margin: 0; color: #aaa; font-size: 15px; line-height: 1.5; }
 
         .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .wallet-left { display: flex; align-items: center; gap: 15px; }
@@ -126,6 +133,7 @@
         .balance-badge { float: right; background: rgba(230, 200, 117, 0.1); color: #e6c875; padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid #e6c875; }
         .input-with-max { position: relative; display: flex; align-items: center; }
         .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+        
         .tx-history-container { max-height: 280px; overflow-y: auto; padding-right: 5px; }
         .tx-history-container::-webkit-scrollbar { width: 4px; }
         .tx-history-container::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
@@ -169,41 +177,12 @@
         .card-badge { position: absolute; top: 12px; right: -30px; background: #ff4d4d; color: #fff; font-size: 9px; font-weight: bold; padding: 4px 30px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .card-badge.live { background: #25d366; }
 
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        
-        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
-        .chatbot-toggler:hover { transform: scale(1.1); }
-        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        
-        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
-        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
-
-        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
-        .app-modal-close:hover { color: #fff; }
-        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
-        .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-
-        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
-        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
-        .chatbot-header button:hover { color: #fff; }
-        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; }
-        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
-        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
-        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        .chat-opt-btn:hover { background: #e6c875; color: #000; }
-
+        /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 40px -30px -30px -30px; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
         .tseries-footer-col ul li { margin-bottom: 12px; }
@@ -214,19 +193,27 @@
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        /* 🔥 FLOATING BUTTONS CSS (PC VIEW - 60PX) 🔥 */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
+        .chatbot-toggler:hover { transform: scale(1.1); }
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
+        
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+
+        /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS & DASHBOARD LAYOUT 🔥 */
         @media (max-width: 768px) {
-            .sidebar { position: fixed; left: -280px; }
-            .sidebar.active { left: 0; }
+            .side-menu { position: fixed; left: -300px; }
+            .side-menu.active { left: 0; }
             .menu-toggle { display: block; }
             .dashboard-body { padding: 15px; }
             .tseries-footer { margin: 40px -15px -15px -15px; }
             .welcome-banner h1 { font-size: 22px; }
             .business-grid { grid-template-columns: 1fr; }
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
-            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
             .header-video-logo { height: 40px; transform: scale(1.4); margin-right: 5px; }
             .mobile-header-text-1 { font-size: 16px !important; }
             .mobile-header-text-2 { font-size: 11px !important; margin-top: 0px !important; }
@@ -239,7 +226,64 @@
             .form-group.full-width { grid-column: span 1; }
             .dashboard-extended-wallet { padding: 15px; }
             .tx-details h4 { max-width: 140px; }
+            .close-menu-btn { display: block; }
+
+            /* EXACT CEO.HTML SIZES RESTORED FOR MOBILE (50px) */
+            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
+            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
+            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
         }
+
+        /* 🔥 CUSTOM ALERT MODAL CSS (BUG FIXED) 🔥 */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        /* APK MODAL CSS */
+        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
+        .app-modal-close:hover { color: #fff; }
+        .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
+        .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
+        .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
+        .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
+        .app-modal-desc span { color: #e6c875; font-weight: bold; }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
+        .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* 🔥 VIP CHATBOT CSS WITH HEADER VIDEO LOGO 🔥 */
+        .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
+        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
+        .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
+        .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+        .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
+        .chatbot-header button:hover { color: #fff; }
+        .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
+        .chatbot-body::-webkit-scrollbar { width: 4px; }
+        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
+        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
+        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+        .bot-inline-btn:hover { background: #e6c875; color: #000; }
+        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -250,29 +294,24 @@
     <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 VIP SIDEBAR MENU (UNIFIED DESIGN FOR ALL PAGES) 🔥 -->
-    <div class="sidebar" id="sidebar">
+    <!-- 🔥 VIP SIDEBAR MENU (UNIFIED MASTER BLUEPRINT) 🔥 -->
+    <div class="side-menu" id="sideMenu">
         
-        <!-- Select Language (Gold Pill Design) -->
-        <div style="padding: 20px 20px 10px 20px; background: #1a1a1a;">
-            <div style="border: 1px solid #e6c875; border-radius: 30px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; position: relative;">
-                <i class="fas fa-globe" style="color: #e6c875;"></i>
-                <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)" style="background: transparent; color: #e6c875; border: none; outline: none; width: 100%; font-weight: bold; font-size: 13px; cursor: pointer; appearance: none;">
-                    <option value="" style="background:#111; color:#fff;">Select Language</option>
-                    <option value="hi" style="background:#111; color:#fff;">हिन्दी (Hindi)</option>
-                    <option value="en" style="background:#111; color:#fff;">English</option>
-                    <option value="bn" style="background:#111; color:#fff;">বাংলা (Bengali)</option>
-                    <option value="mr" style="background:#111; color:#fff;">मराठी (Marathi)</option>
-                    <option value="te" style="background:#111; color:#fff;">తెలుగు (Telugu)</option>
-                    <option value="ta" style="background:#111; color:#fff;">தமிழ் (Tamil)</option>
-                    <option value="gu" style="background:#111; color:#fff;">ગુજરાતી (Gujarati)</option>
-                </select>
-                <i class="fas fa-chevron-down" style="color: #e6c875; position: absolute; right: 15px; pointer-events: none; font-size: 12px;"></i>
-            </div>
+        <div class="custom-translate">
+            <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)">
+                <option value="">🌐 Select Language</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="en">English</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
+            </select>
         </div>
 
-        <!-- Dynamic Profile Area (Handled by JS) -->
         <div class="sidebar-profile" id="sidebarProfileArea">
+            <button class="close-menu-btn" id="closeMenu">&times;</button>
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
             <span class="vip-badge" id="sidebarVipBadge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
@@ -280,40 +319,37 @@
         </div>
         
         <div class="sidebar-menu">
-            <a href="movie.html#home"><i class="fas fa-home"></i> Home</a>
-            
-            <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSubDash')">
-                <span style="display:flex; align-items:center;"><i class="fas fa-info-circle" style="width:25px; color:#e6c875; font-size:16px;"></i> About Us</span>
-                <i class="fas fa-chevron-down dropdown-icon" id="aboutIconDash"></i>
-            </a>
-            <div class="sub-menu" id="aboutSubDash">
-                <a href="ceo.html">CEO</a>
-                <a href="company.html">Company</a>
-            </div>
-
-            <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
-
-            <a href="movie.html"><i class="fas fa-film"></i> DK Film Production</a>
-            <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
-            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-globe" style="color: #777;"></i> DK Browser (Soon)</a>
-            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-chart-line" style="color: #777;"></i> DK Trading Exchange (Soon)</a>
-            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-shopping-cart" style="color: #777;"></i> DK Mart (Soon)</a>
-            <a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
+            <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+            
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
 
             <div class="menu-divider"></div>
 
-            <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
-            <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a>
+            <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+            <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+            <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+            <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
         </div>
         
         <div class="sidebar-footer" id="sidebarFooterArea">
-            <button class="logout-btn logout-action" id="sidebarLogoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
-            <button class="logout-btn" id="sidebarLoginBtn" onclick="window.location.href='auth.html'" style="background: transparent; border: 1px solid #e6c875; color: #e6c875;"><i class="fas fa-user-circle"></i> Login / Sign Up</button>
+            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
+            <button class="logout-btn-menu" id="sidebarLoginBtn" onclick="window.location.href='auth.html'" style="background: transparent; border: 1px solid #e6c875; color: #e6c875;"><i class="fas fa-user-circle"></i> Login / Sign Up</button>
         </div>
     </div>
 
-    <!-- 🔥 MAIN CONTENT -->
+    <!-- 🔥 MAIN CONTENT AREA 🔥 -->
     <div class="main-content">
         <div class="topbar">
             <!-- 🔥 HEADER VIDEO LOGO & TEXT 🔥 -->
@@ -337,7 +373,7 @@
                     </div>
                     
                     <div class="dropdown-menu" id="profileDropdown">
-                        <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'Profile Editing will be available soon!', false)"><i class="fas fa-user-edit"></i> Edit Profile</a>
                         <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </div>
@@ -485,34 +521,26 @@
                     <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins.</p>
                 </a>
 
-                <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="business-card" style="opacity: 0.7;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-globe"></i></div>
                     <h3 class="card-title">DK Browser</h3>
                     <p class="card-desc">Fast, secure, and decentralized web browsing experience built for the ecosystem.</p>
                 </a>
 
-                <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Trading Exchange is launching soon!', false)" class="business-card" style="opacity: 0.7;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="card-title">DK Trading Exchange</h3>
                     <p class="card-desc">Advanced crypto and ATVT asset trading platform with zero-fee options.</p>
                 </a>
 
-                <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="business-card" style="opacity: 0.7;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
                     <h3 class="card-title">DK Mart</h3>
                     <p class="card-desc">Exclusive merchandise and brand shopping with ATVT payments.</p>
                 </a>
-
-                <a href="ecosystem.html" class="business-card">
-                    <div class="card-badge live">Live</div>
-                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3 class="card-title">DK Ecosystem</h3>
-                    <p class="card-desc">Business partnerships, Kalpamrit wellness, and earning plans.</p>
-                </a>
-
             </div>
 
             <!-- 🔥 FULL MEGA FOOTER INSIDE DASHBOARD 🔥 -->
@@ -538,7 +566,6 @@
                         <h4>Join Us</h4>
                         <ul>
                             <li><a href="auditions.html">Auditions</a></li>
-                            <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
                             <li><a href="auth.html">Login / Signup</a></li>
                         </ul>
                     </div>
@@ -565,7 +592,7 @@
                         <div class="footer-social-row">
                             <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
                             <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
                             <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
@@ -598,10 +625,27 @@
         </div>
     </div>
 
+    <!-- 🔥 CUSTOM ALERT MODAL (BUG FIXED) 🔥 -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
     <!-- 🔥 CHATBOT MODAL 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
-            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
+            <div class="chatbot-header-left">
+                <div class="chat-header-video-wrap">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div>DK ATOVITT AI</div>
+            </div>
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
@@ -622,15 +666,28 @@
             <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
             <h3 class="otp-title" id="otpModalTitle">Confirm Transfer</h3>
             <p class="otp-desc" id="otpModalDesc">To secure your account, an OTP has been sent to your registered <span>Email & WhatsApp</span>. Please enter it below.</p>
-            
             <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
-            
             <button type="button" class="otp-btn" onclick="verifyDashOtpAndProceed()"><i class="fas fa-check-circle"></i> Verify & Proceed</button>
         </div>
     </div>
 
     <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
+        // Custom Alert System
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const titleEl = document.getElementById('customAlertTitle');
+            const msgEl = document.getElementById('customAlertMsg');
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
+            overlay.classList.add('active');
+        }
+
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+        });
+
         // Dropdown Click-outside closer
         window.onclick = function(event) {
             if (!event.target.closest('.profile-name-btn')) {
@@ -648,6 +705,7 @@
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
+        const sideMenuLinks = document.querySelectorAll('.sidebar-menu a.normal-link');
         
         menuToggle.addEventListener('click', () => {
             sidebar.classList.add('active');
@@ -658,24 +716,18 @@
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
         });
-        
-        // UNIFIED SUB-MENU TOGGLE FUNCTION
-        function toggleSubMenu(id) {
-            const subMenu = document.getElementById(id);
-            const icon = document.getElementById(id.replace('SubDash', 'IconDash').replace('Sub', 'Icon'));
-            if(subMenu) {
-                if(subMenu.classList.contains('active')) {
-                    subMenu.classList.remove('active');
-                    if(icon) icon.classList.remove('rotate');
-                } else {
-                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
-                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
-                    
-                    subMenu.classList.add('active');
-                    if(icon) icon.classList.add('rotate');
-                }
-            }
-        }
+
+        document.getElementById('closeMenu').addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        sideMenuLinks.forEach(link => { 
+            link.addEventListener('click', () => { 
+                sidebar.classList.remove('active'); 
+                overlay.classList.remove('active'); 
+            }); 
+        });
 
         // App Modal Logic
         const openAppModal = document.getElementById('openAppModal');
@@ -710,10 +762,16 @@
             }
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            
+            let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
+            chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
             setTimeout(() => {
+                document.getElementById(typingId).remove();
                 chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            }, 600);
+            }, 800);
         }
 
         // 🔥 DASHBOARD WALLET TOGGLE & LOGIC 🔥
@@ -733,15 +791,17 @@
         }
 
         function copyDashDkId() {
-            var copyText = document.getElementById("dashInputDkId");
-            navigator.clipboard.writeText(copyText.value);
-            alert("DK ID Copied: " + copyText.value);
+            var copyText = document.getElementById("dashInputDkId").value;
+            if(copyText.includes('..........')) return;
+            navigator.clipboard.writeText(copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
 
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
+            if(copyText.includes('Login')) return;
             navigator.clipboard.writeText(copyText);
-            alert("DK ID Copied: " + copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
 
         function initiateDashCryptoTransfer() {
@@ -749,11 +809,11 @@
             let amount = document.getElementById('dashTransferAmount').value;
             
             if(address === "" || amount === "" || amount <= 0) {
-                alert("Please enter a valid amount and recipient address or DK ID.");
+                showCustomAlert("Error", "Please enter a valid amount and recipient address or DK ID.", true);
                 return;
             }
             
-            document.getElementById('otpModalDesc').innerHTML = `You are sending <span>${amount} ATVT</span>. Enter OTP sent to your Email/WhatsApp to confirm.`;
+            document.getElementById('otpModalDesc').innerHTML = `You are sending <span style="color:#e6c875;">${amount} ATVT</span>. Enter OTP sent to your Email/WhatsApp to confirm.`;
             document.getElementById('otpModalOverlay').classList.add('active');
         }
 
@@ -761,7 +821,7 @@
             let otp = document.getElementById('securityOtpInput').value;
             if(otp.length >= 4) { 
                 document.getElementById('otpModalOverlay').classList.remove('active');
-                alert("Transfer Successful! Transaction ID generated. ✅");
+                showCustomAlert("Success", "Transfer Successful! Transaction ID generated. ✅", false);
                 
                 // Add Live History
                 let amount = document.getElementById('dashTransferAmount').value;
@@ -792,7 +852,7 @@
                 document.getElementById('dashSendCryptoPanel').classList.remove('active');
                 document.getElementById('securityOtpInput').value = "";
             } else {
-                alert("Please enter a valid OTP.");
+                showCustomAlert("Error", "Please enter a valid OTP.", true);
             }
         }
 
@@ -800,7 +860,7 @@
         window.translatePage = function(lang) {
             var domainStr = window.location.hostname.replace(/^www\./i, '');
             if (lang === "") {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domainStr + ";";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             } else {
                 document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
@@ -879,6 +939,7 @@
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                document.getElementById('sidebarVipBadge').style.display = 'inline-block';
                 
                 // Show Logout, Hide Login
                 document.getElementById('sidebarLogoutBtn').style.display = 'flex';
