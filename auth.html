@@ -62,6 +62,7 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
+        /* Language Dropdown Box */
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
@@ -72,6 +73,7 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
+        /* Profile Area */
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
@@ -97,6 +99,7 @@
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
+        /* 🔥 LIVE BADGE CSS 🔥 */
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
         
@@ -180,11 +183,16 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🔥 VIP CHATBOT CSS 🔥 */
+        /* 🔥 VIP CHATBOT CSS WITH HEADER VIDEO LOGO 🔥 */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 16px; letter-spacing: 0.5px; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
+        .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
+        
+        .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+        .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
+
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
@@ -193,11 +201,9 @@
         .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
         .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
         .bot-inline-btn:hover { background: #e6c875; color: #000; }
-        
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 FLOATING BUTTONS CSS 🔥 */
@@ -262,7 +268,6 @@
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
-                        <!-- 🔥 NEW GLOBAL BRAND TAGLINE 🔥 -->
                         <p class="desktop-logo-sub notranslate">Global Tech & Entertainment Empire</p>
                     </div>
                 </a>
@@ -632,8 +637,7 @@
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate">DK ATOVITT</h3>
+                <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875;">DK ATOVITT</h3>
                 <p>A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
             
@@ -728,7 +732,6 @@
             <button class="app-modal-close" id="closeAppModal">&times;</button>
             <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <!-- 🔥 MODAL TAGLINE UPDATED 🔥 -->
             <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
@@ -747,14 +750,18 @@
         </div>
     </div>
 
-    <!-- VIP CHATBOT MODAL -->
+    <!-- 🔥 VIP CHATBOT MODAL WITH VIDEO LOGO IN HEADER 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
-            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
+            <div class="chatbot-header-left">
+                <div class="chat-header-video-wrap">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div>DK ATOVITT AI</div>
+            </div>
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <!-- 🔥 AI BOT GREETING UPDATED 🔥 -->
             <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
@@ -857,8 +864,10 @@
         
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll("#topbarDropdown");
-                dropdowns.forEach(d => d.classList.remove('show'));
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
             }
         }
         
@@ -875,7 +884,7 @@
         
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
-            if(copyText.includes('Login')) return;
+            if(copyText.includes('Loading') || copyText.includes('Login')) return;
             navigator.clipboard.writeText(copyText);
             showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
@@ -921,7 +930,9 @@
                 var googleSelect = document.querySelector('select.goog-te-combo');
                 if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
                 var sidebarLang = document.getElementById('lang-mobile');
+                var desktopLang = document.getElementById('lang-desktop');
                 if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
             }, 1000);
         });
         
@@ -1058,8 +1069,6 @@
                             </div>
                             <div id="topbarDropdown" style="display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; border-radius: 8px; border: 1px solid #333; z-index: 10000; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); overflow: hidden;">
                                 <a href="index.html" style="color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; border-bottom: 1px solid #222; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#ccc';"><i class="fas fa-tachometer-alt" style="color: #e6c875; width:16px;"></i> VIP Dashboard</a>
-                                <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
-                                <div class="dropdown-divider" style="height:1px; background:#222;"></div>
                                 <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a';" onmouseout="this.style.background='transparent';"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout</a>
                             </div>
                         </div>
