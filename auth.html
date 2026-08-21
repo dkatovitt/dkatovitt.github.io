@@ -22,9 +22,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- 🔥 BASIC SEO TAGS 🔥 -->
     <title>Login / Sign Up - DK Atovitt Official Member Portal</title>
-    <meta name="description" content="Create your free talent account or log in to the DK Atovitt Ecosystem. Submit your acting and singing audition portfolio directly to our casting directors.">
+    <meta name="description" content="Create your free talent account or log in to the DK Atovitt Ecosystem. Uniting Cinema, Social Networking, Next-Gen Technology, and Financial Freedom.">
     <meta name="theme-color" content="#111">
+    
+    <!-- 🔥 FAVICON & APP ICONS 🔥 -->
+    <link rel="icon" type="image/png" href="images/logo/logo.png">
+    <link rel="apple-touch-icon" href="images/logo/logo.png">
+
+    <!-- 🔥 WHATSAPP & FACEBOOK SHARE TAGS (OPEN GRAPH) 🔥 -->
+    <meta property="og:title" content="Login / Sign Up - DK Atovitt Official Portal">
+    <meta property="og:description" content="Join the revolutionary DK Atovitt Mega Brand & Digital Ecosystem. Uniting Cinema, Social Networking, and Technology.">
+    <meta property="og:image" content="https://www.dkatovitt.com/images/movies/yakshini-bg.jpg">
+    <meta property="og:url" content="https://www.dkatovitt.com/auth.html">
+    <meta property="og:type" content="website">
+
+    <!-- 🔥 TWITTER SHARE TAGS 🔥 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Join DK Atovitt Ecosystem">
+    <meta name="twitter:description" content="A Revolutionary Mega Brand & Digital Ecosystem.">
+    <meta name="twitter:image" content="https://www.dkatovitt.com/images/movies/yakshini-bg.jpg">
+
+    <!-- 🔥 GOOGLE VIP SCHEMA MARKUP (BRAND IDENTITY) 🔥 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DK ATOVITT Production House",
+      "url": "https://www.dkatovitt.com",
+      "logo": "https://www.dkatovitt.com/images/logo/logo.png",
+      "description": "A Revolutionary Mega Brand & Digital Ecosystem uniting Cinema, Social Networking, Next-Gen Technology, and Financial Freedom.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9830332929",
+        "contactType": "Customer Service"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/17KaFnAURu/",
+        "https://www.instagram.com/dk_atovitt",
+        "https://www.youtube.com/@DKATOVITT"
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -58,11 +98,10 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 VIP SIDE MENU CSS 🔥 */
+        /* VIP SIDE MENU CSS */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        /* Language Dropdown Box */
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
@@ -73,7 +112,6 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* Profile Area */
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
@@ -88,7 +126,7 @@
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
         .guest-prompt { color: #888; font-size: 11px; margin-top: 10px; display: none; }
 
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; overscroll-behavior-y: none; /* Prevents scroll chaining to background */ }
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; overscroll-behavior-y: none; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
@@ -99,7 +137,6 @@
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
-        /* 🔥 LIVE BADGE CSS 🔥 */
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
         
@@ -109,7 +146,7 @@
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); touch-action: none; /* Stops touch drag on overlay */ }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
         
         /* AUTH SECTION CSS */
@@ -152,7 +189,7 @@
         .auth-switch a { color: #e6c875; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-left: 5px; }
         .auth-switch a:hover { text-decoration: underline; color: #fff; }
 
-        /* 🔥 EXPLORE WITHOUT LOGIN DROPDOWN MENU 🔥 */
+        /* EXPLORE WITHOUT LOGIN DROPDOWN MENU */
         .explore-menu { display: none; flex-direction: column; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; overflow: hidden; margin-top: 10px; margin-bottom: 20px; animation: slideDown 0.3s ease; text-align: left; }
         .explore-menu.active { display: flex; }
         .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
@@ -183,7 +220,7 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🔥 VIP CHATBOT CSS 🔥 */
+        /* VIP CHATBOT CSS */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 16px; letter-spacing: 0.5px; }
@@ -203,7 +240,7 @@
         
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 🔥 FLOATING BUTTONS CSS 🔥 */
+        /* FLOATING BUTTONS CSS */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
@@ -216,7 +253,7 @@
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 MEGA FOOTER CSS 🔥 */
+        /* MEGA FOOTER CSS */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -232,7 +269,7 @@
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        /* 🔥 APK MODAL CSS 🔥 */
+        /* APK MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -338,8 +375,6 @@
                 <div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div>
                 <span class="soon-tag">(Soon)</span>
             </a>
-            
-            <!-- COMING SOON PROJECTS IN SIDE MENU -->
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)" class="normal-link" style="color: #888;">
                 <div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Blockchain</div>
                 <span class="soon-tag">(Soon)</span>
@@ -490,7 +525,6 @@
                             <div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <!-- 🔥 NEW PROJECTS IN EXPLORE MENU 🔥 -->
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="explore-item">
                         <div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div>
                         <div class="eco-details">
@@ -610,7 +644,7 @@
         </div>
     </section>
 
-    <!-- FULL MEGA FOOTER MATCHED WITH MOVIE PAGE & BALANCED VIEW -->
+    <!-- FULL MEGA FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -630,7 +664,6 @@
                     <li><a href="auditions.html">Auditions</a></li>
                 </ul>
                 
-                <!-- MY ACCOUNT / VIP PORTAL MOVED HERE TO BALANCE COLUMN -->
                 <h4 style="margin-top: 25px;">My Account</h4>
                 <ul>
                     <li><a href="wallet.html">My Wallet</a></li>
@@ -648,7 +681,6 @@
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching soon!', false)">DK ATVT Blockchain (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                    <!-- 🔥 NEW 3 PROJECTS ADDED IN FOOTER 🔥 -->
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
