@@ -24,18 +24,43 @@
     
     <style>
         /* 🔥 CORE CSS 🔥 */
-        body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none;}
-        #overlay.active { display: block; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* 🔥 100% LOCKED FIXED HEADER CSS 🔥 */
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 99999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
+        .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
+        .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
+        #menuBtn, .header-icons button { position: static !important; transform: none !important; left: auto !important; margin: 0 !important; padding: 0 !important; }
+        
+        .desktop-logo-img { height: 75px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
+        .desktop-logo-text { font-size: 28px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
+        .desktop-logo-sub { font-size: 10px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; white-space: nowrap; }
+        
+        #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
+        
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 6px 15px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 8px !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .show-on-mobile { display: none; }
+        
+        @media (max-width: 768px) {
+            .header { height: 70px !important; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+        }
 
-        /* 🔥 VIP UNIVERSAL SIDEBAR MENU 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; border-right: 1px solid #e6c875; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        /* 🔥 VIP SIDE MENU CSS 🔥 */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
@@ -44,14 +69,17 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none;}
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; }
         
         .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
+
+        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
+        .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; overscroll-behavior-y: none; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
@@ -62,52 +90,38 @@
         .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
         .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
-        .sidebar-menu a.normal-link:hover, .sidebar-menu a.normal-link.active { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
+        .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
         
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
 
-        .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; }
+        .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; display: none; }
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        /* 🔥 MAIN CONTENT AREA 🔥 */
-        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
-        
-        /* HEADER BAR */
-        .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; z-index: 100;}
-        .topbar-left { display: flex; align-items: center; gap: 15px; }
-        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; align-items: center; justify-content: center; padding: 0; }
-        .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: default; }
-        .header-video-logo { height: 60px; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
-        .header-text-container { display: flex; flex-direction: column; justify-content: center; line-height: 1.2; }
-        .mobile-header-text-1 { color: #e6c875; font-size: 24px; font-weight: 900; letter-spacing: 1.5px; margin: 0; }
-        .mobile-header-text-2 { color: #aaa; font-size: 10px; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
-        
-        .topbar-right { display: flex; align-items: center; gap: 15px; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
+        #overlay.active { display: block; }
+
+        /* 🔥 TOP RIGHT DROPDOWN 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
-        .dropdown-menu { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); z-index: 10000; border-radius: 8px; border: 1px solid #333; overflow: hidden; animation: slideDown 0.3s ease; }
-        .dropdown-menu.show { display: block; }
-        .dropdown-menu a { color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: bold; transition: 0.3s; border-bottom: 1px solid #222;}
-        .dropdown-menu a:hover { background-color: #1a1a1a; color: #fff; padding-left: 20px;}
-        .dropdown-menu a i { color: #e6c875; width: 15px; }
-        .dropdown-menu a.drop-logout { border-top: 1px solid #222; }
-        .dropdown-menu a.drop-logout i { color: #ff4d4d; }
-
-        .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; scroll-behavior: smooth; }
-        .dashboard-body::-webkit-scrollbar { width: 6px; }
-        .dashboard-body::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
         
-        /* 🌟 WALLET SPECIFIC CSS 🌟 */
-        .wallet-container { max-width: 1000px; margin: 0 auto; padding-bottom: 40px; }
-        .page-title { color: #fff; font-size: 28px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
+
+        /* 🌟 WALLET PAGE CSS 🌟 */
+        .wallet-section { padding: 130px 20px 60px 20px; max-width: 900px; margin: 0 auto; min-height: 70vh; }
+        .page-title { color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px;}
         .page-title span { color: #e6c875; }
 
-        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
+        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 35px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
         .wallet-left { display: flex; align-items: center; gap: 20px; }
         .wallet-icon-large { width: 70px; height: 70px; background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 32px; box-shadow: 0 0 20px rgba(230,200,117,0.4); border: 3px solid #111; }
         .wallet-info p { margin: 0; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
@@ -120,9 +134,15 @@
         .action-btn.primary { background: #e6c875; color: #000; }
         .action-btn.primary:hover { background: #d4b561; }
 
-        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .ext-header { color: #e6c875; margin: 0 0 20px 0; font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
         
+        /* 🔥 QR CODE & RECEIVE SECTION 🔥 */
+        .qr-receive-box { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 25px; }
+        .qr-image-wrapper { background: #fff; padding: 10px; border-radius: 12px; border: 3px solid #e6c875; box-shadow: 0 5px 20px rgba(230, 200, 117, 0.3); }
+        .qr-image-wrapper img { width: 150px; height: 150px; display: block; }
+        .qr-tagline { color: #e6c875; font-size: 13px; font-weight: bold; letter-spacing: 2px; margin-top: 15px; text-transform: uppercase; }
+
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
         .form-group.full-width { grid-column: span 2; }
@@ -130,8 +150,14 @@
         .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; width: 100%; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
         
-        .input-with-max { position: relative; display: flex; align-items: center; }
-        .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 11px; font-weight: bold; padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+        .input-with-max, .input-with-scanner { position: relative; display: flex; align-items: center; gap: 10px;}
+        .input-with-max input { padding-right: 60px; }
+        .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 11px; font-weight: bold; padding: 6px 10px; border-radius: 4px; cursor: pointer; transition: 0.3s;}
+        .max-btn:hover { background: #fff;}
+
+        /* 🔥 SCANNER BUTTON 🔥 */
+        .scan-btn { background: #e6c875; color: #000; border: none; border-radius: 8px; padding: 0 20px; height: 53px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2);}
+        .scan-btn:hover { background: #fff; transform: scale(1.05); }
 
         .tx-history-container { max-height: 400px; overflow-y: auto; padding-right: 5px; }
         .tx-history-container::-webkit-scrollbar { width: 4px; }
@@ -152,7 +178,7 @@
         .tx-status { font-size: 10px; background: rgba(230, 200, 117, 0.1); padding: 4px 8px; border-radius: 4px; color: #e6c875; font-weight: bold; letter-spacing: 0.5px; border: 1px solid rgba(230, 200, 117, 0.3); }
 
         .otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .otp-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .otp-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .otp-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 15px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
         .otp-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .otp-modal-close:hover { color: #fff; }
@@ -165,7 +191,7 @@
         .otp-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 20px -30px -30px -30px; }
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
@@ -195,27 +221,23 @@
 
         /* 🔥 MOBILE VIEW OVERRIDES 🔥 */
         @media (max-width: 768px) {
-            .side-menu { position: fixed; left: -300px; }
-            .side-menu.active { left: 0; }
-            .menu-toggle { display: block; }
-            .dashboard-body { padding: 15px; }
-            .tseries-footer { margin: 40px -15px -15px -15px; }
-            .header-video-logo { height: 40px; transform: scale(1.4); margin-right: 5px; }
-            .mobile-header-text-1 { font-size: 16px !important; }
-            .mobile-header-text-2 { font-size: 11px !important; margin-top: 0px !important; }
-            .profile-name-btn { font-size: 11px; padding: 6px 12px; }
-            
-            .wallet-banner { padding: 20px; flex-direction: column; align-items: flex-start; }
+            .wallet-section { padding: 110px 15px 40px 15px; }
+            .page-title { font-size: 26px; text-align: center;}
+            .wallet-banner { padding: 20px; flex-direction: column; align-items: center; text-align: center;}
+            .wallet-left { flex-direction: column; gap: 10px; }
             .wallet-icon-large { width: 50px; height: 50px; font-size: 22px; }
             .wallet-info h3 { font-size: 28px; }
-            .action-buttons { width: 100%; justify-content: space-between; margin-top: 15px; }
-            .action-btn { flex: 1; justify-content: center; font-size: 11px; padding: 10px; }
+            .action-buttons { width: 100%; justify-content: center; margin-top: 10px; }
+            .action-btn { flex: 1; justify-content: center; font-size: 12px; padding: 12px; }
             
             .form-grid { grid-template-columns: 1fr; gap: 15px; }
             .form-group.full-width { grid-column: span 1; }
             .dashboard-extended-wallet { padding: 20px 15px; }
             .tx-details h4 { max-width: 140px; }
             .close-menu-btn { display: block; }
+            
+            .qr-image-wrapper img { width: 120px; height: 120px; }
+            .scan-btn { padding: 0 15px; font-size: 18px; }
 
             /* EXACT 50PX MOBILE SIZES */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
@@ -276,18 +298,47 @@
 </head>
 <body>
 
-    <!-- 🔥 OVERLAY FOR MENU CLICK FIX 🔥 -->
-    <div id="overlay"></div>
+    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
+                    <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
+                        <p class="desktop-logo-sub notranslate">Global Tech & Entertainment Empire</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                    <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                        <option value="">🌐 Select Language</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
+                    </select>
+                </div>
+                <a href="auth.html" class="login-btn-header">
+                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 VIP SIDEBAR MENU (UNIFIED DESIGN WITH WALLET) 🔥 -->
+    <!-- 🔥 UNIVERSAL VIP SIDE MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         
-        <!-- Language Select Box -->
-        <div class="custom-translate">
-            <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)">
+        <div class="custom-translate" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
                 <option value="en">English</option>
@@ -299,19 +350,18 @@
             </select>
         </div>
 
-        <!-- Dynamic Profile Area -->
         <div class="sidebar-profile" id="sidebarProfileArea">
             <button class="close-menu-btn" id="closeMenu">&times;</button>
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
-            <span class="vip-badge" id="sidebarVipBadge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
-            <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i> Login to get DK-ID</span>
+            <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+            <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
+            <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
         </div>
         
         <div class="sidebar-menu">
-            
             <!-- 🔥 WALLET SECTION IN MENU 🔥 -->
-            <div id="sidebarWalletArea" style="background: #1a1a1a; margin: 0 20px 20px 20px; border-radius: 12px; border: 1px solid #333; padding: 15px; text-align: center; position: relative; overflow: hidden;">
+            <div id="sidebarWalletArea" style="display:none; background: #1a1a1a; margin: 0 20px 20px 20px; border-radius: 12px; border: 1px solid #333; padding: 15px; text-align: center; position: relative; overflow: hidden;">
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #e6c875;"></div>
                 <p style="color: #888; font-size: 11px; text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: 1px; font-weight: bold;"><i class="fas fa-wallet"></i> My Wallet</p>
                 <h4 style="color: #e6c875; font-size: 24px; margin: 0 0 12px 0; font-weight: 900;">150.00 <span style="font-size: 12px; color: #fff;">ATVT</span></h4>
@@ -346,242 +396,259 @@
             <button class="logout-btn-menu" id="sidebarLoginBtn" onclick="window.location.href='auth.html'" style="background: transparent; border: 1px solid #e6c875; color: #e6c875;"><i class="fas fa-user-circle"></i> Login / Sign Up</button>
         </div>
     </div>
+    <div id="overlay"></div>
 
-    <!-- 🔥 MAIN CONTENT AREA 🔥 -->
-    <div class="main-content">
-        <div class="topbar">
-            <!-- 🔥 HEADER VIDEO LOGO & TEXT 🔥 -->
-            <div class="topbar-left">
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="header-logo-link">
-                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="header-video-logo"></video>
-                    <div class="header-text-container">
-                        <span class="notranslate mobile-header-text-1">DK ATOVITT</span>
-                        <span class="notranslate mobile-header-text-2">VIP Dashboard</span>
-                    </div>
-                </a>
-            </div>
+    <!-- 🔥 DASHBOARD MAIN SECTION (WALLET PAGE) 🔥 -->
+    <section class="wallet-section">
+        
+        <h1 class="page-title">My <span>ATVT</span> Wallet</h1>
 
-            <div class="topbar-right">
-                <!-- 🔥 SMART DROPDOWN PROFILE MENU (NAME + ARROW) 🔥 -->
-                <div class="profile-dropdown-container">
-                    <div class="profile-name-btn" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
-                        <span id="topbarProfileName">VIP</span>
-                        <i class="fas fa-caret-down"></i>
-                    </div>
-                    
-                    <div class="dropdown-menu" id="profileDropdown">
-                        <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'Profile Editing will be available soon!', false)"><i class="fas fa-user-edit"></i> Edit Profile</a>
-                        <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </div>
+        <!-- 🔥 WALLET BANNER 🔥 -->
+        <div class="wallet-banner">
+            <div class="wallet-left">
+                <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
+                <div class="wallet-info">
+                    <p>Available Balance</p>
+                    <h3>150.00 <span>ATVT</span></h3>
                 </div>
+            </div>
+            <div class="action-buttons">
+                <!-- Switched logic: Scroll down to receive or open Send -->
+                <button class="action-btn" onclick="document.getElementById('dashSendCryptoPanel').classList.remove('active'); window.location.href='#receiveSection';"><i class="fas fa-arrow-down"></i> Receive</button>
+                <button class="action-btn primary" onclick="document.getElementById('dashSendCryptoPanel').classList.toggle('active')"><i class="fas fa-paper-plane"></i> Send</button>
             </div>
         </div>
 
-        <div class="dashboard-body">
+        <!-- 🔥 WALLET DASHBOARD FEATURES 🔥 -->
+        <div class="dashboard-extended-wallet">
             
-            <div class="wallet-container">
-                <h1 class="page-title">My <span>ATVT</span> Wallet</h1>
+            <!-- 1. RECEIVE & DK ID (WITH NEW QR CODE) -->
+            <h4 class="ext-header" id="receiveSection"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
+            
+            <div class="qr-receive-box">
+                <div class="qr-image-wrapper">
+                    <!-- Placeholder QR, will be dynamically generated by JS based on user's DK ID -->
+                    <img id="receiveQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DK-ATOVITT-USER&color=111111&bgcolor=ffffff" alt="DK ID QR Code">
+                </div>
+                <div class="qr-tagline">Scan To Transfer</div>
+            </div>
 
-                <!-- 🔥 WALLET BANNER 🔥 -->
-                <div class="wallet-banner">
-                    <div class="wallet-left">
-                        <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
-                        <div class="wallet-info">
-                            <p>Available Balance</p>
-                            <h3>150.00 <span>ATVT</span></h3>
+            <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 25px;">
+                <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (Zero Fee Internal Transfer)</label>
+                <div style="display: flex; gap: 10px; margin-top: 5px;">
+                    <input type="text" id="dashInputDkId" value="DK-.........." readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1.5px; font-size: 16px;">
+                    <button type="button" onclick="copyDashDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
+                </div>
+                <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
+            </div>
+
+            <!-- 2. SEND / TRANSFER ATVT (HIDDEN BY DEFAULT, WITH SCANNER BUTTON) -->
+            <div class="send-crypto-panel" id="dashSendCryptoPanel" style="margin-top: 0; margin-bottom: 30px;">
+                <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                    <i class="fas fa-exchange-alt"></i> Transfer ATVT
+                    <span class="balance-badge">Available: 150.00 ATVT</span>
+                </h4>
+                
+                <div class="form-grid" style="gap: 15px;">
+                    <div class="form-group">
+                        <label>Network</label>
+                        <select id="dashTransferNetwork">
+                            <option value="INTERNAL">Internal Transfer (Use DK ID - Zero Fee)</option>
+                            <option value="BEP20">Binance Smart Chain (BEP-20)</option>
+                            <option value="TRC20">Tron Network (TRC-20)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (ATVT)</label>
+                        <div class="input-with-max">
+                            <input type="number" id="dashTransferAmount" placeholder="0.00">
+                            <button type="button" class="max-btn" onclick="document.getElementById('dashTransferAmount').value = '150.00'">MAX</button>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button class="action-btn" onclick="document.getElementById('dashSendCryptoPanel').classList.remove('active'); showCustomAlert('Receive ATVT', 'Your DK-ID and Wallet details are below in the Receive section.', false);"><i class="fas fa-arrow-down"></i> Receive</button>
-                        <button class="action-btn primary" onclick="document.getElementById('dashSendCryptoPanel').classList.toggle('active')"><i class="fas fa-paper-plane"></i> Send</button>
+                    <div class="form-group full-width">
+                        <label>Recipient's DK ID or Crypto Address</label>
+                        <!-- 🔥 NEW SCANNER BUTTON ADDED 🔥 -->
+                        <div class="input-with-scanner">
+                            <input type="text" id="dashTransferAddress" placeholder="e.g. DK-aB3dE5gH9J or 0x..." style="flex: 1;">
+                            <button type="button" class="scan-btn" onclick="showCustomAlert('QR Scanner', 'Camera scanning will be enabled in the official DK Atovitt Mobile App.', false)" title="Scan QR Code"><i class="fas fa-qrcode"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group full-width" style="margin-bottom: 0;">
+                        <button type="button" onclick="initiateDashCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
+                            Proceed to Transfer
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. TRANSACTION HISTORY (LEDGER) -->
+            <h4 class="ext-header" style="margin-top: 10px;"><i class="fas fa-history"></i> Recent Transactions</h4>
+            <div class="tx-history-container" id="dashTxHistoryContainer">
+                
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                        <div class="tx-details">
+                            <h4>Received from DK Connect</h4>
+                            <p>Activity: <span>Post Like & Comment Reward</span><br>16 Aug 2026, 02:30 PM</p>
+                        </div>
+                    </div>
+                    <div class="tx-amount deposit">
+                        <h4>+5.00 ATVT</h4>
+                        <span class="tx-status">Completed</span>
                     </div>
                 </div>
 
-                <!-- 🔥 WALLET DASHBOARD FEATURES 🔥 -->
-                <div class="dashboard-extended-wallet">
-                    
-                    <!-- 1. RECEIVE & DK ID -->
-                    <h4 class="ext-header"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
-                    <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 25px;">
-                        <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (Zero Fee Internal Transfer)</label>
-                        <div style="display: flex; gap: 10px; margin-top: 5px;">
-                            <input type="text" id="dashInputDkId" value="DK-.........." readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1.5px; font-size: 16px;">
-                            <button type="button" onclick="copyDashDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
-                        </div>
-                        <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
-                    </div>
-
-                    <!-- 2. SEND / TRANSFER ATVT (HIDDEN BY DEFAULT, TOGGLED BY BUTTON) -->
-                    <div class="send-crypto-panel" id="dashSendCryptoPanel" style="margin-top: 0; margin-bottom: 30px;">
-                        <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
-                            <i class="fas fa-exchange-alt"></i> Transfer ATVT
-                            <span class="balance-badge">Available: 150.00 ATVT</span>
-                        </h4>
-                        
-                        <div class="form-grid" style="gap: 15px;">
-                            <div class="form-group">
-                                <label>Network</label>
-                                <select id="dashTransferNetwork">
-                                    <option value="INTERNAL">Internal Transfer (Use DK ID - Zero Fee)</option>
-                                    <option value="BEP20">Binance Smart Chain (BEP-20)</option>
-                                    <option value="TRC20">Tron Network (TRC-20)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Amount (ATVT)</label>
-                                <div class="input-with-max">
-                                    <input type="number" id="dashTransferAmount" placeholder="0.00" style="padding-right: 50px;">
-                                    <button type="button" class="max-btn" onclick="document.getElementById('dashTransferAmount').value = '150.00'">MAX</button>
-                                </div>
-                            </div>
-                            <div class="form-group full-width">
-                                <label>Recipient's DK ID or Crypto Address</label>
-                                <input type="text" id="dashTransferAddress" placeholder="e.g. DK-aB3dE5gH9J or 0x...">
-                            </div>
-                            <div class="form-group full-width" style="margin-bottom: 0;">
-                                <button type="button" onclick="initiateDashCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
-                                    Proceed to Transfer
-                                </button>
-                            </div>
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                        <div class="tx-details">
+                            <h4>Sent to DK-x8M2PqY9bZ</h4>
+                            <p>Activity: <span>Internal Transfer</span><br>14 Aug 2026, 09:15 AM</p>
                         </div>
                     </div>
+                    <div class="tx-amount withdraw">
+                        <h4>-20.00 ATVT</h4>
+                        <span class="tx-status">Completed</span>
+                    </div>
+                </div>
 
-                    <!-- 3. TRANSACTION HISTORY (LEDGER) -->
-                    <h4 class="ext-header" style="margin-top: 10px;"><i class="fas fa-history"></i> Recent Transactions</h4>
-                    <div class="tx-history-container" id="dashTxHistoryContainer">
-                        
-                        <div class="tx-item">
-                            <div class="tx-left">
-                                <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                                <div class="tx-details">
-                                    <h4>Received from DK Connect</h4>
-                                    <p>Activity: <span>Post Like & Comment Reward</span><br>16 Aug 2026, 02:30 PM</p>
-                                </div>
-                            </div>
-                            <div class="tx-amount deposit">
-                                <h4>+5.00 ATVT</h4>
-                                <span class="tx-status">Completed</span>
-                            </div>
+                <div class="tx-item">
+                    <div class="tx-left">
+                        <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                        <div class="tx-details">
+                            <h4>Airdrop Reward</h4>
+                            <p>Activity: <span>Ecosystem Sign-up Bonus</span><br>10 Aug 2026, 11:00 AM</p>
                         </div>
-
-                        <div class="tx-item">
-                            <div class="tx-left">
-                                <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
-                                <div class="tx-details">
-                                    <h4>Sent to DK-x8M2PqY9bZ</h4>
-                                    <p>Activity: <span>Internal Transfer</span><br>14 Aug 2026, 09:15 AM</p>
-                                </div>
-                            </div>
-                            <div class="tx-amount withdraw">
-                                <h4>-20.00 ATVT</h4>
-                                <span class="tx-status">Completed</span>
-                            </div>
-                        </div>
-
-                        <div class="tx-item">
-                            <div class="tx-left">
-                                <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                                <div class="tx-details">
-                                    <h4>Airdrop Reward</h4>
-                                    <p>Activity: <span>Ecosystem Sign-up Bonus</span><br>10 Aug 2026, 11:00 AM</p>
-                                </div>
-                            </div>
-                            <div class="tx-amount deposit">
-                                <h4>+165.00 ATVT</h4>
-                                <span class="tx-status">Completed</span>
-                            </div>
-                        </div>
-
+                    </div>
+                    <div class="tx-amount deposit">
+                        <h4>+165.00 ATVT</h4>
+                        <span class="tx-status">Completed</span>
                     </div>
                 </div>
 
             </div>
-
-            <!-- 🔥 FULL MEGA FOOTER INSIDE DASHBOARD 🔥 -->
-            <footer class="tseries-footer" id="contact-footer">
-                <div class="tseries-footer-container">
-                    <div class="tseries-footer-brand">
-                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                        <h3 class="notranslate">DK ATOVITT</h3>
-                        <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
-                    </div>
-                    <div class="tseries-footer-col">
-                        <h4>Movies & Media</h4>
-                        <ul>
-                            <li><a href="movie.html#home">Home</a></li>
-                            <li><a href="movie.html#movies-section">Featured Movie</a></li>
-                            <li><a href="trailers.html">Official Trailer</a></li>
-                            <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
-                        </ul>
-                    </div>
-                    <div class="tseries-footer-col">
-                        <h4>Join Us</h4>
-                        <ul>
-                            <li><a href="auditions.html">Auditions</a></li>
-                            <li><a href="auth.html">Login / Signup</a></li>
-                        </ul>
-                    </div>
-                    <div class="tseries-footer-col">
-                        <h4>About Us</h4>
-                        <ul>
-                            <li><a href="ceo.html">About CEO</a></li>
-                            <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="news.html">News & Updates</a></li>
-                        </ul>
-                    </div>
-                    <div class="tseries-footer-col">
-                        <h4>Legal & Help</h4>
-                        <ul>
-                            <li><a href="terms.html">Terms & Conditions</a></li>
-                            <li><a href="privacy.html">Privacy Policy</a></li>
-                            <li><a href="notice.html">Public Notice</a></li>
-                            <li><a href="faq.html">Help / FAQs</a></li>
-                        </ul>
-                    </div>
-                    <div class="tseries-footer-col">
-                        <h4>Connect With Us</h4>
-                        <div class="footer-social-row">
-                            <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                            <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tseries-footer-bottom">
-                    <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
-                </div>
-            </footer>
         </div>
-    </div>
 
-    <!-- 🔥 FLOATING BUTTONS (WhatsApp, Bot, Install) 🔥 -->
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </section>
+
+    <!-- 🔥 MASTER MEGA FOOTER 🔥 -->
+    <footer class="tseries-footer" id="contact-footer">
+        <div class="tseries-footer-container">
+            <div class="tseries-footer-brand">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
+                <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875; margin: 0 0 10px 0;">DK ATOVITT</h3>
+                <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>Movies & Media</h4>
+                <ul>
+                    <li><a href="movie.html#home">Home</a></li>
+                    <li><a href="movie.html#movies-section">Featured Movie</a></li>
+                    <li><a href="trailers.html">Official Trailer</a></li>
+                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="celebrity.html">Celebrity with DK Sir</a></li>
+                    <li><a href="auditions.html">Auditions</a></li>
+                </ul>
+                
+                <h4 style="margin-top: 25px;">My Account</h4>
+                <ul>
+                    <li><a href="wallet.html" style="color: #e6c875;"><i class="fas fa-wallet" style="margin-right:5px;"></i> My Wallet</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
+
+                <h4 style="margin-top: 25px;">Live Ecosystem</h4>
+                <ul>
+                    <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
+                    <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
+                </ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>Upcoming Projects</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)">DK Exchange (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
+                </ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="ceo.html">About CEO</a></li>
+                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="news.html">News & Updates</a></li>
+                </ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>Legal & Help</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="notice.html">Public Notice</a></li>
+                    <li><a href="faq.html">Help / FAQs</a></li>
+                </ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>Connect With Us</h4>
+                <div class="footer-social-row">
+                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="tseries-footer-bottom">
+            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING BUTTONS -->
+    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
-    <button class="floating-install-btn" id="openAppModal" title="Install Official App" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
+    <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
-    <!-- 🔥 APP INSTALL MODAL 🔥 -->
+    <!-- APK DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="app-modal-logo-wrap">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
-            </div>
+            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
+            <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
-    <!-- 🔥 CHATBOT MODAL 🔥 -->
+    <!-- CUSTOM ALERT MODAL -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
+    <!-- 🔥 VIP CHATBOT MODAL WITH VIDEO LOGO IN HEADER 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
             <div class="chatbot-header-left">
@@ -593,13 +660,13 @@
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+            <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
+            <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
+            <button class="chat-opt-btn" onclick="sendChat('Upcoming')"><i class="fas fa-clock" style="color:#e6c875;"></i> Upcoming</button>
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Auditions</button>
+            <button class="chat-opt-btn" onclick="sendChat('Support')">📞 Support</button>
         </div>
     </div>
 
@@ -617,21 +684,8 @@
         </div>
     </div>
 
-    <!-- 🔥 CUSTOM ALERT MODAL 🔥 -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
-        </div>
-    </div>
-
-    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
+    <!-- UI Scripts -->
     <script>
-        // Custom Alert System
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
             const titleEl = document.getElementById('customAlertTitle');
@@ -649,42 +703,39 @@
         // Dropdown Click-outside closer
         window.onclick = function(event) {
             if (!event.target.closest('.profile-name-btn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
                 }
             }
         }
 
-        // PERFECT OVERLAY CLICK FIX FOR DASHBOARD MENU
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
-        const sideMenuLinks = document.querySelectorAll('.sidebar-menu a.normal-link');
+        // PERFECT OVERLAY CLICK FIX
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay'); 
+        const html = document.documentElement;
         
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.add('active');
-            overlay.classList.add('active');
-        });
+        function openMenu() {
+            sideMenu.classList.add('active'); 
+            overlay.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+            html.style.overflow = 'hidden'; 
+        }
 
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        document.getElementById('closeMenu').addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        sideMenuLinks.forEach(link => { 
-            link.addEventListener('click', () => { 
-                sidebar.classList.remove('active'); 
-                overlay.classList.remove('active'); 
-            }); 
+        function closeSideMenu() { 
+            sideMenu.classList.remove('active'); 
+            overlay.classList.remove('active'); 
+            document.body.style.overflow = ''; 
+            html.style.overflow = ''; 
+        }
+        
+        menuBtn.addEventListener('click', openMenu); 
+        closeMenu.addEventListener('click', closeSideMenu); 
+        overlay.addEventListener('click', closeSideMenu);
+        document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
+            link.addEventListener('click', closeSideMenu); 
         });
 
         // App Modal Logic
@@ -709,15 +760,34 @@
 
         function sendChat(type) {
             let userText = ""; let botReply = "";
-            if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
-            } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
-            } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
-            } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+
+            if(type === 'Live') {
+                userText = "What's LIVE right now?";
+                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+            } 
+            else if(type === 'Upcoming') {
+                userText = "Upcoming projects कौन से हैं?";
+                botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
+            else if(type === 'Audition') {
+                userText = "मुझे Audition देना है।";
+                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
+            } 
+            else if(type === 'Support') {
+                userText = "मुझे Help / Support चाहिए।";
+                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
+            }
+
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
             
@@ -812,11 +882,10 @@
         };
 
         const langSidebar = document.getElementById('lang-sidebar');
-        if(langSidebar) {
-            langSidebar.addEventListener('change', function() {
-                window.translatePage(this.value);
-            });
-        }
+        const langDesktop = document.getElementById('lang-desktop');
+        
+        if(langSidebar) langSidebar.addEventListener('change', function() { window.translatePage(this.value); });
+        if(langDesktop) langDesktop.addEventListener('change', function() { window.translatePage(this.value); });
         
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -825,8 +894,8 @@
                 if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
                 var googleSelect = document.querySelector('select.goog-te-combo');
                 if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
-                var sidebarLang = document.getElementById('lang-sidebar');
-                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+                if(langSidebar && currentLang && currentLang !== "auto") langSidebar.value = currentLang;
+                if(langDesktop && currentLang && currentLang !== "auto") langDesktop.value = currentLang;
             }, 1000);
         });
     </script>
@@ -889,17 +958,14 @@
                 if(document.getElementById('sidebarWalletArea')) document.getElementById('sidebarWalletArea').style.display = 'block';
 
                 // Update Topbar Dropdown Profile Name
-                if(document.getElementById('topbarProfileName')) {
-                    document.getElementById('topbarProfileName').innerText = userName;
-                }
-                // Update Welcome Banner Name
-                if(document.getElementById('welcomeNameText')) {
-                    document.getElementById('welcomeNameText').innerText = userName;
-                }
+                const topbarProfileName = document.getElementById('topbarProfileName');
+                if(topbarProfileName) topbarProfileName.innerText = userName;
 
-                // Update Dashboard Extended Wallet Address
+                // Update Dashboard Extended Wallet Address AND QR CODE
                 if(document.getElementById('dashInputDkId')) {
                     document.getElementById('dashInputDkId').value = userDkId;
+                    // Dynamically generate QR code for DK-ID
+                    document.getElementById('receiveQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userDkId}&color=111111&bgcolor=ffffff`;
                 }
 
                 // Enable Logout Action anywhere it's placed
