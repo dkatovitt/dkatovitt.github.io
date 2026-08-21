@@ -68,6 +68,12 @@
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
+        /* Google Translate specific fixes to hide elements */
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
         /* Profile Area */
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
@@ -273,6 +279,7 @@
         </div>
     </header>
 
+    <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
     <!-- 🔥 VIP SIDE MENU 🔥 -->
@@ -512,6 +519,7 @@
                     </button>
                 </div>
 
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -822,27 +830,15 @@
             if(type === 'Live') {
                 userText = "What's LIVE right now?";
                 botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="sendChat('DKFilm')"><i class="fas fa-film"></i> DK Film Production</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKConnect')"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+                botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
             } 
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="sendChat('DKBrowser')"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKTrading')"><i class="fas fa-chart-line"></i> DK Trading Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="sendChat('DKMart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-            }
-            else if(type === 'DKFilm') {
-                userText = "DK Film Production के बारे में बताएं।";
-                botReply = "🎬 **DK Film Production** हमारा मुख्य प्लेटफार्म है जहाँ हम अपनी अपकमिंग हॉरर-रोमांस फिल्म **'यक्षिणी (Yakshini)'** और सुपरहिट म्यूजिक एल्बम्स रिलीज़ कर रहे हैं।<br><br><a href='movie.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Go to Movie Page</a>";
-            }
-            else if(type === 'DKConnect') {
-                userText = "DK Connect क्या है?";
-                botReply = "👥 **DK Connect** एक सोशल मीडिया प्लेटफार्म है जहाँ आप पोस्ट लाइक, शेयर और कमेंट करके **ATVT Coins** कमा सकते हैं।<br><br><a href='social.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Open DK Connect</a>";
-            }
-            else if(type === 'DKBrowser' || type === 'DKTrading' || type === 'DKMart') {
-                userText = type.replace('DK', 'DK ') + " के बारे में बताएं।";
-                botReply = "🚀 यह प्रोजेक्ट अभी डेवलपमेंट फेज में है। बहुत जल्द DK Sir इसे मेगा इवेंट में लॉन्च करेंगे! Stay tuned.";
+                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Trading Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Trading Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -868,6 +864,18 @@
             }, 800);
         }
     </script>
+    
+    <!-- 🔥 GOOGLE TRANSLATE SCRIPT TO MAKE THE DROPDOWN WORK 🔥 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- Firebase Logic (Auth check for Menu Display) -->
     <script type="module">
