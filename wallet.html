@@ -69,7 +69,7 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none;}
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -90,7 +90,7 @@
         .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
         .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
-        .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
+        .sidebar-menu a.normal-link:hover, .sidebar-menu a.normal-link.active { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
@@ -109,17 +109,21 @@
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
         
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
         .topbarDropdown-content.show { display: block; }
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
         .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
         .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
 
-        /* 🌟 WALLET PAGE CSS 🌟 */
+        /* 🌟 WALLET PAGE CSS & TABS 🌟 */
         .wallet-section { padding: 130px 20px 60px 20px; max-width: 900px; margin: 0 auto; min-height: 70vh; }
-        .page-title { color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px;}
+        .page-title { color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
         .page-title span { color: #e6c875; }
+
+        .wallet-tab { display: none; animation: fadeInForm 0.4s ease; }
+        .wallet-tab.active { display: block; }
+        @keyframes fadeInForm { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 35px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
         .wallet-left { display: flex; align-items: center; gap: 20px; }
@@ -134,13 +138,13 @@
         .action-btn.primary { background: #e6c875; color: #000; }
         .action-btn.primary:hover { background: #d4b561; }
 
-        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .ext-header { color: #e6c875; margin: 0 0 20px 0; font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
         
         /* 🔥 QR CODE & RECEIVE SECTION 🔥 */
         .qr-receive-box { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 25px; }
         .qr-image-wrapper { background: #fff; padding: 10px; border-radius: 12px; border: 3px solid #e6c875; box-shadow: 0 5px 20px rgba(230, 200, 117, 0.3); }
-        .qr-image-wrapper img { width: 150px; height: 150px; display: block; }
+        .qr-image-wrapper img { width: 180px; height: 180px; display: block; }
         .qr-tagline { color: #e6c875; font-size: 13px; font-weight: bold; letter-spacing: 2px; margin-top: 15px; text-transform: uppercase; }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -150,13 +154,14 @@
         .form-group input, .form-group select { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 16px; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; width: 100%; box-sizing: border-box; }
         .form-group input:focus, .form-group select:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.1); }
         
-        .input-with-max, .input-with-scanner { position: relative; display: flex; align-items: center; gap: 10px;}
-        .input-with-max input { padding-right: 60px; }
+        .input-with-max { position: relative; display: flex; align-items: center; }
         .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 11px; font-weight: bold; padding: 6px 10px; border-radius: 4px; cursor: pointer; transition: 0.3s;}
         .max-btn:hover { background: #fff;}
 
-        /* 🔥 SCANNER BUTTON 🔥 */
-        .scan-btn { background: #e6c875; color: #000; border: none; border-radius: 8px; padding: 0 20px; height: 53px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2);}
+        /* 🔥 SCANNER BUTTON FIX 🔥 */
+        .input-with-scanner { display: flex; gap: 10px; align-items: center; width: 100%;}
+        .input-with-scanner input { flex: 1; margin: 0 !important; }
+        .scan-btn { flex-shrink: 0; background: #e6c875; color: #000; border: none; border-radius: 8px; width: 55px; height: 53px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 22px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2);}
         .scan-btn:hover { background: #fff; transform: scale(1.05); }
 
         .tx-history-container { max-height: 400px; overflow-y: auto; padding-right: 5px; }
@@ -234,10 +239,9 @@
             .form-group.full-width { grid-column: span 1; }
             .dashboard-extended-wallet { padding: 20px 15px; }
             .tx-details h4 { max-width: 140px; }
-            .close-menu-btn { display: block; }
             
-            .qr-image-wrapper img { width: 120px; height: 120px; }
-            .scan-btn { padding: 0 15px; font-size: 18px; }
+            .qr-image-wrapper img { width: 140px; height: 140px; }
+            .scan-btn { padding: 0 15px; font-size: 18px; width: 50px; }
 
             /* EXACT 50PX MOBILE SIZES */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
@@ -294,6 +298,7 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -322,7 +327,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -346,7 +351,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -360,100 +365,73 @@
         </div>
         
         <div class="sidebar-menu">
-            <!-- 🔥 WALLET SECTION IN MENU 🔥 -->
-            <div id="sidebarWalletArea" style="display:none; background: #1a1a1a; margin: 0 20px 20px 20px; border-radius: 12px; border: 1px solid #333; padding: 15px; text-align: center; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #e6c875;"></div>
-                <p style="color: #888; font-size: 11px; text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: 1px; font-weight: bold;"><i class="fas fa-wallet"></i> My Wallet</p>
-                <h4 style="color: #e6c875; font-size: 24px; margin: 0 0 12px 0; font-weight: 900;">150.00 <span style="font-size: 12px; color: #fff;">ATVT</span></h4>
-            </div>
+            <!-- 🔥 TABS WALLET SECTION IN MENU 🔥 -->
+            <div class="menu-heading">My ATVT Wallet</div>
+            <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-wallet"></i> Dashboard</div></a>
+            <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
+            <a href="javascript:void(0)" onclick="switchTab('tab-receive')" class="normal-link wallet-menu-link" id="link-tab-receive"><div class="link-text"><i class="fas fa-qrcode"></i> Received</div></a>
+            <a href="javascript:void(0)" onclick="switchTab('tab-history')" class="normal-link wallet-menu-link" id="link-tab-history"><div class="link-text"><i class="fas fa-history"></i> Trans. History</div></a>
 
+            <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
             <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
             
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-            
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
-
             <div class="menu-divider"></div>
-
             <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
             <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
             <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
             <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
         </div>
         
-        <div class="sidebar-footer" id="sidebarFooterArea">
-            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
-            <button class="logout-btn-menu" id="sidebarLoginBtn" onclick="window.location.href='auth.html'" style="background: transparent; border: 1px solid #e6c875; color: #e6c875;"><i class="fas fa-user-circle"></i> Login / Sign Up</button>
+        <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
+            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout Securely
+            </button>
         </div>
     </div>
     <div id="overlay"></div>
 
     <!-- 🔥 DASHBOARD MAIN SECTION (WALLET PAGE) 🔥 -->
     <section class="wallet-section">
-        
         <h1 class="page-title">My <span>ATVT</span> Wallet</h1>
 
-        <!-- 🔥 WALLET BANNER 🔥 -->
-        <div class="wallet-banner">
-            <div class="wallet-left">
-                <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
-                <div class="wallet-info">
-                    <p>Available Balance</p>
-                    <h3>150.00 <span>ATVT</span></h3>
+        <!-- 🔥 TAB 1: WALLET HOME 🔥 -->
+        <div id="tab-home" class="wallet-tab active">
+            <div class="wallet-banner">
+                <div class="wallet-left">
+                    <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
+                    <div class="wallet-info">
+                        <p>Available Balance</p>
+                        <h3>150.00 <span>ATVT</span></h3>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="switchTab('tab-receive')"><i class="fas fa-arrow-down"></i> Receive</button>
+                    <button class="action-btn primary" onclick="switchTab('tab-send')"><i class="fas fa-paper-plane"></i> Send</button>
                 </div>
             </div>
-            <div class="action-buttons">
-                <!-- Switched logic: Scroll down to receive or open Send -->
-                <button class="action-btn" onclick="document.getElementById('dashSendCryptoPanel').classList.remove('active'); window.location.href='#receiveSection';"><i class="fas fa-arrow-down"></i> Receive</button>
-                <button class="action-btn primary" onclick="document.getElementById('dashSendCryptoPanel').classList.toggle('active')"><i class="fas fa-paper-plane"></i> Send</button>
+            
+            <div class="dashboard-extended-wallet">
+                <h4 class="ext-header" style="justify-content: center; border-bottom: none;"><i class="fas fa-info-circle"></i> Quick Actions</h4>
+                <p style="text-align: center; color: #888; font-size: 14px; margin-bottom: 20px;">Use the Menu or the buttons above to Send, Receive, or Check your Transaction History.</p>
+                <div class="action-buttons" style="justify-content: center;">
+                    <button class="action-btn" style="width: 100%; max-width: 300px; justify-content: center;" onclick="switchTab('tab-history')"><i class="fas fa-history"></i> View Full Ledger History</button>
+                </div>
             </div>
         </div>
 
-        <!-- 🔥 WALLET DASHBOARD FEATURES 🔥 -->
-        <div class="dashboard-extended-wallet">
-            
-            <!-- 1. RECEIVE & DK ID (WITH NEW QR CODE) -->
-            <h4 class="ext-header" id="receiveSection"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
-            
-            <div class="qr-receive-box">
-                <div class="qr-image-wrapper">
-                    <!-- Placeholder QR, will be dynamically generated by JS based on user's DK ID -->
-                    <img id="receiveQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DK-ATOVITT-USER&color=111111&bgcolor=ffffff" alt="DK ID QR Code">
-                </div>
-                <div class="qr-tagline">Scan To Transfer</div>
-            </div>
-
-            <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 25px;">
-                <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (Zero Fee Internal Transfer)</label>
-                <div style="display: flex; gap: 10px; margin-top: 5px;">
-                    <input type="text" id="dashInputDkId" value="DK-.........." readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1.5px; font-size: 16px;">
-                    <button type="button" onclick="copyDashDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
-                </div>
-                <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
-            </div>
-
-            <!-- 2. SEND / TRANSFER ATVT (HIDDEN BY DEFAULT, WITH SCANNER BUTTON) -->
-            <div class="send-crypto-panel" id="dashSendCryptoPanel" style="margin-top: 0; margin-bottom: 30px;">
-                <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
-                    <i class="fas fa-exchange-alt"></i> Transfer ATVT
-                    <span class="balance-badge">Available: 150.00 ATVT</span>
-                </h4>
+        <!-- 🔥 TAB 2: SEND ATVT 🔥 -->
+        <div id="tab-send" class="wallet-tab">
+            <div class="dashboard-extended-wallet">
+                <h4 class="ext-header"><i class="fas fa-paper-plane"></i> Send / Transfer ATVT <span class="balance-badge" style="margin-left: auto;">Available: 150.00 ATVT</span></h4>
                 
                 <div class="form-grid" style="gap: 15px;">
                     <div class="form-group">
                         <label>Network</label>
                         <select id="dashTransferNetwork">
-                            <option value="INTERNAL">Internal Transfer (Use DK ID - Zero Fee)</option>
+                            <option value="INTERNAL">Internal Transfer (DK ID - Zero Fee)</option>
                             <option value="BEP20">Binance Smart Chain (BEP-20)</option>
                             <option value="TRC20">Tron Network (TRC-20)</option>
                         </select>
@@ -467,66 +445,94 @@
                     </div>
                     <div class="form-group full-width">
                         <label>Recipient's DK ID or Crypto Address</label>
-                        <!-- 🔥 NEW SCANNER BUTTON ADDED 🔥 -->
                         <div class="input-with-scanner">
-                            <input type="text" id="dashTransferAddress" placeholder="e.g. DK-aB3dE5gH9J or 0x..." style="flex: 1;">
+                            <input type="text" id="dashTransferAddress" placeholder="Enter Address or DK-ID">
                             <button type="button" class="scan-btn" onclick="showCustomAlert('QR Scanner', 'Camera scanning will be enabled in the official DK Atovitt Mobile App.', false)" title="Scan QR Code"><i class="fas fa-qrcode"></i></button>
                         </div>
                     </div>
                     <div class="form-group full-width" style="margin-bottom: 0;">
-                        <button type="button" onclick="initiateDashCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px;">
+                        <button type="button" onclick="initiateDashCryptoTransfer()" style="width: 100%; background: #25d366; color: #fff; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">
                             Proceed to Transfer
                         </button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- 3. TRANSACTION HISTORY (LEDGER) -->
-            <h4 class="ext-header" style="margin-top: 10px;"><i class="fas fa-history"></i> Recent Transactions</h4>
-            <div class="tx-history-container" id="dashTxHistoryContainer">
+        <!-- 🔥 TAB 3: RECEIVE ATVT 🔥 -->
+        <div id="tab-receive" class="wallet-tab">
+            <div class="dashboard-extended-wallet">
+                <h4 class="ext-header"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
                 
-                <div class="tx-item">
-                    <div class="tx-left">
-                        <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                        <div class="tx-details">
-                            <h4>Received from DK Connect</h4>
-                            <p>Activity: <span>Post Like & Comment Reward</span><br>16 Aug 2026, 02:30 PM</p>
-                        </div>
+                <div class="qr-receive-box">
+                    <div class="qr-image-wrapper">
+                        <!-- 🔥 DYNAMIC QR CODE 🔥 -->
+                        <img id="receiveQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DK-ATOVITT-USER&color=111111&bgcolor=ffffff" alt="DK ID QR Code">
                     </div>
-                    <div class="tx-amount deposit">
-                        <h4>+5.00 ATVT</h4>
-                        <span class="tx-status">Completed</span>
-                    </div>
+                    <div class="qr-tagline">Scan To Transfer</div>
                 </div>
 
-                <div class="tx-item">
-                    <div class="tx-left">
-                        <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
-                        <div class="tx-details">
-                            <h4>Sent to DK-x8M2PqY9bZ</h4>
-                            <p>Activity: <span>Internal Transfer</span><br>14 Aug 2026, 09:15 AM</p>
+                <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 0;">
+                    <label style="color: #e6c875; font-size: 13px;">Your Unique DK ID (Zero Fee Transfer)</label>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <input type="text" id="dashInputDkId" value="DK-.........." readonly style="background: #111; border: 1px solid #e6c875; color: #e6c875; font-weight: bold; letter-spacing: 1.5px; font-size: 16px;">
+                        <button type="button" onclick="copyDashDkId()" style="background: #e6c875; color: #000; border: none; padding: 0 20px; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.3s;"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                    <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🔥 TAB 4: TRANSACTION HISTORY 🔥 -->
+        <div id="tab-history" class="wallet-tab">
+            <div class="dashboard-extended-wallet">
+                <h4 class="ext-header"><i class="fas fa-history"></i> Full Transaction Ledger</h4>
+                
+                <div class="tx-history-container" id="dashTxHistoryContainer">
+                    
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                            <div class="tx-details">
+                                <h4>From: DK Connect Rewards</h4>
+                                <p>Purpose: <span>Post Like & Comment Bonus</span><br>16 Aug 2026, 02:30 PM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount deposit">
+                            <h4>+5.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
                         </div>
                     </div>
-                    <div class="tx-amount withdraw">
-                        <h4>-20.00 ATVT</h4>
-                        <span class="tx-status">Completed</span>
-                    </div>
-                </div>
 
-                <div class="tx-item">
-                    <div class="tx-left">
-                        <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
-                        <div class="tx-details">
-                            <h4>Airdrop Reward</h4>
-                            <p>Activity: <span>Ecosystem Sign-up Bonus</span><br>10 Aug 2026, 11:00 AM</p>
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
+                            <div class="tx-details">
+                                <h4>Sent To: DK-x8M2PqY9bZ</h4>
+                                <p>Purpose: <span>Internal P2P Transfer</span><br>14 Aug 2026, 09:15 AM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount withdraw">
+                            <h4>-20.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
                         </div>
                     </div>
-                    <div class="tx-amount deposit">
-                        <h4>+165.00 ATVT</h4>
-                        <span class="tx-status">Completed</span>
-                    </div>
-                </div>
 
+                    <div class="tx-item">
+                        <div class="tx-left">
+                            <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
+                            <div class="tx-details">
+                                <h4>From: DK Ecosystem System</h4>
+                                <p>Purpose: <span>New Sign-up Airdrop Reward</span><br>10 Aug 2026, 11:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="tx-amount deposit">
+                            <h4>+165.00 ATVT</h4>
+                            <span class="tx-status">Completed</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -555,7 +561,7 @@
                 
                 <h4 style="margin-top: 25px;">My Account</h4>
                 <ul>
-                    <li><a href="wallet.html" style="color: #e6c875;"><i class="fas fa-wallet" style="margin-right:5px;"></i> My Wallet</a></li>
+                    <li><a href="index.html">VIP Dashboard</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
 
@@ -686,6 +692,33 @@
 
     <!-- UI Scripts -->
     <script>
+        // 🔥 TAB SWITCHING LOGIC 🔥
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.wallet-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            
+            // Update menu links
+            document.querySelectorAll('.wallet-menu-link').forEach(link => {
+                link.classList.remove('active');
+                link.style.borderLeft = '3px solid transparent';
+                link.style.color = '#ccc';
+            });
+            
+            const activeLink = document.getElementById('link-' + tabId);
+            if(activeLink) {
+                activeLink.classList.add('active');
+                activeLink.style.borderLeft = '3px solid #e6c875';
+                activeLink.style.color = '#fff';
+            }
+            
+            // Close mobile menu after clicking
+            closeSideMenu();
+        }
+
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
             const titleEl = document.getElementById('customAlertTitle');
@@ -702,7 +735,7 @@
 
         // Dropdown Click-outside closer
         window.onclick = function(event) {
-            if (!event.target.closest('.profile-name-btn')) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
                 var dropdowns = document.querySelectorAll(".topbarDropdown-content");
                 if(dropdowns){
                    dropdowns.forEach(d => d.classList.remove('show'));
@@ -710,7 +743,7 @@
             }
         }
 
-        // PERFECT OVERLAY CLICK FIX
+        // PERFECT OVERLAY CLICK FIX FOR MENU
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -734,9 +767,6 @@
         menuBtn.addEventListener('click', openMenu); 
         closeMenu.addEventListener('click', closeSideMenu); 
         overlay.addEventListener('click', closeSideMenu);
-        document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
-            link.addEventListener('click', closeSideMenu); 
-        });
 
         // App Modal Logic
         const openAppModal = document.getElementById('openAppModal');
@@ -846,8 +876,8 @@
                     <div class="tx-left">
                         <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
                         <div class="tx-details">
-                            <h4>Sent to ${address}</h4>
-                            <p>Activity: <span>${activityType}</span><br>Just Now</p>
+                            <h4>Sent To: ${address}</h4>
+                            <p>Purpose: <span>${activityType}</span><br>Just Now</p>
                         </div>
                     </div>
                     <div class="tx-amount withdraw">
@@ -861,7 +891,7 @@
                 // Reset Fields
                 document.getElementById('dashTransferAmount').value = "";
                 document.getElementById('dashTransferAddress').value = "";
-                document.getElementById('dashSendCryptoPanel').classList.remove('active');
+                switchTab('tab-history'); // Redirect to history tab to show transaction
                 document.getElementById('securityOtpInput').value = "";
             } else {
                 showCustomAlert("Error", "Please enter a valid OTP.", true);
@@ -952,20 +982,50 @@
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
                 document.getElementById('sidebarVipBadge').style.display = 'inline-block';
                 
-                // Show Logout, Hide Login, Show Sidebar Wallet
+                // Show Logout, Hide Login
                 document.getElementById('sidebarLogoutBtn').style.display = 'flex';
                 document.getElementById('sidebarLoginBtn').style.display = 'none';
-                if(document.getElementById('sidebarWalletArea')) document.getElementById('sidebarWalletArea').style.display = 'block';
 
-                // Update Topbar Dropdown Profile Name
-                const topbarProfileName = document.getElementById('topbarProfileName');
-                if(topbarProfileName) topbarProfileName.innerText = userName;
+                // Ensure Top Header Shows Dropdown Properly
+                const headerRightArea = document.getElementById('headerRightArea');
+                if(headerRightArea) {
+                    headerRightArea.innerHTML = `
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
+                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
+                                <span>${userName}</span> <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div id="topbarDropdown" class="topbarDropdown-content">
+                                <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="section-title">Ecosystem Quick Links</div>
+                                <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
+                                <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout Securely</a>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 // Update Dashboard Extended Wallet Address AND QR CODE
                 if(document.getElementById('dashInputDkId')) {
                     document.getElementById('dashInputDkId').value = userDkId;
                     // Dynamically generate QR code for DK-ID
-                    document.getElementById('receiveQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${userDkId}&color=111111&bgcolor=ffffff`;
+                    document.getElementById('receiveQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${userDkId}&color=111111&bgcolor=ffffff`;
                 }
 
                 // Enable Logout Action anywhere it's placed
