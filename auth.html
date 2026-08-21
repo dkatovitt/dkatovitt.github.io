@@ -88,7 +88,7 @@
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
         .guest-prompt { color: #888; font-size: 11px; margin-top: 10px; display: none; }
 
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; overscroll-behavior-y: none; /* Prevents scroll chaining to background */ }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
@@ -109,7 +109,7 @@
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); touch-action: none; /* Stops touch drag on overlay */ }
         #overlay.active { display: block; }
         
         /* AUTH SECTION CSS */
@@ -158,7 +158,7 @@
         .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .explore-item:hover { background: #111; padding-left: 20px; }
         .eco-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; color: #fff; flex-shrink: 0; }
-        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-trading { background: #20c997; } .bg-mart { background: #ffc107; } .bg-eco { background: #e6c875; color: #000; }
+        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-eco { background: #e6c875; color: #000; }
         .eco-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .eco-details .title { font-size: 13px; font-weight: bold; color: #ccc; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
         .eco-details .status { font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 12px; width: fit-content; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
@@ -216,7 +216,7 @@
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 MEGA FOOTER CSS FROM MOVIE PAGE 🔥 */
+        /* 🔥 MEGA FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -352,8 +352,6 @@
                 <div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div>
                 <span class="soon-tag">(Soon)</span>
             </a>
-            
-            <!-- 🔥 NEW 3 PROJECTS ADDED HERE 🔥 -->
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;">
                 <div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div>
                 <span class="soon-tag">(Soon)</span>
@@ -492,8 +490,7 @@
                             <div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    
-                    <!-- 🔥 NEW 3 PROJECTS ADDED HERE 🔥 -->
+                    <!-- 🔥 NEW PROJECTS IN EXPLORE MENU 🔥 -->
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="explore-item">
                         <div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div>
                         <div class="eco-details">
@@ -512,7 +509,6 @@
                             <div class="title">DK Games</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-
                 </div>
 
                 <div class="auth-switch">
@@ -602,8 +598,6 @@
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Blockchain</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div><div class="eco-details"><div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div><div class="eco-details"><div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    
-                    <!-- 🔥 NEW 3 PROJECTS ADDED HERE 🔥 -->
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div><div class="eco-details"><div class="title">DK Connect Messenger</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#00cec9;"><i class="fas fa-comments"></i></div><div class="eco-details"><div class="title">DK Chat</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#d63031;"><i class="fas fa-gamepad"></i></div><div class="eco-details"><div class="title">DK Games</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
@@ -636,6 +630,7 @@
                     <li><a href="auditions.html">Auditions</a></li>
                 </ul>
                 
+                <!-- MY ACCOUNT / VIP PORTAL MOVED HERE TO BALANCE COLUMN -->
                 <h4 style="margin-top: 25px;">My Account</h4>
                 <ul>
                     <li><a href="wallet.html">My Wallet</a></li>
@@ -653,7 +648,7 @@
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching soon!', false)">DK ATVT Blockchain (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                    <!-- 🔥 NEW 3 PROJECTS ADDED HERE 🔥 -->
+                    <!-- 🔥 NEW 3 PROJECTS ADDED IN FOOTER 🔥 -->
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
@@ -807,30 +802,27 @@
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
         const overlay = document.getElementById('overlay'); 
-        const body = document.body;
+        const html = document.documentElement;
         
-        menuBtn.addEventListener('click', () => { 
+        function openMenu() {
             sideMenu.classList.add('active'); 
             overlay.classList.add('active'); 
-            body.style.overflow = 'hidden'; 
-        }); 
-        closeMenu.addEventListener('click', () => { 
+            document.body.style.overflow = 'hidden'; 
+            html.style.overflow = 'hidden'; 
+        }
+
+        function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
-            body.style.overflow = ''; 
-        }); 
+            document.body.style.overflow = ''; 
+            html.style.overflow = ''; 
+        }
         
+        menuBtn.addEventListener('click', openMenu); 
+        closeMenu.addEventListener('click', closeSideMenu); 
+        overlay.addEventListener('click', closeSideMenu);
         document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
-            link.addEventListener('click', () => { 
-                sideMenu.classList.remove('active'); 
-                overlay.classList.remove('active'); 
-                body.style.overflow = ''; 
-            }); 
-        });
-        overlay.addEventListener('click', () => { 
-            sideMenu.classList.remove('active'); 
-            overlay.classList.remove('active'); 
-            body.style.overflow = ''; 
+            link.addEventListener('click', closeSideMenu); 
         });
         
         window.onclick = function(event) {
@@ -948,7 +940,6 @@
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Trading Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Trading Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Blockchain</button>`;
-                // 🔥 NEW 3 PROJECTS ADDED IN CHATBOT 🔥
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
