@@ -13,17 +13,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 🔥 SUPER POWERFUL SEO META TAGS START 🔥 -->
     <title>DK ATOVITT - VIP Dashboard</title>
     <meta name="description" content="Welcome to your DK Atovitt VIP Dashboard. Access DK Film Production, DK Connect (Social), Wallet, and ecosystem features to earn ATVT coins.">
-    <meta name="keywords" content="DK Atovitt, VIP Dashboard, DK Connect, ATVT Coins, Movie Production House, Dipak Kumar Gupta">
-    <meta name="author" content="DK Atovitt Production House">
-    <meta name="robots" content="index, follow">
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#e6c875">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         /* 🔥 DASHBOARD CORE CSS 🔥 */
         body { margin: 0; padding: 0; background-color: #050505; color: #ccc; font-family: Arial, sans-serif; display: flex; height: 100vh; overflow: hidden; }
@@ -31,29 +27,46 @@
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
         /* 🔥 MENU OVERLAY FIX 🔥 */
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        /* 🔥 VIP SIDEBAR 🔥 */
+
+        /* 🔥 VIP SIDEBAR (NEW UNIFIED MENU DESIGN) 🔥 */
         .sidebar { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 1000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
-        .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
+        .sidebar-profile { padding: 10px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; }
         .sidebar-profile img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 5px 15px rgba(230,200,117,0.2); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 17px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .vip-badge { display: inline-block; background: rgba(230,200,117,0.15); color: #e6c875; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
-        .dk-id-badge { display: inline-block; background: #222; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px; cursor: pointer; transition: 0.3s;}
+        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; transition: 0.3s;}
         .dk-id-badge:hover { background: #e6c875; color: #000; }
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
+
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 5px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         .sidebar-menu a { display: flex; align-items: center; padding: 12px 25px; color: #aaa; text-decoration: none; font-size: 14px; transition: 0.3s; border-left: 3px solid transparent; font-weight: bold; }
         .sidebar-menu a i { width: 25px; font-size: 16px; color: #e6c875; }
         .sidebar-menu a:hover, .sidebar-menu a.active { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
+        
+        .menu-dropdown-btn { display: flex; justify-content: space-between; align-items: center; padding: 12px 25px; color: #aaa; font-size: 14px; cursor: pointer; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent; }
+        .menu-dropdown-btn:hover { background: rgba(230,200,117,0.1); color: #fff; border-left: 3px solid #e6c875; }
+        .menu-dropdown-btn span { display: flex; align-items: center; }
+        .dropdown-icon { font-size: 12px; transition: transform 0.3s; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
+        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); border-left: 2px solid #e6c875; margin-left: 25px; margin-bottom: 5px; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        .sub-menu a { padding: 10px 15px; color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; border-left: none; }
+        .sub-menu a:hover { color: #fff; background: transparent; padding-left: 20px; border-left: none; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
-        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin: 10px 25px 5px 25px; font-weight: bold; }
+        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 5px 25px 5px 25px; font-weight: bold; }
         .sidebar-footer { padding: 15px 20px 35px 20px; border-top: 1px solid #222; background: #111; }
-        .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .logout-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; font-size: 15px; width: 100%; }
         .logout-btn:hover { background: #cc0000; }
+
         /* 🔥 MAIN CONTENT AREA 🔥 */
         .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(circle at top right, #1a1a1a 0%, #050505 100%); position: relative; }
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
@@ -64,6 +77,7 @@
         .header-text-container { display: flex; flex-direction: column; justify-content: center; line-height: 1.2; }
         .mobile-header-text-1 { color: #e6c875; font-size: 24px; font-weight: 900; letter-spacing: 1px; margin: 0; }
         .mobile-header-text-2 { color: #fff; font-size: 14px; font-family: 'Playfair Display', serif; margin: 0; }
+        
         .topbar-right { display: flex; align-items: center; gap: 15px; }
         .profile-dropdown-container { position: relative; display: inline-block; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
@@ -76,15 +90,17 @@
         .dropdown-menu a i { color: #e6c875; width: 15px; }
         .dropdown-menu a.drop-logout { border-top: 1px solid #222; }
         .dropdown-menu a.drop-logout i { color: #ff4d4d; }
+
         .dashboard-body { flex: 1; padding: 30px; overflow-y: auto; scroll-behavior: smooth; }
         .dashboard-body::-webkit-scrollbar { width: 6px; }
         .dashboard-body::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+        
         .welcome-banner { background: #111; padding: 30px; border-radius: 12px; border: 1px solid #333; margin-bottom: 20px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .welcome-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #e6c875; }
         .welcome-banner h1 { margin: 0 0 10px 0; color: #fff; font-size: 28px; font-family: 'Playfair Display', serif; }
         .welcome-banner h1 span { color: #e6c875; }
         .welcome-banner p { margin: 0; color: #aaa; font-size: 15px; }
-        /* 🔥 WALLET BANNER CARD 🔥 */
+
         .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border: 1px solid #333; border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         .wallet-left { display: flex; align-items: center; gap: 15px; }
         .wallet-icon-large { width: 55px; height: 55px; background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 24px; box-shadow: 0 0 15px rgba(230,200,117,0.4); border: 2px solid #fff; }
@@ -93,11 +109,10 @@
         .wallet-info h3 span { font-size: 14px; color: #fff; }
         .wallet-action-btn { background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         .wallet-action-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        /* 🔥 DASHBOARD EXTENDED WALLET PANEL CSS 🔥 */
+
         .dashboard-extended-wallet { display: none; background: #111; border: 1px solid #333; border-radius: 12px; padding: 25px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: slideDown 0.3s ease; }
         .dashboard-extended-wallet.active { display: block; }
         .ext-header { color: #e6c875; margin: 0 0 15px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        /* Form & Grid Elements for Dashboard Wallet */
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
         .form-group.full-width { grid-column: span 2; }
@@ -111,7 +126,6 @@
         .balance-badge { float: right; background: rgba(230, 200, 117, 0.1); color: #e6c875; padding: 4px 10px; border-radius: 20px; font-size: 11px; border: 1px solid #e6c875; }
         .input-with-max { position: relative; display: flex; align-items: center; }
         .max-btn { position: absolute; right: 10px; background: #e6c875; color: #000; border: none; font-size: 10px; font-weight: bold; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
-        /* Tx History Elements */
         .tx-history-container { max-height: 280px; overflow-y: auto; padding-right: 5px; }
         .tx-history-container::-webkit-scrollbar { width: 4px; }
         .tx-history-container::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
@@ -129,7 +143,7 @@
         .tx-amount.deposit h4 { color: #25d366; }
         .tx-amount.withdraw h4 { color: #ff4d4d; }
         .tx-status { font-size: 10px; background: rgba(230, 200, 117, 0.1); padding: 3px 8px; border-radius: 4px; color: #e6c875; font-weight: bold; letter-spacing: 0.5px; border: 1px solid rgba(230, 200, 117, 0.3); }
-        /* 🔥 OTP MODAL CSS 🔥 */
+
         .otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .otp-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .otp-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 15px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
@@ -140,9 +154,11 @@
         .otp-desc span { color: #fff; font-weight: bold; }
         .otp-input { width: 100%; padding: 15px; background: #222; border: 1px solid #444; color: #e6c875; border-radius: 8px; font-size: 20px; text-align: center; letter-spacing: 10px; font-weight: bold; margin-bottom: 20px; outline: none; box-sizing: border-box; transition: 0.3s;}
         .otp-input:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
-        .otp-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .otp-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border: none; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .otp-btn:hover { background: #d4b561; transform: scale(1.02); }
+
         .section-title { color: #e6c875; font-size: 20px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 10px; font-weight: bold; }
+
         .business-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 25px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
         .business-card:hover { transform: translateY(-5px); border-color: #e6c875; box-shadow: 0 10px 25px rgba(230,200,117,0.15); background: #161616; }
@@ -152,16 +168,18 @@
         .card-desc { color: #888; font-size: 12px; line-height: 1.5; margin: 0; z-index: 2; }
         .card-badge { position: absolute; top: 12px; right: -30px; background: #ff4d4d; color: #fff; font-size: 9px; font-weight: bold; padding: 4px 30px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .card-badge.live { background: #25d366; }
-        /* 🔥 FLOATING BUTTONS CSS 🔥 */
+
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
         .chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
         .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
-        /* 🔥 MODALS CSS 🔥 */
+
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -169,6 +187,7 @@
         .app-modal-close:hover { color: #fff; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
+
         .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
@@ -180,7 +199,7 @@
         .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
-        /* 🔥 FOOTER CSS 🔥 */
+
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 40px -30px -30px -30px; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
@@ -194,6 +213,7 @@
         .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         @media (max-width: 768px) {
             .sidebar { position: fixed; left: -280px; }
@@ -223,42 +243,76 @@
     </style>
 </head>
 <body>
+
     <!-- 🔥 OVERLAY FOR MENU CLICK FIX 🔥 -->
     <div id="overlay"></div>
+
     <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
-    <!-- 🔥 VIP SIDEBAR MENU 🔥 -->
+
+    <!-- 🔥 VIP SIDEBAR MENU (UNIFIED DESIGN FOR ALL PAGES) 🔥 -->
     <div class="sidebar" id="sidebar">
-        <div style="padding: 20px 20px 0 20px; background: #1a1a1a;">
-            <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; outline: none; cursor: pointer; text-align: center; margin-bottom: 15px;">
-                <option value="" style="background: #111;">🌐 Select Language</option>
-                <option value="hi" style="background: #111;">हिन्दी (Hindi)</option>
-                <option value="en" style="background: #111;">English</option>
-                <option value="bn" style="background: #111;">বাংলা (Bengali)</option>
-            </select>
+        
+        <!-- Select Language (Gold Pill Design) -->
+        <div style="padding: 20px 20px 10px 20px; background: #1a1a1a;">
+            <div style="border: 1px solid #e6c875; border-radius: 30px; padding: 8px 15px; display: flex; align-items: center; gap: 10px; position: relative;">
+                <i class="fas fa-globe" style="color: #e6c875;"></i>
+                <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)" style="background: transparent; color: #e6c875; border: none; outline: none; width: 100%; font-weight: bold; font-size: 13px; cursor: pointer; appearance: none;">
+                    <option value="" style="background:#111; color:#fff;">Select Language</option>
+                    <option value="hi" style="background:#111; color:#fff;">हिन्दी (Hindi)</option>
+                    <option value="en" style="background:#111; color:#fff;">English</option>
+                    <option value="bn" style="background:#111; color:#fff;">বাংলা (Bengali)</option>
+                    <option value="mr" style="background:#111; color:#fff;">मराठी (Marathi)</option>
+                    <option value="te" style="background:#111; color:#fff;">తెలుగు (Telugu)</option>
+                    <option value="ta" style="background:#111; color:#fff;">தமிழ் (Tamil)</option>
+                    <option value="gu" style="background:#111; color:#fff;">ગુજરાતી (Gujarati)</option>
+                </select>
+                <i class="fas fa-chevron-down" style="color: #e6c875; position: absolute; right: 15px; pointer-events: none; font-size: 12px;"></i>
+            </div>
         </div>
-        <div class="sidebar-profile">
-            <!-- Sidebar photo will also be updated via Firebase JS -->
+
+        <!-- Dynamic Profile Area (Handled by JS) -->
+        <div class="sidebar-profile" id="sidebarProfileArea">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
-            <h3 id="sidebarProfileName" title="VIP Member">VIP Member</h3>
-            <span class="vip-badge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
-            <!-- 🔥 DK ID IN SIDEBAR 🔥 -->
-            <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i> DK-..........</span>
+            <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
+            <span class="vip-badge" id="sidebarVipBadge"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+            <span class="dk-id-badge" id="sidebarDkId" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i> Login to get DK-ID</span>
         </div>
+        
         <div class="sidebar-menu">
+            <a href="movie.html#home"><i class="fas fa-home"></i> Home</a>
+            
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSubDash')">
+                <span style="display:flex; align-items:center;"><i class="fas fa-info-circle" style="width:25px; color:#e6c875; font-size:16px;"></i> About Us</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="aboutIconDash"></i>
+            </a>
+            <div class="sub-menu" id="aboutSubDash">
+                <a href="ceo.html">CEO</a>
+                <a href="company.html">Company</a>
+            </div>
+
             <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
-            <a href="movie.html?v=fresh"><i class="fas fa-film"></i> DK Film Production</a>
+
+            <a href="movie.html"><i class="fas fa-film"></i> DK Film Production</a>
             <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
-            <a href="#" style="opacity: 0.5;"><i class="fas fa-globe"></i> DK Browser (Soon)</a>
-            <a href="#" style="opacity: 0.5;"><i class="fas fa-chart-line"></i> DK Trading Exchange (Soon)</a>
-            <a href="#" style="opacity: 0.5;"><i class="fas fa-shopping-cart"></i> DK Mart (Soon)</a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-globe" style="color: #777;"></i> DK Browser (Soon)</a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-chart-line" style="color: #777;"></i> DK Trading Exchange (Soon)</a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon')" style="color: #888;"><i class="fas fa-shopping-cart" style="color: #777;"></i> DK Mart (Soon)</a>
             <a href="ecosystem.html"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
+
+            <div class="menu-divider"></div>
+
+            <a href="news.html"><i class="fas fa-newspaper"></i> News</a>
+            <a href="contact.html"><i class="fas fa-phone-alt"></i> Contact Us</a>
         </div>
-        <div class="sidebar-footer">
-            <a href="javascript:void(0)" class="logout-btn logout-action"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        
+        <div class="sidebar-footer" id="sidebarFooterArea">
+            <button class="logout-btn logout-action" id="sidebarLogoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            <button class="logout-btn" id="sidebarLoginBtn" onclick="window.location.href='auth.html'" style="background: transparent; border: 1px solid #e6c875; color: #e6c875;"><i class="fas fa-user-circle"></i> Login / Sign Up</button>
         </div>
     </div>
+
     <!-- 🔥 MAIN CONTENT -->
     <div class="main-content">
         <div class="topbar">
@@ -273,6 +327,7 @@
                     </div>
                 </a>
             </div>
+
             <div class="topbar-right">
                 <!-- 🔥 SMART DROPDOWN PROFILE MENU (NAME + ARROW) 🔥 -->
                 <div class="profile-dropdown-container">
@@ -280,6 +335,7 @@
                         <span id="topbarProfileName">VIP</span>
                         <i class="fas fa-caret-down"></i>
                     </div>
+                    
                     <div class="dropdown-menu" id="profileDropdown">
                         <a href="profile-edit.html"><i class="fas fa-user-edit"></i> Edit Profile</a>
                         <a href="javascript:void(0)" class="logout-action drop-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -287,11 +343,13 @@
                 </div>
             </div>
         </div>
+
         <div class="dashboard-body">
             <div class="welcome-banner">
                 <h1>Welcome back, <span id="welcomeNameText">VIP</span> 👋</h1>
                 <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
             </div>
+
             <!-- 🔥 WALLET DISPLAY SECTION 🔥 -->
             <div class="wallet-banner">
                 <div class="wallet-left">
@@ -303,8 +361,10 @@
                 </div>
                 <button class="wallet-action-btn" onclick="toggleDashboardWallet()" id="dashWalletBtn"><i class="fas fa-wallet"></i> Open Wallet</button>
             </div>
+
             <!-- 🔥 DASHBOARD EXTENDED WALLET (ADDRESS, SEND, HISTORY) 🔥 -->
             <div class="dashboard-extended-wallet" id="dashboardWalletExtended">
+                
                 <!-- 1. RECEIVE & DK ID -->
                 <h4 class="ext-header"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
                 <div class="form-group full-width" style="background: rgba(230,200,117,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(230,200,117,0.3); margin-bottom: 25px;">
@@ -315,18 +375,21 @@
                     </div>
                     <p style="color: #aaa; font-size: 11px; margin: 10px 0 0 0;">Crypto Address: <span>0x... (Update in Edit Profile)</span></p>
                 </div>
+
                 <!-- 2. SEND / TRANSFER ATVT -->
                 <div class="form-group full-width">
                     <button type="button" class="send-toggle-btn" onclick="document.getElementById('dashSendCryptoPanel').classList.toggle('active')">
                         <i class="fas fa-paper-plane"></i> Send / Transfer ATVT
                     </button>
                 </div>
+
                 <!-- SEND PANEL HIDDEN FORM -->
                 <div class="send-crypto-panel" id="dashSendCryptoPanel">
                     <h4 style="color: #e6c875; margin: 0 0 20px 0; font-size: 16px; border-bottom: 1px solid #333; padding-bottom: 10px;">
                         <i class="fas fa-exchange-alt"></i> Transfer ATVT
                         <span class="balance-badge">Available: 150.00 ATVT</span>
                     </h4>
+                    
                     <div class="form-grid" style="gap: 15px;">
                         <div class="form-group">
                             <label>Network</label>
@@ -354,9 +417,11 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- 3. TRANSACTION HISTORY (LEDGER) -->
                 <h4 class="ext-header" style="margin-top: 25px;"><i class="fas fa-history"></i> Recent Transactions</h4>
                 <div class="tx-history-container" id="dashTxHistoryContainer">
+                    
                     <div class="tx-item">
                         <div class="tx-left">
                             <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
@@ -370,6 +435,7 @@
                             <span class="tx-status">Completed</span>
                         </div>
                     </div>
+
                     <div class="tx-item">
                         <div class="tx-left">
                             <div class="tx-icon withdraw"><i class="fas fa-arrow-up"></i></div>
@@ -383,6 +449,7 @@
                             <span class="tx-status">Completed</span>
                         </div>
                     </div>
+
                     <div class="tx-item">
                         <div class="tx-left">
                             <div class="tx-icon deposit"><i class="fas fa-arrow-down"></i></div>
@@ -396,47 +463,58 @@
                             <span class="tx-status">Completed</span>
                         </div>
                     </div>
+
                 </div>
             </div>
+
             <h2 class="section-title">Our Ecosystem</h2>
+
             <div class="business-grid">
-                <a href="movie.html?v=fresh" class="business-card">
+                
+                <a href="movie.html" class="business-card">
                     <div class="card-badge live">Live</div>
                     <div class="card-icon"><i class="fas fa-film"></i></div>
                     <h3 class="card-title">DK Film Production</h3>
                     <p class="card-desc">Explore movies, trailers, auditions, and the official production house.</p>
                 </a>
+
                 <a href="social.html" class="business-card">
                     <div class="card-badge live">Live</div>
                     <div class="card-icon"><i class="fas fa-users"></i></div>
                     <h3 class="card-title">DK Connect</h3>
                     <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins.</p>
                 </a>
+
                 <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-globe"></i></div>
                     <h3 class="card-title">DK Browser</h3>
                     <p class="card-desc">Fast, secure, and decentralized web browsing experience built for the ecosystem.</p>
                 </a>
+
                 <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="card-title">DK Trading Exchange</h3>
                     <p class="card-desc">Advanced crypto and ATVT asset trading platform with zero-fee options.</p>
                 </a>
+
                 <a href="#" class="business-card" style="opacity: 0.7; cursor: not-allowed;">
                     <div class="card-badge">Soon</div>
                     <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
                     <h3 class="card-title">DK Mart</h3>
                     <p class="card-desc">Exclusive merchandise and brand shopping with ATVT payments.</p>
                 </a>
+
                 <a href="ecosystem.html" class="business-card">
                     <div class="card-badge live">Live</div>
                     <div class="card-icon"><i class="fas fa-network-wired"></i></div>
                     <h3 class="card-title">DK Ecosystem</h3>
                     <p class="card-desc">Business partnerships, Kalpamrit wellness, and earning plans.</p>
                 </a>
+
             </div>
+
             <!-- 🔥 FULL MEGA FOOTER INSIDE DASHBOARD 🔥 -->
             <footer class="tseries-footer" id="contact-footer">
                 <div class="tseries-footer-container">
@@ -500,10 +578,12 @@
             </footer>
         </div>
     </div>
+
     <!-- 🔥 FLOATING BUTTONS (WhatsApp, Bot, Install) 🔥 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
     <button class="floating-install-btn" id="openAppModal" title="Install Official App" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
+
     <!-- 🔥 APP INSTALL MODAL 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
@@ -517,6 +597,7 @@
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
+
     <!-- 🔥 CHATBOT MODAL 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
@@ -533,6 +614,7 @@
             <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
         </div>
     </div>
+
     <!-- 🔥 OTP SECURITY MODAL (For Crypto Send) 🔥 -->
     <div id="otpModalOverlay" class="otp-modal-overlay">
         <div class="otp-modal-box">
@@ -540,10 +622,13 @@
             <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
             <h3 class="otp-title" id="otpModalTitle">Confirm Transfer</h3>
             <p class="otp-desc" id="otpModalDesc">To secure your account, an OTP has been sent to your registered <span>Email & WhatsApp</span>. Please enter it below.</p>
+            
             <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
+            
             <button type="button" class="otp-btn" onclick="verifyDashOtpAndProceed()"><i class="fas fa-check-circle"></i> Verify & Proceed</button>
         </div>
     </div>
+
     <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
         // Dropdown Click-outside closer
@@ -558,34 +643,60 @@
                 }
             }
         }
+
         // PERFECT OVERLAY CLICK FIX
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
+        
         menuToggle.addEventListener('click', () => {
             sidebar.classList.add('active');
             overlay.classList.add('active');
         });
+
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
         });
+        
+        // UNIFIED SUB-MENU TOGGLE FUNCTION
+        function toggleSubMenu(id) {
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('SubDash', 'IconDash').replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
         // App Modal Logic
         const openAppModal = document.getElementById('openAppModal');
         const appModalOverlay = document.getElementById('appModalOverlay');
         const closeAppModal = document.getElementById('closeAppModal');
+
         if(openAppModal && appModalOverlay) {
             openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); });
             closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); });
             appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) appModalOverlay.classList.remove('active'); });
         }
+
         // Chatbot Logic
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
+
         if(chatbotToggler) chatbotToggler.addEventListener('click', () => chatbotContainer.classList.toggle('active'));
         if(closeChatbot) closeChatbot.addEventListener('click', () => chatbotContainer.classList.remove('active'));
+
         function sendChat(type) {
             let userText = ""; let botReply = "";
             if(type === 'Audition') {
@@ -604,6 +715,7 @@
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }, 600);
         }
+
         // 🔥 DASHBOARD WALLET TOGGLE & LOGIC 🔥
         function toggleDashboardWallet() {
             const extWallet = document.getElementById('dashboardWalletExtended');
@@ -619,36 +731,44 @@
                 btn.style.color = '#e6c875';
             }
         }
+
         function copyDashDkId() {
             var copyText = document.getElementById("dashInputDkId");
             navigator.clipboard.writeText(copyText.value);
             alert("DK ID Copied: " + copyText.value);
         }
+
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
             navigator.clipboard.writeText(copyText);
             alert("DK ID Copied: " + copyText);
         }
+
         function initiateDashCryptoTransfer() {
             let address = document.getElementById('dashTransferAddress').value;
             let amount = document.getElementById('dashTransferAmount').value;
+            
             if(address === "" || amount === "" || amount <= 0) {
                 alert("Please enter a valid amount and recipient address or DK ID.");
                 return;
             }
+            
             document.getElementById('otpModalDesc').innerHTML = `You are sending <span>${amount} ATVT</span>. Enter OTP sent to your Email/WhatsApp to confirm.`;
             document.getElementById('otpModalOverlay').classList.add('active');
         }
+
         function verifyDashOtpAndProceed() {
             let otp = document.getElementById('securityOtpInput').value;
-            if(otp.length >= 4) { // Dummy verify
+            if(otp.length >= 4) { 
                 document.getElementById('otpModalOverlay').classList.remove('active');
                 alert("Transfer Successful! Transaction ID generated. ✅");
+                
                 // Add Live History
                 let amount = document.getElementById('dashTransferAmount').value;
                 let address = document.getElementById('dashTransferAddress').value;
                 let network = document.getElementById('dashTransferNetwork').value;
                 let activityType = network === "INTERNAL" ? "Internal Transfer" : "Crypto Withdrawal";
+
                 let newTxHTML = `
                 <div class="tx-item" style="border-color: #e6c875; background: rgba(230,200,117,0.05);">
                     <div class="tx-left">
@@ -663,7 +783,9 @@
                         <span class="tx-status">Completed</span>
                     </div>
                 </div>`;
+                
                 document.getElementById('dashTxHistoryContainer').insertAdjacentHTML('afterbegin', newTxHTML);
+
                 // Reset Fields
                 document.getElementById('dashTransferAmount').value = "";
                 document.getElementById('dashTransferAddress').value = "";
@@ -673,6 +795,7 @@
                 alert("Please enter a valid OTP.");
             }
         }
+
         // 🔥 IMPROVED TRANSLATE ENGINE LOGIC 🔥
         window.translatePage = function(lang) {
             var domainStr = window.location.hostname.replace(/^www\./i, '');
@@ -685,12 +808,14 @@
             }
             window.location.reload(); 
         };
+
         const langSidebar = document.getElementById('lang-sidebar');
         if(langSidebar) {
             langSidebar.addEventListener('change', function() {
                 window.translatePage(this.value);
             });
         }
+        
         window.addEventListener('load', function() {
             setTimeout(function() {
                 var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
@@ -703,6 +828,7 @@
             }, 1000);
         });
     </script>
+    
     <!-- 🔥 FIXED GOOGLE TRANSLATE SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
@@ -714,10 +840,12 @@
         }
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
             authDomain: "dk-atovitt.firebaseapp.com",
@@ -726,14 +854,17 @@
             messagingSenderId: "234274941441",
             appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
         };
+
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 // Fetch User Name and Photo
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0]; // Only first name
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
                 // 🔥 GENERATE 10-CHARACTER MIXED CASE DK ID 🔥
                 let uidSnippet = "";
                 if (user.uid) {
@@ -743,18 +874,26 @@
                     for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
                 }
                 let userDkId = "DK-" + uidSnippet;
+
                 // Update Sidebar Profile
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                
+                // Show Logout, Hide Login
+                document.getElementById('sidebarLogoutBtn').style.display = 'flex';
+                document.getElementById('sidebarLoginBtn').style.display = 'none';
+
                 // Update Topbar Dropdown Profile Name
                 document.getElementById('topbarProfileName').innerText = userName;
                 // Update Welcome Banner Name
                 document.getElementById('welcomeNameText').innerText = userName;
+
                 // Update Dashboard Extended Wallet Address
                 if(document.getElementById('dashInputDkId')) {
                     document.getElementById('dashInputDkId').value = userDkId;
                 }
+
                 // Enable Logout Action anywhere it's placed
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.addEventListener('click', () => {
