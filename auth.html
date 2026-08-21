@@ -21,7 +21,7 @@
 
     <title>Login / Sign Up - DK Atovitt Official Member Portal</title>
     <meta name="description" content="Create your free talent account or log in to the DK Atovitt Ecosystem. Submit your acting and singing audition portfolio directly to our casting directors.">
-    <meta name="theme-color" content="#e6c875">
+    <meta name="theme-color" content="#111">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -38,8 +38,8 @@
         .desktop-logo-sub { font-size: 13px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
         
-        .home-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 8px 16px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 6px !important; }
-        .home-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
+        .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 6px 15px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 8px !important; }
+        .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
         
         @media (max-width: 768px) {
@@ -49,8 +49,7 @@
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
             #menuBtn { font-size: 22px !important; }
-            .home-btn-header { width: 35px !important; height: 35px !important; padding: 0 !important; justify-content: center !important; border-radius: 50% !important; }
-            .home-btn-header i { font-size: 16px !important; margin: 0 !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
         }
@@ -60,14 +59,14 @@
         .side-menu.active { left: 0; }
         
         /* Language Dropdown Box */
-        .custom-translate-box { padding: 25px 20px 15px 20px; background: #111; }
-        .translate-inner { border: 1px solid #e6c875; border-radius: 30px; padding: 10px 15px; display: flex; align-items: center; gap: 10px; position: relative; }
-        .translate-inner select { width: 100%; background: transparent; color: #e6c875; border: none; outline: none; font-weight: bold; font-size: 13px; cursor: pointer; appearance: none; padding-left: 20px; }
-        .translate-inner select option { background: #111; color: #fff; font-weight: normal; }
+        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         /* Profile Area */
-        .sidebar-profile { padding: 10px 20px 25px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 0px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -76,9 +75,11 @@
         .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
 
-        /* 🔥 NEW LOGIN BUTTON IN PROFILE AREA 🔥 */
-        .profile-login-btn { background: rgba(230,200,117,0.1); border: 1px solid #e6c875; color: #e6c875; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; box-shadow: 0 4px 10px rgba(230,200,117,0.15); }
-        .profile-login-btn:hover { background: #e6c875; color: #000; }
+        /* 🔥 PREMIUM SOLID GOLD LOGIN BUTTON 🔥 */
+        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
+        .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
+        
+        .guest-prompt { color: #888; font-size: 11px; margin-top: 10px; display: none; }
 
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
@@ -86,22 +87,14 @@
         
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 20px 10px 20px; font-weight: bold; }
         
-        .sidebar-menu a.normal-link { display: flex; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; }
-        .sidebar-menu a.normal-link i { width: 30px; font-size: 16px; color: #e6c875; }
+        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; }
+        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
+        .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
-        .menu-dropdown-btn { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; font-size: 14px; cursor: pointer; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent; }
-        .menu-dropdown-btn:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
-        .menu-dropdown-btn span { display: flex; align-items: center; }
-        .menu-dropdown-btn i.fa-info-circle { width: 30px; font-size: 16px; color: #e6c875; }
-        
-        .dropdown-icon { font-size: 12px; transition: transform 0.3s; color: #aaa; }
-        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
-        
-        .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-left: 2px solid #e6c875; margin-left: 25px; margin-bottom: 5px; }
-        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { padding: 10px 15px; color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; }
-        .sub-menu a:hover { color: #fff; padding-left: 20px; }
+        /* 🔥 LIVE BADGE CSS 🔥 */
+        .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
+        .soon-tag { color: #666; font-size: 10px; }
         
         .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
 
@@ -109,7 +102,7 @@
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; }
         
         /* Base page CSS */
@@ -196,27 +189,25 @@
         .chat-opt-btn:hover { background: #e6c875; color: #000; }
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* 🔥 FLOATING BUTTONS CSS 🔥 */
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
+        .chatbot-toggler:hover { transform: scale(1.1); }
+        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
             .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
-
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
-        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
-        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
-        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
-        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
-        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -225,7 +216,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="movie.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -233,8 +224,11 @@
                     </div>
                 </a>
             </div>
-            <div class="header-icons">
-                <a href="movie.html" class="home-btn-header"><i class="fas fa-home"></i> <span class="hide-on-mobile">Home</span></a>
+            <!-- 🔥 TOP RIGHT HEADER (LOGIN BUTTON) 🔥 -->
+            <div class="header-icons" id="headerRightArea">
+                <a href="auth.html" class="login-btn-header">
+                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login</span>
+                </a>
             </div>
         </div>
     </header>
@@ -244,22 +238,18 @@
     <!-- 🔥 VIP SIDE MENU EXACTLY LIKE SCREENSHOT 🔥 -->
     <div class="side-menu" id="sideMenu">
         
-        <!-- Language Select Box -->
-        <div class="custom-translate-box">
-            <div class="translate-inner">
-                <i class="fas fa-globe" style="color: #e6c875;"></i>
-                <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)">
-                    <option value="">Select Language</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                    <option value="en">English</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                    <option value="mr">मराठी (Marathi)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                    <option value="ta">தமிழ் (Tamil)</option>
-                    <option value="gu">ગુજરાती (Gujarati)</option>
-                </select>
-                <i class="fas fa-chevron-down" style="position: absolute; right: 15px; color: #e6c875; pointer-events: none;"></i>
-            </div>
+        <!-- Language Select Box (Exactly like Movie page) -->
+        <div class="custom-translate" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
+                <option value="">🌐 Select Language</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="en">English</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
+            </select>
         </div>
 
         <!-- Dynamic Profile Area -->
@@ -271,33 +261,48 @@
             <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
             <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
             
-            <!-- 🔥 NEW LOGIN BUTTON IN PROFILE AREA 🔥 -->
-            <div id="guestLoginPrompt" style="margin-top: 15px;">
-                <a href="auth.html" class="profile-login-btn">
-                    <i class="fas fa-user-circle" style="font-size: 16px;"></i> Login / Sign Up
-                </a>
-            </div>
+            <!-- 🔥 PREMIUM LOGIN BUTTON IN PROFILE AREA 🔥 -->
+            <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn">
+                <i class="fas fa-user-circle"></i> Login / Sign Up
+            </a>
         </div>
         
         <!-- Sidebar Navigation Items -->
         <div class="sidebar-menu">
             
-            <!-- ECOSYSTEM SECTION (FLAT LIST AS IN SCREENSHOT) -->
+            <!-- ECOSYSTEM SECTION (FLAT LIST WITH LIVE TAGS) -->
             <div class="menu-heading">Explore Ecosystem</div>
-            <a href="movie.html" class="normal-link"><i class="fas fa-film"></i> DK Film Production</a>
-            <a href="social.html" class="normal-link"><i class="fas fa-users"></i> DK Connect (Social)</a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><i class="fas fa-globe" style="color: #666;"></i> DK Browser (Soon)</a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Trading is launching soon!', false)" class="normal-link" style="color: #888;"><i class="fas fa-chart-line" style="color: #666;"></i> DK Trading (Soon)</a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart (Soon)</a>
-            <a href="ecosystem.html" class="normal-link"><i class="fas fa-network-wired"></i> DK Ecosystem</a>
+            <a href="movie.html" class="normal-link">
+                <div class="link-text"><i class="fas fa-film"></i> DK Film Production</div>
+                <span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
+            </a>
+            <a href="social.html" class="normal-link">
+                <div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div>
+                <span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Trading is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Trading</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+            <a href="ecosystem.html" class="normal-link">
+                <div class="link-text"><i class="fas fa-network-wired"></i> DK Ecosystem</div>
+            </a>
 
             <div class="menu-divider"></div>
 
-            <!-- OTHER LINKS (NO HOME, NO ABOUT US DROPDOWN) -->
-            <a href="ceo.html" class="normal-link"><i class="fas fa-user-tie"></i> CEO</a>
-            <a href="company.html" class="normal-link"><i class="fas fa-building"></i> Company</a>
-            <a href="news.html" class="normal-link"><i class="fas fa-newspaper"></i> News</a>
-            <a href="contact.html" class="normal-link"><i class="fas fa-phone-alt"></i> Contact Us</a>
+            <!-- OTHER LINKS -->
+            <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+            <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+            <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+            <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
         </div>
         
         <!-- Sidebar Bottom Footer Buttons -->
@@ -360,6 +365,38 @@
                     <button type="button" class="social-btn facebook-btn facebookAuthBtn">
                         <i class="fab fa-facebook-f" style="font-size: 16px;"></i> Facebook
                     </button>
+                </div>
+
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON 🔥 -->
+                <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                    <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
+                </button>
+                
+                <div class="explore-menu">
+                    <a href="movie.html" class="explore-item">
+                        <div class="eco-icon bg-movie"><i class="fas fa-film"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="social.html" class="explore-item">
+                        <div class="eco-icon bg-connect"><i class="fas fa-users"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="ecosystem.html" class="explore-item">
+                        <div class="eco-icon bg-eco"><i class="fas fa-network-wired"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Ecosystem</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="auth-switch">
@@ -442,61 +479,7 @@
         </div>
     </section>
 
-    <footer class="tseries-footer" id="contact">
-        <div class="tseries-footer-container">
-            <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate">DK ATOVITT</h3>
-                <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="movie.html#home">Home</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
-                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Join Us</h4>
-                <ul>
-                    <li><a href="auth.html" id="footerAuthBtn">Login / Signup</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="ceo.html">About CEO</a></li>
-                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Legal & Help</h4>
-                <ul>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="notice.html">Public Notice</a></li>
-                    <li><a href="faq.html">Help / FAQs</a></li>
-                </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Connect With Us</h4>
-                <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="tseries-footer-bottom">
-            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <!-- 🔥 3 FLOATING BUTTONS 🔥 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
     <button class="floating-install-btn" id="openAppModal" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
@@ -580,6 +563,17 @@
                 document.title = "Login / Sign Up - DK Atovitt Official Portal";
             }
         }
+        
+        function toggleExploreMenu(btn) {
+            const menu = btn.nextElementSibling;
+            const icon = btn.querySelector('.fa-chevron-down');
+            menu.classList.toggle('active');
+            if(menu.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
 
         function sendWelcomeMessage(user) {
             var userEmail = user.email || user.phoneNumber || "No Email Provided";
@@ -600,19 +594,44 @@
             }
         }
 
-        // Menu Toggle Scripts
+        // Script to handle Menu Open/Close & Scroll Lock
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
         const overlay = document.getElementById('overlay'); 
+        const body = document.body;
         
-        menuBtn.addEventListener('click', () => { sideMenu.classList.add('active'); overlay.classList.add('active'); }); 
-        closeMenu.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+        menuBtn.addEventListener('click', () => { 
+            sideMenu.classList.add('active'); 
+            overlay.classList.add('active'); 
+            body.style.overflow = 'hidden'; 
+        }); 
+        closeMenu.addEventListener('click', () => { 
+            sideMenu.classList.remove('active'); 
+            overlay.classList.remove('active'); 
+            body.style.overflow = ''; 
+        }); 
         
         document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
-            link.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); }); 
+            link.addEventListener('click', () => { 
+                sideMenu.classList.remove('active'); 
+                overlay.classList.remove('active'); 
+                body.style.overflow = ''; 
+            }); 
         });
-        overlay.addEventListener('click', () => { sideMenu.classList.remove('active'); overlay.classList.remove('active'); });
+        overlay.addEventListener('click', () => { 
+            sideMenu.classList.remove('active'); 
+            overlay.classList.remove('active'); 
+            body.style.overflow = ''; 
+        });
+        
+        // Header Dropdown Click Fix
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll("#topbarDropdown");
+                dropdowns.forEach(d => d.classList.remove('show'));
+            }
+        }
         
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
@@ -632,30 +651,6 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
-        
-        document.addEventListener("DOMContentLoaded", function() {
-            let currentPage = window.location.pathname.split("/").pop();
-            if (currentPage === "" || currentPage === "/") currentPage = "auth.html";
-
-            let menuLinks = document.querySelectorAll('.side-menu a.normal-link');
-            menuLinks.forEach(link => {
-                let href = link.getAttribute('href');
-                if(!href) return;
-                let isMatch = false;
-                if (currentPage === "auth.html") {
-                    if (href === "auth.html#home" || href === "auth.html") isMatch = true;
-                } else {
-                    if (href === currentPage) isMatch = true;
-                }
-                if (isMatch) {
-                    link.style.color = '#e6c875'; 
-                    link.style.fontWeight = 'bold';
-                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
-                    link.style.borderLeft = '4px solid #e6c875'; 
-                    link.style.paddingLeft = '25px'; 
-                }
-            });
-        });
 
         window.translatePage = function(lang) {
             var domainStr = window.location.hostname.replace(/^www\./i, '');
@@ -743,6 +738,7 @@
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
                 let fullName = user.displayName || "VIP Member";
+                let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
                 let uidSnippet = user.uid ? user.uid.substring(0, 10) : "..........";
@@ -759,6 +755,23 @@
                 // Change Sidebar Footer to Logout
                 document.getElementById('sidebarFooterArea').style.display = 'block';
                 document.getElementById('sidebarLogoutBtn').style.display = 'flex';
+                document.getElementById('sidebarLoginBtn').style.display = 'none';
+
+                // Update Top Right Header
+                const headerRightArea = document.getElementById('headerRightArea');
+                if(headerRightArea) {
+                    headerRightArea.innerHTML = `
+                        <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
+                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
+                                <span>${userName}</span> <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div id="topbarDropdown" style="display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; border-radius: 8px; border: 1px solid #333; z-index: 10000; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); overflow: hidden;">
+                                <a href="index.html" style="color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; border-bottom: 1px solid #222; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#ccc';"><i class="fas fa-home" style="color: #e6c875; width:16px;"></i> Home Page</a>
+                                <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a';" onmouseout="this.style.background='transparent';"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout</a>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 // Hide Main Auth Form and Show Already Logged In message
                 document.getElementById('loginForm').classList.remove('active');
@@ -776,14 +789,10 @@
                         <h2 style="color: #e6c875; margin-bottom: 10px; font-family: 'Playfair Display', serif; text-transform: uppercase;">Already Logged In</h2>
                         <p style="color: #aaa; margin-bottom: 25px; font-size: 14px;">You are currently logged in. Please logout first to sign in with a different account.</p>
                         <button id="goHomeBtn" class="auth-btn" style="margin-bottom: 15px;"><i class="fas fa-tachometer-alt"></i> Go to Dashboard</button>
-                        <button id="logoutAuthBtn" class="auth-btn" style="background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
+                        <button id="logoutAuthBtn" class="auth-btn logout-action" style="background: transparent; border: 1px solid #ff4d4d; color: #ff4d4d;"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
                     `;
                     authBox.appendChild(div);
-
                     document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
-                    document.getElementById('logoutAuthBtn').addEventListener('click', () => {
-                        auth.signOut().then(() => window.location.reload());
-                    });
                 }
                 
                 document.querySelectorAll('.logout-action').forEach(btn => {
@@ -803,6 +812,7 @@
 
                 document.getElementById('sidebarFooterArea').style.display = 'none';
                 document.getElementById('sidebarLogoutBtn').style.display = 'none';
+                document.getElementById('sidebarLoginBtn').style.display = 'inline-flex';
             }
         });
 
