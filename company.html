@@ -67,14 +67,15 @@
     
     <style>
         /* 🔥 100% LOCKED FIXED HEADER CSS 🔥 */
-        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 9999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
+        .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 99999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
         #menuBtn, .header-icons button { position: static !important; transform: none !important; left: auto !important; margin: 0 !important; padding: 0 !important; }
         
         .desktop-logo-img { height: 75px !important; width: auto !important; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; } 
         .desktop-logo-text { font-size: 28px !important; color: #e6c875 !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; font-weight: 900 !important; line-height: 1.1 !important; }
-        .desktop-logo-sub { font-size: 12px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; }
+        .desktop-logo-sub { font-size: 10px !important; color: #aaa !important; letter-spacing: 1.5px !important; text-transform: uppercase !important; margin: 0 !important; white-space: nowrap; }
+        
         #menuBtn { font-size: 28px !important; cursor: pointer; color: #fff; background: none; border: none; }
         
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 6px 15px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 8px !important; }
@@ -87,7 +88,7 @@
             .header-left { gap: 8px !important; }
             .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
-            .desktop-logo-sub { font-size: 9px !important; letter-spacing: 0px !important; display: block !important; }
+            .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
             #menuBtn { font-size: 22px !important; }
             .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
             .hide-on-mobile { display: none !important; }
@@ -95,7 +96,7 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
@@ -141,11 +142,11 @@
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); touch-action: none; }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
         /* 🔥 TOP RIGHT DROPDOWN 🔥 */
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 10000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
         .topbarDropdown-content.show { display: block; }
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
@@ -198,8 +199,8 @@
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; margin-top: 10px; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
         .tseries-footer-col ul li { margin-bottom: 12px; }
@@ -238,11 +239,16 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* VIP CHATBOT CSS */
+        /* 🔥 VIP CHATBOT CSS WITH HEADER VIDEO LOGO 🔥 */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 16px; letter-spacing: 0.5px; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
+        .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
+        
+        .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+        .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
+
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
@@ -283,11 +289,11 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
-                        <p class="desktop-logo-sub notranslate">Official Movie Production House</p>
+                        <p class="desktop-logo-sub notranslate">Global Tech & Entertainment Empire</p>
                     </div>
                 </a>
             </div>
@@ -303,7 +309,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -327,7 +333,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -447,14 +453,14 @@
         </div>
     </section>
 
-    <!-- 🔥 MASTER MEGA FOOTER 🔥 -->
+    <!-- 🔥 MASTER MEGA FOOTER MATCHED WITH BALANCED VIEW 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate">DK ATOVITT</h3>
+                <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875;">DK ATOVITT</h3>
                 <p>A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
+            
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
                 <ul>
@@ -472,26 +478,32 @@
                     <li><a href="wallet.html">My Wallet</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
-            </div>
-            <div class="tseries-footer-col">
-                <h4>Ecosystem & Join</h4>
+
+                <!-- 🔥 MOVED LIVE PROJECTS HERE FOR PERFECT BALANCE 🔥 -->
+                <h4 style="margin-top: 25px;">Live Ecosystem</h4>
                 <ul>
-                    <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film (Live)</a></li>
-                    <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect (Live)</a></li>
-                    
+                    <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
+                    <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
+                </ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <h4>Upcoming Projects</h4>
+                <ul>
+                    <!-- 🔥 ONLY SOON PROJECTS REMAIN HERE 🔥 -->
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)">DK Exchange (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
-
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)">DK Digital Ads (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)">DK GPS Tracker (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)">DK Connect Messenger (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)">DK Chat (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)">DK Games (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
                 </ul>
             </div>
+            
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
@@ -501,6 +513,7 @@
                     <li><a href="news.html">News & Updates</a></li>
                 </ul>
             </div>
+            
             <div class="tseries-footer-col">
                 <h4>Legal & Help</h4>
                 <ul>
@@ -510,6 +523,7 @@
                     <li><a href="faq.html">Help / FAQs</a></li>
                 </ul>
             </div>
+            
             <div class="tseries-footer-col">
                 <h4>Connect With Us</h4>
                 <div class="footer-social-row">
@@ -527,18 +541,19 @@
         </div>
     </footer>
 
-    <!-- 🔥 MASTER FLOATING BUTTONS 🔥 -->
+    <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
     <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
-    <!-- APK MODAL -->
+    <!-- APK DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
             <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
+            <!-- 🔥 MODAL TAGLINE UPDATED 🔥 -->
+            <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
@@ -556,14 +571,19 @@
         </div>
     </div>
 
-    <!-- VIP CHATBOT MODAL -->
+    <!-- 🔥 VIP CHATBOT MODAL WITH VIDEO LOGO IN HEADER 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
-            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
+            <div class="chatbot-header-left">
+                <div class="chat-header-video-wrap">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div>DK ATOVITT AI</div>
+            </div>
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+            <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
             <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
@@ -766,7 +786,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE LOGIC FOR NON-AUTH PAGES (CLEAN & BUG-FREE) 🔥 -->
+    <!-- FIREBASE LOGIC -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -786,14 +806,12 @@
 
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
-                
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
                 let uidSnippet = user.uid ? user.uid.substring(0, 10) : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
-                // 1. UPDATE SIDE MENU PROFILE
                 const profileNameEl = document.getElementById('sidebarProfileName');
                 const profileImgEl = document.getElementById('sidebarProfileImg');
                 const dkIdEl = document.getElementById('sidebarDkId');
@@ -813,7 +831,6 @@
                 if(logoutBtnEl) logoutBtnEl.style.display = 'flex';
                 if(footerAreaEl) footerAreaEl.style.display = 'block';
 
-                // 2. UPDATE TOP RIGHT HEADER AREA WITH VIP DROPDOWN
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -826,10 +843,9 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
-                        
                         <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
                             <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
                                 <span>${userName}</span> <i class="fas fa-caret-down"></i>
@@ -848,7 +864,6 @@
                     `;
                 }
                 
-                // Add Logout Event Listeners safely
                 setTimeout(() => {
                     document.querySelectorAll('.logout-action').forEach(btn => {
                         btn.addEventListener('click', () => {
@@ -860,7 +875,6 @@
                 }, 500);
 
             } else {
-                // NOT LOGGED IN - KEEP DEFAULT HEADER
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -873,7 +887,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
