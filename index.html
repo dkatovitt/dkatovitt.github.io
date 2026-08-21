@@ -31,12 +31,14 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
+        /* 🔥 OVERLAY FOR MENU BUG FIX 🔥 */
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none;}
         #overlay.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* 🔥 VIP UNIVERSAL SIDEBAR MENU 🔥 */
-        .side-menu { width: 280px; background: #111; height: 100dvh; border-right: 1px solid #e6c875; display: flex; flex-direction: column; transition: 0.3s; z-index: 100000; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; border-right: 1px solid #e6c875; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        .side-menu.active { left: 0; }
         
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
@@ -44,7 +46,7 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -79,7 +81,7 @@
         /* HEADER BAR */
         .topbar { padding: 15px 30px; background: rgba(17, 17, 17, 0.95); border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; z-index: 100;}
         .topbar-left { display: flex; align-items: center; gap: 15px; }
-        .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+        .menu-toggle { display: flex; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; align-items: center; justify-content: center; padding: 0; }
         .header-logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; cursor: default; }
         .header-video-logo { height: 60px; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center; }
         .header-text-container { display: flex; flex-direction: column; justify-content: center; line-height: 1.2; }
@@ -180,7 +182,6 @@
         /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 40px -30px -30px -30px; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
@@ -204,12 +205,13 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS & DASHBOARD LAYOUT 🔥 */
+        /* 🔥 MOBILE VIEW OVERRIDES 🔥 */
+        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         @media (max-width: 768px) {
-            .side-menu { position: fixed; left: -300px; }
+            .side-menu { left: -300px; }
             .side-menu.active { left: 0; }
-            .menu-toggle { display: block; }
             .dashboard-body { padding: 15px; }
             .tseries-footer { margin: 40px -15px -15px -15px; }
             .welcome-banner h1 { font-size: 22px; }
@@ -226,7 +228,6 @@
             .form-group.full-width { grid-column: span 1; }
             .dashboard-extended-wallet { padding: 15px; }
             .tx-details h4 { max-width: 140px; }
-            .close-menu-btn { display: block; }
 
             /* EXACT CEO.HTML SIZES RESTORED FOR MOBILE (50px) */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
@@ -283,7 +284,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -294,9 +294,10 @@
     <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 VIP SIDEBAR MENU (UNIFIED MASTER BLUEPRINT) 🔥 -->
+    <!-- 🔥 VIP SIDEBAR MENU (NEW UNIFIED DESIGN WITH WALLET) 🔥 -->
     <div class="side-menu" id="sideMenu">
         
+        <!-- Language Select Box -->
         <div class="custom-translate">
             <select id="lang-sidebar" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
@@ -310,6 +311,7 @@
             </select>
         </div>
 
+        <!-- Dynamic Profile Area -->
         <div class="sidebar-profile" id="sidebarProfileArea">
             <button class="close-menu-btn" id="closeMenu">&times;</button>
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
@@ -319,6 +321,15 @@
         </div>
         
         <div class="sidebar-menu">
+            
+            <!-- 🔥 WALLET SECTION IN MENU (NEW FEATURE) 🔥 -->
+            <div id="sidebarWalletArea" style="display: none; background: #1a1a1a; margin: 0 20px 20px 20px; border-radius: 12px; border: 1px solid #333; padding: 15px; text-align: center; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: #e6c875;"></div>
+                <p style="color: #888; font-size: 11px; text-transform: uppercase; margin: 0 0 5px 0; letter-spacing: 1px; font-weight: bold;"><i class="fas fa-wallet"></i> My Wallet</p>
+                <h4 style="color: #e6c875; font-size: 24px; margin: 0 0 12px 0; font-weight: 900;">150.00 <span style="font-size: 12px; color: #fff;">ATVT</span></h4>
+                <a href="javascript:void(0)" onclick="toggleDashboardWallet(); closeSideMenu();" style="display: inline-block; background: #e6c875; color: #000; padding: 8px 20px; border-radius: 20px; font-size: 12px; font-weight: 900; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 10px rgba(230,200,117,0.3);"><i class="fas fa-external-link-alt"></i> Manage Wallet</a>
+            </div>
+
             <div class="menu-heading">Explore Ecosystem</div>
             <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
@@ -354,7 +365,7 @@
         <div class="topbar">
             <!-- 🔥 HEADER VIDEO LOGO & TEXT 🔥 -->
             <div class="topbar-left">
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+                <button class="menu-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
                 <a href="javascript:void(0)" class="header-logo-link">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="header-video-logo"></video>
                     <div class="header-text-container">
@@ -625,18 +636,6 @@
         </div>
     </div>
 
-    <!-- 🔥 CUSTOM ALERT MODAL (BUG FIXED) 🔥 -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-            </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
-        </div>
-    </div>
-
     <!-- 🔥 CHATBOT MODAL 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
@@ -649,13 +648,13 @@
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+            <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
+            <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
+            <button class="chat-opt-btn" onclick="sendChat('Upcoming')"><i class="fas fa-clock" style="color:#e6c875;"></i> Upcoming</button>
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Auditions</button>
+            <button class="chat-opt-btn" onclick="sendChat('Support')">📞 Support</button>
         </div>
     </div>
 
@@ -666,14 +665,27 @@
             <i class="fas fa-shield-check" style="font-size: 45px; color: #e6c875; margin-bottom: 15px;"></i>
             <h3 class="otp-title" id="otpModalTitle">Confirm Transfer</h3>
             <p class="otp-desc" id="otpModalDesc">To secure your account, an OTP has been sent to your registered <span>Email & WhatsApp</span>. Please enter it below.</p>
+            
             <input type="number" id="securityOtpInput" class="otp-input" placeholder="0 0 0 0 0 0">
+            
             <button type="button" class="otp-btn" onclick="verifyDashOtpAndProceed()"><i class="fas fa-check-circle"></i> Verify & Proceed</button>
+        </div>
+    </div>
+
+    <!-- 🔥 CUSTOM ALERT MODAL (BUG FIXED) 🔥 -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
         </div>
     </div>
 
     <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
-        // Custom Alert System
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
             const titleEl = document.getElementById('customAlertTitle');
@@ -702,31 +714,26 @@
         }
 
         // PERFECT OVERLAY CLICK FIX
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const sideMenuLinks = document.querySelectorAll('.sidebar-menu a.normal-link');
+        const menuBtn = document.getElementById('menuBtn'); 
+        const sideMenu = document.getElementById('sideMenu'); 
+        const closeMenu = document.getElementById('closeMenu'); 
+        const overlay = document.getElementById('overlay'); 
         
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.add('active');
-            overlay.classList.add('active');
-        });
+        function openMenu() {
+            if(sideMenu) sideMenu.classList.add('active'); 
+            if(overlay) overlay.classList.add('active'); 
+        }
 
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        document.getElementById('closeMenu').addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        sideMenuLinks.forEach(link => { 
-            link.addEventListener('click', () => { 
-                sidebar.classList.remove('active'); 
-                overlay.classList.remove('active'); 
-            }); 
+        function closeSideMenu() { 
+            if(sideMenu) sideMenu.classList.remove('active'); 
+            if(overlay) overlay.classList.remove('active'); 
+        }
+        
+        if(menuBtn) menuBtn.addEventListener('click', openMenu); 
+        if(closeMenu) closeMenu.addEventListener('click', closeSideMenu); 
+        if(overlay) overlay.addEventListener('click', closeSideMenu);
+        document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
+            link.addEventListener('click', closeSideMenu); 
         });
 
         // App Modal Logic
@@ -751,15 +758,34 @@
 
         function sendChat(type) {
             let userText = ""; let botReply = "";
-            if(type === 'Audition') {
-                userText = "मुझे Audition के बारे में जानना है।"; botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
-            } else if(type === 'Movies') {
-                userText = "आने वाली Movies कौन सी हैं?"; botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
-            } else if(type === 'Contact') {
-                userText = "मुझे DK Sir से बात करनी है।"; botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
-            } else if(type === 'Join') {
-                userText = "Ecosystem कैसे Join करूँ?"; botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+
+            if(type === 'Live') {
+                userText = "What's LIVE right now?";
+                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+            } 
+            else if(type === 'Upcoming') {
+                userText = "Upcoming projects कौन से हैं?";
+                botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
+                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
+            else if(type === 'Audition') {
+                userText = "मुझे Audition देना है।";
+                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
+            } 
+            else if(type === 'Support') {
+                userText = "मुझे Help / Support चाहिए।";
+                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
+            }
+
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
             
@@ -941,9 +967,10 @@
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
                 document.getElementById('sidebarVipBadge').style.display = 'inline-block';
                 
-                // Show Logout, Hide Login
+                // Show Logout, Hide Login, Show Sidebar Wallet
                 document.getElementById('sidebarLogoutBtn').style.display = 'flex';
                 document.getElementById('sidebarLoginBtn').style.display = 'none';
+                if(document.getElementById('sidebarWalletArea')) document.getElementById('sidebarWalletArea').style.display = 'block';
 
                 // Update Topbar Dropdown Profile Name
                 document.getElementById('topbarProfileName').innerText = userName;
