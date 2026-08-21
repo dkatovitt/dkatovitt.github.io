@@ -62,19 +62,16 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 10000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        /* Language Dropdown Box */
         .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        /* Google Translate specific fixes */
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* Profile Area */
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .close-menu-btn:hover { color: #e6c875; }
@@ -100,7 +97,6 @@
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
         
-        /* 🔥 LIVE BADGE CSS 🔥 */
         .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .soon-tag { color: #666; font-size: 10px; }
         
@@ -113,7 +109,7 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; backdrop-filter: blur(2px); }
         #overlay.active { display: block; }
         
-        /* Base page CSS */
+        /* AUTH SECTION CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .auth-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px 20px; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; position: relative; }
         .auth-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.85); z-index: 1; }
@@ -159,7 +155,7 @@
         .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .explore-item:hover { background: #111; padding-left: 20px; }
         .eco-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; color: #fff; flex-shrink: 0; }
-        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-trading { background: #20c997; } .bg-mart { background: #ffc107; } .bg-eco { background: #e6c875; color: #000; }
+        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-eco { background: #e6c875; color: #000; }
         .eco-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .eco-details .title { font-size: 13px; font-weight: bold; color: #ccc; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
         .eco-details .status { font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 12px; width: fit-content; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
@@ -217,7 +213,7 @@
         .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 MEGA FOOTER CSS FROM MOVIE PAGE 🔥 */
+        /* 🔥 MEGA FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -339,6 +335,21 @@
                 <div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div>
                 <span class="soon-tag">(Soon)</span>
             </a>
+            
+            <!-- 🔥 NEW COMING SOON PROJECTS IN SIDE MENU 🔥 -->
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Blockchain</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)" class="normal-link" style="color: #888;">
+                <div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div>
+                <span class="soon-tag">(Soon)</span>
+            </a>
+
             <a href="ecosystem.html" class="normal-link">
                 <div class="link-text"><i class="fas fa-network-wired"></i> DK Ecosystem</div>
             </a>
@@ -414,7 +425,7 @@
                     </button>
                 </div>
 
-                <!-- EXPLORE DROPDOWN BUTTON -->
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON (LOGIN PAGE) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -442,6 +453,25 @@
                         <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+                    <!-- 🔥 NEW PROJECTS IN EXPLORE MENU 🔥 -->
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK ATVT Blockchain</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
                 </div>
@@ -519,7 +549,7 @@
                     </button>
                 </div>
 
-                <!-- 🔥 EXPLORE DROPDOWN BUTTON (ADDED IN SIGNUP) 🔥 -->
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON (SIGNUP PAGE) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -529,6 +559,9 @@
                     <a href="social.html" class="explore-item"><div class="eco-icon bg-connect"><i class="fas fa-users"></i></div><div class="eco-details"><div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     <a href="ecosystem.html" class="explore-item"><div class="eco-icon bg-eco"><i class="fas fa-network-wired"></i></div><div class="eco-details"><div class="title">DK Ecosystem</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item"><div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div><div class="eco-details"><div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Blockchain</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div><div class="eco-details"><div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div><div class="eco-details"><div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                 </div>
 
                 <div class="auth-switch">
@@ -564,6 +597,10 @@
                     <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film (Live)</a></li>
                     <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect (Live)</a></li>
                     <li><a href="ecosystem.html">DK Ecosystem</a></li>
+                    <!-- 🔥 NEW PROJECTS IN FOOTER 🔥 -->
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching soon!', false)">DK ATVT Blockchain (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
                     <li><a href="wallet.html">My Wallet</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
@@ -742,7 +779,6 @@
             body.style.overflow = ''; 
         });
         
-        // Header Dropdown Click Fix
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
                 var dropdowns = document.querySelectorAll("#topbarDropdown");
@@ -781,25 +817,16 @@
         reveal(); 
 
         window.translatePage = function(lang) {
+            var domainStr = window.location.hostname.replace(/^www\./i, '');
             if (lang === "") {
-                var d = window.location.hostname;
-                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
-                domains.forEach(function(domain) {
-                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
-                });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                window.location.reload(); return;
-            }
-            var googleSelect = document.querySelector('select.goog-te-combo');
-            if (googleSelect) {
-                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
             } else {
-                var domainStr = window.location.hostname.replace(/^www\./i, '');
                 document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
-                window.location.reload();
             }
-        }
+            window.location.reload(); 
+        };
         
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -813,7 +840,7 @@
             }, 1000);
         });
         
-        // 🔥 APK MODAL LOGIC FIXED 🔥
+        // APP MODAL LOGIC
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
@@ -833,7 +860,7 @@
             }
         });
 
-        // 🔥 VIP CHATBOT LOGIC 🔥
+        // VIP CHATBOT LOGIC
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -857,6 +884,7 @@
                 botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Trading Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Trading Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Blockchain is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Blockchain</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -924,7 +952,6 @@
                 let uidSnippet = user.uid ? user.uid.substring(0, 10) : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
-                // Update Sidebar Profile Display for Logged-In User
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
@@ -933,7 +960,6 @@
                 document.getElementById('guestLoginPrompt').style.display = 'none';
                 document.getElementById('sidebarLoginBtn').style.display = 'none';
 
-                // Update Top Right Header
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -949,7 +975,6 @@
                     `;
                 }
 
-                // Hide Main Auth Form and Show Already Logged In message
                 document.getElementById('loginForm').classList.remove('active');
                 document.getElementById('registerForm').classList.remove('active');
                 
@@ -979,7 +1004,6 @@
                     });
                 });
             } else {
-                // Not Logged In State (Guest)
                 document.getElementById('sidebarProfileName').innerText = "Guest User";
                 document.getElementById('sidebarProfileImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 document.getElementById('sidebarDkId').style.display = 'none';
