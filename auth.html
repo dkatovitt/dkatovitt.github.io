@@ -259,10 +259,10 @@
         
         /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
         .referral-input-wrapper { position: relative; margin-bottom: 20px; }
-        .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
+        .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1.5px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
         .referral-input-wrapper input:focus { border-style: solid; box-shadow: 0 0 10px rgba(230, 200, 117, 0.3); }
         .referral-input-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #e6c875; font-size: 16px; }
-        .referrer-name-display { font-size: 12px; color: #25d366; font-weight: bold; margin-top: 6px; display: none; align-items: center; gap: 5px; }
+        .referrer-name-display { font-size: 13px; color: #25d366; font-weight: bold; margin-top: 8px; display: none; align-items: center; gap: 6px; padding-left: 5px; }
     </style>
 </head>
 <body>
@@ -304,7 +304,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -1072,7 +1072,7 @@
             }
         });
 
-        // 🔥 LIVE REFERRAL NAME CHECKER FUNCTION 🔥
+        // 🔥 LIVE REFERRAL NAME CHECKER FUNCTION (UPDATED WITH ERROR DISPLAY) 🔥
         window.checkReferralName = async function(refId) {
             const displayBox = document.getElementById('referrerNameDisplay');
             const nameText = document.getElementById('refNameText');
@@ -1089,7 +1089,7 @@
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
-                    // Agar DK ID valid hai aur database me mil gayi
+                    // Agar DK ID valid hai और database me mil गयी
                     querySnapshot.forEach((doc) => {
                         const referrerData = doc.data();
                         nameText.innerText = referrerData.name || "DK Member";
@@ -1098,13 +1098,17 @@
                         displayBox.innerHTML = `<i class="fas fa-user-check"></i> Referred by: <span id="refNameText">${referrerData.name || "DK Member"}</span>`;
                     });
                 } else {
-                    // Agar invalid DK ID daali
+                    // Agar invalid DK ID daali या वो ID अभी बनी ही नहीं है
                     displayBox.style.display = 'flex';
                     displayBox.style.color = '#ff4d4d'; // Red color for error
-                    displayBox.innerHTML = `<i class="fas fa-times-circle"></i> Invalid DK ID`;
+                    displayBox.innerHTML = `<i class="fas fa-times-circle"></i> Invalid DK ID (Not Found)`;
                 }
             } catch (error) {
+                // Agar Firestore Rules block कर रहे हैं
                 console.error("Error checking referral: ", error);
+                displayBox.style.display = 'flex';
+                displayBox.style.color = '#ff4d4d'; // Red color for error
+                displayBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Database Rule Error!`;
             }
         };
 
