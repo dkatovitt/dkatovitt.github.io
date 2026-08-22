@@ -46,6 +46,19 @@
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
         
+        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
+
         @media (max-width: 768px) {
             .header { height: 70px !important; }
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
@@ -57,6 +70,10 @@
             .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
+            
+            /* Profile name button fix for mobile */
+            .profile-dropdown-container { max-width: 120px; }
+            .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
@@ -69,11 +86,11 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none;}
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         
         .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
@@ -104,18 +121,6 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
-        /* 🔥 TOP RIGHT DROPDOWN 🔥 */
-        .profile-dropdown-container { position: relative; display: inline-block; }
-        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
-        .profile-name-btn:hover { background: #e6c875; color: #000; }
-        
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
-        .topbarDropdown-content.show { display: block; }
-        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
-        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
-        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
-        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
-
         /* 🌟 WALLET PAGE CSS & TABS 🌟 */
         .wallet-section { padding: 130px 20px 60px 20px; max-width: 900px; margin: 0 auto; min-height: 70vh; }
         .page-title { color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
@@ -124,6 +129,10 @@
         .wallet-tab { display: none; animation: fadeInForm 0.4s ease; }
         .wallet-tab.active { display: block; }
         @keyframes fadeInForm { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 🔥 BACK BUTTON FIX 🔥 */
+        .back-nav-btn { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: bold; margin-bottom: 25px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .back-nav-btn:hover { background: #e6c875; color: #000; box-shadow: 0 4px 10px rgba(230,200,117,0.3); transform: translateX(-5px); }
 
         .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 35px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
         .wallet-left { display: flex; align-items: center; gap: 20px; }
@@ -138,7 +147,7 @@
         .action-btn.primary { background: #e6c875; color: #000; }
         .action-btn.primary:hover { background: #d4b561; }
 
-        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .dashboard-extended-wallet { background: #111; border: 1px solid #333; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .ext-header { color: #e6c875; margin: 0 0 20px 0; font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
         
         /* 🔥 QR CODE & RECEIVE SECTION 🔥 */
@@ -183,7 +192,7 @@
         .tx-status { font-size: 10px; background: rgba(230, 200, 117, 0.1); padding: 4px 8px; border-radius: 4px; color: #e6c875; font-weight: bold; letter-spacing: 0.5px; border: 1px solid rgba(230, 200, 117, 0.3); }
 
         .otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .otp-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .otp-modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
         .otp-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 15px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
         .otp-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
         .otp-modal-close:hover { color: #fff; }
@@ -195,8 +204,8 @@
         .otp-btn { width: 100%; background: #e6c875; color: #000; padding: 14px; border: none; border-radius: 30px; font-weight: 900; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .otp-btn:hover { background: #d4b561; transform: scale(1.02); }
 
-        /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
+        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; margin: 20px -30px -30px -30px; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
@@ -239,6 +248,7 @@
             .form-group.full-width { grid-column: span 1; }
             .dashboard-extended-wallet { padding: 20px 15px; }
             .tx-details h4 { max-width: 140px; }
+            .close-menu-btn { display: block; }
             
             .qr-image-wrapper img { width: 140px; height: 140px; }
             .scan-btn { padding: 0 15px; font-size: 18px; width: 50px; }
@@ -248,6 +258,7 @@
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
             .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
+            .tseries-footer { margin: 40px -15px -15px -15px; }
         }
 
         /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
@@ -298,7 +309,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -330,9 +340,12 @@
                         <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
-                <a href="auth.html" class="login-btn-header">
-                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
-                </a>
+                <!-- PROFILE MENU (WILL BE REPLACED BY FIREBASE) -->
+                <div class="profile-dropdown-container" id="loginHeaderWrapper">
+                    <a href="auth.html" class="login-btn-header">
+                        <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -424,6 +437,9 @@
 
         <!-- 🔥 TAB 2: SEND ATVT 🔥 -->
         <div id="tab-send" class="wallet-tab">
+            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
+            <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
+            
             <div class="dashboard-extended-wallet">
                 <h4 class="ext-header"><i class="fas fa-paper-plane"></i> Send / Transfer ATVT <span class="balance-badge" style="margin-left: auto;">Available: 150.00 ATVT</span></h4>
                 
@@ -461,6 +477,9 @@
 
         <!-- 🔥 TAB 3: RECEIVE ATVT 🔥 -->
         <div id="tab-receive" class="wallet-tab">
+            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
+            <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
+            
             <div class="dashboard-extended-wallet">
                 <h4 class="ext-header"><i class="fas fa-qrcode"></i> Receive ATVT</h4>
                 
@@ -485,6 +504,9 @@
 
         <!-- 🔥 TAB 4: TRANSACTION HISTORY 🔥 -->
         <div id="tab-history" class="wallet-tab">
+            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
+            <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
+            
             <div class="dashboard-extended-wallet">
                 <h4 class="ext-header"><i class="fas fa-history"></i> Full Transaction Ledger</h4>
                 
@@ -735,7 +757,7 @@
 
         // Dropdown Click-outside closer
         window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+            if (!event.target.closest('.profile-name-btn')) {
                 var dropdowns = document.querySelectorAll(".topbarDropdown-content");
                 if(dropdowns){
                    dropdowns.forEach(d => d.classList.remove('show'));
@@ -1004,7 +1026,7 @@
                         </div>
                         
                         <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
-                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
+                            <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
                                 <span>${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
