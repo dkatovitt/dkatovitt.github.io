@@ -256,6 +256,13 @@
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
+        .referral-input-wrapper { position: relative; margin-bottom: 20px; }
+        .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
+        .referral-input-wrapper input:focus { border-style: solid; box-shadow: 0 0 10px rgba(230, 200, 117, 0.3); }
+        .referral-input-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #e6c875; font-size: 16px; }
+        .referrer-name-display { font-size: 12px; color: #25d366; font-weight: bold; margin-top: 6px; display: none; align-items: center; gap: 5px; }
     </style>
 </head>
 <body>
@@ -297,7 +304,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -538,6 +545,19 @@
                 </div>
                 
                 <form id="smart-signup-form">
+                    
+                    <!-- 🔥 NEW REFERRAL ID FIELD 🔥 -->
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Referral DK ID <span style="color: #888; font-weight: normal; text-transform: none;">(Optional)</span></label>
+                        <div class="referral-input-wrapper">
+                            <i class="fas fa-link"></i>
+                            <input type="text" id="signupReferralId" placeholder="e.g. DK-A1B2C3D4E5" oninput="checkReferralName(this.value)">
+                            <div id="referrerNameDisplay" class="referrer-name-display">
+                                <i class="fas fa-user-check"></i> Referred by: <span id="refNameText">...</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label>Email Address or Mobile Number</label>
                         <input type="text" id="signupSmartInput" placeholder="Enter Email or Mobile No.">
@@ -1015,6 +1035,9 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        
+        // 🔥 IMPORT FIRESTORE FOR REFERRAL SYSTEM 🔥
+        import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -1028,18 +1051,86 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app); // INITIALIZE FIRESTORE
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        onAuthStateChanged(auth, (user) => {
+        // 🔥 URL SE REFERRAL ID AUTO-FILL KARNE KA SCRIPT 🔥
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const refIdFromUrl = urlParams.get('ref');
+            
+            if (refIdFromUrl) {
+                const refInput = document.getElementById('signupReferralId');
+                if (refInput) {
+                    refInput.value = refIdFromUrl.toUpperCase();
+                    // ID dalte hi Signup form open kar do
+                    toggleAuth('register');
+                    // Database me check karo aur naam show karo
+                    window.checkReferralName(refIdFromUrl.toUpperCase());
+                }
+            }
+        });
+
+        // 🔥 LIVE REFERRAL NAME CHECKER FUNCTION 🔥
+        window.checkReferralName = async function(refId) {
+            const displayBox = document.getElementById('referrerNameDisplay');
+            const nameText = document.getElementById('refNameText');
+            
+            if (!refId || refId.length < 5) {
+                displayBox.style.display = 'none';
+                return;
+            }
+
+            try {
+                // Find user by DK ID in 'users' collection
+                const usersRef = collection(db, "users");
+                const q = query(usersRef, where("dk_id", "==", refId.toUpperCase()));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    // Agar DK ID valid hai aur database me mil gayi
+                    querySnapshot.forEach((doc) => {
+                        const referrerData = doc.data();
+                        nameText.innerText = referrerData.name || "DK Member";
+                        displayBox.style.display = 'flex';
+                        displayBox.style.color = '#25d366'; // Green color for success
+                        displayBox.innerHTML = `<i class="fas fa-user-check"></i> Referred by: <span id="refNameText">${referrerData.name || "DK Member"}</span>`;
+                    });
+                } else {
+                    // Agar invalid DK ID daali
+                    displayBox.style.display = 'flex';
+                    displayBox.style.color = '#ff4d4d'; // Red color for error
+                    displayBox.innerHTML = `<i class="fas fa-times-circle"></i> Invalid DK ID`;
+                }
+            } catch (error) {
+                console.error("Error checking referral: ", error);
+            }
+        };
+
+        onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
-                let uidSnippet = user.uid ? user.uid.substring(0, 10) : "..........";
+                // 🔥 DK ID GENERATION & SAVING TO DATABASE 🔥
+                let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
+
+                // User ka data Database me Save/Update karo taaki Referral me show ho sake
+                try {
+                    await setDoc(doc(db, "users", user.uid), {
+                        uid: user.uid,
+                        name: fullName,
+                        email: user.email || "N/A",
+                        phone: user.phoneNumber || "N/A",
+                        photo: userPhoto,
+                        dk_id: userDkId,
+                        lastLogin: new Date().toISOString()
+                    }, { merge: true });
+                } catch (e) { console.log("DB Save Error:", e); }
 
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
@@ -1115,7 +1206,27 @@
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithPopup(auth, googleProvider).then((result) => {
+                
+                // 🔥 CAPTURE REFERRAL ID BEFORE GOOGLE LOGIN 🔥
+                const refId = document.getElementById('signupReferralId') ? document.getElementById('signupReferralId').value.toUpperCase() : null;
+
+                signInWithPopup(auth, googleProvider).then(async (result) => {
+                    
+                    // SAVE USER TO DB ALONG WITH REFERRAL ID IF PROVIDED
+                    let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
+                    let userDkId = "DK-" + uidSnippet;
+                    try {
+                        await setDoc(doc(db, "users", result.user.uid), {
+                            uid: result.user.uid,
+                            name: result.user.displayName || "Google User",
+                            email: result.user.email || "N/A",
+                            photo: result.user.photoURL,
+                            dk_id: userDkId,
+                            referred_by: refId || "None", // 🔥 SAVING REFERRAL ID HERE
+                            lastLogin: new Date().toISOString()
+                        }, { merge: true });
+                    } catch (e) {}
+
                     sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Google Login Successful!", false);
                     setTimeout(() => { window.location.href = "index.html"; }, 1500);
@@ -1127,7 +1238,26 @@
             btn.addEventListener('click', () => {
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
-                signInWithPopup(auth, facebookProvider).then((result) => {
+                
+                // 🔥 CAPTURE REFERRAL ID BEFORE FB LOGIN 🔥
+                const refId = document.getElementById('signupReferralId') ? document.getElementById('signupReferralId').value.toUpperCase() : null;
+
+                signInWithPopup(auth, facebookProvider).then(async (result) => {
+                    
+                    let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
+                    let userDkId = "DK-" + uidSnippet;
+                    try {
+                        await setDoc(doc(db, "users", result.user.uid), {
+                            uid: result.user.uid,
+                            name: result.user.displayName || "Facebook User",
+                            email: result.user.email || "N/A",
+                            photo: result.user.photoURL,
+                            dk_id: userDkId,
+                            referred_by: refId || "None", // 🔥 SAVING REFERRAL ID HERE
+                            lastLogin: new Date().toISOString()
+                        }, { merge: true });
+                    } catch (e) {}
+
                     sendWelcomeMessage(result.user);
                     showCustomAlert("Welcome!", "Facebook Login Successful!", false);
                     setTimeout(() => { window.location.href = "index.html"; }, 1500); 
@@ -1250,6 +1380,7 @@
             }
         });
 
+        // 🔥 EMAIL SIGNUP SUBMIT 🔥
         document.getElementById('smart-signup-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             if(isSignupMobile) return; 
@@ -1258,6 +1389,7 @@
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
             const agreeTerms = document.getElementById('agreeTerms').checked;
+            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
 
             if (!name || !password || !confirmPassword) { showCustomAlert('Error', 'Please fill in all details!', true); return; }
             if (!agreeTerms) { showCustomAlert('Error', 'You must agree to Terms & Conditions!', true); return; }
@@ -1268,32 +1400,72 @@
             try {
                 const userCred = await createUserWithEmailAndPassword(auth, email, password);
                 await updateProfile(userCred.user, { displayName: name });
+                
+                // 🔥 SAVE TO DB WITH REFERRAL INFO 🔥
+                let uidSnippet = userCred.user.uid.substring(0, 10).toUpperCase();
+                let userDkId = "DK-" + uidSnippet;
+                await setDoc(doc(db, "users", userCred.user.uid), {
+                    uid: userCred.user.uid,
+                    name: name,
+                    email: email,
+                    phone: "N/A",
+                    dk_id: userDkId,
+                    referred_by: refId, // Save refer ID
+                    signupDate: new Date().toISOString()
+                });
+
                 await sendEmailVerification(userCred.user);
                 showCustomAlert("Account Created!", "A verification link has been sent to your email.", false);
                 await auth.signOut(); document.getElementById('smart-signup-form').reset(); signupSubmitEmailBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now'; toggleAuth('login');
             } catch (error) { showCustomAlert("Sign Up Failed", error.message.replace('Firebase: ', ''), true); signupSubmitEmailBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now'; }
         });
 
+        // 🔥 MOBILE OTP SEND 🔥
         signupSendOtpBtn.addEventListener('click', () => {
-            const val = signupInput.value; const name = document.getElementById('signupName').value; const agreeTerms = document.getElementById('agreeTerms').checked;
+            const val = signupInput.value; 
+            const name = document.getElementById('signupName').value; 
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            
             if(!name) { showCustomAlert("Error", "Please enter your Name", true); return; }
             if(!agreeTerms) { showCustomAlert("Error", "Please agree to Terms", true); return; }
+            
             signupSendOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending OTP...';
             if(!window.recaptchaVerifierSignup) { window.recaptchaVerifierSignup = new RecaptchaVerifier(auth, 'recaptcha-container-signup', { 'size': 'invisible' }); }
+            
             signInWithPhoneNumber(auth, val, window.recaptchaVerifierSignup).then((result) => {
                 signupConfirmationResult = result; signupSendOtpBtn.style.display = 'none'; signupOtpField.style.display = 'block'; signupVerifyOtpBtn.style.display = 'block';
                 showCustomAlert("OTP Sent!", "Please check your phone for the 6-digit OTP.", false);
             }).catch((err) => { showCustomAlert("Error", err.message, true); signupSendOtpBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send OTP'; });
         });
 
+        // 🔥 MOBILE OTP VERIFY & SIGNUP 🔥
         signupVerifyOtpBtn.addEventListener('click', () => {
-            const code = document.getElementById('signupOtpInput').value; const name = document.getElementById('signupName').value;
+            const code = document.getElementById('signupOtpInput').value; 
+            const name = document.getElementById('signupName').value;
+            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
+            
             if(!code) { showCustomAlert("Error", "Please enter OTP", true); return; }
+            
             signupVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
-            signupConfirmationResult.confirm(code).then((result) => {
-                updateProfile(result.user, { displayName: name }).then(() => {
-                    sendWelcomeMessage(result.user); showCustomAlert("Welcome!", "Account Created!", false); setTimeout(() => { window.location.href = "index.html"; }, 1500);
-                });
+            signupConfirmationResult.confirm(code).then(async (result) => {
+                await updateProfile(result.user, { displayName: name });
+                
+                // 🔥 SAVE TO DB WITH REFERRAL INFO 🔥
+                let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
+                let userDkId = "DK-" + uidSnippet;
+                await setDoc(doc(db, "users", result.user.uid), {
+                    uid: result.user.uid,
+                    name: name,
+                    email: "N/A",
+                    phone: result.user.phoneNumber,
+                    dk_id: userDkId,
+                    referred_by: refId, // Save refer ID
+                    signupDate: new Date().toISOString()
+                }, { merge: true });
+
+                sendWelcomeMessage(result.user); 
+                showCustomAlert("Welcome!", "Account Created Successfully!", false); 
+                setTimeout(() => { window.location.href = "index.html"; }, 1500);
             }).catch((err) => { showCustomAlert("Error", "Invalid OTP Code!", true); signupVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Sign Up'; });
         });
     </script>
