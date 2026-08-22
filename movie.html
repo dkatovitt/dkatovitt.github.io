@@ -43,7 +43,7 @@
     <style>
         /* 🔥 HARDWARE ACCELERATION FOR SMOOTH SCROLLING 🔥 */
         html { scroll-behavior: smooth; }
-        body { background-color: #050505; color: #ccc; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; margin:0; padding:0; font-family: Arial, sans-serif;}
+        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; margin:0; padding:0; line-height: 1.6;}
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform, opacity; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
@@ -52,7 +52,7 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* 🔥 HEADER CSS 🔥 */
+        /* 🔥 100% LOCKED FIXED HEADER CSS 🔥 */
         .header { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 85px !important; z-index: 99999 !important; background-color: rgba(5, 5, 5, 0.98) !important; border-bottom: 1px solid #222 !important; box-sizing: border-box !important; backdrop-filter: blur(10px); }
         .header .container { padding-left: 20px !important; padding-right: 20px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; height: 100%; }
         .header-left { display: flex !important; align-items: center !important; gap: 20px !important; }
@@ -78,7 +78,7 @@
             .show-on-mobile { display: inline !important; }
         }
 
-        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
+        /* 🔥 PROFILE DROPDOWN CONTAINER 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
         .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -88,33 +88,18 @@
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
         .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
-
         @media (max-width: 768px) {
             .profile-dropdown-container { max-width: 120px; }
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        /* 🔥 STYLISH COMING SOON FULL PAGE OVERLAY 🔥 */
-        .coming-soon-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 1000000; display: none; flex-direction: column; animation: slideUpIn 0.4s ease; font-family: Arial, sans-serif; }
-        @keyframes slideUpIn { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
-        .cs-header { background: #111; padding: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); border-bottom: 1px solid #222; }
-        .cs-back-btn { background: #222; border: 1px solid #444; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; justify-content: center; align-items: center; color: #e6c875; transition: 0.3s; }
-        .cs-back-btn:hover { background: #e6c875; color: #000; }
-        .cs-header h1 { margin: 0; color: #e6c875; font-size: 20px; font-weight: 900; letter-spacing: 1px; }
-        .cs-body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
-        .cs-big-icon { width: 130px; height: 130px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 55px; color: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.5); margin-bottom: 25px; }
-        .cs-title { font-size: 32px; font-weight: 900; color: #fff; margin: 0 0 15px 0; font-family: 'Playfair Display', serif; }
-        .cs-badge { background: linear-gradient(135deg, #e6c875, #f5d680); color: #000; padding: 10px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        .cs-desc { color: #aaa; font-size: 16px; max-width: 400px; line-height: 1.6; margin-top: 25px; }
-        
         /* 🔥 CUSTOM TRANSLATOR CSS 🔥 */
         .custom-translate select { background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: #e6c875; color: #000; }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        /* 🔥 ORIGINAL MENU CSS (WITH 12 ECOSYSTEM PROJECTS ADDED) 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
+        /* 🔥 ORIGINAL DROPDOWN MENU CSS 🔥 */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875;}
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
@@ -132,15 +117,13 @@
         .sub-menu a { display: block; font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; text-decoration: none; transition: 0.3s; }
         .sub-menu a:hover { color: #fff !important; padding-left: 15px !important; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* 🔥 SIDE ECOSYSTEM ITEMS (ALL 12 PROJECTS) 🔥 */
+
+        /* 🔥 NEW 12 PROJECTS ECOSYSTEM ICONS CSS 🔥 */
         #mainEcoSub { padding-left: 0; margin-left: 0; border-left: none; background: #080808; border-bottom: 1px solid #222; }
         .side-eco-item { display: flex !important; align-items: center; gap: 12px; padding: 12px 15px !important; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a !important; }
         .side-eco-item:hover { background: #111 !important; padding-left: 20px !important; }
         .side-eco-item:last-child { border-bottom: none !important; }
         .eco-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; color: #fff; flex-shrink: 0; }
-        
-        /* 12 Background Colors */
         .bg-film { background: #ff4d4d; }
         .bg-connect { background: #1877F2; } 
         .bg-exchange { background: #20c997; } 
@@ -153,39 +136,18 @@
         .bg-msg { background: #17a2b8; } 
         .bg-chat { background: #6610f2; } 
         .bg-games { background: #dc3545; } 
-
         .eco-details { flex: 1; display: flex; flex-direction: column; text-align: left; justify-content: center; }
         .eco-details .title { font-size: 13px; font-weight: bold; color: #fff !important; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
         .eco-details .status { font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 12px; width: fit-content; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
         .status.live { background: rgba(24,119,242,0.15); color: #7baaf7 !important; border: 1px solid #1877F2; }
         .status.coming { background: #1a1a1a; color: #aaa !important; border: 1px solid #333; }
-        
+
+        /* 🔥 OVERLAY BUG FIX (Z-INDEX 99998) 🔥 */
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
-        /* 🔥 OVERLAP BUG FIX: LOWER Z-INDEX FOR WELCOME BANNER 🔥 */
-        .vip-welcome-banner { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin: 30px auto; max-width: 800px; display: none; z-index: 10; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .vip-banner-content { display: flex; align-items: center; gap: 15px; }
-        .vip-banner-avatar { background: #1a1a1a; border: 2px solid #e6c875; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;}
-        .vip-banner-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .vip-banner-text p { color: #aaa; margin: 0; font-size: 13px; }
-        .vip-banner-text h3 { color: #fff; margin: 0 0 3px 0; font-size: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;}
-        .vip-banner-text .badge { color: #e6c875; margin: 0; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
-        
-        .vip-banner-actions { display: flex; gap: 15px; margin-top: 20px; }
-        .vip-banner-btn { background: #e6c875; color: #000; padding: 12px 15px; border-radius: 30px; text-decoration: none; font-weight: 900; font-size: 13px; flex: 1; text-align: center; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;}
-        .vip-banner-btn.outline { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; }
-        .vip-banner-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .vip-banner-btn.outline:hover { background: #e6c875; color: #000; }
-
-        @media (max-width: 768px) {
-            .vip-welcome-banner { margin: 20px 15px; padding: 20px; }
-            .vip-banner-text h3 { font-size: 18px; max-width: 200px;}
-            .vip-banner-actions { flex-direction: column; gap: 10px; }
-        }
-
-        /* 🌟 ORIGINAL MOVIE HERO & BODY CSS 🌟 */
-        .hero { position: relative; width: 100%; height: 100vh; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 2px solid #222; margin-top: 85px;}
+        /* 🌟 ORIGINAL MOVIE HERO CSS 🌟 */
+        .hero { position: relative; width: 100%; height: 100vh; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 2px solid #222; margin-top: 85px; }
         .hero-overlay { background: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px; box-sizing: border-box;}
         .studio { color: #e6c875; font-size: 14px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
         .yakshini-title { font-family: 'Playfair Display', serif; font-size: 80px; color: #fff; margin: 0; text-shadow: 2px 2px 15px #000; }
@@ -197,8 +159,9 @@
         .btn { display: inline-block; background-color: #e6c875; color: #000; padding: 15px 30px; text-decoration: none; font-size: 16px; font-weight: 900; border-radius: 30px; border: none; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .btn:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230,200,117,0.4); }
 
+        /* 🌟 YOUR ORIGINAL MOVIE SECTIONS CSS 🌟 */
         .featured-movie { padding: 60px 20px; background: #050505; border-bottom: 1px solid #1a1a1a; }
-        .container-content { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1200px; margin: 0 auto; }
         .featured-movie h2 { color: #e6c875; font-size: 28px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
         .movie-flex { display: flex; align-items: center; gap: 40px; background: #111; padding: 30px; border-radius: 15px; border: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .movie-poster { flex: 1; border-radius: 12px; overflow: hidden; border: 2px solid #e6c875; box-shadow: 0 5px 20px rgba(230,200,117,0.2); }
@@ -209,12 +172,34 @@
         .poster-slider-section { padding: 40px 0; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .slider-container { overflow: hidden; white-space: nowrap; }
         .poster-track { display: flex; gap: 15px; width: max-content; align-items: center; animation: scroll-left 40s linear infinite; }
-        .poster-track img { height: 280px !important; width: 160px !important; object-fit: contain !important; border-radius: 8px; }
+        .poster-track img { height: 280px; width: 160px; object-fit: contain; border-radius: 8px; }
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* MULTI-MEDIA GRIDS & TEXT */
         .trailer-section { padding: 60px 20px; background: #111; border-bottom: 1px solid #1a1a1a; }
         .trailer-section h2 { color: #e6c875; font-size: 28px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .video-wrapper { overflow: hidden; border-radius: 12px; text-align: center; padding-bottom: 15px; background: #1a1a1a; border: 1px solid #222; margin-bottom: 20px;}
+        .video-thumbnail { position: relative; cursor: pointer; display: block; overflow: hidden; border-radius: 12px 12px 0 0; }
+        .thumbnail-content img { transition: transform 0.5s ease; width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;}
+        .video-thumbnail:hover .thumbnail-content img { transform: scale(1.05); }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 65px; height: 65px; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
+
+        .gallery-preview { padding: 60px 0; background: #050505; border-bottom: 1px solid #1a1a1a; }
+        .gallery-preview h2 { color: #e6c875; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; text-align: center;}
+        .gallery-track { display: flex; gap: 20px; width: max-content; align-items: center; animation: scroll-left 50s linear infinite;}
+        .gallery-track img { height: 200px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #333; }
+
+        .partners-auditions { padding: 60px 20px; background: #111; }
+        .partners-auditions h2 { color: #e6c875; font-size: 28px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        .audition-box { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; padding: 40px 20px; text-align: center; border-radius: 12px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .audition-box p { color: #ccc; font-size: 16px; max-width: 600px; margin: 0 auto 20px auto; line-height: 1.6; }
+
+        @media (max-width: 768px) {
+            .movie-flex { flex-direction: column; padding: 15px; }
+            .hero { height: auto; padding: 150px 20px 80px 20px; margin-top: 70px; }
+            .yakshini-title { font-size: 55px; }
+        }
+
+        /* MULTI-MEDIA GRIDS & TEXT */
         .songs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
         .yakshini-title-box { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 25px; width: 100%; }
         .yakshini-main-title { font-size: 65px !important; color: #e6c875 !important; margin: 0 !important; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); letter-spacing: 2px; line-height: 1; font-family: 'Playfair Display', serif;}
@@ -230,13 +215,6 @@
         .movie-meta li { margin-bottom: 15px !important; line-height: 1.6; font-size: 15px; color: #ffffff !important; }
         .movie-meta li strong { color: #e6c875 !important; font-weight: bold; margin-right: 5px; letter-spacing: 0.5px; }
         
-        .video-wrapper { overflow: hidden; border-radius: 12px; text-align: center; padding-bottom: 15px; background: #111; border: 1px solid #222; margin-bottom: 20px;}
-        .video-thumbnail { position: relative; cursor: pointer; display: block; overflow: hidden; border-radius: 12px 12px 0 0; }
-        .thumbnail-content img { transition: transform 0.5s ease; width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;}
-        .video-thumbnail:hover .thumbnail-content img { transform: scale(1.05); }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e6c875; color: #000; border: none; border-radius: 50%; width: 65px; height: 65px; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s; pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .video-thumbnail:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); background: #f5d680; }
-
         .btn-group-3 { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 15px; flex-wrap: nowrap; padding: 0 5px; width: 100%; box-sizing: border-box; }
         .smart-btn { background: transparent; padding: 8px 12px; border-radius: 25px; font-size: 11px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; white-space: nowrap; flex: 1; text-align: center; }
         .yt-smart-btn { color: #ff4d4d; border: 1.5px solid #ff4d4d; }
@@ -250,14 +228,6 @@
         .social-btn { background: transparent; color: #aaa; border: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
         .social-btn:hover { color: #e6c875; transform: scale(1.05); }
 
-        .gallery-preview { padding: 60px 0; background: #050505; border-bottom: 1px solid #1a1a1a; }
-        .gallery-preview h2 { color: #e6c875; font-size: 28px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; text-align: center;}
-        .gallery-track { display: flex; gap: 20px; width: max-content; align-items: center; animation: scroll-left 50s linear infinite;}
-        .gallery-track img { height: 200px !important; aspect-ratio: 16 / 9 !important; object-fit: cover !important; border-radius: 12px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.5) !important; border: 1px solid #333 !important; }
-
-        .partners-auditions { padding: 60px 20px; background: #111; }
-        .partners-auditions h2 { color: #e6c875; font-size: 28px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
-        
         .partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .partner-card { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px !important; background: #0a0a0a; border: 1px solid #222; border-radius: 12px; overflow: hidden; }
         .partner-card video, .partner-card img { width: 100% !important; height: 160px !important; object-fit: contain !important; margin-bottom: 10px !important; mix-blend-mode: screen; transform: scale(1.3); transition: 0.3s; }
@@ -280,13 +250,26 @@
         .ticker-title { font-size: 14px; color: #fff; line-height: 1.5; margin: 0 0 5px 0; font-weight: bold; }
         .ticker-desc { font-size: 12px; color: #aaa; margin: 0; line-height: 1.5; }
         .ticker-link { color: #e6c875; font-size: 11px; text-decoration: none; font-weight: bold; }
-        .ticker-link:hover { text-decoration: underline; }
 
-        .audition-box { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; padding: 40px 20px; text-align: center; border-radius: 12px; margin-top: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .audition-box p { color: #ccc; font-size: 16px; max-width: 600px; margin: 0 auto 20px auto; line-height: 1.6; }
+        @media (max-width: 768px) {
+            .songs-grid { grid-template-columns: 1fr; gap: 30px; }
+            .btn-group-3 { gap: 4px; padding: 0 5px; }
+            .smart-btn { padding: 6px 2px; font-size: 9px; gap: 3px; letter-spacing: -0.2px; }
+            .trailer-title { font-size: 13px; }
+            .social-action-bar { gap: 30px; margin-top: 12px; padding-top: 10px; }
+            .partner-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .partner-card { padding: 10px 5px !important; }
+            .partner-card video, .partner-card img { height: 140px !important; transform: scale(1.5); } 
+            .partner-card h3 { font-size: 13px !important; }
+            .news-ticker-wrapper { margin-top: 20px; }
+            .ticker-container { height: 160px; }
+            .ticker-title { font-size: 13px; }
+            .ticker-desc { font-size: 11.5px; }
+        }
 
         /* CONTACT SECTION */
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 30px; } }
         .contact-info-box { background: #1a1a1a; padding: 40px 30px; border-radius: 12px; border: 1px solid #333; position: relative; overflow: hidden; }
         .contact-info-box::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #e6c875; }
         .contact-info-box p.info-text { font-size: 16px; color: #bbb; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; line-height: 1.5; }
@@ -309,23 +292,6 @@
         .submit-btn:hover { background: #d4b561; }
 
         @media (max-width: 768px) {
-            .movie-flex { flex-direction: column; padding: 15px; }
-            .hero { height: auto; padding: 150px 20px 80px 20px; margin-top: 70px; }
-            .yakshini-title { font-size: 55px; }
-            .songs-grid { grid-template-columns: 1fr; gap: 30px; }
-            .btn-group-3 { gap: 4px; padding: 0 5px; }
-            .smart-btn { padding: 6px 2px; font-size: 9px; gap: 3px; letter-spacing: -0.2px; }
-            .trailer-title { font-size: 13px; }
-            .social-action-bar { gap: 30px; margin-top: 12px; padding-top: 10px; }
-            .partner-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .partner-card { padding: 10px 5px !important; }
-            .partner-card video, .partner-card img { height: 140px !important; transform: scale(1.5); } 
-            .partner-card h3 { font-size: 13px !important; }
-            .news-ticker-wrapper { margin-top: 20px; }
-            .ticker-container { height: 160px; }
-            .ticker-title { font-size: 13px; }
-            .ticker-desc { font-size: 11.5px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 30px; }
             .contact-brand-subtitle { font-size: 10px; letter-spacing: 1px; }
             .contact-social-row { gap: 8px; justify-content: center; }
             .contact-social-btn { width: 36px; height: 36px; font-size: 15px; }
@@ -429,51 +395,23 @@
             .control-btn { font-size: 13px; }
             .play-pause-btn { font-size: 16px; }
         }
-
-        /* 🚀 PAGE LOADER OPTIMIZATION */
-        #pageLoader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 200000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
-        #pageLoader video { width: 100px; mix-blend-mode: screen; transform: scale(1.5); margin-bottom: 20px; }
-        body.loaded #pageLoader { opacity: 0; pointer-events: none; }
     </style>
 </head>
 <body>
 
-    <!-- 🔥 SUPER FAST PAGE LOADER 🔥 -->
-    <div id="pageLoader">
-        <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
-    </div>
-
-    <!-- 🔥 STYLISH COMING SOON OVERLAY 🔥 -->
-    <div class="coming-soon-page" id="comingSoonPage">
-        <div class="cs-header">
-            <button class="cs-back-btn" onclick="closeComingSoon()"><i class="fas fa-arrow-left"></i></button>
-            <h1>DK ATOVITT</h1>
-        </div>
-        <div class="cs-body">
-            <div id="csIcon" class="cs-big-icon bg-browser"><i id="csIconInner" class="fas fa-compass"></i></div>
-            <h2 class="cs-title" id="csTitle">DK Browser</h2>
-            <div class="cs-badge">Coming Soon</div>
-            <p class="cs-desc">We are working hard to bring this feature to you. Stay tuned for an amazing experience!</p>
-        </div>
-    </div>
-
-    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
+    <!-- 🔥 HEADER (FIXED: Global Tech, No Refresh) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <!-- 🔥 PREVENT REFRESH: javascript:void(0) 🔥 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
-                        <!-- 🔥 HEADER TEXT CHANGED TO GLOBAL EMPIRE 🔥 -->
                         <p class="desktop-logo-sub notranslate">Global Tech & Entertainment Empire</p>
                     </div>
                 </a>
             </div>
-            
-            <!-- 🔥 TOP RIGHT PROFILE DROPDOWN (DYNAMIC) 🔥 -->
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
@@ -512,7 +450,7 @@
             <span><i class="fas fa-globe" style="color:#e6c875; margin-right:12px;"></i> DK ATOVITT Ecosystem</span>
             <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
         </a>
-        <div class="sub-menu" id="mainEcoSub" style="padding-left: 0; margin-left: 0; border-left: none; background: #080808; border-bottom: 1px solid #222; overflow: hidden;">
+        <div class="sub-menu" id="mainEcoSub">
             <a href="movie.html" class="side-eco-item">
                 <div class="eco-icon bg-film"><i class="fas fa-film"></i></div>
                 <div class="eco-details">
@@ -527,70 +465,70 @@
                     <span class="status live"><i class="fas fa-circle" style="font-size:8px; margin-right:4px;"></i> LIVE</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Exchange', 'bg-exchange', 'fas fa-chart-line')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-exchange"><i class="fas fa-chart-line"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Exchange</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK ATVT Coin', 'bg-coin', 'fas fa-cube')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-coin"><i class="fas fa-cube"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK ATVT Coin</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Decent. Wallet', 'bg-wallet', 'fas fa-wallet')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decent. Wallet is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-wallet"><i class="fas fa-wallet"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Decentralised Wallet</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Browser', 'bg-browser', 'fas fa-globe')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-browser"><i class="fas fa-globe"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Browser</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Mart', 'bg-mart', 'fas fa-shopping-cart')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-mart"><i class="fas fa-shopping-cart"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Mart</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Digital Ads', 'bg-ads', 'fas fa-bullhorn')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Ads is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-ads"><i class="fas fa-bullhorn"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Digital Ads</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK GPS Tracker', 'bg-gps', 'fas fa-map-marker-alt')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-gps"><i class="fas fa-map-marker-alt"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK GPS Tracker</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Connect Msg', 'bg-msg', 'fas fa-comment-dots')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Msg is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-msg"><i class="fas fa-comment-dots"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Connect Messenger</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Chat', 'bg-chat', 'fas fa-comments')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-chat"><i class="fas fa-comments"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Chat</div>
                     <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="openComingSoon('DK Games', 'bg-games', 'fas fa-gamepad')" class="side-eco-item">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)" class="side-eco-item">
                 <div class="eco-icon bg-games"><i class="fas fa-gamepad"></i></div>
                 <div class="eco-details">
                     <div class="title" style="color: #fff;">DK Games</div>
@@ -650,10 +588,13 @@
         <a href="contact.html" class="normal-link"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     
-    <!-- OVERLAY (Z-INDEX LOWER THAN MENU BUT ABOVE PAGE) -->
+    <!-- 🔥 OVERLAY 🔥 -->
     <div id="overlay"></div>
 
-    <!-- 🔥 HERO SECTION 🔥 -->
+    <!-- 🔥 DYNAMIC VIP BANNER PLACEHOLDER (Z-INDEX 10 TO AVOID MENU OVERLAP) 🔥 -->
+    <div id="vipHomeBannerContainer" style="position: relative; z-index: 10;"></div>
+
+    <!-- 🔥 HERO SECTION (YOUR EXACT ORIGINAL CODE RESTORED) 🔥 -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="studio notranslate">DK ATOVITT PRESENTS</div>
@@ -664,13 +605,10 @@
             <a href="#trailer" class="btn"><i class="fas fa-play"></i> Watch Trailer</a>
         </div>
     </section>
-
-    <!-- 🔥 DYNAMIC VIP BANNER PLACEHOLDER (FIXED Z-INDEX TO 10 TO AVOID MENU OVERLAP) 🔥 -->
-    <div id="vipHomeBannerContainer" style="position: relative; z-index: 10;"></div>
-
+    
     <!-- 🔥 FEATURED MOVIE SECTION 🔥 -->
     <section class="featured-movie reveal" id="movies-section">
-        <div class="container-content">
+        <div class="container">
             <h2>Featured Movie</h2>
             <div class="movie-flex">
                 <div class="movie-poster"><img src="images/movies/yakshini-poster.png" alt="Yakshini Poster" loading="lazy"></div>
@@ -701,7 +639,7 @@
         </div>
     </section>
 
-    <!-- 🔥 POSTER SLIDER SECTION 🔥 -->
+    <!-- 🔥 POSTER SLIDER 🔥 -->
     <section class="poster-slider-section reveal">
         <div class="slider-container" style="overflow: hidden;">
             <div class="poster-track" id="autoSlider">
@@ -713,7 +651,7 @@
 
     <!-- 🔥 TRAILER SECTION 🔥 -->
     <section class="trailer-section reveal" id="trailer">
-        <div class="container-content">
+        <div class="container">
             <h2>Official Trailer</h2>
             <div class="video-wrapper">
                 <div class="video-thumbnail" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
@@ -743,13 +681,13 @@
 
     <!-- 🔥 SONGS SECTION 🔥 -->
     <section class="trailer-section reveal" id="songs">
-        <div class="container-content">
+        <div class="container">
             <h2>Yakshini Movie Song's</h2>
             <div class="songs-grid">
-                <!-- Song 1 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, '32FIP1DQU5w')">
                         <div class="thumbnail-content">
+                            <!-- 🔥 LAZY LOAD THUMBNAIL 🔥 -->
                             <img src="https://img.youtube.com/vi/32FIP1DQU5w/hqdefault.jpg" alt="Song" loading="lazy">
                             <button class="play-btn"><i class="fas fa-play" style="margin-left: 4px;"></i></button>
                         </div>
@@ -769,7 +707,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 2 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, 'jq3fKMww5_M')">
                         <div class="thumbnail-content">
@@ -792,7 +729,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 3 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, '7qFB_8WtAxE')">
                         <div class="thumbnail-content">
@@ -815,7 +751,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 4 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, 'eTYetclIVbM')">
                         <div class="thumbnail-content">
@@ -838,7 +773,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 5 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, '-08OXkmPFcs')">
                         <div class="thumbnail-content">
@@ -861,7 +795,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 6 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, 'GBXiOsFb77w')">
                         <div class="thumbnail-content">
@@ -884,7 +817,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- Song 7 -->
                 <div class="video-wrapper">
                     <div class="video-thumbnail" onclick="playInlineVideo(this, 'OqYiYRsg9rQ')">
                         <div class="thumbnail-content">
@@ -913,7 +845,7 @@
 
     <!-- 🔥 GALLERY SECTION 🔥 -->
     <section class="gallery-preview reveal" id="gallery" style="margin-top: 20px;">
-        <div class="container-content" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
+        <div class="container" style="overflow: hidden; max-width: 100%; padding-left: 0; padding-right: 0;">
             <h2 style="padding-left: 20px;">Movie Gallery</h2>
             <div style="overflow: hidden; padding: 10px 20px;">
                 <div class="gallery-track" id="gallerySlider">
@@ -925,7 +857,7 @@
 
     <!-- 🔥 PARTNERS & AUDITIONS 🔥 -->
     <section class="partners-auditions reveal" id="partners">
-        <div class="container-content">
+        <div class="container">
             <h2>Ecosystem & Media Partners</h2>
             <div class="partner-grid">
                 <div class="partner-card"><video src="images/partners/earn-logo.mp4" autoplay loop muted playsinline preload="metadata"></video><h3>Earn with DK Sir</h3></div>
@@ -939,7 +871,7 @@
                 </div>
                 <div class="ticker-container">
                     <div class="ticker-content">
-                        <!-- 🔥 NEWS UPDATES 🔥 -->
+                        <!-- 🔥 9 AUGUST 2026 UPDATE 🔥 -->
                         <div class="ticker-item">
                             <div class="ticker-date">9 August 2026</div>
                             <h4 class="ticker-title">📱 Official APK App Launch</h4>
@@ -970,8 +902,7 @@
                             <h4 class="ticker-title">🖼️ Official Movie Poster Launch</h4>
                             <p class="ticker-desc">'यक्षिणी' का पहला आधिकारिक पोस्टर भव्य रूप से लॉन्च किया गया। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
-                        
-                        <!-- Duplicate logic for continuous scroll -->
+                        <!-- 🔥 DUPLICATE LOOP FOR SMOOTH SCROLL 🔥 -->
                         <div class="ticker-item">
                             <div class="ticker-date">9 August 2026</div>
                             <h4 class="ticker-title">📱 Official APK App Launch</h4>
@@ -995,7 +926,7 @@
                         <div class="ticker-item">
                             <div class="ticker-date">June 2026</div>
                             <h4 class="ticker-title">🎵 Trailer & 7 Songs Ready</h4>
-                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा हो चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
+                            <p class="ticker-desc">ट्रेलर के साथ-साथ सभी 7 मूवी और एल्बम गानों का काम सफलतापूर्वक पूरा আসতে चुका है। <a href="news.html" class="ticker-link">Read More</a></p>
                         </div>
                         <div class="ticker-item">
                             <div class="ticker-date">May 2026</div>
@@ -1017,7 +948,7 @@
 
     <!-- 🔥 HOME PAGE CONTACT SECTION 🔥 -->
     <section class="contact-section reveal" id="contact" style="padding: 60px 20px; background-color: #050505; border-top: 1px solid #222; scroll-margin-top: 80px;">
-        <div class="container-content" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
+        <div class="container" style="max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8);">
             <div style="text-align: center; margin-bottom: -10px;">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" class="video-logo" style="height: 100px;"></video>
             </div>
@@ -1062,7 +993,7 @@
         </div>
     </section>
 
-    <!-- 🔥 MASTER MEGA FOOTER (6-COLUMN VIP) 🔥 -->
+    <!-- 🔥 MEGA FOOTER (LOGIN WALA VIP DESIGN WITH GLOBAL TECH TEXT) 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -1238,7 +1169,69 @@
             overlay.classList.add('active');
         }
 
-        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE 🔥 */
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+        });
+
+        /* 🔥 OPEN STYLISH COMING SOON OVERLAY 🔥 */
+        function openComingSoon(title, bgClass, iconClass) {
+            document.getElementById('csTitle').innerText = title;
+            document.getElementById('csIcon').className = 'cs-big-icon ' + bgClass;
+            document.getElementById('csIconInner').className = iconClass;
+            document.getElementById('comingSoonPage').style.display = 'flex';
+            // Side menu close kar do
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if(sideMenu) sideMenu.classList.remove('active');
+            if(overlay) overlay.classList.remove('active');
+            // Background scroll enable rakhe
+            document.body.style.overflow = ''; 
+            document.documentElement.style.overflow = ''; 
+        }
+        function closeComingSoon() {
+            document.getElementById('comingSoonPage').style.display = 'none';
+        }
+
+        /* 🔥 CHATBOT LOGIC 🔥 */
+        const chatbotToggler = document.getElementById('chatbotToggler');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotBody = document.getElementById('chatbotBody');
+        if(chatbotToggler) {
+            chatbotToggler.addEventListener('click', () => {
+                chatbotContainer.classList.toggle('active');
+            });
+        }
+        if(closeChatbot) {
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.classList.remove('active');
+            });
+        }
+        function sendChat(type) {
+            let userText = "";
+            let botReply = "";
+            if(type === 'Audition') {
+                userText = "मुझे Audition के बारे में जानना है।";
+                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+            } else if(type === 'Movies') {
+                userText = "आने वाली Movies कौन सी हैं?";
+                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+            } else if(type === 'Contact') {
+                userText = "मुझे DK Sir से बात करनी है।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+            } else if(type === 'Join') {
+                userText = "Ecosystem कैसे Join करूँ?";
+                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
+            }
+            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            setTimeout(() => {
+                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }, 600);
+        }
+
+        /* 🔥 MENU TOGGLE & SCROLL LOCK FIX 🔥 */
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1247,6 +1240,7 @@
         function openMenu() {
             sideMenu.classList.add('active'); 
             overlay.classList.add('active'); 
+            // PREVENT BACKGROUND SCROLLING
             document.body.style.overflow = 'hidden'; 
             document.documentElement.style.overflow = 'hidden'; 
         }
@@ -1254,6 +1248,7 @@
         function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
+            // RESTORE BACKGROUND SCROLLING
             document.body.style.overflow = ''; 
             document.documentElement.style.overflow = ''; 
         }
@@ -1265,17 +1260,6 @@
             link.addEventListener('click', closeSideMenu); 
         });
 
-        // Dropdown Click-outside closer
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
-                }
-            }
-        }
-
-        // Sub Menu Toggler
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -1288,6 +1272,16 @@
                     document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
                     subMenu.classList.add('active');
                     if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
+        // Dropdown Click-outside closer
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
                 }
             }
         }
@@ -1365,59 +1359,6 @@
                 });
             }
         });
-
-        // VIP CHATBOT LOGIC
-        const chatbotToggler = document.getElementById('chatbotToggler');
-        const chatbotContainer = document.getElementById('chatbotContainer');
-        const closeChatbot = document.getElementById('closeChatbot');
-        const chatbotBody = document.getElementById('chatbotBody');
-        
-        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
-        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
-
-        function sendChat(type) {
-            let userText = ""; let botReply = "";
-
-            if(type === 'Live') {
-                userText = "What's LIVE right now?";
-                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
-            } 
-            else if(type === 'Upcoming') {
-                userText = "Upcoming projects कौन से हैं?";
-                botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
-            }
-            else if(type === 'Audition') {
-                userText = "मुझे Audition देना है।";
-                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
-            } 
-            else if(type === 'Support') {
-                userText = "मुझे Help / Support चाहिए।";
-                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
-            }
-
-            chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            
-            let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
-            chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-
-            setTimeout(() => {
-                document.getElementById(typingId).remove();
-                chatbotBody.innerHTML += `<div class="bot-msg">${botReply}</div>`;
-                chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            }, 800);
-        }
 
         /* 🔥 VIRAL SHARE SCRIPT 🔥 */
         function shareViralContent(title, text, url) {
@@ -1603,11 +1544,9 @@
                 // Show Logout, Hide Login from Side Menu
                 const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
                 const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
-                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
                 
                 if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
                 if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
-                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
                 // 2. TOP RIGHT HEADER AREA (PROFILE DROPDOWN)
                 const headerRightArea = document.getElementById('headerRightArea');
@@ -1622,7 +1561,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -1677,7 +1616,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
