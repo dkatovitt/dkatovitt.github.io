@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,8 +9,7 @@
       gtag('js', new Date());
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
-
-    <!-- Google AdSense -->
+    <!-- 🔥 Google AdSense 🔥 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
@@ -35,28 +34,6 @@
     <meta name="twitter:title" content="About Company - DK Atovitt">
     <meta name="twitter:description" content="Discover DK Atovitt, a Global Tech & Entertainment Empire.">
     <meta name="twitter:image" content="https://www.dkatovitt.com/images/movies/gallery1.png">
-
-    <!-- 🔥 GOOGLE VIP SCHEMA MARKUP 🔥 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "DK ATOVITT Production House",
-      "url": "https://www.dkatovitt.com",
-      "logo": "https://www.dkatovitt.com/images/logo/logo.png",
-      "description": "A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking.",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-9830332929",
-        "contactType": "Customer Service"
-      },
-      "sameAs": [
-        "https://www.facebook.com/share/17KaFnAURu/",
-        "https://www.instagram.com/dk_atovitt",
-        "https://www.youtube.com/@DKATOVITT"
-      ]
-    }
-    </script>
     <!-- 🔥 SUPER POWERFUL SEO META TAGS END 🔥 -->
 
     <link rel="manifest" href="manifest.json">
@@ -129,7 +106,7 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none;}
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -309,12 +286,13 @@
 </head>
 <body>
 
-    <!-- 🔥 HEADER 🔥 -->
+    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer;">
+                <!-- 🔥 PREVENT REFRESH: javascript:void(0) 🔥 -->
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -502,6 +480,7 @@
                 <h4 style="margin-top: 25px;">My Account</h4>
                 <ul>
                     <li><a href="index.html">VIP Dashboard</a></li>
+                    <li><a href="wallet.html">My Wallet</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
 
@@ -532,7 +511,7 @@
                 <h4>About Us</h4>
                 <ul>
                     <li><a href="ceo.html">About CEO</a></li>
-                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
+                    <li><a href="company.html" style="color: #e6c875;">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                     <li><a href="news.html">News & Updates</a></li>
                 </ul>
@@ -757,7 +736,7 @@
 
             if(type === 'Live') {
                 userText = "What's LIVE right now?";
-                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
+                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए নিচে क्लिक करें:<br><br>";
                 botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
             } 
@@ -843,7 +822,7 @@
                 }
                 let userDkId = "DK-" + uidSnippet;
 
-                // 🔥 1. UPDATE SIDEBAR PROFILE 🔥
+                // 1. UPDATE SIDEBAR PROFILE
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 
@@ -865,7 +844,7 @@
                 if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
                 if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // 🔥 2. INJECT NEW VIP SIDEBAR MENU LINKS (DASHBOARD & WALLET) 🔥
+                // 2. INJECT NEW VIP SIDEBAR MENU LINKS
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
@@ -898,7 +877,7 @@
                     `;
                 }
 
-                // 🔥 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX) 🔥
+                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -911,14 +890,13 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         
-                        <div class="profile-dropdown-container" style="position: relative; display: inline-block; max-width: 140px;">
-                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 5px 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box;">
-                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> 
-                                <i class="fas fa-caret-down"></i>
+                        <div class="profile-dropdown-container">
+                            <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
@@ -946,6 +924,7 @@
                 }, 500);
 
             } else {
+                // If not logged in
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -958,7 +937,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
