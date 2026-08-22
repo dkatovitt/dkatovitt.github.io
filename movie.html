@@ -87,6 +87,28 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
+        /* 🔥 VIP WELCOME BANNER CSS (FIXED DESIGN) 🔥 */
+        .vip-welcome-banner { background: linear-gradient(135deg, #111, #0a0a0a); border-bottom: 2px solid #e6c875; padding: 20px 20px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+        .vip-banner-content { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 20px; flex-wrap: wrap; }
+        .vip-banner-left { display: flex; align-items: center; gap: 15px; }
+        .vip-banner-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; box-shadow: 0 0 10px rgba(230,200,117,0.3); }
+        .vip-banner-text p { color: #ccc; font-size: 14px; margin: 0 0 4px 0; }
+        .vip-banner-text h3 { color: #e6c875; margin: 0; font-size: 22px; font-family: 'Playfair Display', serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 350px; }
+        .vip-badge { color: #aaa; font-size: 11px; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+        .vip-banner-actions { display: flex; gap: 12px; }
+        .vip-action-btn { padding: 12px 25px; border-radius: 30px; font-weight: 900; font-size: 14px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .vip-action-btn.filled { background: #e6c875; color: #000; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
+        .vip-action-btn.filled:hover { background: #fff; transform: translateY(-3px); }
+        .vip-action-btn.outline { background: transparent; color: #e6c875; border: 2px solid #e6c875; }
+        .vip-action-btn.outline:hover { background: #e6c875; color: #000; transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .vip-banner-content { flex-direction: column; align-items: flex-start; }
+            .vip-banner-text h3 { font-size: 18px; max-width: 250px; }
+            .vip-banner-actions { width: 100%; }
+            .vip-action-btn { flex: 1; padding: 12px 10px; font-size: 12px; }
+        }
+
         /* 🔥 STYLISH COMING SOON FULL PAGE OVERLAY 🔥 */
         .coming-soon-page { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 100000; display: none; flex-direction: column; animation: slideUpIn 0.4s ease; font-family: Arial, sans-serif; }
         @keyframes slideUpIn { from { transform: translateY(100%); opacity: 0;} to { transform: translateY(0); opacity: 1;} }
@@ -130,21 +152,6 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; }
         #overlay.active { display: block; }
         
-        /* 🔥 OVERLAP BUG FIX: LOWER Z-INDEX FOR WELCOME BANNER 🔥 */
-        .vip-welcome-banner { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin: 30px auto; max-width: 800px; display: none; z-index: 10; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .vip-banner-content { display: flex; align-items: center; gap: 15px; }
-        .vip-banner-avatar { background: #1a1a1a; border: 2px solid #e6c875; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;}
-        .vip-banner-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .vip-banner-text p { color: #aaa; margin: 0; font-size: 13px; }
-        .vip-banner-text h3 { color: #fff; margin: 0 0 3px 0; font-size: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;}
-        .vip-banner-text .badge { color: #e6c875; margin: 0; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
-        
-        .vip-banner-actions { display: flex; gap: 15px; margin-top: 20px; }
-        .vip-banner-btn { background: #e6c875; color: #000; padding: 12px 15px; border-radius: 30px; text-decoration: none; font-weight: 900; font-size: 13px; flex: 1; text-align: center; display: flex; justify-content: center; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;}
-        .vip-banner-btn.outline { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; }
-        .vip-banner-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .vip-banner-btn.outline:hover { background: #e6c875; color: #000; }
-
         /* 🌟 ORIGINAL MOVIE HERO CSS 🌟 */
         .hero { position: relative; width: 100%; height: 100vh; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 2px solid #222; margin-top: 85px;}
         .hero-overlay { background: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px; box-sizing: border-box;}
@@ -161,9 +168,6 @@
         @media (max-width: 768px) {
             .hero { height: auto; padding: 150px 20px 80px 20px; }
             .yakshini-title { font-size: 55px; }
-            .vip-welcome-banner { margin: 20px 15px; padding: 20px; }
-            .vip-banner-text h3 { font-size: 18px; max-width: 200px;}
-            .vip-banner-actions { flex-direction: column; gap: 10px; }
         }
 
         /* 🌟 ORIGINAL MOVIE BODY CSS 🌟 */
@@ -342,7 +346,7 @@
             .play-pause-btn { font-size: 16px; }
         }
 
-        /* 🔥 FLOATING BUTTONS CSS (PC VIEW - 60PX) - ADDED 🔥 */
+        /* 🔥 FLOATING BUTTONS CSS (PC VIEW - 60PX) 🔥 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
@@ -354,7 +358,7 @@
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
 
-        /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS - ADDED 🔥 */
+        /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
@@ -362,7 +366,7 @@
             .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
         }
 
-        /* 🔥 APK MODAL CSS - ADDED 🔥 */
+        /* 🔥 APK MODAL CSS 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -378,7 +382,7 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 VIP CHATBOT CSS - ADDED 🔥 */
+        /* 🔥 VIP CHATBOT CSS 🔥 */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -426,7 +430,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <div id="headerAuthBtn">
@@ -595,7 +599,7 @@
     
     <div id="overlay"></div>
     
-    <!-- 🔥 HERO SECTION 🔥 -->
+    <!-- 🔥 HERO SECTION (UNTOUCHED) 🔥 -->
     <section class="hero" id="home">
         <div class="hero-overlay">
             <div class="studio notranslate">DK ATOVITT PRESENTS</div>
@@ -607,10 +611,25 @@
         </div>
     </section>
     
-    <!-- 🔥 DYNAMIC VIP BANNER PLACEHOLDER (Z-INDEX 10 FIX SO IT DOESN'T OVERLAP MENU) 🔥 -->
-    <div id="vipHomeBannerContainer" style="position: relative; z-index: 10;"></div>
+    <!-- 🔥 VIP DASHBOARD BANNER (PERMANENT STATIC DESIGN) 🔥 -->
+    <div class="vip-welcome-banner" id="vipHomeBannerContainer">
+        <div class="vip-banner-content">
+            <div class="vip-banner-left">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" class="vip-banner-avatar" id="bannerUserDp">
+                <div class="vip-banner-text">
+                    <p>Welcome back,</p>
+                    <h3 id="bannerUserName">VIP Member</h3>
+                    <div class="vip-badge"><i class="fas fa-star" style="color:#e6c875;"></i> DK ATOVITT VIP MEMBER</div>
+                </div>
+            </div>
+            <div class="vip-banner-actions">
+                <a href="index.html" class="vip-action-btn filled"><i class="fas fa-tachometer-alt"></i> DASHBOARD</a>
+                <a href="wallet.html" class="vip-action-btn outline"><i class="fas fa-wallet"></i> WALLET</a>
+            </div>
+        </div>
+    </div>
     
-    <!-- 🔥 YOUR ORIGINAL CONTENT UNTOUCHED 🔥 -->
+    <!-- 🔥 FEATURED MOVIE SECTION (UNTOUCHED) 🔥 -->
     <section class="featured-movie reveal" id="movies-section">
         <div class="container-content">
             <h2>Featured Movie</h2>
@@ -737,7 +756,7 @@
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
-                        <button class="social-btn" onclick="shareViralContent('शाम ढले जब पानी डोले', '🌙 रोंगटे खड़े कर देने वाला हॉरर सॉन्ग! अभी देखें और डाउनलोड करें DK Atovitt पर:', 'https://dkatovitt.github.io/movie.html#songs')">
+                        <button class="social-btn" onclick="shareViralContent('शाम ढले যখন पानी डोले', '🌙 रोंगटे खड़े कर देने वाला हॉरर सॉन्ग! अभी देखें और डाउनलोड करें DK Atovitt पर:', 'https://dkatovitt.github.io/movie.html#songs')">
                             <i class="fas fa-share-alt"></i> Share
                         </button>
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="social-btn" title="Comment on YouTube">
@@ -1161,13 +1180,10 @@
             document.getElementById('csIcon').className = 'cs-big-icon ' + bgClass;
             document.getElementById('csIconInner').className = iconClass;
             document.getElementById('comingSoonPage').style.display = 'flex';
-            // Side menu close kar do
             const sideMenu = document.getElementById('sideMenu');
             const overlay = document.getElementById('overlay');
             if(sideMenu) sideMenu.classList.remove('active');
             if(overlay) overlay.classList.remove('active');
-            
-            // 🔥 SCROLL LOCK RESTORE 🔥
             document.body.style.overflow = ''; 
             document.documentElement.style.overflow = '';
         }
@@ -1230,7 +1246,6 @@
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
             
-            // Typing effect
             let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
             chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
@@ -1293,7 +1308,6 @@
         function openMenu() {
             sideMenu.classList.add('active'); 
             overlay.classList.add('active'); 
-            // PREVENT BACKGROUND SCROLLING
             document.body.style.overflow = 'hidden'; 
             document.documentElement.style.overflow = 'hidden'; 
         }
@@ -1301,7 +1315,6 @@
         function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
-            // RESTORE BACKGROUND SCROLLING
             document.body.style.overflow = ''; 
             document.documentElement.style.overflow = ''; 
         }
@@ -1313,7 +1326,6 @@
             link.addEventListener('click', closeSideMenu); 
         });
 
-        // Dropdown Click-outside closer
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
                 var dropdowns = document.querySelectorAll(".topbarDropdown-content");
@@ -1557,29 +1569,13 @@
                     headerBtn.outerHTML = dropdownHTML;
                 }
                 
-                // 🔥 VIP CINEMATIC BANNER (Z-INDEX 10 FIX) 🔥
-                const bannerContainer = document.getElementById('vipHomeBannerContainer');
-                if(bannerContainer && bannerContainer.innerHTML === "") {
-                    const userPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-                    const vipBannerHTML = `
-                        <div id="vipHomeBanner" style="background: linear-gradient(135deg, #111, #0a0a0a); border-bottom: 2px solid #e6c875; padding: 25px 20px; text-align: center; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.9);">
-                            <div style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-                                <div style="display: flex; align-items: center; gap: 15px; text-align: left; max-width: 100%; overflow: hidden;">
-                                    <img src="${userPhoto}" alt="Profile" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; flex-shrink: 0;">
-                                    <div style="overflow: hidden; max-width: calc(100% - 75px);">
-                                        <span style="color: #aaa; font-size: 13px; font-weight: normal; margin-bottom: 2px; display: block;">Welcome back,</span>
-                                        <h3 style="color: #e6c875; margin: 0; font-size: 20px; font-family: 'Playfair Display', serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">${fullName}! ✨</h3>
-                                        <p style="color: #aaa; font-size: 11px; margin: 4px 0 0 0; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fas fa-star" style="color:#e6c875;"></i> DK Atovitt VIP Member</p>
-                                    </div>
-                                </div>
-                                <div style="display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 10;">
-                                    <a href="index.html" onclick="window.location.href='index.html';" style="background: #e6c875; color: #000; padding: 10px 18px; border-radius: 20px; font-weight: bold; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(230,200,117,0.3); transition: 0.3s; cursor: pointer; display: inline-block;"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                                    <a href="wallet.html" onclick="window.location.href='wallet.html';" style="background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 10px 18px; border-radius: 20px; font-weight: bold; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; display: inline-block;"><i class="fas fa-wallet"></i> Wallet</a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    bannerContainer.innerHTML = vipBannerHTML;
+                // 🔥 UPDATE STATIC VIP BANNER TEXT & DP 🔥
+                const bannerUserName = document.getElementById('bannerUserName');
+                const bannerUserDp = document.getElementById('bannerUserDp');
+                if(bannerUserName) bannerUserName.innerText = fullName;
+                if(bannerUserDp) {
+                    const dp = localStorage.getItem('dk_user_dp') || user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+                    bannerUserDp.src = dp;
                 }
                 
                 // LOGOUT LISTENER
