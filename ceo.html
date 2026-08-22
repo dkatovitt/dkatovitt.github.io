@@ -80,6 +80,17 @@
         .login-btn-header { color: #e6c875 !important; text-decoration: none !important; font-size: 14px !important; font-weight: bold !important; border: 1px solid #e6c875 !important; padding: 6px 15px !important; border-radius: 20px !important; transition: 0.3s !important; display: flex !important; align-items: center !important; gap: 8px !important; }
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
+
+        /* 🔥 TOP RIGHT DROPDOWN CSS 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; text-align: left; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; text-align: left;}
         
         @media (max-width: 768px) {
             .header { height: 70px !important; }
@@ -92,6 +103,8 @@
             .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
+            .profile-dropdown-container { max-width: 130px; }
+            .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
@@ -113,7 +126,7 @@
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
@@ -127,7 +140,7 @@
         
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 20px 10px 20px; font-weight: bold; }
         
-        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; }
+        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
         .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
         .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
         .sidebar-menu a.normal-link:hover { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
@@ -143,14 +156,6 @@
 
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
-
-        /* 🔥 TOP RIGHT DROPDOWN 🔥 */
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; }
-        .topbarDropdown-content.show { display: block; }
-        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
-        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
-        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
-        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
 
         /* 🌟 CEO PAGE MAIN CONTENT CSS 🌟 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
@@ -211,6 +216,7 @@
         .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
+        /* 🔥 FLOATING BUTTONS CSS (MOBILE FIX 50px) 🔥 */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
@@ -223,7 +229,24 @@
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS (BUG FIXED) 🔥 */
+        /* 🔥 MOBILE VIEW OVERRIDES 🔥 */
+        @media (max-width: 768px) { 
+            .ceo-image-container { max-width: 280px; } 
+            .ceo-title { font-size: 24px; letter-spacing: 0px; white-space: normal; } 
+            .vision-grid { grid-template-columns: 1fr; } 
+            .ceo-content-box { padding: 25px 20px; } 
+            .ceo-highlight-contact { padding: 20px 15px; }
+            .highlight-social-links { justify-content: center; gap: 8px; }
+            .highlight-social-links a { width: 36px; height: 36px; font-size: 14px; }
+            
+            /* EXACT 50PX MOBILE SIZES */
+            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
+            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
+            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
+        }
+
+        /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -271,21 +294,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-
-        @media (max-width: 768px) { 
-            .ceo-image-container { max-width: 280px; } 
-            .ceo-title { font-size: 24px; letter-spacing: 0px; white-space: normal; } 
-            .vision-grid { grid-template-columns: 1fr; } 
-            .ceo-content-box { padding: 25px 20px; } 
-            .ceo-highlight-contact { padding: 20px 15px; }
-            .highlight-social-links { justify-content: center; gap: 8px; }
-            .highlight-social-links a { width: 36px; height: 36px; font-size: 14px; }
-            
-            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
-            .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
-            .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
-        }
     </style>
 </head>
 <body>
@@ -295,7 +303,7 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
+                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -304,7 +312,6 @@
                 </a>
             </div>
             
-            <!-- 🔥 TOP RIGHT PROFILE DROPDOWN (DYNAMIC) 🔥 -->
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
@@ -353,6 +360,13 @@
         </div>
         
         <div class="sidebar-menu">
+            <!-- 🔥 NEW VIP FLOW DASHBOARD & WALLET LINK 🔥 -->
+            <div class="menu-heading">My Account</div>
+            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+            <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
+            
+            <div class="menu-divider"></div>
+
             <div class="menu-heading">Explore Ecosystem</div>
             <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
@@ -360,7 +374,6 @@
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-            
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
@@ -396,13 +409,10 @@
             <h1 class="ceo-title">Mr. Dipak Kumar Gupta</h1>
             <p class="ceo-designation">Founder & CEO <br><span>( DK SIR )</span></p>
 
-            <!-- 🔥 NEW HIGHLIGHTED CONNECT WITH DK SIR SECTION 🔥 -->
             <div class="ceo-highlight-contact">
                 <h3>CONNECT WITH DK SIR</h3>
-                
                 <p><i class="fas fa-phone-alt"></i> <span>+91 933 033 2929<br>+91 983 033 2929</span></p>
                 <p><i class="fas fa-envelope"></i> <span><a href="mailto:dipakceo@dkatovitt.com">dipakceo@dkatovitt.com</a></span></p>
-                
                 <div class="highlight-social-links">
                     <a href="https://wa.me/919830332929" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -435,7 +445,7 @@
         </div>
     </section>
 
-    <!-- 🔥 MASTER MEGA FOOTER (WITH VIDEO LOGO RESTORED) 🔥 -->
+    <!-- 🔥 MASTER MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -458,11 +468,10 @@
                 
                 <h4 style="margin-top: 25px;">My Account</h4>
                 <ul>
-                    <li><a href="wallet.html">My Wallet</a></li>
+                    <li><a href="index.html">VIP Dashboard</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
 
-                <!-- 🔥 MOVED LIVE PROJECTS HERE FOR PERFECT BALANCE 🔥 -->
                 <h4 style="margin-top: 25px;">Live Ecosystem</h4>
                 <ul>
                     <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
@@ -473,7 +482,6 @@
             <div class="tseries-footer-col">
                 <h4>Upcoming Projects</h4>
                 <ul>
-                    <!-- 🔥 ONLY SOON PROJECTS REMAIN HERE 🔥 -->
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)">DK Exchange (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
@@ -591,6 +599,16 @@
             document.getElementById('customAlertOverlay').classList.remove('active');
         });
 
+        // Dropdown Click-outside closer
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
+            }
+        }
+
         // Menu Toggle Scripts & SCROLL LOCK
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -618,16 +636,7 @@
         document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
-        
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
-                }
-            }
-        }
-        
+
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
             if(copyText.includes('Loading') || copyText.includes('Login')) return;
@@ -768,10 +777,10 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE LOGIC FOR NON-AUTH PAGES (CLEAN & BUG-FREE) 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE & DYNAMIC VIP MENU LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -779,8 +788,7 @@
             projectId: "dk-atovitt",
             storageBucket: "dk-atovitt.firebasestorage.app",
             messagingSenderId: "234274941441",
-            appId: "1:234274941441:web:5e029c7ba315f849c3ae00",
-            measurementId: "G-MZY82D20RL"
+            appId: "1:234274941441:web:5e029c7ba315f849c3ae00"
         };
 
         const app = initializeApp(firebaseConfig);
@@ -790,30 +798,75 @@
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
                 let fullName = user.displayName || "VIP Member";
-                let userName = fullName.trim().split(' ')[0];
-                let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-                let uidSnippet = user.uid ? user.uid.substring(0, 10) : "..........";
+                let userName = fullName.trim().split(' ')[0]; // Only first name
+                let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
+                // 🔥 GENERATE 10-CHARACTER MIXED CASE DK ID 🔥
+                let uidSnippet = "";
+                if (user.uid) {
+                    uidSnippet = user.uid.substring(0, 10);
+                } else {
+                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
                 let userDkId = "DK-" + uidSnippet;
 
-                const profileNameEl = document.getElementById('sidebarProfileName');
-                const profileImgEl = document.getElementById('sidebarProfileImg');
-                const dkIdEl = document.getElementById('sidebarDkId');
-                const vipBadgeEl = document.getElementById('sidebarVipBadge');
-                const loginBtnEl = document.getElementById('sidebarLoginBtn');
-                const logoutBtnEl = document.getElementById('sidebarLogoutBtn');
-                const footerAreaEl = document.getElementById('sidebarFooterArea');
-
-                if(profileNameEl) profileNameEl.innerText = fullName;
-                if(profileImgEl) profileImgEl.src = userPhoto;
-                if(dkIdEl) {
-                    dkIdEl.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
-                    dkIdEl.style.display = 'inline-block';
+                // 🔥 1. UPDATE SIDEBAR PROFILE 🔥
+                document.getElementById('sidebarProfileName').innerText = fullName;
+                document.getElementById('sidebarProfileImg').src = userPhoto;
+                
+                const dkIdBadge = document.getElementById('sidebarDkId');
+                if(dkIdBadge) {
+                    dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                    dkIdBadge.style.display = 'inline-block';
                 }
-                if(vipBadgeEl) vipBadgeEl.style.display = 'inline-block';
-                if(loginBtnEl) loginBtnEl.style.display = 'none';
-                if(logoutBtnEl) logoutBtnEl.style.display = 'flex';
-                if(footerAreaEl) footerAreaEl.style.display = 'block';
+                
+                const vipBadge = document.getElementById('sidebarVipBadge');
+                if(vipBadge) vipBadge.style.display = 'inline-block';
+                
+                // Show Logout, Hide Login from Footer
+                const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+                const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
+                
+                if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
+                if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
+                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
+                // 🔥 2. INJECT NEW VIP SIDEBAR MENU LINKS (DASHBOARD & WALLET) 🔥
+                const sidebarMenu = document.querySelector('.sidebar-menu');
+                if (sidebarMenu) {
+                    sidebarMenu.innerHTML = `
+                        <div class="menu-heading">My Account</div>
+                        <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                        <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
+                        
+                        <div class="menu-divider"></div>
+                        <div class="menu-heading">Explore Ecosystem</div>
+                        <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+
+                        <div class="menu-divider"></div>
+
+                        <a href="ceo.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                        <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+                        <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+                        <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                    `;
+                }
+
+                // 🔥 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX) 🔥
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -830,9 +883,10 @@
                             </select>
                         </div>
                         
-                        <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
-                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
-                                <span>${userName}</span> <i class="fas fa-caret-down"></i>
+                        <div class="profile-dropdown-container" style="position: relative; display: inline-block; max-width: 140px;">
+                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 5px 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box;">
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> 
+                                <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
@@ -847,12 +901,13 @@
                         </div>
                     `;
                 }
-                
+
+                // Enable Logout Action
                 setTimeout(() => {
                     document.querySelectorAll('.logout-action').forEach(btn => {
                         btn.addEventListener('click', () => {
                             if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
-                                auth.signOut().then(() => window.location.reload());
+                                signOut(auth).then(() => { window.location.reload(); });
                             }
                         });
                     });
