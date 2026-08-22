@@ -46,7 +46,7 @@
         .login-btn-header:hover { background-color: #e6c875 !important; color: #000 !important; }
         .show-on-mobile { display: none; }
         
-        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
+        /* 🔥 PROFILE DROPDOWN CONTAINER 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
         .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
         .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -70,8 +70,6 @@
             .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
-            
-            /* Profile name button fix for mobile */
             .profile-dropdown-container { max-width: 120px; }
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
@@ -130,7 +128,7 @@
         .welcome-banner h1 span { color: #e6c875; }
         .welcome-banner p { margin: 0; color: #aaa; font-size: 16px; line-height: 1.6; }
 
-        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 25px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
+        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 25px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
         .wallet-left { display: flex; align-items: center; gap: 20px; }
         .wallet-icon-large { width: 60px; height: 60px; background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 26px; box-shadow: 0 0 20px rgba(230,200,117,0.4); border: 3px solid #111; }
         .wallet-info p { margin: 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
@@ -138,6 +136,21 @@
         .wallet-info h3 span { font-size: 16px; color: #fff; }
         .wallet-action-btn { background: transparent; color: #e6c875; border: 2px solid #e6c875; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
         .wallet-action-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.4); }
+
+        /* 🔥 NEW REFERRAL LINK BANNER CSS 🔥 */
+        .referral-banner { background: #0a0a0a; border: 1px dashed #e6c875; border-radius: 15px; padding: 25px 30px; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; }
+        .ref-header { margin-bottom: 15px; }
+        .ref-header h3 { color: #e6c875; margin: 0 0 5px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;}
+        .ref-header p { color: #aaa; font-size: 13px; margin: 0; line-height: 1.5; }
+        .ref-link-box { display: flex; gap: 10px; align-items: center; background: #111; padding: 6px; border-radius: 30px; border: 1px solid #333; }
+        .ref-link-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 10px 15px; font-size: 14px; outline: none; }
+        .ref-link-box button { background: #e6c875; color: #000; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; transition: 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(230,200,117,0.3); flex-shrink: 0;}
+        .ref-link-box button:hover { background: #fff; transform: scale(1.05); }
+        .ref-stats { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #222; }
+        .ref-stats span { color: #ccc; font-size: 14px; display: flex; align-items: center; gap: 8px;}
+        .ref-stats strong { color: #25d366; font-size: 18px; font-weight: 900;}
+        .view-ref-btn { color: #e6c875; text-decoration: none; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 5px; transition: 0.3s; background: rgba(230,200,117,0.1); padding: 8px 15px; border-radius: 20px; border: 1px solid #e6c875;}
+        .view-ref-btn:hover { background: #e6c875; color: #000; }
 
         .section-title { color: #e6c875; font-size: 22px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 10px; font-weight: bold; text-align: center; }
 
@@ -167,6 +180,14 @@
             .wallet-banner { padding: 20px; flex-direction: column; align-items: flex-start; }
             .wallet-action-btn { width: 100%; justify-content: center; margin-top: 10px; }
             .business-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* Referral Mobile CSS */
+            .referral-banner { padding: 20px 15px; }
+            .ref-link-box { flex-wrap: wrap; border-radius: 12px; padding: 10px; gap: 8px;}
+            .ref-link-box input { width: 100%; text-align: center; padding: 8px; font-size: 13px;}
+            .ref-link-box button { flex: 1; border-radius: 8px; height: 45px;}
+            .ref-stats { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .view-ref-btn { width: 100%; justify-content: center; }
         }
 
         /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
@@ -265,7 +286,6 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <!-- 🔥 PREVENT REFRESH: javascript:void(0) 🔥 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
@@ -365,7 +385,7 @@
             <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
         </div>
 
-        <!-- 🔥 WALLET BANNER (REDIRECTS TO WALLET.HTML) 🔥 -->
+        <!-- 🔥 WALLET BANNER 🔥 -->
         <div class="wallet-banner reveal">
             <div class="wallet-left">
                 <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
@@ -375,6 +395,23 @@
                 </div>
             </div>
             <a href="wallet.html" class="wallet-action-btn"><i class="fas fa-wallet"></i> Open Wallet</a>
+        </div>
+
+        <!-- 🔥 NEW REFERRAL LINK BANNER (LEVEL 1) 🔥 -->
+        <div class="referral-banner reveal" id="referralBanner">
+            <div class="ref-header">
+                <h3><i class="fas fa-network-wired"></i> Share & Earn (Level 1)</h3>
+                <p>Invite friends to DK Atovitt using your VIP Link and build your 10-Level Network.</p>
+            </div>
+            <div class="ref-link-box">
+                <input type="text" id="myReferralLink" value="Loading..." readonly>
+                <button type="button" onclick="copyMyReferral()" title="Copy Link"><i class="fas fa-copy"></i></button>
+                <button type="button" onclick="shareMyReferral()" title="Share Link"><i class="fas fa-share-alt"></i></button>
+            </div>
+            <div class="ref-stats">
+                <span><i class="fas fa-users"></i> Direct Referrals: <strong id="directRefCount">0</strong></span>
+                <a href="referral.html" class="view-ref-btn">View Network <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
 
         <h2 class="section-title reveal">Our Ecosystem</h2>
@@ -624,6 +661,29 @@
             document.getElementById('customAlertOverlay').classList.remove('active');
         });
 
+        // 🔥 COPY AND SHARE REFERRAL LINK GLOBAL FUNCTIONS 🔥
+        window.copyMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            navigator.clipboard.writeText(link);
+            showCustomAlert('Copied!', 'Referral Link Copied Successfully!', false);
+        };
+
+        window.shareMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Join DK Atovitt Ecosystem',
+                    text: 'Join the DK Atovitt Ecosystem and earn ATVT coins up to 10 Levels! Click my VIP link to register:\n\n',
+                    url: link
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                window.copyMyReferral();
+            }
+        };
+
         // Menu Toggle Scripts & SCROLL LOCK
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -801,10 +861,11 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA (HEADER NAME BUG FIXED & UNIFIED MENU INJECTED) 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA & REFERRAL LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -817,8 +878,9 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
                 let fullName = user.displayName || "VIP Member";
@@ -826,13 +888,7 @@
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
                 // 🔥 GENERATE 10-CHARACTER MIXED CASE DK ID 🔥
-                let uidSnippet = "";
-                if (user.uid) {
-                    uidSnippet = user.uid.substring(0, 10);
-                } else {
-                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
+                let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
                 // 1. UPDATE SIDEBAR PROFILE
@@ -857,13 +913,14 @@
                 if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
                 if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // 2. INJECT NEW VIP SIDEBAR MENU LINKS
+                // 2. INJECT NEW VIP SIDEBAR MENU LINKS (WITH REFERRAL OPTION)
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">My Account</div>
                         <a href="index.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
+                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> Direct Referral (Level 1)</div></a>
                         
                         <div class="menu-divider"></div>
                         <div class="menu-heading">Explore Ecosystem</div>
@@ -890,7 +947,7 @@
                     `;
                 }
 
-                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
+                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH REFERRAL LINK)
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -903,7 +960,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -914,6 +971,7 @@
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
+                                <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="section-title">Ecosystem Quick Links</div>
                                 <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
@@ -928,6 +986,24 @@
                 // 4. UPDATE WELCOME BANNER
                 if(document.getElementById('welcomeNameText')) {
                     document.getElementById('welcomeNameText').innerText = userName;
+                }
+
+                // 🔥 5. SHOW & POPULATE REFERRAL BANNER 🔥
+                const refBanner = document.getElementById('referralBanner');
+                const refInput = document.getElementById('myReferralLink');
+                if(refBanner && refInput) {
+                    refBanner.style.display = 'block';
+                    refInput.value = `https://dkatovitt.com/auth.html?ref=${userDkId}`;
+                    
+                    // Fetch Direct Referral Count from Database
+                    try {
+                        const usersRef = collection(db, "users");
+                        const q = query(usersRef, where("referred_by", "==", userDkId));
+                        const snapshot = await getCountFromServer(q);
+                        document.getElementById('directRefCount').innerText = snapshot.data().count;
+                    } catch(e) {
+                        console.log("Could not fetch referral count:", e);
+                    }
                 }
 
                 // Enable Logout Action
@@ -955,7 +1031,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
