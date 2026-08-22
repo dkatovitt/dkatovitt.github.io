@@ -139,15 +139,21 @@
         .wallet-action-btn { background: transparent; color: #e6c875; border: 2px solid #e6c875; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
         .wallet-action-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.4); }
 
-        /* 🔥 NEW REFERRAL LINK BANNER CSS 🔥 */
+        /* 🔥 NEW FULL-WIDTH REFERRAL LINK BANNER CSS 🔥 */
         .referral-banner { background: #0a0a0a; border: 1px dashed #e6c875; border-radius: 15px; padding: 25px 30px; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; }
         .ref-header { margin-bottom: 15px; }
         .ref-header h3 { color: #e6c875; margin: 0 0 5px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;}
         .ref-header p { color: #aaa; font-size: 13px; margin: 0; line-height: 1.5; }
-        .ref-link-box { display: flex; gap: 10px; align-items: center; background: #111; padding: 6px; border-radius: 30px; border: 1px solid #333; }
-        .ref-link-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 10px 15px; font-size: 14px; outline: none; }
-        .ref-link-box button { background: #e6c875; color: #000; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 16px; transition: 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(230,200,117,0.3); flex-shrink: 0;}
-        .ref-link-box button:hover { background: #fff; transform: scale(1.05); }
+        
+        .ref-link-box { display: flex; flex-direction: column; gap: 15px; background: #111; padding: 15px; border-radius: 12px; border: 1px solid #333; margin-top: 15px; }
+        .ref-link-text { font-size: 14px; color: #25d366; background: #0a0a0a; padding: 12px 15px; border-radius: 8px; border: 1px dashed #25d366; word-break: break-all; text-align: center; font-weight: bold; letter-spacing: 0.5px; user-select: all; margin: 0;}
+        .ref-btn-group { display: flex; gap: 10px; width: 100%; }
+        .ref-btn-group button { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase;}
+        .ref-btn-copy { background: #e6c875; color: #000; }
+        .ref-btn-copy:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230,200,117,0.3);}
+        .ref-btn-share { background: #25d366; color: #000; }
+        .ref-btn-share:hover { background: #128c7e; color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,211,102,0.3);}
+
         .ref-stats { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #222; }
         .ref-stats span { color: #ccc; font-size: 14px; display: flex; align-items: center; gap: 8px;}
         .ref-stats strong { color: #25d366; font-size: 18px; font-weight: 900;}
@@ -183,13 +189,13 @@
             .wallet-action-btn { width: 100%; justify-content: center; margin-top: 10px; }
             .business-grid { grid-template-columns: 1fr; gap: 20px; }
             
-            /* Referral Mobile CSS */
+            /* Referral Mobile CSS Fixed */
             .referral-banner { padding: 20px 15px; }
-            .ref-link-box { flex-wrap: wrap; border-radius: 12px; padding: 10px; gap: 8px;}
-            .ref-link-box input { width: 100%; text-align: center; padding: 8px; font-size: 13px;}
-            .ref-link-box button { flex: 1; border-radius: 8px; height: 45px;}
+            .ref-link-box { padding: 12px; gap: 12px; }
+            .ref-link-text { font-size: 13px; padding: 10px; }
+            .ref-btn-group button { font-size: 12px; padding: 10px; }
             .ref-stats { flex-direction: column; gap: 15px; align-items: flex-start; }
-            .view-ref-btn { width: 100%; justify-content: center; }
+            .view-ref-btn { width: 100%; justify-content: center; box-sizing: border-box; }
         }
 
         /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
@@ -309,7 +315,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -361,7 +367,7 @@
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
@@ -405,13 +411,16 @@
         <!-- 🔥 NEW REFERRAL LINK BANNER (LEVEL 1) 🔥 -->
         <div class="referral-banner reveal" id="referralBanner">
             <div class="ref-header">
-                <h3><i class="fas fa-network-wired"></i> Share & Earn (Level 1)</h3>
+                <h3><i class="fas fa-network-wired"></i> Share & Earn</h3>
                 <p>Invite friends to DK Atovitt using your VIP Link and build your 10-Level Network.</p>
             </div>
             <div class="ref-link-box">
-                <input type="text" id="myReferralLink" value="Loading..." readonly>
-                <button type="button" onclick="copyMyReferral()" title="Copy Link"><i class="fas fa-copy"></i></button>
-                <button type="button" onclick="shareMyReferral()" title="Share Link"><i class="fas fa-share-alt"></i></button>
+                <div class="ref-link-text" id="myReferralLinkDisplay">Loading...</div>
+                <input type="hidden" id="myReferralLink" value="Loading...">
+                <div class="ref-btn-group">
+                    <button type="button" class="ref-btn-copy" onclick="copyMyReferral()"><i class="fas fa-copy"></i> Copy Link</button>
+                    <button type="button" class="ref-btn-share" onclick="shareMyReferral()"><i class="fas fa-share-alt"></i> Share Now</button>
+                </div>
             </div>
             <div class="ref-stats">
                 <span><i class="fas fa-users"></i> Direct Referrals: <strong id="directRefCount">0</strong></span>
@@ -473,35 +482,35 @@
                 <p class="card-desc">Global smart e-commerce platform with exclusive ATVT token payment support.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)" class="business-card soon-card">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
                 <h3 class="card-title">DK Digital Ads</h3>
                 <p class="card-desc">Publish global ads across our ecosystem and pay directly with ATVT tokens.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)" class="business-card soon-card">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
                 <h3 class="card-title">DK GPS Tracker</h3>
                 <p class="card-desc">Advanced real-time location tracking services for personal and business use.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)" class="business-card soon-card">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
                 <h3 class="card-title">DK Connect Msg</h3>
                 <p class="card-desc">End-to-end encrypted messaging, voice, and video calls for the ecosystem.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)" class="business-card soon-card">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-comments"></i></div>
                 <h3 class="card-title">DK Chat</h3>
                 <p class="card-desc">AI-powered chatbot assistant for fast support, inquiries, and customer service.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)" class="business-card soon-card">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-gamepad"></i></div>
                 <h3 class="card-title">DK Games</h3>
@@ -925,7 +934,7 @@
                         <div class="menu-heading">My Account</div>
                         <a href="index.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
-                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> Direct Referral (Level 1)</div></a>
+                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
                         
                         <div class="menu-divider"></div>
                         <div class="menu-heading">Explore Ecosystem</div>
@@ -965,7 +974,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -998,7 +1007,9 @@
                 const refInput = document.getElementById('myReferralLink');
                 if(refBanner && refInput) {
                     refBanner.style.display = 'block';
-                    refInput.value = `https://dkatovitt.com/auth.html?ref=${userDkId}`;
+                    const fullLink = `https://dkatovitt.com/auth.html?ref=${userDkId}`;
+                    refInput.value = fullLink;
+                    document.getElementById('myReferralLinkDisplay').innerText = fullLink; // Show the full link
                     
                     // Fetch Direct Referral Count from Database
                     try {
