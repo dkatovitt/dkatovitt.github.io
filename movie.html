@@ -152,41 +152,6 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; }
         #overlay.active { display: block; }
         
-        /* 🌟 ORIGINAL MOVIE HERO CSS (Perfect Match to New Screenshot) 🌟 */
-        .hero { position: relative; width: 100%; min-height: calc(100vh - 40px); display: flex; justify-content: center; align-items: center; text-align: center; border-bottom: 2px solid #222; margin-top: 85px; overflow: hidden; }
-        /* Photo Background Zoom Fix */
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('images/movies/yakshini-poster.png') center 10% no-repeat; background-size: cover; transform: scale(1.15); z-index: 1; }
-        .hero-overlay { position: relative; z-index: 2; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px 45px 20px; box-sizing: border-box; }
-        .studio { color: #f0c551; font-size: 13px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; text-shadow: 2px 2px 10px #000; }
-        
-        /* Yakshini Golden Text Fix */
-        .yakshini-title { font-family: 'Playfair Display', serif; font-size: 85px; color: #f0c551; margin: 0; text-shadow: 3px 3px 20px rgba(0,0,0,0.9); font-weight: bold; line-height: 1.1; letter-spacing: 2px; }
-        
-        /* English YAKSHINI Text Fix */
-        .yakshini-english { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 360px; margin: 15px 0 25px 0; }
-        .yakshini-english .line { flex-grow: 1; height: 1.5px; background-color: #f0c551; opacity: 0.7; }
-        .yakshini-english span { padding: 0 15px; color: #fff; font-size: 20px; letter-spacing: 12px; text-transform: uppercase; text-shadow: 2px 2px 10px #000; font-weight: 500; }
-        
-        /* Red Warning Text Fix (No Box) */
-        .yakshini-tagline { color: #ff4d4d; font-weight: bold; font-size: 19px; margin-bottom: 15px; letter-spacing: 0.5px; text-shadow: 2px 2px 15px rgba(0,0,0,1); display: block; }
-        .hero-text { font-size: 16px; color: #ddd; margin-bottom: 40px; letter-spacing: 0.5px; text-shadow: 2px 2px 10px #000; }
-        
-        /* Watch Trailer Button Fix (Rounded Rectangle) */
-        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #e3bc4b; color: #000; padding: 15px 35px; text-decoration: none; font-size: 16px; font-weight: 900; border-radius: 6px; border: none; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .btn:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(230,200,117,0.6); }
-
-        @media (max-width: 768px) {
-            .hero { min-height: 85vh; }
-            .hero::before { background-position: center top; transform: scale(1.1); }
-            .hero-overlay { padding: 40px 20px 60px 20px; justify-content: flex-end; }
-            .yakshini-title { font-size: 60px; }
-            .yakshini-english span { font-size: 14px; letter-spacing: 8px; }
-            .yakshini-english { max-width: 280px; margin: 10px 0 20px 0;}
-            .yakshini-tagline { font-size: 15px; margin-bottom: 10px; }
-            .hero-text { font-size: 14px; margin-bottom: 30px; }
-            .btn { padding: 12px 25px; font-size: 14px; }
-        }
-
         /* 🌟 ORIGINAL MOVIE BODY CSS 🌟 */
         .featured-movie { padding: 60px 20px; background: #050505; border-bottom: 1px solid #1a1a1a; }
         .container-content { max-width: 1200px; margin: 0 auto; }
@@ -616,15 +581,32 @@
     
     <div id="overlay"></div>
     
-    <!-- 🔥 HERO SECTION (RESTORED EXACTLY LIKE NEW SCREENSHOT WITH ZOOM & RIGHT COLORS) 🔥 -->
-    <section class="hero" id="home">
-        <div class="hero-overlay">
-            <div class="studio notranslate">DK ATOVITT PRESENTS</div>
-            <h1 class="yakshini-title">यक्षिणी</h1>
-            <div class="yakshini-english"><div class="line"></div><span>Y a k s h i n i</span><div class="line"></div></div>
-            <p class="yakshini-tagline">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
-            <p class="hero-text">An Upcoming Bollywood Horror Romance Film</p>
-            <a href="#trailer" class="btn"><i class="fas fa-play"></i> WATCH TRAILER</a>
+    <!-- 🔥 NEW MAIN VIDEO HERO SECTION 🔥 -->
+    <section class="trailer-section" id="home" style="padding: 120px 20px 40px 20px; background: #050505; border-bottom: 1px solid #1a1a1a;">
+        <div class="container-content" style="max-width: 1000px; margin: 0 auto;">
+            <div class="video-wrapper" style="border: 1.5px solid #e6c875; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 0;">
+                <div class="video-thumbnail" onclick="playInlineVideo(this, 'Mek5HNkypTQ')">
+                    <div class="thumbnail-content">
+                        <!-- Using maxresdefault.jpg for better quality at the top -->
+                        <img src="https://img.youtube.com/vi/Mek5HNkypTQ/maxresdefault.jpg" alt="Main Trailer" loading="lazy" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
+                        <button class="play-btn" style="width: 75px; height: 75px; font-size: 30px;"><i class="fas fa-play" style="margin-left: 6px;"></i></button>
+                    </div>
+                </div>
+                <h3 class="trailer-title" style="font-size: 18px; margin-top: 15px; padding: 0 10px;">👻 यक्षिणी (Yakshini) Official Trailer & Title Song 🌙</h3>
+                <div class="btn-group-3" style="margin-top: 15px; padding: 0 15px;">
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
+                    <button class="smart-btn mp3-smart-btn" onclick="playSong('yakshini-title-track.mp3', 'यक्षिणी (Yakshini) Official Trailer')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                    <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
+                </div>
+                <div class="social-action-bar" style="margin-top: 15px; padding-bottom: 15px;">
+                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का खौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/movie.html#home')">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="social-btn" title="Comment on YouTube">
+                        <i class="fas fa-comment"></i> Comment
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -658,7 +640,7 @@
                         <div class="yakshini-sub-title"><span class="line"></span><span class="text">Yakshini</span><span class="line"></span></div>
                         <p class="yakshini-tagline-small">शाम 6 बजे के बाद कोई वापस नहीं जाएगा।</p>
                     </div>
-                    <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
+                    <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस خौफ का सामना कर पाएंगे?</p>
                     <div class="ai-notice">
                         <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है।</p>
                         <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span></span>
