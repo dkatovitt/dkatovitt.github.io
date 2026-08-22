@@ -65,7 +65,11 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
+        /* 🔥 CLOSE BUTTON (CUT OPTION) 🔥 */
+        .close-menu-btn { position: absolute; top: 12px; right: 15px; background: #222; border: 1px solid #444; width: 32px; height: 32px; border-radius: 50%; color: #ccc; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .close-menu-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: rotate(90deg); }
+
+        .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
@@ -76,8 +80,6 @@
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; }
@@ -294,8 +296,11 @@
     <!-- VIP SIDE MENU -->
     <div class="side-menu" id="sideMenu">
         
+        <!-- 🔥 NEW CLOSE (X) BUTTON AT THE TOP RIGHT 🔥 -->
+        <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
+
         <!-- Language Select Box -->
-        <div class="custom-translate" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+        <div class="custom-translate" style="padding: 15px 55px 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
@@ -310,7 +315,6 @@
 
         <!-- Dynamic Profile Area -->
         <div class="sidebar-profile" id="sidebarProfileArea">
-            <button class="close-menu-btn" id="closeMenu">&times;</button>
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
             
@@ -744,7 +748,6 @@
             <button class="app-modal-close" id="closeAppModal">&times;</button>
             <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <!-- 🔥 MODAL TAGLINE UPDATED 🔥 -->
             <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
