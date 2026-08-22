@@ -52,7 +52,7 @@
         .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
         
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
         .topbarDropdown-content.show { display: block; }
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
@@ -71,6 +71,7 @@
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
             
+            /* Profile name button fix for mobile */
             .profile-dropdown-container { max-width: 120px; }
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
@@ -140,7 +141,7 @@
 
         .section-title { color: #e6c875; font-size: 22px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 10px; font-weight: bold; text-align: center; }
 
-        /* 🔥 GRID: ALL 12 PROJECTS PROPER ALIGNMENT 🔥 */
+        /* 🔥 GRID FIX: 12 PROJECTS PROPER ALIGNMENT 🔥 */
         .business-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px; }
         .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 30px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
         .business-card:hover { transform: translateY(-8px); border-color: #e6c875; box-shadow: 0 10px 30px rgba(230,200,117,0.2); background: #161616; }
@@ -154,6 +155,9 @@
         .business-card.soon-card:hover { transform: none; border-color: #222; box-shadow: 0 5px 15px rgba(0,0,0,0.5); background: #111; }
         .business-card.soon-card:hover .card-icon { background: #1a1a1a; color: #e6c875; box-shadow: none; }
 
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
         @media (max-width: 900px) { .business-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .dashboard-section { padding: 110px 15px 40px 15px; }
@@ -165,7 +169,7 @@
             .business-grid { grid-template-columns: 1fr; gap: 20px; }
         }
 
-        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
+        /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -236,8 +240,10 @@
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
         .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
+        
         .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
         .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
+
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
@@ -250,8 +256,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -271,6 +275,7 @@
                 </a>
             </div>
             
+            <!-- 🔥 TOP RIGHT PROFILE DROPDOWN (DYNAMIC) 🔥 -->
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
@@ -284,12 +289,9 @@
                         <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
-                <!-- PROFILE MENU (WILL BE REPLACED BY FIREBASE) -->
-                <div class="profile-dropdown-container" id="loginHeaderWrapper">
-                    <a href="auth.html" class="login-btn-header">
-                        <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
-                    </a>
-                </div>
+                <a href="auth.html" class="login-btn-header">
+                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                </a>
             </div>
         </div>
     </header>
@@ -355,7 +357,7 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 DASHBOARD MAIN SECTION 🔥 -->
+    <!-- 🔥 DASHBOARD MAIN SECTION 🌟 -->
     <section class="dashboard-section" style="padding-top: 130px; max-width: 1200px; margin: 0 auto; min-height: 80vh;">
         
         <div class="welcome-banner reveal">
@@ -471,7 +473,7 @@
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875; margin: 0 0 10px 0;">DK ATOVITT</h3>
                 <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
@@ -541,12 +543,12 @@
             <div class="tseries-footer-col">
                 <h4>Connect With Us</h4>
                 <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt?igsh=dGk1MXNpOTR2MGRp&utm_source=ig_contact_invite" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -555,48 +557,24 @@
         </div>
     </footer>
 
-    <!-- 🔥 FLOATING BUTTONS (WhatsApp, Bot, Install) 🔥 -->
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- FLOATING BUTTONS -->
+    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
-    <button class="floating-install-btn" id="openAppModal" title="Install Official App" style="cursor: pointer; border: none;"><i class="fas fa-download"></i></button>
+    <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
-    <!-- 🔥 APP INSTALL MODAL 🔥 -->
+    <!-- APK DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="app-modal-logo-wrap">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
-            </div>
+            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
             <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
-            <p class="app-modal-subtitle notranslate">Official Movie Production House</p>
+            <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
             <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
             <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
-    <!-- 🔥 CHATBOT MODAL 🔥 -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="chatbot-header">
-            <div class="chatbot-header-left">
-                <div class="chat-header-video-wrap">
-                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-                </div>
-                <div>DK ATOVITT AI</div>
-            </div>
-            <button id="closeChatbot">&times;</button>
-        </div>
-        <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
-        </div>
-        <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
-            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
-            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
-            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
-        </div>
-    </div>
-
-    <!-- 🔥 CUSTOM ALERT MODAL 🔥 -->
+    <!-- CUSTOM ALERT MODAL -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -608,7 +586,29 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
+    <!-- 🔥 VIP CHATBOT MODAL WITH VIDEO LOGO IN HEADER 🔥 -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <div class="chatbot-header-left">
+                <div class="chat-header-video-wrap">
+                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div>DK ATOVITT AI</div>
+            </div>
+            <button id="closeChatbot">&times;</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+        </div>
+        <div class="chatbot-options">
+            <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
+            <button class="chat-opt-btn" onclick="sendChat('Upcoming')"><i class="fas fa-clock" style="color:#e6c875;"></i> Upcoming</button>
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Auditions</button>
+            <button class="chat-opt-btn" onclick="sendChat('Support')">📞 Support</button>
+        </div>
+    </div>
+
+    <!-- UI Scripts -->
     <script>
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
@@ -624,17 +624,7 @@
             document.getElementById('customAlertOverlay').classList.remove('active');
         });
 
-        // Dropdown Click-outside closer
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
-                }
-            }
-        }
-
-        // PERFECT OVERLAY CLICK FIX FOR MENU
+        // Menu Toggle Scripts & SCROLL LOCK
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -661,7 +651,16 @@
         document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
-
+        
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
+            }
+        }
+        
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
             if(copyText.includes('Loading') || copyText.includes('Login')) return;
@@ -802,7 +801,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA (HEADER NAME BUG FIXED & UNIFIED MENU INJECTED) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -863,7 +862,7 @@
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">My Account</div>
-                        <a href="index.html" class="normal-link active"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                        <a href="index.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
                         
                         <div class="menu-divider"></div>
@@ -873,7 +872,7 @@
                         
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
@@ -910,7 +909,7 @@
                         
                         <div class="profile-dropdown-container">
                             <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
-                                <span>${userName}</span> <i class="fas fa-caret-down"></i>
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
@@ -943,8 +942,27 @@
                 }, 500);
 
             } else {
-                // If not logged in, redirect to login page for safety
-                window.location.href = "auth.html";
+                // If not logged in
+                const headerRightArea = document.getElementById('headerRightArea');
+                if(headerRightArea) {
+                    headerRightArea.innerHTML = `
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                            </select>
+                        </div>
+                        <a href="auth.html" class="login-btn-header">
+                            <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                        </a>
+                    `;
+                }
             }
         });
     </script>
