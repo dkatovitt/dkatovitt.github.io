@@ -74,7 +74,7 @@
         .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
         
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
         .topbarDropdown-content.show { display: block; }
         .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
         .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
@@ -93,7 +93,6 @@
             .hide-on-mobile { display: none !important; }
             .show-on-mobile { display: inline !important; }
             
-            /* Profile name button fix for mobile */
             .profile-dropdown-container { max-width: 120px; }
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
@@ -108,7 +107,7 @@
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .close-menu-btn { position: absolute; top: 5px; right: 15px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; font-weight: bold; transition: 0.3s; display: none;}
         .close-menu-btn:hover { color: #e6c875; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -271,12 +270,13 @@
 </head>
 <body>
 
-    <!-- 🔥 HEADER 🔥 -->
+    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer;">
+                <!-- 🔥 PREVENT REFRESH: javascript:void(0) 🔥 -->
+                <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
                         <h1 class="desktop-logo-text notranslate">DK ATOVITT</h1>
@@ -436,7 +436,7 @@
         </div>
     </section>
 
-    <!-- 🔥 MASTER MEGA FOOTER (WITH VIDEO LOGO RESTORED) 🔥 -->
+    <!-- 🔥 MASTER MEGA FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -493,7 +493,7 @@
                     <li><a href="ceo.html">About CEO</a></li>
                     <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
                     <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
+                    <li><a href="news.html" style="color: #e6c875;">News & Updates</a></li>
                 </ul>
             </div>
             
@@ -802,7 +802,7 @@
                 }
                 let userDkId = "DK-" + uidSnippet;
 
-                // 🔥 1. UPDATE SIDEBAR PROFILE 🔥
+                // 1. UPDATE SIDEBAR PROFILE
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 
@@ -824,7 +824,7 @@
                 if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
                 if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // 🔥 2. INJECT NEW VIP SIDEBAR MENU LINKS (DASHBOARD & WALLET) 🔥
+                // 2. INJECT NEW VIP SIDEBAR MENU LINKS
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
@@ -839,7 +839,7 @@
                         
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
@@ -857,7 +857,7 @@
                     `;
                 }
 
-                // 🔥 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX) 🔥
+                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -874,10 +874,9 @@
                             </select>
                         </div>
                         
-                        <div class="profile-dropdown-container" style="position: relative; display: inline-block; max-width: 140px;">
-                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 5px 12px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: 0.3s; box-sizing: border-box;">
-                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> 
-                                <i class="fas fa-caret-down"></i>
+                        <div class="profile-dropdown-container">
+                            <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
@@ -905,7 +904,7 @@
                 }, 500);
 
             } else {
-                // FALLBACK FOR NON-LOGGED IN USERS
+                // If not logged in
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
