@@ -239,7 +239,9 @@
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
+            
+            /* ADDED FROM INDEX: Ensuring bot modal isn't hidden on small screens */
+            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; } 
         }
 
         /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
@@ -271,7 +273,7 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
+        /* 🔥 ADDED FROM INDEX: VIP CHATBOT CSS WITH RECTANGULAR LOGO 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
@@ -588,7 +590,10 @@
 
     <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    
+    <!-- 🔥 ADDED: CHATBOT TOGGLER BUTTON 🔥 -->
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
+    
     <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
     <!-- APK DOWNLOAD MODAL -->
@@ -615,7 +620,7 @@
         </div>
     </div>
 
-    <!-- 🔥 VIP CHATBOT MODAL WITH OVERLAY & SCROLL LOCK 🔥 -->
+    <!-- 🔥 ADDED: VIP CHATBOT MODAL WITH OVERLAY & SCROLL LOCK 🔥 -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -810,7 +815,7 @@
             }
         };
 
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        // 🔥 ADDED FROM INDEX: VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -837,7 +842,7 @@
             });
         }
 
-        // 🔥 POORE 11 UPCOMING PROJECTS KI LIST YAHAN HAI 🔥
+        // 🔥 ADDED FROM INDEX: POORE 11 UPCOMING PROJECTS KI LIST YAHAN HAI 🔥
         function sendChat(type) {
             let userText = ""; let botReply = "";
 
