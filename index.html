@@ -162,7 +162,7 @@
 
         .section-title { color: #e6c875; font-size: 22px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 10px; font-weight: bold; text-align: center; }
 
-        /* 🔥 GRID FIX: 12 PROJECTS PROPER ALIGNMENT 🔥 */
+        /* 🔥 GRID FIX: PROJECTS PROPER ALIGNMENT 🔥 */
         .business-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px; }
         .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 30px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
         .business-card:hover { transform: translateY(-8px); border-color: #e6c875; box-shadow: 0 10px 30px rgba(230,200,117,0.2); background: #161616; }
@@ -198,7 +198,7 @@
             .view-ref-btn { width: 100%; justify-content: center; box-sizing: border-box; }
         }
 
-        /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
+        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -342,7 +342,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -404,7 +404,6 @@
                 <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
                 <div class="wallet-info">
                     <p>Available Balance</p>
-                    <!-- 🔥 NEW: Balance element id added for dynamic 0.00 / 150.00 logic 🔥 -->
                     <h3 id="walletBalanceDisplay">0.00 <span>ATVT</span></h3>
                 </div>
             </div>
@@ -566,10 +565,11 @@
                 </ul>
             </div>
             
+            <!-- 🔥 UPCOMING PROJECTS: DK ATOVITT CHAIN / SCAN PLACED AT THE TOP 🔥 -->
             <div class="tseries-footer-col">
                 <h4>Upcoming Projects</h4>
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK Atovitt Chain (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)">DK Exchange (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
@@ -842,7 +842,8 @@
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching very soon!', false)"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
@@ -1016,19 +1017,19 @@
                     document.getElementById('welcomeNameText').innerText = userName;
                 }
                 
-                // 🔥 NEW: Update Balance for Logged in User 🔥
+                // Update Balance for Logged in User
                 if(document.getElementById('walletBalanceDisplay')) {
                     document.getElementById('walletBalanceDisplay').innerHTML = '150.00 <span>ATVT</span>';
                 }
 
-                // 🔥 5. SHOW & POPULATE REFERRAL BANNER 🔥
+                // 5. SHOW & POPULATE REFERRAL BANNER
                 const refBanner = document.getElementById('referralBanner');
                 const refInput = document.getElementById('myReferralLink');
                 if(refBanner && refInput) {
                     refBanner.style.display = 'block';
                     const fullLink = `https://dkatovitt.com/auth.html?ref=${userDkId}`;
                     refInput.value = fullLink;
-                    document.getElementById('myReferralLinkDisplay').innerText = fullLink; // Show the full link
+                    document.getElementById('myReferralLinkDisplay').innerText = fullLink;
                     
                     // Fetch Direct Referral Count from Database
                     try {
@@ -1053,8 +1054,7 @@
                 }, 500);
 
             } else {
-                // If not logged in
-                // 🔥 NEW: Set Balance to 0 for Guest 🔥
+                // If not logged in -> Set Balance to 0
                 if(document.getElementById('walletBalanceDisplay')) {
                     document.getElementById('walletBalanceDisplay').innerHTML = '0.00 <span>ATVT</span>';
                 }
