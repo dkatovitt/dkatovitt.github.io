@@ -206,7 +206,7 @@
         .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
+        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } /* Added overflow hidden */
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
@@ -342,7 +342,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -362,7 +362,7 @@
             
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
             
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
             
@@ -449,7 +449,6 @@
                 <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins.</p>
             </a>
 
-            <!-- 🔥 NEW PROJECT ADDED HERE 🔥 -->
             <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-link"></i></div>
@@ -457,10 +456,11 @@
                 <p class="card-desc">Our highly secure and ultra-fast official blockchain network & explorer.</p>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="business-card soon-card">
+            <!-- 🔥 DK CRYPTO EXCHANGE 🔥 -->
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                <h3 class="card-title">DK Exchange</h3>
+                <h3 class="card-title">DK Crypto Exchange</h3>
                 <p class="card-desc">Advanced crypto and ATVT asset trading platform with zero-fee options.</p>
             </a>
 
@@ -565,12 +565,12 @@
                 </ul>
             </div>
             
-            <!-- 🔥 UPCOMING PROJECTS: DK ATOVITT CHAIN / SCAN PLACED AT THE TOP 🔥 -->
+            <!-- 🔥 UPCOMING PROJECTS: FIXED SINGLE LINE CSS & DK CRYPTO EXCHANGE 🔥 -->
             <div class="tseries-footer-col">
                 <h4>Upcoming Projects</h4>
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)">DK Exchange (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
@@ -843,7 +843,7 @@
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
                 botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching very soon!', false)"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
@@ -956,7 +956,7 @@
                         
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                         
-                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
                         <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
