@@ -102,19 +102,23 @@
         #closeMenu:hover { color: #e6c875; transform: scale(1.1); }
         
         .sidebar-menu { padding-bottom: 30px; }
-        .side-menu a.normal-link, .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; }
-        .side-menu a.normal-link span, .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
-        .side-menu a.normal-link span i, .menu-dropdown-btn span i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; margin-right: 15px; }
+        
+        /* 🔥 SINGLE LINE FIX FOR MENU ITEMS 🔥 */
+        .side-menu a.normal-link, .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .side-menu a.normal-link span, .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
+        .side-menu a.normal-link span i, .menu-dropdown-btn span i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; margin-right: 15px; flex-shrink: 0; }
         .side-menu a.normal-link:hover, .menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
         .side-menu a.normal-link.active, .menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
         
-        .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; }
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; flex-shrink: 0; }
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
         
         .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { display: block; font-size: 14px !important; padding: 12px 20px 12px 55px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
-        .sub-menu a i { width: 20px; text-align: center; margin-right: 10px; color: #e6c875; }
+        
+        /* 🔥 SINGLE LINE FIX FOR SUB-MENU ITEMS 🔥 */
+        .sub-menu a { display: block; font-size: 14px !important; padding: 12px 20px 12px 45px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sub-menu a i { width: 20px; text-align: center; margin-right: 12px; color: #e6c875; }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -367,15 +371,14 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 VIP CHATBOT CSS WITH HEADER VIDEO LOGO 🔥 */
+        /* 🔥 VIP CHATBOT CSS 🔥 */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
-        
         .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
         .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
-
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
@@ -388,11 +391,11 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
     </style>
 </head>
 <body>
-
+    
     <!-- 🔥 HEADER WITH FIXES (GLOBAL TECH & NO REFRESH) 🔥 -->
     <header class="header">
         <div class="container">
@@ -461,9 +464,16 @@
                 <span><i class="fas fa-globe"></i> DK ATOVITT Ecosystem</span>
                 <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
             </a>
+            
+            <!-- 🔥 CATEGORIZED ECOSYSTEM SUB-MENU 🔥 -->
             <div class="sub-menu" id="mainEcoSub">
+                <div style="padding: 12px 20px 6px 45px; font-size: 11px; color: #25d366; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold;"><i class="fas fa-circle" style="font-size: 8px; margin-right: 6px; vertical-align: middle;"></i> Live Projects</div>
+                
                 <a href="movie.html"><i class="fas fa-film"></i> DK Film Production</a>
                 <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
+                
+                <div style="padding: 18px 20px 6px 45px; font-size: 11px; color: #e6c875; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold;"><i class="fas fa-clock" style="margin-right: 6px;"></i> Coming Soon</div>
+                
                 <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</a>
                 <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</a>
                 <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</a>
@@ -604,7 +614,7 @@
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                     <div class="ai-notice">
                         <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है।</p>
-                        <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span></span>
+                        <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू জানালা जा रही है। Stay Tuned!</span></span>
                     </div>
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
