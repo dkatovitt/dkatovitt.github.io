@@ -294,11 +294,9 @@
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
         
         /* 🔥 UPCOMING PROJECTS DROPDOWN CSS 🔥 */
-        .dropdown-btn { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #e6c875; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent; cursor: pointer; background: rgba(230,200,117,0.08); margin: 5px 0;}
-        .dropdown-btn .link-text { display: flex; align-items: center; gap: 12px; }
-        .dropdown-btn i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
-        .dropdown-btn:hover { background: rgba(230,200,117,0.15); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
-        .upcoming-list { display: none; background: #080808; border-left: 1px dashed #333; margin-left: 20px; padding-left: 5px; }
+        .upcoming-list { display: none; background: transparent; }
+        .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
+        .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); }
     </style>
 </head>
 <body>
@@ -374,9 +372,9 @@
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             
             <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
-            <a class="dropdown-btn" onclick="toggleUpcomingProjects()">
+            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
                 <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                <i class="fas fa-chevron-down" id="upcomingArrow" style="transition: 0.3s; font-size: 14px;"></i>
+                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
             </a>
             
             <div id="upcomingProjectsList" class="upcoming-list">
@@ -769,7 +767,7 @@
         menuBtn.addEventListener('click', openMenu); 
         closeMenu.addEventListener('click', closeSideMenu); 
         overlay.addEventListener('click', closeSideMenu);
-        document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
+        document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
         
@@ -929,7 +927,7 @@
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
-                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
+                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज গাঙ্গুল कर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
             } 
             else if(type === 'Support') {
                 userText = "मुझे Help / Support चाहिए।";
@@ -1030,9 +1028,9 @@
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         
                         <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
-                        <a class="dropdown-btn" onclick="toggleUpcomingProjects()">
+                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
                             <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                            <i class="fas fa-chevron-down" id="upcomingArrow" style="transition: 0.3s; font-size: 14px;"></i>
+                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
                         </a>
                         
                         <div id="upcomingProjectsList" class="upcoming-list">
