@@ -206,7 +206,8 @@
         .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
+        /* Removed overflow hidden to prevent text cutting */
+        .tseries-footer-col ul li { margin-bottom: 12px; } 
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
@@ -262,7 +263,7 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO 🔥 */
+        /* 🔥 VIP CHATBOT CSS WITH CENTRAL OVERLAY 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
@@ -344,7 +345,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
             </select>
         </div>
 
@@ -560,19 +561,19 @@
                     <li><a href="wallet.html">My Wallet</a></li>
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
-
-                <h4 style="margin-top: 25px;">Live Ecosystem</h4>
-                <ul>
+            </div>
+            
+            <div class="tseries-footer-col">
+                <!-- 🔥 LIVE ECOSYSTEM SHIFTED HERE 🔥 -->
+                <h4>Live Ecosystem</h4>
+                <ul style="margin-bottom: 25px;">
                     <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
                     <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
                 </ul>
-            </div>
-            
-            <!-- 🔥 UPCOMING PROJECTS: FIXED SINGLE LINE CSS & DK CRYPTO EXCHANGE 🔥 -->
-            <div class="tseries-footer-col">
+
                 <h4>Upcoming Projects</h4>
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
                     <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
