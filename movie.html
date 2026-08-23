@@ -93,7 +93,7 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        /* 🔥 VIP SIDE MENU CSS (MATCHED WITH 1001127063.jpg) 🔥 */
+        /* 🔥 VIP SIDE MENU CSS WITH 1-LINE FIX (NO WRAP) 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
@@ -103,7 +103,7 @@
         
         .sidebar-menu { padding-bottom: 30px; }
         
-        /* 🔥 SINGLE LINE FIX FOR MENU ITEMS 🔥 */
+        /* THE CRITICAL 1-LINE TEXT FIX */
         .side-menu a.normal-link, .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .side-menu a.normal-link span, .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
         .side-menu a.normal-link span i, .menu-dropdown-btn span i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; margin-right: 15px; flex-shrink: 0; }
@@ -115,14 +115,30 @@
         
         .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        
-        /* 🔥 SINGLE LINE FIX FOR SUB-MENU ITEMS 🔥 */
         .sub-menu a { display: block; font-size: 14px !important; padding: 12px 20px 12px 45px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .sub-menu a i { width: 20px; text-align: center; margin-right: 12px; color: #e6c875; }
+        .nested-sub a { padding-left: 55px !important; }
+        .sub-menu a i { width: 20px; text-align: center; margin-right: 10px; color: #e6c875; }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; }
+        .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+
+        .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
+        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
+        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
+        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
+        .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; display: none; }
+        .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+        .logout-btn-menu:hover { background: #cc0000; }
+
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
         
         /* 🔥 VIP WELCOME BANNER CSS (UPDATED TRANSPARENT-TO-DEEP-GOLD BUTTONS) 🔥 */
@@ -333,6 +349,7 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
         @media (max-width: 768px) { 
@@ -371,14 +388,15 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 VIP CHATBOT CSS 🔥 */
+        /* 🔥 VIP CHATBOT CSS WITH HEADER VIDEO LOGO 🔥 */
         .chatbot-container { position: fixed; bottom: 105px; right: 40px; width: 350px; background: #0a0a0a; border: 1px solid #e6c875; border-radius: 15px; z-index: 10000; display: none; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; }
         .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 15px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 10px; }
+        
         .chat-header-video-wrap { width: 34px; height: 34px; border-radius: 50%; overflow: hidden; background: #000; border: 1.5px solid #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
         .chat-header-video-wrap video { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; transform: scale(1.3); }
+
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
         .chatbot-body { padding: 20px 15px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; }
@@ -391,11 +409,11 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
-    
+
     <!-- 🔥 HEADER WITH FIXES (GLOBAL TECH & NO REFRESH) 🔥 -->
     <header class="header">
         <div class="container">
@@ -614,7 +632,7 @@
                     <p class="movie-story">कुछ जंगल रास्ता नहीं बताते... वो परीक्षा लेते हैं। एक भयानक रहस्य और डरावनी रात के साये में छुपी है यक्षिणी की सच्ची दास्तान। क्या आप इस खौफ का सामना कर पाएंगे?</p>
                     <div class="ai-notice">
                         <p>🌟 <strong>Special Note:</strong> यह फिल्म एक <strong>100% AI-Powered Concept</strong> है, जिसमें हमारे असली कलाकारों (Real Cast) के चेहरों का शानदार इस्तेमाल किया गया है।</p>
-                        <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू জানালা जा रही है। Stay Tuned!</span></span>
+                        <span class="highlight">🎬 Mega Announcement: <span style="color: #ccc; font-weight: normal;">बहुत जल्द इस ग्रैंड प्रोजेक्ट की <strong>Real Live Shooting</strong> बड़े पैमाने पर शुरू होने जा रही है। Stay Tuned!</span></span>
                     </div>
                     <ul class="movie-meta">
                         <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -726,7 +744,7 @@
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
-                        <button class="social-btn" onclick="shareViralContent('शाम ढले जब पानी डोले', '🌙 रोंगटे खड़े कर देने वाला हॉरर सॉन्ग! अभी देखें और डाउनलोड करें DK Atovitt पर:', 'https://dkatovitt.github.io/movie.html#songs')">
+                        <button class="social-btn" onclick="shareViralContent('शाम ढले যখন पानी डोले', '🌙 रोंगटे खड़े कर देने वाला हॉरर सॉन्ग! अभी देखें और डाउनलोड करें DK Atovitt पर:', 'https://dkatovitt.github.io/movie.html#songs')">
                             <i class="fas fa-share-alt"></i> Share
                         </button>
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="social-btn" title="Comment on YouTube">
@@ -1305,6 +1323,25 @@
             }
         }
 
+        /* 🔥 NESTED SUB-MENU TOGGLE FUNCTION 🔥 */
+        function toggleNestedMenu(id, event) {
+            if(event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
         function toggleSubMenu(id) {
             const subMenu = document.getElementById(id);
             const icon = document.getElementById(id.replace('Sub', 'Icon'));
@@ -1313,13 +1350,14 @@
                     subMenu.classList.remove('active');
                     if(icon) icon.classList.remove('rotate');
                 } else {
-                    document.querySelectorAll('.sub-menu').forEach(menu => menu.classList.remove('active'));
-                    document.querySelectorAll('.dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    document.querySelectorAll('.side-menu > .sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.side-menu > .menu-dropdown-btn .dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
                     subMenu.classList.add('active');
                     if(icon) icon.classList.add('rotate');
                 }
             }
         }
+
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
@@ -1524,6 +1562,7 @@
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
+                                <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="section-title">Ecosystem Quick Links</div>
                                 <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
@@ -1543,6 +1582,18 @@
                 if(bannerUserDp) {
                     const dp = localStorage.getItem('dk_user_dp') || user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
                     bannerUserDp.src = dp;
+                }
+
+                // 🔥 UPDATE SIDEBAR MENU WITH MY ACCOUNT SECTION 🔥
+                const sideMenuAuthBtn = document.getElementById('sideMenuAuthBtn');
+                if(sideMenuAuthBtn) {
+                    sideMenuAuthBtn.outerHTML = `
+                        <div class="menu-heading" style="margin-top: 15px;">My Account</div>
+                        <a href="index.html" class="normal-link"><span><i class="fas fa-tachometer-alt" style="width:20px; text-align:center; margin-right:15px; color:#e6c875;"></i> VIP Dashboard</span></a>
+                        <a href="wallet.html" class="normal-link"><span><i class="fas fa-wallet" style="width:20px; text-align:center; margin-right:15px; color:#e6c875;"></i> My ATVT Wallet</span></a>
+                        <a href="referral.html" class="normal-link"><span><i class="fas fa-network-wired" style="width:20px; text-align:center; margin-right:15px; color:#e6c875;"></i> My Referrals</span></a>
+                        <div class="menu-divider"></div>
+                    `;
                 }
                 
                 // LOGOUT LISTENER
