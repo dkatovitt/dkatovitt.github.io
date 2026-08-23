@@ -93,42 +93,34 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        /* 🔥 VIP SIDE MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); }
+        /* 🔥 VIP SIDE MENU CSS (MATCHED WITH 1001127063.jpg) 🔥 */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; }
-        #closeMenu { background: none; border: none; color: #fff; font-size: 30px; cursor: pointer; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; font-weight: bold; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; transition: 0.3s; }
+        #closeMenu:hover { color: #e6c875; transform: scale(1.1); }
         
-        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
-        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
-        .custom-translate select:hover { background: #e6c875; color: #000; }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
-
-        .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-        .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
-        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
-        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
-        .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
-
-        .side-menu a.normal-link { display: block; padding: 15px 20px; color: #ccc; text-decoration: none; border-bottom: 1px solid #222; font-size: 15px; transition: 0.3s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .side-menu a.normal-link:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; cursor: pointer; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #222; color: #ccc; font-size: 15px; transition: 0.3s; }
-        .menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; padding-left: 25px; }
-        .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
-        .dropdown-icon { font-size: 14px; transition: transform 0.3s; margin-left: 10px; }
+        .sidebar-menu { padding-bottom: 30px; }
+        .side-menu a.normal-link, .menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; }
+        .side-menu a.normal-link span, .menu-dropdown-btn span { display: flex; align-items: center; white-space: nowrap; }
+        .side-menu a.normal-link span i, .menu-dropdown-btn span i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; margin-right: 15px; }
+        .side-menu a.normal-link:hover, .menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
+        .side-menu a.normal-link.active, .menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
+        
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; }
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
-        .sub-menu { display: none; flex-direction: column; background: rgba(230, 200, 117, 0.05); padding-left: 15px; border-left: 2px solid #e6c875; margin-left: 20px; margin-bottom: 10px; border-radius: 0 5px 5px 0; }
+        
+        .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
-        .sub-menu a { display: block; font-size: 14px !important; padding: 10px !important; border-bottom: none !important; color: #aaa !important; text-decoration: none; transition: 0.3s; }
-        .sub-menu a:hover { color: #fff !important; padding-left: 15px !important; }
+        .sub-menu a { display: block; font-size: 14px !important; padding: 12px 20px 12px 55px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+        .sub-menu a i { width: 20px; text-align: center; margin-right: 10px; color: #e6c875; }
+        .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; }
         #overlay.active { display: block; }
-
+        
         /* 🔥 VIP WELCOME BANNER CSS (UPDATED TRANSPARENT-TO-DEEP-GOLD BUTTONS) 🔥 */
         .vip-welcome-banner { background: linear-gradient(135deg, #111, #0a0a0a); border-bottom: 2px solid #e6c875; padding: 20px 20px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
         .vip-banner-content { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 20px; flex-wrap: wrap; }
@@ -139,7 +131,6 @@
         .vip-badge { color: #aaa; font-size: 11px; margin: 6px 0 0 0; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
         .vip-banner-actions { display: flex; gap: 12px; }
         
-        /* 🔥 THE NEW BUTTON LOGIC: Normal is outline, Active is Deep Golden 🔥 */
         .vip-action-btn { padding: 12px 25px; border-radius: 30px; font-weight: 900; font-size: 14px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: #e6c875; border: 2px solid #e6c875; }
         .vip-action-btn:hover { background: rgba(230, 200, 117, 0.15); transform: translateY(-3px); }
         .vip-action-btn:active { background: #c59b27; color: #000; border-color: #c59b27; transform: scale(0.95); transition: 0.1s; box-shadow: 0 0 15px rgba(197, 155, 39, 0.6); }
@@ -338,7 +329,6 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
         @media (max-width: 768px) { 
@@ -441,159 +431,113 @@
     </header>
     <div id="google_translate_element" style="display:none;"></div>
     
-    <!-- 🔥 MAIN SIDE MENU (OLD DROPDOWN WALA) 🔥 -->
+    <!-- 🔥 MAIN SIDE MENU (MATCHED EXACTLY WITH SCREENSHOT) 🔥 -->
     <div class="side-menu" id="sideMenu">
-        
-        <!-- 🔥 NEW CLOSE (X) BUTTON AT THE TOP RIGHT 🔥 -->
-        <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
-
-        <div class="custom-translate" style="padding: 15px 55px 15px 20px; border-bottom: 1px solid #222;">
-            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%;">
-                <option value="">🌐 Select Language</option>
-                <option value="hi">हिन्दी (Hindi)</option>
-                <option value="en">English</option>
-                <option value="bn">বাংলা (Bengali)</option>
-                <option value="mr">मराठी (Marathi)</option>
-                <option value="te">తెలుగు (Telugu)</option>
-                <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
-            </select>
+        <div class="menu-header">
+            <h2>MENU</h2>
+            <button id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
         </div>
+        
+        <div class="custom-translate show-on-mobile" style="padding: 20px; border-bottom: 1px solid #222; text-align: center;">
+            <div style="position: relative; display: inline-block; width: 85%;">
+                <i class="fas fa-globe" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #00a8ff; font-size: 16px; pointer-events: none;"></i>
+                <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 10px 15px 10px 40px; border-radius: 30px; outline: none; font-size: 13px; font-weight: bold; cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e6c875%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 15px top 50%; background-size: 10px auto;">
+                    <option value="" style="color: #000;">Select Language</option>
+                    <option value="hi" style="color: #000;">हिन्दी (Hindi)</option>
+                    <option value="en" style="color: #000;">English</option>
+                    <option value="bn" style="color: #000;">বাংলা (Bengali)</option>
+                    <option value="mr" style="color: #000;">मराठी (Marathi)</option>
+                    <option value="te" style="color: #000;">తెలుగు (Telugu)</option>
+                    <option value="ta" style="color: #000;">தமிழ் (Tamil)</option>
+                    <option value="gu" style="color: #000;">ગુજરાતી (Gujarati)</option>
+                </select>
+            </div>
+        </div>
+
         <div id="menuProfileArea"></div>
         
-        <!-- 🔥 ECOSYSTEM DROPDOWN IN SIDE MENU 🔥 -->
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
-            <span><i class="fas fa-globe" style="color:#e6c875; margin-right:12px;"></i> DK ATOVITT Ecosystem</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
-        </a>
-        <div class="sub-menu" id="mainEcoSub" style="padding-left: 0; margin-left: 0; border-left: none; background: #080808; border-bottom: 1px solid #222; overflow: hidden;">
-            <a href="movie.html" class="side-eco-item">
-                <div class="eco-icon" style="background:#ff4d4d;"><i class="fas fa-film"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Film Production</div>
-                    <span class="status live"><i class="fas fa-circle" style="font-size:8px; margin-right:4px;"></i> LIVE</span>
-                </div>
+        <div class="sidebar-menu">
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
+                <span><i class="fas fa-globe"></i> DK ATOVITT Ecosystem</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
             </a>
-            <a href="social.html" class="side-eco-item">
-                <div class="eco-icon" style="background:#1877F2;"><i class="fas fa-users"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Connect (Social)</div>
-                    <span class="status live"><i class="fas fa-circle" style="font-size:8px; margin-right:4px;"></i> LIVE</span>
-                </div>
+            <div class="sub-menu" id="mainEcoSub">
+                <a href="movie.html"><i class="fas fa-film"></i> DK Film Production</a>
+                <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><i class="fas fa-globe"></i> DK Browser</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</a>
+            </div>
+
+            <a href="auth.html" id="sideMenuAuthBtn" class="normal-link">
+                <span><i class="fas fa-user-circle"></i> Login / Sign Up</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Exchange</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a href="movie.html#home" class="normal-link active">
+                <span><i class="fas fa-home"></i> Home</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#fd7e14;"><i class="fas fa-cube"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK ATVT Coin</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
+                <span><i class="fas fa-info-circle"></i> About Us</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#6f42c1;"><i class="fas fa-wallet"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Decent. Wallet</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            <div class="sub-menu" id="aboutSub">
+                <a href="ceo.html"><i class="fas fa-user-tie"></i> CEO</a>
+                <a href="company.html"><i class="fas fa-building"></i> Company</a>
+            </div>
+            
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
+                <span><i class="fas fa-film"></i> Movies</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#003262;"><i class="fas fa-globe"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Browser</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            <div class="sub-menu" id="moviesMenuSub">
+                <a href="yakshini.html"><i class="fas fa-ghost"></i> Yakshini</a>
+            </div>
+            
+            <a href="trailers.html" class="normal-link">
+                <span><i class="fas fa-video"></i> Trailers</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#ffc107;"><i class="fas fa-shopping-cart"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Mart</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+                <span><i class="fas fa-music"></i> Songs</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#e83e8c;"><i class="fas fa-bullhorn"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Digital Ads</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            <div class="sub-menu" id="songsSub">
+                <a href="movie-songs.html"><i class="fas fa-film"></i> Movies Songs</a>
+                <a href="album-songs.html"><i class="fas fa-compact-disc"></i> Album Songs</a>
+                <a href="mp3-songs.html"><i class="fas fa-headphones"></i> MP3 Audio Songs</a>
+            </div>
+            
+            <a href="gallery.html" class="normal-link">
+                <span><i class="fas fa-images"></i> Gallery</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#28a745;"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK GPS Tracker</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a href="celebrity.html" class="normal-link">
+                <span><i class="fas fa-star"></i> Celebrity with DK Sir</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#17a2b8;"><i class="fas fa-comment-dots"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Connect Msg</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a href="auditions.html" class="normal-link">
+                <span><i class="fas fa-theater-masks"></i> Auditions</span>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#6610f2;"><i class="fas fa-comments"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Chat</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
+            
+            <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+                <span><i class="fas fa-network-wired"></i> Ecosystem & Partners</span>
+                <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
             </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="side-eco-item">
-                <div class="eco-icon" style="background:#dc3545;"><i class="fas fa-gamepad"></i></div>
-                <div class="eco-details">
-                    <div class="title" style="color: #fff;">DK Games</div>
-                    <span class="status coming"><i class="fas fa-clock" style="font-size:8px; margin-right:4px;"></i> SOON</span>
-                </div>
-            </a>
+            <div class="sub-menu" id="ecoSub">
+                <a href="ecosystem.html"><i class="fas fa-globe"></i> Explore Ecosystem</a>
+                <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign"></i> Earn with DK Sir</a>
+                <a href="ecosystem.html#atvt"><i class="fas fa-tv"></i> ATVT</a>
+                <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf"></i> Kalpamrit</a>
+            </div>
         </div>
-        <a href="auth.html" id="sideMenuAuthBtn" class="normal-link"><i class="fas fa-user-circle" style="color:var(--primary-color); margin-right:12px;"></i> Login / Sign Up</a>
-        <a href="movie.html#home" class="normal-link"><i class="fas fa-home" style="color:var(--primary-color); margin-right:12px;"></i> Home</a>
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
-            <span><i class="fas fa-info-circle" style="color:var(--primary-color); margin-right:12px;"></i> About Us</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
-        </a>
-        <div class="sub-menu" id="aboutSub">
-            <a href="ceo.html"><i class="fas fa-user-tie" style="color:var(--primary-color); margin-right:8px;"></i> CEO</a>
-            <a href="company.html"><i class="fas fa-building" style="color:var(--primary-color); margin-right:8px;"></i> Company</a>
-        </div>
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
-            <span><i class="fas fa-film" style="color:var(--primary-color); margin-right:12px;"></i> Movies</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
-        </a>
-        <div class="sub-menu" id="moviesMenuSub">
-            <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:8px;"></i> Yakshini</a>
-        </div>
-        <a href="trailers.html" class="normal-link"><i class="fas fa-video" style="color:var(--primary-color); margin-right:12px;"></i> Trailers</a>
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
-            <span><i class="fas fa-music" style="color:var(--primary-color); margin-right:12px;"></i> Songs</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
-        </a>
-        <div class="sub-menu" id="songsSub">
-            <a href="movie-songs.html"><i class="fas fa-film" style="color:var(--primary-color); margin-right:8px;"></i> Movies Songs</a>
-            <a href="album-songs.html"><i class="fas fa-compact-disc" style="color:var(--primary-color); margin-right:8px;"></i> Album Songs</a>
-            <a href="mp3-songs.html"><i class="fas fa-headphones" style="color:var(--primary-color); margin-right:8px;"></i> MP3 Audio Songs</a>
-        </div>
-        <a href="gallery.html" class="normal-link"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> Gallery</a>
-        <a href="celebrity.html" class="normal-link"><i class="fas fa-star" style="color:var(--primary-color); margin-right:12px;"></i> Celebrity with DK Sir</a>
-        <a href="auditions.html" class="normal-link"><i class="fas fa-theater-masks" style="color:var(--primary-color); margin-right:12px;"></i> Auditions</a>
-        <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
-            <span><i class="fas fa-network-wired" style="color:var(--primary-color); margin-right:12px;"></i> Ecosystem & Partners</span>
-            <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
-        </a>
-        <div class="sub-menu" id="ecoSub">
-            <a href="ecosystem.html"><i class="fas fa-globe" style="color:var(--primary-color); margin-right:8px;"></i> Explore Ecosystem</a>
-            <a href="ecosystem.html#earn-with-dk-sir"><i class="fas fa-rupee-sign" style="color:var(--primary-color); margin-right:8px;"></i> Earn with DK Sir</a>
-            <a href="ecosystem.html#atvt"><i class="fas fa-tv" style="color:var(--primary-color); margin-right:8px;"></i> ATVT</a>
-            <a href="ecosystem.html#kalpamrit"><i class="fas fa-leaf" style="color:var(--primary-color); margin-right:8px;"></i> Kalpamrit</a>
-        </div>
-        <a href="news.html" class="normal-link"><i class="fas fa-newspaper" style="color:var(--primary-color); margin-right:12px;"></i> News</a>
-        <a href="contact.html" class="normal-link"><i class="fas fa-phone-alt" style="color:var(--primary-color); margin-right:12px;"></i> Contact Us</a>
     </div>
     
     <div id="overlay"></div>
@@ -1395,11 +1339,7 @@
                     if (href === currentPage) isMatch = true;
                 }
                 if (isMatch) {
-                    link.style.color = '#e6c875'; 
-                    link.style.fontWeight = 'bold';
-                    link.style.background = 'rgba(230, 200, 117, 0.08)'; 
-                    link.style.borderLeft = '4px solid #e6c875'; 
-                    link.style.paddingLeft = '25px'; 
+                    link.classList.add('active');
                     let parentSub = link.closest('.sub-menu');
                     if (parentSub) {
                         parentSub.classList.add('active');
