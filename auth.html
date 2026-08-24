@@ -82,7 +82,7 @@
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; }
         
         .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
         .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
@@ -113,11 +113,6 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none;}
         #overlay.active { display: block; }
         
-        /* 🔥 UPCOMING PROJECTS DROPDOWN CSS 🔥 */
-        .upcoming-list { display: none; background: transparent; }
-        .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
-        .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); }
-
         /* AUTH SECTION CSS */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .auth-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 20px 60px 20px; background: url('images/movies/yakshini-bg.jpg') center/cover no-repeat; position: relative; }
@@ -193,7 +188,6 @@
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
         }
 
         /* 🔥 CUSTOM ALERT MODAL CSS (BUG FIXED) 🔥 */
@@ -211,18 +205,18 @@
 
         /* 🔥 MASTER MEGA FOOTER CSS (RESTORED VIDEO LOGO) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
         .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
+        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; }
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; }
-        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
+        .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content;}
+        .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
         /* APK MODAL CSS */
@@ -267,6 +261,24 @@
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
         
+        /* 🔥 UPCOMING PROJECTS DROPDOWN CSS 🔥 */
+        .upcoming-list { display: none; background: transparent; }
+        .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
+        .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); }
+        
+        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
+        
         /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
         .referral-input-wrapper { position: relative; margin-bottom: 20px; }
         .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1.5px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
@@ -277,6 +289,7 @@
 </head>
 <body>
 
+    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -289,26 +302,37 @@
                     </div>
                 </a>
             </div>
-            <!-- TOP RIGHT HEADER (LOGIN BUTTON) -->
-            <div class="header-icons" id="headerRightArea">
+            
+            <!-- 🔥 TOP RIGHT PROFILE DROPDOWN (DYNAMIC) 🔥 -->
+            <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
+                <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                    <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                        <option value="">🌐 Select Language</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                    </select>
+                </div>
                 <a href="auth.html" class="login-btn-header">
-                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login</span>
+                    <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Google Translate Invisible Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- VIP SIDE MENU -->
+    <!-- 🔥 UNIVERSAL VIP SIDE MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         
         <!-- 🔥 NEW CLOSE (X) BUTTON AT THE TOP RIGHT 🔥 -->
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
 
-        <!-- Language Select Box -->
-        <div class="custom-translate" style="padding: 15px 55px 15px 20px; border-bottom: 1px solid #222;">
+        <div class="custom-translate">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
@@ -317,41 +341,27 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
-        <!-- Dynamic Profile Area -->
         <div class="sidebar-profile" id="sidebarProfileArea">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
             <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
-            
             <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
             <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
-            
-            <!-- PREMIUM LOGIN BUTTON IN PROFILE AREA -->
-            <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn">
-                <i class="fas fa-user-circle"></i> Login / Sign Up
-            </a>
+            <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
         </div>
         
-        <!-- Sidebar Navigation Items -->
         <div class="sidebar-menu">
-            
+            <!-- 🔥 THIS SECTION REPLACED DYNAMICALLY BY FIREBASE SCRIPT ON LOGIN 🔥 -->
             <div class="menu-heading">Main</div>
             <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-home"></i> Dashboard</div></a>
-            
-            <!-- ECOSYSTEM SECTION -->
-            <div class="menu-heading" style="margin-top: 8px;">Explore Ecosystem</div>
-            <a href="movie.html" class="normal-link">
-                <div class="link-text"><i class="fas fa-film"></i> DK Film Production</div>
-                <span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
-            </a>
-            <a href="social.html" class="normal-link">
-                <div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div>
-                <span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
-            </a>
 
+            <div class="menu-heading" style="margin-top: 8px;">Explore Ecosystem</div>
+            <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            
             <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
             <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
                 <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
@@ -375,16 +385,14 @@
 
             <div class="menu-divider"></div>
 
-            <!-- OTHER LINKS -->
             <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
             <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
             <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
             <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
         </div>
         
-        <!-- Sidebar Bottom Footer Buttons -->
         <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
-            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn" style="display: none;">
+            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
                 <i class="fas fa-sign-out-alt"></i> Logout Securely
             </button>
         </div>
@@ -654,7 +662,6 @@
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
-                <!-- 🔥 VIDEO LOGO RESTORED 🔥 -->
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
                 <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875; margin: 0 0 10px 0;">DK ATOVITT</h3>
                 <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
@@ -678,7 +685,6 @@
                     <li><a href="auth.html">Login / Signup</a></li>
                 </ul>
 
-                <!-- 🔥 MOVED LIVE PROJECTS HERE FOR PERFECT BALANCE 🔥 -->
                 <h4 style="margin-top: 25px;">Live Ecosystem</h4>
                 <ul>
                     <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
@@ -816,10 +822,12 @@
             msgEl.innerText = message;
             if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
             overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
         }
 
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
+            document.body.style.overflow = ''; // 🔥 Unlock
         });
 
         function toggleAuth(type) {
@@ -879,14 +887,16 @@
         menuBtn.addEventListener('click', openMenu); 
         closeMenu.addEventListener('click', closeSideMenu); 
         overlay.addEventListener('click', closeSideMenu);
-        document.querySelectorAll('.side-menu a.normal-link').forEach(link => { 
+        document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
         
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll("#topbarDropdown");
-                dropdowns.forEach(d => d.classList.remove('show'));
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
             }
         }
         
@@ -903,7 +913,7 @@
         
         function copyDkId() {
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
-            if(copyText.includes('Login')) return;
+            if(copyText.includes('Loading') || copyText.includes('Login')) return;
             navigator.clipboard.writeText(copyText);
             showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
@@ -1190,19 +1200,37 @@
                 document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
                 document.getElementById('sidebarDkId').style.display = 'inline-block';
                 document.getElementById('sidebarVipBadge').style.display = 'inline-block';
-                document.getElementById('guestLoginPrompt').style.display = 'none';
                 document.getElementById('sidebarLoginBtn').style.display = 'none';
 
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
-                        <div class="profile-dropdown-container" style="position: relative; display: inline-block;">
-                            <div onclick="document.getElementById('topbarDropdown').classList.toggle('show')" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s;">
-                                <span>${userName}</span> <i class="fas fa-caret-down"></i>
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                            </select>
+                        </div>
+                        <div class="profile-dropdown-container">
+                            <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
+                                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
-                            <div id="topbarDropdown" style="display: none; position: absolute; right: 0; top: 45px; background-color: #111; min-width: 160px; border-radius: 8px; border: 1px solid #333; z-index: 10000; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9); overflow: hidden;">
-                                <a href="index.html" style="color: #ccc; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; border-bottom: 1px solid #222; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#ccc';"><i class="fas fa-tachometer-alt" style="color: #e6c875; width:16px;"></i> VIP Dashboard</a>
-                                <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap:10px; font-size: 13px; font-weight:bold; transition: 0.3s;" onmouseover="this.style.background='#1a1a1a';" onmouseout="this.style.background='transparent';"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout</a>
+                            <div id="topbarDropdown" class="topbarDropdown-content">
+                                <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
+                                <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="section-title">Ecosystem Quick Links</div>
+                                <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
+                                <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout Securely</a>
                             </div>
                         </div>
                     `;
@@ -1229,6 +1257,12 @@
                     document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
                 }
                 
+                // Show Sidebar Footer with Logout
+                const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
+                if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
+                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
+
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.addEventListener('click', () => {
                         if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
@@ -1241,12 +1275,23 @@
                 document.getElementById('sidebarProfileImg').src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                 document.getElementById('sidebarDkId').style.display = 'none';
                 document.getElementById('sidebarVipBadge').style.display = 'none';
-                document.getElementById('guestLoginPrompt').style.display = 'block';
                 document.getElementById('sidebarLoginBtn').style.display = 'inline-flex';
                 
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                            </select>
+                        </div>
                         <a href="auth.html" class="login-btn-header">
                             <i class="fas fa-user"></i> <span class="hide-on-mobile">Login</span>
                         </a>
