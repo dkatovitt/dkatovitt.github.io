@@ -420,14 +420,14 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* CUSTOM APP INSTALL POPUP MODAL CSS (UPDATED CLOSE BUTTON) */
+        /* CUSTOM APP INSTALL POPUP MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         
-        /* 🔥 FIXED CLOSE BUTTON (CUT WALA) 🔥 */
-        .app-modal-close { position: absolute; top: 10px; right: 12px; background: none; border: none; color: #888; font-size: 28px; cursor: pointer; transition: 0.3s; z-index: 100; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
-        .app-modal-close:hover { color: #fff; }
+        /* 🔥 FIXED CLOSE BUTTON (CUT WALA - FULLY VISIBLE & PROMINENT) 🔥 */
+        .app-modal-close { position: absolute; top: 12px; right: 15px; background: none; border: none; color: #fff; font-size: 32px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 999999; display: block; line-height: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        .app-modal-close:hover { color: #ff4d4d; }
         
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
@@ -823,7 +823,7 @@
                     <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
                     <div class="btn-group-3">
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
-                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले যখন पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
@@ -1298,7 +1298,7 @@
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
-            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility token of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी टोकन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
             'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
