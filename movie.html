@@ -443,7 +443,7 @@
     </header>
     <div id="google_translate_element" style="display:none;"></div>
     
-    <!-- 🔥 MAIN SIDE MENU (MATCHED EXACTLY WITH SCREENSHOT) 🔥 -->
+    <!-- 🔥 MAIN SIDE MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-header">
             <h2>MENU</h2>
@@ -469,30 +469,42 @@
         <div id="menuProfileArea"></div>
         
         <div class="sidebar-menu">
+            <!-- 🔥 DK ATOVITT ECOSYSTEM MENU WITH NESTED DROPDOWNS 🔥 -->
             <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
                 <span><i class="fas fa-globe"></i> DK ATOVITT Ecosystem</span>
                 <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
             </a>
             
-            <!-- 🔥 CATEGORIZED ECOSYSTEM SUB-MENU 🔥 -->
             <div class="sub-menu" id="mainEcoSub">
-                <div style="padding: 12px 20px 6px 45px; font-size: 11px; color: #25d366; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold;"><i class="fas fa-circle" style="font-size: 8px; margin-right: 6px; vertical-align: middle;"></i> Live Projects</div>
                 
-                <a href="movie.html"><i class="fas fa-film"></i> DK Film Production</a>
-                <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social)</a>
+                <!-- 1. LIVE PROJECTS -->
+                <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('liveEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
+                    <span><i class="fas fa-circle" style="color: #25d366; font-size: 10px;"></i> Live Projects</span>
+                    <i class="fas fa-chevron-down dropdown-icon" id="liveEcoIcon"></i>
+                </a>
+                <div class="sub-menu nested-sub" id="liveEcoSub">
+                    <a href="movie.html"><i class="fas fa-film"></i> DK Film Production <span style="color:#25d366; font-size:10px; float:right;">(Live)</span></a>
+                    <a href="social.html"><i class="fas fa-users"></i> DK Connect (Social) <span style="color:#25d366; font-size:10px; float:right;">(Live)</span></a>
+                </div>
                 
-                <div style="padding: 18px 20px 6px 45px; font-size: 11px; color: #e6c875; text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold;"><i class="fas fa-clock" style="margin-right: 6px;"></i> Coming Soon</div>
-                
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><i class="fas fa-globe"></i> DK Browser</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</a>
+                <!-- 2. UPCOMING PROJECTS -->
+                <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('upcomingEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
+                    <span><i class="fas fa-rocket" style="color: #e6c875;"></i> Upcoming Projects</span>
+                    <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
+                </a>
+                <div class="sub-menu nested-sub" id="upcomingEcoSub">
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)"><i class="fas fa-link"></i> DK Chain / Scan <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)"><i class="fas fa-chart-line"></i> DK Exchange <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><i class="fas fa-wallet"></i> DK Web3 Wallet <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><i class="fas fa-globe"></i> DK Browser <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Msg <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games <span style="color:#666; font-size:10px; float:right;">(Soon)</span></a>
+                </div>
             </div>
 
             <a href="auth.html" id="sideMenuAuthBtn" class="normal-link">
