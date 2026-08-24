@@ -154,15 +154,15 @@
             display: flex !important; 
             justify-content: space-between !important; 
             align-items: center !important; 
-            font-size: 13px !important; 
-            padding: 12px 20px 12px 55px !important; 
+            font-size: 14px !important; 
+            padding: 12px 20px 12px 45px !important; 
             border-bottom: 1px solid #111 !important; 
             color: #aaa !important; 
             text-decoration: none; 
             transition: 0.3s; 
             border-left: 4px solid transparent; 
         }
-        .sub-menu.nested-sub a { padding-left: 65px !important; }
+        .sub-menu.nested-sub a { padding-left: 65px !important; font-size: 13px !important; }
         .sub-menu a div { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .sub-menu a div i:first-child { 
             display: inline-flex !important;
@@ -176,10 +176,6 @@
         }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
         
-        /* Ecosystem Tags (Live) */
-        .eco-tag { font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 10px; flex-shrink: 0; margin-left: 10px; }
-        .eco-tag.live { color: #25d366; background: rgba(37,211,102,0.1); border: 1px solid #25d366; }
-
         .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
@@ -435,7 +431,7 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS (Z-INDEX FIXED TO BE ON TOP OF MENU) 🔥 */
+        /* 🔥 CUSTOM ALERT MODAL FIX (Z-INDEX SUPER HIGH) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -558,7 +554,7 @@
                     <a href="social.html" onclick="closeSideMenu();"><div><i class="fas fa-users"></i> DK Connect (Social)</div></a>
                 </div>
                 
-                <!-- 2. UPCOMING PROJECTS NESTED DROPDOWN (SOON TAGS REMOVED & SIDEBAR CLOSE ADDED) 🔥 -->
+                <!-- 2. UPCOMING PROJECTS NESTED DROPDOWN -->
                 <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('upcomingEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
                     <span class="menu-text-wrap"><i class="fas fa-rocket" style="color: #e6c875;"></i> Upcoming Projects</span>
                     <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
@@ -651,6 +647,7 @@
             <div class="video-wrapper" style="border: 1.5px solid #e6c875; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 0;">
                 <div class="video-thumbnail" onclick="playInlineVideo(this, 'Kgz-_yHXe9s')">
                     <div class="thumbnail-content">
+                        <!-- Using maxresdefault.jpg for better quality at the top -->
                         <img src="https://img.youtube.com/vi/Kgz-_yHXe9s/maxresdefault.jpg" alt="Main Trailer" loading="lazy" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
                         <button class="play-btn" style="width: 75px; height: 75px; font-size: 30px;"><i class="fas fa-play" style="margin-left: 6px;"></i></button>
                     </div>
@@ -746,7 +743,7 @@
                     <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
                 <div class="social-action-bar">
-                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का खौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/movie.html#trailer')">
+                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का خौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/movie.html#trailer')">
                         <i class="fas fa-share-alt"></i> Share
                     </button>
                     <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="social-btn" title="Comment on YouTube">
@@ -1418,7 +1415,7 @@
             }, 1000);
         });
         
-        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE 🔥 */
+        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE (FIXED) 🔥 */
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1431,12 +1428,14 @@
             document.documentElement.style.overflow = 'hidden'; 
         }
 
-        window.closeSideMenu = function() { 
+        // 🔥 YAHAN THI ERROR! Ab theek ho gayi hai.
+        function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
             document.body.style.overflow = ''; 
             document.documentElement.style.overflow = ''; 
         }
+        window.closeSideMenu = closeSideMenu; // Globals mein daal diya taaki onClick mein kaam kare
         
         menuBtn.addEventListener('click', openMenu); 
         closeMenu.addEventListener('click', closeSideMenu); 
