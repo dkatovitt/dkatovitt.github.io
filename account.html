@@ -91,6 +91,12 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 9999; display: none; }
         #overlay.active { display: block; }
 
+        /* 🔥 UPCOMING PROJECTS DROPDOWN CSS 🔥 */
+        .upcoming-list { display: none; background: transparent; }
+        .upcoming-list a { padding-left: 35px !important; font-size: 13px !important; border-bottom: 1px solid #1a1a1a !important; color: #888 !important; }
+        .upcoming-list a:hover { padding-left: 40px !important; background: rgba(230,200,117,0.05) !important; color: #fff !important; }
+        .soon-tag { color: #666; font-size: 10px; float: right; }
+
         /* 🔥 VIP SUPER-APP DASHBOARD CSS 🔥 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
         .dashboard-container { max-width: 1100px; margin: 120px auto 50px auto; padding: 0 20px; min-height: 60vh; }
@@ -372,6 +378,28 @@
         <a href="javascript:void(0)" id="menuLink_studioTab" onclick="switchTab('studioTab')" class="vip-nav-link"><i class="fab fa-instagram" style="color:var(--primary-color); margin-right:12px;"></i> Creator Studio</a>
         <a href="javascript:void(0)" id="menuLink_walletTab" onclick="switchTab('walletTab')" class="vip-nav-link"><i class="fas fa-wallet" style="color:var(--primary-color); margin-right:12px;"></i> Earnings & Wallet</a>
         <a href="javascript:void(0)" id="menuLink_trackerTab" onclick="switchTab('trackerTab')" class="vip-nav-link"><i class="fas fa-tasks" style="color:var(--primary-color); margin-right:12px;"></i> App Tracker & Help</a>
+        
+        <!-- 🌟 UPCOMING PROJECTS DROPDOWN START (ADDED TO AFTER-LOGIN MENU) 🌟 -->
+        <a class="vip-nav-link" onclick="toggleUpcomingProjects()" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center;"><i class="fas fa-rocket" style="color:var(--primary-color); margin-right:12px;"></i> Upcoming Projects</div>
+            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s;"></i>
+        </a>
+        
+        <div id="upcomingProjectsList" class="upcoming-list">
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Atovitt Chain / Scan is launching soon!', false)"><i class="fas fa-link" style="color:#666; margin-right:8px;"></i> DK Atovitt Chain / Scan <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)"><i class="fas fa-chart-line" style="color:#666; margin-right:8px;"></i> DK Crypto Exchange <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><i class="fas fa-cube" style="color:#666; margin-right:8px;"></i> DK ATVT Coin <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><i class="fas fa-wallet" style="color:#666; margin-right:8px;"></i> DK Decentralised Wallet <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><i class="fas fa-globe" style="color:#666; margin-right:8px;"></i> DK Browser <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><i class="fas fa-shopping-cart" style="color:#666; margin-right:8px;"></i> DK Mart <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn" style="color:#666; margin-right:8px;"></i> DK Digital Ads <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)"><i class="fas fa-map-marker-alt" style="color:#666; margin-right:8px;"></i> DK GPS Tracker <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots" style="color:#666; margin-right:8px;"></i> DK Connect Messenger <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments" style="color:#666; margin-right:8px;"></i> DK Chat <span class="soon-tag">(Soon)</span></a>
+            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad" style="color:#666; margin-right:8px;"></i> DK Games <span class="soon-tag">(Soon)</span></a>
+        </div>
+        <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
+
         <a href="javascript:void(0)" id="menuLink_profileTab" onclick="switchTab('profileTab')" class="vip-nav-link"><i class="fas fa-user-edit" style="color:var(--primary-color); margin-right:12px;"></i> Edit Profile</a>
         <a href="gallery.html"><i class="fas fa-images" style="color:var(--primary-color); margin-right:12px;"></i> View Gallery</a>
         <a href="yakshini.html"><i class="fas fa-ghost" style="color:var(--primary-color); margin-right:12px;"></i> Yakshini Movie</a>
@@ -1086,6 +1114,20 @@
             document.getElementById('overlay').classList.remove('active');
             window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
         }
+
+        // 🔥 UPCOMING PROJECTS DROPDOWN TOGGLE FUNCTION 🔥
+        window.toggleUpcomingProjects = function() {
+            var list = document.getElementById("upcomingProjectsList");
+            var arrow = document.getElementById("upcomingArrow");
+            
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+            } else {
+                list.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+            }
+        };
 
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
