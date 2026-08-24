@@ -425,7 +425,6 @@
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         
-        /* 🔥 FIXED CLOSE BUTTON (CUT WALA - PERFECT POSITION) 🔥 */
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 999999; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .app-modal-close:hover { color: #ff4d4d; }
         
@@ -539,7 +538,7 @@
                     <option value="mr" style="color: #000;">मराठी (Marathi)</option>
                     <option value="te" style="color: #000;">తెలుగు (Telugu)</option>
                     <option value="ta" style="color: #000;">தமிழ் (Tamil)</option>
-                    <option value="gu" style="color: #000;">ગુજરાતી (Gujarati)</option>
+                    <option value="gu" style="color: #000;">ગુજરાती (Gujarati)</option>
                 </select>
             </div>
         </div>
@@ -570,7 +569,7 @@
                     <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
                 </a>
                 
-                <!-- 🔥 MODIFIED 11 UPCOMING PROJECTS (Dynamic Dynamic Script Calls) 🔥 -->
+                <!-- 🔥 MODIFIED 11 UPCOMING PROJECTS (Dynamic Script Calls) 🔥 -->
                 <div class="sub-menu nested-sub" id="upcomingEcoSub">
                     <a href="javascript:void(0)" onclick="showUpcomingProject('chain')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-link"></i> DK Chain / Scan</div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-chart-line"></i> DK Exchange</div></a>
@@ -586,7 +585,7 @@
                 </div>
             </div>
 
-            <!-- REST OF THE MENU ITEMS (PERFECTLY ALIGNED) -->
+            <!-- REST OF THE MENU ITEMS -->
             <a href="auth.html" id="sideMenuAuthBtn" class="normal-link">
                 <span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span>
             </a>
@@ -659,7 +658,6 @@
             <div class="video-wrapper" style="border: 1.5px solid #e6c875; box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 0;">
                 <div class="video-thumbnail" onclick="playInlineVideo(this, 'Kgz-_yHXe9s')">
                     <div class="thumbnail-content">
-                        <!-- Using maxresdefault.jpg for better quality at the top -->
                         <img src="https://img.youtube.com/vi/Kgz-_yHXe9s/maxresdefault.jpg" alt="Main Trailer" loading="lazy" style="width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover;">
                         <button class="play-btn" style="width: 75px; height: 75px; font-size: 30px;"><i class="fas fa-play" style="margin-left: 6px;"></i></button>
                     </div>
@@ -1115,7 +1113,7 @@
                     </ul>
                 </div>
                 
-                <!-- 🔥 CONNECT WITH US (SHIFTED HERE UNDER LEGAL & HELP WITH 3x2 SMALLER LOGOS) 🔥 -->
+                <!-- 🔥 CONNECT WITH US 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
                     <div class="footer-social-row">
@@ -1184,7 +1182,7 @@
         <i class="fas fa-download"></i>
     </button>
     
-    <!-- 🔥 CUSTOM INSTALL POPUP HTML 🔥 -->
+    <!-- 🔥 CUSTOM INSTALL POPUP MODAL HTML 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -1200,10 +1198,10 @@
         </div>
     </div>
 
-    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
+    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL (FIXED CLOSE BUTTON POSITION INSIDE BOX) 🔥 -->
     <div class="app-modal-overlay" id="customAlertOverlay">
-        <div class="app-modal-box" style="padding: 25px 20px;">
-            <button class="app-modal-close" onclick="closeUpcomingProject()">&times;</button>
+        <div class="app-modal-box" style="padding: 25px 20px; position: relative;">
+            <button class="app-modal-close" onclick="closeUpcomingProject()" style="position: absolute; top: 12px; right: 12px; margin: 0; padding: 0;">&times;</button>
             
             <!-- 1. Video Logo at Top -->
             <div class="app-modal-logo-wrap" style="margin-bottom: 10px;">
@@ -1246,7 +1244,7 @@
                 <button id="closeChatbot">&times;</button>
             </div>
             <div class="chatbot-body" id="chatbotBody">
-                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में কার্যকলাপ का स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
             </div>
             <div class="chatbot-options">
                 <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
@@ -1320,11 +1318,9 @@
             
             document.getElementById('customAlertOverlay').classList.add('active');
             
-            // 🔥 Background Scroll Lock (Fixing issue #1) 🔥
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
             
-            // Close side menu if open so popup looks perfectly centered
             const sideMenu = document.getElementById('sideMenu');
             const overlay = document.getElementById('overlay');
             if (sideMenu) sideMenu.classList.remove('active');
@@ -1333,25 +1329,21 @@
 
         function closeUpcomingProject() {
             document.getElementById('customAlertOverlay').classList.remove('active');
-            // Remove background lock only if chatbot or menu are also not active
             if (!document.getElementById('sideMenu').classList.contains('active') && !document.getElementById('chatbotOverlay').classList.contains('active')) {
                 document.body.style.overflow = ''; 
                 document.documentElement.style.overflow = '';
             }
         }
         
-        // 🔥 SOLID SCROLL LOCK SCRIPT FOR MOBILE POPUP 🔥
         document.addEventListener('DOMContentLoaded', () => {
             const customAlertOverlay = document.getElementById('customAlertOverlay');
             if(customAlertOverlay) {
-                // Click outside to close
                 customAlertOverlay.addEventListener('click', (e) => {
                     if(e.target === customAlertOverlay) {
                         closeUpcomingProject();
                     }
                 });
                 
-                // 🔥 Bulletproof background touch scroll lock 🔥
                 customAlertOverlay.addEventListener('touchmove', function(e) {
                     e.preventDefault(); 
                 }, { passive: false });
@@ -1379,7 +1371,7 @@
             }
         });
         
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        /* 🔥 VIP CHATBOT LOGIC 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -1388,25 +1380,24 @@
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
-                document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
+                document.body.style.overflow = 'hidden'; 
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
-                document.body.style.overflow = ''; // 🔥 Unlock
+                document.body.style.overflow = ''; 
             }); 
         }
         if(chatbotOverlay) {
             chatbotOverlay.addEventListener('click', (e) => {
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; // 🔥 Unlock
+                    document.body.style.overflow = ''; 
                 }
             });
         }
 
-        // 🔥 CHATBOT UPCOMING PROJECTS LINKED TO NEW SYSTEM 🔥
         function sendChat(type) {
             let userText = ""; let botReply = "";
 
@@ -1454,7 +1445,7 @@
             }, 800);
         }
         
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC 🔥 */
+        /* 🔥 TRANSLATOR LOGIC 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 var d = window.location.hostname;
@@ -1496,7 +1487,7 @@
             }, 1000);
         });
         
-        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE 🔥 */
+        /* 🔥 MENU SCRIPT 🔥 */
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1532,7 +1523,6 @@
             }
         }
 
-        /* 🔥 NESTED SUB-MENU TOGGLE FUNCTION 🔥 */
         function toggleNestedMenu(id, event) {
             if(event) {
                 event.stopPropagation();
@@ -1581,7 +1571,6 @@
         window.addEventListener('scroll', reveal); 
         reveal(); 
         
-        /* 🌟 ACTIVE MENU HIGHLIGHT SCRIPT 🌟 */
         document.addEventListener("DOMContentLoaded", function() {
             let currentPage = window.location.pathname.split("/").pop();
             if (currentPage === "" || currentPage === "/") currentPage = "movie.html";
@@ -1607,7 +1596,6 @@
             });
         });
         
-        /* 🔥 VIRAL SHARE SCRIPT 🔥 */
         function shareViralContent(title, text, url) {
             if (navigator.share) {
                 navigator.share({
@@ -1620,7 +1608,6 @@
             }
         }
         
-        /* 🔥 ADVANCED PLAYLIST ENGINE & VIDEO LOGIC 🔥 */
         const playlist = [
             { file: 'dk-atovitt-theme.mp3', title: 'DK ATOVITT Theme Song' },
             { file: 'yakshini-title-track.mp3', title: 'यक्षिणी (Yakshini) Title Song' },
@@ -1739,7 +1726,7 @@
         });
     </script>
     
-    <!-- 🔥 FIREBASE LOGIN CHECKER (DYNAMIC VIP BANNER & HEADER MENU FIX) 🔥 -->
+    <!-- 🔥 FIREBASE LOGIN CHECKER 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1759,7 +1746,6 @@
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0]; 
                 
-                // 🔥 HEADER BUTTON UPDATE (PERFECT DROPDOWN FIX) 🔥
                 const headerBtn = document.getElementById('headerAuthBtn');
                 if(headerBtn) {
                     const dropdownHTML = `
@@ -1784,7 +1770,6 @@
                     headerBtn.outerHTML = dropdownHTML;
                 }
                 
-                // 🔥 UPDATE STATIC VIP BANNER TEXT & DP 🔥
                 const bannerUserName = document.getElementById('bannerUserName');
                 const bannerUserDp = document.getElementById('bannerUserDp');
                 if(bannerUserName) bannerUserName.innerText = fullName;
@@ -1793,7 +1778,6 @@
                     bannerUserDp.src = dp;
                 }
 
-                // 🔥 UPDATE SIDEBAR MENU WITH MY ACCOUNT SECTION (PERFECTLY ALIGNED) 🔥
                 const sideMenuAuthBtn = document.getElementById('sideMenuAuthBtn');
                 if(sideMenuAuthBtn) {
                     sideMenuAuthBtn.outerHTML = `
@@ -1805,7 +1789,6 @@
                     `;
                 }
                 
-                // LOGOUT LISTENER
                 setTimeout(() => {
                     document.querySelectorAll('.logout-action').forEach(btn => {
                         btn.addEventListener('click', () => {
