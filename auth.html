@@ -182,17 +182,21 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
-        @media (max-width: 768px) { 
+        /* 🔥 MOBILE VIEW OVERRIDES - EXACT CEO PAGE SIZES (50px) 🔥 */
+        @media (max-width: 768px) {
+            .auth-box { padding: 30px 20px; }
+            .auth-header h2 { font-size: 24px; }
+            .social-btn { font-size: 11px; padding: 10px; gap: 5px; }
+
+            /* EXACT CEO.HTML SIZES RESTORED FOR MOBILE */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; } 
+            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
         }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
+        /* 🔥 CUSTOM ALERT MODAL CSS (BUG FIXED) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -205,7 +209,7 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
+        /* 🔥 MASTER MEGA FOOTER CSS (INDEX HTML DESIGN) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
@@ -314,7 +318,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -343,7 +347,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -378,47 +382,26 @@
                 <span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
             </a>
 
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Exchange</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div>
-                <span class="soon-tag">(Soon)</span>
+            <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
+            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
             </a>
             
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
-            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;">
-                <div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div>
-                <span class="soon-tag">(Soon)</span>
-            </a>
+            <div id="upcomingProjectsList" class="upcoming-list">
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+            </div>
+            <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
 
             <div class="menu-divider"></div>
 
@@ -509,6 +492,15 @@
                             <div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span>
                         </div>
                     </a>
+
+                    <!-- 🔥 NEW BLOCKCHAIN ITEM ADDED AT 3RD POSITION 🔥 -->
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Atovitt Chain / Scan is launching very soon!', false)" class="explore-item">
+                        <div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div>
+                        <div class="eco-details">
+                            <div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
+                        </div>
+                    </a>
+
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)" class="explore-item">
                         <div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div>
                         <div class="eco-details">
@@ -666,6 +658,9 @@
                     <a href="movie.html" class="explore-item"><div class="eco-icon bg-movie"><i class="fas fa-film"></i></div><div class="eco-details"><div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     <a href="social.html" class="explore-item"><div class="eco-icon bg-connect"><i class="fas fa-users"></i></div><div class="eco-details"><div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     
+                    <!-- 🔥 NEW BLOCKCHAIN ITEM ADDED AT 3RD POSITION 🔥 -->
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Atovitt Chain / Scan is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div><div class="eco-details"><div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div><div class="eco-details"><div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div><div class="eco-details"><div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
@@ -685,7 +680,7 @@
         </div>
     </section>
 
-    <!-- 🔥 MASTER MEGA FOOTER CSS 🔥 -->
+    <!-- 🔥 MASTER MEGA FOOTER CSS (INDEX HTML DESIGN) 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -694,81 +689,94 @@
                 <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
             
-            <div class="tseries-footer-col">
-                <h4>Movies & Media</h4>
-                <ul>
-                    <li><a href="movie.html#home">Home</a></li>
-                    <li><a href="movie.html#movies-section">Featured Movie</a></li>
-                    <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="celebrity.html">Celebrity with DK Sir</a></li>
-                    <li><a href="auditions.html">Auditions</a></li>
-                </ul>
-            </div>
-
-            <div class="tseries-footer-col">
-                <h4>Live Ecosystem</h4>
-                <ul style="margin-bottom: 25px;">
-                    <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
-                    <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
-                </ul>
-
-                <h4>My Account</h4>
-                <ul>
-                    <li><a href="index.html">VIP Dashboard</a></li>
-                    <li><a href="wallet.html">My Wallet</a></li>
-                    <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
-                </ul>
-            </div>
-            
-            <div class="tseries-footer-col">
-                <h4>Upcoming Projects</h4>
-                <ul>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
-                </ul>
-            </div>
-            
-            <div class="tseries-footer-col">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="ceo.html">About CEO</a></li>
-                    <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="news.html">News & Updates</a></li>
-                </ul>
+            <!-- 🔥 LEFT COLUMN 🔥 -->
+            <div class="footer-links-col">
+                <div class="tseries-footer-col">
+                    <h4>Movies & Media</h4>
+                    <ul>
+                        <li><a href="movie.html#home">Home</a></li>
+                        <li><a href="movie.html#movies-section">Featured Movie</a></li>
+                        <li><a href="trailers.html">Official Trailer</a></li>
+                        <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="celebrity.html">Celebrity with DK Sir</a></li>
+                        <li><a href="auditions.html">Auditions</a></li>
+                    </ul>
+                </div>
                 
-                <h4 style="margin-top: 25px;">Legal & Help</h4>
-                <ul>
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="notice.html">Public Notice</a></li>
-                    <li><a href="faq.html">Help / FAQs</a></li>
-                </ul>
-            </div>
-            
-            <div class="tseries-footer-col">
-                <h4>Connect With Us</h4>
-                <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="ceo.html">About CEO</a></li>
+                        <li><a href="company.html">About <span class="notranslate">DK ATOVITT</span></a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="news.html">News & Updates</a></li>
+                    </ul>
+                </div>
+                
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>Legal & Help</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="notice.html">Public Notice</a></li>
+                        <li><a href="faq.html">Help / FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <!-- 🔥 CONNECT WITH US (SHIFTED HERE UNDER LEGAL & HELP WITH 3x2 SMALLER LOGOS) 🔥 -->
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>Connect With Us</h4>
+                    <div class="footer-social-row">
+                        <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
+            
+            <!-- 🔥 RIGHT COLUMN 🔥 -->
+            <div class="footer-links-col">
+                <div class="tseries-footer-col">
+                    <h4>Live Ecosystem</h4>
+                    <ul style="margin-bottom: 25px;">
+                        <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
+                        <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
+                    </ul>
+                </div>
+                
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>Upcoming Projects</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>My Account</h4>
+                    <ul>
+                        <li><a href="index.html">VIP Dashboard</a></li>
+                        <li><a href="wallet.html">My Wallet</a></li>
+                        <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
+                    </ul>
+                </div>
+            </div>
+            
         </div>
+        
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
@@ -1598,4 +1606,4 @@
         });
     </script>
 </body>
-</html>
+                                                                                              </html>
