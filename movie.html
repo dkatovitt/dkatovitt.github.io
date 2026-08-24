@@ -94,14 +94,16 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS & THE CRITICAL ALIGNMENT FIX 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
+        /* YAHAN SCROLL ISSUE FIX KIYA GAYA HAI (height: 100dvh) */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background: #111; z-index: 100000; transition: 0.3s; overflow-y: auto; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; font-weight: bold; }
         #closeMenu { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; transition: 0.3s; }
         #closeMenu:hover { color: #e6c875; transform: scale(1.1); }
         
-        .sidebar-menu { padding-bottom: 30px; }
+        /* YAHAN PADDING FIX KIYA GAYA HAI TAAKI LAST ITEM UPAR TAK SCROLL HO SAKE */
+        .sidebar-menu { padding-bottom: 120px; }
         
         /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
         .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
