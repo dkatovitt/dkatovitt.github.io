@@ -420,13 +420,13 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* CUSTOM APP INSTALL POPUP MODAL CSS */
-        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        /* CUSTOM APP INSTALL POPUP MODAL CSS (UPDATED CLOSE BUTTON) */
+        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         
-        /* 🔥 FIXED CLOSE BUTTON (CUT WALA - FULLY VISIBLE & PROMINENT) 🔥 */
-        .app-modal-close { position: absolute; top: 12px; right: 15px; background: none; border: none; color: #fff; font-size: 32px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 999999; display: block; line-height: 1; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        /* 🔥 FIXED CLOSE BUTTON (CUT WALA - PERFECT POSITION) 🔥 */
+        .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 999999; display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .app-modal-close:hover { color: #ff4d4d; }
         
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
@@ -455,7 +455,7 @@
         }
 
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
-        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -823,7 +823,7 @@
                     <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
                     <div class="btn-group-3">
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
-                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले যখন पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
@@ -1246,7 +1246,7 @@
                 <button id="closeChatbot">&times;</button>
             </div>
             <div class="chatbot-body" id="chatbotBody">
-                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में কার্যকলাপ का स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
             </div>
             <div class="chatbot-options">
                 <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
@@ -1340,15 +1340,21 @@
             }
         }
         
-        // Close modal when clicking outside
+        // 🔥 SOLID SCROLL LOCK SCRIPT FOR MOBILE POPUP 🔥
         document.addEventListener('DOMContentLoaded', () => {
             const customAlertOverlay = document.getElementById('customAlertOverlay');
             if(customAlertOverlay) {
+                // Click outside to close
                 customAlertOverlay.addEventListener('click', (e) => {
                     if(e.target === customAlertOverlay) {
                         closeUpcomingProject();
                     }
                 });
+                
+                // 🔥 Bulletproof background touch scroll lock 🔥
+                customAlertOverlay.addEventListener('touchmove', function(e) {
+                    e.preventDefault(); 
+                }, { passive: false });
             }
         });
 
