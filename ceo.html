@@ -69,8 +69,9 @@
         
         /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
-        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
-        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; text-align: left; }
+        .profile-name-btn i { flex-shrink: 0; }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
         
         .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
@@ -84,7 +85,7 @@
             .header { height: 70px !important; }
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
             #menuBtn { font-size: 22px !important; }
@@ -97,46 +98,124 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
+        /* Changed to 100dvh for mobile scroll fix */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        .custom-translate { padding: 10px 55px 10px 20px; border-bottom: 1px solid #222; }
-        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; font-weight: bold; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; transition: 0.3s; display: block;}
+        #closeMenu:hover { color: #e6c875; transform: scale(1.1); }
+        
+        .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        .sidebar-profile { padding: 12px 20px 12px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 12px; right: 15px; background: #222; border: 1px solid #444; width: 32px; height: 32px; border-radius: 50%; color: #ccc; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; }
-        .close-menu-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: rotate(90deg); }
+        .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         
-        .sidebar-profile img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 4px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
-        .sidebar-profile h3 { color: #fff; margin: 0 0 3px 0; font-size: 15px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+        .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
+        .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         
-        .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 3px 12px; border-radius: 20px; font-size: 10px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 6px; letter-spacing: 1px; }
-        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 3px; cursor: pointer; }
+        .vip-badge { display: inline-block; background: transparent; color: #e6c875; padding: 4px 15px; border-radius: 20px; font-size: 11px; font-weight: bold; border: 1px solid #e6c875; margin-bottom: 10px; letter-spacing: 1px; }
+        .dk-id-badge { display: inline-block; background: transparent; color: #e6c875; border: 1px dashed #e6c875; padding: 6px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px; margin-bottom: 5px; cursor: pointer; }
 
-        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 8px 20px; border-radius: 30px; font-size: 12px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 4px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
+        .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🚀 MENU SCROLLING SPACING FIX (Contact Us Cutoff Fix) 🚀 */
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0 80px 0; overscroll-behavior-y: none; }
+        /* 🚀 MENU SCROLLING SPACING FIX 🚀 */
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 0 0 120px 0; overscroll-behavior-y: auto; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
-        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 20px 8px 20px; font-weight: bold; }
+        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 15px 20px 8px 20px; font-weight: bold; }
         
-        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
-        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
-        .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
-        .sidebar-menu a.normal-link:hover, .sidebar-menu a.normal-link.active { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
+        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
+        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            width: 100%; 
+            box-sizing: border-box; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #1a1a1a; 
+            color: #ccc; 
+            font-size: 15px; 
+            transition: 0.3s; 
+            text-decoration: none; 
+            border-left: 4px solid transparent; 
+            cursor: pointer; 
+        }
+        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { 
+            display: flex; 
+            align-items: center; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            max-width: 90%; 
+        }
         
-        .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
-        .soon-tag { color: #666; font-size: 10px; }
+        /* Strict 26px width for icon ensures perfectly straight vertical line */
+        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, 
+        .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child,
+        .sidebar-menu a.normal-link .link-text i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 26px !important; 
+            min-width: 26px !important;
+            font-size: 16px !important; 
+            color: #e6c875 !important; 
+            margin-right: 15px !important; 
+            flex-shrink: 0 !important; 
+        }
+        
+        /* Support for original index style link-text class */
+        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 0; }
+        
+        .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
+        .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
+        
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; flex-shrink: 0; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
+        .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        
+        /* Nested Sub-Menu Formatting */
+        .sub-menu a { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            font-size: 14px !important; 
+            padding: 12px 20px 12px 45px !important; 
+            border-bottom: 1px solid #111 !important; 
+            color: #aaa !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            border-left: 4px solid transparent; 
+        }
+        .sub-menu.nested-sub a { padding-left: 65px !important; font-size: 13px !important; }
+        .sub-menu a div { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sub-menu a div i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 22px !important; 
+            min-width: 22px !important;
+            text-align: center; 
+            margin-right: 12px !important; 
+            color: #e6c875 !important; 
+        }
+        .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
+
+        .live-tag, .eco-tag.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: 10px;}
+        .soon-tag, .eco-tag.soon { color: #888; font-size: 10px; background: rgba(255,255,255,0.05); border: 1px solid #444; padding: 2px 6px; border-radius: 10px; flex-shrink: 0; margin-left: 10px; font-weight:bold;}
         
         .menu-divider { height: 1px; background: #222; margin: 8px 20px; }
 
-        .sidebar-footer { padding: 15px 20px; border-top: 1px solid #222; background: #111; display: none; }
-        .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+        .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; display: none; }
+        .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
         .logout-btn-menu:hover { background: #cc0000; }
 
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
@@ -248,8 +327,23 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (INDEX STYLE) 🔥 */
-        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow {
+            color: #ff4d4d !important;
+            font-size: 18px !important;
+            font-weight: 900;
+            margin-bottom: 10px !important;
+            letter-spacing: 2px;
+            animation: textGlow 1s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+
+        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -302,7 +396,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -314,77 +408,9 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 UNIVERSAL VIP SIDE MENU 🔥 -->
-    <div class="side-menu" id="sideMenu">
-        
-        <!-- 🔥 NEW CLOSE (X) BUTTON AT THE TOP RIGHT 🔥 -->
-        <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
+    <!-- 🔥 DYNAMIC JS INJECTED MENU CONTAINER 🔥 -->
+    <div id="dynamicMenuContainer"></div>
 
-        <div class="custom-translate">
-            <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
-                <option value="">🌐 Select Language</option>
-                <option value="hi">हिन्दी (Hindi)</option>
-                <option value="en">English</option>
-                <option value="bn">বাংলা (Bengali)</option>
-                <option value="mr">मराठी (Marathi)</option>
-                <option value="te">తెలుగు (Telugu)</option>
-                <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાती (Gujarati)</option>
-            </select>
-        </div>
-
-        <div class="sidebar-profile" id="sidebarProfileArea">
-            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
-            <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
-            <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
-            <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
-            <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
-        </div>
-        
-        <div class="sidebar-menu">
-            <!-- 🔥 THIS SECTION REPLACED DYNAMICALLY BY FIREBASE SCRIPT ON LOGIN 🔥 -->
-            <div class="menu-heading">Main</div>
-            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-home"></i> Dashboard</div></a>
-
-            <div class="menu-heading" style="margin-top: 8px;">Explore Ecosystem</div>
-            <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-            <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-            
-            <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
-            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
-                <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
-            </a>
-            
-            <div id="upcomingProjectsList" class="upcoming-list">
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
-            </div>
-            <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
-
-            <div class="menu-divider"></div>
-
-            <a href="ceo.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
-            <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
-            <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
-            <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
-        </div>
-        
-        <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
-            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
-                <i class="fas fa-sign-out-alt"></i> Logout Securely
-            </button>
-        </div>
-    </div>
     <div id="overlay"></div>
 
     <!-- 🔥 CEO PAGE MAIN CONTENT 🔥 -->
@@ -487,17 +513,17 @@
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Upcoming Projects</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('exchange')">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('coin')">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('wallet')">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('browser')">DK Browser (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('mart')">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('games')">DK Games (Soon)</a></li>
                     </ul>
                 </div>
                 
@@ -535,15 +561,36 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT MODAL -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL (COMPACT HEIGHT & PERFECT CLOSE BUTTON FIX) 🔥 -->
+    <div class="app-modal-overlay" id="customAlertOverlay">
+        <div class="app-modal-box" style="padding: 18px 15px; position: relative;">
+            <button class="app-modal-close" onclick="closeUpcomingProject()" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0;">&times;</button>
+            
+            <!-- 1. Video Logo at Top -->
+            <div class="app-modal-logo-wrap" style="width: 50px; height: 50px; margin: 0 auto 6px auto;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+            
+            <!-- 2. Coming Soon -->
+            <h3 class="app-modal-title notranslate coming-soon-glow" style="font-size: 18px !important; margin-bottom: 8px !important;">COMING SOON</h3>
+            
+            <!-- 3. Project Logo / Icon -->
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
+            <!-- 4. Project Full Name -->
+            <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
+            <!-- 5. Description (English & Hindi) -->
+            <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
+            <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
+            <!-- 6. Special Coin Earning Message -->
+            <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
+                <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
+            </div>
         </div>
     </div>
 
@@ -573,87 +620,298 @@
 
     <!-- UI Scripts -->
     <script>
-        function showCustomAlert(title, message, isError = false) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const titleEl = document.getElementById('customAlertTitle');
-            const msgEl = document.getElementById('customAlertMsg');
-            titleEl.innerText = title;
-            msgEl.innerText = message;
-            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
-        }
-
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            document.body.style.overflow = ''; // 🔥 Unlock
-        });
-
-        // 🔥 COPY AND SHARE REFERRAL LINK GLOBAL FUNCTIONS 🔥
-        window.copyMyReferral = function() {
-            const link = document.getElementById('myReferralLink') ? document.getElementById('myReferralLink').value : "";
-            if(!link || link.includes('Loading')) return;
-            navigator.clipboard.writeText(link);
-            showCustomAlert('Copied!', 'Referral Link Copied Successfully!', false);
+        /* 🔥 NEW DYNAMIC UPCOMING PROJECTS ENGINE 🔥 */
+        const upcomingProjectsData = {
+            'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
+            'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
+            'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
+            'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
+            'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
+            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
+            'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
+            'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
+            'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
+            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
         };
 
-        window.shareMyReferral = function() {
-            const link = document.getElementById('myReferralLink') ? document.getElementById('myReferralLink').value : "";
-            if(!link || link.includes('Loading')) return;
+        function showUpcomingProject(id) {
+            const data = upcomingProjectsData[id];
+            if(!data) return;
             
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Join DK Atovitt Ecosystem',
-                    text: 'Join the DK Atovitt Ecosystem and earn ATVT coins up to 10 Levels! Click my VIP link to register:\n\n',
-                    url: link
-                }).catch(err => console.log('Error sharing:', err));
-            } else {
-                window.copyMyReferral();
-            }
-        };
-
-        // Menu Toggle Scripts & SCROLL LOCK
-        const menuBtn = document.getElementById('menuBtn'); 
-        const sideMenu = document.getElementById('sideMenu'); 
-        const closeMenu = document.getElementById('closeMenu'); 
-        const overlay = document.getElementById('overlay'); 
-        const html = document.documentElement;
-        
-        function openMenu() {
-            sideMenu.classList.add('active'); 
-            overlay.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-            html.style.overflow = 'hidden'; 
+            document.getElementById('customAlertProjectIcon').className = data.icon;
+            document.getElementById('customAlertProjectName').innerText = data.name;
+            document.getElementById('customAlertEngDesc').innerText = data.eng;
+            document.getElementById('customAlertHinDesc').innerText = data.hin;
+            
+            document.getElementById('customAlertOverlay').classList.add('active');
+            
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if (sideMenu) sideMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
         }
 
-        function closeSideMenu() { 
-            sideMenu.classList.remove('active'); 
-            overlay.classList.remove('active'); 
-            document.body.style.overflow = ''; 
-            html.style.overflow = ''; 
-        }
-        
-        menuBtn.addEventListener('click', openMenu); 
-        closeMenu.addEventListener('click', closeSideMenu); 
-        overlay.addEventListener('click', closeSideMenu);
-        document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
-            link.addEventListener('click', closeSideMenu); 
-        });
-        
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
+        function closeUpcomingProject() {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+            if (!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) {
+                if (!document.getElementById('chatbotOverlay').classList.contains('active')) {
+                    document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
                 }
             }
         }
         
-        function copyDkId() {
-            var copyText = document.getElementById("sidebarDkId").innerText.trim();
-            if(copyText.includes('Loading') || copyText.includes('Login')) return;
-            navigator.clipboard.writeText(copyText);
-            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
+        document.addEventListener('DOMContentLoaded', () => {
+            const customAlertOverlay = document.getElementById('customAlertOverlay');
+            if(customAlertOverlay) {
+                customAlertOverlay.addEventListener('click', (e) => {
+                    if(e.target === customAlertOverlay) {
+                        closeUpcomingProject();
+                    }
+                });
+                customAlertOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+            }
+        });
+
+        /* 🔥 MENU RENDER LOGIC 🔥 */
+        // We inject either the "Index Dashboard Menu" or the "Movie Menu" based on URL Parameter.
+        // If the URL has ?from=index, it shows Index menu. Otherwise, it defaults to Movie Menu.
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromSource = urlParams.get('from');
+        
+        const menuContainer = document.getElementById('dynamicMenuContainer');
+
+        if (fromSource === 'index') {
+            menuContainer.innerHTML = `
+            <div class="side-menu" id="sideMenu">
+                <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
+                <div class="custom-translate">
+                    <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
+                        <option value="">🌐 Select Language</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+                <div class="sidebar-profile" id="sidebarProfileArea">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
+                    <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
+                    <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
+                    <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
+                    <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
+                </div>
+                <div class="sidebar-menu" id="innerDynamicMenu">
+                    <div class="menu-heading">Main</div>
+                    <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-home"></i> Dashboard</div></a>
+                    <div class="menu-heading" style="margin-top: 8px;">Explore Ecosystem</div>
+                    <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                    <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                    
+                    <!-- Upcoming dropdown -->
+                    <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                        <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                        <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+                    </a>
+                    <div id="upcomingProjectsList" class="upcoming-list">
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Web3 Wallet</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Msg</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                        <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                    </div>
+                    
+                    <div class="menu-divider"></div>
+                    <a href="ceo.html?from=index" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                    <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+                    <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+                    <a href="contact.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                </div>
+                <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
+                    <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
+                </div>
+            </div>`;
+        } else {
+            // Default to Movie style Menu
+            menuContainer.innerHTML = `
+            <div class="side-menu" id="sideMenu">
+                <div class="menu-header">
+                    <h2>MENU</h2>
+                    <button id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
+                </div>
+                
+                <div class="custom-translate show-on-mobile" style="padding: 20px; border-bottom: 1px solid #222; text-align: center;">
+                    <div style="position: relative; display: inline-block; width: 85%;">
+                        <i class="fas fa-globe" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #00a8ff; font-size: 16px; pointer-events: none;"></i>
+                        <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)" style="width: 100%; background: transparent; color: #e6c875; border: 1.5px solid #e6c875; padding: 10px 15px 10px 40px; border-radius: 30px; outline: none; font-size: 13px; font-weight: bold; cursor: pointer; appearance: none; -webkit-appearance: none;">
+                            <option value="" style="color: #000;">Select Language</option>
+                            <option value="hi" style="color: #000;">हिन्दी (Hindi)</option>
+                            <option value="en" style="color: #000;">English</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="menuProfileArea"></div>
+                
+                <div class="sidebar-menu" id="innerDynamicMenu">
+                    <!-- Ecosystem Main Dropdown -->
+                    <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
+                        <span class="menu-text-wrap"><i class="fas fa-globe"></i> DK ATOVITT Ecosystem</span>
+                        <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
+                    </a>
+                    
+                    <div class="sub-menu" id="mainEcoSub">
+                        <!-- Live -->
+                        <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('liveEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
+                            <span class="menu-text-wrap"><i class="fas fa-circle" style="color: #25d366; font-size: 10px !important;"></i> Live Projects</span>
+                            <i class="fas fa-chevron-down dropdown-icon" id="liveEcoIcon"></i>
+                        </a>
+                        <div class="sub-menu nested-sub" id="liveEcoSub">
+                            <a href="movie.html"><div><i class="fas fa-film"></i> DK Film Production</div> <span class="eco-tag live">LIVE</span></a>
+                            <a href="social.html"><div><i class="fas fa-users"></i> DK Connect (Social)</div> <span class="eco-tag live">LIVE</span></a>
+                        </div>
+                        
+                        <!-- Upcoming -->
+                        <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('upcomingEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
+                            <span class="menu-text-wrap"><i class="fas fa-rocket" style="color: #e6c875;"></i> Upcoming Projects</span>
+                            <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
+                        </a>
+                        <div class="sub-menu nested-sub" id="upcomingEcoSub">
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('chain')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-link"></i> DK Chain / Scan</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-chart-line"></i> DK Exchange</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('coin')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-cube"></i> DK ATVT Coin</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-wallet"></i> DK Web3 Wallet</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('browser')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-globe"></i> DK Browser</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('mart')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-shopping-cart"></i> DK Mart</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('ads')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-bullhorn"></i> DK Digital Ads</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('gps')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('msg')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-comment-dots"></i> DK Connect Msg</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('chat')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-comments"></i> DK Chat</div></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('games')"><div style="white-space: normal; overflow: visible;"><i class="fas fa-gamepad"></i> DK Games</div></a>
+                        </div>
+                    </div>
+
+                    <a href="auth.html" id="sideMenuAuthBtn" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span></a>
+                    <a href="movie.html#home" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-home"></i> Home</span></a>
+                    
+                    <a class="menu-dropdown-btn active" onclick="toggleSubMenu('aboutSub')">
+                        <span class="menu-text-wrap"><i class="fas fa-info-circle"></i> About Us</span>
+                        <i class="fas fa-chevron-down dropdown-icon rotate" id="aboutIcon"></i>
+                    </a>
+                    <div class="sub-menu active" id="aboutSub">
+                        <a href="ceo.html" class="active"><div><i class="fas fa-user-tie"></i> CEO</div></a>
+                        <a href="company.html"><div><i class="fas fa-building"></i> Company</div></a>
+                    </div>
+                    
+                    <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
+                        <span class="menu-text-wrap"><i class="fas fa-film"></i> Movies</span>
+                        <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
+                    </a>
+                    <div class="sub-menu" id="moviesMenuSub">
+                        <a href="yakshini.html"><div><i class="fas fa-ghost"></i> Yakshini</div></a>
+                    </div>
+                    
+                    <a href="trailers.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-video"></i> Trailers</span></a>
+                    
+                    <a class="menu-dropdown-btn" onclick="toggleSubMenu('songsSub')">
+                        <span class="menu-text-wrap"><i class="fas fa-music"></i> Songs</span>
+                        <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
+                    </a>
+                    <div class="sub-menu" id="songsSub">
+                        <a href="movie-songs.html"><div><i class="fas fa-film"></i> Movies Songs</div></a>
+                        <a href="album-songs.html"><div><i class="fas fa-compact-disc"></i> Album Songs</div></a>
+                        <a href="mp3-songs.html"><div><i class="fas fa-headphones"></i> MP3 Audio Songs</div></a>
+                    </div>
+                    
+                    <a href="gallery.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-images"></i> Gallery</span></a>
+                    <a href="celebrity.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-star"></i> Celebrity with DK Sir</span></a>
+                    <a href="auditions.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-theater-masks"></i> Auditions</span></a>
+                    
+                    <a class="menu-dropdown-btn" onclick="toggleSubMenu('ecoSub')">
+                        <span class="menu-text-wrap"><i class="fas fa-network-wired"></i> Ecosystem & Partners</span>
+                        <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
+                    </a>
+                    <div class="sub-menu" id="ecoSub">
+                        <a href="ecosystem.html"><div><i class="fas fa-globe"></i> Explore Ecosystem</div></a>
+                        <a href="ecosystem.html#earn-with-dk-sir"><div><i class="fas fa-rupee-sign"></i> Earn with DK Sir</div></a>
+                        <a href="ecosystem.html#atvt"><div><i class="fas fa-tv"></i> ATVT</div></a>
+                        <a href="ecosystem.html#kalpamrit"><div><i class="fas fa-leaf"></i> Kalpamrit</div></a>
+                    </div>
+
+                    <a href="news.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-newspaper"></i> News & Updates</span></a>
+                    <a href="contact.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-phone-alt"></i> Contact Us</span></a>
+                </div>
+            </div>`;
+        }
+
+        // Initialize Menu Handlers After DOM Injection
+        const menuBtnHtml = document.getElementById('menuBtn'); 
+        const sideMenuHtml = document.getElementById('sideMenu'); 
+        const closeMenuHtml = document.getElementById('closeMenu'); 
+        const overlayHtml = document.getElementById('overlay'); 
+        
+        function openMenuHtml() {
+            sideMenuHtml.classList.add('active'); 
+            overlayHtml.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+            document.documentElement.style.overflow = 'hidden'; 
+        }
+
+        function closeSideMenuHtml() { 
+            sideMenuHtml.classList.remove('active'); 
+            overlayHtml.classList.remove('active'); 
+            document.body.style.overflow = ''; 
+            document.documentElement.style.overflow = ''; 
+        }
+        
+        if(menuBtnHtml) menuBtnHtml.addEventListener('click', openMenuHtml); 
+        if(closeMenuHtml) closeMenuHtml.addEventListener('click', closeSideMenuHtml); 
+        if(overlayHtml) overlayHtml.addEventListener('click', closeSideMenuHtml);
+        
+        document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
+            link.addEventListener('click', closeSideMenuHtml); 
+        });
+
+        function toggleSubMenu(id) {
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    document.querySelectorAll('.side-menu > .sidebar-menu > .sub-menu').forEach(menu => menu.classList.remove('active'));
+                    document.querySelectorAll('.side-menu > .sidebar-menu > .menu-dropdown-btn .dropdown-icon').forEach(ico => ico.classList.remove('rotate'));
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
+        }
+
+        function toggleNestedMenu(id, event) {
+            if(event) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+            const subMenu = document.getElementById(id);
+            const icon = document.getElementById(id.replace('Sub', 'Icon'));
+            if(subMenu) {
+                if(subMenu.classList.contains('active')) {
+                    subMenu.classList.remove('active');
+                    if(icon) icon.classList.remove('rotate');
+                } else {
+                    subMenu.classList.add('active');
+                    if(icon) icon.classList.add('rotate');
+                }
+            }
         }
 
         function reveal() { 
@@ -702,7 +960,7 @@
                 if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
             }, 1000);
         });
-        
+
         // APP MODAL LOGIC WITH BACKGROUND LOCK
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -713,11 +971,11 @@
                 openAppModal.addEventListener('click', (e) => { 
                     e.preventDefault(); 
                     appModalOverlay.classList.add('active'); 
-                    document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
+                    document.body.style.overflow = 'hidden'; 
                 });
                 closeAppModal.addEventListener('click', () => { 
                     appModalOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; // 🔥 Unlock
+                    document.body.style.overflow = ''; 
                 });
                 appModalOverlay.addEventListener('click', (e) => { 
                     if(e.target === appModalOverlay) {
@@ -735,10 +993,10 @@
             
             if (list.style.display === "none" || list.style.display === "") {
                 list.style.display = "block";
-                arrow.style.transform = "rotate(180deg)"; // Arrow upar ghum jayega
+                arrow.style.transform = "rotate(180deg)";
             } else {
                 list.style.display = "none";
-                arrow.style.transform = "rotate(0deg)"; // Arrow wapas niche ho jayega
+                arrow.style.transform = "rotate(0deg)";
             }
         };
 
@@ -751,25 +1009,24 @@
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
-                document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
+                document.body.style.overflow = 'hidden'; 
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
-                document.body.style.overflow = ''; // 🔥 Unlock
+                document.body.style.overflow = ''; 
             }); 
         }
         if(chatbotOverlay) {
             chatbotOverlay.addEventListener('click', (e) => {
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; // 🔥 Unlock
+                    document.body.style.overflow = ''; 
                 }
             });
         }
 
-        // 🔥 POORE 11 UPCOMING PROJECTS KI LIST YAHAN HAI 🔥
         function sendChat(type) {
             let userText = ""; let botReply = "";
 
@@ -818,7 +1075,7 @@
         }
     </script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA (HEADER NAME BUG FIXED & UNIFIED MENU INJECTED) 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -854,73 +1111,96 @@
                 }
                 let userDkId = "DK-" + uidSnippet;
 
-                // 1. UPDATE SIDEBAR PROFILE
-                document.getElementById('sidebarProfileName').innerText = fullName;
-                document.getElementById('sidebarProfileImg').src = userPhoto;
-                
-                const dkIdBadge = document.getElementById('sidebarDkId');
-                if(dkIdBadge) {
-                    dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
-                    dkIdBadge.style.display = 'inline-block';
+                // UPDATE SIDEBAR PROFILE (ONLY IF WE ARE ON INDEX MENU MODE)
+                if (fromSource === 'index') {
+                    const profileName = document.getElementById('sidebarProfileName');
+                    const profileImg = document.getElementById('sidebarProfileImg');
+                    if (profileName) profileName.innerText = fullName;
+                    if (profileImg) profileImg.src = userPhoto;
+                    
+                    const dkIdBadge = document.getElementById('sidebarDkId');
+                    if(dkIdBadge) {
+                        dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                        dkIdBadge.style.display = 'inline-block';
+                    }
+                    
+                    const vipBadge = document.getElementById('sidebarVipBadge');
+                    if(vipBadge) vipBadge.style.display = 'inline-block';
+                    
+                    const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+                    const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+                    const sidebarFooterArea = document.getElementById('sidebarFooterArea');
+                    
+                    if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
+                    if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
+                    if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
+                    
+                    const innerDynamicMenu = document.getElementById('innerDynamicMenu');
+                    if (innerDynamicMenu) {
+                        innerDynamicMenu.innerHTML = `
+                            <div class="menu-heading">My Account</div>
+                            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                            <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
+                            <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
+                            
+                            <div class="menu-divider"></div>
+                            <div class="menu-heading">Explore Ecosystem</div>
+                            <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                            <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                            
+                            <!-- Upcoming dropdown -->
+                            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                                <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+                            </a>
+                            <div id="upcomingProjectsList" class="upcoming-list">
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Web3 Wallet</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Msg</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                            </div>
+                            
+                            <div class="menu-divider"></div>
+                            <a href="ceo.html?from=index" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                            <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+                            <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+                            <a href="contact.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                        `;
+                    }
+                } else {
+                    // Movie menu profile inject
+                    const menuProfileArea = document.getElementById('menuProfileArea');
+                    if (menuProfileArea) {
+                        let shortName = fullName.trim().split(' ')[0]; 
+                        if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
+                        menuProfileArea.innerHTML = `
+                            <div style="padding: 15px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
+                                <img src="${userPhoto}" id="menuSidePhoto" alt="Profile" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 8px; box-shadow: 0 5px 15px rgba(230,200,117,0.2);">
+                                <h3 style="color: #fff; margin: 0; font-size: 16px; font-family: 'Playfair Display', serif;">${shortName}</h3>
+                                <p style="color: #e6c875; font-size: 10px; margin: 3px 0 0 0; text-transform: uppercase; font-weight:bold; letter-spacing: 1px;"><i class="fas fa-star"></i> Pro Member</p>
+                            </div>
+                        `;
+                    }
+                    const sideMenuAuthBtn = document.getElementById('sideMenuAuthBtn');
+                    if(sideMenuAuthBtn) {
+                        sideMenuAuthBtn.outerHTML = `
+                            <div class="menu-heading">My Account</div>
+                            <a href="index.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</span></a>
+                            <a href="wallet.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-wallet"></i> My ATVT Wallet</span></a>
+                            <a href="referral.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-network-wired"></i> My Referrals</span></a>
+                            <div class="menu-divider" style="height: 1px; background: #222; margin: 10px 20px;"></div>
+                        `;
+                    }
                 }
-                
-                const vipBadge = document.getElementById('sidebarVipBadge');
-                if(vipBadge) vipBadge.style.display = 'inline-block';
-                
-                // Show Logout, Hide Login from Footer
-                const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
-                const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
-                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
-                
-                if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
-                if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
-                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // 2. INJECT NEW VIP SIDEBAR MENU LINKS
-                const sidebarMenu = document.querySelector('.sidebar-menu');
-                if (sidebarMenu) {
-                    sidebarMenu.innerHTML = `
-                        <div class="menu-heading">My Account</div>
-                        <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
-                        <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
-                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
-                        
-                        <div class="menu-divider"></div>
-                        <div class="menu-heading">Explore Ecosystem</div>
-                        <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        
-                        <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
-                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
-                            <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
-                        </a>
-                        
-                        <div id="upcomingProjectsList" class="upcoming-list">
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
-                        </div>
-                        <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
-
-                        <div class="menu-divider"></div>
-
-                        <a href="ceo.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
-                        <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
-                        <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
-                        <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
-                    `;
-                }
-
-                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
+                // TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
