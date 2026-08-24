@@ -119,7 +119,7 @@
             border-left: 4px solid transparent; 
             cursor: pointer; 
         }
-        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { 
+        .sidebar-menu a.normal-link span, .sidebar-menu a.menu-dropdown-btn span { 
             display: flex; 
             align-items: center; 
             white-space: nowrap; 
@@ -128,8 +128,8 @@
             max-width: 90%; 
         }
         /* Strict 26px width for icon ensures perfectly straight vertical line */
-        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, 
-        .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child { 
+        .sidebar-menu a.normal-link span i:first-child, 
+        .sidebar-menu a.menu-dropdown-btn span i:first-child { 
             display: inline-flex !important;
             justify-content: center !important;
             align-items: center !important;
@@ -176,6 +176,11 @@
         }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
         
+        /* Ecosystem Tags (Live & Soon) */
+        .eco-tag { font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 10px; flex-shrink: 0; margin-left: 10px; }
+        .eco-tag.live { color: #25d366; background: rgba(37,211,102,0.1); border: 1px solid #25d366; }
+        .eco-tag.soon { color: #888; background: rgba(255,255,255,0.05); border: 1px solid #444; }
+
         .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
@@ -431,19 +436,6 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 CUSTOM ALERT MODAL FIX (Z-INDEX SUPER HIGH) 🔥 */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-        .custom-alert-title.success { color: #e6c875; }
-        .custom-alert-title.error { color: #ff4d4d; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
-
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -550,8 +542,8 @@
                     <i class="fas fa-chevron-down dropdown-icon" id="liveEcoIcon"></i>
                 </a>
                 <div class="sub-menu nested-sub" id="liveEcoSub">
-                    <a href="movie.html" onclick="closeSideMenu();"><div><i class="fas fa-film"></i> DK Film Production</div></a>
-                    <a href="social.html" onclick="closeSideMenu();"><div><i class="fas fa-users"></i> DK Connect (Social)</div></a>
+                    <a href="movie.html"><div><i class="fas fa-film"></i> DK Film Production</div> <span class="eco-tag live">LIVE</span></a>
+                    <a href="social.html"><div><i class="fas fa-users"></i> DK Connect (Social)</div> <span class="eco-tag live">LIVE</span></a>
                 </div>
                 
                 <!-- 2. UPCOMING PROJECTS NESTED DROPDOWN -->
@@ -560,21 +552,21 @@
                     <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
                 </a>
                 <div class="sub-menu nested-sub" id="upcomingEcoSub">
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)"><div><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)"><div><i class="fas fa-chart-line"></i> DK Crypto Exchange</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><div><i class="fas fa-cube"></i> DK ATVT Coin</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><div><i class="fas fa-wallet"></i> DK Decentralised Wallet</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><div><i class="fas fa-globe"></i> DK Browser</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><div><i class="fas fa-shopping-cart"></i> DK Mart</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><div><i class="fas fa-bullhorn"></i> DK Digital Advertisement</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)"><div><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><div><i class="fas fa-comment-dots"></i> DK Connect Messenger</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><div><i class="fas fa-comments"></i> DK Chat</div></a>
-                    <a href="javascript:void(0)" onclick="closeSideMenu(); showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><div><i class="fas fa-gamepad"></i> DK Games</div></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)"><div><i class="fas fa-link"></i> DK Chain / Scan</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)"><div><i class="fas fa-chart-line"></i> DK Exchange</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)"><div><i class="fas fa-cube"></i> DK ATVT Coin</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)"><div><i class="fas fa-wallet"></i> DK Web3 Wallet</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)"><div><i class="fas fa-globe"></i> DK Browser</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)"><div><i class="fas fa-shopping-cart"></i> DK Mart</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><div><i class="fas fa-bullhorn"></i> DK Digital Ads</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)"><div><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><div><i class="fas fa-comment-dots"></i> DK Connect Msg</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><div><i class="fas fa-comments"></i> DK Chat</div> <span class="eco-tag soon">SOON</span></a>
+                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><div><i class="fas fa-gamepad"></i> DK Games</div> <span class="eco-tag soon">SOON</span></a>
                 </div>
             </div>
 
-            <!-- REST OF THE MENU ITEMS -->
+            <!-- REST OF THE MENU ITEMS (PERFECTLY ALIGNED) -->
             <a href="auth.html" id="sideMenuAuthBtn" class="normal-link">
                 <span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span>
             </a>
@@ -588,8 +580,8 @@
                 <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
             </a>
             <div class="sub-menu" id="aboutSub">
-                <a href="ceo.html" onclick="closeSideMenu();"><div><i class="fas fa-user-tie"></i> CEO</div></a>
-                <a href="company.html" onclick="closeSideMenu();"><div><i class="fas fa-building"></i> Company</div></a>
+                <a href="ceo.html"><div><i class="fas fa-user-tie"></i> CEO</div></a>
+                <a href="company.html"><div><i class="fas fa-building"></i> Company</div></a>
             </div>
             
             <a class="menu-dropdown-btn" onclick="toggleSubMenu('moviesMenuSub')">
@@ -597,7 +589,7 @@
                 <i class="fas fa-chevron-down dropdown-icon" id="moviesMenuIcon"></i>
             </a>
             <div class="sub-menu" id="moviesMenuSub">
-                <a href="yakshini.html" onclick="closeSideMenu();"><div><i class="fas fa-ghost"></i> Yakshini</div></a>
+                <a href="yakshini.html"><div><i class="fas fa-ghost"></i> Yakshini</div></a>
             </div>
             
             <a href="trailers.html" class="normal-link">
@@ -609,9 +601,9 @@
                 <i class="fas fa-chevron-down dropdown-icon" id="songsIcon"></i>
             </a>
             <div class="sub-menu" id="songsSub">
-                <a href="movie-songs.html" onclick="closeSideMenu();"><div><i class="fas fa-film"></i> Movies Songs</div></a>
-                <a href="album-songs.html" onclick="closeSideMenu();"><div><i class="fas fa-compact-disc"></i> Album Songs</div></a>
-                <a href="mp3-songs.html" onclick="closeSideMenu();"><div><i class="fas fa-headphones"></i> MP3 Audio Songs</div></a>
+                <a href="movie-songs.html"><div><i class="fas fa-film"></i> Movies Songs</div></a>
+                <a href="album-songs.html"><div><i class="fas fa-compact-disc"></i> Album Songs</div></a>
+                <a href="mp3-songs.html"><div><i class="fas fa-headphones"></i> MP3 Audio Songs</div></a>
             </div>
             
             <a href="gallery.html" class="normal-link">
@@ -631,10 +623,10 @@
                 <i class="fas fa-chevron-down dropdown-icon" id="ecoIcon"></i>
             </a>
             <div class="sub-menu" id="ecoSub">
-                <a href="ecosystem.html" onclick="closeSideMenu();"><div><i class="fas fa-globe"></i> Explore Ecosystem</div></a>
-                <a href="ecosystem.html#earn-with-dk-sir" onclick="closeSideMenu();"><div><i class="fas fa-rupee-sign"></i> Earn with DK Sir</div></a>
-                <a href="ecosystem.html#atvt" onclick="closeSideMenu();"><div><i class="fas fa-tv"></i> ATVT</div></a>
-                <a href="ecosystem.html#kalpamrit" onclick="closeSideMenu();"><div><i class="fas fa-leaf"></i> Kalpamrit</div></a>
+                <a href="ecosystem.html"><div><i class="fas fa-globe"></i> Explore Ecosystem</div></a>
+                <a href="ecosystem.html#earn-with-dk-sir"><div><i class="fas fa-rupee-sign"></i> Earn with DK Sir</div></a>
+                <a href="ecosystem.html#atvt"><div><i class="fas fa-tv"></i> ATVT</div></a>
+                <a href="ecosystem.html#kalpamrit"><div><i class="fas fa-leaf"></i> Kalpamrit</div></a>
             </div>
         </div>
     </div>
@@ -743,7 +735,7 @@
                     <a href="yakshini-title-track.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                 </div>
                 <div class="social-action-bar">
-                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का خौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/movie.html#trailer')">
+                    <button class="social-btn" onclick="shareViralContent('यक्षिणी (Yakshini) Official Trailer', '🎬 यक्षिणी मूवी का खौफनाक ट्रेलर और गाना अभी देखें! DK Atovitt Production House पर:', 'https://dkatovitt.github.io/movie.html#trailer')">
                         <i class="fas fa-share-alt"></i> Share
                     </button>
                     <a href="https://youtu.be/Mek5HNkypTQ" target="_blank" class="social-btn" title="Comment on YouTube">
@@ -1287,17 +1279,6 @@
             }
         });
         
-        // 🔥 CUSTOM ALERT MODAL FIX (Z-INDEX SUPER HIGH) 🔥
-        window.showCustomAlert = function(title, msg, isError=false) {
-            document.getElementById('customAlertTitle').innerText = title;
-            document.getElementById('customAlertMsg').innerText = msg;
-            document.getElementById('customAlertTitle').style.color = isError ? "#ff4d4d" : "#e6c875";
-            document.getElementById('customAlertOverlay').classList.add('active');
-        }
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-        });
-
         // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
@@ -1415,7 +1396,7 @@
             }, 1000);
         });
         
-        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE (FIXED) 🔥 */
+        /* 🔥 MENU SCROLL LOCK & OVERLAP ENGINE 🔥 */
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1428,14 +1409,12 @@
             document.documentElement.style.overflow = 'hidden'; 
         }
 
-        // 🔥 YAHAN THI ERROR! Ab theek ho gayi hai.
         function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
             document.body.style.overflow = ''; 
             document.documentElement.style.overflow = ''; 
         }
-        window.closeSideMenu = closeSideMenu; // Globals mein daal diya taaki onClick mein kaam kare
         
         menuBtn.addEventListener('click', openMenu); 
         closeMenu.addEventListener('click', closeSideMenu); 
@@ -1743,4 +1722,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
