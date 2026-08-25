@@ -97,7 +97,6 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
-        /* Changed to 100dvh for mobile scroll fix */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         
@@ -122,56 +121,17 @@
         .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🚀 MENU SCROLLING SPACING FIX 🚀 */
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 0 0 120px 0; overscroll-behavior-y: auto; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 15px 20px 8px 20px; font-weight: bold; }
         
-        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
-        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
-            display: flex !important; 
-            justify-content: space-between !important; 
-            align-items: center !important; 
-            width: 100%; 
-            box-sizing: border-box; 
-            padding: 15px 20px; 
-            border-bottom: 1px solid #1a1a1a; 
-            color: #ccc; 
-            font-size: 15px; 
-            transition: 0.3s; 
-            text-decoration: none; 
-            border-left: 4px solid transparent; 
-            cursor: pointer; 
-        }
-        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { 
-            display: flex; 
-            align-items: center; 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            max-width: 90%; 
-        }
+        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; }
+        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
         
-        /* Strict 26px width for icon ensures perfectly straight vertical line */
-        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, 
-        .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child,
-        .sidebar-menu a.normal-link .link-text i:first-child { 
-            display: inline-flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 26px !important; 
-            min-width: 26px !important;
-            font-size: 16px !important; 
-            color: #e6c875 !important; 
-            margin-right: 15px !important; 
-            flex-shrink: 0 !important; 
-        }
-        
-        /* Support for original index style link-text class */
+        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child, .sidebar-menu a.normal-link .link-text i:first-child { display: inline-flex !important; justify-content: center !important; align-items: center !important; width: 26px !important; min-width: 26px !important; font-size: 16px !important; color: #e6c875 !important; margin-right: 15px !important; flex-shrink: 0 !important; }
         .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 0; }
-        
         .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
         .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
         
@@ -181,31 +141,10 @@
         .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         
-        /* Nested Sub-Menu Formatting */
-        .sub-menu a { 
-            display: flex !important; 
-            justify-content: space-between !important; 
-            align-items: center !important; 
-            font-size: 14px !important; 
-            padding: 12px 20px 12px 45px !important; 
-            border-bottom: 1px solid #111 !important; 
-            color: #aaa !important; 
-            text-decoration: none; 
-            transition: 0.3s; 
-            border-left: 4px solid transparent; 
-        }
+        .sub-menu a { display: flex !important; justify-content: space-between !important; align-items: center !important; font-size: 14px !important; padding: 12px 20px 12px 45px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
         .sub-menu.nested-sub a { padding-left: 65px !important; font-size: 13px !important; }
         .sub-menu a div { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .sub-menu a div i:first-child { 
-            display: inline-flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 22px !important; 
-            min-width: 22px !important;
-            text-align: center; 
-            margin-right: 12px !important; 
-            color: #e6c875 !important; 
-        }
+        .sub-menu a div i:first-child { display: inline-flex !important; justify-content: center !important; align-items: center !important; width: 22px !important; min-width: 22px !important; text-align: center; margin-right: 12px !important; color: #e6c875 !important; }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
 
         .live-tag, .eco-tag.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: 10px;}
@@ -319,44 +258,36 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* 🔥 NEW SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 */
+        /* 🔥 1. APK DOWNLOAD MODAL CSS (RESTORED PERFECTLY) 🔥 */
+        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; }
+        .app-modal-close:hover { color: #fff; }
+        .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
+        .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
+        .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
+        .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
+        .app-modal-desc span { color: #e6c875; font-weight: bold; }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
+        .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
+
+        /* 🔥 2. SUPER ADVANCED UPCOMING PROJECTS MODAL CSS (SEPARATE) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        
-        /* Reusing app-modal styles for consistency with CEO page */
-        .app-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .app-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; }
-        .app-modal-close:hover { color: #fff; }
-        
-        .app-modal-logo-wrap { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
         
         /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
         @keyframes textGlow {
             0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
             100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
         }
-        .coming-soon-glow {
-            color: #ff4d4d !important;
-            font-size: 18px !important;
-            font-weight: 900;
-            margin-bottom: 8px !important;
-            letter-spacing: 2px;
-            animation: textGlow 1s ease-in-out infinite alternate;
-            display: inline-block;
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* APK DOWNLOAD MODAL SPECIFIC (Preserving original) */
-        .apk-download-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .apk-download-logo { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
-        .apk-download-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .apk-download-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
-        .apk-download-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
-        .apk-download-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
-        .apk-download-desc span { color: #e6c875; font-weight: bold; }
-        .apk-download-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
-        .apk-download-btn:hover { background: #d4b561; transform: scale(1.02); }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
 
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
@@ -442,7 +373,7 @@
         <div class="about-container reveal">
             <h2>Who We Are</h2>
             <p><strong class="notranslate">DK ATOVITT</strong> is a premier Global Tech & Entertainment Empire based in Kolkata, dedicated to creating cinematic masterpieces and cutting-edge digital platforms. Founded by visionary entrepreneur Mr. Dipak Kumar Gupta, our ecosystem specializes in producing high-end 4K feature films, web series, music albums, Web3 technologies, smart e-commerce, and next-gen communication tools.</p>
-            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश और दुनिया के असली टैलेंट को एक बड़ा मंच और डिजिटल प्लेटफॉर्म देना है। हम एक 100% पारदर्शी (Transparent) सिस्टम पर काम সীম काम करते हैं, जहाँ क्रिएटर्स, एक्टर्स, और इन्वेस्टर्स को आगे बढ़ने का पूरा मौका मिलता है। हमारा पहला बड़ा सिनेमा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
+            <p>हमारा मकसद सिर्फ फिल्में बनाना नहीं है, बल्कि देश और दुनिया के असली टैलेंट को एक बड़ा मंच और डिजिटल प्लेटफॉर्म देना है। हम एक 100% पारदर्शी (Transparent) सिस्टम पर काम करते हैं, जहाँ क्रिएटर्स, एक्टर्स, और इन्वेस्टर्स को आगे बढ़ने का पूरा मौका मिलता है। हमारा पहला बड़ा सिनेमा प्रोजेक्ट <strong>'यक्षिणी' (Yakshini)</strong> भारतीय हॉरर-रोमांस सिनेमा में एक नया बेंचमार्क सेट करने जा रहा है।</p>
             
             <div class="services-grid">
                 
@@ -608,28 +539,28 @@
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
     <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
-    <!-- APK DOWNLOAD MODAL -->
+    <!-- 🔥 1. APK DOWNLOAD MODAL (RESTORED PERFECTLY) 🔥 -->
     <div class="app-modal-overlay" id="appModalOverlay">
-        <div class="apk-download-box">
+        <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
-            <div class="apk-download-logo"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
-            <h3 class="apk-download-title notranslate">DK ATOVITT</h3>
-            <p class="apk-download-subtitle notranslate">Global Tech & Entertainment Empire</p>
-            <p class="apk-download-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
-            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="apk-download-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
+            <div class="app-modal-logo-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
+            <h3 class="app-modal-title notranslate">DK ATOVITT</h3>
+            <p class="app-modal-subtitle notranslate">Global Tech & Entertainment Empire</p>
+            <p class="app-modal-desc">App Install करने के लिए नीचे दिए गए <span>APK लिंक</span> पर क्लिक करें。</p>
+            <a href="https://github.com/dkatovitt/dkatovitt.github.io/releases/download/v1.0/dkatovitt.apk" class="app-modal-btn" download><i class="fas fa-download"></i> DOWNLOAD APK NOW</a>
         </div>
     </div>
 
-    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
+    <!-- 🔥 2. SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="app-modal-box">
-            <button class="app-modal-close" onclick="closeUpcomingProject()">&times;</button>
+        <div class="upcoming-modal-box">
+            <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
             
-            <div class="app-modal-logo-wrap">
+            <div class="upcoming-modal-logo">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
             
-            <h3 class="app-modal-title notranslate coming-soon-glow">COMING SOON</h3>
+            <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
             
             <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
                 <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
@@ -1012,7 +943,7 @@
             }, 1000);
         });
 
-        // APP MODAL LOGIC WITH BACKGROUND LOCK
+        // 🔥 PERFECTED: APP MODAL LOGIC WITH BACKGROUND LOCK 🔥
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
