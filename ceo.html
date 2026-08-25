@@ -299,7 +299,7 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
+        /* 🔥 CUSTOM ALERT MODAL CSS (NORMAL ALERT) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -327,20 +327,21 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
+        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS MODAL CSS (SCROLL LOCK BUG FIX) 🔥 */
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        
         /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
         @keyframes textGlow {
             0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
             100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
         }
-        .coming-soon-glow {
-            color: #ff4d4d !important;
-            font-size: 18px !important;
-            font-weight: 900;
-            margin-bottom: 10px !important;
-            letter-spacing: 2px;
-            animation: textGlow 1s ease-in-out infinite alternate;
-            display: inline-block;
-        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
 
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
@@ -396,7 +397,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -561,32 +562,38 @@
         </div>
     </div>
 
-    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL (COMPACT HEIGHT & PERFECT CLOSE BUTTON FIX) 🔥 -->
-    <div class="app-modal-overlay" id="customAlertOverlay">
-        <div class="app-modal-box" style="padding: 18px 15px; position: relative;">
-            <button class="app-modal-close" onclick="closeUpcomingProject()" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0;">&times;</button>
+    <!-- CUSTOM ALERT MODAL -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
+    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL (ID FIXED) 🔥 -->
+    <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
+        <div class="upcoming-modal-box">
+            <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
             
-            <!-- 1. Video Logo at Top -->
-            <div class="app-modal-logo-wrap" style="width: 50px; height: 50px; margin: 0 auto 6px auto;">
+            <div class="upcoming-modal-logo">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
             
-            <!-- 2. Coming Soon -->
-            <h3 class="app-modal-title notranslate coming-soon-glow" style="font-size: 18px !important; margin-bottom: 8px !important;">COMING SOON</h3>
+            <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
             
-            <!-- 3. Project Logo / Icon -->
             <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
                 <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
             </div>
             
-            <!-- 4. Project Full Name -->
             <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
             
-            <!-- 5. Description (English & Hindi) -->
             <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
             <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
             
-            <!-- 6. Special Coin Earning Message -->
             <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
                 <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
                 <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
@@ -644,7 +651,7 @@
             document.getElementById('customAlertEngDesc').innerText = data.eng;
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
-            document.getElementById('customAlertOverlay').classList.add('active');
+            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
             
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
@@ -656,24 +663,25 @@
         }
 
         function closeUpcomingProject() {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            if (!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) {
-                if (!document.getElementById('chatbotOverlay').classList.contains('active')) {
-                    document.body.style.overflow = ''; 
-                    document.documentElement.style.overflow = '';
-                }
+            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            
+            // Check if SideMenu or Chatbot is NOT open, then release the scroll
+            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
+                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
             }
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            const customAlertOverlay = document.getElementById('customAlertOverlay');
-            if(customAlertOverlay) {
-                customAlertOverlay.addEventListener('click', (e) => {
-                    if(e.target === customAlertOverlay) {
+            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
+            if(upcomingModalOverlay) {
+                upcomingModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === upcomingModalOverlay) {
                         closeUpcomingProject();
                     }
                 });
-                customAlertOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
@@ -914,6 +922,29 @@
             }
         }
 
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const titleEl = document.getElementById('customAlertTitle');
+            const msgEl = document.getElementById('customAlertMsg');
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+            document.body.style.overflow = ''; 
+        });
+
+        function copyDkId() {
+            var copyText = document.getElementById("sidebarDkId").innerText.trim();
+            if(copyText.includes('Loading') || copyText.includes('Login')) return;
+            navigator.clipboard.writeText(copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
+        }
+
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
@@ -925,6 +956,15 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+        
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
+            }
+        }
 
         window.translatePage = function(lang) {
             if (lang === "") {
@@ -1000,22 +1040,31 @@
             }
         };
 
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY & RESET FIX 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
         
+        function resetChatbot() {
+            if(chatbotBody) {
+                chatbotBody.innerHTML = '<div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>';
+            }
+        }
+
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
                 document.body.style.overflow = 'hidden'; 
+                document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
                 document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+                resetChatbot(); 
             }); 
         }
         if(chatbotOverlay) {
@@ -1023,6 +1072,8 @@
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
                     document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
+                    resetChatbot(); 
                 }
             });
         }
@@ -1039,17 +1090,17 @@
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching very soon!', false)"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" onclick="showUpcomingProject('chain')"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -1074,6 +1125,18 @@
             }, 800);
         }
     </script>
+    
+    <!-- GOOGLE TRANSLATE INIT SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
@@ -1213,7 +1276,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -1261,7 +1324,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
