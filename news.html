@@ -303,20 +303,7 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-        .custom-alert-title.success { color: #e6c875; }
-        .custom-alert-title.error { color: #ff4d4d; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
-
-        /* APK MODAL CSS */
+        /* 🔥 1. APK DOWNLOAD MODAL CSS 🔥 */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -332,8 +319,25 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
+        /* 🔥 2. SUPER ADVANCED UPCOMING PROJECTS MODAL CSS 🔥 */
+        /* Changed z-index to 100002 to ensure it appears above chatbot overlay */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
+
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
-        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        /* Kept z-index at 100000 so Upcoming modal (100002) is visually higher */
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -366,7 +370,6 @@
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <!-- 🔥 PREVENT REFRESH: javascript:void(0) 🔥 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
@@ -387,7 +390,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -517,7 +520,7 @@
                     </ul>
                 </div>
                 
-                <!-- 🔥 CONNECT WITH US (SHIFTED HERE UNDER LEGAL & HELP WITH 3x2 SMALLER LOGOS) 🔥 -->
+                <!-- 🔥 CONNECT WITH US 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
                     <div class="footer-social-row">
@@ -544,17 +547,17 @@
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Upcoming Projects</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('exchange')">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('coin')">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('wallet')">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('browser')">DK Browser (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('mart')">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('games')">DK Games (Soon)</a></li>
                     </ul>
                 </div>
                 
@@ -595,15 +598,30 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT MODAL -->
+    <!-- 🔥 2. SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+        <div class="upcoming-modal-box">
+            <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
+            
+            <div class="upcoming-modal-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+            
+            <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
+            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
+            <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
+            <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
+            <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
+            <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
+                <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
+            </div>
         </div>
     </div>
 
@@ -925,29 +943,6 @@
             }
         }
 
-        function showCustomAlert(title, message, isError = false) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const titleEl = document.getElementById('customAlertTitle');
-            const msgEl = document.getElementById('customAlertMsg');
-            titleEl.innerText = title;
-            msgEl.innerText = message;
-            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            document.body.style.overflow = ''; 
-        });
-
-        function copyDkId() {
-            var copyText = document.getElementById("sidebarDkId").innerText.trim();
-            if(copyText.includes('Loading') || copyText.includes('Login')) return;
-            navigator.clipboard.writeText(copyText);
-            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
-        }
-
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
@@ -959,15 +954,6 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
-        
-        window.onclick = function(event) {
-            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
-                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
-                }
-            }
-        }
 
         window.translatePage = function(lang) {
             if (lang === "") {
@@ -1003,7 +989,7 @@
                 if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
             }, 1000);
         });
-        
+
         // APP MODAL LOGIC WITH BACKGROUND LOCK
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -1043,7 +1029,7 @@
             }
         };
 
-        // 🔥 ADDED FROM INDEX: VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -1070,7 +1056,6 @@
             });
         }
 
-        // 🔥 ADDED FROM INDEX: POORE 11 UPCOMING PROJECTS KI LIST YAHAN HAI 🔥
         function sendChat(type) {
             let userText = ""; let botReply = "";
 
@@ -1083,17 +1068,17 @@
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching very soon!', false)"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" onclick="showUpcomingProject('chain')"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -1119,7 +1104,19 @@
         }
     </script>
     
-    <!-- FIREBASE FETCH PROFILE DATA (HEADER NAME BUG FIXED & UNIFIED MENU INJECTED) -->
+    <!-- GOOGLE TRANSLATE INIT SCRIPT -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1257,7 +1254,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -1305,7 +1302,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
