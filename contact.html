@@ -71,8 +71,9 @@
         
         /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
         .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
-        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
-        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; text-align: left; }
+        .profile-name-btn i { flex-shrink: 0; }
         .profile-name-btn:hover { background: #e6c875; color: #000; }
         
         .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
@@ -86,7 +87,7 @@
             .header { height: 70px !important; }
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
             .header-left { gap: 8px !important; }
-            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); transform-origin: left center; margin-right: 15px !important; }
             .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
             .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
             #menuBtn { font-size: 22px !important; }
@@ -99,17 +100,21 @@
         }
 
         /* 🔥 VIP SIDE MENU CSS 🔥 */
-        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
+        /* Changed to 100dvh for mobile scroll fix */
+        .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
+        .menu-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .menu-header h2 { color: #e6c875; margin: 0; font-size: 20px; letter-spacing: 2px; font-weight: bold; }
+        #closeMenu { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; transition: 0.3s; display: block;}
+        #closeMenu:hover { color: #e6c875; transform: scale(1.1); }
+        
+        .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
         .sidebar-profile { padding: 15px 20px 20px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
-        .close-menu-btn { position: absolute; top: 12px; right: 15px; background: #222; border: 1px solid #444; width: 32px; height: 32px; border-radius: 50%; color: #ccc; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; }
-        .close-menu-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: rotate(90deg); }
         
         .sidebar-profile img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
         .sidebar-profile h3 { color: #fff; margin: 0 0 5px 0; font-size: 18px; letter-spacing: 1px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
@@ -120,21 +125,96 @@
         .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        .sidebar-menu { flex: 1; overflow-y: auto; padding: 15px 0 80px 0; overscroll-behavior-y: none; }
+        /* 🚀 MENU SCROLLING SPACING FIX 🚀 */
+        .sidebar-menu { flex: 1; overflow-y: auto; padding: 0 0 120px 0; overscroll-behavior-y: auto; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
-        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 20px 10px 20px; font-weight: bold; }
+        .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 15px 20px 8px 20px; font-weight: bold; }
         
-        .sidebar-menu a.normal-link { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; color: #ccc; text-decoration: none; font-size: 14px; transition: 0.3s; font-weight: bold; border-left: 3px solid transparent;}
-        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 12px; }
-        .sidebar-menu a.normal-link i { width: 20px; font-size: 16px; color: #e6c875; text-align: center; }
-        .sidebar-menu a.normal-link:hover, .sidebar-menu a.normal-link.active { background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875; }
+        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
+        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            width: 100%; 
+            box-sizing: border-box; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #1a1a1a; 
+            color: #ccc; 
+            font-size: 15px; 
+            transition: 0.3s; 
+            text-decoration: none; 
+            border-left: 4px solid transparent; 
+            cursor: pointer; 
+        }
+        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { 
+            display: flex; 
+            align-items: center; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            max-width: 90%; 
+        }
         
-        .live-tag { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; }
-        .soon-tag { color: #666; font-size: 10px; }
+        /* Strict 26px width for icon ensures perfectly straight vertical line */
+        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, 
+        .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child,
+        .sidebar-menu a.normal-link .link-text i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 26px !important; 
+            min-width: 26px !important;
+            font-size: 16px !important; 
+            color: #e6c875 !important; 
+            margin-right: 15px !important; 
+            flex-shrink: 0 !important; 
+        }
         
-        .menu-divider { height: 1px; background: #222; margin: 10px 20px; }
+        /* Support for original index style link-text class */
+        .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 0; }
+        
+        .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
+        .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
+        
+        .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; flex-shrink: 0; margin-left: 10px; }
+        .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
+        
+        .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+        .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
+        
+        /* Nested Sub-Menu Formatting */
+        .sub-menu a { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            font-size: 14px !important; 
+            padding: 12px 20px 12px 45px !important; 
+            border-bottom: 1px solid #111 !important; 
+            color: #aaa !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            border-left: 4px solid transparent; 
+        }
+        .sub-menu.nested-sub a { padding-left: 65px !important; font-size: 13px !important; }
+        .sub-menu a div { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sub-menu a div i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 22px !important; 
+            min-width: 22px !important;
+            text-align: center; 
+            margin-right: 12px !important; 
+            color: #e6c875 !important; 
+        }
+        .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
+
+        .live-tag, .eco-tag.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: 10px;}
+        .soon-tag, .eco-tag.soon { color: #888; font-size: 10px; background: rgba(255,255,255,0.05); border: 1px solid #444; padding: 2px 6px; border-radius: 10px; flex-shrink: 0; margin-left: 10px; font-weight:bold;}
+        
+        .menu-divider { height: 1px; background: #222; margin: 8px 20px; }
 
         .sidebar-footer { padding: 20px; border-top: 1px solid #222; background: #111; display: none; }
         .logout-btn-menu { width: 100%; background: #ff4d4d; color: #fff; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
@@ -197,9 +277,8 @@
             .contact-info-box { padding: 30px 15px !important; }
         }
 
-        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
+        /* 🔥 MASTER MEGA FOOTER CSS (INDEX PAGE STYLE) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
-        
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
         
@@ -229,7 +308,7 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
         /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
         @media (max-width: 768px) { 
@@ -267,6 +346,22 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
+        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS MODAL CSS (SCROLL LOCK BUG FIX) 🔥 */
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        
+        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
+
         /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -292,21 +387,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-
-        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS MODAL CSS (SCROLL LOCK BUG FIX) 🔥 */
-        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
-        .upcoming-modal-close:hover { color: #fff; }
-        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
-            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
-        }
-        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
     </style>
 </head>
 <body>
@@ -619,7 +699,7 @@
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
-            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो বিশ্ব स्तर पर लेनदेन को सशक्त बनाता है।' },
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
             'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
@@ -674,6 +754,8 @@
         });
 
         /* 🔥 MENU RENDER LOGIC 🔥 */
+        // We inject either the "Index Dashboard Menu" or the "Movie Menu" based on URL Parameter.
+        // If the URL has ?from=index, it shows Index menu. Otherwise, it defaults to Movie Menu.
         const urlParams = new URLSearchParams(window.location.search);
         const fromSource = urlParams.get('from');
         
@@ -724,10 +806,10 @@
                     </div>
                     
                     <div class="menu-divider"></div>
-                    <a href="ceo.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                    <a href="ceo.html?from=index" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
                     <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
                     <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
-                    <a href="contact.html?from=index" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                    <a href="contact.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
                 </div>
                 <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
                     <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout Securely</button>
@@ -796,12 +878,12 @@
                     <a href="auth.html" id="sideMenuAuthBtn" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span></a>
                     <a href="movie.html#home" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-home"></i> Home</span></a>
                     
-                    <a class="menu-dropdown-btn" onclick="toggleSubMenu('aboutSub')">
+                    <a class="menu-dropdown-btn active" onclick="toggleSubMenu('aboutSub')">
                         <span class="menu-text-wrap"><i class="fas fa-info-circle"></i> About Us</span>
-                        <i class="fas fa-chevron-down dropdown-icon" id="aboutIcon"></i>
+                        <i class="fas fa-chevron-down dropdown-icon rotate" id="aboutIcon"></i>
                     </a>
-                    <div class="sub-menu" id="aboutSub">
-                        <a href="ceo.html"><div><i class="fas fa-user-tie"></i> CEO</div></a>
+                    <div class="sub-menu active" id="aboutSub">
+                        <a href="ceo.html" class="active"><div><i class="fas fa-user-tie"></i> CEO</div></a>
                         <a href="company.html"><div><i class="fas fa-building"></i> Company</div></a>
                     </div>
                     
@@ -841,7 +923,7 @@
                     </div>
 
                     <a href="news.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-newspaper"></i> News & Updates</span></a>
-                    <a href="contact.html" class="normal-link active" style="border-left: 4px solid #e6c875;"><span class="menu-text-wrap"><i class="fas fa-phone-alt"></i> Contact Us</span></a>
+                    <a href="contact.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-phone-alt"></i> Contact Us</span></a>
                 </div>
             </div>`;
         }
@@ -1124,74 +1206,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 EMAILJS SCRIPT START 🔥 -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-       (function(){
-          emailjs.init("ZyFgxirFQ4xUlEEu1"); 
-       })();
-    
-       document.getElementById('contact-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-          
-          const btn = document.getElementById('submit-btn');
-          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-          
-          const userName = document.getElementById('user_name').value;
-          const userEmail = document.getElementById('user_email').value;
-          const userPhone = document.getElementById('user_phone').value;
-          const userCategory = document.getElementById('inquiry_category').value;
-          const userMessage = document.getElementById('message').value;
-          
-          // 1. ADMIN PARAMS
-          const adminParams = {
-              user_name: userName,
-              user_email: userEmail,
-              user_phone: userPhone,
-              inquiry_category: userCategory,
-              message: userMessage
-          };
-
-          // 2. USER VIP REPLY PARAMS
-          const userParams = {
-              to_name: userName,
-              user_email: userEmail,
-              mail_subject: "Thank you for contacting DK ATOVITT!", 
-              mail_title: "Thank you for reaching out to us!",
-              mail_message_1: "We have successfully received your message/inquiry.",
-              mail_message_2: "Our team is currently reviewing your details regarding " + userCategory + ". DK Atovitt's official team will get back to you shortly.",
-              btn_display: "none", 
-              btn_link: "#",
-              btn_text: ""
-          };
-    
-          emailjs.send('service_wus3shq', 'template_7ysg4yf', adminParams)
-              .then(function(response) {
-                 return emailjs.send('service_wus3shq', 'template_lecntz3', userParams);
-              })
-              .then(function(userResponse) {
-                 document.getElementById('success-message').style.display = 'block';
-                 
-                 const whatsappMsg = `Hello DK ATOVITT Team! मैंने अभी वेबसाइट पर फॉर्म भरा है। मेरा नाम ${userName} है और मेरी Inquiry '${userCategory}' के लिए है।`;
-                 const whatsappUrl = `https://wa.me/919830332929?text=${encodeURIComponent(whatsappMsg)}`;
-                 window.open(whatsappUrl, '_blank');
-                 
-                 document.getElementById('contact-form').reset();
-                 btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Inquiry';
-                 
-                 setTimeout(() => {
-                     document.getElementById('success-message').style.display = 'none';
-                 }, 5000);
-                 
-              })
-              .catch(function(error) {
-                 showCustomAlert('Error', 'Failed to send inquiry. Please check your connection and try again.', true);
-                 btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Inquiry';
-              });
-       });
-    </script>
-
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA (HEADER NAME BUG FIXED & UNIFIED MENU INJECTED) 🔥 -->
+    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1227,73 +1242,96 @@
                 }
                 let userDkId = "DK-" + uidSnippet;
 
-                // 1. UPDATE SIDEBAR PROFILE
-                document.getElementById('sidebarProfileName').innerText = fullName;
-                document.getElementById('sidebarProfileImg').src = userPhoto;
-                
-                const dkIdBadge = document.getElementById('sidebarDkId');
-                if(dkIdBadge) {
-                    dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
-                    dkIdBadge.style.display = 'inline-block';
+                // UPDATE SIDEBAR PROFILE (ONLY IF WE ARE ON INDEX MENU MODE)
+                if (fromSource === 'index') {
+                    const profileName = document.getElementById('sidebarProfileName');
+                    const profileImg = document.getElementById('sidebarProfileImg');
+                    if (profileName) profileName.innerText = fullName;
+                    if (profileImg) profileImg.src = userPhoto;
+                    
+                    const dkIdBadge = document.getElementById('sidebarDkId');
+                    if(dkIdBadge) {
+                        dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                        dkIdBadge.style.display = 'inline-block';
+                    }
+                    
+                    const vipBadge = document.getElementById('sidebarVipBadge');
+                    if(vipBadge) vipBadge.style.display = 'inline-block';
+                    
+                    const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+                    const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+                    const sidebarFooterArea = document.getElementById('sidebarFooterArea');
+                    
+                    if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
+                    if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
+                    if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
+                    
+                    const innerDynamicMenu = document.getElementById('innerDynamicMenu');
+                    if (innerDynamicMenu) {
+                        innerDynamicMenu.innerHTML = `
+                            <div class="menu-heading">My Account</div>
+                            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                            <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
+                            <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
+                            
+                            <div class="menu-divider"></div>
+                            <div class="menu-heading">Explore Ecosystem</div>
+                            <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                            <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                            
+                            <!-- Upcoming dropdown -->
+                            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                                <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+                            </a>
+                            <div id="upcomingProjectsList" class="upcoming-list">
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Web3 Wallet</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Msg</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                                <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                            </div>
+                            
+                            <div class="menu-divider"></div>
+                            <a href="ceo.html?from=index" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                            <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+                            <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+                            <a href="contact.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                        `;
+                    }
+                } else {
+                    // Movie menu profile inject
+                    const menuProfileArea = document.getElementById('menuProfileArea');
+                    if (menuProfileArea) {
+                        let shortName = fullName.trim().split(' ')[0]; 
+                        if(shortName.length > 8) shortName = shortName.substring(0, 8) + "..";
+                        menuProfileArea.innerHTML = `
+                            <div style="padding: 15px 20px; text-align: center; border-bottom: 1px solid #222; background: linear-gradient(to bottom, #111, #0a0a0a);">
+                                <img src="${userPhoto}" id="menuSidePhoto" alt="Profile" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #e6c875; object-fit: cover; margin-bottom: 8px; box-shadow: 0 5px 15px rgba(230,200,117,0.2);">
+                                <h3 style="color: #fff; margin: 0; font-size: 16px; font-family: 'Playfair Display', serif;">${shortName}</h3>
+                                <p style="color: #e6c875; font-size: 10px; margin: 3px 0 0 0; text-transform: uppercase; font-weight:bold; letter-spacing: 1px;"><i class="fas fa-star"></i> Pro Member</p>
+                            </div>
+                        `;
+                    }
+                    const sideMenuAuthBtn = document.getElementById('sideMenuAuthBtn');
+                    if(sideMenuAuthBtn) {
+                        sideMenuAuthBtn.outerHTML = `
+                            <div class="menu-heading">My Account</div>
+                            <a href="index.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</span></a>
+                            <a href="wallet.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-wallet"></i> My ATVT Wallet</span></a>
+                            <a href="referral.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-network-wired"></i> My Referrals</span></a>
+                            <div class="menu-divider" style="height: 1px; background: #222; margin: 10px 20px;"></div>
+                        `;
+                    }
                 }
-                
-                const vipBadge = document.getElementById('sidebarVipBadge');
-                if(vipBadge) vipBadge.style.display = 'inline-block';
-                
-                // Show Logout, Hide Login from Footer
-                const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
-                const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
-                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
-                
-                if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
-                if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
-                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // 2. INJECT NEW VIP SIDEBAR MENU LINKS
-                const sidebarMenu = document.querySelector('.sidebar-menu');
-                if (sidebarMenu) {
-                    sidebarMenu.innerHTML = `
-                        <div class="menu-heading">My Account</div>
-                        <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
-                        <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
-                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
-                        
-                        <div class="menu-divider"></div>
-                        <div class="menu-heading">Explore Ecosystem</div>
-                        <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        
-                        <!-- 🌟 UPCOMING PROJECTS DROPDOWN START 🌟 -->
-                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
-                            <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
-                        </a>
-                        
-                        <div id="upcomingProjectsList" class="upcoming-list">
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Web3 Wallet</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Msg</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
-                            <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
-                        </div>
-                        <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
-
-                        <div class="menu-divider"></div>
-
-                        <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
-                        <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
-                        <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
-                        <a href="contact.html" class="normal-link" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
-                    `;
-                }
-
-                // 3. TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
+                // TOP RIGHT HEADER AREA (PROFILE DROPDOWN WITH CUTOFF FIX)
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
