@@ -96,7 +96,7 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        /* 🔥 VIP SIDE MENU CSS 🔥 */
+        /* 🔥 VIP SIDE MENU CSS & THE CRITICAL ALIGNMENT FIX 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100dvh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 2px solid #e6c875; }
         .side-menu.active { left: 0; }
         
@@ -121,17 +121,56 @@
         .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 10px 25px; border-radius: 30px; font-size: 14px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 10px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
+        /* 🚀 MENU SCROLLING SPACING FIX 🚀 */
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 0 0 120px 0; overscroll-behavior-y: auto; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         
         .menu-heading { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 15px 20px 8px 20px; font-weight: bold; }
         
-        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100%; box-sizing: border-box; padding: 15px 20px; border-bottom: 1px solid #1a1a1a; color: #ccc; font-size: 15px; transition: 0.3s; text-decoration: none; border-left: 4px solid transparent; cursor: pointer; }
-        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
+        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
+        .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            width: 100%; 
+            box-sizing: border-box; 
+            padding: 15px 20px; 
+            border-bottom: 1px solid #1a1a1a; 
+            color: #ccc; 
+            font-size: 15px; 
+            transition: 0.3s; 
+            text-decoration: none; 
+            border-left: 4px solid transparent; 
+            cursor: pointer; 
+        }
+        .sidebar-menu a.normal-link span.menu-text-wrap, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap { 
+            display: flex; 
+            align-items: center; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            max-width: 90%; 
+        }
         
-        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child, .sidebar-menu a.normal-link .link-text i:first-child { display: inline-flex !important; justify-content: center !important; align-items: center !important; width: 26px !important; min-width: 26px !important; font-size: 16px !important; color: #e6c875 !important; margin-right: 15px !important; flex-shrink: 0 !important; }
+        /* Strict 26px width for icon ensures perfectly straight vertical line */
+        .sidebar-menu a.normal-link span.menu-text-wrap i:first-child, 
+        .sidebar-menu a.menu-dropdown-btn span.menu-text-wrap i:first-child,
+        .sidebar-menu a.normal-link .link-text i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 26px !important; 
+            min-width: 26px !important;
+            font-size: 16px !important; 
+            color: #e6c875 !important; 
+            margin-right: 15px !important; 
+            flex-shrink: 0 !important; 
+        }
+        
+        /* Support for original index style link-text class */
         .sidebar-menu a.normal-link .link-text { display: flex; align-items: center; gap: 0; }
+        
         .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
         .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
         
@@ -141,10 +180,31 @@
         .sub-menu { display: none; flex-direction: column; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .sub-menu.active { display: flex; animation: slideDown 0.3s ease; }
         
-        .sub-menu a { display: flex !important; justify-content: space-between !important; align-items: center !important; font-size: 14px !important; padding: 12px 20px 12px 45px !important; border-bottom: 1px solid #111 !important; color: #aaa !important; text-decoration: none; transition: 0.3s; border-left: 4px solid transparent; }
+        /* Nested Sub-Menu Formatting */
+        .sub-menu a { 
+            display: flex !important; 
+            justify-content: space-between !important; 
+            align-items: center !important; 
+            font-size: 14px !important; 
+            padding: 12px 20px 12px 45px !important; 
+            border-bottom: 1px solid #111 !important; 
+            color: #aaa !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            border-left: 4px solid transparent; 
+        }
         .sub-menu.nested-sub a { padding-left: 65px !important; font-size: 13px !important; }
         .sub-menu a div { display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .sub-menu a div i:first-child { display: inline-flex !important; justify-content: center !important; align-items: center !important; width: 22px !important; min-width: 22px !important; text-align: center; margin-right: 12px !important; color: #e6c875 !important; }
+        .sub-menu a div i:first-child { 
+            display: inline-flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 22px !important; 
+            min-width: 22px !important;
+            text-align: center; 
+            margin-right: 12px !important; 
+            color: #e6c875 !important; 
+        }
         .sub-menu a:hover, .sub-menu a.active { color: #e6c875 !important; background: #1a1a1a !important; border-left: 4px solid #e6c875 !important; }
 
         .live-tag, .eco-tag.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; padding: 2px 6px; border-radius: 12px; font-size: 9px; font-weight: bold; letter-spacing: 0.5px; display: flex; align-items: center; gap: 4px; flex-shrink: 0; margin-left: 10px;}
@@ -249,7 +309,7 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
-        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 🔥 MOBILE VIEW OVERRIDES FOR PERFECT 50PX BUTTONS 🔥 */
         @media (max-width: 768px) { 
@@ -274,8 +334,8 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         /* 🔥 2. SUPER ADVANCED UPCOMING PROJECTS MODAL CSS (SEPARATE) 🔥 */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
         .upcoming-modal-close:hover { color: #fff; }
@@ -552,7 +612,7 @@
     </div>
 
     <!-- 🔥 2. SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
+    <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
             
@@ -628,7 +688,7 @@
             document.getElementById('customAlertEngDesc').innerText = data.eng;
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
-            document.getElementById('customAlertOverlay').classList.add('active');
+            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
             
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
@@ -640,24 +700,25 @@
         }
 
         function closeUpcomingProject() {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            if (!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) {
-                if (!document.getElementById('chatbotOverlay').classList.contains('active')) {
-                    document.body.style.overflow = ''; 
-                    document.documentElement.style.overflow = '';
-                }
+            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            
+            // Check if SideMenu or Chatbot is NOT open, then release the scroll
+            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
+                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
             }
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            const customAlertOverlay = document.getElementById('customAlertOverlay');
-            if(customAlertOverlay) {
-                customAlertOverlay.addEventListener('click', (e) => {
-                    if(e.target === customAlertOverlay) {
+            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
+            if(upcomingModalOverlay) {
+                upcomingModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === upcomingModalOverlay) {
                         closeUpcomingProject();
                     }
                 });
-                customAlertOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
@@ -943,7 +1004,7 @@
             }, 1000);
         });
 
-        // 🔥 PERFECTED: APP MODAL LOGIC WITH BACKGROUND LOCK 🔥
+        // APP MODAL LOGIC WITH BACKGROUND LOCK
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
@@ -982,22 +1043,31 @@
             }
         };
 
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY & RESET FIX 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
         
+        function resetChatbot() {
+            if(chatbotBody) {
+                chatbotBody.innerHTML = '<div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>';
+            }
+        }
+
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
                 document.body.style.overflow = 'hidden'; 
+                document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
                 document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+                resetChatbot(); 
             }); 
         }
         if(chatbotOverlay) {
@@ -1005,6 +1075,8 @@
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
                     document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
+                    resetChatbot(); 
                 }
             });
         }
