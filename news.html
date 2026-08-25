@@ -303,7 +303,20 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
-        /* 🔥 1. APK DOWNLOAD MODAL CSS 🔥 */
+        /* 🔥 CUSTOM ALERT MODAL CSS (NORMAL ALERT) 🔥 */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        /* APK MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -319,25 +332,8 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 2. SUPER ADVANCED UPCOMING PROJECTS MODAL CSS 🔥 */
-        /* Changed z-index to 100002 to ensure it appears above chatbot overlay */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
-        .upcoming-modal-close:hover { color: #fff; }
-        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
-            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
-        }
-        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
-
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
-        /* Kept z-index at 100000 so Upcoming modal (100002) is visually higher */
-        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
+        /* 🔥 VIP CHATBOT CSS 🔥 */
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -361,6 +357,21 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+
+        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS MODAL CSS (SCROLL LOCK BUG FIX) 🔥 */
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
     </style>
 </head>
 <body>
@@ -580,10 +591,7 @@
 
     <!-- FLOATING BUTTONS -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    
-    <!-- 🔥 CHATBOT TOGGLER BUTTON 🔥 -->
     <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
-    
     <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
     <!-- APK DOWNLOAD MODAL -->
@@ -598,8 +606,20 @@
         </div>
     </div>
 
-    <!-- 🔥 2. SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
+    <!-- CUSTOM ALERT MODAL -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
+    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL (ID FIXED) 🔥 -->
+    <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
             
@@ -675,7 +695,7 @@
             document.getElementById('customAlertEngDesc').innerText = data.eng;
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
-            document.getElementById('customAlertOverlay').classList.add('active');
+            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
             
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
@@ -687,24 +707,25 @@
         }
 
         function closeUpcomingProject() {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            if (!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) {
-                if (!document.getElementById('chatbotOverlay').classList.contains('active')) {
-                    document.body.style.overflow = ''; 
-                    document.documentElement.style.overflow = '';
-                }
+            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            
+            // Check if SideMenu or Chatbot is NOT open, then release the scroll
+            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
+                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
             }
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            const customAlertOverlay = document.getElementById('customAlertOverlay');
-            if(customAlertOverlay) {
-                customAlertOverlay.addEventListener('click', (e) => {
-                    if(e.target === customAlertOverlay) {
+            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
+            if(upcomingModalOverlay) {
+                upcomingModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === upcomingModalOverlay) {
                         closeUpcomingProject();
                     }
                 });
-                customAlertOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
@@ -943,6 +964,29 @@
             }
         }
 
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const titleEl = document.getElementById('customAlertTitle');
+            const msgEl = document.getElementById('customAlertMsg');
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+            document.body.style.overflow = ''; 
+        });
+
+        function copyDkId() {
+            var copyText = document.getElementById("sidebarDkId").innerText.trim();
+            if(copyText.includes('Loading') || copyText.includes('Login')) return;
+            navigator.clipboard.writeText(copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
+        }
+
         function reveal() { 
             var reveals = document.querySelectorAll('.reveal'); 
             for (var i = 0; i < reveals.length; i++) { 
@@ -954,6 +998,15 @@
         } 
         window.addEventListener('scroll', reveal); 
         reveal(); 
+        
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
+                var dropdowns = document.querySelectorAll(".topbarDropdown-content");
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
+            }
+        }
 
         window.translatePage = function(lang) {
             if (lang === "") {
@@ -1029,22 +1082,31 @@
             }
         };
 
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY 🔥
+        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY & RESET FIX 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
         
+        function resetChatbot() {
+            if(chatbotBody) {
+                chatbotBody.innerHTML = '<div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>';
+            }
+        }
+
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
                 document.body.style.overflow = 'hidden'; 
+                document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
                 document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+                resetChatbot(); 
             }); 
         }
         if(chatbotOverlay) {
@@ -1052,6 +1114,8 @@
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
                     document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
+                    resetChatbot(); 
                 }
             });
         }
