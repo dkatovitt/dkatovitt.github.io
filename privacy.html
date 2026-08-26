@@ -145,7 +145,7 @@
         .app-modal-desc { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         
-        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
@@ -212,26 +212,26 @@
             .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 28px; }
             .chatbot-toggler { bottom: 85px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
             .floating-install-btn { bottom: 150px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
-            .chatbot-container { bottom: 215px; right: 10px; left: 10px; width: auto; }
         }
 
         /* 🔥 NEW 6-COLUMN FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px;}
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; }
+        
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
         .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; }
+        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
-
-        /* 🔥 PERFECT 3x2 GRID FOR SOCIAL ICONS (FIXED) 🔥 */
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content;}
+        
+        .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
         /* Reveal Anim */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
@@ -560,64 +560,6 @@
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        /* 🔥 NEW DYNAMIC UPCOMING PROJECTS ENGINE 🔥 */
-        const upcomingProjectsData = {
-            'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
-            'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
-            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
-            'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
-            'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
-            'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
-            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
-            'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
-            'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
-            'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
-            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
-        };
-
-        function showUpcomingProject(id) {
-            const data = upcomingProjectsData[id];
-            if(!data) return;
-            
-            document.getElementById('customAlertProjectIcon').className = data.icon;
-            document.getElementById('customAlertProjectName').innerText = data.name;
-            document.getElementById('customAlertEngDesc').innerText = data.eng;
-            document.getElementById('customAlertHinDesc').innerText = data.hin;
-            
-            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
-            
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            const sideMenu = document.getElementById('sideMenu');
-            const overlay = document.getElementById('overlay');
-            if (sideMenu) sideMenu.classList.remove('active');
-            if (overlay) overlay.classList.remove('active');
-        }
-
-        function closeUpcomingProject() {
-            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
-            
-            // Check if SideMenu or Chatbot is NOT open, then release the scroll
-            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
-                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
-                document.body.style.overflow = ''; 
-                document.documentElement.style.overflow = '';
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
-            if(upcomingModalOverlay) {
-                upcomingModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === upcomingModalOverlay) {
-                        closeUpcomingProject();
-                    }
-                });
-                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
-            }
-        });
-
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -727,6 +669,7 @@
 
         /* 🔥 BULLETPROOF TRANSLATOR LOGIC (SUPER COOKIE NUKER) 🔥 */
         function translatePage(lang) {
+            // Force Delete All Possible Google Translate Cookies
             var d = window.location.hostname;
             document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + d + ";";
@@ -924,7 +867,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         
@@ -947,6 +890,7 @@
                     `;
                 }
 
+                // Enable Logout Action
                 setTimeout(() => {
                     document.querySelectorAll('.logout-action').forEach(btn => {
                         btn.addEventListener('click', () => {
@@ -958,6 +902,7 @@
                 }, 500);
 
             } else {
+                // If not logged in
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -970,7 +915,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
