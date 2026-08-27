@@ -505,7 +505,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 <div id="headerAuthBtn">
@@ -1363,22 +1363,31 @@
             }
         });
         
-        /* 🔥 VIP CHATBOT LOGIC 🔥 */
+        /* 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY & RESET FIX 🔥 */
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
         
+        function resetChatbot() {
+            if(chatbotBody) {
+                chatbotBody.innerHTML = '<div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>';
+            }
+        }
+
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
                 document.body.style.overflow = 'hidden'; 
+                document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
                 document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+                resetChatbot(); 
             }); 
         }
         if(chatbotOverlay) {
@@ -1386,6 +1395,8 @@
                 if(e.target === chatbotOverlay) {
                     chatbotOverlay.classList.remove('active'); 
                     document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
+                    resetChatbot(); 
                 }
             });
         }
