@@ -161,7 +161,7 @@
         /* 🔥 EXPLORE WITHOUT LOGIN DROPDOWN MENU 🔥 */
         .explore-menu { display: none; flex-direction: column; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; overflow: hidden; margin-top: 10px; margin-bottom: 20px; animation: slideDown 0.3s ease; text-align: left; }
         .explore-menu.active { display: flex; }
-        .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; cursor: pointer; }
         .explore-item:hover { background: #111; padding-left: 20px; }
         .eco-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; color: #fff; flex-shrink: 0; }
         .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-eco { background: #e6c875; color: #000; }
@@ -208,6 +208,39 @@
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
+        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 10px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; }
+
+        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
+        .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
+        @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
+        .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
+        
+        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
+
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
+        .chatbot-header button:hover { color: #fff; }
+        
+        .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
+        .chatbot-body::-webkit-scrollbar { width: 4px; }
+        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
+        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
+        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+        .bot-inline-btn:hover { background: #e6c875; color: #000; }
+        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+
         /* 🔥 MASTER MEGA FOOTER CSS (INDEX HTML DESIGN) 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         
@@ -243,46 +276,6 @@
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
-        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
-        @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
-        .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        
-        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
-
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
-        .chatbot-header button:hover { color: #fff; }
-        
-        .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
-        .chatbot-body::-webkit-scrollbar { width: 4px; }
-        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
-        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
-        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-        .bot-inline-btn:hover { background: #e6c875; color: #000; }
-        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        
-        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
-        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
-        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
-        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .profile-name-btn:hover { background: #e6c875; color: #000; }
-        
-        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
-        .topbarDropdown-content.show { display: block; }
-        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
-        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
-        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
-        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
         
         /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
         .referral-input-wrapper { position: relative; margin-bottom: 20px; }
@@ -317,7 +310,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -388,17 +381,17 @@
             </a>
             
             <div id="upcomingProjectsList" class="upcoming-list">
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
             </div>
             <!-- 🌟 UPCOMING PROJECTS DROPDOWN END 🌟 -->
 
@@ -473,7 +466,7 @@
                     </button>
                 </div>
 
-                <!-- EXPLORE DROPDOWN BUTTON (LOGIN) -->
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON (LOGIN) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -492,69 +485,69 @@
                         </div>
                     </a>
 
-                    <!-- 🔥 NEW BLOCKCHAIN ITEM ADDED AT 3RD POSITION 🔥 -->
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Atovitt Chain / Scan is launching very soon!', false)" class="explore-item">
+                    <!-- 🔥 UPCOMING PROJECTS CONNECTED TO POPUP MODAL 🔥 -->
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="explore-item">
                         <div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
 
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="explore-item">
                         <div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="explore-item">
                         <div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div>
                         <div class="eco-details">
                             <div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="explore-item">
                         <div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="explore-item">
                         <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="explore-item">
                         <div class="eco-icon" style="background:#ffc107;"><i class="fas fa-shopping-cart"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Mart</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="explore-item">
                         <div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="explore-item">
                         <div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="eco-details">
                             <div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="explore-item">
                         <div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Connect Messenger</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="explore-item">
                         <div class="eco-icon" style="background:#00cec9;"><i class="fas fa-comments"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Chat</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="explore-item">
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="explore-item">
                         <div class="eco-icon" style="background:#d63031;"><i class="fas fa-gamepad"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Games</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
@@ -648,7 +641,7 @@
                     </button>
                 </div>
 
-                <!-- EXPLORE DROPDOWN BUTTON (SIGNUP) -->
+                <!-- 🔥 EXPLORE DROPDOWN BUTTON (SIGNUP) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -657,19 +650,19 @@
                     <a href="movie.html" class="explore-item"><div class="eco-icon bg-movie"><i class="fas fa-film"></i></div><div class="eco-details"><div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     <a href="social.html" class="explore-item"><div class="eco-icon bg-connect"><i class="fas fa-users"></i></div><div class="eco-details"><div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     
-                    <!-- 🔥 NEW BLOCKCHAIN ITEM ADDED AT 3RD POSITION 🔥 -->
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Atovitt Chain / Scan is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div><div class="eco-details"><div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <!-- 🔥 UPCOMING PROJECTS CONNECTED TO POPUP MODAL 🔥 -->
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="explore-item"><div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div><div class="eco-details"><div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
 
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Exchange is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div><div class="eco-details"><div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div><div class="eco-details"><div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)" class="explore-item"><div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div><div class="eco-details"><div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#ffc107;"><i class="fas fa-shopping-cart"></i></div><div class="eco-details"><div class="title">DK Mart</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div><div class="eco-details"><div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div><div class="eco-details"><div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div><div class="eco-details"><div class="title">DK Connect Messenger</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#00cec9;"><i class="fas fa-comments"></i></div><div class="eco-details"><div class="title">DK Chat</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)" class="explore-item"><div class="eco-icon" style="background:#d63031;"><i class="fas fa-gamepad"></i></div><div class="eco-details"><div class="title">DK Games</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="explore-item"><div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div><div class="eco-details"><div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="explore-item"><div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div><div class="eco-details"><div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="explore-item"><div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div><div class="eco-details"><div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="explore-item"><div class="eco-icon" style="background:#ffc107;"><i class="fas fa-shopping-cart"></i></div><div class="eco-details"><div class="title">DK Mart</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="explore-item"><div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div><div class="eco-details"><div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="explore-item"><div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div><div class="eco-details"><div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="explore-item"><div class="eco-icon" style="background:#0984e3;"><i class="fas fa-comment-dots"></i></div><div class="eco-details"><div class="title">DK Connect Messenger</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="explore-item"><div class="eco-icon" style="background:#00cec9;"><i class="fas fa-comments"></i></div><div class="eco-details"><div class="title">DK Chat</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
+                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="explore-item"><div class="eco-icon" style="background:#d63031;"><i class="fas fa-gamepad"></i></div><div class="eco-details"><div class="title">DK Games</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                 </div>
 
                 <div class="auth-switch">
@@ -750,17 +743,17 @@
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Upcoming Projects</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching soon!', false)">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching soon!', false)">DK Crypto Exchange (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching soon!', false)">DK ATVT Coin (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching soon!', false)">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching soon!', false)">DK Browser (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching soon!', false)">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching soon!', false)">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching soon!', false)">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching soon!', false)">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching soon!', false)">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showCustomAlert('Coming Soon', 'DK Games is launching soon!', false)">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')">DK Browser (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
                     </ul>
                 </div>
                 
@@ -798,15 +791,30 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT MODAL -->
+    <!-- 🔥 SUPER ADVANCED UPCOMING PROJECTS POPUP MODAL 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box">
-            <div class="custom-alert-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+        <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
+            <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
+            
+            <div class="app-modal-logo-wrap" style="width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 12px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4);"></video>
             </div>
-            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
-            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
-            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+            
+            <h3 class="app-modal-title notranslate coming-soon-glow" style="font-size: 18px !important; margin-bottom: 8px !important;">COMING SOON</h3>
+            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
+            <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
+            <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
+            <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
+            <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
+                <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
+            </div>
         </div>
     </div>
 
@@ -849,20 +857,60 @@
             }
         }
 
+        /* 🔥 NEW DYNAMIC UPCOMING PROJECTS ENGINE FOR EXPLORE MENU & FOOTER 🔥 */
+        const upcomingProjectsData = {
+            'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
+            'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
+            'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
+            'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
+            'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
+            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
+            'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
+            'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
+            'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
+            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
+        };
+
+        function showUpcomingProjectAlert(id) {
+            const data = upcomingProjectsData[id];
+            if(!data) {
+                showCustomAlert('Error', 'Project details not found!', true);
+                return;
+            }
+            
+            document.getElementById('customAlertProjectIcon').className = data.icon;
+            document.getElementById('customAlertProjectName').innerText = data.name;
+            document.getElementById('customAlertEngDesc').innerText = data.eng;
+            document.getElementById('customAlertHinDesc').innerText = data.hin;
+            
+            document.getElementById('customAlertOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+            
+            // Close side menu if open
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if (sideMenu) sideMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+
+        // Keep the old simple alert function for non-project errors
         function showCustomAlert(title, message, isError = false) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const titleEl = document.getElementById('customAlertTitle');
-            const msgEl = document.getElementById('customAlertMsg');
-            titleEl.innerText = title;
-            msgEl.innerText = message;
-            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
+            if(title === 'Coming Soon') return; // Skip if it's the old coming soon text
+            alert(message); // Fallback for simple auth errors without creating conflict
         }
 
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; // 🔥 Unlock
+        });
+        
+        // Modal Overlay Click close
+        document.getElementById('customAlertOverlay').addEventListener('click', (e) => {
+            if(e.target === document.getElementById('customAlertOverlay')) {
+                document.getElementById('customAlertOverlay').classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
 
         function toggleAuth(type) {
@@ -950,7 +998,7 @@
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
             if(copyText.includes('Loading') || copyText.includes('Login')) return;
             navigator.clipboard.writeText(copyText);
-            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
+            alert("DK ID Copied: " + copyText);
         }
 
         function reveal() { 
@@ -1066,7 +1114,6 @@
             });
         }
 
-        // 🔥 POORE 11 UPCOMING PROJECTS KI LIST YAHAN HAI 🔥
         function sendChat(type) {
             let userText = ""; let botReply = "";
 
@@ -1079,17 +1126,17 @@
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
                 botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showCustomAlert('Coming Soon', 'DK ATOVITT CHAIN / SCAN is launching very soon!', false)"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Crypto Exchange is launching very soon!', false)"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK ATVT Coin is launching very soon!', false)"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Decentralised Wallet is launching very soon!', false)"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Browser is launching very soon!', false)"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Mart is launching very soon!', false)"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Digital Advertisement is launching very soon!', false)"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK GPS Tracker is launching very soon!', false)"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Connect Messenger is launching very soon!', false)"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Chat is launching very soon!', false)"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showCustomAlert('Coming Soon', 'DK Games is launching very soon!', false)"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" onclick="showUpcomingProjectAlert('chain')"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -1363,9 +1410,9 @@
                     } catch (e) {}
 
                     sendWelcomeMessage(result.user);
-                    showCustomAlert("Welcome!", "Google Login Successful!", false);
+                    alert("Google Login Successful!");
                     setTimeout(() => { window.location.href = "index.html"; }, 1500);
-                }).catch((error) => { showCustomAlert("Login Failed", error.message, true); btn.innerHTML = originalText; });
+                }).catch((error) => { alert("Login Failed: " + error.message); btn.innerHTML = originalText; });
             });
         });
 
@@ -1394,15 +1441,15 @@
                     } catch (e) {}
 
                     sendWelcomeMessage(result.user);
-                    showCustomAlert("Welcome!", "Facebook Login Successful!", false);
+                    alert("Facebook Login Successful!");
                     setTimeout(() => { window.location.href = "index.html"; }, 1500); 
                 }).catch((error) => {
                     if (error.code === 'auth/account-exists-with-different-credential') {
-                        showCustomAlert("Account Exists", "This email is already registered. Please login with Google or Email.", true);
+                        alert("This email is already registered. Please login with Google or Email.");
                     } else if (error.code === 'auth/popup-closed-by-user') {
-                        showCustomAlert("Cancelled", "Login window was closed.", true);
+                        alert("Login window was closed.");
                     } else {
-                        showCustomAlert("Login Failed", error.message, true);
+                        alert("Login Failed: " + error.message);
                     }
                     btn.innerHTML = originalText;
                 });
@@ -1425,11 +1472,11 @@
 
         loginNextBtn.addEventListener('click', () => {
             const val = loginInput.value.trim();
-            if(!val) { showCustomAlert("Error", "Please enter your Email or Mobile Number.", true); return; }
+            if(!val) { alert("Please enter your Email or Mobile Number."); return; }
 
             if (/^\+?[0-9]+$/.test(val)) {
                 isLoginMobile = true;
-                if(val.length < 12) { showCustomAlert("Error", "Please enter a valid 10-digit mobile number.", true); return; }
+                if(val.length < 12) { alert("Please enter a valid 10-digit mobile number."); return; }
                 
                 loginInput.readOnly = true; 
                 loginNextBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending OTP...';
@@ -1439,13 +1486,13 @@
                 signInWithPhoneNumber(auth, val, window.recaptchaVerifierLogin).then((result) => {
                     loginConfirmationResult = result;
                     loginNextBtn.style.display = 'none'; loginOtpField.style.display = 'block'; loginVerifyOtpBtn.style.display = 'block'; 
-                    showCustomAlert("OTP Sent!", "Please check your phone for the 6-digit OTP.", false);
+                    alert("Please check your phone for the 6-digit OTP.");
                 }).catch((err) => {
-                    showCustomAlert("Error", err.message, true); loginNextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>'; loginInput.readOnly = false;
+                    alert("Error: " + err.message); loginNextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>'; loginInput.readOnly = false;
                 });
             } else {
                 isLoginMobile = false;
-                if(!val.includes('@') || !val.includes('.')) { showCustomAlert("Error", "Please enter a valid email address.", true); return; }
+                if(!val.includes('@') || !val.includes('.')) { alert("Please enter a valid email address."); return; }
                 loginInput.readOnly = true; loginNextBtn.style.display = 'none'; loginPasswordField.style.display = 'block'; loginSubmitEmailBtn.style.display = 'block';
             }
         });
@@ -1455,8 +1502,8 @@
             forgotPasswordLink.addEventListener('click', async (e) => {
                 e.preventDefault();
                 const emailVal = loginInput.value.trim();
-                if(!emailVal || isLoginMobile) { showCustomAlert("Email Required", "Please enter your registered Email in the top box.", true); return; }
-                try { await sendPasswordResetEmail(auth, emailVal); showCustomAlert("Link Sent!", "Password reset link sent to your email.", false); } catch (error) { showCustomAlert("Error", "Failed to send reset link.", true); }
+                if(!emailVal || isLoginMobile) { alert("Please enter your registered Email in the top box."); return; }
+                try { await sendPasswordResetEmail(auth, emailVal); alert("Password reset link sent to your email."); } catch (error) { alert("Failed to send reset link."); }
             });
         }
 
@@ -1465,25 +1512,25 @@
             if(isLoginMobile) return; 
             const email = loginInput.value.trim();
             const password = document.getElementById('loginPassword').value;
-            if(!password) { showCustomAlert("Error", "Please enter your password.", true); return; }
+            if(!password) { alert("Please enter your password."); return; }
             loginSubmitEmailBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
             try {
                 const userCred = await signInWithEmailAndPassword(auth, email, password);
                 if (!userCred.user.emailVerified) {
-                    showCustomAlert("Verification Pending", "Your email is not verified yet!", true);
+                    alert("Your email is not verified yet!");
                     await auth.signOut(); loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login'; return;
                 }
-                sendWelcomeMessage(userCred.user); showCustomAlert("Success", "Login Successful!", false); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
-            } catch (error) { showCustomAlert("Login Failed", "Invalid Email or Password!", true); loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login'; }
+                sendWelcomeMessage(userCred.user); alert("Login Successful!"); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+            } catch (error) { alert("Invalid Email or Password!"); loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login'; }
         });
 
         loginVerifyOtpBtn.addEventListener('click', () => {
             const code = document.getElementById('loginOtpInput').value;
-            if(!code) { showCustomAlert("Error", "Please enter OTP", true); return; }
+            if(!code) { alert("Please enter OTP"); return; }
             loginVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
             loginConfirmationResult.confirm(code).then((result) => {
-                sendWelcomeMessage(result.user); showCustomAlert("Success", "Login Successful!", false); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
-            }).catch((err) => { showCustomAlert("Error", "Invalid OTP Code!", true); loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login'; });
+                sendWelcomeMessage(result.user); alert("Login Successful!"); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+            }).catch((err) => { alert("Invalid OTP Code!"); loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login'; });
         });
 
         const signupInput = document.getElementById('signupSmartInput');
@@ -1503,14 +1550,14 @@
 
         signupNextBtn.addEventListener('click', () => {
             const val = signupInput.value.trim();
-            if(!val) { showCustomAlert("Error", "Please enter your Email or Mobile Number.", true); return; }
+            if(!val) { alert("Please enter your Email or Mobile Number."); return; }
             if (/^\+?[0-9]+$/.test(val)) {
                 isSignupMobile = true;
-                if(val.length < 12) { showCustomAlert("Error", "Please enter a valid 10-digit mobile number.", true); return; }
+                if(val.length < 12) { alert("Please enter a valid 10-digit mobile number."); return; }
                 signupInput.readOnly = true; signupNextBtn.style.display = 'none'; signupDetailsFields.style.display = 'block'; signupPasswordFields.style.display = 'none'; signupSendOtpBtn.style.display = 'block'; 
             } else {
                 isSignupMobile = false;
-                if(!val.includes('@') || !val.includes('.')) { showCustomAlert("Error", "Please enter a valid email address.", true); return; }
+                if(!val.includes('@') || !val.includes('.')) { alert("Please enter a valid email address."); return; }
                 signupInput.readOnly = true; signupNextBtn.style.display = 'none'; signupDetailsFields.style.display = 'block'; signupPasswordFields.style.display = 'block'; signupSubmitEmailBtn.style.display = 'block'; 
             }
         });
@@ -1526,10 +1573,10 @@
             const agreeTerms = document.getElementById('agreeTerms').checked;
             const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
 
-            if (!name || !password || !confirmPassword) { showCustomAlert('Error', 'Please fill in all details!', true); return; }
-            if (!agreeTerms) { showCustomAlert('Error', 'You must agree to Terms & Conditions!', true); return; }
-            if (password.length < 6) { showCustomAlert('Error', 'Password must be at least 6 characters.', true); return; }
-            if (password !== confirmPassword) { showCustomAlert('Error', 'Passwords do not match!', true); return; }
+            if (!name || !password || !confirmPassword) { alert('Please fill in all details!'); return; }
+            if (!agreeTerms) { alert('You must agree to Terms & Conditions!'); return; }
+            if (password.length < 6) { alert('Password must be at least 6 characters.'); return; }
+            if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
 
             signupSubmitEmailBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
             try {
@@ -1550,9 +1597,9 @@
                 });
 
                 await sendEmailVerification(userCred.user);
-                showCustomAlert("Account Created!", "A verification link has been sent to your email.", false);
+                alert("A verification link has been sent to your email.");
                 await auth.signOut(); document.getElementById('smart-signup-form').reset(); signupSubmitEmailBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now'; toggleAuth('login');
-            } catch (error) { showCustomAlert("Sign Up Failed", error.message.replace('Firebase: ', ''), true); signupSubmitEmailBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now'; }
+            } catch (error) { alert("Sign Up Failed: " + error.message.replace('Firebase: ', '')); signupSubmitEmailBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up Now'; }
         });
 
         // 🔥 MOBILE OTP SEND 🔥
@@ -1561,16 +1608,16 @@
             const name = document.getElementById('signupName').value; 
             const agreeTerms = document.getElementById('agreeTerms').checked;
             
-            if(!name) { showCustomAlert("Error", "Please enter your Name", true); return; }
-            if(!agreeTerms) { showCustomAlert("Error", "Please agree to Terms", true); return; }
+            if(!name) { alert("Please enter your Name"); return; }
+            if(!agreeTerms) { alert("Please agree to Terms"); return; }
             
             signupSendOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending OTP...';
             if(!window.recaptchaVerifierSignup) { window.recaptchaVerifierSignup = new RecaptchaVerifier(auth, 'recaptcha-container-signup', { 'size': 'invisible' }); }
             
             signInWithPhoneNumber(auth, val, window.recaptchaVerifierSignup).then((result) => {
                 signupConfirmationResult = result; signupSendOtpBtn.style.display = 'none'; signupOtpField.style.display = 'block'; signupVerifyOtpBtn.style.display = 'block';
-                showCustomAlert("OTP Sent!", "Please check your phone for the 6-digit OTP.", false);
-            }).catch((err) => { showCustomAlert("Error", err.message, true); signupSendOtpBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send OTP'; });
+                alert("Please check your phone for the 6-digit OTP.");
+            }).catch((err) => { alert("Error: " + err.message); signupSendOtpBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send OTP'; });
         });
 
         // 🔥 MOBILE OTP VERIFY & SIGNUP 🔥
@@ -1579,7 +1626,7 @@
             const name = document.getElementById('signupName').value;
             const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
             
-            if(!code) { showCustomAlert("Error", "Please enter OTP", true); return; }
+            if(!code) { alert("Please enter OTP"); return; }
             
             signupVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
             signupConfirmationResult.confirm(code).then(async (result) => {
@@ -1599,9 +1646,9 @@
                 }, { merge: true });
 
                 sendWelcomeMessage(result.user); 
-                showCustomAlert("Welcome!", "Account Created Successfully!", false); 
+                alert("Account Created Successfully!"); 
                 setTimeout(() => { window.location.href = "index.html"; }, 1500);
-            }).catch((err) => { showCustomAlert("Error", "Invalid OTP Code!", true); signupVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Sign Up'; });
+            }).catch((err) => { alert("Invalid OTP Code!"); signupVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Sign Up'; });
         });
     </script>
 </body>
