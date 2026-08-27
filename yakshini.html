@@ -396,6 +396,19 @@
         .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        
+        /* 🔥 PROFILE DROPDOWN CONTAINER 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; text-align: left; }
+        .profile-name-btn i { flex-shrink: 0; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
     </style>
 </head>
 <body>
@@ -1440,8 +1453,9 @@
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0]; 
                 
-                const headerBtn = document.querySelector('.login-btn-header').parentNode;
-                if(headerBtn) {
+                // 🔥 FIX: ONLY REPLACE THE LOGIN BUTTON, NOT ITS PARENT CONTAINER 🔥
+                const loginBtn = document.querySelector('.login-btn-header');
+                if(loginBtn) {
                     const dropdownHTML = `
                         <div class="profile-dropdown-container">
                             <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
@@ -1461,7 +1475,7 @@
                             </div>
                         </div>
                     `;
-                    headerBtn.outerHTML = dropdownHTML;
+                    loginBtn.outerHTML = dropdownHTML;
                 }
                 
                 const menuAuthBtn = document.querySelector('.side-menu a[href="auth.html"]');
