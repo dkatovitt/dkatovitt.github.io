@@ -65,6 +65,7 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
+        /* 🔥 CLOSE BUTTON (CUT OPTION) 🔥 */
         .close-menu-btn { position: absolute; top: 12px; right: 15px; background: #222; border: 1px solid #444; width: 32px; height: 32px; border-radius: 50%; color: #ccc; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; }
         .close-menu-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: rotate(90deg); }
 
@@ -170,31 +171,27 @@
         .status.live { background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid #25d366; }
         .status.coming { background: #1a1a1a; color: #888; border: 1px solid #333; }
 
-        /* 🔥 FLOATING BUTTONS CSS (PC VIEW - 60PX) 🔥 */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
-        .chatbot-toggler:hover { transform: scale(1.1); }
-        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
-        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
+        /* 🔥 PROFILE DROPDOWN CONTAINER (FIXED WIDTH OVERFLOW) 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
         
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
+        
+        /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
+        .referral-input-wrapper { position: relative; margin-bottom: 20px; }
+        .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1.5px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
+        .referral-input-wrapper input:focus { border-style: solid; box-shadow: 0 0 10px rgba(230, 200, 117, 0.3); }
+        .referral-input-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #e6c875; font-size: 16px; }
+        .referrer-name-display { font-size: 13px; color: #25d366; font-weight: bold; margin-top: 8px; display: none; align-items: center; gap: 6px; padding-left: 5px; }
 
-        /* 🔥 MOBILE VIEW OVERRIDES - EXACT SIZES (50px) 🔥 */
-        @media (max-width: 768px) {
-            .auth-box { padding: 30px 20px; }
-            .auth-header h2 { font-size: 24px; }
-            .social-btn { font-size: 11px; padding: 10px; gap: 5px; }
-
-            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
-            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
-            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
-        }
-
-        /* 🔥 CUSTOM ALERT MODAL CSS (FOR UPCOMING PROJECTS & ALERTS) 🔥 */
+        /* 🔥 CUSTOM ALERT MODAL CSS (FOR UPCOMING PROJECTS) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
@@ -214,43 +211,6 @@
         }
         .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 10px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; }
 
-        /* 🔥 AI CHATBOT CSS (FLOATING BOTTOM RIGHT LIKE MOVIE PAGE) 🔥 */
-        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 100000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
-        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
-        .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
-        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
-        .chatbot-header button:hover { color: #fff; }
-        .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
-        .chatbot-body::-webkit-scrollbar { width: 4px; }
-        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
-        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
-        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
-        .bot-inline-btn:hover { background: #e6c875; color: #000; }
-        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* 🔥 MASTER MEGA FOOTER CSS (INDEX HTML DESIGN) 🔥 */
-        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; position: relative; z-index: 10; }
-        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
-        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
-        .tseries-footer-brand h3 { color: #e6c875; font-size: 24px; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .tseries-footer-brand p { font-size: 13px; line-height: 1.6; color: #888; margin: 0; }
-        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
-        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
-        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
-        .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
-        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
-
         /* APK MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 200000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -265,13 +225,71 @@
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* ==========================================================
+           1. EXACT SAME CHATBOT & FLOATING BUTTONS CSS AS MOVIE.HTML
+           ========================================================== */
         
-        /* 🔥 REFERRAL INPUT FIELD CSS 🔥 */
-        .referral-input-wrapper { position: relative; margin-bottom: 20px; }
-        .referral-input-wrapper input { width: 100%; padding: 14px 15px 14px 45px; background: #1a1a1a; border: 1.5px dashed #e6c875; color: #fff; border-radius: 8px; font-size: 14px; outline: none; transition: 0.3s; box-sizing: border-box; }
-        .referral-input-wrapper input:focus { border-style: solid; box-shadow: 0 0 10px rgba(230, 200, 117, 0.3); }
-        .referral-input-wrapper i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #e6c875; font-size: 16px; }
-        .referrer-name-display { font-size: 13px; color: #25d366; font-weight: bold; margin-top: 8px; display: none; align-items: center; gap: 6px; padding-left: 5px; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
+        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
+        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        
+        .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; animation: bounce-chat 2s infinite; }
+        .chatbot-toggler:hover { transform: scale(1.1); }
+        @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; animation: pulse-install 2s infinite; }
+        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
+        @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+
+        .chatbot-container { position: fixed; bottom: 265px; right: 40px; width: 320px; background: #111; border: 1px solid #e6c875; border-radius: 12px; z-index: 100000; display: none; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.9); overflow: hidden; }
+        .chatbot-container.active { display: flex; animation: slideUpChat 0.3s ease; }
+        .chatbot-header { background: #e6c875; color: #000; padding: 15px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
+        .chatbot-header button:hover { color: #fff; }
+        .chatbot-body { padding: 15px; height: 260px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #0a0a0a; overscroll-behavior-y: contain; }
+        .chatbot-body::-webkit-scrollbar { width: 4px; }
+        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .bot-msg { background: #222; color: #fff; padding: 10px 15px; border-radius: 12px 12px 12px 0; font-size: 13px; max-width: 85%; align-self: flex-start; border: 1px solid #333; line-height: 1.4; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .user-msg { background: #e6c875; color: #000; padding: 10px 15px; border-radius: 12px 12px 0 12px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 2px 5px rgba(0,0,0,0.5); }
+        .chatbot-options { padding: 12px; background: #111; border-top: 1px solid #333; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .chat-opt-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 8px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .chat-opt-btn:hover { background: #e6c875; color: #000; }
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 🔥 MOBILE VIEW SIZES 🔥 */
+        @media (max-width: 768px) {
+            .auth-box { padding: 30px 20px; }
+            .auth-header h2 { font-size: 24px; }
+            .social-btn { font-size: 11px; padding: 10px; gap: 5px; }
+
+            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
+            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
+            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+            .chatbot-container { bottom: 215px !important; right: 10px !important; left: 10px !important; width: auto !important; }
+        }
+
+        /* ==========================================================
+           2. EXACT SAME 6-COLUMN FOOTER CSS AS MOVIE.HTML
+           ========================================================== */
+        
+        .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; position: relative; z-index: 10; }
+        .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
+        @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
+        .tseries-footer-brand h3 { color: #e6c875; font-size: 18px; margin: 0 0 5px 0; text-transform: uppercase; }
+        .tseries-footer-brand p { font-size: 13px; line-height: 1.5; color: #888; margin: 0; }
+        .tseries-footer-col h4 { color: #e6c875; font-size: 15px; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .tseries-footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
+        .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
+        .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
+        
+        .footer-social-row { display: grid; grid-template-columns: repeat(3, max-content); gap: 15px; margin-top: 15px; width: fit-content; }
+        .footer-icon-btn { width: 45px; height: 45px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 18px; text-decoration: none; transition: 0.3s; }
+        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
+
     </style>
 </head>
 <body>
@@ -399,6 +417,7 @@
     <section class="auth-section">
         <div class="auth-box reveal">
             
+            <!-- 1. LOGIN FORM -->
             <div id="loginForm" class="auth-form active">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -446,7 +465,7 @@
                     </button>
                 </div>
 
-                <!-- 🔥 EXPLORE DROPDOWN BUTTON (LOGIN) 🔥 -->
+                <!-- 🔥 EXPLORE WITHOUT LOGIN (LOGIN TAB) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -465,7 +484,6 @@
                         </div>
                     </a>
 
-                    <!-- 🔥 UPCOMING PROJECTS CONNECTED TO POPUP MODAL 🔥 -->
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="explore-item">
                         <div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div>
                         <div class="eco-details">
@@ -539,6 +557,7 @@
                 </div>
             </div>
 
+            <!-- 2. REGISTER FORM -->
             <div id="registerForm" class="auth-form">
                 <div class="auth-header">
                     <div class="auth-video-logo">
@@ -550,7 +569,6 @@
                 
                 <form id="smart-signup-form">
                     
-                    <!-- 🔥 NEW REFERRAL ID FIELD 🔥 -->
                     <div class="form-group" style="margin-bottom: 25px;">
                         <label>Referral DK ID <span style="color: #888; font-weight: normal; text-transform: none;">(Optional)</span></label>
                         <div class="referral-input-wrapper">
@@ -620,7 +638,7 @@
                     </button>
                 </div>
 
-                <!-- 🔥 EXPLORE DROPDOWN BUTTON (SIGNUP) 🔥 -->
+                <!-- 🔥 EXPLORE WITHOUT LOGIN (SIGNUP TAB) 🔥 -->
                 <button type="button" class="auth-btn guest-btn" onclick="toggleExploreMenu(this)" style="background: transparent; border: 1.5px solid #e6c875; color: #e6c875; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 8px;">
                     <i class="fas fa-globe"></i> Explore Without Login <i class="fas fa-chevron-down" style="margin-left:auto; transition: 0.3s;"></i>
                 </button>
@@ -629,7 +647,6 @@
                     <a href="movie.html" class="explore-item"><div class="eco-icon bg-movie"><i class="fas fa-film"></i></div><div class="eco-details"><div class="title">DK Film Production</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     <a href="social.html" class="explore-item"><div class="eco-icon bg-connect"><i class="fas fa-users"></i></div><div class="eco-details"><div class="title">DK Connect (Social)</div><span class="status live"><i class="fas fa-circle"></i> LIVE</span></div></a>
                     
-                    <!-- 🔥 UPCOMING PROJECTS CONNECTED TO POPUP MODAL 🔥 -->
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="explore-item"><div class="eco-icon" style="background:#6c5ce7;"><i class="fas fa-link"></i></div><div class="eco-details"><div class="title">DK Atovitt Chain / Scan</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="explore-item"><div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div><div class="eco-details"><div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
@@ -650,28 +667,33 @@
         </div>
     </section>
 
-    <!-- 🔥 6-COLUMN MEGA FOOTER 🔥 -->
-    <footer class="tseries-footer" id="contact-footer">
+    <!-- 🔥 6-COLUMN MEGA FOOTER (EXACTLY AS MOVIE.HTML) 🔥 -->
+    <footer class="tseries-footer" id="contact">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
-                <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875; margin: 0 0 10px 0;">DK ATOVITT</h3>
-                <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
+                <h3 class="notranslate">DK ATOVITT</h3>
+                <p><span class="notranslate">Official Movie Production House.</span> Bringing cinematic magic, horror, and soulful entertainment to the world.</p>
             </div>
-            
             <div class="tseries-footer-col">
                 <h4>Movies & Media</h4>
                 <ul>
-                    <li><a href="movie.html#home">Home</a></li>
-                    <li><a href="movie.html#movies-section">Featured Movie</a></li>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#movies-section">Featured Movie</a></li>
                     <li><a href="trailers.html">Official Trailer</a></li>
-                    <li><a href="mp3-songs.html">MP3 Audio Songs</a></li>
+                    <li><a href="movie-songs.html">Movie Songs</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="celebrity.html">Celebrity with DK Sir</a></li>
-                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="celebrity.html" style="color: #e6c875;"><i class="fas fa-star" style="margin-right: 5px;"></i> Celebrity with DK Sir</a></li>
                 </ul>
             </div>
-            
+            <div class="tseries-footer-col">
+                <h4>Join Us</h4>
+                <ul>
+                    <li><a href="auditions.html">Auditions</a></li>
+                    <li><a href="ecosystem.html">Ecosystem & Partners</a></li>
+                    <li><a href="auth.html">Login / Signup</a></li>
+                </ul>
+            </div>
             <div class="tseries-footer-col">
                 <h4>About Us</h4>
                 <ul>
@@ -681,7 +703,6 @@
                     <li><a href="news.html">News & Updates</a></li>
                 </ul>
             </div>
-            
             <div class="tseries-footer-col">
                 <h4>Legal & Help</h4>
                 <ul>
@@ -691,41 +712,31 @@
                     <li><a href="faq.html">Help / FAQs</a></li>
                 </ul>
             </div>
-
-            <div class="tseries-footer-col">
-                <h4>Upcoming Projects</h4>
-                <ul>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')">DK ATOVITT CHAIN (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Web3 Wallet (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')">DK Browser (Soon)</a></li>
-                    <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
-                </ul>
-            </div>
-            
             <div class="tseries-footer-col">
                 <h4>Connect With Us</h4>
                 <div class="footer-social-row">
-                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:info@dkatovitt.com" class="footer-icon-btn" title="Email Us"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
         </div>
-        
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- FLOATING BUTTONS -->
+    <!-- 🔥 FLOATING BUTTONS 🔥 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <div class="chatbot-toggler" id="chatbotToggler"><i class="fas fa-robot"></i></div>
+    
+    <!-- 🔥 AI CHATBOT BUTTON (EXACT MOVIE.HTML STYLE) 🔥 -->
+    <div class="chatbot-toggler" id="chatbotToggler">
+        <i class="fas fa-robot"></i>
+    </div>
+    
     <button class="floating-install-btn" id="openAppModal"><i class="fas fa-download"></i></button>
 
     <!-- APK DOWNLOAD MODAL -->
@@ -767,25 +778,20 @@
         </div>
     </div>
 
-    <!-- 🔥 AI CHATBOT (FLOATING SLIDE UP) 🔥 -->
+    <!-- 🔥 AI CHATBOT MODAL (EXACTLY LIKE MOVIE.HTML - NO OVERLAY LOCK) 🔥 -->
     <div class="chatbot-container" id="chatbotContainer">
         <div class="chatbot-header">
-            <div class="chatbot-header-left">
-                <div class="chat-header-video-wrap">
-                    <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-                </div>
-                <div class="notranslate">DK ATOVITT AI CHAT BOT</div>
-            </div>
+            <div><i class="fas fa-robot"></i> DK ATOVITT AI</div>
             <button id="closeChatbot">&times;</button>
         </div>
         <div class="chatbot-body" id="chatbotBody">
-            <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+            <div class="bot-msg">🙏 नमस्ते! DK ATOVITT Production House में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
         </div>
         <div class="chatbot-options">
-            <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
-            <button class="chat-opt-btn" onclick="sendChat('Upcoming')"><i class="fas fa-clock" style="color:#e6c875;"></i> Upcoming</button>
-            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Auditions</button>
-            <button class="chat-opt-btn" onclick="sendChat('Support')">📞 Support</button>
+            <button class="chat-opt-btn" onclick="sendChat('Audition')">🎭 Audition Info</button>
+            <button class="chat-opt-btn" onclick="sendChat('Movies')">🎬 Upcoming Movies</button>
+            <button class="chat-opt-btn" onclick="sendChat('Contact')">📞 Contact DK Sir</button>
+            <button class="chat-opt-btn" onclick="sendChat('Join')">🤝 Join Ecosystem</button>
         </div>
     </div>
 
@@ -804,7 +810,7 @@
             }
         }
 
-        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE FOR EXPLORE MENU & FOOTER 🔥 */
+        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE FOR EXPLORE MENU 🔥 */
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
@@ -812,7 +818,7 @@
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
             'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
-            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
+            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद digital विज्ञापन मंच।' },
             'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
             'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
             'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
@@ -822,7 +828,7 @@
         function showUpcomingProjectAlert(id) {
             const data = upcomingProjectsData[id];
             if(!data) {
-                showCustomAlert('Error', 'Project details not found!', true);
+                alert('Project details not found!');
                 return;
             }
             
@@ -841,18 +847,11 @@
             if (overlay) overlay.classList.remove('active');
         }
 
-        // Keep the old simple alert function for non-project errors
-        function showCustomAlert(title, message, isError = false) {
-            if(title === 'Coming Soon') return; // Skip if it's the old coming soon text
-            alert(message); // Fallback for simple auth errors without creating conflict
-        }
-
+        // Close Upcoming Project Popups
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; // 🔥 Unlock
         });
-        
-        // Modal Overlay Click close
         document.getElementById('customAlertOverlay').addEventListener('click', (e) => {
             if(e.target === document.getElementById('customAlertOverlay')) {
                 document.getElementById('customAlertOverlay').classList.remove('active');
@@ -893,7 +892,7 @@
             }
         }
 
-        // Menu Toggle Scripts & SCROLL LOCK
+        // Menu Toggle Scripts
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -1005,11 +1004,11 @@
                 openAppModal.addEventListener('click', (e) => { 
                     e.preventDefault(); 
                     appModalOverlay.classList.add('active'); 
-                    document.body.style.overflow = 'hidden'; // 🔥 Background Freeze
+                    document.body.style.overflow = 'hidden'; 
                 });
                 closeAppModal.addEventListener('click', () => { 
                     appModalOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; // 🔥 Unlock
+                    document.body.style.overflow = ''; 
                 });
                 appModalOverlay.addEventListener('click', (e) => { 
                     if(e.target === appModalOverlay) {
@@ -1020,59 +1019,54 @@
             }
         });
 
-        // 🔥 UPCOMING PROJECTS DROPDOWN LOGIC 🔥
+        // 🔥 UPCOMING PROJECTS MENU ARROW LOGIC 🔥
         window.toggleUpcomingProjects = function() {
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
             
             if (list.style.display === "none" || list.style.display === "") {
                 list.style.display = "block";
-                arrow.style.transform = "rotate(180deg)"; // Arrow upar ghum jayega
+                arrow.style.transform = "rotate(180deg)";
             } else {
                 list.style.display = "none";
-                arrow.style.transform = "rotate(0deg)"; // Arrow wapas niche ho jayega
+                arrow.style.transform = "rotate(0deg)";
             }
         };
 
-        // 🔥 AI CHATBOT LOGIC 🔥
+        // 🔥 EXACT AI CHATBOT LOGIC AS MOVIE.HTML (NO OVERLAY/NO LOCK) 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeChatbot = document.getElementById('closeChatbot');
         const chatbotBody = document.getElementById('chatbotBody');
 
-        if(chatbotToggler) { chatbotToggler.addEventListener('click', () => { chatbotContainer.classList.toggle('active'); }); }
-        if(closeChatbot) { closeChatbot.addEventListener('click', () => { chatbotContainer.classList.remove('active'); }); }
+        if(chatbotToggler) {
+            chatbotToggler.addEventListener('click', () => {
+                chatbotContainer.classList.toggle('active');
+            });
+        }
+
+        if(closeChatbot) {
+            closeChatbot.addEventListener('click', () => {
+                chatbotContainer.classList.remove('active');
+            });
+        }
 
         function sendChat(type) {
-            let userText = ""; let botReply = "";
-            if(type === 'Live') {
-                userText = "What's LIVE right now?";
-                botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
-            } 
-            else if(type === 'Upcoming') {
-                userText = "Upcoming projects कौन से हैं?";
-                botReply = "हमारा विजन बहुत बड़ा है! यह प्रोजेक्ट्स जल्द ही लॉन्च होने वाले हैं ⏳:<br><br>";
-                botReply += `<button class="bot-inline-btn" onclick="showUpcomingProjectAlert('chain')"><i class="fas fa-link"></i> DK ATOVITT CHAIN / SCAN</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
-            }
-            else if(type === 'Audition') {
-                userText = "मुझे Audition देना है।";
-                botReply = "🎭 बेहतरीन! हम हमेशा नए टैलेंट की तलाश में रहते हैं। आप 'Auditions' पेज पर जाकर फॉर्म भर सकते हैं।<br><br><a href='auditions.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Apply for Audition</a>";
-            } 
-            else if(type === 'Support') {
-                userText = "मुझे Help / Support चाहिए।";
-                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
+            let userText = "";
+            let botReply = "";
+
+            if(type === 'Audition') {
+                userText = "मुझे Audition के बारे में जानना है।";
+                botReply = "🎬 बेहतरीन! Auditions के लिए आप वेबसाइट के 'Auditions' पेज पर जा सकते हैं या अपना पोर्टफोलियो info@dkatovitt.com पर भेज सकते हैं।";
+            } else if(type === 'Movies') {
+                userText = "आने वाली Movies कौन सी हैं?";
+                botReply = "👻 हमारी पहली अपकमिंग हॉरर-रोमांस फिल्म 'यक्षिणी (Yakshini)' का ग्रैंड लॉन्च जल्द होने वाला है! इसका खौफनाक ट्रेलर वेबसाइट पर मौजूद है।";
+            } else if(type === 'Contact') {
+                userText = "मुझे DK Sir से बात करनी है।";
+                botReply = "📞 DK Sir से संपर्क करने या बिज़नेस पार्टनरशिप के लिए आप +91 9830332929 पर कॉल या WhatsApp कर सकते हैं।";
+            } else if(type === 'Join') {
+                userText = "Ecosystem कैसे Join करूँ?";
+                botReply = "🤝 आप 'Earn with DK Sir', ATVT, और Kalpamrit से जुड़कर अच्छी कमाई कर सकते हैं। अधिक जानकारी के लिए 'Ecosystem' पेज देखें।";
             }
 
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
@@ -1102,7 +1096,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, sendEmailVerification, RecaptchaVerifier, signInWithPhoneNumber, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
         
-        // 🔥 IMPORT FIRESTORE FOR REFERRAL SYSTEM 🔥
         import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -1117,11 +1110,10 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const db = getFirestore(app); // INITIALIZE FIRESTORE
+        const db = getFirestore(app); 
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
-        // 🔥 URL SE REFERRAL ID AUTO-FILL KARNE KA SCRIPT 🔥
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const refIdFromUrl = urlParams.get('ref');
@@ -1130,15 +1122,12 @@
                 const refInput = document.getElementById('signupReferralId');
                 if (refInput) {
                     refInput.value = refIdFromUrl.toUpperCase();
-                    // ID dalte hi Signup form open kar do
                     toggleAuth('register');
-                    // Database me check karo aur naam show karo
                     window.checkReferralName(refIdFromUrl.toUpperCase());
                 }
             }
         });
 
-        // 🔥 LIVE REFERRAL NAME CHECKER FUNCTION (UPDATED WITH ERROR DISPLAY) 🔥
         window.checkReferralName = async function(refId) {
             const displayBox = document.getElementById('referrerNameDisplay');
             const nameText = document.getElementById('refNameText');
@@ -1149,31 +1138,27 @@
             }
 
             try {
-                // Find user by DK ID in 'users' collection
                 const usersRef = collection(db, "users");
                 const q = query(usersRef, where("dk_id", "==", refId.toUpperCase()));
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
-                    // Agar DK ID valid hai और database me mil गयी
                     querySnapshot.forEach((doc) => {
                         const referrerData = doc.data();
                         nameText.innerText = referrerData.name || "DK Member";
                         displayBox.style.display = 'flex';
-                        displayBox.style.color = '#25d366'; // Green color for success
+                        displayBox.style.color = '#25d366'; 
                         displayBox.innerHTML = `<i class="fas fa-user-check"></i> Referred by: <span id="refNameText">${referrerData.name || "DK Member"}</span>`;
                     });
                 } else {
-                    // Agar invalid DK ID daali या वो ID अभी बनी ही नहीं है
                     displayBox.style.display = 'flex';
-                    displayBox.style.color = '#ff4d4d'; // Red color for error
+                    displayBox.style.color = '#ff4d4d'; 
                     displayBox.innerHTML = `<i class="fas fa-times-circle"></i> Invalid DK ID (Not Found)`;
                 }
             } catch (error) {
-                // Agar Firestore Rules block कर रहे हैं
                 console.error("Error checking referral: ", error);
                 displayBox.style.display = 'flex';
-                displayBox.style.color = '#ff4d4d'; // Red color for error
+                displayBox.style.color = '#ff4d4d'; 
                 displayBox.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Database Rule Error!`;
             }
         };
@@ -1185,11 +1170,9 @@
                 let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
-                // 🔥 DK ID GENERATION & SAVING TO DATABASE 🔥
                 let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
-                // User ka data Database me Save/Update karo taaki Referral me show ho sake
                 try {
                     await setDoc(doc(db, "users", user.uid), {
                         uid: user.uid,
@@ -1264,7 +1247,6 @@
                     document.getElementById('goHomeBtn').addEventListener('click', () => { window.location.href = 'index.html'; });
                 }
                 
-                // Show Sidebar Footer with Logout
                 const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
                 const sidebarFooterArea = document.getElementById('sidebarFooterArea');
                 if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
@@ -1312,12 +1294,9 @@
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
                 
-                // 🔥 CAPTURE REFERRAL ID BEFORE GOOGLE LOGIN 🔥
                 const refId = document.getElementById('signupReferralId') ? document.getElementById('signupReferralId').value.toUpperCase() : null;
 
                 signInWithPopup(auth, googleProvider).then(async (result) => {
-                    
-                    // SAVE USER TO DB ALONG WITH REFERRAL ID IF PROVIDED
                     let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
                     let userDkId = "DK-" + uidSnippet;
                     try {
@@ -1327,7 +1306,7 @@
                             email: result.user.email || "N/A",
                             photo: result.user.photoURL,
                             dk_id: userDkId,
-                            referred_by: refId || "None", // 🔥 SAVING REFERRAL ID HERE
+                            referred_by: refId || "None", 
                             lastLogin: new Date().toISOString()
                         }, { merge: true });
                     } catch (e) {}
@@ -1344,11 +1323,9 @@
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wait...';
                 
-                // 🔥 CAPTURE REFERRAL ID BEFORE FB LOGIN 🔥
                 const refId = document.getElementById('signupReferralId') ? document.getElementById('signupReferralId').value.toUpperCase() : null;
 
                 signInWithPopup(auth, facebookProvider).then(async (result) => {
-                    
                     let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
                     let userDkId = "DK-" + uidSnippet;
                     try {
@@ -1358,7 +1335,7 @@
                             email: result.user.email || "N/A",
                             photo: result.user.photoURL,
                             dk_id: userDkId,
-                            referred_by: refId || "None", // 🔥 SAVING REFERRAL ID HERE
+                            referred_by: refId || "None", 
                             lastLogin: new Date().toISOString()
                         }, { merge: true });
                     } catch (e) {}
@@ -1494,7 +1471,7 @@
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
             const agreeTerms = document.getElementById('agreeTerms').checked;
-            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
+            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; 
 
             if (!name || !password || !confirmPassword) { alert('Please fill in all details!'); return; }
             if (!agreeTerms) { alert('You must agree to Terms & Conditions!'); return; }
@@ -1506,7 +1483,6 @@
                 const userCred = await createUserWithEmailAndPassword(auth, email, password);
                 await updateProfile(userCred.user, { displayName: name });
                 
-                // 🔥 SAVE TO DB WITH REFERRAL INFO 🔥
                 let uidSnippet = userCred.user.uid.substring(0, 10).toUpperCase();
                 let userDkId = "DK-" + uidSnippet;
                 await setDoc(doc(db, "users", userCred.user.uid), {
@@ -1515,7 +1491,7 @@
                     email: email,
                     phone: "N/A",
                     dk_id: userDkId,
-                    referred_by: refId, // Save refer ID
+                    referred_by: refId,
                     signupDate: new Date().toISOString()
                 });
 
@@ -1547,7 +1523,7 @@
         signupVerifyOtpBtn.addEventListener('click', () => {
             const code = document.getElementById('signupOtpInput').value; 
             const name = document.getElementById('signupName').value;
-            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None"; // 🔥 GET REFERRAL ID
+            const refId = document.getElementById('signupReferralId').value.toUpperCase() || "None";
             
             if(!code) { alert("Please enter OTP"); return; }
             
@@ -1555,7 +1531,6 @@
             signupConfirmationResult.confirm(code).then(async (result) => {
                 await updateProfile(result.user, { displayName: name });
                 
-                // 🔥 SAVE TO DB WITH REFERRAL INFO 🔥
                 let uidSnippet = result.user.uid.substring(0, 10).toUpperCase();
                 let userDkId = "DK-" + uidSnippet;
                 await setDoc(doc(db, "users", result.user.uid), {
@@ -1564,7 +1539,7 @@
                     email: "N/A",
                     phone: result.user.phoneNumber,
                     dk_id: userDkId,
-                    referred_by: refId, // Save refer ID
+                    referred_by: refId,
                     signupDate: new Date().toISOString()
                 }, { merge: true });
 
