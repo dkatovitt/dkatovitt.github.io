@@ -152,14 +152,15 @@
         .empty-state h4 { font-size: 18px; margin: 0 0 5px 0; color: #aaa; }
         .empty-state p { font-size: 13px; margin: 0; }
 
-        .user-item { display: flex; align-items: center; justify-content: space-between; background: #0a0a0a; padding: 15px 20px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #222; transition: 0.3s; flex-wrap: wrap; gap: 15px;}
+        .user-item { display: flex; align-items: center; justify-content: space-between; background: #0a0a0a; padding: 15px 20px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #222; transition: 0.3s; flex-wrap: wrap; gap: 15px; cursor: pointer;}
         .user-item:hover { border-color: #e6c875; background: #161616; transform: translateX(5px); }
         .user-info-left { display: flex; align-items: center; gap: 15px; }
         .user-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid #e6c875; padding: 2px; object-fit: cover; background: #222; }
         .user-details h4 { margin: 0 0 4px 0; color: #fff; font-size: 15px; font-weight: bold; }
         .user-details p { margin: 0; color: #888; font-size: 12px; }
         .user-details p span { color: #e6c875; font-weight: bold; letter-spacing: 1px;}
-        .user-join-date { font-size: 12px; color: #666; font-weight: bold; background: #111; padding: 6px 12px; border-radius: 20px; border: 1px solid #333; }
+        .user-join-date { font-size: 12px; color: #666; font-weight: bold; background: #111; padding: 6px 12px; border-radius: 20px; border: 1px solid #333; display: flex; align-items: center; gap: 8px;}
+        .user-join-date i.fa-chevron-right { color: #e6c875; }
 
         /* ==========================================================
            🔥 EXACT SAME 6-COLUMN MEGA FOOTER CSS (FROM WALLET.HTML) 🔥
@@ -215,7 +216,7 @@
             .ref-btn-group { flex-direction: column; gap: 10px; }
             .level-tab-btn { padding: 10px 20px; font-size: 12px; }
             .user-item { flex-direction: column; align-items: flex-start; }
-            .user-join-date { width: 100%; text-align: center; box-sizing: border-box; }
+            .user-join-date { width: 100%; text-align: left; box-sizing: border-box; justify-content: space-between; }
             .close-menu-btn { display: block; }
             
             /* EXACT 50PX SIZES (FIXED) */
@@ -223,15 +224,6 @@
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
-
-        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS POPUP MODAL CSS (THIS WAS MISSING!) 🔥 */
-        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
-        .upcoming-modal-close:hover { color: #fff; }
-        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
 
         /* 🔥 UPCOMING PROJECTS MODAL (FROM WALLET.HTML) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
@@ -267,6 +259,15 @@
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         
+        /* 🔥 UPCOMING PROJECTS MODAL FIX 🔥 */
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+
         /* 🔥 VIP CHATBOT OVERLAY CSS 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -369,12 +370,12 @@
             </a>
             
             <div id="upcomingProjectsList" class="upcoming-list">
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
@@ -593,32 +594,6 @@
         </div>
     </div>
 
-    <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
-        <div class="upcoming-modal-box">
-            <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
-            
-            <div class="upcoming-modal-logo">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
-            </div>
-            
-            <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
-            
-            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
-                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
-            </div>
-            
-            <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
-            
-            <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
-            <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
-            
-            <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
-                <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
-                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
-            </div>
-        </div>
-    </div>
-
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
             <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
@@ -633,10 +608,10 @@
                 <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
             </div>
             
-            <h4 id="customAlertProjectName2" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
             
-            <p id="customAlertEngDesc2" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
-            <p id="customAlertHinDesc2" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
+            <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
             
             <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
                 <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
@@ -714,7 +689,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             event.currentTarget.classList.add('active');
         }
 
-        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE 🔥 */
+        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE (FROM WALLET.HTML) 🔥 */
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
@@ -734,9 +709,9 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if(!data) { alert('Project details not found!'); return; }
             
             document.getElementById('customAlertProjectIcon').className = data.icon;
-            document.getElementById('customAlertProjectName2').innerText = data.name;
-            document.getElementById('customAlertEngDesc2').innerText = data.eng;
-            document.getElementById('customAlertHinDesc2').innerText = data.hin;
+            document.getElementById('customAlertProjectName').innerText = data.name;
+            document.getElementById('customAlertEngDesc').innerText = data.eng;
+            document.getElementById('customAlertHinDesc').innerText = data.hin;
             
             document.getElementById('customAlertOverlay').classList.add('active');
             document.body.style.overflow = 'hidden'; 
@@ -747,7 +722,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if (overlay) overlay.classList.remove('active');
         }
 
-        // Close Upcoming Project Popups (Wallet Page Style)
+        // Close Upcoming Project Popups
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; 
@@ -756,44 +731,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if(e.target === document.getElementById('customAlertOverlay')) {
                 document.getElementById('customAlertOverlay').classList.remove('active');
                 document.body.style.overflow = '';
-            }
-        });
-
-        // 🔥 FIX: SIDE MENU UPCOMING PROJECT POPUP 🔥
-        function showUpcomingProject(id) {
-            const data = upcomingProjectsData[id];
-            if(!data) return;
-            document.getElementById('customAlertProjectIcon').className = data.icon;
-            document.getElementById('customAlertProjectName').innerText = data.name;
-            document.getElementById('customAlertEngDesc').innerText = data.eng;
-            document.getElementById('customAlertHinDesc').innerText = data.hin;
-            
-            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            const sideMenu = document.getElementById('sideMenu');
-            const overlay = document.getElementById('overlay');
-            if (sideMenu) sideMenu.classList.remove('active');
-            if (overlay) overlay.classList.remove('active');
-        }
-
-        function closeUpcomingProject() {
-            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
-            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
-                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
-                document.body.style.overflow = ''; 
-                document.documentElement.style.overflow = '';
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
-            if(upcomingModalOverlay) {
-                upcomingModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === upcomingModalOverlay) closeUpcomingProject();
-                });
-                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
@@ -1161,8 +1098,9 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                             const joinDate = data.signupDate ? new Date(data.signupDate).toLocaleDateString() : 'Recent';
                             const photo = data.photo || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
                             
+                            // 🔥 CLICKABLE BOX WALA UPDATE YAHA HAIN 🔥
                             listHTML += `
-                                <div class="user-item">
+                                <div class="user-item" style="cursor: pointer;" onclick="window.location.href='member-stats.html?userid=${data.dk_id}'">
                                     <div class="user-info-left">
                                         <img src="${photo}" class="user-avatar" alt="User">
                                         <div class="user-details">
@@ -1170,7 +1108,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                                             <p>ID: <span>${data.dk_id || 'N/A'}</span></p>
                                         </div>
                                     </div>
-                                    <div class="user-join-date"><i class="fas fa-calendar-alt"></i> Joined: ${joinDate}</div>
+                                    <div class="user-join-date">Joined: ${joinDate} <i class="fas fa-chevron-right" style="margin-left:5px; color:#e6c875;"></i></div>
                                 </div>
                             `;
                         });
