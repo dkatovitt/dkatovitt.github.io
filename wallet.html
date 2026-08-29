@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,7 +8,6 @@
       gtag('js', new Date());
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
-    <!-- 🔥 Google AdSense 🔥 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
@@ -63,7 +61,7 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; }
+        .custom-translate { padding: 15px 55px 15px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
@@ -333,12 +331,10 @@
 </head>
 <body>
 
-    <!-- 🔥 HEADER (MASTER BLUEPRINT) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-                <!-- 🔥 PREVENT REFRESH BUG FIX: javascript:void(0) 🔥 -->
                 <a href="javascript:void(0)" class="logo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: default;">
                     <video src="images/logo/logo.mp4" autoplay loop muted playsinline class="desktop-logo-img"></video>
                     <div class="logo-text" style="display: flex; flex-direction: column; justify-content: center;">
@@ -348,7 +344,6 @@
                 </a>
             </div>
             
-            <!-- 🔥 TOP RIGHT PROFILE DROPDOWN (DYNAMIC) 🔥 -->
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
@@ -371,10 +366,9 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 UNIVERSAL VIP SIDE MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         
-        <div class="custom-translate" style="padding: 15px 20px; border-bottom: 1px solid #222;">
+        <div class="custom-translate" style="padding: 15px 55px 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
@@ -397,7 +391,6 @@
         </div>
         
         <div class="sidebar-menu">
-            <!-- 🔥 TABS WALLET SECTION IN MENU 🔥 -->
             <div class="menu-heading">My ATVT Wallet</div>
             <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-wallet"></i> Dashboard</div></a>
             <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
@@ -425,11 +418,9 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 DASHBOARD MAIN SECTION (WALLET PAGE) 🔥 -->
     <section class="wallet-section">
         <h1 class="page-title">My <span>ATVT</span> Wallet</h1>
 
-        <!-- 🔥 TAB 1: WALLET HOME 🔥 -->
         <div id="tab-home" class="wallet-tab active">
             <div class="wallet-banner">
                 <div class="wallet-left">
@@ -454,9 +445,7 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 2: SEND ATVT 🔥 -->
         <div id="tab-send" class="wallet-tab">
-            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
             <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
             
             <div class="dashboard-extended-wallet">
@@ -494,9 +483,7 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 3: RECEIVE ATVT 🔥 -->
         <div id="tab-receive" class="wallet-tab">
-            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
             <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
             
             <div class="dashboard-extended-wallet">
@@ -504,7 +491,6 @@
                 
                 <div class="qr-receive-box">
                     <div class="qr-image-wrapper">
-                        <!-- 🔥 DYNAMIC QR CODE 🔥 -->
                         <img id="receiveQrCode" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DK-ATOVITT-USER&color=111111&bgcolor=ffffff" alt="DK ID QR Code">
                     </div>
                     <div class="qr-tagline">Scan To Transfer</div>
@@ -521,9 +507,7 @@
             </div>
         </div>
 
-        <!-- 🔥 TAB 4: TRANSACTION HISTORY 🔥 -->
         <div id="tab-history" class="wallet-tab">
-            <!-- 🔥 BACK BUTTON FIXED 🔥 -->
             <a href="javascript:void(0)" class="back-nav-btn" onclick="switchTab('tab-home')"><i class="fas fa-arrow-left"></i> Back to Wallet</a>
             
             <div class="dashboard-extended-wallet">
@@ -579,9 +563,6 @@
 
     </section>
 
-    <!-- ======================================================================
-         🔥 6-COLUMN MEGA FOOTER (EXACTLY AS REPLACED FROM AUTH.HTML) 🔥
-         ====================================================================== -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -590,7 +571,6 @@
                 <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
             
-            <!-- 🔥 LEFT COLUMN 🔥 -->
             <div class="footer-links-col">
                 <div class="tseries-footer-col">
                     <h4>Movies & Media</h4>
@@ -625,7 +605,6 @@
                     </ul>
                 </div>
                 
-                <!-- 🔥 CONNECT WITH US 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
                     <div class="footer-social-row">
@@ -639,7 +618,6 @@
                 </div>
             </div>
             
-            <!-- 🔥 RIGHT COLUMN 🔥 -->
             <div class="footer-links-col">
                 <div class="tseries-footer-col">
                     <h4>Live Ecosystem</h4>
@@ -682,11 +660,6 @@
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
     </footer>
-    <!-- ====================================================================== -->
-
-    <!-- ======================================================================
-         🔥 FLOATING BUTTONS (EXACTLY AS REPLACED FROM AUTH.HTML) 🔥
-         ====================================================================== -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     
     <div class="chatbot-toggler" id="chatbotToggler">
@@ -696,9 +669,6 @@
     <button class="floating-install-btn" id="openAppModal" title="Install Official App">
         <i class="fas fa-download"></i>
     </button>
-    <!-- ====================================================================== -->
-
-    <!-- APK DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -710,7 +680,6 @@
         </div>
     </div>
 
-    <!-- 🔥 UPCOMING PROJECTS POPUP MODAL (FROM AUTH.HTML) 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
             <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
@@ -737,7 +706,6 @@
         </div>
     </div>
 
-    <!-- 🔥 SIMPLE ALERT FOR WALLET ERRORS (Kept intact for wallet functionalities) 🔥 -->
     <div class="custom-alert-overlay" id="simpleAlertOverlay" style="z-index: 1000000;">
         <div class="custom-alert-box" style="padding: 20px;">
             <div class="custom-alert-logo" style="width: 50px; height: 50px; margin-bottom: 10px;">
@@ -749,9 +717,6 @@
         </div>
     </div>
 
-    <!-- ======================================================================
-         🤖 🔥 DK ATOVITT AI CHATBOT WINDOW (EXACTLY AS REPLACED FROM AUTH.HTML) 🔥 🤖
-         ====================================================================== -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer" style="display:flex;">
             <div class="chatbot-header">
@@ -774,9 +739,6 @@
             </div>
         </div>
     </div>
-    <!-- ====================================================================== -->
-
-    <!-- 🔥 OTP SECURITY MODAL (For Crypto Send) 🔥 -->
     <div id="otpModalOverlay" class="otp-modal-overlay">
         <div class="otp-modal-box">
             <button class="otp-modal-close" onclick="document.getElementById('otpModalOverlay').classList.remove('active')">&times;</button>
@@ -790,7 +752,6 @@
         </div>
     </div>
 
-    <!-- UI Scripts -->
     <script>
         // 🔥 TAB SWITCHING LOGIC 🔥
         function switchTab(tabId) {
@@ -1083,24 +1044,27 @@
             }
         }
 
-        // 🔥 IMPROVED TRANSLATE ENGINE LOGIC 🔥
+        // 🔥 EXACT GOOGLE TRANSLATE LOGIC FROM AUTH.HTML 🔥
         window.translatePage = function(lang) {
-            var domainStr = window.location.hostname.replace(/^www\./i, '');
             if (lang === "") {
-                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domainStr + ";";
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
                 document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.reload(); return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
             } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
                 document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
                 document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                window.location.reload();
             }
-            window.location.reload(); 
-        };
-
-        const langSidebar = document.getElementById('lang-sidebar');
-        const langDesktop = document.getElementById('lang-desktop');
-        
-        if(langSidebar) langSidebar.addEventListener('change', function() { window.translatePage(this.value); });
-        if(langDesktop) langDesktop.addEventListener('change', function() { window.translatePage(this.value); });
+        }
         
         window.addEventListener('load', function() {
             setTimeout(function() {
@@ -1109,13 +1073,14 @@
                 if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
                 var googleSelect = document.querySelector('select.goog-te-combo');
                 if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
-                if(langSidebar && currentLang && currentLang !== "auto") langSidebar.value = currentLang;
-                if(langDesktop && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
+                var sidebarLang = document.getElementById('lang-mobile');
+                var desktopLang = document.getElementById('lang-desktop');
+                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
             }, 1000);
         });
     </script>
     
-    <!-- 🔥 FIXED GOOGLE TRANSLATE SCRIPT 🔥 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -1127,7 +1092,6 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1185,7 +1149,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાती (Gujarati)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         
