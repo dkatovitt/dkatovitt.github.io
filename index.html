@@ -748,6 +748,33 @@
         </div>
     </div>
 
+    <!-- 🔥 HIDDEN TEMPLATE FOR DYNAMIC TRANSLATED SHARE MESSAGE 🔥 -->
+    <div id="shareMsgTemplate" style="position: absolute; left: -9999px; top: -9999px; white-space: pre-wrap; opacity: 0; pointer-events: none;">🌟 *DK ATOVITT - The Biggest Global Ecosystem!* 🌟
+
+Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *ATVT Coins* kamayein. Mera VIP link use karein, apna 10-Level Network banayein aur life-time passive income shuru karein! 👇
+
+🔗 {LINK}
+
+🎁 Registration bilkul FREE hai, abhi join karein aur *Signup Bonus free me paye!*
+
+🔥 ⬇️ *HAMARE 13 MEGA PROJECTS* ⬇️ 🔥
+🎬 DK Film Production house
+👥 DK Connect Social media
+🔗 DK ATOVITT CHAIN / SCAN
+📈 DK Crypto Exchange
+🪙 DK ATVT Coin
+💳 DK Decentralised Wallet
+🌐 DK Browser
+🛒 DK Mart
+📢 DK Digital Ads
+📍 DK GPS Tracker
+💬 DK Connect Messenger
+💬 DK Chat
+🎮 DK Games
+
+👉 *Abhi Join Karein & Apna Bonus Claim Karein:*
+🔗 {LINK}</div>
+
     <!-- UI Scripts -->
     <script>
         /* 🔥 NEW DYNAMIC UPCOMING PROJECTS ENGINE 🔥 */
@@ -836,11 +863,13 @@
             const link = document.getElementById('myReferralLink').value;
             if(link.includes('Loading')) return;
             
+            // 🔥 NEW DYNAMIC LANGUAGE TRANSLATE LOGIC 🔥
+            let shareText = document.getElementById('shareMsgTemplate').innerText;
+            shareText = shareText.replace(/{LINK}/g, link);
+            
             if (navigator.share) {
                 navigator.share({
-                    title: 'Join DK Atovitt Ecosystem',
-                    text: 'Join the DK Atovitt Ecosystem and earn ATVT coins up to 10 Levels! Click my VIP link to register:\n\n',
-                    url: link
+                    text: shareText
                 }).catch(err => console.log('Error sharing:', err));
             } else {
                 window.copyMyReferral();
