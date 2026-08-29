@@ -116,7 +116,6 @@
             <button class="menu-btn" onclick="switchTab('users')"><i class="fas fa-users-cog"></i> Manage Users</button>
             <button class="menu-btn" onclick="switchTab('wallet')"><i class="fas fa-wallet"></i> Wallet Control</button>
             <button class="menu-btn" onclick="switchTab('content')"><i class="fas fa-photo-video"></i> Upload Content</button>
-            <!-- 🔥 NEW SUB-ADMIN TAB 🔥 -->
             <button class="menu-btn" onclick="switchTab('subadmin')"><i class="fas fa-user-shield"></i> Sub-Admins</button>
         </div>
         <div class="admin-footer">
@@ -132,7 +131,7 @@
                 <h3 id="topBarTitle">Dashboard Overview</h3>
             </div>
             <div class="admin-profile">
-                <span>DK Admin</span>
+                <span>CEO Admin</span>
                 <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Admin">
             </div>
         </div>
@@ -265,9 +264,8 @@
             </div>
         </section>
 
-        <!-- 🔥 5. NEW SUB-ADMIN SECTION 🔥 -->
+        <!-- 5. SUB-ADMIN SECTION -->
         <section id="subadmin" class="content-section">
-            <!-- Create Form -->
             <div class="admin-form-box" style="margin-bottom: 30px; max-width: 100%;">
                 <h3 style="color: #e6c875; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid #333; padding-bottom: 10px;">
                     <i class="fas fa-user-plus"></i> Create New Sub-Admin
@@ -298,7 +296,6 @@
                 <button class="btn-submit" onclick="createSubAdmin()"><i class="fas fa-plus-circle"></i> Create Sub-Admin Account</button>
             </div>
 
-            <!-- Active Sub-Admins Table -->
             <div class="table-container">
                 <div class="table-header">
                     <h3><i class="fas fa-shield-alt"></i> Active Sub-Admins</h3>
@@ -315,7 +312,6 @@
                             </tr>
                         </thead>
                         <tbody id="subAdminTableBody">
-                            <!-- Mock Data (Replace with Firebase list later) -->
                             <tr>
                                 <td style="color:#fff; font-weight:bold;">DK Tech Team</td>
                                 <td>tech@dkatovitt.com</td>
@@ -347,54 +343,33 @@
 
     <!-- SCRIPT LOGIC -->
     <script>
-        // Tab Switching Logic
         function switchTab(tabId) {
             document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.menu-btn').forEach(el => el.classList.remove('active'));
-            
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
-
-            // Update Top Bar Title
-            const titles = {
-                'dashboard': 'Dashboard Overview',
-                'users': 'User Management',
-                'wallet': 'Wallet Control',
-                'content': 'Content Manager',
-                'subadmin': 'Sub-Admin Management' // Added Title
-            };
+            const titles = { 'dashboard': 'Dashboard Overview', 'users': 'User Management', 'wallet': 'Wallet Control', 'content': 'Content Manager', 'subadmin': 'Sub-Admin Management' };
             document.getElementById('topBarTitle').innerText = titles[tabId];
-            
-            if(window.innerWidth <= 900) {
-                document.getElementById('sidebar').classList.remove('open');
-            }
+            if(window.innerWidth <= 900) { document.getElementById('sidebar').classList.remove('open'); }
         }
 
         function showLoader(msg = "Please wait") {
             document.getElementById('loaderMsg').innerText = msg;
             document.getElementById('adminLoader').classList.add('active');
         }
-        function hideLoader() {
-            document.getElementById('adminLoader').classList.remove('active');
-        }
+        function hideLoader() { document.getElementById('adminLoader').classList.remove('active'); }
 
-        // 🔥 NEW MOCK FUNCTION FOR CREATING SUB-ADMIN 🔥
         window.createSubAdmin = function() {
             const name = document.getElementById('subAdminName').value.trim();
             const email = document.getElementById('subAdminEmail').value.trim();
             const pass = document.getElementById('subAdminPass').value.trim();
             const role = document.getElementById('subAdminRole').options[document.getElementById('subAdminRole').selectedIndex].text;
-
-            if(!name || !email || !pass) {
-                alert("Please fill all details to create a Sub-Admin!"); return;
-            }
+            if(!name || !email || !pass) { alert("Please fill all details to create a Sub-Admin!"); return; }
 
             showLoader("Creating Sub-Admin Account...");
             setTimeout(() => {
                 hideLoader();
-                alert(`Success! Sub-Admin '${name}' created as '${role}'. (Firebase Auth logic to be linked)`);
-                
-                // Clear Form
+                alert(`Success! Sub-Admin '${name}' created as '${role}'.`);
                 document.getElementById('subAdminName').value = '';
                 document.getElementById('subAdminEmail').value = '';
                 document.getElementById('subAdminPass').value = '';
@@ -402,7 +377,7 @@
         };
     </script>
 
-    <!-- 🔥 FIREBASE ADMIN LOGIC 🔥 -->
+    <!-- 🔥 FIREBASE ADMIN SECURE LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -421,13 +396,26 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
+        // 🔥 THE SECURITY LOCK 🔥
+        const ADMIN_EMAILS = [
+            "ceodipak@dkatovitt.com" // Yahan CEO ki email add hai
+        ];
+
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
                 alert("Unauthorized Access! Admin Login Required.");
                 window.location.href = "auth.html";
                 return;
             }
+
+            // Verify if the logged in user is actually the Admin
+            if (!ADMIN_EMAILS.includes(user.email)) {
+                alert("ACCESS DENIED: You do not have Super Admin privileges.");
+                window.location.href = "index.html"; // Redirect fake admins back to their dashboard
+                return;
+            }
             
+            // If check passes, load the data
             fetchUsersList();
             
             document.getElementById('adminLogoutBtn').addEventListener('click', () => {
@@ -496,9 +484,7 @@
             let amount = parseFloat(document.getElementById('walletAmount').value);
             const remark = document.getElementById('walletRemark').value;
 
-            if(!dkId || !amount || amount <= 0) {
-                alert("Please enter a valid DK-ID and Amount."); return;
-            }
+            if(!dkId || !amount || amount <= 0) { alert("Please enter a valid DK-ID and Amount."); return; }
 
             showLoader("Processing Wallet Transaction...");
             try {
@@ -506,19 +492,14 @@
                 const q = query(usersRef, where("dk_id", "==", dkId));
                 const snapshot = await getDocs(q);
 
-                if(snapshot.empty) {
-                    alert("Error: User with this DK-ID not found!");
-                    hideLoader(); return;
-                }
+                if(snapshot.empty) { alert("Error: User with this DK-ID not found!"); hideLoader(); return; }
 
                 const userDoc = snapshot.docs[0];
                 const docRef = doc(db, "users", userDoc.id);
 
                 if(action === 'deduct') amount = -Math.abs(amount);
 
-                await updateDoc(docRef, {
-                    walletBalance: increment(amount)
-                });
+                await updateDoc(docRef, { walletBalance: increment(amount) });
 
                 alert(`Successfully ${action === 'add' ? 'Added' : 'Deducted'} ${Math.abs(amount)} ATVT to/from ${dkId}.`);
                 
@@ -540,27 +521,15 @@
             const url = document.getElementById('mediaUrl').value.trim();
             const desc = document.getElementById('mediaDesc').value.trim();
 
-            if(!title || !url) {
-                alert("Please provide at least a Title and Media URL."); return;
-            }
+            if(!title || !url) { alert("Please provide at least a Title and Media URL."); return; }
 
             showLoader("Publishing Content...");
             try {
                 await addDoc(collection(db, "ecosystem_content"), {
-                    type: type,
-                    title: title,
-                    mediaUrl: url,
-                    description: desc,
-                    publishDate: serverTimestamp(),
-                    status: "Active"
+                    type: type, title: title, mediaUrl: url, description: desc, publishDate: serverTimestamp(), status: "Active"
                 });
-
                 alert("Content Published Successfully to DK Atovitt Ecosystem!");
-                
-                document.getElementById('mediaTitle').value = '';
-                document.getElementById('mediaUrl').value = '';
-                document.getElementById('mediaDesc').value = '';
-
+                document.getElementById('mediaTitle').value = ''; document.getElementById('mediaUrl').value = ''; document.getElementById('mediaDesc').value = '';
             } catch (e) {
                 alert("Failed to publish: " + e.message);
             }
