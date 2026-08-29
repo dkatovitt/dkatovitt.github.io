@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- 🔥 Google tag (gtag.js) Analytics 🔥 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,7 +8,6 @@
       gtag('js', new Date());
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
-    <!-- 🔥 Google AdSense 🔥 -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
     
     <meta charset="UTF-8">
@@ -226,6 +224,15 @@
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
 
+        /* 🔥 NAYA ADVANCED UPCOMING PROJECTS POPUP MODAL CSS (THIS WAS MISSING!) 🔥 */
+        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
+        .upcoming-modal-close:hover { color: #fff; }
+        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+
         /* 🔥 UPCOMING PROJECTS MODAL (FROM WALLET.HTML) 🔥 */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -259,11 +266,32 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
         @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
+        /* 🔥 VIP CHATBOT OVERLAY CSS 🔥 */
+        .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
+        .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
+        @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
+        .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
+        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
+        .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
+        .chatbot-header button:hover { color: #fff; }
+        .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
+        .chatbot-body::-webkit-scrollbar { width: 4px; }
+        .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
+        .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
+        .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
+        .bot-inline-btn:hover { background: #e6c875; color: #000; }
+        .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
     </style>
 </head>
 <body>
 
-    <!-- 🔥 EXACT HEADER FROM WALLET.HTML 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -299,10 +327,9 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 VIP SIDE MENU EXACTLY LIKE WALLET.HTML 🔥 -->
     <div class="side-menu" id="sideMenu">
         
-        <div class="custom-translate">
+        <div class="custom-translate" style="padding: 15px 55px 15px 20px; border-bottom: 1px solid #222;">
             <select id="lang-mobile" class="notranslate" onchange="translatePage(this.value)">
                 <option value="">🌐 Select Language</option>
                 <option value="hi">हिन्दी (Hindi)</option>
@@ -329,7 +356,6 @@
             <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
             <a href="wallet.html" class="normal-link"><div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div></a>
             
-            <!-- 🔥 HIGHLIGHTED REFERRAL MENU 🔥 -->
             <a href="referral.html" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
             
             <div class="menu-divider"></div>
@@ -337,7 +363,6 @@
             <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             
-            <!-- 🔥 FIX: PROPER INDENTED DROPDOWN (UPCOMING PROJECTS) 🔥 -->
             <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer; border-bottom: 1px solid #222;">
                 <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
                 <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
@@ -373,11 +398,9 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 REFERRAL DASHBOARD MAIN SECTION 🌟 -->
     <section class="referral-section">
         <h1 class="page-title">My 10-Level <span>Network</span></h1>
 
-        <!-- 🌟 STATS GRID 🌟 -->
         <div class="ref-stats-grid">
             <div class="stat-card">
                 <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
@@ -396,7 +419,6 @@
             </div>
         </div>
 
-        <!-- 🌟 LINK BANNER 🌟 -->
         <div class="referral-banner" id="referralBanner">
             <div class="ref-header">
                 <h3><i class="fas fa-share-alt"></i> Share VIP Link</h3>
@@ -412,7 +434,6 @@
             </div>
         </div>
 
-        <!-- 🌟 10-LEVEL TABS UI 🌟 -->
         <div class="network-section-header">
             <h2><i class="fas fa-sitemap"></i> My Network Details</h2>
         </div>
@@ -432,7 +453,6 @@
 
         <div class="user-list-container">
             
-            <!-- LEVEL 1 CONTENT (Dynamically populated from Firebase) -->
             <div id="level1" class="level-content active">
                 <div id="level1List">
                     <div class="empty-state" id="level1Loading">
@@ -443,7 +463,6 @@
                 </div>
             </div>
 
-            <!-- LEVEL 2 TO 10 PLACEHOLDERS -->
             <div id="level2" class="level-content"><div class="empty-state"><i class="fas fa-lock"></i><h4>Level 2 Data Processing</h4><p>Your downline data for this level is updated every 24 hours.</p></div></div>
             <div id="level3" class="level-content"><div class="empty-state"><i class="fas fa-lock"></i><h4>Level 3 Data Processing</h4><p>Your downline data for this level is updated every 24 hours.</p></div></div>
             <div id="level4" class="level-content"><div class="empty-state"><i class="fas fa-lock"></i><h4>Level 4 Data Processing</h4><p>Your downline data for this level is updated every 24 hours.</p></div></div>
@@ -457,9 +476,6 @@
         </div>
     </section>
 
-    <!-- ======================================================================
-         🔥 EXACT SAME 6-COLUMN MEGA FOOTER (FROM WALLET.HTML) 🔥
-         ====================================================================== -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -557,11 +573,6 @@
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
     </footer>
-    <!-- ====================================================================== -->
-
-    <!-- ======================================================================
-         🔥 FLOATING BUTTONS (EXACTLY AS WALLET.HTML) 🔥
-         ====================================================================== -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     
     <div class="chatbot-toggler" id="chatbotToggler">
@@ -571,9 +582,6 @@
     <button class="floating-install-btn" id="openAppModal" title="Install Official App">
         <i class="fas fa-download"></i>
     </button>
-    <!-- ====================================================================== -->
-
-    <!-- APK DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -585,16 +593,15 @@
         </div>
     </div>
 
-    <!-- 🔥 UPCOMING PROJECTS POPUP MODAL (FROM WALLET.HTML) 🔥 -->
-    <div class="custom-alert-overlay" id="customAlertOverlay">
-        <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
-            <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
+    <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
+        <div class="upcoming-modal-box">
+            <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
             
-            <div class="app-modal-logo-wrap" style="width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 12px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
-                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4);"></video>
+            <div class="upcoming-modal-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
             
-            <h3 class="app-modal-title notranslate coming-soon-glow" style="font-size: 18px !important; margin-bottom: 8px !important;">COMING SOON</h3>
+            <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
             
             <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
                 <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
@@ -612,7 +619,32 @@
         </div>
     </div>
 
-    <!-- 🔥 SIMPLE ALERT MODAL (FOR COPIED MSG) 🔥 -->
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
+            <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
+            
+            <div class="app-modal-logo-wrap" style="width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 12px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4);"></video>
+            </div>
+            
+            <h3 class="app-modal-title notranslate coming-soon-glow" style="font-size: 18px !important; margin-bottom: 8px !important;">COMING SOON</h3>
+            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
+            <h4 id="customAlertProjectName2" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
+            <p id="customAlertEngDesc2" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
+            <p id="customAlertHinDesc2" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
+            <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
+                <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
+            </div>
+        </div>
+    </div>
+
     <div class="custom-alert-overlay" id="simpleAlertOverlay" style="z-index: 1000000;">
         <div class="custom-alert-box" style="padding: 20px;">
             <div class="custom-alert-logo" style="width: 50px; height: 50px; margin-bottom: 10px;">
@@ -624,9 +656,6 @@
         </div>
     </div>
 
-    <!-- ======================================================================
-         🤖 🔥 DK ATOVITT AI CHATBOT WINDOW (EXACTLY AS WALLET.HTML) 🔥 🤖
-         ====================================================================== -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer" style="display:flex;">
             <div class="chatbot-header">
@@ -649,9 +678,6 @@
             </div>
         </div>
     </div>
-    <!-- ====================================================================== -->
-
-    <!-- 🔥 HIDDEN TEMPLATE FOR DYNAMIC TRANSLATED SHARE MESSAGE 🔥 -->
     <div id="shareMsgTemplate" style="position: absolute; left: -9999px; top: -9999px; white-space: pre-wrap; opacity: 0; pointer-events: none;">🌟 *DK ATOVITT - The Biggest Global Ecosystem!* 🌟
 
 Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *ATVT Coins* kamayein. Mera VIP link use karein, apna 10-Level Network banayein aur life-time passive income shuru karein! 👇
@@ -678,7 +704,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
 👉 *Abhi Join Karein & Apna Bonus Claim Karein:*
 🔗 <span class="notranslate">{LINK}</span></div>
 
-    <!-- UI Scripts -->
     <script>
         // Tab Switching Logic for Levels
         function switchLevel(levelId) {
@@ -689,7 +714,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             event.currentTarget.classList.add('active');
         }
 
-        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE (FROM WALLET.HTML) 🔥 */
+        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE 🔥 */
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
@@ -709,9 +734,9 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if(!data) { alert('Project details not found!'); return; }
             
             document.getElementById('customAlertProjectIcon').className = data.icon;
-            document.getElementById('customAlertProjectName').innerText = data.name;
-            document.getElementById('customAlertEngDesc').innerText = data.eng;
-            document.getElementById('customAlertHinDesc').innerText = data.hin;
+            document.getElementById('customAlertProjectName2').innerText = data.name;
+            document.getElementById('customAlertEngDesc2').innerText = data.eng;
+            document.getElementById('customAlertHinDesc2').innerText = data.hin;
             
             document.getElementById('customAlertOverlay').classList.add('active');
             document.body.style.overflow = 'hidden'; 
@@ -722,7 +747,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if (overlay) overlay.classList.remove('active');
         }
 
-        // Close Upcoming Project Popups
+        // Close Upcoming Project Popups (Wallet Page Style)
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; 
@@ -731,6 +756,44 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             if(e.target === document.getElementById('customAlertOverlay')) {
                 document.getElementById('customAlertOverlay').classList.remove('active');
                 document.body.style.overflow = '';
+            }
+        });
+
+        // 🔥 FIX: SIDE MENU UPCOMING PROJECT POPUP 🔥
+        function showUpcomingProject(id) {
+            const data = upcomingProjectsData[id];
+            if(!data) return;
+            document.getElementById('customAlertProjectIcon').className = data.icon;
+            document.getElementById('customAlertProjectName').innerText = data.name;
+            document.getElementById('customAlertEngDesc').innerText = data.eng;
+            document.getElementById('customAlertHinDesc').innerText = data.hin;
+            
+            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if (sideMenu) sideMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+
+        function closeUpcomingProject() {
+            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
+                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
+            if(upcomingModalOverlay) {
+                upcomingModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === upcomingModalOverlay) closeUpcomingProject();
+                });
+                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
@@ -855,6 +918,20 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; } });
             }
         });
+
+        // 🔥 FIX: PROPER DROPDOWN TOGGLE BEHAVIOR 🔥
+        window.toggleUpcomingProjects = function() {
+            var list = document.getElementById("upcomingProjectsList");
+            var arrow = document.getElementById("upcomingArrow");
+            
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block";
+                arrow.style.transform = "rotate(180deg)";
+            } else {
+                list.style.display = "none";
+                arrow.style.transform = "rotate(0deg)";
+            }
+        };
         
         // 🔥 VIP CHATBOT LOGIC (EXACTLY AS WALLET.HTML) 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
@@ -940,23 +1017,8 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }, 800);
         }
-
-        // 🔥 FIX FOR PROPER DROPDOWN TOGGLE BEHAVIOR 🔥
-        window.toggleUpcomingProjects = function() {
-            var list = document.getElementById("upcomingProjectsList");
-            var arrow = document.getElementById("upcomingArrow");
-            
-            if (list.style.display === "none" || list.style.display === "") {
-                list.style.display = "block";
-                arrow.style.transform = "rotate(180deg)";
-            } else {
-                list.style.display = "none";
-                arrow.style.transform = "rotate(0deg)";
-            }
-        };
     </script>
     
-    <!-- GOOGLE TRANSLATE INIT SCRIPT -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -968,7 +1030,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- 🔥 FIREBASE FETCH PROFILE DATA & REFERRAL LOGIC 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
