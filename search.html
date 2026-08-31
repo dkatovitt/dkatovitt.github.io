@@ -116,20 +116,59 @@
         .search-container h1 span { color: #e6c875; }
         .search-tagline { color: #888; font-size: 14px; margin-bottom: 30px; letter-spacing: 1px; text-transform: uppercase; }
         
-        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; margin-bottom: 35px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); }
+        /* 🔥 RED CIRCLE FIX: 1 Line Text 🔥 */
+        .earn-badge { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: rgba(37, 211, 102, 0.1); 
+            border: 1px solid #25d366; 
+            color: #25d366; 
+            padding: 8px 20px; 
+            border-radius: 30px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            margin-bottom: 35px; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); 
+            white-space: nowrap; /* 🔥 MAGIC FIX TO KEEP IN 1 LINE 🔥 */
+        }
 
-        /* 🔥 GOOGLE SEARCH CUSTOMIZATION (White Clickable Box Fix) 🔥 */
-        .gcse-wrapper { 
-            text-align: left; 
+        /* 🔥 BLUE CIRCLE FIX: Working Search Bar 🔥 */
+        .native-search-form { 
+            display: flex; 
+            width: 100%; 
             background: #ffffff; 
-            padding: 15px 20px; 
-            border-radius: 15px; 
+            border-radius: 30px; 
             border: 2px solid #e6c875; 
             box-shadow: 0 10px 40px rgba(230,200,117,0.3); 
             position: relative; 
             z-index: 100; 
-            margin-bottom: 15px;
+            margin-bottom: 15px; 
+            overflow: hidden;
         }
+        .native-search-form input { 
+            flex: 1; 
+            padding: 15px 20px; 
+            border: none; 
+            outline: none; 
+            font-size: 16px; 
+            color: #000; 
+            background: transparent; 
+        }
+        .native-search-form button { 
+            background: #e6c875; 
+            border: none; 
+            padding: 0 25px; 
+            color: #000; 
+            font-size: 18px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .native-search-form button:hover { background: #d4b561; }
+        
         .gcse-notice { font-size: 12px; color: #888; margin-bottom: 30px; text-align: center; padding: 0 10px;}
 
         .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 12px 30px; background: transparent; color: #e6c875; border: 1.5px solid #e6c875; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
@@ -166,6 +205,7 @@
 
         @media (max-width: 768px) { 
             .search-container { padding-top: 110px; }
+            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } /* Mobile adjustments for 1 line */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
@@ -365,12 +405,13 @@
             <i class="fas fa-gift"></i> Search the Web & Earn ATVT Coins (Coming Soon)
         </div>
 
-        <div class="gcse-wrapper">
-            <script async src="https://cse.google.com/cse.js?cx=YOUR_SEARCH_ENGINE_ID"></script>
-            <div class="gcse-search"></div>
-        </div>
+        <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank">
+            <input type="text" name="q" placeholder="Type here to search the web..." required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        
         <div class="gcse-notice">
-            <i class="fas fa-exclamation-circle" style="color:#e6c875;"></i> Note: Upar box tabhi open/click hoga jab code mein <b>YOUR_SEARCH_ENGINE_ID</b> ki jagah aap apna Google Search ID dalenge.
+            <i class="fas fa-check-circle" style="color:#25d366;"></i> Search is active! Type anything above and click the search icon.
         </div>
 
         <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
@@ -881,17 +922,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             }, 800);
         }
     </script>
-    
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
-                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -962,16 +992,8 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                         <div class="menu-heading">Explore Ecosystem</div>
                         <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        
-                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;">
-                            <div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
-                        </a>
-                        
-                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
-                            <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
-                        </a>
-                        
+                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
                         <div id="upcomingProjectsList" class="upcoming-list">
                             <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
@@ -985,7 +1007,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                             <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
                         </div>
                         <div class="menu-divider"></div>
-
                         <a href="ceo.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
                         <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
                         <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
@@ -1008,7 +1029,6 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                                 <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
-                        
                         <div class="profile-dropdown-container">
                             <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
                                 <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
