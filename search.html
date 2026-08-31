@@ -218,18 +218,22 @@
             100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
         }
         .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
-
+        
         /* CHATBOT CSS */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.9); animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px;}
+        
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0;}
+        
+        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
+
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
+        
         .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
         .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -280,6 +284,7 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <div class="side-menu" id="sideMenu">
+        
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
 
         <div class="custom-translate">
@@ -352,7 +357,6 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 SEARCH CONTENT AREA 🔥 -->
     <section class="search-container">
         <h1>DK <span>SEARCH</span></h1>
         <p class="search-tagline">The Next-Gen Web3 Search Engine</p>
@@ -372,7 +376,6 @@
         <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     </section>
 
-    <!-- 🔥 FOOTER EXACTLY SYNCED WITH INDEX.HTML 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -546,6 +549,32 @@
         </div>
     </div>
 
+    <div id="shareMsgTemplate" style="position: absolute; left: -9999px; top: -9999px; white-space: pre-wrap; opacity: 0; pointer-events: none;">🌟 *DK ATOVITT - The Biggest Global Ecosystem!* 🌟
+
+Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *ATVT Coins* kamayein. Mera VIP link use karein, apna 10-Level Network banayein aur life-time passive income shuru karein! 👇
+
+🔗 <span class="notranslate">{LINK}</span>
+
+🎁 Registration bilkul FREE hai, abhi join karein aur *Signup Bonus free me paye!*
+
+🔥 ⬇️ *HAMARE 13 MEGA PROJECTS* ⬇️ 🔥
+🎬 DK Film Production house
+👥 DK Connect Social media
+🔗 DK ATOVITT CHAIN / SCAN
+📈 DK Crypto Exchange
+🪙 DK ATVT Coin
+💳 DK Decentralised Wallet
+🔍 DK Search
+🛒 DK Mart
+📢 DK Digital Ads
+📍 DK GPS Tracker
+💬 DK Connect Messenger
+💬 DK Chat
+🎮 DK Games
+
+👉 *Abhi Join Karein & Apna Bonus Claim Karein:*
+🔗 <span class="notranslate">{LINK}</span></div>
+
     <script>
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
@@ -618,6 +647,29 @@
             document.body.style.overflow = ''; 
         });
 
+        window.copyMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            navigator.clipboard.writeText(link);
+            showCustomAlert('Copied!', 'Referral Link Copied Successfully!', false);
+        };
+
+        window.shareMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            
+            let shareText = document.getElementById('shareMsgTemplate').innerText;
+            shareText = shareText.replace(/{LINK}/g, link);
+            
+            if (navigator.share) {
+                navigator.share({
+                    text: shareText
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                window.copyMyReferral();
+            }
+        };
+
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -660,6 +712,18 @@
             navigator.clipboard.writeText(copyText);
             showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
+
+        function reveal() { 
+            var reveals = document.querySelectorAll('.reveal'); 
+            for (var i = 0; i < reveals.length; i++) { 
+                var windowHeight = window.innerHeight; 
+                var elementTop = reveals[i].getBoundingClientRect().top; 
+                var elementVisible = 100; 
+                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } 
+            } 
+        } 
+        window.addEventListener('scroll', reveal); 
+        reveal(); 
 
         window.translatePage = function(lang) {
             if (lang === "") {
@@ -817,6 +881,17 @@
             }, 800);
         }
     </script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
