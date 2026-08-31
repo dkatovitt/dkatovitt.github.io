@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK SEARCH - The Web3 Search Engine</title>
-    <meta name="description" content="Welcome to DK Search. The Next-Gen Web3 Search Engine.">
+    <meta name="description" content="DK Search - The Next-Gen Web3 Search Engine. Explore the web and earn ATVT tokens.">
     <meta name="theme-color" content="#111">
     
     <link rel="stylesheet" href="css/style.css">
@@ -121,13 +121,13 @@
         /* 🔥 GOOGLE SEARCH CUSTOMIZATION (White Clickable Box Fix) 🔥 */
         .gcse-wrapper { 
             text-align: left; 
-            background: #ffffff; /* Safed Dabba */
+            background: #ffffff; 
             padding: 15px 20px; 
             border-radius: 15px; 
             border: 2px solid #e6c875; 
             box-shadow: 0 10px 40px rgba(230,200,117,0.3); 
             position: relative; 
-            z-index: 100; /* Layer ko sabse upar kiya */
+            z-index: 100; 
             margin-bottom: 15px;
         }
         .gcse-notice { font-size: 12px; color: #888; margin-bottom: 30px; text-align: center; padding: 0 10px;}
@@ -170,6 +170,19 @@
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
         }
+
+        /* CUSTOM ALERT MODAL CSS */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
         /* APK MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
@@ -339,6 +352,7 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🔥 SEARCH CONTENT AREA 🔥 -->
     <section class="search-container">
         <h1>DK <span>SEARCH</span></h1>
         <p class="search-tagline">The Next-Gen Web3 Search Engine</p>
@@ -351,7 +365,6 @@
             <script async src="https://cse.google.com/cse.js?cx=YOUR_SEARCH_ENGINE_ID"></script>
             <div class="gcse-search"></div>
         </div>
-        
         <div class="gcse-notice">
             <i class="fas fa-exclamation-circle" style="color:#e6c875;"></i> Note: Upar box tabhi open/click hoga jab code mein <b>YOUR_SEARCH_ENGINE_ID</b> ki jagah aap apna Google Search ID dalenge.
         </div>
@@ -359,6 +372,7 @@
         <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
     </section>
 
+    <!-- 🔥 FOOTER EXACTLY SYNCED WITH INDEX.HTML 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -366,6 +380,7 @@
                 <h3 class="notranslate" style="font-size: 24px; letter-spacing: 2px; color: #e6c875; margin: 0 0 10px 0;">DK ATOVITT</h3>
                 <p style="font-size: 13px; line-height: 1.6; color: #888; margin: 0;">A Global Tech & Entertainment Empire. Uniting Cinematic Magic, Web3 Crypto, Smart E-commerce, Gaming, and Next-Gen Social Networking to empower the digital world.</p>
             </div>
+            
             <div class="footer-links-col">
                 <div class="tseries-footer-col">
                     <h4>Movies & Media</h4>
@@ -379,6 +394,7 @@
                         <li><a href="auditions.html">Auditions</a></li>
                     </ul>
                 </div>
+                
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>About Us</h4>
                     <ul>
@@ -388,6 +404,7 @@
                         <li><a href="news.html?from=index">News & Updates</a></li>
                     </ul>
                 </div>
+                
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Legal & Help</h4>
                     <ul>
@@ -396,6 +413,18 @@
                         <li><a href="notice.html">Public Notice</a></li>
                         <li><a href="faq.html">Help / FAQs</a></li>
                     </ul>
+                </div>
+                
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>Connect With Us</h4>
+                    <div class="footer-social-row">
+                        <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
             
@@ -408,6 +437,7 @@
                         <li><a href="search.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Search</a></li>
                     </ul>
                 </div>
+                
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Upcoming Projects</h4>
                     <ul>
@@ -416,13 +446,14 @@
                         <li><a href="javascript:void(0)" onclick="showUpcomingProject('coin')">DK ATVT Coin (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProject('wallet')">DK Decentralised Wallet (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProject('mart')">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('games')">DK Games (Soon)</a></li>
                     </ul>
                 </div>
+                
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>My Account</h4>
                     <ul>
@@ -432,7 +463,9 @@
                     </ul>
                 </div>
             </div>
+            
         </div>
+        
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
         </div>
@@ -453,20 +486,39 @@
         </div>
     </div>
 
+    <div class="custom-alert-overlay" id="customAlertOverlay">
+        <div class="custom-alert-box">
+            <div class="custom-alert-logo">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="customAlertTitle">Alert</h3>
+            <p class="custom-alert-msg" id="customAlertMsg">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeCustomAlert">OK</button>
+        </div>
+    </div>
+
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
+            
             <div class="upcoming-modal-logo">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
+            
             <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
-            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;"><i id="customAlertProjectIcon" class="fas fa-rocket"></i></div>
+            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
             <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
             <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
             <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
             <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
                 <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
-                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!</p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
             </div>
         </div>
     </div>
@@ -475,7 +527,9 @@
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
                 <div class="chatbot-header-left">
-                    <div class="chat-header-video-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
+                    <div class="chat-header-video-wrap">
+                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+                    </div>
                     <div class="notranslate">DK ATOVITT AI CHAT BOT</div>
                 </div>
                 <button id="closeChatbot">&times;</button>
@@ -496,7 +550,7 @@
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
-            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर लेनदेन को सशक्त बनाता है।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
             'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
@@ -509,13 +563,17 @@
         function showUpcomingProject(id) {
             const data = upcomingProjectsData[id];
             if(!data) return;
+            
             document.getElementById('customAlertProjectIcon').className = data.icon;
             document.getElementById('customAlertProjectName').innerText = data.name;
             document.getElementById('customAlertEngDesc').innerText = data.eng;
             document.getElementById('customAlertHinDesc').innerText = data.hin;
+            
             document.getElementById('upcomingProjectModalOverlay').classList.add('active');
+            
             document.body.style.overflow = 'hidden';
             document.documentElement.style.overflow = 'hidden';
+            
             const sideMenu = document.getElementById('sideMenu');
             const overlay = document.getElementById('overlay');
             if (sideMenu) sideMenu.classList.remove('active');
@@ -524,6 +582,7 @@
 
         function closeUpcomingProject() {
             document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            
             if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
                 (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
                 document.body.style.overflow = ''; 
@@ -535,12 +594,30 @@
             const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
             if(upcomingModalOverlay) {
                 upcomingModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === upcomingModalOverlay) { closeUpcomingProject(); }
+                    if(e.target === upcomingModalOverlay) {
+                        closeUpcomingProject();
+                    }
                 });
+                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
             }
         });
 
-        // Menu Toggle Scripts
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('customAlertOverlay');
+            const titleEl = document.getElementById('customAlertTitle');
+            const msgEl = document.getElementById('customAlertMsg');
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        document.getElementById('closeCustomAlert').addEventListener('click', () => {
+            document.getElementById('customAlertOverlay').classList.remove('active');
+            document.body.style.overflow = ''; 
+        });
+
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -550,13 +627,15 @@
         function openMenu() {
             sideMenu.classList.add('active'); 
             overlay.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; html.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden'; 
+            html.style.overflow = 'hidden'; 
         }
 
         function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
-            document.body.style.overflow = ''; html.style.overflow = ''; 
+            document.body.style.overflow = ''; 
+            html.style.overflow = ''; 
         }
         
         menuBtn.addEventListener('click', openMenu); 
@@ -565,12 +644,21 @@
         document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
-
+        
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
                 var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){ dropdowns.forEach(d => d.classList.remove('show')); }
+                if(dropdowns){
+                   dropdowns.forEach(d => d.classList.remove('show'));
+                }
             }
+        }
+        
+        function copyDkId() {
+            var copyText = document.getElementById("sidebarDkId").innerText.trim();
+            if(copyText.includes('Loading') || copyText.includes('Login')) return;
+            navigator.clipboard.writeText(copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
 
         window.translatePage = function(lang) {
@@ -594,17 +682,57 @@
             }
         }
         
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var sidebarLang = document.getElementById('lang-mobile');
+                var desktopLang = document.getElementById('lang-desktop');
+                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
+            }, 1000);
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const openAppModal = document.getElementById('openAppModal');
+            const appModalOverlay = document.getElementById('appModalOverlay');
+            const closeAppModal = document.getElementById('closeAppModal');
+            
+            if(openAppModal && appModalOverlay) {
+                openAppModal.addEventListener('click', (e) => { 
+                    e.preventDefault(); 
+                    appModalOverlay.classList.add('active'); 
+                    document.body.style.overflow = 'hidden'; 
+                });
+                closeAppModal.addEventListener('click', () => { 
+                    appModalOverlay.classList.remove('active'); 
+                    document.body.style.overflow = ''; 
+                });
+                appModalOverlay.addEventListener('click', (e) => { 
+                    if(e.target === appModalOverlay) {
+                        appModalOverlay.classList.remove('active'); 
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+
         window.toggleUpcomingProjects = function() {
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
+            
             if (list.style.display === "none" || list.style.display === "") {
-                list.style.display = "block"; arrow.style.transform = "rotate(180deg)"; 
+                list.style.display = "block";
+                arrow.style.transform = "rotate(180deg)"; 
             } else {
-                list.style.display = "none"; arrow.style.transform = "rotate(0deg)"; 
+                list.style.display = "none";
+                arrow.style.transform = "rotate(0deg)"; 
             }
         };
-
-        // Chatbot Logic
+        
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -619,14 +747,27 @@
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
-                document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; 
+                document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
-                document.body.style.overflow = ''; document.documentElement.style.overflow = ''; resetChatbot(); 
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+                resetChatbot(); 
             }); 
+        }
+        if(chatbotOverlay) {
+            chatbotOverlay.addEventListener('click', (e) => {
+                if(e.target === chatbotOverlay) {
+                    chatbotOverlay.classList.remove('active'); 
+                    document.body.style.overflow = ''; 
+                    document.documentElement.style.overflow = '';
+                    resetChatbot(); 
+                }
+            });
         }
 
         function sendChat(type) {
@@ -647,6 +788,11 @@
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -659,6 +805,7 @@
 
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            
             let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
             chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
@@ -670,21 +817,11 @@
             }, 800);
         }
     </script>
-    
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'auto', 
-                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -697,12 +834,15 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
         onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
                 let fullName = user.displayName || "VIP Member";
-                let userName = fullName.trim().split(' ')[0];
+                let userName = fullName.trim().split(' ')[0]; 
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
+
                 let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
@@ -728,7 +868,11 @@
 
                 let adminButtonHTML = "";
                 if (user.email === "dipakceo@dkatovitt.com") {
-                    adminButtonHTML = `<a href="admin-panel.html" class="normal-link" style="color: #ff4d4d; background: rgba(255,77,77,0.1); border-left: 3px solid #ff4d4d; margin-top: 5px;"><div class="link-text"><i class="fas fa-user-shield" style="color: #ff4d4d;"></i> <span style="font-weight: 900; letter-spacing: 1px;">SUPER ADMIN</span></div></a>`;
+                    adminButtonHTML = `
+                        <a href="admin-panel.html" class="normal-link" style="color: #ff4d4d; background: rgba(255,77,77,0.1); border-left: 3px solid #ff4d4d; margin-top: 5px;">
+                            <div class="link-text"><i class="fas fa-user-shield" style="color: #ff4d4d;"></i> <span style="font-weight: 900; letter-spacing: 1px;">SUPER ADMIN</span></div>
+                        </a>
+                    `;
                 }
 
                 const sidebarMenu = document.querySelector('.sidebar-menu');
@@ -743,16 +887,30 @@
                         <div class="menu-heading">Explore Ecosystem</div>
                         <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
+                        
+                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;">
+                            <div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
+                        </a>
+                        
+                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                            <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+                        </a>
+                        
                         <div id="upcomingProjectsList" class="upcoming-list">
                             <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
                         </div>
                         <div class="menu-divider"></div>
+
                         <a href="ceo.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
                         <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
                         <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
@@ -768,8 +926,14 @@
                                 <option value="">🌐 Select Language</option>
                                 <option value="hi">हिन्दी (Hindi)</option>
                                 <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
+                        
                         <div class="profile-dropdown-container">
                             <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
                                 <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
@@ -799,6 +963,28 @@
                         });
                     });
                 }, 500);
+
+            } else {
+                const headerRightArea = document.getElementById('headerRightArea');
+                if(headerRightArea) {
+                    headerRightArea.innerHTML = `
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                            </select>
+                        </div>
+                        <a href="auth.html" class="login-btn-header">
+                            <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                        </a>
+                    `;
+                }
             }
         });
     </script>
