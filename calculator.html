@@ -224,24 +224,7 @@
         .seo-article .formula-box ul li:last-child { border-bottom: none; }
         .seo-article .formula-box ul li span { color: #e6c875; font-weight: bold; margin-right: 10px; font-size: 16px; display: inline-block; width: 25px;}
 
-        /* 🔥 FOOTER APP BANNER 🔥 */
-        .footer-premium-actions { max-width: 1200px; margin: 0 auto 40px auto; background: linear-gradient(135deg, #111, #050505); border: 1px solid #333; border-radius: 18px; padding: 35px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; overflow: hidden;}
-        .footer-premium-actions::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background: #e6c875; }
-        .action-box { display: flex; align-items: center; gap: 20px; }
-        .action-box.left-box { padding-right: 30px; border-right: 1px solid #222; }
-        .action-box.right-box { padding-left: 10px; }
-        .action-icon { width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 26px; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
-        .apk-icon { background: rgba(0, 168, 255, 0.1); color: #00a8ff; border: 1px solid #00a8ff; }
-        .ai-icon { background: rgba(230, 200, 117, 0.1); color: #e6c875; border: 1px solid #e6c875; }
-        .action-content h4 { color: #fff; margin: 0 0 6px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif;}
-        .action-content p { color: #888; margin: 0 0 15px 0; font-size: 13px; line-height: 1.5; }
-        .action-btn { border: none; padding: 10px 25px; border-radius: 30px; font-weight: 900; font-size: 13px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: inline-flex; align-items: center; justify-content: center; gap: 8px;}
-        .apk-btn { background: #00a8ff; color: #fff; }
-        .apk-btn:hover { background: #008cd9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 168, 255, 0.4);}
-        .ai-btn { background: #e6c875; color: #000; }
-        .ai-btn:hover { background: #d4b561; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 200, 117, 0.4);}
-
-        /* 🔥 ENSURE MOBILE DESIGN STAYS EXACTLY AS SCREENSHOT (NO STACKING) 🔥 */
+        /* 🔥 MOBILE RESPONSIVE (Side by Side Fix) 🔥 */
         @media (max-width: 768px) {
             .calc-container { padding-top: 100px; }
             .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #333;}
@@ -254,11 +237,6 @@
             
             .seo-article { padding: 25px 15px; border-radius: 15px; margin: 20px 10px;}
             .seo-article h2 { font-size: 22px; }
-            
-            .footer-premium-actions { grid-template-columns: 1fr; padding: 25px 20px; gap: 20px; border-radius: 15px; margin: 0 10px 40px 10px;}
-            .action-box { flex-direction: column; text-align: center; gap: 15px;}
-            .action-box.left-box { border-right: none; border-bottom: 1px solid #222; padding-right: 0; padding-bottom: 25px; }
-            .action-box.right-box { padding-left: 0; padding-top: 5px; }
         }
 
         /* MASTER MEGA FOOTER CSS */
@@ -272,20 +250,15 @@
         .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
+        
+        /* 🔥 NEW 8 ICONS SOCIAL ROW CSS 🔥 */
+        .footer-social-row { display: grid; grid-template-columns: repeat(4, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
-        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
+        .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); box-shadow: 0 0 15px rgba(230,200,117,0.4);}
+        
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
-        /* 🔥 FLOATING BUTTONS (Only WhatsApp Kept) 🔥 */
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
-        .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
-        @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
-
-        @media (max-width: 768px) {
-            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
-        }
 
         /* CUSTOM ALERT MODAL CSS */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100005; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
@@ -454,6 +427,7 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🔥 EXACT MATCH CALCULATOR SECTION (DK Gold & Black Theme) 🔥 -->
     <section class="calc-container">
         <div id="particles-js"></div>
         
@@ -463,6 +437,7 @@
         </div>
 
         <div class="calc-wrapper">
+            <!-- 🌟 4 TABS (Top Area) 🌟 -->
             <div class="calc-tabs">
                 <div class="calc-tab" data-tab="compound">Compound<br>Interest</div>
                 <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
@@ -470,8 +445,10 @@
                 <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
+            <!-- 🌟 MAIN FORM BODY 🌟 -->
             <form id="compoundForm" class="calc-body">
                 
+                <!-- Currency Selection -->
                 <span class="input-label">Currency:</span>
                 <div class="currency-row" id="currencyGroup">
                     <button type="button" class="curr-btn active" data-curr="$">$</button>
@@ -482,12 +459,14 @@
                     <button type="button" class="curr-btn" data-curr="ATVT" style="font-size:12px;">ATVT</button>
                 </div>
 
+                <!-- Principal Amount -->
                 <span class="input-label">Principal amount:</span>
                 <div class="input-box" style="width: 100%;">
                     <div class="input-prefix" id="mainPrefix">$</div>
                     <input type="number" id="principal" placeholder="0" min="0" step="any" required>
                 </div>
 
+                <!-- Rate (%) Row -->
                 <span class="input-label">Rate (%):</span>
                 <div class="rate-row">
                     <div class="input-box">
@@ -502,6 +481,7 @@
                     </select>
                 </div>
 
+                <!-- Time Boxes (Years, Months, Days) -->
                 <div class="time-row">
                     <div class="time-col">
                         <span class="input-label">Years:</span>
@@ -519,6 +499,7 @@
 
                 <div class="section-divider" id="div1"></div>
 
+                <!-- Compound Interval Row (Hidden by default, for Compound Interest tab) -->
                 <div class="options-row" id="compIntervalRow" style="display: none;">
                     <div class="options-col">
                         <span class="input-label">Compound Interval</span>
@@ -532,6 +513,7 @@
                     <div class="options-col"></div>
                 </div>
 
+                <!-- Weekend & Reinvest Row (For Daily/Forex) -->
                 <div class="options-row" id="dailyOptionsRow">
                     <div class="options-col">
                         <span class="input-label">Include all days of week?</span>
@@ -544,12 +526,14 @@
                         <span class="input-label">Daily reinvest rate</span>
                         <div class="reinvest-wrap">
                             <select class="reinvest-select" id="reinvestRate">
-                                </select>
+                                <!-- JS will populate 100% to 0% -->
+                            </select>
                             <button type="button" class="help-btn" onclick="showCustomAlert('Reinvest Rate', 'The percentage of your daily profit that you want to reinvest. The rest will be kept as cash.')">?</button>
                         </div>
                     </div>
                 </div>
 
+                <!-- 🔥 EXTENDED WEEKEND OPTIONS (Shows when Include days = No) 🔥 -->
                 <div id="extendedWeekendOptions" style="display: none;">
                     <div class="options-row" style="margin-bottom: 10px;">
                         <div class="options-col">
@@ -578,6 +562,7 @@
 
                 <div class="section-divider" id="div2"></div>
 
+                <!-- Additional Contributions -->
                 <span class="input-label" id="contribLabel">Additional contributions: <span style="color:#888; font-size:12px;">(optional)</span></span>
                 <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
                     <button type="button" class="toggle-btn active" data-val="none">None</button>
@@ -585,6 +570,7 @@
                     <button type="button" class="toggle-btn" onclick="showCustomAlert('Withdrawals', 'Withdrawal feature will be available shortly.', false)">Withdrawals</button>
                 </div>
                 
+                <!-- 🔥 HIDDEN DEPOSIT BOX (Shows when Deposits selected) 🔥 -->
                 <div id="extendedDepositOptions" style="display:none; background:#0a0a0a; border:1px dashed #333; border-radius:8px; padding:15px; margin-bottom:20px;">
                     <span class="input-label">Additional deposits <span style="color:#888; font-size:11px;">(optional)</span></span>
                     <div class="rate-row" style="margin-bottom:0;">
@@ -614,6 +600,7 @@
 
                 <div class="section-divider" id="div3"></div>
 
+                <!-- Date & Calculate Button Row -->
                 <div class="action-row">
                     <div class="time-col">
                         <span class="input-label">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration: underline;" onclick="document.getElementById('startDate').valueAsDate = new Date()">today</a></span>
@@ -627,6 +614,7 @@
                 <div class="results-label" id="resultsLabel">Results will appear here</div>
             </form>
 
+            <!-- 🌟 RESULTS SECTION 🌟 -->
             <div id="resultsArea">
                 <div class="results-grid">
                     <div class="result-card">
@@ -655,12 +643,14 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            </tbody>
+                            <!-- JS will inject rows here -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
         
+        <!-- 🔥 VIP SEO ARTICLE & FAQ SECTION 🔥 -->
         <div class="seo-article">
             <h2>Questions about our calculator</h2>
             <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
@@ -699,27 +689,9 @@
         
     </section>
 
+    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         
-        <div class="footer-premium-actions">
-            <div class="action-box left-box">
-                <div class="action-icon apk-icon"><i class="fas fa-download"></i></div>
-                <div class="action-content">
-                    <h4>DK Atovitt App</h4>
-                    <p>Download the official Android APK for seamless Web3 access.</p>
-                    <button id="footerAppBtn" class="action-btn apk-btn"><i class="fas fa-android"></i> Download APK</button>
-                </div>
-            </div>
-            <div class="action-box right-box">
-                <div class="action-icon ai-icon"><i class="fas fa-robot"></i></div>
-                <div class="action-content">
-                    <h4>DK AI Chatbot</h4>
-                    <p>Got questions? Chat with our 24/7 intelligent Web3 assistant.</p>
-                    <button id="footerChatBtn" class="action-btn ai-btn"><i class="fas fa-comments"></i> Start Chat</button>
-                </div>
-            </div>
-        </div>
-
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="height: 60px; margin-bottom: 15px; mix-blend-mode: screen; transform: scale(1.3); transform-origin: left center;"></video>
@@ -763,6 +735,7 @@
                 
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
+                    <!-- 🔥 NEW 8 ICONS SOCIAL ROW 🔥 -->
                     <div class="footer-social-row">
                         <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
@@ -770,6 +743,9 @@
                         <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
                         <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
                         <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                        <!-- Added App & Chatbot Icons -->
+                        <a href="#" id="footerAppIcon" class="footer-icon-btn" title="Download App"><i class="fas fa-download"></i></a>
+                        <a href="#" id="footerChatIcon" class="footer-icon-btn" title="DK AI Chatbot"><i class="fas fa-robot"></i></a>
                     </div>
                 </div>
             </div>
@@ -818,8 +794,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
+    <!-- APP DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -831,6 +806,7 @@
         </div>
     </div>
 
+    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -842,6 +818,7 @@
         </div>
     </div>
 
+    <!-- UPCOMING MODAL CSS -->
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
@@ -858,6 +835,7 @@
         </div>
     </div>
     
+    <!-- CHATBOT OVERLAY -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -879,6 +857,7 @@
         </div>
     </div>
 
+    <!-- 🔥 DYNAMIC TAB & CALCULATOR LOGIC 🔥 -->
     <script>
         // Set today's date
         document.getElementById('startDate').valueAsDate = new Date();
@@ -1035,6 +1014,7 @@
             
             document.getElementById('resultsLabel').style.display = 'none';
 
+            // Get standard values
             const principal = parseFloat(document.getElementById('principal').value) || 0;
             const rateInput = parseFloat(document.getElementById('interestRate').value) || 0;
             const rateType = document.getElementById('rateType').value;
@@ -1043,6 +1023,7 @@
             const months = parseInt(document.getElementById('timeMonths').value) || 0;
             const days = parseInt(document.getElementById('timeDays').value) || 0;
             
+            // Get optional values (might be hidden depending on tab)
             const reinvestRate = parseFloat(document.getElementById('reinvestRate').value) / 100;
             const skipWeekends = (includeWeekends === 'no');
             
@@ -1238,26 +1219,27 @@
                 });
             }
 
-            const footerAppBtn = document.getElementById('footerAppBtn');
-            const footerChatBtn = document.getElementById('footerChatBtn');
+            // 🔥 FOOTER MODAL TRIGGERS 🔥
+            const footerAppIcon = document.getElementById('footerAppIcon');
+            const footerChatIcon = document.getElementById('footerChatIcon');
             const appModalOverlay = document.getElementById('appModalOverlay');
             const chatbotOverlay = document.getElementById('chatbotOverlay');
             
-            if(footerAppBtn && appModalOverlay) {
-                footerAppBtn.addEventListener('click', (e) => { 
+            if(footerAppIcon && appModalOverlay) {
+                footerAppIcon.addEventListener('click', (e) => { 
                     e.preventDefault(); 
                     appModalOverlay.classList.add('active'); 
                     document.body.style.overflow = 'hidden'; 
                 });
             }
-            if(footerChatBtn && chatbotOverlay) {
-                footerChatBtn.addEventListener('click', () => { 
+            if(footerChatIcon && chatbotOverlay) {
+                footerChatIcon.addEventListener('click', (e) => { 
+                    e.preventDefault();
                     chatbotOverlay.classList.add('active'); 
                     document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';
                 });
             }
             
-            // Initialization trigger to set Default Tab State properly
             document.querySelector('.calc-tab.active').click();
         });
 
