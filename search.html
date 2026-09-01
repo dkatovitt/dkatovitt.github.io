@@ -440,7 +440,7 @@
                     <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
                     <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
                     <button type="button" class="icon-btn" title="DK AI Lens" onclick="document.getElementById('dkLensInput').click()"><i class="fas fa-camera"></i></button>
-                    <!-- 🔥 YAHAN SE AI CHATBOT ICON HATA DIYA GAYA HAI 🔥 -->
+                    <!-- 🔥 AI CHATBOT ICON PERMANENTLY REMOVED 🔥 -->
                     <button type="submit" class="search-submit-btn"><i class="fas fa-search"></i></button>
                 </form>
                 
@@ -739,9 +739,11 @@
             }, 1000); 
         });
 
+        // 🔥 FIXED: OS EMOJI KO HATA KAR PREMIUM DIAMOND (GEM) ICON LAGAYA HAI 🔥
         function showRewardAnimation() {
             const reward = document.createElement('div');
-            reward.innerHTML = "+ DK ATVT Coin 🪙";
+            // Premium FontAwesome Golden Gem icon used to match ticker perfectly!
+            reward.innerHTML = `+ DK ATVT Coin <i class="fas fa-gem" style="color: #e6c875; margin-left: 5px; filter: drop-shadow(0 0 8px rgba(230,200,117,0.8));"></i>`;
             reward.style.position = 'fixed';
             reward.style.top = '50%';
             reward.style.left = '50%';
@@ -829,11 +831,11 @@
             }
         }
 
-        // 🔥 PLACEHOLDER TEXT UPDATED 🔥
+        // AUTO-TYPING PLACEHOLDER
         const placeholderTexts = [
             "Type here to search the web...",
             "Search Web3 & Crypto Updates...",
-            "Explore the DK Ecosystem...", /* Changed from "Ask DK AI Assistant" */
+            "Explore the DK Ecosystem...", 
             "Search for DK ATVT Coin..."
         ];
         let pIndex = 0;
