@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
-    <!-- CSS FOR PARTICLES (WEB3 BACKGROUND) -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -147,9 +146,9 @@
         .tab-btn:hover { background: rgba(230,200,117,0.1); color: #e6c875; border-color: #e6c875; }
         .tab-btn.active { background: #e6c875; color: #000; border-color: #e6c875; box-shadow: 0 4px 10px rgba(230,200,117,0.3);}
         
-        /* 🔥 IN-HOUSE RESULTS AREA CSS 🔥 */
-        #searchResultsArea { display: none; background: #0f0f0f; text-align: left; padding: 25px; border-radius: 15px; border: 1px solid #333; margin-top: 10px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; z-index: 10;}
-        .results-loader { text-align: center; color: #e6c875; font-size: 18px; font-weight: bold; padding: 20px; }
+        /* 🔥 FIX: IN-HOUSE RESULTS AREA CSS 🔥 */
+        #searchResultsArea { display: none; background: #0f0f0f; text-align: left; padding: 25px; border-radius: 15px; border: 1px solid #333; margin-top: 10px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; z-index: 10; min-height: 200px;}
+        .results-loader { text-align: center; color: #e6c875; font-size: 15px; font-weight: bold; padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; letter-spacing: 1px;}
         
         .gsc-control-cse { background-color: transparent !important; border: none !important; padding: 0 !important; font-family: Arial, sans-serif !important;}
         .gsc-result { background-color: #1a1a1a !important; border: 1px solid #222 !important; padding: 15px !important; border-radius: 12px !important; margin-bottom: 15px !important; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s;}
@@ -195,6 +194,7 @@
             .gsc-result { padding: 10px !important; }
             .gs-title, .gs-title * { font-size: 15px !important; }
             
+            /* RESTORING FLOATING BUTTONS EXACT CSS FOR MOBILE */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
@@ -257,25 +257,6 @@
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
 
-        /* UPCOMING DROPDOWN CSS */
-        .upcoming-list { display: none; background: transparent; }
-        .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
-        .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); }
-
-        /* UPCOMING MODAL CSS */
-        .upcoming-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .upcoming-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .upcoming-modal-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 18px 15px; text-align: center; position: relative; font-family: Arial, sans-serif; box-shadow: 0 10px 40px rgba(0,0,0,0.9); }
-        .upcoming-modal-close { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; margin: 0; padding: 0; line-height: 1; }
-        .upcoming-modal-close:hover { color: #fff; }
-        .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
-            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
-        }
-        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 8px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; font-family: 'Playfair Display', serif; }
-        
         /* CHATBOT CSS */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -410,7 +391,6 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 SUPER PREMIUM SEARCH CONTENT AREA 🔥 -->
     <section class="search-container">
         <div id="particles-js"></div>
         
@@ -427,7 +407,7 @@
                 </div>
             </div>
 
-            <div class="crypto-ticker">
+            <div class="crypto-ticker" id="cryptoTicker">
                 <div class="ticker-track">
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
@@ -436,7 +416,6 @@
                     <span><i class="fas fa-coins" style="color:#ffd700;"></i> GOLD: $2,450 <span style="color:#25d366;">(+0.5%)</span></span>
                     <span><i class="fas fa-coins" style="color:#c0c0c0;"></i> SILVER: $28.50 <span style="color:#25d366;">(+1.1%)</span></span>
                     
-                    <!-- Duplicated for seamless loop -->
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
                     <span><i class="fas fa-cube" style="color:#f3ba2f;"></i> BNB: $590 <span style="color:#ff4d4d;">(-0.8%)</span></span>
@@ -456,17 +435,19 @@
             
             <input type="file" id="dkLensInput" accept="image/*" capture="environment" style="display:none;" onchange="handleImageSearch(event)">
 
-            <div class="search-tabs">
+            <div class="search-tabs" id="searchTabs">
                 <button class="tab-btn active"><i class="fas fa-globe"></i> Web</button>
                 <button class="tab-btn" onclick="showCustomAlert('Images', 'Image search will be available soon!')"><i class="fas fa-image"></i> Images</button>
                 <button class="tab-btn" onclick="showCustomAlert('News', 'Crypto news feed will be available soon!')"><i class="fas fa-newspaper"></i> News</button>
                 <button class="tab-btn" onclick="showCustomAlert('Videos', 'Video search will be available soon!')"><i class="fas fa-play-circle"></i> Videos</button>
             </div>
             
-            <!-- 🔥 IN-HOUSE RESULTS WILL SHOW UP HERE (WARNING REMOVED) 🔥 -->
             <div id="searchResultsArea">
-                <!-- Google Programmable Search Results Code -->
-                <script async src="https://cse.google.com/cse.js?cx=YOUR_SEARCH_ENGINE_ID"></script>
+                <div id="searchLoader" class="results-loader">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <span>Fetching Secure Web3 Results...</span>
+                </div>
+                
                 <div class="gcse-searchresults-only" data-queryParameterName="q"></div>
             </div>
 
@@ -493,7 +474,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -607,7 +587,6 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -667,19 +646,52 @@
     </div>
 
     <script>
-        // 🔥 IN-HOUSE SEARCH RESULTS LOGIC 🔥
+        // 🔥 FIXED: IN-HOUSE SEARCH RESULTS LOGIC 🔥
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const query = urlParams.get('q');
+            
+            // 👇 🔥 YAHAN APNA ASLI ID DAALNA HAI 🔥 👇
+            const googleSearchID = "YOUR_SEARCH_ENGINE_ID"; 
+            
             if(query) {
                 document.getElementById('searchInput').value = query;
+                
+                // Show Result Box, Hide Quick Links
                 document.getElementById('searchResultsArea').style.display = 'block';
-                document.getElementById('welcomeTagline').style.display = 'none'; 
-                document.getElementById('badgesRow').style.display = 'none'; 
                 document.getElementById('quickAccessGrid').style.display = 'none';
                 
+                // IMPORTANT: In top elements ko hide NABI karna hai taaki page upar na bhage
+                // document.getElementById('welcomeTagline').style.display = 'none'; 
+                // document.getElementById('badgesRow').style.display = 'none'; 
+                
+                // Alert if ID is missing!
+                if(googleSearchID === "YOUR_SEARCH_ENGINE_ID") {
+                    document.getElementById('searchResultsArea').innerHTML = `
+                        <div style="padding:40px 20px; color:#ff4d4d; font-weight:bold; text-align:center;">
+                            <i class="fas fa-exclamation-triangle fa-3x" style="margin-bottom:15px;"></i><br><br>
+                            Bhai, aapne abhi tak apna Google Search ID code mein nahi dala hai. Isiliye yahan results load nahi ho rahe hain!<br><br>
+                            <span style="color:#ccc; font-size:12px; font-weight:normal;">Line number lagbhag 500 par <br><b>const googleSearchID = "YOUR_SEARCH_ENGINE_ID";</b><br> ko apne asli ID se replace kijiye.</span>
+                        </div>
+                    `;
+                } else {
+                    // Inject Google Script Dynamically to ensure it runs properly
+                    const script = document.createElement('script');
+                    script.src = "https://cse.google.com/cse.js?cx=" + googleSearchID;
+                    script.async = true;
+                    document.head.appendChild(script);
+
+                    // Hide loading spinner after 2 seconds
+                    setTimeout(() => {
+                        let loader = document.getElementById('searchLoader');
+                        if(loader) loader.style.display = 'none';
+                    }, 2500);
+                }
+
+                // Smooth Scroll Fix (Minus 120px to account for fixed header)
                 setTimeout(() => {
-                    document.getElementById('searchResultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const y = document.getElementById('searchResultsArea').getBoundingClientRect().top + window.scrollY - 120;
+                    window.scrollTo({top: y, behavior: 'smooth'});
                 }, 500);
             }
         });
@@ -702,8 +714,8 @@
             reward.style.left = '50%';
             reward.style.transform = 'translate(-50%, -50%)';
             reward.style.color = '#25d366';
-            reward.style.fontSize = '24px'; /* Made font smaller so it fits */
-            reward.style.whiteSpace = 'nowrap'; /* 🔥 MAGIC FIX TO KEEP IN 1 LINE 🔥 */
+            reward.style.fontSize = '24px'; 
+            reward.style.whiteSpace = 'nowrap'; 
             reward.style.fontWeight = '900';
             reward.style.zIndex = '999999';
             reward.style.textShadow = '0 5px 15px rgba(0,0,0,0.9)';
@@ -841,6 +853,7 @@
             }
         });
 
+        // Standard Menu and Scripts
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -894,44 +907,6 @@
             }
         }
         
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-                var currentLang = "";
-                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
-                var googleSelect = document.querySelector('select.goog-te-combo');
-                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
-                var sidebarLang = document.getElementById('lang-mobile');
-                var desktopLang = document.getElementById('lang-desktop');
-                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
-                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
-            }, 1000);
-        });
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const openAppModal = document.getElementById('openAppModal');
-            const appModalOverlay = document.getElementById('appModalOverlay');
-            const closeAppModal = document.getElementById('closeAppModal');
-            
-            if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    appModalOverlay.classList.add('active'); 
-                    document.body.style.overflow = 'hidden'; 
-                });
-                closeAppModal.addEventListener('click', () => { 
-                    appModalOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; 
-                });
-                appModalOverlay.addEventListener('click', (e) => { 
-                    if(e.target === appModalOverlay) {
-                        appModalOverlay.classList.remove('active'); 
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-        });
-
         window.toggleUpcomingProjects = function() {
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
@@ -942,6 +917,7 @@
             }
         };
 
+        // Chatbot Logic
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -996,7 +972,7 @@
             } 
             else if(type === 'Support') {
                 userText = "मुझे Help / Support चाहिए।";
-                botReply = "📞 आप हमारी टीम से डायरेक्ट संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
+                botReply = "📞 आप हमारी टीम से direct संपर्क कर सकते हैं:<br><br>📱 WhatsApp: +91 9830332929<br>✉️ Email: info@dkatovitt.com<br><br><a href='contact.html' style='display:inline-block; margin-top:8px; color:#111; background:#e6c875; padding:6px 12px; border-radius:20px; font-weight:bold; text-decoration:none;'><i class='fas fa-arrow-right'></i> Contact Page</a>";
             }
 
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
@@ -1141,6 +1117,11 @@
                                 <option value="">🌐 Select Language</option>
                                 <option value="hi">हिन्दी (Hindi)</option>
                                 <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         <div class="profile-dropdown-container">
@@ -1182,6 +1163,11 @@
                                 <option value="">🌐 Select Language</option>
                                 <option value="hi">हिन्दी (Hindi)</option>
                                 <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
