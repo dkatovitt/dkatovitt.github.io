@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
-    <!-- CSS FOR PARTICLES (WEB3 BACKGROUND) -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -113,65 +112,7 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
-        /* 🔥 SEARCH CONTAINER SPECIFIC CSS 🔥 */
-        .search-container { position: relative; padding: 140px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
-        
-        .search-content-wrapper { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; }
-        
-        .search-container h1 { color: #fff; font-size: 45px; margin-bottom: 5px; font-family: 'Playfair Display', serif; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
-        .search-container h1 span { color: #e6c875; }
-        .search-tagline { color: #aaa; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
-        
-        /* 🔥 RED CIRCLE FIX: 1 Line Text 🔥 */
-        .earn-badge { 
-            display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); 
-            border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; 
-            font-size: 13px; font-weight: bold; margin-bottom: 20px; 
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px);
-        }
-
-        /* 🔥 NEW FEATURE: LIVE CRYPTO TICKER 🔥 */
-        .crypto-ticker { width: 100%; overflow: hidden; background: rgba(17, 17, 17, 0.8); border: 1px solid #333; border-radius: 8px; padding: 10px 0; margin-bottom: 25px; backdrop-filter: blur(5px); }
-        .ticker-track { display: flex; width: max-content; animation: scroll-left 25s linear infinite; }
-        .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 25px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* 🔥 BLUE CIRCLE FIX & FEATURE: Premium Clickable Search Bar with Voice/Lens 🔥 */
-        .native-search-form { 
-            display: flex; align-items: center; width: 100%; background: #ffffff; 
-            border-radius: 30px; border: 3px solid #e6c875; 
-            box-shadow: 0 10px 40px rgba(230,200,117,0.4); 
-            position: relative; margin-bottom: 20px; overflow: hidden; transition: 0.3s;
-        }
-        .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
-        .native-search-form input { 
-            flex: 1; padding: 18px 25px; border: none; outline: none; font-size: 16px; 
-            color: #111; background: transparent; font-weight: bold;
-        }
-        .icon-btn { background: transparent; border: none; color: #888; font-size: 18px; cursor: pointer; padding: 0 10px; transition: 0.3s; }
-        .icon-btn:hover { color: #e6c875; transform: scale(1.1); }
-        .search-submit-btn { 
-            background: linear-gradient(135deg, #e6c875, #b8860b); border: none; padding: 0 30px; 
-            height: 100%; color: #000; font-size: 20px; cursor: pointer; transition: 0.3s; 
-            display: flex; align-items: center; justify-content: center;
-        }
-        .search-submit-btn:hover { background: #d4b561; }
-        
-        .gcse-notice { font-size: 12px; color: #aaa; margin-bottom: 30px; text-align: center; padding: 0 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
-
-        /* 🔥 NEW FEATURE: QUICK ACCESS SHORTCUTS 🔥 */
-        .quick-access-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
-        .quick-shortcut { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #ccc; gap: 8px; transition: 0.3s; }
-        .quick-shortcut:hover { transform: translateY(-5px); color: #e6c875; }
-        .shortcut-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(26,26,26,0.8); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #e6c875; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.5); backdrop-filter: blur(5px); transition: 0.3s; }
-        .quick-shortcut:hover .shortcut-icon { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.5); border-color: #e6c875; }
-        .shortcut-text { font-size: 12px; font-weight: bold; }
-
-        .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 30px; background: rgba(0,0,0,0.5); color: #e6c875; border: 1.5px solid #e6c875; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px); }
-        .back-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.4); transform: translateY(-3px); }
-
-        /* MASTER MEGA FOOTER CSS */
+        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; position: relative; z-index: 10; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -200,16 +141,6 @@
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
-        @media (max-width: 768px) { 
-            .search-container { padding-top: 110px; }
-            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } /* Mobile adjustments for 1 line */
-            .quick-access-grid { gap: 15px; }
-            .shortcut-icon { width: 45px; height: 45px; font-size: 18px; }
-            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
-            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
-            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-        }
-
         /* CUSTOM ALERT MODAL CSS */
         .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
@@ -219,7 +150,7 @@
         .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
         .custom-alert-title.success { color: #e6c875; }
         .custom-alert-title.error { color: #ff4d4d; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; white-space: pre-wrap;}
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
 
@@ -251,7 +182,6 @@
         .upcoming-modal-close:hover { color: #fff; }
         .upcoming-modal-logo { width: 50px; height: 50px; margin: 0 auto 6px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
         .upcoming-modal-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
         @keyframes textGlow {
             0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
             100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
@@ -263,16 +193,12 @@
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.9); animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        
         .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        
         .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
-
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
-        
         .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
         .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -283,6 +209,60 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+
+        /* 🔥 SEARCH CONTAINER SPECIFIC CSS 🔥 */
+        .search-container { position: relative; padding: 140px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+        .search-content-wrapper { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; }
+        .search-container h1 { color: #fff; font-size: 45px; margin-bottom: 5px; font-family: 'Playfair Display', serif; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+        .search-container h1 span { color: #e6c875; }
+        .search-tagline { color: #aaa; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
+        
+        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px); }
+
+        .crypto-ticker { width: 100%; overflow: hidden; background: rgba(17, 17, 17, 0.8); border: 1px solid #333; border-radius: 8px; padding: 10px 0; margin-bottom: 25px; backdrop-filter: blur(5px); }
+        .ticker-track { display: flex; width: max-content; animation: scroll-left 25s linear infinite; }
+        .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 30px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
+        .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
+        .native-search-form input { flex: 1; padding: 18px 25px; border: none; outline: none; font-size: 16px; color: #111; background: transparent; font-weight: bold; }
+        .icon-btn { background: transparent; border: none; color: #888; font-size: 18px; cursor: pointer; padding: 0 10px; transition: 0.3s; }
+        .icon-btn:hover { color: #e6c875; transform: scale(1.1); }
+        
+        @keyframes micPulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; color: #ff4d4d; } 100% { transform: scale(1); opacity: 1; } }
+        .mic-active { animation: micPulse 1s infinite; color: #ff4d4d !important; }
+
+        .search-submit-btn { background: linear-gradient(135deg, #e6c875, #b8860b); border: none; padding: 0 30px; height: 100%; color: #000; font-size: 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin-left: 5px; }
+        .search-submit-btn:hover { background: #d4b561; }
+        
+        .gcse-notice { font-size: 12px; color: #aaa; margin-bottom: 30px; text-align: center; padding: 0 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
+
+        .quick-access-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+        .quick-shortcut { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #ccc; gap: 8px; transition: 0.3s; }
+        .quick-shortcut:hover { transform: translateY(-5px); color: #e6c875; }
+        .shortcut-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(26,26,26,0.8); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #e6c875; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.5); backdrop-filter: blur(5px); transition: 0.3s; }
+        .quick-shortcut:hover .shortcut-icon { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.5); border-color: #e6c875; }
+        .shortcut-text { font-size: 12px; font-weight: bold; }
+
+        .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 30px; background: rgba(0,0,0,0.5); color: #e6c875; border: 1.5px solid #e6c875; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px); }
+        .back-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.4); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .search-container { padding-top: 110px; }
+            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } 
+            .quick-access-grid { gap: 15px; }
+            .shortcut-icon { width: 45px; height: 45px; font-size: 18px; }
+            .native-search-form input { padding: 15px 15px; font-size: 14px; }
+            .icon-btn { padding: 0 6px; font-size: 16px; }
+            .search-submit-btn { padding: 0 20px; font-size: 18px; }
+            
+            /* RESTORING FLOATING BUTTONS EXACT CSS FOR MOBILE */
+            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
+            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
+            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+        }
     </style>
 </head>
 <body>
@@ -396,9 +376,7 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 SUPER PREMIUM SEARCH CONTENT AREA 🔥 -->
     <section class="search-container">
-        <!-- 🌌 Feature 1: Live Particles Background -->
         <div id="particles-js"></div>
         
         <div class="search-content-wrapper">
@@ -409,34 +387,38 @@
                 <i class="fas fa-gift"></i> Search the Web & Earn ATVT Coins (Coming Soon)
             </div>
 
-            <!-- 📈 Feature 2: Live Crypto Ticker -->
             <div class="crypto-ticker">
                 <div class="ticker-track">
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
                     <span><i class="fas fa-cube" style="color:#f3ba2f;"></i> BNB: $590 <span style="color:#ff4d4d;">(-0.8%)</span></span>
                     <span><i class="fas fa-gem" style="color:#e6c875;"></i> ATVT: $0.75 <span style="color:#25d366;">(+15.0%) 🚀</span></span>
-                    <!-- Duplicated for seamless loop -->
+                    <span><i class="fas fa-coins" style="color:#ffd700;"></i> GOLD: $2,450 <span style="color:#25d366;">(+0.5%)</span></span>
+                    <span><i class="fas fa-coins" style="color:#c0c0c0;"></i> SILVER: $28.50 <span style="color:#25d366;">(+1.1%)</span></span>
+                    
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
                     <span><i class="fas fa-cube" style="color:#f3ba2f;"></i> BNB: $590 <span style="color:#ff4d4d;">(-0.8%)</span></span>
                     <span><i class="fas fa-gem" style="color:#e6c875;"></i> ATVT: $0.75 <span style="color:#25d366;">(+15.0%) 🚀</span></span>
+                    <span><i class="fas fa-coins" style="color:#ffd700;"></i> GOLD: $2,450 <span style="color:#25d366;">(+0.5%)</span></span>
+                    <span><i class="fas fa-coins" style="color:#c0c0c0;"></i> SILVER: $28.50 <span style="color:#25d366;">(+1.1%)</span></span>
                 </div>
             </div>
 
-            <!-- 🎙️ Feature 3: Premium Search Box with Voice & Lens -->
-            <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank">
-                <input type="text" name="q" placeholder="Type here to search the web..." required autocomplete="off">
-                <button type="button" class="icon-btn" title="Voice Search" onclick="alert('🎙️ Voice Search is activating... This feature will be live soon!')"><i class="fas fa-microphone"></i></button>
-                <button type="button" class="icon-btn" title="Image Search Lens" onclick="alert('📸 DK AI Lens is activating... This feature will be live soon!')"><i class="fas fa-camera"></i></button>
+            <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank" id="dkSearchForm">
+                <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
+                <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
+                <button type="button" class="icon-btn" title="DK AI Lens" onclick="document.getElementById('dkLensInput').click()"><i class="fas fa-camera"></i></button>
+                <button type="button" class="icon-btn" title="DK AI Chat" onclick="document.getElementById('chatbotOverlay').classList.add('active'); document.body.style.overflow='hidden';"><i class="fas fa-robot" style="color:#00a8ff;"></i></button>
                 <button type="submit" class="search-submit-btn"><i class="fas fa-search"></i></button>
             </form>
             
+            <input type="file" id="dkLensInput" accept="image/*" capture="environment" style="display:none;" onchange="handleImageSearch(event)">
+            
             <div class="gcse-notice">
-                <i class="fas fa-check-circle" style="color:#25d366;"></i> Search is active! Type anything above and explore.
+                <i class="fas fa-check-circle" style="color:#25d366;"></i> Search is active! Type, Speak, or Upload Image to explore.
             </div>
 
-            <!-- 🌐 Feature 4: Quick Access Chrome Style Shortcuts -->
             <div class="quick-access-grid">
                 <a href="movie.html" class="quick-shortcut">
                     <div class="shortcut-icon"><i class="fas fa-film"></i></div>
@@ -460,7 +442,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -588,25 +569,17 @@
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
-            
             <div class="upcoming-modal-logo">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
-            
             <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
-            
-            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
-                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
-            </div>
-            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;"><i id="customAlertProjectIcon" class="fas fa-rocket"></i></div>
             <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
-            
             <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
             <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
-            
             <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
                 <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
-                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!<br><span style="color:#aaa; font-size:10px; font-weight: normal;">(लॉन्च होने के बाद आप इस प्रोजेक्ट पर जितना अधिक समय बिताएंगे, आपको उतने ही ज्यादा DK ATVT Coins बिल्कुल फ्री मिलेंगे!)</span></p>
+                <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!</p>
             </div>
         </div>
     </div>
@@ -615,9 +588,7 @@
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
                 <div class="chatbot-header-left">
-                    <div class="chat-header-video-wrap">
-                        <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
-                    </div>
+                    <div class="chat-header-video-wrap"><video src="images/logo/logo.mp4" autoplay loop muted playsinline></video></div>
                     <div class="notranslate">DK ATOVITT AI CHAT BOT</div>
                 </div>
                 <button id="closeChatbot">&times;</button>
@@ -635,61 +606,7 @@
     </div>
 
     <script>
-        const upcomingProjectsData = {
-            'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
-            'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
-            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
-            'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
-            'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
-            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
-            'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
-            'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
-            'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
-            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
-        };
-
-        function showUpcomingProject(id) {
-            const data = upcomingProjectsData[id];
-            if(!data) return;
-            
-            document.getElementById('customAlertProjectIcon').className = data.icon;
-            document.getElementById('customAlertProjectName').innerText = data.name;
-            document.getElementById('customAlertEngDesc').innerText = data.eng;
-            document.getElementById('customAlertHinDesc').innerText = data.hin;
-            
-            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
-            
-            document.body.style.overflow = 'hidden';
-            document.documentElement.style.overflow = 'hidden';
-            
-            const sideMenu = document.getElementById('sideMenu');
-            const overlay = document.getElementById('overlay');
-            if (sideMenu) sideMenu.classList.remove('active');
-            if (overlay) overlay.classList.remove('active');
-        }
-
-        function closeUpcomingProject() {
-            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
-            
-            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
-                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
-                document.body.style.overflow = ''; 
-                document.documentElement.style.overflow = '';
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
-            if(upcomingModalOverlay) {
-                upcomingModalOverlay.addEventListener('click', (e) => {
-                    if(e.target === upcomingModalOverlay) {
-                        closeUpcomingProject();
-                    }
-                });
-                upcomingModalOverlay.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
-            }
-        });
-
+        // 🔥 CUSTOM ALERT FUNCTION 🔥
         function showCustomAlert(title, message, isError = false) {
             const overlay = document.getElementById('customAlertOverlay');
             const titleEl = document.getElementById('customAlertTitle');
@@ -706,6 +623,108 @@
             document.body.style.overflow = ''; 
         });
 
+        // 🔥 VOICE SEARCH FUNCTIONALITY (LIVE) 🔥
+        function startVoiceSearch() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'hi-IN'; // Works for both Hindi & English
+                recognition.interimResults = false;
+                recognition.maxAlternatives = 1;
+
+                const searchInput = document.getElementById('searchInput');
+                const voiceBtn = document.getElementById('voiceBtn');
+                const form = document.getElementById('dkSearchForm');
+
+                recognition.onstart = function() {
+                    searchInput.placeholder = "Listening... Speak now 🎙️";
+                    voiceBtn.classList.add("mic-active");
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    searchInput.value = transcript;
+                    form.submit(); 
+                };
+
+                recognition.onerror = function(event) {
+                    searchInput.placeholder = "Type here to search the web...";
+                    voiceBtn.classList.remove("mic-active");
+                    showCustomAlert("Error", "Voice not recognized. Please try again.", true);
+                };
+
+                recognition.onend = function() {
+                    searchInput.placeholder = "Type here to search the web...";
+                    voiceBtn.classList.remove("mic-active");
+                };
+
+                recognition.start();
+            } else {
+                showCustomAlert("Not Supported", "Your browser does not support Voice Search.", true);
+            }
+        }
+
+        // 🔥 DK AI LENS (IMAGE SEARCH) FUNCTIONALITY (LIVE) 🔥
+        function handleImageSearch(event) {
+            const file = event.target.files[0];
+            if (file) {
+                showCustomAlert("DK AI Lens", "Analyzing image: " + file.name + "...\nRedirecting to AI Visual Search...", false);
+                setTimeout(() => {
+                    window.open('https://lens.google.com/', '_blank');
+                    document.getElementById('customAlertOverlay').classList.remove('active');
+                    document.body.style.overflow = '';
+                }, 2000);
+            }
+        }
+
+        const upcomingProjectsData = {
+            'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
+            'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
+            'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
+            'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
+            'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
+            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
+            'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
+            'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
+            'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
+            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
+        };
+
+        function showUpcomingProject(id) {
+            const data = upcomingProjectsData[id];
+            if(!data) return;
+            document.getElementById('customAlertProjectIcon').className = data.icon;
+            document.getElementById('customAlertProjectName').innerText = data.name;
+            document.getElementById('customAlertEngDesc').innerText = data.eng;
+            document.getElementById('customAlertHinDesc').innerText = data.hin;
+            document.getElementById('upcomingProjectModalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('overlay');
+            if (sideMenu) sideMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+
+        function closeUpcomingProject() {
+            document.getElementById('upcomingProjectModalOverlay').classList.remove('active');
+            if ((!document.getElementById('sideMenu') || !document.getElementById('sideMenu').classList.contains('active')) && 
+                (!document.getElementById('chatbotOverlay') || !document.getElementById('chatbotOverlay').classList.contains('active'))) {
+                document.body.style.overflow = ''; 
+                document.documentElement.style.overflow = '';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const upcomingModalOverlay = document.getElementById('upcomingProjectModalOverlay');
+            if(upcomingModalOverlay) {
+                upcomingModalOverlay.addEventListener('click', (e) => {
+                    if(e.target === upcomingModalOverlay) { closeUpcomingProject(); }
+                });
+            }
+        });
+
+        // Standard Menu and Scripts
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
         const closeMenu = document.getElementById('closeMenu'); 
@@ -748,18 +767,6 @@
             navigator.clipboard.writeText(copyText);
             showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
-
-        function reveal() { 
-            var reveals = document.querySelectorAll('.reveal'); 
-            for (var i = 0; i < reveals.length; i++) { 
-                var windowHeight = window.innerHeight; 
-                var elementTop = reveals[i].getBoundingClientRect().top; 
-                var elementVisible = 100; 
-                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add('active'); } 
-            } 
-        } 
-        window.addEventListener('scroll', reveal); 
-        reveal(); 
 
         window.translatePage = function(lang) {
             if (lang === "") {
@@ -819,7 +826,7 @@
                 });
             }
         });
-
+        
         window.toggleUpcomingProjects = function() {
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
@@ -858,16 +865,6 @@
                 document.documentElement.style.overflow = '';
                 resetChatbot(); 
             }); 
-        }
-        if(chatbotOverlay) {
-            chatbotOverlay.addEventListener('click', (e) => {
-                if(e.target === chatbotOverlay) {
-                    chatbotOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; 
-                    document.documentElement.style.overflow = '';
-                    resetChatbot(); 
-                }
-            });
         }
 
         function sendChat(type) {
@@ -1006,16 +1003,8 @@
                         <div class="menu-heading">Explore Ecosystem</div>
                         <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-                        
-                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;">
-                            <div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span>
-                        </a>
-                        
-                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
-                            <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
-                            <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
-                        </a>
-                        
+                        <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
                         <div id="upcomingProjectsList" class="upcoming-list">
                             <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
@@ -1029,7 +1018,6 @@
                             <a href="javascript:void(0)" onclick="showUpcomingProject('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
                         </div>
                         <div class="menu-divider"></div>
-
                         <a href="ceo.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
                         <a href="company.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
                         <a href="news.html?from=index" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
@@ -1052,7 +1040,6 @@
                                 <option value="gu">ગુજરાતી (Gujarati)</option>
                             </select>
                         </div>
-                        
                         <div class="profile-dropdown-container">
                             <div class="profile-name-btn" onclick="document.getElementById('topbarDropdown').classList.toggle('show')">
                                 <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
