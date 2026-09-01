@@ -166,18 +166,40 @@
         .calc-table tr:hover td { background: rgba(230,200,117,0.05); color: #e6c875; }
         .text-green { color: #25d366 !important; font-weight: bold; }
 
+        /* 🔥 NEW VIP SEO ARTICLE SECTION CSS 🔥 */
+        .seo-article { position: relative; z-index: 10; max-width: 1000px; margin: 40px auto 0 auto; padding: 40px; background: rgba(17, 17, 17, 0.85); border: 1.5px solid #333; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.9); backdrop-filter: blur(10px); text-align: left; }
+        .seo-article h2 { color: #e6c875; font-size: 28px; border-bottom: 1px solid #333; padding-bottom: 15px; margin-top: 0; margin-bottom: 25px; font-family: 'Playfair Display', serif; }
+        .seo-article h3 { color: #fff; font-size: 20px; margin-top: 35px; margin-bottom: 15px; letter-spacing: 0.5px;}
+        .seo-article p { color: #aaa; font-size: 15px; line-height: 1.8; margin-bottom: 15px; }
+        
+        .seo-article .info-box { background: rgba(230,200,117,0.05); border-left: 4px solid #e6c875; padding: 20px; border-radius: 0 10px 10px 0; margin: 25px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.3);}
+        .seo-article .info-box p { margin: 0; color: #ccc; font-weight: bold; }
+        
+        .seo-article .formula-box { background: #0a0a0a; border: 1px solid #333; border-radius: 12px; padding: 30px; text-align: center; margin: 25px 0; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);}
+        .seo-article .formula-box h4 { color: #fff; font-size: 26px; margin: 0 0 20px 0; letter-spacing: 2px; font-weight: 900;}
+        .seo-article .formula-box .formula-math { background: #111; border: 1px dashed #e6c875; display: inline-block; padding: 15px 30px; border-radius: 8px; color: #e6c875; font-size: 22px; margin-bottom: 20px; font-family: monospace;}
+        .seo-article .formula-box ul { text-align: left; color: #888; list-style: none; padding: 0; max-width: 450px; margin: 0 auto; font-size: 14px;}
+        .seo-article .formula-box ul li { margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px;}
+        .seo-article .formula-box ul li:last-child { border-bottom: none; }
+        .seo-article .formula-box ul li span { color: #e6c875; font-weight: bold; margin-right: 10px; font-size: 16px; display: inline-block; width: 25px;}
+
         @media (max-width: 900px) {
             .results-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
             .calc-container { padding-top: 100px; }
-            .calc-wrapper { padding: 25px 15px; border-radius: 15px; }
+            .calc-wrapper, .seo-article { padding: 25px 15px; border-radius: 15px; }
             .calc-header h1 { font-size: 26px; }
             .calc-grid { grid-template-columns: 1fr; gap: 15px;}
             .action-btns { grid-column: span 1; flex-direction: column; }
             .results-grid { grid-template-columns: 1fr; gap: 10px; }
             .result-card h2 { font-size: 20px; }
             .calc-table td, .calc-table th { padding: 12px 10px; font-size: 12px;}
+            .seo-article h2 { font-size: 22px; }
+            .seo-article h3 { font-size: 18px; }
+            .seo-article p { font-size: 14px; }
+            .seo-article .formula-box h4 { font-size: 20px; }
+            .seo-article .formula-box .formula-math { font-size: 18px; padding: 10px 20px;}
         }
 
         /* MASTER MEGA FOOTER CSS */
@@ -516,6 +538,44 @@
                 </div>
             </div>
         </div>
+        
+        <!-- 🔥 NAYA VIP SEO ARTICLE & FAQ SECTION (Screenshot based) 🔥 -->
+        <div class="seo-article">
+            <h2>Questions about our calculator</h2>
+            <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
+            
+            <h3>What is the daily reinvest rate?</h3>
+            <p>The daily reinvest rate is the <strong style="color:#e6c875;">percentage figure</strong> that you wish to keep in the investment for future days of compounding. As an example, you may wish to only reinvest 80% of the daily interest you're receiving back into the investment and withdraw the other 20% in cash to your wallet.</p>
+            <p>Let's look at an example. If your initial investment is ₹5,000 with a 0.5% daily interest rate, your interest after the first day will be ₹25. If you choose an 80% daily reinvestment rate, ₹20 will be added to your investment balance, giving you a total of ₹5,020 at the end of day one. The remaining ₹5 will be withdrawn as cash.</p>
+            
+            <h3>Excluding weekends from calculations</h3>
+            <p>You may wish to only compound your money on particular days of the week. Perhaps you only trade on weekdays, or want to exclude Sundays. Our calculator gives you the option to exclude these days from your calculation, giving you extra flexibility. Here's an example:</p>
+            
+            <div class="info-box">
+                <p>You want to compound for <span style="color:#fff;">one year minus weekends</span> (net business days). This means your figure will compound for around <span style="color:#fff; font-size:18px;">261 BUSINESS days</span>, with an end date 365 days from your start date, depending on when the weekends fall.</p>
+            </div>
+            
+            <p>The aim of this option is to give you maximum flexibility around how your interest is compounded and calculated, whether you're Forex trading, trading with cryptocurrencies (like DK ATVT), or simply buying and selling stock assets.</p>
+
+            <h3>Formula for daily compound interest</h3>
+            <p>The formula for calculating daily compound interest with a fixed daily interest rate is:</p>
+            
+            <div class="formula-box">
+                <div class="formula-math">A = P(1+r)^t</div>
+                <h4>Where:</h4>
+                <ul>
+                    <li><span>A</span> = the future value of the investment</li>
+                    <li><span>P</span> = the principal investment amount</li>
+                    <li><span>r</span> = the daily interest rate (decimal)</li>
+                    <li><span>t</span> = the number of days the money is invested for</li>
+                    <li><span>^</span> = ... to the power of ...</li>
+                </ul>
+            </div>
+            
+            <h3>And finally...</h3>
+            <p>I hope you found our daily compounding calculator and article useful for calculating your financial goals in the DK Atovitt Ecosystem. We love to receive feedback from our VIP members, so please <a href="contact.html" style="color:#e6c875; font-weight:bold;">get in contact</a> if you have any suggestions or comments.</p>
+        </div>
+        
     </section>
 
     <!-- FOOTER -->
@@ -1054,25 +1114,18 @@
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }, 800);
         }
-        
-        particlesJS('particles-js', {
-          "particles": {
-            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#e6c875" },
-            "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-            "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
-            "size": { "value": 3, "random": true, "anim": { "enable": false } },
-            "line_linked": { "enable": true, "distance": 150, "color": "#e6c875", "opacity": 0.4, "width": 1 },
-            "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-            "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
-          },
-          "retina_detect": true
-        });
     </script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
@@ -1144,7 +1197,9 @@
                         <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="search.html" class="normal-link"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        
                         <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-calculator"></i> DK Calculator</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        
                         <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
                         <div id="upcomingProjectsList" class="upcoming-list">
                             <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
@@ -1189,6 +1244,7 @@
                                 <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
                                 <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
                                 <a href="search.html"><i class="fas fa-search" style="color:#00a8ff; width:16px;"></i> DK Search (Live)</a>
+                                <!-- 🔥 DK CALCULATOR LIVE LINK IN DROPDOWN 🔥 -->
                                 <a href="calculator.html"><i class="fas fa-calculator" style="color:#e6c875; width:16px;"></i> DK Calculator (Live)</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout Securely</a>
