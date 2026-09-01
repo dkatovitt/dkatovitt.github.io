@@ -129,7 +129,7 @@
         .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* 🔥 NAYA FEATURE: SEARCH INPUT WRAPPER (History ke liye) 🔥 */
+        /* 🔥 SEARCH INPUT WRAPPER 🔥 */
         .search-input-wrapper { position: relative; width: 100%; margin-bottom: 15px; z-index: 100; }
         .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 35px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 0 !important; transition: 0.3s; z-index: 101;}
         .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
@@ -143,7 +143,7 @@
         .search-submit-btn { background: linear-gradient(135deg, #e6c875, #b8860b); border: none; width: 48px; height: 48px; border-radius: 50%; color: #000; font-size: 18px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin: 5px 8px 5px 5px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(230,200,117,0.5); }
         .search-submit-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* 🔥 NAYA FEATURE: HISTORY DROPDOWN CSS 🔥 */
+        /* 🔥 HISTORY DROPDOWN CSS 🔥 */
         .history-dropdown { display: none; position: absolute; top: 100%; left: 5%; width: 90%; background: #1a1a1a; border: 1px solid #e6c875; border-radius: 0 0 18px 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); z-index: 99; overflow: hidden; margin-top: -15px; padding-top: 18px; text-align: left;}
         .history-dropdown.show { display: block; animation: slideDownFast 0.2s ease; }
         @keyframes slideDownFast { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -434,13 +434,13 @@
                 </div>
             </div>
 
-            <!-- 🔥 NAYA FEATURE: Search Wrapper with History Dropdown 🔥 -->
+            <!-- 🔥 SEARCH INPUT WRAPPER 🔥 -->
             <div class="search-input-wrapper">
                 <form class="native-search-form" id="dkSearchForm">
                     <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
                     <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
                     <button type="button" class="icon-btn" title="DK AI Lens" onclick="document.getElementById('dkLensInput').click()"><i class="fas fa-camera"></i></button>
-                    <button type="button" class="icon-btn" title="DK AI Chat" onclick="document.getElementById('chatbotOverlay').classList.add('active'); document.body.style.overflow='hidden';"><i class="fas fa-robot" style="color:#00a8ff;"></i></button>
+                    <!-- 🔥 YAHAN SE AI CHATBOT ICON HATA DIYA GAYA HAI 🔥 -->
                     <button type="submit" class="search-submit-btn"><i class="fas fa-search"></i></button>
                 </form>
                 
@@ -650,7 +650,7 @@
         const searchInput = document.getElementById('searchInput');
         const historyBox = document.getElementById('searchHistoryBox');
 
-        // 🔥 HAPTIC VIBRATION & COIN SOUND LOGIC (NEW) 🔥
+        // 🔥 HAPTIC VIBRATION & COIN SOUND LOGIC 🔥
         function playCoinSound() {
             try {
                 // Web Audio API used so it doesn't need external mp3 file
@@ -675,7 +675,7 @@
             }
         }
 
-        // 🔥 LOCAL HISTORY LOGIC (NEW) 🔥
+        // 🔥 LOCAL HISTORY LOGIC 🔥
         function saveSearch(query) {
             if(!query.trim()) return;
             let history = JSON.parse(localStorage.getItem('dkSearchHistory')) || [];
@@ -829,11 +829,11 @@
             }
         }
 
-        // AUTO-TYPING PLACEHOLDER
+        // 🔥 PLACEHOLDER TEXT UPDATED 🔥
         const placeholderTexts = [
             "Type here to search the web...",
             "Search Web3 & Crypto Updates...",
-            "Ask DK AI Assistant anything...",
+            "Explore the DK Ecosystem...", /* Changed from "Ask DK AI Assistant" */
             "Search for DK ATVT Coin..."
         ];
         let pIndex = 0;
