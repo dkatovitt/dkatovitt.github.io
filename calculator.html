@@ -112,53 +112,51 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
-        /* 🔥 EXACT MATCH CALCULATOR CSS (Like Screenshot) 🔥 */
+        /* 🔥 EXACT MATCH CALCULATOR CSS (Side-by-Side Locked) 🔥 */
         .calc-container { position: relative; padding: 120px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; z-index: 10; }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none;}
         
-        .calc-wrapper { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; background: #1c222f; /* Exact Dark Slate Color */ border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: left; overflow: hidden; border: 1px solid #2a3341;}
+        .calc-wrapper { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; background: #1c222f; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: left; overflow: hidden; border: 1px solid #2a3341;}
         
         /* 🌟 TOP 4 TABS 🌟 */
         .calc-tabs { display: flex; width: 100%; background: #e0e0e0; }
         .calc-tab { flex: 1; text-align: center; padding: 12px 5px; font-size: 12px; font-weight: bold; color: #555; border-right: 1px solid #ccc; cursor: pointer; line-height: 1.2; font-family: Arial, sans-serif;}
         .calc-tab:last-child { border-right: none; }
-        .calc-tab.active { background: #f07f13; /* Exact Orange */ color: #fff; }
+        .calc-tab.active { background: #f07f13; color: #fff; }
         
         /* 🌟 MAIN FORM BODY 🌟 */
         .calc-body { padding: 25px 20px; }
 
-        /* Input Labels */
         .input-label { color: #e2e8f0; font-size: 14px; margin-bottom: 6px; display: block; font-family: Arial, sans-serif;}
 
-        /* 🔥 CURRENCY ROW 🔥 */
+        /* CURRENCY ROW */
         .currency-row { display: flex; width: 100%; border: 1px solid #4a5568; border-radius: 6px; overflow: hidden; margin-bottom: 20px; background: #1c222f;}
         .curr-btn { flex: 1; background: transparent; color: #a0aec0; border: none; border-right: 1px solid #4a5568; padding: 12px 0; font-size: 15px; cursor: pointer; font-family: Arial, sans-serif;}
         .curr-btn:last-child { border-right: none; }
         .curr-btn.active { background: #f07f13; color: #fff; font-weight: bold;}
 
-        /* 🔥 INPUT FIELDS (Principal) 🔥 */
+        /* INPUT FIELDS */
         .input-box { display: flex; background: #2f3643; border: 1px solid #4a5568; border-radius: 6px; overflow: hidden; margin-bottom: 20px; transition: 0.3s; }
         .input-box:focus-within { border-color: #f07f13; box-shadow: 0 0 5px rgba(240, 127, 19, 0.5); }
         .input-prefix { background: transparent; color: #fff; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-right: 1px solid #4a5568; font-family: Arial, sans-serif;}
         .input-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 12px 15px; font-size: 15px; outline: none; width: 100%; font-family: Arial, sans-serif;}
         .input-suffix { background: transparent; color: #a0aec0; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-left: 1px solid #4a5568;}
         
-        /* 🔥 RATE ROW (Side by Side) 🔥 */
+        /* RATE ROW */
         .rate-row { display: flex; gap: 15px; margin-bottom: 20px; }
         .rate-row .input-box { margin-bottom: 0; flex: 1.5; }
         .rate-select { background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; border-radius: 6px; padding: 10px 15px; flex: 1; outline: none; font-size: 15px; font-family: Arial, sans-serif;}
 
-        /* 🔥 YEARS, MONTHS, DAYS ROW (Side by Side) 🔥 */
+        /* TIME ROW */
         .time-row { display: flex; gap: 10px; margin-bottom: 20px; }
         .time-col { flex: 1; }
         .time-col .input-label { margin-bottom: 5px; font-size: 14px; }
         .time-col .input-box { margin-bottom: 0; }
         .time-col input { text-align: center; }
 
-        /* 🔥 HORIZONTAL DIVIDER 🔥 */
         .section-divider { height: 1px; background: #3d4a5c; margin: 20px -20px; }
 
-        /* 🔥 WEEKEND & REINVEST ROW (Side by Side) 🔥 */
+        /* OPTIONS ROW */
         .options-row { display: flex; gap: 15px; margin-bottom: 20px; }
         .options-col { flex: 1; }
         
@@ -171,17 +169,17 @@
         .reinvest-select { flex: 1; background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; border-radius: 6px; padding: 10px; outline: none; font-size: 14px; }
         .help-btn { background: #1c222f; color: #a0aec0; border: 1px solid #4a5568; border-radius: 6px; padding: 0 12px; cursor: pointer; display: flex; align-items: center; justify-content: center;}
 
-        /* 🔥 START DATE & CALCULATE ROW (Side by Side) 🔥 */
+        /* ACTION ROW */
         .action-row { display: flex; gap: 15px; align-items: flex-end; margin-bottom: 10px;}
         .action-row .time-col { flex: 1.5; }
         .date-input { background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; padding: 12px 10px; border-radius: 6px; width: 100%; outline: none; box-sizing: border-box; font-size: 14px; font-family: Arial, sans-serif;}
         
-        .btn-calc { flex: 1; background: #78a33b; /* Exact Green */ color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; font-family: Arial, sans-serif;}
+        .btn-calc { flex: 1; background: #78a33b; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; font-family: Arial, sans-serif;}
         .btn-calc:hover { background: #688e33; }
 
         .results-label { text-align: right; color: #a0aec0; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #3d4a5c; font-family: Arial, sans-serif;}
 
-        /* 🔥 RESULTS AREA 🔥 */
+        /* 🌟 RESULTS AREA 🌟 */
         #resultsArea { display: none; padding: 25px 20px; background: #1c222f; animation: fadeIn 0.5s ease;}
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -235,13 +233,16 @@
         .ai-btn { background: #e6c875; color: #000; }
         .ai-btn:hover { background: #d4b561; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(230, 200, 117, 0.4);}
 
-        /* 🔥 ENSURE MOBILE DESIGN STAYS EXACTLY AS SCREENSHOT (NO STACKING) 🔥 */
+        /* 🔥 MOBILE RESPONSIVE (Side by Side Fix) 🔥 */
         @media (max-width: 768px) {
             .calc-container { padding-top: 100px; }
             .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #333;}
             .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
             .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
             .calc-body { padding: 20px 15px; }
+            
+            /* DO NOT STACK ROWS, KEEP SIDE-BY-SIDE */
+            .rate-row, .time-row, .options-row, .action-row { flex-direction: row; gap: 10px; }
             
             .seo-article { padding: 25px 15px; border-radius: 15px; margin: 20px 10px;}
             .seo-article h2 { font-size: 22px; }
@@ -445,7 +446,7 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 EXACT MATCH CALCULATOR SECTION (Side-by-Side Mobile Layout fixed) 🔥 -->
+    <!-- 🔥 EXACT MATCH CALCULATOR SECTION 🔥 -->
     <section class="calc-container">
         <div id="particles-js"></div>
         
@@ -457,10 +458,10 @@
         <div class="calc-wrapper">
             <!-- 🌟 4 TABS (Top Area) 🌟 -->
             <div class="calc-tabs">
-                <div class="calc-tab" onclick="showCustomAlert('Coming Soon', 'Compound Interest tool will be active shortly.')">Compound<br>Interest</div>
-                <div class="calc-tab" onclick="showCustomAlert('Coming Soon', 'Simple Interest tool will be active shortly.')">Simple<br>Interest</div>
-                <div class="calc-tab active">Daily<br>Compound</div>
-                <div class="calc-tab" onclick="showCustomAlert('Coming Soon', 'Forex Compound tool will be active shortly.')">Forex<br>Compound</div>
+                <div class="calc-tab" data-tab="compound">Compound<br>Interest</div>
+                <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
+                <div class="calc-tab active" data-tab="daily">Daily<br>Compound</div>
+                <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
             <!-- 🌟 MAIN FORM BODY 🌟 -->
@@ -516,8 +517,22 @@
 
                 <div class="section-divider"></div>
 
-                <!-- Weekend & Reinvest Row -->
-                <div class="options-row">
+                <!-- Compound Interval Row (Hidden by default, for Compound Interest tab) -->
+                <div class="options-row" id="compIntervalRow" style="display: none;">
+                    <div class="options-col">
+                        <span class="input-label">Compound Interval</span>
+                        <select class="reinvest-select" id="compInterval">
+                            <option value="yearly">Yearly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="daily">Daily</option>
+                        </select>
+                    </div>
+                    <div class="options-col"></div>
+                </div>
+
+                <!-- Weekend & Reinvest Row (For Daily/Forex) -->
+                <div class="options-row" id="dailyOptionsRow">
                     <div class="options-col">
                         <span class="input-label">Include all days of week?</span>
                         <div class="toggle-group" id="weekendToggle">
@@ -543,11 +558,11 @@
                 </div>
 
                 <!-- Additional Contributions -->
-                <span class="input-label">Additional contributions: <span style="color:#888; font-size:12px;">(optional)</span></span>
+                <span class="input-label" id="contribLabel">Additional contributions: <span style="color:#888; font-size:12px;">(optional)</span></span>
                 <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
                     <button type="button" class="toggle-btn active" data-val="none">None</button>
                     <button type="button" class="toggle-btn" data-val="deposits">Deposits</button>
-                    <button type="button" class="toggle-btn" onclick="showCustomAlert('Withdrawals', 'Withdrawal feature will be available shortly.')">Withdrawals</button>
+                    <button type="button" class="toggle-btn" onclick="showCustomAlert('Withdrawals', 'Withdrawal feature will be available shortly.', false)">Withdrawals</button>
                 </div>
                 
                 <!-- Hidden Deposit Box (Shows when Deposits selected) -->
@@ -844,12 +859,66 @@
         </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT FOR CALCULATOR 🔥 -->
+    <!-- 🔥 DYNAMIC TAB & CALCULATOR LOGIC 🔥 -->
     <script>
         // Set today's date
         document.getElementById('startDate').valueAsDate = new Date();
 
-        // Currency Toggle
+        // 🌟 TAB SWITCHING LOGIC 🌟
+        const calcTabs = document.querySelectorAll('.calc-tab');
+        const dailyOptionsRow = document.getElementById('dailyOptionsRow');
+        const contribLabel = document.getElementById('contribLabel');
+        const contribToggle = document.getElementById('contribToggle');
+        const compIntervalRow = document.getElementById('compIntervalRow');
+        const depositArea = document.getElementById('depositArea');
+        let activeCalcTab = 'daily';
+
+        calcTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all, add to clicked
+                calcTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                activeCalcTab = this.getAttribute('data-tab');
+
+                // Reset all extra rows to hidden
+                dailyOptionsRow.style.display = 'none';
+                compIntervalRow.style.display = 'none';
+                contribLabel.style.display = 'none';
+                contribToggle.style.display = 'none';
+                depositArea.style.display = 'none';
+                
+                // Hide results area on tab switch
+                document.getElementById('resultsArea').style.display = 'none';
+                document.getElementById('resultsLabel').style.display = 'block';
+
+                // Show rows based on Active Tab
+                if(activeCalcTab === 'daily' || activeCalcTab === 'forex') {
+                    dailyOptionsRow.style.display = 'flex';
+                    contribLabel.style.display = 'block';
+                    contribToggle.style.display = 'flex';
+                    if(contribType === 'deposits') depositArea.style.display = 'block';
+                    
+                    if(activeCalcTab === 'forex') {
+                        // Auto-select "No" for weekends in Forex
+                        document.querySelector('#weekendToggle .toggle-btn[data-val="no"]').click();
+                    } else {
+                        // Auto-select "Yes" for weekends in Daily
+                        document.querySelector('#weekendToggle .toggle-btn[data-val="yes"]').click();
+                    }
+                } 
+                else if (activeCalcTab === 'compound') {
+                    compIntervalRow.style.display = 'flex';
+                    contribLabel.style.display = 'block';
+                    contribToggle.style.display = 'flex';
+                    if(contribType === 'deposits') depositArea.style.display = 'block';
+                } 
+                else if (activeCalcTab === 'simple') {
+                    // Simple interest requires no extra rows, keep them hidden
+                }
+            });
+        });
+
+        // 🌟 CURRENCY TOGGLE 🌟
         const currBtns = document.querySelectorAll('.curr-btn');
         const mainPrefix = document.getElementById('mainPrefix');
         const depPrefix = document.getElementById('depPrefix');
@@ -865,7 +934,7 @@
             });
         });
 
-        // Yes/No Weekend Toggle
+        // 🌟 WEEKEND YES/NO TOGGLE 🌟
         const weekendBtns = document.querySelectorAll('#weekendToggle .toggle-btn');
         let includeWeekends = 'yes';
         weekendBtns.forEach(btn => {
@@ -876,9 +945,8 @@
             });
         });
 
-        // Additional Contributions Toggle
+        // 🌟 ADDITIONAL CONTRIBUTIONS TOGGLE 🌟
         const contribBtns = document.querySelectorAll('#contribToggle .toggle-btn');
-        const depositArea = document.getElementById('depositArea');
         let contribType = 'none';
 
         contribBtns.forEach(btn => {
@@ -900,16 +968,16 @@
             });
         });
 
-        // Haptic Feedback
         function triggerHaptic() { if (navigator.vibrate) navigator.vibrate(50); }
 
-        // Form Submit & Calculation Logic
+        // 🔥 MASTER MATH & FORM SUBMIT LOGIC 🔥
         document.getElementById('compoundForm').addEventListener('submit', function(e) {
             e.preventDefault();
             triggerHaptic();
             
             document.getElementById('resultsLabel').style.display = 'none';
 
+            // Get standard values
             const principal = parseFloat(document.getElementById('principal').value) || 0;
             const rateInput = parseFloat(document.getElementById('interestRate').value) || 0;
             const rateType = document.getElementById('rateType').value;
@@ -918,24 +986,23 @@
             const months = parseInt(document.getElementById('timeMonths').value) || 0;
             const days = parseInt(document.getElementById('timeDays').value) || 0;
             
+            // Get optional values (might be hidden depending on tab)
             const reinvestRate = parseFloat(document.getElementById('reinvestRate').value) / 100;
             const skipWeekends = (includeWeekends === 'no');
             
             let depAmt = 0;
             let depFreq = 'monthly';
-            if(contribType === 'deposits') {
+            if(contribType === 'deposits' && activeCalcTab !== 'simple') {
                 depAmt = parseFloat(document.getElementById('depositAmt').value) || 0;
                 depFreq = document.getElementById('depositFreq').value;
             }
 
-            // Time conversion
             if(years === 0 && months === 0 && days === 0) {
                 showCustomAlert("Error", "Please enter at least 1 day, month or year.", true);
                 return;
             }
             let totalDays = (years * 365) + Math.round(months * 30.4167) + days;
 
-            // Rate conversion
             let dailyRate = rateInput / 100;
             if(rateType === 'monthly') dailyRate = (rateInput / 100) / 30.4167;
             if(rateType === 'yearly') dailyRate = (rateInput / 100) / 365;
@@ -944,19 +1011,33 @@
             let totalInterest = 0;
             let totalDeposits = principal;
             let tableData = [];
-
             let startDate = new Date(document.getElementById('startDate').value);
+            
+            let accruedInterest = 0;
+            let compDays = 1;
+            if(activeCalcTab === 'compound') {
+                const compInt = document.getElementById('compInterval').value;
+                if(compInt === 'yearly') compDays = 365;
+                if(compInt === 'monthly') compDays = 30;
+                if(compInt === 'weekly') compDays = 7;
+                if(compInt === 'daily') compDays = 1;
+            }
 
+            // 🚀 ITERATIVE CALCULATION LOOP 🚀
             for (let i = 1; i <= totalDays; i++) {
                 let currentDate = new Date(startDate);
                 currentDate.setDate(startDate.getDate() + i);
                 let dayOfWeek = currentDate.getDay();
 
                 let isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
-                let skipInterestToday = (skipWeekends && isWeekend);
+                let skipInterestToday = false;
+
+                if (activeCalcTab === 'daily' || activeCalcTab === 'forex') {
+                    skipInterestToday = (skipWeekends && isWeekend);
+                }
 
                 let addedToday = 0;
-                if(depAmt > 0) {
+                if(activeCalcTab !== 'simple' && depAmt > 0) {
                     if(depFreq === 'daily') addedToday = depAmt;
                     if(depFreq === 'weekly' && i % 7 === 0) addedToday = depAmt;
                     if(depFreq === 'monthly' && i % 30 === 0) addedToday = depAmt; 
@@ -967,21 +1048,45 @@
 
                 let interestToday = 0;
                 if(!skipInterestToday) {
-                    interestToday = currentBalance * dailyRate;
+                    if (activeCalcTab === 'simple') {
+                        // Simple Interest: Calculate only on base principal
+                        interestToday = principal * dailyRate;
+                        totalInterest += interestToday;
+                    } 
+                    else if (activeCalcTab === 'compound') {
+                        // Standard Compound Interest
+                        interestToday = currentBalance * dailyRate;
+                        accruedInterest += interestToday;
+                        totalInterest += interestToday;
+                        // Add to main balance only at interval
+                        if (i % compDays === 0 || i === totalDays) {
+                            currentBalance += accruedInterest;
+                            accruedInterest = 0;
+                        }
+                    } 
+                    else {
+                        // Daily & Forex Compound
+                        interestToday = currentBalance * dailyRate;
+                        let reinvested = interestToday * reinvestRate;
+                        totalInterest += interestToday;
+                        currentBalance += reinvested;
+                    }
                 }
 
-                let reinvested = interestToday * reinvestRate;
-                totalInterest += interestToday;
-                currentBalance += reinvested;
+                let displayBalance = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
+                // Push Table Checkpoints
                 if(totalDays <= 31) {
-                    tableData.push({ day: `Day ${i}`, deposits: totalDeposits, interest: totalInterest, balance: currentBalance });
+                    tableData.push({ day: `Day ${i}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
                 } else if(totalDays <= 365) {
-                    if(i % 7 === 0 || i === totalDays) tableData.push({ day: `Week ${Math.ceil(i/7)}`, deposits: totalDeposits, interest: totalInterest, balance: currentBalance });
+                    if(i % 7 === 0 || i === totalDays) tableData.push({ day: `Week ${Math.ceil(i/7)}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
                 } else {
-                    if(i % 30 === 0 || i === totalDays) tableData.push({ day: `Month ${Math.ceil(i/30)}`, deposits: totalDeposits, interest: totalInterest, balance: currentBalance });
+                    if(i % 30 === 0 || i === totalDays) tableData.push({ day: `Month ${Math.ceil(i/30)}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
                 }
             }
+
+            // Formatting Final UI
+            let finalBal = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
             const formatCash = (num) => {
                 if(selectedCurr === 'ATVT') return num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ATVT';
@@ -990,9 +1095,9 @@
 
             document.getElementById('resPrincipal').innerText = formatCash(totalDeposits);
             document.getElementById('resInterest').innerText = "+" + formatCash(totalInterest);
-            document.getElementById('resTotal').innerText = formatCash(currentBalance);
+            document.getElementById('resTotal').innerText = formatCash(finalBal);
             
-            let profitPercent = ((currentBalance - totalDeposits) / totalDeposits) * 100;
+            let profitPercent = ((finalBal - totalDeposits) / totalDeposits) * 100;
             if(isNaN(profitPercent) || !isFinite(profitPercent)) profitPercent = 0;
             document.getElementById('resAPY').innerText = `Net Profit: ${profitPercent.toLocaleString('en-US', {maximumFractionDigits: 2})}%`;
 
@@ -1013,23 +1118,6 @@
             setTimeout(() => { document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
         });
 
-        // Alert & Utility Functions
-        function showCustomAlert(title, message, isError = false) {
-            const overlay = document.getElementById('customAlertOverlay');
-            const titleEl = document.getElementById('customAlertTitle');
-            const msgEl = document.getElementById('customAlertMsg');
-            titleEl.innerText = title;
-            msgEl.innerText = message;
-            if (isError) { titleEl.className = "custom-alert-title error"; } else { titleEl.className = "custom-alert-title success"; }
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        document.getElementById('closeCustomAlert').addEventListener('click', () => {
-            document.getElementById('customAlertOverlay').classList.remove('active');
-            document.body.style.overflow = ''; 
-        });
-
         // ------------------ UNIVERSAL SCRIPT BLOCK ------------------
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
@@ -1037,7 +1125,7 @@
             'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
-            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद डिजिटल विज्ञापन मंच।' },
+            'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद digital विज्ञापन मंच।' },
             'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
             'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
             'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
@@ -1077,7 +1165,6 @@
                 });
             }
 
-            // 🔥 NEW FOOTER APP & CHATBOT BUTTON LOGIC 🔥
             const footerAppBtn = document.getElementById('footerAppBtn');
             const footerChatBtn = document.getElementById('footerChatBtn');
             const appModalOverlay = document.getElementById('appModalOverlay');
