@@ -121,17 +121,19 @@
         .search-container h1 span { color: #e6c875; }
         .search-tagline { color: #aaa; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
         
-        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px); }
+        .badges-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px); }
+        .streak-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; color: #ff4d4d; padding: 8px 15px; border-radius: 30px; font-size: 13px; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 77, 0.2); backdrop-filter: blur(5px); white-space: nowrap; }
 
         .crypto-ticker { width: 100%; overflow: hidden; background: rgba(17, 17, 17, 0.8); border: 1px solid #333; border-radius: 8px; padding: 10px 0; margin-bottom: 25px; backdrop-filter: blur(5px); }
         .ticker-track { display: flex; width: max-content; animation: scroll-left 25s linear infinite; }
         .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 30px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
+        .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 35px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 15px; transition: 0.3s; }
         .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
         .native-search-form input { flex: 1; padding: 18px 25px; border: none; outline: none; font-size: 16px; color: #111; background: transparent; font-weight: bold; }
-        .icon-btn { background: transparent; border: none; color: #888; font-size: 18px; cursor: pointer; padding: 0 10px; transition: 0.3s; }
+        .icon-btn { background: transparent; border: none; color: #666; font-size: 18px; cursor: pointer; padding: 0 8px; transition: 0.3s; }
         .icon-btn:hover { color: #e6c875; transform: scale(1.1); }
         
         @keyframes micPulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; color: #ff4d4d; } 100% { transform: scale(1); opacity: 1; } }
@@ -139,13 +141,14 @@
 
         .search-submit-btn { background: linear-gradient(135deg, #e6c875, #b8860b); border: none; width: 48px; height: 48px; border-radius: 50%; color: #000; font-size: 18px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin: 5px 8px 5px 5px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(230,200,117,0.5); }
         .search-submit-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        /* 🔥 VIP ADDITION: SEARCH CATEGORIES 🔥 */
+        .search-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { background: rgba(26,26,26,0.8); border: 1px solid #333; color: #aaa; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(5px); }
+        .tab-btn:hover { background: rgba(230,200,117,0.1); color: #e6c875; border-color: #e6c875; }
+        .tab-btn.active { background: #e6c875; color: #000; border-color: #e6c875; box-shadow: 0 4px 10px rgba(230,200,117,0.3);}
         
         .gcse-notice { font-size: 12px; color: #aaa; margin-bottom: 30px; text-align: center; padding: 0 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
-
-        .trending-searches { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;}
-        .trending-title { color: #888; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
-        .trending-tag { background: rgba(230, 200, 117, 0.1); border: 1px solid #333; color: #e6c875; padding: 5px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; white-space: nowrap;}
-        .trending-tag:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: translateY(-2px);}
 
         @keyframes floatReward {
             0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
@@ -166,7 +169,9 @@
 
         @media (max-width: 768px) {
             .search-container { padding-top: 110px; }
-            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } 
+            .earn-badge, .streak-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } 
+            .search-tabs { gap: 8px; margin-bottom: 20px;}
+            .tab-btn { padding: 6px 12px; font-size: 11px; }
             .quick-access-grid { gap: 15px; }
             .shortcut-icon { width: 45px; height: 45px; font-size: 18px; }
             .native-search-form input { padding: 15px 15px; font-size: 14px; }
@@ -258,9 +263,9 @@
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.9); animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px;}
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
         .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0;}
+        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
@@ -314,7 +319,6 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <div class="side-menu" id="sideMenu">
-        
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
 
         <div class="custom-translate">
@@ -396,11 +400,18 @@
             <h1>DK <span>SEARCH</span></h1>
             <p class="search-tagline">The Premium Web3 Search Engine</p>
             
-            <div class="earn-badge">
-                <i class="fas fa-gift"></i> Search the Web & Earn ATVT Coins
+            <!-- 🔥 RED CIRCLE FIXED: Gamified Badges Row 🔥 -->
+            <div class="badges-row">
+                <div class="earn-badge">
+                    <i class="fas fa-gift"></i> Search the Web & Earn DK ATVT Coin
+                </div>
+                <!-- VIP Feature: Streak Meter -->
+                <div class="streak-badge">
+                    <i class="fas fa-fire"></i> Daily Streak: 1
+                </div>
             </div>
 
-            <!-- 📈 Feature 4: Live Crypto Ticker with Gold & Silver -->
+            <!-- 📈 Live Crypto Ticker with Gold & Silver -->
             <div class="crypto-ticker">
                 <div class="ticker-track">
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
@@ -420,8 +431,7 @@
                 </div>
             </div>
 
-            <!-- 🎙️ Feature 1, 2, 3: Premium Search Box with Voice, Lens & AI Chat -->
-            <!-- 🔥 Added onsubmit animation trigger 🔥 -->
+            <!-- 🎙️ Premium Search Box -->
             <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank" id="dkSearchForm" onsubmit="showRewardAnimation()">
                 <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
                 <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
@@ -432,18 +442,17 @@
             
             <!-- Hidden input for Camera/Lens -->
             <input type="file" id="dkLensInput" accept="image/*" capture="environment" style="display:none;" onchange="handleImageSearch(event)">
+
+            <!-- 🔥 VIP ADDITION: SEARCH CATEGORIES (GOOGLE STYLE) 🔥 -->
+            <div class="search-tabs">
+                <button class="tab-btn active"><i class="fas fa-globe"></i> Web</button>
+                <button class="tab-btn" onclick="showCustomAlert('Images', 'Image search will be available soon!')"><i class="fas fa-image"></i> Images</button>
+                <button class="tab-btn" onclick="showCustomAlert('News', 'Crypto news feed will be available soon!')"><i class="fas fa-newspaper"></i> News</button>
+                <button class="tab-btn" onclick="showCustomAlert('Videos', 'Video search will be available soon!')"><i class="fas fa-play-circle"></i> Videos</button>
+            </div>
             
             <div class="gcse-notice">
                 <i class="fas fa-check-circle" style="color:#25d366;"></i> Search is active! Type, Speak, or Upload Image to explore.
-            </div>
-
-            <!-- 🔥 VIP ADDITION 2: TRENDING HASHTAGS 🔥 -->
-            <div class="trending-searches">
-                <span class="trending-title"><i class="fas fa-fire" style="color:#ff4d4d;"></i> Trending:</span>
-                <span class="trending-tag" onclick="setSearchText('DK Atovitt')">#DK_Atovitt</span>
-                <span class="trending-tag" onclick="setSearchText('ATVT Coin Crypto')">#ATVTCoin</span>
-                <span class="trending-tag" onclick="setSearchText('Web3 Technology')">#Web3</span>
-                <span class="trending-tag" onclick="setSearchText('Bitcoin ETF News')">#BitcoinETF</span>
             </div>
 
             <!-- 🌐 Feature 4: Quick Access Chrome Style Shortcuts -->
@@ -715,7 +724,7 @@
             }
         }
 
-        // 🔥 SEARCH REWARD ANIMATION & TRENDING TAGS 🔥
+        // 🔥 SEARCH REWARD ANIMATION 🔥
         function showRewardAnimation() {
             const reward = document.createElement('div');
             reward.innerHTML = "+ DK ATVT Coin 🪙";
@@ -738,7 +747,7 @@
             document.getElementById('dkSearchForm').submit();
         }
 
-        // AUTO-TYPING PLACEHOLDER (VIP Feature)
+        // AUTO-TYPING PLACEHOLDER
         const placeholderTexts = [
             "Type here to search the web...",
             "Search Web3 & Crypto Updates...",
@@ -952,6 +961,17 @@
           "retina_detect": true
         });
     </script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
