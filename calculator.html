@@ -116,103 +116,87 @@
         .calc-container { position: relative; padding: 120px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; z-index: 10; }
         #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none;}
         
-        .calc-wrapper { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; background: #111; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: left; overflow: hidden; border: 1px solid #333;}
+        .calc-wrapper { position: relative; z-index: 10; max-width: 600px; margin: 0 auto; background: #1c222f; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.9); text-align: left; overflow: hidden; border: 1px solid #2a3341;}
         
         /* 🌟 TOP 4 TABS 🌟 */
-        .calc-tabs { display: flex; width: 100%; background: #0a0a0a; border-bottom: 1px solid #333;}
-        .calc-tab { flex: 1; text-align: center; padding: 12px 5px; font-size: 12px; font-weight: bold; color: #888; border-right: 1px solid #333; cursor: pointer; line-height: 1.2; font-family: Arial, sans-serif; transition: 0.3s;}
+        .calc-tabs { display: flex; width: 100%; background: #e0e0e0;}
+        .calc-tab { flex: 1; text-align: center; padding: 12px 5px; font-size: 12px; font-weight: bold; color: #555; border-right: 1px solid #ccc; cursor: pointer; line-height: 1.2; font-family: Arial, sans-serif;}
         .calc-tab:last-child { border-right: none; }
-        .calc-tab:hover { background: #1a1a1a; color: #e6c875; }
-        .calc-tab.active { background: #e6c875; color: #000; }
+        .calc-tab.active { background: #f07f13; color: #fff; }
         
         /* 🌟 MAIN FORM BODY 🌟 */
         .calc-body { padding: 25px 20px; }
 
-        .input-label { color: #e6c875; font-size: 14px; margin-bottom: 6px; display: block; font-weight: bold; font-family: Arial, sans-serif;}
+        .input-label { color: #e2e8f0; font-size: 14px; margin-bottom: 6px; display: block; font-family: Arial, sans-serif;}
 
         /* CURRENCY ROW */
-        .currency-row { display: flex; width: 100%; border: 1px solid #333; border-radius: 6px; overflow: hidden; margin-bottom: 20px; background: #0a0a0a;}
-        .curr-btn { flex: 1; background: transparent; color: #888; border: none; border-right: 1px solid #333; padding: 12px 0; font-size: 15px; cursor: pointer; font-family: Arial, sans-serif; transition: 0.3s;}
+        .currency-row { display: flex; width: 100%; border: 1px solid #4a5568; border-radius: 6px; overflow: hidden; margin-bottom: 20px; background: #1c222f;}
+        .curr-btn { flex: 1; background: transparent; color: #a0aec0; border: none; border-right: 1px solid #4a5568; padding: 12px 0; font-size: 15px; cursor: pointer; font-family: Arial, sans-serif;}
         .curr-btn:hover { color: #fff; }
-        .curr-btn.active { background: #e6c875; color: #000; font-weight: bold;}
-        .curr-custom { flex: 1; background: transparent; border: none; color: #fff; text-align: center; font-size: 13px; outline: none; padding: 0; font-weight: bold;}
-        .curr-custom:focus { background: rgba(230, 200, 117, 0.1); }
+        .curr-btn.active { background: #f07f13; color: #fff; font-weight: bold;}
+        
+        /* Custom Currency Input inside row */
+        .curr-custom { flex: 1; background: transparent; border: none; color: #fff; text-align: center; font-size: 15px; outline: none; padding: 12px 0; font-family: Arial, sans-serif; min-width: 0;}
+        .curr-custom.active-custom { background: #f07f13; font-weight: bold; }
 
         /* INPUT FIELDS */
-        .input-box { display: flex; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; overflow: hidden; transition: 0.3s; }
-        .input-box:focus-within { border-color: #e6c875; box-shadow: 0 0 5px rgba(230, 200, 117, 0.4); }
-        .input-prefix { background: transparent; color: #ccc; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-right: 1px solid #333; font-family: Arial, sans-serif;}
+        .input-box { display: flex; background: #2f3643; border: 1px solid #4a5568; border-radius: 6px; overflow: hidden; margin-bottom: 20px; transition: 0.3s; }
+        .input-box:focus-within { border-color: #f07f13; box-shadow: 0 0 5px rgba(240, 127, 19, 0.4); }
+        .input-prefix { background: transparent; color: #fff; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-right: 1px solid #4a5568; font-family: Arial, sans-serif;}
         .input-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 12px 15px; font-size: 15px; outline: none; width: 100%; font-family: Arial, sans-serif;}
-        .input-suffix { background: transparent; color: #888; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-left: 1px solid #333;}
+        .input-suffix { background: transparent; color: #a0aec0; padding: 12px 15px; font-size: 15px; display: flex; align-items: center; border-left: 1px solid #4a5568;}
         
         /* ROW CONTROLS */
         .flex-row { display: flex; gap: 15px; margin-bottom: 20px; width: 100%; align-items: flex-end;}
         .flex-col { flex: 1; display: flex; flex-direction: column;}
         .flex-col-large { flex: 1.5; display: flex; flex-direction: column;}
         
-        .rate-select { background: #1a1a1a; color: #ccc; border: 1px solid #333; border-radius: 6px; padding: 10px 15px; width: 100%; outline: none; font-size: 15px; font-family: Arial, sans-serif;}
+        .rate-select { background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; border-radius: 6px; padding: 10px 15px; width: 100%; outline: none; font-size: 15px; font-family: Arial, sans-serif;}
         .time-col input { text-align: center; padding: 12px 5px;}
 
-        .section-divider { height: 1px; background: #222; margin: 20px -20px; }
+        .section-divider { height: 1px; background: #3d4a5c; margin: 20px -20px; }
 
         /* TOGGLES */
-        .toggle-group { display: flex; border: 1px solid #333; border-radius: 6px; overflow: hidden; background: #0a0a0a; width: 100%;}
-        .toggle-btn { flex: 1; background: transparent; color: #888; border: none; border-right: 1px solid #333; padding: 10px 0; font-size: 14px; cursor: pointer; text-align: center; font-family: Arial, sans-serif; transition: 0.3s;}
+        .toggle-group { display: flex; border: 1px solid #4a5568; border-radius: 6px; overflow: hidden; background: #1c222f; width: 100%;}
+        .toggle-btn { flex: 1; background: transparent; color: #a0aec0; border: none; border-right: 1px solid #4a5568; padding: 10px 0; font-size: 14px; cursor: pointer; text-align: center; font-family: Arial, sans-serif;}
         .toggle-btn:last-child { border-right: none; }
-        .toggle-btn.active { background: #e6c875; color: #000; font-weight: bold;}
+        .toggle-btn.active { background: #f07f13; color: #fff; }
 
         .reinvest-wrap { display: flex; gap: 10px; width: 100%;}
-        .reinvest-select { flex: 1; background: #1a1a1a; color: #ccc; border: 1px solid #333; border-radius: 6px; padding: 10px; outline: none; font-size: 14px; }
-        .help-btn { background: #1a1a1a; color: #888; border: 1px solid #333; border-radius: 6px; padding: 0 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.3s;}
-        .help-btn:hover { background: #e6c875; color: #000; border-color: #e6c875;}
+        .reinvest-select { flex: 1; background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; border-radius: 6px; padding: 10px; outline: none; font-size: 14px; }
+        .help-btn { background: #1c222f; color: #a0aec0; border: 1px solid #4a5568; border-radius: 6px; padding: 0 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; height: auto;}
 
         /* 🔥 M T W T F S S ROW 🔥 */
         .days-toggle-group { display: flex; gap: 4px; margin-top: 5px; width: 100%;}
-        .day-btn { flex: 1; background: #0a0a0a; color: #888; border: 1px solid #333; padding: 8px 0; border-radius: 6px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: center; font-family: Arial, sans-serif; font-size: 12px;}
-        .day-btn.active { background: #e6c875; color: #000; border-color: #e6c875; }
+        .day-btn { flex: 1; background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; padding: 8px 0; border-radius: 6px; cursor: pointer; font-size: 12px; font-family: Arial, sans-serif;}
+        .day-btn.active { background: #f07f13; color: #fff; border-color: #f07f13; }
 
         /* ACTION ROW */
-        .date-input { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 12px 10px; border-radius: 6px; width: 100%; outline: none; box-sizing: border-box; font-size: 14px; font-family: Arial, sans-serif;}
-        .btn-calc { background: #25d366; color: #000; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; font-family: Arial, sans-serif; transition: 0.3s; width: 100%;}
-        .btn-calc:hover { background: #128c7e; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,211,102,0.3);}
+        .date-input { background: #2f3643; color: #e2e8f0; border: 1px solid #4a5568; padding: 12px 10px; border-radius: 6px; width: 100%; outline: none; box-sizing: border-box; font-size: 14px; font-family: Arial, sans-serif;}
+        .btn-calc { background: #78a33b; color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 16px; font-family: Arial, sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; height: 44px; width: 100%;}
+        .btn-calc:hover { background: #688e33; }
 
-        .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
+        .results-label { text-align: right; color: #a0aec0; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #3d4a5c; font-family: Arial, sans-serif;}
 
         /* 🌟 RESULTS AREA 🌟 */
-        #resultsArea { display: none; padding: 25px 20px; background: #0a0a0a; animation: fadeIn 0.5s ease;}
+        #resultsArea { display: none; padding: 25px 20px; background: #1c222f; animation: fadeIn 0.5s ease;}
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
-        .result-card { background: #111; border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
-        .result-card h4 { color: #888; font-size: 12px; margin: 0 0 8px 0; font-family: Arial, sans-serif; font-weight: normal;}
+        .result-card { background: #2f3643; border: 1px solid #4a5568; padding: 15px; border-radius: 8px; text-align: center; }
+        .result-card h4 { color: #a0aec0; font-size: 12px; margin: 0 0 8px 0; font-family: Arial, sans-serif; font-weight: normal;}
         .result-card h2 { color: #fff; font-size: 20px; margin: 0; font-family: Arial, sans-serif; }
-        .result-card.profit h2 { color: #25d366; }
-        .result-card.final { grid-column: span 2; border-color: #e6c875; background: rgba(230, 200, 117, 0.05); }
-        .result-card.final h2 { color: #e6c875; font-size: 26px;}
+        .result-card.profit h2 { color: #78a33b; }
+        .result-card.final { grid-column: span 2; border-color: #f07f13; background: rgba(240, 127, 19, 0.05); }
+        .result-card.final h2 { color: #f07f13; font-size: 24px;}
 
-        .table-responsive { width: 100%; overflow-x: auto; background: #111; border-radius: 8px; border: 1px solid #333; }
+        .table-responsive { width: 100%; overflow-x: auto; background: #1c222f; border-radius: 8px; border: 1px solid #4a5568; }
         .calc-table { width: 100%; border-collapse: collapse; text-align: right; font-size: 13px; min-width: 600px; font-family: Arial, sans-serif;}
-        .calc-table th { background: #1a1a1a; color: #e6c875; padding: 12px 15px; font-weight: normal; border-bottom: 1px solid #333;}
+        .calc-table th { background: #2f3643; color: #e2e8f0; padding: 12px 15px; font-weight: normal; border-bottom: 1px solid #4a5568;}
         .calc-table th:first-child { text-align: left; }
-        .calc-table td { padding: 12px 15px; border-bottom: 1px solid #222; color: #ccc; }
+        .calc-table td { padding: 12px 15px; border-bottom: 1px solid #2f3643; color: #e2e8f0; }
         .calc-table td:first-child { text-align: left;}
-        .text-green { color: #25d366 !important; font-weight: bold;}
-
-        /* 🔥 MOBILE RESPONSIVE (Side by Side Fix) 🔥 */
-        @media (max-width: 768px) {
-            .calc-container { padding-top: 100px; }
-            .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #333;}
-            .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
-            .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
-            .calc-body { padding: 15px 15px; }
-            
-            /* FORCE SIDE BY SIDE ON MOBILE */
-            .flex-row { flex-direction: row !important; flex-wrap: nowrap; gap: 10px; margin-bottom: 15px;}
-            .time-col input { padding: 12px 2px; font-size: 14px;}
-            
-            .seo-article { padding: 25px 15px; border-radius: 15px; margin: 20px 10px;}
-            .seo-article h2 { font-size: 22px; }
-        }
+        .text-green { color: #78a33b !important; font-weight: bold;}
 
         /* 🔥 VIP SEO ARTICLE SECTION CSS 🔥 */
         .seo-article { position: relative; z-index: 10; max-width: 1000px; margin: 40px auto 0 auto; padding: 40px; background: rgba(17, 17, 17, 0.85); border: 1.5px solid #333; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.9); backdrop-filter: blur(10px); text-align: left; }
@@ -230,6 +214,22 @@
         .seo-article .formula-box ul li { margin-bottom: 12px; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px;}
         .seo-article .formula-box ul li:last-child { border-bottom: none; }
         .seo-article .formula-box ul li span { color: #e6c875; font-weight: bold; margin-right: 10px; font-size: 16px; display: inline-block; width: 25px;}
+
+        /* 🔥 MOBILE RESPONSIVE (Side by Side Fix Maintained) 🔥 */
+        @media (max-width: 768px) {
+            .calc-container { padding-top: 100px; }
+            .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #2a3341;}
+            .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
+            .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
+            .calc-body { padding: 15px 15px; }
+            
+            /* FORCE SIDE BY SIDE ON MOBILE */
+            .flex-row { flex-direction: row !important; flex-wrap: nowrap; gap: 10px; margin-bottom: 15px;}
+            .time-col input { padding: 12px 2px; font-size: 14px;}
+            
+            .seo-article { padding: 25px 15px; border-radius: 15px; margin: 20px 10px;}
+            .seo-article h2 { font-size: 22px; }
+        }
 
         /* MASTER MEGA FOOTER CSS */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; position: relative; z-index: 10; }
@@ -547,14 +547,15 @@
                 <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
                     <button type="button" class="toggle-btn active" data-val="none">None</button>
                     <button type="button" class="toggle-btn" data-val="deposits">Deposits</button>
-                    <button type="button" class="toggle-btn" onclick="showCustomAlert('Withdrawals', 'Withdrawal feature will be available shortly.', false)">Withdrawals</button>
+                    <button type="button" class="toggle-btn" data-val="withdrawals">Withdrawals</button>
                 </div>
                 
                 <div id="extendedDepositOptions" style="display:none; background:#0a0a0a; border:1px dashed #333; border-radius:8px; padding:15px; margin-bottom:20px;">
                     <span class="input-label">Additional deposits <span style="color:#888; font-size:11px;">(optional)</span></span>
                     <div class="flex-row" style="margin-bottom:0;">
                         <div class="input-box" style="margin-bottom:0; flex:1;">
-                            <input type="number" id="depositAmt" placeholder="0" step="any" style="padding-left:15px;">
+                            <div class="input-prefix" id="depPrefix">$</div>
+                            <input type="number" id="depositAmt" placeholder="0" step="any" style="padding-left:10px;">
                         </div>
                         <select class="rate-select" id="depositFreq" style="flex:1;">
                             <option value="daily">daily</option>
@@ -574,6 +575,24 @@
                         <div class="input-box" style="margin-bottom:0; flex:1;">
                             <input type="date" id="oneTimeDepDate" style="font-family: Arial, sans-serif; width: 100%; box-sizing:border-box;">
                         </div>
+                    </div>
+                </div>
+
+                <div id="withdrawalArea" style="display:none; background:#0a0a0a; border:1px dashed #333; border-radius:8px; padding:15px; margin-bottom:20px;">
+                    <span class="input-label">Additional withdrawals <span style="color:#888; font-size:11px;">(optional)</span></span>
+                    <div class="flex-row" style="margin-bottom:0; align-items: stretch;">
+                        <div class="input-box" style="margin-bottom:0; flex:1;">
+                            <div class="input-prefix" id="withPrefix">$</div>
+                            <input type="number" id="withdrawalAmt" placeholder="0" step="any" style="padding-left:10px;">
+                        </div>
+                        <select class="rate-select" id="withdrawalFreq" style="flex:1;">
+                            <option value="daily">daily</option>
+                            <option value="weekly">weekly (52/yr)</option>
+                            <option value="biweekly">bi-weekly (26/yr)</option>
+                            <option value="monthly" selected>monthly (12/yr)</option>
+                            <option value="yearly">yearly (1/yr)</option>
+                        </select>
+                        <button type="button" class="help-btn" onclick="showCustomAlert('Withdrawals', 'This option allows you to withdraw a fixed amount at regular intervals.')" style="margin-bottom:0; height: auto;">?</button>
                     </div>
                 </div>
 
@@ -614,7 +633,7 @@
                         <thead>
                             <tr>
                                 <th>Period</th>
-                                <th>Deposits</th>
+                                <th>Contributions</th>
                                 <th>Interest</th>
                                 <th>Balance</th>
                             </tr>
@@ -843,24 +862,37 @@
         const customCurrInput = document.getElementById('customCurrInput');
         const mainPrefix = document.getElementById('mainPrefix');
         const depPrefix = document.getElementById('depPrefix');
+        const withPrefix = document.getElementById('withPrefix');
         let selectedCurr = '$';
+
+        function updatePrefixes(val) {
+            let pVal = val === 'ATVT' ? '💎' : val;
+            mainPrefix.innerText = pVal;
+            depPrefix.innerText = pVal;
+            withPrefix.innerText = pVal;
+        }
 
         currBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 currBtns.forEach(b => b.classList.remove('active'));
+                customCurrInput.classList.remove('active-custom');
                 this.classList.add('active');
                 selectedCurr = this.getAttribute('data-curr');
-                mainPrefix.innerText = selectedCurr === 'ATVT' ? '💎' : selectedCurr;
-                depPrefix.innerText = selectedCurr === 'ATVT' ? '💎' : selectedCurr;
-                customCurrInput.value = ''; // clear custom if button clicked
+                updatePrefixes(selectedCurr);
+                customCurrInput.value = ''; 
             });
         });
 
-        customCurrInput.addEventListener('input', function() {
+        customCurrInput.addEventListener('focus', function() {
             currBtns.forEach(b => b.classList.remove('active'));
-            selectedCurr = this.value || 'ATVT';
-            mainPrefix.innerText = selectedCurr;
-            depPrefix.innerText = selectedCurr;
+            this.classList.add('active-custom');
+            selectedCurr = this.value || '';
+            updatePrefixes(selectedCurr);
+        });
+
+        customCurrInput.addEventListener('input', function() {
+            selectedCurr = this.value;
+            updatePrefixes(selectedCurr);
         });
 
         // 🌟 TAB SWITCHING LOGIC 🌟
@@ -871,6 +903,7 @@
         const contribToggle = document.getElementById('contribToggle');
         const compIntervalRow = document.getElementById('compIntervalRow');
         const depositArea = document.getElementById('extendedDepositOptions');
+        const withdrawalArea = document.getElementById('withdrawalArea');
         
         let activeCalcTab = 'daily';
 
@@ -880,13 +913,14 @@
                 this.classList.add('active');
                 activeCalcTab = this.getAttribute('data-tab');
 
-                // Reset Extra Rows Visibility
                 dailyOptionsRow.style.display = 'none';
                 extWeekendOpts.style.display = 'none';
                 compIntervalRow.style.display = 'none';
                 contribLabel.style.display = 'none';
                 contribToggle.style.display = 'none';
                 depositArea.style.display = 'none';
+                withdrawalArea.style.display = 'none';
+                
                 document.getElementById('div1').style.display = 'none';
                 document.getElementById('div2').style.display = 'none';
                 document.getElementById('div3').style.display = 'none';
@@ -903,6 +937,7 @@
                     document.getElementById('div3').style.display = 'block';
                     
                     if(contribType === 'deposits') depositArea.style.display = 'block';
+                    if(contribType === 'withdrawals') withdrawalArea.style.display = 'block';
                     
                     if(activeCalcTab === 'forex') {
                         document.querySelector('#includeDaysToggle .toggle-btn[data-val="no"]').click();
@@ -919,10 +954,8 @@
                     document.getElementById('div3').style.display = 'block';
 
                     if(contribType === 'deposits') depositArea.style.display = 'block';
+                    if(contribType === 'withdrawals') withdrawalArea.style.display = 'block';
                 } 
-                else if (activeCalcTab === 'simple') {
-                    // Hidden dividers for Simple
-                }
             });
         });
 
@@ -958,20 +991,21 @@
 
         contribBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                if(this.getAttribute('data-val') === 'withdrawals') {
-                    showCustomAlert('Withdrawals', 'Withdrawal feature will be available shortly.', false);
-                    return;
-                }
                 contribBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 contribType = this.getAttribute('data-val');
                 
+                depositArea.style.display = 'none';
+                withdrawalArea.style.display = 'none';
+                
                 if(contribType === 'deposits') {
                     depositArea.style.display = 'block';
+                } else if(contribType === 'withdrawals') {
+                    withdrawalArea.style.display = 'block';
                 } else {
-                    depositArea.style.display = 'none';
                     document.getElementById('depositAmt').value = '';
                     document.getElementById('oneTimeDepAmt').value = '';
+                    document.getElementById('withdrawalAmt').value = '';
                 }
             });
         });
@@ -1000,12 +1034,19 @@
             let depFreq = 'monthly';
             let oneTimeAmt = 0;
             let oneTimeDateStr = "";
+            let withAmt = 0;
+            let withFreq = 'monthly';
 
-            if(contribType === 'deposits' && activeCalcTab !== 'simple') {
-                depAmt = parseFloat(document.getElementById('depositAmt').value) || 0;
-                depFreq = document.getElementById('depositFreq').value;
-                oneTimeAmt = parseFloat(document.getElementById('oneTimeDepAmt').value) || 0;
-                oneTimeDateStr = document.getElementById('oneTimeDepDate').value;
+            if(activeCalcTab !== 'simple') {
+                if(contribType === 'deposits') {
+                    depAmt = parseFloat(document.getElementById('depositAmt').value) || 0;
+                    depFreq = document.getElementById('depositFreq').value;
+                    oneTimeAmt = parseFloat(document.getElementById('oneTimeDepAmt').value) || 0;
+                    oneTimeDateStr = document.getElementById('oneTimeDepDate').value;
+                } else if (contribType === 'withdrawals') {
+                    withAmt = parseFloat(document.getElementById('withdrawalAmt').value) || 0;
+                    withFreq = document.getElementById('withdrawalFreq').value;
+                }
             }
 
             if(years === 0 && months === 0 && days === 0) {
@@ -1055,26 +1096,41 @@
                 }
 
                 let addedToday = 0;
+                let withdrawnToday = 0;
+                
                 if(activeCalcTab !== 'simple') {
-                    if(depAmt > 0) {
-                        if(depFreq === 'daily') addedToday += depAmt;
-                        if(depFreq === 'weekly' && i % 7 === 0) addedToday += depAmt;
-                        if(depFreq === 'biweekly' && i % 14 === 0) addedToday += depAmt;
-                        if(depFreq === 'monthly' && i % 30 === 0) addedToday += depAmt; 
-                        if(depFreq === 'yearly' && i % 365 === 0) addedToday += depAmt; 
-                    }
-                    if(oneTimeAmt > 0 && dateString === oneTimeDateStr) {
-                        addedToday += oneTimeAmt;
+                    if(contribType === 'deposits') {
+                        if(depAmt > 0) {
+                            if(depFreq === 'daily') addedToday += depAmt;
+                            if(depFreq === 'weekly' && i % 7 === 0) addedToday += depAmt;
+                            if(depFreq === 'biweekly' && i % 14 === 0) addedToday += depAmt;
+                            if(depFreq === 'monthly' && i % 30 === 0) addedToday += depAmt; 
+                            if(depFreq === 'yearly' && i % 365 === 0) addedToday += depAmt; 
+                        }
+                        if(oneTimeAmt > 0 && dateString === oneTimeDateStr) {
+                            addedToday += oneTimeAmt;
+                        }
+                    } else if (contribType === 'withdrawals') {
+                        if(withAmt > 0) {
+                            if(withFreq === 'daily') withdrawnToday += withAmt;
+                            if(withFreq === 'weekly' && i % 7 === 0) withdrawnToday += withAmt;
+                            if(withFreq === 'biweekly' && i % 14 === 0) withdrawnToday += withAmt;
+                            if(withFreq === 'monthly' && i % 30 === 0) withdrawnToday += withAmt; 
+                            if(withFreq === 'yearly' && i % 365 === 0) withdrawnToday += withAmt; 
+                        }
                     }
                 }
 
                 currentBalance += addedToday;
+                currentBalance -= withdrawnToday;
+                if(currentBalance < 0) currentBalance = 0; 
+                
                 totalDeposits += addedToday;
+                totalDeposits -= withdrawnToday; 
 
                 let interestToday = 0;
-                if(!skipInterestToday) {
+                if(!skipInterestToday && currentBalance > 0) {
                     if (activeCalcTab === 'simple') {
-                        // Simple Interest on initial principal only
                         interestToday = principal * dailyRate;
                         totalInterest += interestToday;
                     } 
@@ -1112,8 +1168,9 @@
             let finalBal = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
             const formatCash = (num) => {
-                if(selectedCurr === 'ATVT') return num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ATVT';
-                return selectedCurr + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                let sCurr = (selectedCurr === 'ATVT') ? '' : selectedCurr;
+                let sSuf = (selectedCurr === 'ATVT') ? ' ATVT' : '';
+                return sCurr + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + sSuf;
             };
 
             document.getElementById('resPrincipal').innerText = formatCash(totalDeposits);
