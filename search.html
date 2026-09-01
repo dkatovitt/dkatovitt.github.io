@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
+    <!-- CSS FOR PARTICLES (WEB3 BACKGROUND) -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -112,7 +113,71 @@
         #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 99998; display: none; backdrop-filter: blur(2px); touch-action: none; }
         #overlay.active { display: block; }
 
-        /* 🔥 MASTER MEGA FOOTER CSS 🔥 */
+        /* 🔥 SEARCH CONTAINER SPECIFIC CSS 🔥 */
+        .search-container { position: relative; padding: 140px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+        .search-content-wrapper { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; }
+        .search-container h1 { color: #fff; font-size: 45px; margin-bottom: 5px; font-family: 'Playfair Display', serif; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
+        .search-container h1 span { color: #e6c875; }
+        .search-tagline { color: #aaa; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
+        
+        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px); }
+
+        .crypto-ticker { width: 100%; overflow: hidden; background: rgba(17, 17, 17, 0.8); border: 1px solid #333; border-radius: 8px; padding: 10px 0; margin-bottom: 25px; backdrop-filter: blur(5px); }
+        .ticker-track { display: flex; width: max-content; animation: scroll-left 25s linear infinite; }
+        .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 30px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
+        .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
+        .native-search-form input { flex: 1; padding: 18px 25px; border: none; outline: none; font-size: 16px; color: #111; background: transparent; font-weight: bold; }
+        .icon-btn { background: transparent; border: none; color: #888; font-size: 18px; cursor: pointer; padding: 0 10px; transition: 0.3s; }
+        .icon-btn:hover { color: #e6c875; transform: scale(1.1); }
+        
+        @keyframes micPulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; color: #ff4d4d; } 100% { transform: scale(1); opacity: 1; } }
+        .mic-active { animation: micPulse 1s infinite; color: #ff4d4d !important; }
+
+        .search-submit-btn { background: linear-gradient(135deg, #e6c875, #b8860b); border: none; width: 48px; height: 48px; border-radius: 50%; color: #000; font-size: 18px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin: 5px 8px 5px 5px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(230,200,117,0.5); }
+        .search-submit-btn:hover { background: #d4b561; transform: scale(1.05); }
+        
+        .gcse-notice { font-size: 12px; color: #aaa; margin-bottom: 30px; text-align: center; padding: 0 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
+
+        .trending-searches { margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;}
+        .trending-title { color: #888; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
+        .trending-tag { background: rgba(230, 200, 117, 0.1); border: 1px solid #333; color: #e6c875; padding: 5px 15px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; white-space: nowrap;}
+        .trending-tag:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: translateY(-2px);}
+
+        @keyframes floatReward {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -80%) scale(1.2); }
+            80% { opacity: 1; transform: translate(-50%, -150%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -200%) scale(0.8); }
+        }
+
+        .quick-access-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+        .quick-shortcut { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #ccc; gap: 8px; transition: 0.3s; }
+        .quick-shortcut:hover { transform: translateY(-5px); color: #e6c875; }
+        .shortcut-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(26,26,26,0.8); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #e6c875; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.5); backdrop-filter: blur(5px); transition: 0.3s; }
+        .quick-shortcut:hover .shortcut-icon { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.5); border-color: #e6c875; }
+        .shortcut-text { font-size: 12px; font-weight: bold; }
+
+        .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 30px; background: rgba(0,0,0,0.5); color: #e6c875; border: 1.5px solid #e6c875; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px); }
+        .back-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.4); transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .search-container { padding-top: 110px; }
+            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } 
+            .quick-access-grid { gap: 15px; }
+            .shortcut-icon { width: 45px; height: 45px; font-size: 18px; }
+            .native-search-form input { padding: 15px 15px; font-size: 14px; }
+            .icon-btn { padding: 0 6px; font-size: 16px; }
+            .search-submit-btn { width: 40px; height: 40px; font-size: 16px; margin: 4px 6px 4px 4px; }
+            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
+            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
+            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+        }
+
+        /* MASTER MEGA FOOTER CSS */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; position: relative; z-index: 10; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
         @media (max-width: 1000px) { .tseries-footer-container { grid-template-columns: 1fr 1fr; } .tseries-footer-brand { grid-column: span 2; } }
@@ -142,7 +207,7 @@
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
         /* CUSTOM ALERT MODAL CSS */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 100005; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
         .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
         .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
@@ -193,9 +258,9 @@
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.9); animation: popInCenter 0.3s ease; }
         @keyframes popInCenter { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px; }
+        .chatbot-header { background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; font-size: 14px; letter-spacing: 0.5px;}
         .chatbot-header-left { display: flex; align-items: center; gap: 8px; }
-        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .chat-header-video-wrap { width: 45px; height: 30px; border-radius: 4px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; flex-shrink: 0;}
         .chat-header-video-wrap video { height: 100%; width: auto; mix-blend-mode: screen; transform: scale(1.3); transform-origin: center center; }
         .chatbot-header button { background: none; border: none; font-size: 24px; cursor: pointer; color: #000; transition: 0.3s; line-height: 1; }
         .chatbot-header button:hover { color: #fff; }
@@ -209,60 +274,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-
-        /* 🔥 SEARCH CONTAINER SPECIFIC CSS 🔥 */
-        .search-container { position: relative; padding: 140px 20px 60px 20px; max-width: 100%; min-height: 80vh; text-align: center; overflow: hidden; }
-        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
-        .search-content-wrapper { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; }
-        .search-container h1 { color: #fff; font-size: 45px; margin-bottom: 5px; font-family: 'Playfair Display', serif; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
-        .search-container h1 span { color: #e6c875; }
-        .search-tagline { color: #aaa; font-size: 14px; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; font-weight: bold; }
-        
-        .earn-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; color: #25d366; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); white-space: nowrap; backdrop-filter: blur(5px); }
-
-        .crypto-ticker { width: 100%; overflow: hidden; background: rgba(17, 17, 17, 0.8); border: 1px solid #333; border-radius: 8px; padding: 10px 0; margin-bottom: 25px; backdrop-filter: blur(5px); }
-        .ticker-track { display: flex; width: max-content; animation: scroll-left 25s linear infinite; }
-        .ticker-track span { font-size: 13px; font-weight: bold; color: #ddd; margin: 0 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .native-search-form { display: flex; align-items: center; width: 100%; background: #ffffff; border-radius: 30px; border: 3px solid #e6c875; box-shadow: 0 10px 40px rgba(230,200,117,0.4); position: relative; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
-        .native-search-form:focus-within { box-shadow: 0 10px 50px rgba(230,200,117,0.7); transform: scale(1.02); }
-        .native-search-form input { flex: 1; padding: 18px 25px; border: none; outline: none; font-size: 16px; color: #111; background: transparent; font-weight: bold; }
-        .icon-btn { background: transparent; border: none; color: #888; font-size: 18px; cursor: pointer; padding: 0 10px; transition: 0.3s; }
-        .icon-btn:hover { color: #e6c875; transform: scale(1.1); }
-        
-        @keyframes micPulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; color: #ff4d4d; } 100% { transform: scale(1); opacity: 1; } }
-        .mic-active { animation: micPulse 1s infinite; color: #ff4d4d !important; }
-
-        .search-submit-btn { background: linear-gradient(135deg, #e6c875, #b8860b); border: none; padding: 0 30px; height: 100%; color: #000; font-size: 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; margin-left: 5px; }
-        .search-submit-btn:hover { background: #d4b561; }
-        
-        .gcse-notice { font-size: 12px; color: #aaa; margin-bottom: 30px; text-align: center; padding: 0 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;}
-
-        .quick-access-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
-        .quick-shortcut { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #ccc; gap: 8px; transition: 0.3s; }
-        .quick-shortcut:hover { transform: translateY(-5px); color: #e6c875; }
-        .shortcut-icon { width: 55px; height: 55px; border-radius: 50%; background: rgba(26,26,26,0.8); display: flex; align-items: center; justify-content: center; font-size: 22px; color: #e6c875; border: 1px solid #333; box-shadow: 0 5px 15px rgba(0,0,0,0.5); backdrop-filter: blur(5px); transition: 0.3s; }
-        .quick-shortcut:hover .shortcut-icon { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.5); border-color: #e6c875; }
-        .shortcut-text { font-size: 12px; font-weight: bold; }
-
-        .back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 30px; background: rgba(0,0,0,0.5); color: #e6c875; border: 1.5px solid #e6c875; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; backdrop-filter: blur(5px); }
-        .back-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 15px rgba(230,200,117,0.4); transform: translateY(-3px); }
-
-        @media (max-width: 768px) {
-            .search-container { padding-top: 110px; }
-            .earn-badge { font-size: 11px; padding: 8px 12px; gap: 5px; } 
-            .quick-access-grid { gap: 15px; }
-            .shortcut-icon { width: 45px; height: 45px; font-size: 18px; }
-            .native-search-form input { padding: 15px 15px; font-size: 14px; }
-            .icon-btn { padding: 0 6px; font-size: 16px; }
-            .search-submit-btn { padding: 0 20px; font-size: 18px; }
-            
-            /* RESTORING FLOATING BUTTONS EXACT CSS FOR MOBILE */
-            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
-            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
-            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-        }
     </style>
 </head>
 <body>
@@ -376,7 +387,9 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🔥 SUPER PREMIUM SEARCH CONTENT AREA 🔥 -->
     <section class="search-container">
+        <!-- 🌌 Feature 1: Live Particles Background -->
         <div id="particles-js"></div>
         
         <div class="search-content-wrapper">
@@ -384,9 +397,10 @@
             <p class="search-tagline">The Premium Web3 Search Engine</p>
             
             <div class="earn-badge">
-                <i class="fas fa-gift"></i> Search the Web & Earn ATVT Coins (Coming Soon)
+                <i class="fas fa-gift"></i> Search the Web & Earn ATVT Coins
             </div>
 
+            <!-- 📈 Feature 4: Live Crypto Ticker with Gold & Silver -->
             <div class="crypto-ticker">
                 <div class="ticker-track">
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
@@ -396,6 +410,7 @@
                     <span><i class="fas fa-coins" style="color:#ffd700;"></i> GOLD: $2,450 <span style="color:#25d366;">(+0.5%)</span></span>
                     <span><i class="fas fa-coins" style="color:#c0c0c0;"></i> SILVER: $28.50 <span style="color:#25d366;">(+1.1%)</span></span>
                     
+                    <!-- Duplicated for seamless loop -->
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
                     <span><i class="fas fa-cube" style="color:#f3ba2f;"></i> BNB: $590 <span style="color:#ff4d4d;">(-0.8%)</span></span>
@@ -405,7 +420,9 @@
                 </div>
             </div>
 
-            <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank" id="dkSearchForm">
+            <!-- 🎙️ Feature 1, 2, 3: Premium Search Box with Voice, Lens & AI Chat -->
+            <!-- 🔥 Added onsubmit animation trigger 🔥 -->
+            <form class="native-search-form" action="https://www.google.com/search" method="GET" target="_blank" id="dkSearchForm" onsubmit="showRewardAnimation()">
                 <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
                 <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
                 <button type="button" class="icon-btn" title="DK AI Lens" onclick="document.getElementById('dkLensInput').click()"><i class="fas fa-camera"></i></button>
@@ -413,12 +430,23 @@
                 <button type="submit" class="search-submit-btn"><i class="fas fa-search"></i></button>
             </form>
             
+            <!-- Hidden input for Camera/Lens -->
             <input type="file" id="dkLensInput" accept="image/*" capture="environment" style="display:none;" onchange="handleImageSearch(event)">
             
             <div class="gcse-notice">
                 <i class="fas fa-check-circle" style="color:#25d366;"></i> Search is active! Type, Speak, or Upload Image to explore.
             </div>
 
+            <!-- 🔥 VIP ADDITION 2: TRENDING HASHTAGS 🔥 -->
+            <div class="trending-searches">
+                <span class="trending-title"><i class="fas fa-fire" style="color:#ff4d4d;"></i> Trending:</span>
+                <span class="trending-tag" onclick="setSearchText('DK Atovitt')">#DK_Atovitt</span>
+                <span class="trending-tag" onclick="setSearchText('ATVT Coin Crypto')">#ATVTCoin</span>
+                <span class="trending-tag" onclick="setSearchText('Web3 Technology')">#Web3</span>
+                <span class="trending-tag" onclick="setSearchText('Bitcoin ETF News')">#BitcoinETF</span>
+            </div>
+
+            <!-- 🌐 Feature 4: Quick Access Chrome Style Shortcuts -->
             <div class="quick-access-grid">
                 <a href="movie.html" class="quick-shortcut">
                     <div class="shortcut-icon"><i class="fas fa-film"></i></div>
@@ -442,6 +470,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -555,6 +584,7 @@
         </div>
     </div>
 
+    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -569,14 +599,22 @@
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
+            
             <div class="upcoming-modal-logo">
                 <video src="images/logo/logo.mp4" autoplay loop muted playsinline preload="metadata"></video>
             </div>
+            
             <h3 class="coming-soon-glow notranslate">COMING SOON</h3>
-            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;"><i id="customAlertProjectIcon" class="fas fa-rocket"></i></div>
+            
+            <div style="font-size: 32px; color: #e6c875; margin-bottom: 6px;">
+                <i id="customAlertProjectIcon" class="fas fa-rocket"></i>
+            </div>
+            
             <h4 id="customAlertProjectName" class="notranslate" style="color: #fff; font-size: 17px; font-weight: bold; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase;">Project Name</h4>
+            
             <p id="customAlertEngDesc" style="color: #ccc; font-size: 12px; line-height: 1.4; margin-bottom: 6px;">English Description</p>
             <p id="customAlertHinDesc" style="color: #aaa; font-size: 11px; line-height: 1.4; margin-bottom: 12px;">Hindi Description</p>
+            
             <div style="background: rgba(230,200,117,0.1); border: 1px dashed #e6c875; padding: 10px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(230,200,117,0.15);">
                 <p style="color: #e6c875; font-size: 12px; margin: 0 0 4px 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"><i class="fas fa-gift"></i> Play & Earn Coins!</p>
                 <p style="color: #fff; font-size: 11px; margin: 0; line-height: 1.4; font-weight: bold;">The more time you spend on this project once launched, the more <span style="color:#e6c875;">DK ATVT Coins</span> you will earn absolutely FREE!</p>
@@ -677,6 +715,42 @@
             }
         }
 
+        // 🔥 SEARCH REWARD ANIMATION & TRENDING TAGS 🔥
+        function showRewardAnimation() {
+            const reward = document.createElement('div');
+            reward.innerHTML = "+ DK ATVT Coin 🪙";
+            reward.style.position = 'fixed';
+            reward.style.top = '50%';
+            reward.style.left = '50%';
+            reward.style.transform = 'translate(-50%, -50%)';
+            reward.style.color = '#25d366';
+            reward.style.fontSize = '30px';
+            reward.style.fontWeight = '900';
+            reward.style.zIndex = '999999';
+            reward.style.textShadow = '0 5px 15px rgba(0,0,0,0.9)';
+            reward.style.animation = 'floatReward 1.5s ease-out forwards';
+            document.body.appendChild(reward);
+            setTimeout(() => reward.remove(), 1500);
+        }
+
+        function setSearchText(text) {
+            document.getElementById('searchInput').value = text;
+            document.getElementById('dkSearchForm').submit();
+        }
+
+        // AUTO-TYPING PLACEHOLDER (VIP Feature)
+        const placeholderTexts = [
+            "Type here to search the web...",
+            "Search Web3 & Crypto Updates...",
+            "Ask DK AI Assistant anything...",
+            "Search for DK ATVT Coin..."
+        ];
+        let pIndex = 0;
+        setInterval(() => {
+            pIndex = (pIndex + 1) % placeholderTexts.length;
+            document.getElementById('searchInput').setAttribute('placeholder', placeholderTexts[pIndex]);
+        }, 3000);
+
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
@@ -734,15 +808,13 @@
         function openMenu() {
             sideMenu.classList.add('active'); 
             overlay.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-            html.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden'; html.style.overflow = 'hidden'; 
         }
 
         function closeSideMenu() { 
             sideMenu.classList.remove('active'); 
             overlay.classList.remove('active'); 
-            document.body.style.overflow = ''; 
-            html.style.overflow = ''; 
+            document.body.style.overflow = ''; html.style.overflow = ''; 
         }
         
         menuBtn.addEventListener('click', openMenu); 
@@ -751,21 +823,12 @@
         document.querySelectorAll('.side-menu a.normal-link:not([onclick*="toggleUpcomingProjects"])').forEach(link => { 
             link.addEventListener('click', closeSideMenu); 
         });
-        
+
         window.onclick = function(event) {
             if (!event.target.closest('.profile-dropdown-container') && !event.target.closest('#headerRightArea')) {
                 var dropdowns = document.querySelectorAll(".topbarDropdown-content");
-                if(dropdowns){
-                   dropdowns.forEach(d => d.classList.remove('show'));
-                }
+                if(dropdowns){ dropdowns.forEach(d => d.classList.remove('show')); }
             }
-        }
-        
-        function copyDkId() {
-            var copyText = document.getElementById("sidebarDkId").innerText.trim();
-            if(copyText.includes('Loading') || copyText.includes('Login')) return;
-            navigator.clipboard.writeText(copyText);
-            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
 
         window.translatePage = function(lang) {
@@ -789,57 +852,17 @@
             }
         }
         
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-                var currentLang = "";
-                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
-                var googleSelect = document.querySelector('select.goog-te-combo');
-                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
-                var sidebarLang = document.getElementById('lang-mobile');
-                var desktopLang = document.getElementById('lang-desktop');
-                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
-                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
-            }, 1000);
-        });
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const openAppModal = document.getElementById('openAppModal');
-            const appModalOverlay = document.getElementById('appModalOverlay');
-            const closeAppModal = document.getElementById('closeAppModal');
-            
-            if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    appModalOverlay.classList.add('active'); 
-                    document.body.style.overflow = 'hidden'; 
-                });
-                closeAppModal.addEventListener('click', () => { 
-                    appModalOverlay.classList.remove('active'); 
-                    document.body.style.overflow = ''; 
-                });
-                appModalOverlay.addEventListener('click', (e) => { 
-                    if(e.target === appModalOverlay) {
-                        appModalOverlay.classList.remove('active'); 
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-        });
-        
         window.toggleUpcomingProjects = function() {
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
-            
             if (list.style.display === "none" || list.style.display === "") {
-                list.style.display = "block";
-                arrow.style.transform = "rotate(180deg)"; 
+                list.style.display = "block"; arrow.style.transform = "rotate(180deg)"; 
             } else {
-                list.style.display = "none";
-                arrow.style.transform = "rotate(0deg)"; 
+                list.style.display = "none"; arrow.style.transform = "rotate(0deg)"; 
             }
         };
-        
+
+        // Chatbot Logic
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -854,16 +877,13 @@
         if(chatbotToggler) { 
             chatbotToggler.addEventListener('click', () => { 
                 chatbotOverlay.classList.add('active'); 
-                document.body.style.overflow = 'hidden'; 
-                document.documentElement.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';
             }); 
         }
         if(closeChatbot) { 
             closeChatbot.addEventListener('click', () => { 
                 chatbotOverlay.classList.remove('active'); 
-                document.body.style.overflow = ''; 
-                document.documentElement.style.overflow = '';
-                resetChatbot(); 
+                document.body.style.overflow = ''; document.documentElement.style.overflow = ''; resetChatbot(); 
             }); 
         }
 
@@ -902,7 +922,6 @@
 
             chatbotBody.innerHTML += `<div class="user-msg">${userText}</div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
-            
             let typingId = 'typing-' + Math.random().toString(36).substr(2, 9);
             chatbotBody.innerHTML += `<div class="bot-msg" id="${typingId}"><i class="fas fa-ellipsis-h fa-fade"></i></div>`;
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
