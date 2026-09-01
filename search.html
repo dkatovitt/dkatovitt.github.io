@@ -145,23 +145,6 @@
         .tab-btn { background: rgba(26,26,26,0.8); border: 1px solid #333; color: #aaa; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(5px); }
         .tab-btn:hover { background: rgba(230,200,117,0.1); color: #e6c875; border-color: #e6c875; }
         .tab-btn.active { background: #e6c875; color: #000; border-color: #e6c875; box-shadow: 0 4px 10px rgba(230,200,117,0.3);}
-        
-        /* 🔥 IN-HOUSE RESULTS AREA CSS 🔥 */
-        #searchResultsArea { display: none; background: #0f0f0f; text-align: left; padding: 25px; border-radius: 15px; border: 1px solid #333; margin-top: 10px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); position: relative; z-index: 10; min-height: 200px;}
-        .results-loader { text-align: center; color: #e6c875; font-size: 15px; font-weight: bold; padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 10px; letter-spacing: 1px;}
-        
-        .gsc-control-cse { background-color: transparent !important; border: none !important; padding: 0 !important; font-family: Arial, sans-serif !important;}
-        .gsc-result { background-color: #1a1a1a !important; border: 1px solid #222 !important; padding: 15px !important; border-radius: 12px !important; margin-bottom: 15px !important; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s;}
-        .gsc-result:hover { border-color: #e6c875 !important; transform: translateY(-2px); }
-        .gs-title, .gs-title * { color: #e6c875 !important; text-decoration: none !important; font-size: 17px !important; font-weight: bold !important; letter-spacing: 0.5px;}
-        .gs-snippet { color: #aaa !important; font-size: 13px !important; line-height: 1.6 !important; margin-top: 8px !important; }
-        .gsc-url-top { color: #25d366 !important; margin-top: 5px !important; font-size: 12px !important;}
-        .gsc-cursor-page { color: #ccc !important; background: #222 !important; border: 1px solid #444 !important; padding: 6px 12px !important; border-radius: 6px !important; margin: 0 4px !important; font-weight: bold !important;}
-        .gsc-cursor-current-page { background: #e6c875 !important; color: #000 !important; border-color: #e6c875 !important;}
-        .gsc-webResult.gsc-result { border-bottom: none !important; }
-        .gcse-searchresults-only { width: 100%; }
-        .gsc-above-wrapper-area { border-bottom: 1px solid #333 !important; padding-bottom: 10px !important; margin-bottom: 15px !important;}
-        .gsc-result-info { color: #888 !important; font-size: 12px !important;}
 
         @keyframes floatReward {
             0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
@@ -190,10 +173,8 @@
             .native-search-form input { padding: 15px 15px; font-size: 14px; }
             .icon-btn { padding: 0 6px; font-size: 16px; }
             .search-submit-btn { width: 40px; height: 40px; font-size: 16px; margin: 4px 6px 4px 4px; }
-            #searchResultsArea { padding: 15px 10px; }
-            .gsc-result { padding: 10px !important; }
-            .gs-title, .gs-title * { font-size: 15px !important; }
             
+            /* RESTORING FLOATING BUTTONS EXACT CSS FOR MOBILE */
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
@@ -426,7 +407,7 @@
                 </div>
             </div>
 
-            <div class="crypto-ticker">
+            <div class="crypto-ticker" id="cryptoTicker">
                 <div class="ticker-track">
                     <span><i class="fab fa-bitcoin" style="color:#f7931a;"></i> BTC: $64,250 <span style="color:#25d366;">(+2.4%)</span></span>
                     <span><i class="fab fa-ethereum" style="color:#627eea;"></i> ETH: $3,450 <span style="color:#25d366;">(+1.2%)</span></span>
@@ -445,7 +426,9 @@
                 </div>
             </div>
 
-            <form class="native-search-form" action="search.html" method="GET" id="dkSearchForm">
+            <!-- 🔥 OPTION B: GLOBAL SEARCH FORM 🔥 -->
+            <!-- Search ab ekdum smooth new tab me Google par open hoga -->
+            <form class="native-search-form" id="dkSearchForm">
                 <input type="text" name="q" id="searchInput" placeholder="Type here to search the web..." required autocomplete="off">
                 <button type="button" class="icon-btn" id="voiceBtn" title="Voice Search" onclick="startVoiceSearch()"><i class="fas fa-microphone"></i></button>
                 <button type="button" class="icon-btn" title="DK AI Lens" onclick="document.getElementById('dkLensInput').click()"><i class="fas fa-camera"></i></button>
@@ -455,24 +438,11 @@
             
             <input type="file" id="dkLensInput" accept="image/*" capture="environment" style="display:none;" onchange="handleImageSearch(event)">
 
-            <div class="search-tabs">
+            <div class="search-tabs" id="searchTabs">
                 <button class="tab-btn active"><i class="fas fa-globe"></i> Web</button>
                 <button class="tab-btn" onclick="showCustomAlert('Images', 'Image search will be available soon!')"><i class="fas fa-image"></i> Images</button>
                 <button class="tab-btn" onclick="showCustomAlert('News', 'Crypto news feed will be available soon!')"><i class="fas fa-newspaper"></i> News</button>
                 <button class="tab-btn" onclick="showCustomAlert('Videos', 'Video search will be available soon!')"><i class="fas fa-play-circle"></i> Videos</button>
-            </div>
-            
-            <!-- 🔥 IN-HOUSE RESULTS AREA 🔥 -->
-            <div id="searchResultsArea">
-                <!-- Loading Animation -->
-                <div id="searchLoader" class="results-loader">
-                    <i class="fas fa-spinner fa-spin fa-2x"></i>
-                    <span style="margin-top:10px;">Fetching Secure Web3 Results...</span>
-                    <span style="color:#ff4d4d; font-size:12px; margin-top:8px; font-weight:normal;">(Note: Asli results tabhi aayenge jab aap code me apna 'Google Search Engine ID' dalenge)</span>
-                </div>
-                
-                <!-- Google Programmable Search Results Container -->
-                <div class="gcse-searchresults-only" data-queryParameterName="q"></div>
             </div>
 
             <div class="quick-access-grid" id="quickAccessGrid">
@@ -672,47 +642,19 @@
     </div>
 
     <script>
-        // 🔥 FIXED: IN-HOUSE SEARCH RESULTS LOGIC 🔥
-        window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('q');
-            
-            // 👇 🔥 YAHAN APNA ASLI ID DAALNA HAI 🔥 👇
-            const googleSearchID = "YOUR_SEARCH_ENGINE_ID"; 
-            
-            if(query) {
-                document.getElementById('searchInput').value = query;
-                
-                // Show Result Box, Hide Quick Links
-                document.getElementById('searchResultsArea').style.display = 'block';
-                document.getElementById('quickAccessGrid').style.display = 'none';
-                
-                // Inject Google Script Dynamically
-                const script = document.createElement('script');
-                script.src = "https://cse.google.com/cse.js?cx=" + googleSearchID;
-                script.async = true;
-                document.head.appendChild(script);
-
-                // Hide loading spinner after 2.5 seconds
-                setTimeout(() => {
-                    let loader = document.getElementById('searchLoader');
-                    if(loader) loader.style.display = 'none';
-                }, 2500);
-
-                // 🔥 AUTO-SCROLL HATA DIYA HAI - Ab page refresh hone par upar bhagega nahi, ekdum perfect top par rahega! 🔥
-            }
-        });
-
-        // 🔥 SEARCH FORM SUBMIT & ANIMATION 🔥
+        // 🔥 GLOBAL SEARCH LOGIC (Option B) 🔥
         document.getElementById('dkSearchForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
             showRewardAnimation(); 
             const q = document.getElementById('searchInput').value;
+            
+            // Open real Google search in a new tab smoothly
             setTimeout(() => {
-                window.location.href = `search.html?q=${encodeURIComponent(q)}`;
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, '_blank');
             }, 1000); 
         });
 
+        // 🔥 VIP COIN ANIMATION 🔥
         function showRewardAnimation() {
             const reward = document.createElement('div');
             reward.innerHTML = "+ DK ATVT Coin 🪙";
@@ -768,7 +710,9 @@
                     searchInput.value = transcript;
                     
                     showRewardAnimation();
-                    setTimeout(() => { window.location.href = `search.html?q=${encodeURIComponent(transcript)}`; }, 1000); 
+                    setTimeout(() => { 
+                        window.open(`https://www.google.com/search?q=${encodeURIComponent(transcript)}`, '_blank'); 
+                    }, 1000); 
                 };
 
                 recognition.onerror = function(event) {
