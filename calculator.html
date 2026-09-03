@@ -602,12 +602,13 @@
                         </div>
                     </div>
 
-                    <!-- 4. 🔥 VIDEO MATCHED: Compound frequency Dropdown 🔥 -->
+                    <!-- 4. 🔥 COMPOUND FREQUENCY DROPDOWN (UPDATED) 🔥 -->
                     <div class="form-row-side" id="compIntervalRow" style="display: flex;">
                         <div class="form-label">Compound<br>frequency:</div>
                         <div class="form-input-area">
                             <select class="reinvest-select" id="compInterval" style="width: 100%;">
                                 <option value="365">Daily (365/yr)</option>
+                                <option value="360">Daily (360/yr)</option>
                                 <option value="104">Semi-Weekly (104/yr)</option>
                                 <option value="52">Weekly (52/yr)</option>
                                 <option value="26">Bi-Weekly (26/yr)</option>
@@ -617,11 +618,22 @@
                                 <option value="4">Quarterly (4/yr)</option>
                                 <option value="2">Half-Yearly (2/yr)</option>
                                 <option value="1">Yearly (1/yr)</option>
+                                <option value="custom">--Custom--</option>
                             </select>
                             <button type="button" class="help-btn" onclick="toggleHelp('helpCompFreq')">?</button>
                         </div>
                     </div>
                     <div id="helpCompFreq" class="inline-help-text">Compound frequency is the number of times interest is compounded per year.</div>
+
+                    <!-- 🔥 NEW: Custom Compound Input Box (Hidden By Default) 🔥 -->
+                    <div class="form-row-side" id="customCompRow" style="display: none;">
+                        <div class="form-label">Compounds<br>per year:</div>
+                        <div class="form-input-area">
+                            <div class="input-box" style="margin-bottom:0; width: 100%;">
+                                <input type="number" id="customCompInterval" placeholder="e.g. 365" min="1" step="any">
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- 4b. Forex Compounding Row (For Forex tab) -->
                     <div class="form-row-side" id="forexCompRow" style="display: none;">
@@ -1149,6 +1161,15 @@
             updatePrefixes(selectedCurr);
         });
 
+        // 🌟 CUSTOM COMPOUND FREQUENCY TOGGLE 🌟
+        document.getElementById('compInterval').addEventListener('change', function() {
+            if (this.value === 'custom') {
+                document.getElementById('customCompRow').style.display = 'flex';
+            } else {
+                document.getElementById('customCompRow').style.display = 'none';
+            }
+        });
+
         // 🌟 TAB SWITCHING LOGIC (VIDEO MATCHED) 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
         const dailyOptionsRow = document.getElementById('dailyOptionsRow');
@@ -1174,6 +1195,7 @@
                 dailyOptionsRow.style.display = 'none';
                 extWeekendOpts.style.display = 'none';
                 compIntervalRow.style.display = 'none';
+                document.getElementById('customCompRow').style.display = 'none'; // Custom row hide on tab switch
                 depositArea.style.display = 'none';
                 withdrawalArea.style.display = 'none';
                 forexCompRow.style.display = 'none';
@@ -1194,6 +1216,11 @@
                 if (activeCalcTab === 'compound') {
                     if(contribSection) contribSection.style.display = 'block';
                     compIntervalRow.style.display = 'flex';
+                    
+                    // Agar wapas tab pe aayein aur custom select tha toh wapas show ho
+                    if (document.getElementById('compInterval').value === 'custom') {
+                        document.getElementById('customCompRow').style.display = 'flex';
+                    }
                     
                     document.getElementById('colDays').style.display = 'none'; 
                     document.getElementById('bothToggleBtn').style.display = 'block';
@@ -1444,17 +1471,25 @@
                 let compDays = 1;
 
                 if(activeCalcTab === 'compound') {
-                    const compInt = document.getElementById('compInterval').value;
-                    if(compInt === '365') compDays = 1; // Daily
-                    else if(compInt === '104') compDays = 3.5; // Semi-weekly approx
-                    else if(compInt === '52') compDays = 7; // Weekly
-                    else if(compInt === '26') compDays = 14; // Bi-weekly
-                    else if(compInt === '24') compDays = 15; // Semi-monthly approx
-                    else if(compInt === '12') compDays = 30; // Monthly
-                    else if(compInt === '6') compDays = 60; // Bi-Monthly
-                    else if(compInt === '4') compDays = 90; // Quarterly
-                    else if(compInt === '2') compDays = 180; // Half-yearly
-                    else if(compInt === '1') compDays = 365; // Yearly
+                    let compInt = document.getElementById('compInterval').value;
+                    
+                    // Agar custom select kiya hai toh hidden input ki value lein
+                    if(compInt === 'custom') {
+                        compInt = parseFloat(document.getElementById('customCompInterval').value) || 12; 
+                    }
+                    
+                    if(compInt == 365) compDays = 1; // Daily
+                    else if(compInt == 360) compDays = 1.0138; // Daily (360/yr) approx
+                    else if(compInt == 104) compDays = 3.5; // Semi-weekly approx
+                    else if(compInt == 52) compDays = 7; // Weekly
+                    else if(compInt == 26) compDays = 14; // Bi-weekly
+                    else if(compInt == 24) compDays = 15; // Semi-monthly approx
+                    else if(compInt == 12) compDays = 30.4167; // Monthly approx
+                    else if(compInt == 6) compDays = 60.83; // Bi-Monthly approx
+                    else if(compInt == 4) compDays = 91.25; // Quarterly
+                    else if(compInt == 2) compDays = 182.5; // Half-yearly
+                    else if(compInt == 1) compDays = 365; // Yearly
+                    else compDays = 365 / compInt; // Custom formula
                 }
 
                 for (let i = 1; i <= totalDays; i++) {
