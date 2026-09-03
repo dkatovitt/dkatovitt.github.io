@@ -229,7 +229,6 @@
         .rate-select, .date-input, .reinvest-select { height: 46px; box-sizing: border-box; }
         .rate-select, .reinvest-select { background: #1a1a1a; color: #ccc; border: 1px solid #333; border-radius: 6px; padding: 0 12px; width: 100%; outline: none; font-size: 14px; font-family: Arial, sans-serif;}
         
-        /* 🔥 STYLE FOR OPTGROUPS TO MATCH REFERENCE APP 🔥 */
         select optgroup { color: #888; font-weight: bold; font-style: normal; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; background: #0a0a0a; padding: 5px 0;}
         select option { color: #fff; background: #1a1a1a; font-weight: normal; text-transform: none; letter-spacing: normal;}
 
@@ -576,7 +575,6 @@
 
                     <!-- 2. Principal Amount (Side-by-Side) -->
                     <div class="form-row-side">
-                        <!-- 🔥 2-LINE LABEL 🔥 -->
                         <div class="form-label" id="lblPrincipal">Initial<br>investment:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0;">
@@ -655,7 +653,26 @@
                         </div>
                     </div>
 
-                    <!-- 5. Time Boxes (Years, Months, Days) (Side-by-Side) -->
+                    <!-- 🔥 NEW: START DATE MOVED HERE FOR SIMPLE TAB (Will be moved by flex order/display but placed logically here) 🔥 -->
+                    <div class="form-row-side" id="startDateSection" style="display: none; align-items: flex-end;">
+                        <div class="form-label" style="padding-bottom: 12px;">Start date?<br><span style="color:#888; font-size:11px;">(optional)</span></div>
+                        <div class="form-input-area">
+                            <input type="date" class="date-input" id="startDate" required>
+                        </div>
+                    </div>
+
+                    <!-- 🔥 NEW: TIME PERIOD OR END DATE TOGGLE (Only for Simple Tab) 🔥 -->
+                    <div class="form-row-side" id="timePeriodToggleRow" style="display: none;">
+                        <div class="form-label">Time period<br>or end date?</div>
+                        <div class="form-input-area">
+                            <div class="toggle-group" id="timeModeToggle" style="margin-bottom:0; width: 100%;">
+                                <button type="button" class="toggle-btn active" data-val="duration">Time period</button>
+                                <button type="button" class="toggle-btn" data-val="enddate">End date</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Time Boxes (Years, Months, Weeks, Days) (Side-by-Side) -->
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
                         <div class="form-label" style="padding-bottom: 10px;">Time<br>period:</div>
                         <div class="form-input-area">
@@ -667,11 +684,24 @@
                                 <span class="tiny-label">Months:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeMonths" value="0" min="0" class="time-col"></div>
                             </div>
-                            <!-- Days Hidden by Default for Compound Tab, visible for Daily Tab -->
+                            <!-- 🔥 NEW: Weeks Input (Only for Simple Tab) 🔥 -->
+                            <div class="flex-col" id="colWeeks" style="display: none;">
+                                <span class="tiny-label">Weeks:</span>
+                                <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeWeeks" value="0" min="0" class="time-col"></div>
+                            </div>
+                            <!-- Days Hidden by Default for Compound Tab, visible for Daily Tab & Simple Tab -->
                             <div class="flex-col" id="colDays" style="display: none;">
                                 <span class="tiny-label">Days:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeDays" value="0" min="0" class="time-col"></div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- 🔥 NEW: END DATE INPUT ROW (Only for Simple Tab when End Date is selected) 🔥 -->
+                    <div class="form-row-side" id="endDateRow" style="display: none; align-items: flex-end;">
+                        <div class="form-label" style="padding-bottom: 12px;">End date?</div>
+                        <div class="form-input-area">
+                            <input type="date" class="date-input" id="endDateInput">
                         </div>
                     </div>
 
@@ -730,148 +760,181 @@
 
                 <!-- 🔥 ADDITIONAL CONTRIBUTIONS SECTION 🔥 -->
                 <div class="calc-section" id="contributionsSection" style="display: block;">
-                    <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                     
-                    <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
-                        <button type="button" class="toggle-btn active" data-val="none">None</button>
-                        <button type="button" class="toggle-btn" data-val="deposits">Deposits</button>
-                        <button type="button" class="toggle-btn" data-val="withdrawals">Withdrawals</button>
-                        <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
-                    </div>
-                    
-                    <!-- 🔥 HIDDEN DEPOSIT BOX 🔥 -->
-                    <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
+                    <!-- STANDARD CONTRIBUTIONS (For Compound, Daily, Forex) -->
+                    <div id="standardContribWrapper" style="display: block; width: 100%;">
+                        <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         
-                        <div class="form-input-area" style="margin-bottom: 0px;">
-                            <div class="input-box" style="margin-bottom:0; flex:1.2;">
-                                <div class="input-prefix" id="depPrefix" style="border-right: 1px solid #333;">$</div>
-                                <input type="number" id="depositAmt" placeholder="0" step="any">
-                            </div>
-                            <select class="rate-select" id="depositFreq" style="flex:1;">
-                                <option value="weekly">weekly</option>
-                                <option value="biweekly">bi-weekly</option>
-                                <option value="monthly" selected>monthly</option>
-                                <option value="quarterly">quarterly</option>
-                                <option value="half-yearly">half-yearly</option>
-                                <option value="yearly">yearly</option>
-                            </select>
-                            <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
+                        <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
+                            <button type="button" class="toggle-btn active" data-val="none">None</button>
+                            <button type="button" class="toggle-btn" data-val="deposits">Deposits</button>
+                            <button type="button" class="toggle-btn" data-val="withdrawals">Withdrawals</button>
+                            <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
                         </div>
                         
-                        <!-- ADVANCED DEPOSIT TIMING OPTIONS (TOGGLED BY ARROW) -->
-                        <div id="advancedDepositOptions" style="display: none; width: 100%; margin-top: 15px;">
-                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
+                        <!-- DEPOSIT BOX -->
+                        <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
+                            
                             <div class="form-input-area" style="margin-bottom: 0px;">
-                                <div class="toggle-group" id="depTimingToggle" style="margin-bottom:0; width:60%;">
-                                    <button type="button" class="toggle-btn active">Beginning</button>
-                                    <button type="button" class="toggle-btn">End</button>
+                                <div class="input-box" style="margin-bottom:0; flex:1.2;">
+                                    <div class="input-prefix" id="depPrefix" style="border-right: 1px solid #333;">$</div>
+                                    <input type="number" id="depositAmt" placeholder="0" step="any">
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- ANNUAL DEPOSIT INCREASE ALWAYS VISIBLE IN DEPOSITS SECTION -->
-                        <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
-                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual deposit increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
-                            <div class="form-input-area" style="margin-bottom: 0;">
-                                <div class="toggle-group" id="depIncTypeToggle" style="margin-bottom:0; flex:0.4;">
-                                    <button type="button" class="toggle-btn active" data-type="percent">%</button>
-                                    <button type="button" class="toggle-btn" id="depIncCurrBtn" data-type="currency">$</button> 
-                                </div>
-                                <div class="input-box" style="margin-bottom:0; flex:0.6;">
-                                    <div class="input-prefix" id="depIncPrefix" style="display:none; border-right: 1px solid #333;">$</div>
-                                    <input type="number" id="depIncreaseAmt" placeholder="" step="any">
-                                    <div class="input-suffix" id="depIncSuffix" style="display:flex; border-left: 1px solid #333;">%</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 🔥 HIDDEN WITHDRAWAL BOX (FIXED WITH ARROW AND TIMING) 🔥 -->
-                    <div id="withdrawalArea" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif; padding-top: 15px;">Withdrawal amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 0px;">
-                            <div class="input-box" style="margin-bottom:0; flex:1.2;">
-                                <div class="input-prefix" id="withPrefix" style="border-right: 1px solid #333;">$</div>
-                                <input type="number" id="withdrawalAmt" placeholder="0" step="any">
-                                <div class="input-suffix" id="withSuffix" style="display:none; border-left: 1px solid #333;">%</div>
+                                <select class="rate-select" id="depositFreq" style="flex:1;">
+                                    <option value="weekly">weekly</option>
+                                    <option value="biweekly">bi-weekly</option>
+                                    <option value="monthly" selected>monthly</option>
+                                    <option value="quarterly">quarterly</option>
+                                    <option value="half-yearly">half-yearly</option>
+                                    <option value="yearly">yearly</option>
+                                </select>
+                                <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                             </div>
                             
-                            <select class="rate-select" id="withdrawalFreq" style="flex:1;">
-                                <optgroup label="Money withdrawals">
-                                    <option value="monthly" id="optWithMonth" selected>monthly $</option>
-                                    <option value="quarterly" id="optWithQuarter">quarterly $</option>
-                                    <option value="half-yearly" id="optWithHalf">half-yearly $</option>
-                                    <option value="yearly" id="optWithYear">yearly $</option>
-                                </optgroup>
-                                <optgroup label="Percentage of balance">
-                                    <option value="pct_month">% each month</option>
-                                    <option value="pct_quarter">% each quarter</option>
-                                    <option value="pct_year">% each year</option>
-                                </optgroup>
-                                <optgroup label="Earnings withdrawals">
-                                    <option value="pct_earn_month">% of earnings monthly</option>
-                                    <option value="pct_earn_year">% of earnings yearly</option>
-                                </optgroup>
-                            </select>
-                            
-                            <!-- 🔥 FIXED: ARROW BUTTON ADDED BACK FOR WITHDRAWALS 🔥 -->
-                            <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
+                            <div id="advancedDepositOptions" style="display: none; width: 100%; margin-top: 15px;">
+                                <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
+                                <div class="form-input-area" style="margin-bottom: 0px;">
+                                    <div class="toggle-group" id="depTimingToggle" style="margin-bottom:0; width:60%;">
+                                        <button type="button" class="toggle-btn active">Beginning</button>
+                                        <button type="button" class="toggle-btn">End</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                                <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual deposit increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
+                                <div class="form-input-area" style="margin-bottom: 0;">
+                                    <div class="toggle-group" id="depIncTypeToggle" style="margin-bottom:0; flex:0.4;">
+                                        <button type="button" class="toggle-btn active" data-type="percent">%</button>
+                                        <button type="button" class="toggle-btn" id="depIncCurrBtn" data-type="currency">$</button> 
+                                    </div>
+                                    <div class="input-box" style="margin-bottom:0; flex:0.6;">
+                                        <div class="input-prefix" id="depIncPrefix" style="display:none; border-right: 1px solid #333;">$</div>
+                                        <input type="number" id="depIncreaseAmt" placeholder="" step="any">
+                                        <div class="input-suffix" id="depIncSuffix" style="display:flex; border-left: 1px solid #333;">%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- 🔥 FIXED: WITHDRAWAL TIMING OPTIONS (TOGGLED BY ARROW) 🔥 -->
-                        <div id="advancedWithdrawalOptions" style="display: none; width: 100%; margin-top: 15px;">
-                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
+                        <!-- WITHDRAWAL BOX -->
+                        <div id="withdrawalArea" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif; padding-top: 15px;">Withdrawal amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
-                                <div class="toggle-group" id="withTimingToggle" style="margin-bottom:0; width:60%;">
-                                    <button type="button" class="toggle-btn active">Beginning</button>
-                                    <button type="button" class="toggle-btn">End</button>
+                                <div class="input-box" style="margin-bottom:0; flex:1.2;">
+                                    <div class="input-prefix" id="withPrefix" style="border-right: 1px solid #333;">$</div>
+                                    <input type="number" id="withdrawalAmt" placeholder="0" step="any">
+                                    <div class="input-suffix" id="withSuffix" style="display:none; border-left: 1px solid #333;">%</div>
+                                </div>
+                                
+                                <select class="rate-select" id="withdrawalFreq" style="flex:1;">
+                                    <optgroup label="Money withdrawals">
+                                        <option value="monthly" id="optWithMonth" selected>monthly $</option>
+                                        <option value="quarterly" id="optWithQuarter">quarterly $</option>
+                                        <option value="half-yearly" id="optWithHalf">half-yearly $</option>
+                                        <option value="yearly" id="optWithYear">yearly $</option>
+                                    </optgroup>
+                                    <optgroup label="Percentage of balance">
+                                        <option value="pct_month">% each month</option>
+                                        <option value="pct_quarter">% each quarter</option>
+                                        <option value="pct_year">% each year</option>
+                                    </optgroup>
+                                    <optgroup label="Earnings withdrawals">
+                                        <option value="pct_earn_month">% of earnings monthly</option>
+                                        <option value="pct_earn_year">% of earnings yearly</option>
+                                    </optgroup>
+                                </select>
+                                
+                                <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
+                            </div>
+
+                            <div id="advancedWithdrawalOptions" style="display: none; width: 100%; margin-top: 15px;">
+                                <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Withdrawals made at what point in period?</div>
+                                <div class="form-input-area" style="margin-bottom: 0px;">
+                                    <div class="toggle-group" id="withTimingToggle" style="margin-bottom:0; width:60%;">
+                                        <button type="button" class="toggle-btn active">Beginning</button>
+                                        <button type="button" class="toggle-btn">End</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                                <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual withdrawal % increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
+                                <div class="form-input-area" style="margin-bottom: 0;">
+                                    <div class="input-box" style="margin-bottom:0; width: 40%;">
+                                        <input type="number" id="withIncreaseAmt" placeholder="" step="any">
+                                        <div class="input-suffix" style="border-left: 1px solid #333;">%</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- ALWAYS VISIBLE WHEN WITHDRAWALS IS ACTIVE -->
-                        <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
-                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual withdrawal % increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
+                        
+                        <!-- FOREX CONTRIBUTIONS -->
+                        <div id="forexContribRow" style="display: none; padding-top: 10px;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0;">
-                                <div class="input-box" style="margin-bottom:0; width: 40%;">
-                                    <input type="number" id="withIncreaseAmt" placeholder="" step="any">
-                                    <div class="input-suffix" style="border-left: 1px solid #333;">%</div>
+                                <div class="input-box" style="margin-bottom:0; flex:1.2;">
+                                    <div class="input-prefix" id="forexDepPrefix">$</div>
+                                    <input type="number" id="forexDepositAmt" placeholder="0" step="any">
                                 </div>
+                                <select class="rate-select" id="forexDepositFreq" style="flex:1;">
+                                    <option value="12" selected>monthly</option>
+                                    <option value="4">quarterly</option>
+                                    <option value="2">half-yearly</option>
+                                    <option value="1">yearly</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- FOREX CONTRIBUTIONS ROW -->
-                    <div id="forexContribRow" style="display: none; padding-top: 10px;">
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 0;">
-                            <div class="input-box" style="margin-bottom:0; flex:1.2;">
-                                <div class="input-prefix" id="forexDepPrefix">$</div>
-                                <input type="number" id="forexDepositAmt" placeholder="0" step="any">
-                            </div>
-                            <select class="rate-select" id="forexDepositFreq" style="flex:1;">
-                                <option value="12" selected>monthly</option>
-                                <option value="4">quarterly</option>
-                                <option value="2">half-yearly</option>
-                                <option value="1">yearly</option>
-                            </select>
-                        </div>
-                    </div>
-                </div> <!-- End Contributions Section -->
+                    </div> <!-- End Standard Contrib Wrapper -->
 
-                <!-- 🔥 ACTION ROW SECTION 🔥 -->
-                <div class="calc-section" id="startDateSection" style="display: none; background: transparent; border: none; box-shadow: none; padding: 0; margin-bottom: 0;">
-                    <!-- Date & Calculate Button Row (Side-by-Side) -->
-                    <div class="form-row-side" id="colStartDate" style="align-items: flex-end;">
-                        <div class="form-label" style="padding-bottom: 12px;">Start<br>date? <br><a href="javascript:void(0)" style="color:#e6c875; text-decoration: underline; font-size: 11px;" onclick="document.getElementById('startDate').valueAsDate = new Date()">today</a></div>
-                        <div class="form-input-area">
-                            <input type="date" class="date-input" id="startDate" required>
+                    <!-- 🔥 NEW: SIMPLE INTEREST CONTRIBUTIONS (No Advanced Options) 🔥 -->
+                    <div id="simpleContribWrapper" style="display: none; width: 100%;">
+                        <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
+                        <div class="toggle-group" id="simpleContribToggle" style="margin-bottom:20px;">
+                            <button type="button" class="toggle-btn active" data-val="none">None</button>
+                            <button type="button" class="toggle-btn" data-val="additions">Additions</button>
+                            <button type="button" class="toggle-btn" data-val="deductions">Deductions</button>
                         </div>
-                    </div>
-                </div>
+
+                        <!-- Additions Box -->
+                        <div id="simpleAdditionsArea" style="display:none;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Additions: <span style="color:#888; font-size:12px;">(optional)</span></div>
+                            <div class="form-input-area" style="margin-bottom: 0px;">
+                                <div class="input-box" style="margin-bottom:0; flex:1.2;">
+                                    <div class="input-prefix simple-curr-prefix" style="border-right: 1px solid #333;">$</div>
+                                    <input type="number" id="simpleAddAmt" placeholder="0" step="any">
+                                </div>
+                                <select class="rate-select" id="simpleAddFreq" style="flex:1;">
+                                    <option value="monthly" selected>monthly</option>
+                                    <option value="quarterly">quarterly</option>
+                                    <option value="half-yearly">half-yearly</option>
+                                    <option value="yearly">yearly</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Deductions Box -->
+                        <div id="simpleDeductionsArea" style="display:none;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Deductions: <span style="color:#888; font-size:12px;">(optional)</span></div>
+                            <div class="form-input-area" style="margin-bottom: 0px;">
+                                <div class="input-box" style="margin-bottom:0; flex:1.2;">
+                                    <div class="input-prefix simple-curr-prefix" style="border-right: 1px solid #333;">$</div>
+                                    <input type="number" id="simpleDedAmt" placeholder="0" step="any">
+                                </div>
+                                <select class="rate-select" id="simpleDedFreq" style="flex:1;">
+                                    <option value="monthly" selected>monthly</option>
+                                    <option value="quarterly">quarterly</option>
+                                    <option value="half-yearly">half-yearly</option>
+                                    <option value="yearly">yearly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div> <!-- End Simple Contrib Wrapper -->
+
+                </div> <!-- End Main Input Section -->
                 
-                <button type="submit" class="btn-calc"><i class="fas fa-calculator"></i> Calculate</button>
+                <button type="submit" class="btn-calc" style="margin-top: 20px;"><i class="fas fa-calculator"></i> Calculate</button>
 
                 <div class="results-label" id="resultsLabel">Results will appear here</div>
             </form>
@@ -1185,6 +1248,11 @@
             if(optWithHalf) optWithHalf.text = `half-yearly ${pVal}`;
             let optWithYear = document.getElementById('optWithYear');
             if(optWithYear) optWithYear.text = `yearly ${pVal}`;
+
+            // 🔥 UPDATE CURRENCY IN SIMPLE INTEREST TAB 🔥
+            document.querySelectorAll('.simple-curr-prefix').forEach(el => {
+                el.innerText = pVal;
+            });
         }
 
         currBtns.forEach(btn => {
@@ -1293,18 +1361,35 @@
             });
         }
 
+        // 🔥 TIME PERIOD VS END DATE TOGGLE (SIMPLE TAB) 🔥
+        const timeModeBtns = document.querySelectorAll('#timeModeToggle .toggle-btn');
+        timeModeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                timeModeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (this.getAttribute('data-val') === 'enddate') {
+                    document.getElementById('colTimeWrap').style.display = 'none';
+                    document.getElementById('endDateRow').style.display = 'flex';
+                } else {
+                    document.getElementById('colTimeWrap').style.display = 'flex';
+                    document.getElementById('endDateRow').style.display = 'none';
+                }
+            });
+        });
+
         // 🌟 TAB SWITCHING LOGIC 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
         const dailyOptionsRow = document.getElementById('dailyOptionsRow');
         const extWeekendOpts = document.getElementById('extendedWeekendOptions');
         const compIntervalRow = document.getElementById('compIntervalRow');
+        const standardContribWrapper = document.getElementById('standardContribWrapper');
+        const simpleContribWrapper = document.getElementById('simpleContribWrapper');
         const depositArea = document.getElementById('extendedDepositOptions');
         const withdrawalArea = document.getElementById('withdrawalArea');
         const forexCompRow = document.getElementById('forexCompRow');
         const forexContribRow = document.getElementById('forexContribRow');
         const startDateSection = document.getElementById('startDateSection');
-        
-        const contribSection = document.getElementById('contributionsSection');
         
         let activeCalcTab = 'compound';
 
@@ -1314,6 +1399,7 @@
                 this.classList.add('active');
                 activeCalcTab = this.getAttribute('data-tab');
 
+                // Reset Extra Rows Visibility
                 dailyOptionsRow.style.display = 'none';
                 extWeekendOpts.style.display = 'none';
                 compIntervalRow.style.display = 'none';
@@ -1324,7 +1410,13 @@
                 forexContribRow.style.display = 'none';
                 startDateSection.style.display = 'none';
                 
-                if(contribSection) contribSection.style.display = 'none'; 
+                document.getElementById('colWeeks').style.display = 'none';
+                document.getElementById('colDays').style.display = 'none';
+                document.getElementById('timePeriodToggleRow').style.display = 'none';
+                document.getElementById('endDateRow').style.display = 'none';
+
+                standardContribWrapper.style.display = 'none'; 
+                simpleContribWrapper.style.display = 'none'; 
                 
                 document.getElementById('colTimeWrap').style.display = 'flex';
                 
@@ -1335,23 +1427,21 @@
                 document.getElementById('lblRate').innerHTML = 'Interest<br>rate:';
 
                 if (activeCalcTab === 'compound') {
-                    if(contribSection) contribSection.style.display = 'block';
+                    standardContribWrapper.style.display = 'block';
                     compIntervalRow.style.display = 'flex';
                     
                     if (document.getElementById('compInterval').value === 'custom') {
                         document.getElementById('customCompRow').style.display = 'flex';
                     }
                     
-                    document.getElementById('colDays').style.display = 'none'; 
                     document.getElementById('bothToggleBtn').style.display = 'block';
-
                     if(contribType === 'deposits' || contribType === 'both') depositArea.style.display = 'block';
                     if(contribType === 'withdrawals' || contribType === 'both') withdrawalArea.style.display = 'block';
                 } 
                 else if(activeCalcTab === 'daily') {
-                    if(contribSection) contribSection.style.display = 'block';
+                    standardContribWrapper.style.display = 'block';
                     dailyOptionsRow.style.display = 'block';
-                    startDateSection.style.display = 'block';
+                    startDateSection.style.display = 'flex'; // Changed to flex for row styling
                     document.getElementById('colDays').style.display = 'flex';
                     document.getElementById('bothToggleBtn').style.display = 'none'; 
                     
@@ -1364,17 +1454,22 @@
                     document.querySelector('#includeDaysToggle .toggle-btn[data-val="yes"]').click();
                 }
                 else if (activeCalcTab === 'forex') {
-                    if(contribSection) contribSection.style.display = 'block';
+                    standardContribWrapper.style.display = 'block';
                     document.getElementById('lblPrincipal').innerHTML = 'Start<br>balance:';
                     document.getElementById('lblRate').innerHTML = 'Percentage:';
-                    document.getElementById('colDays').style.display = 'none';
                     forexCompRow.style.display = 'flex';
                     forexContribRow.style.display = 'block';
                 }
                 else if (activeCalcTab === 'simple') {
-                     if(contribSection) contribSection.style.display = 'none';
+                     simpleContribWrapper.style.display = 'block';
+                     document.getElementById('colWeeks').style.display = 'flex';
                      document.getElementById('colDays').style.display = 'flex';
-                     startDateSection.style.display = 'block';
+                     startDateSection.style.display = 'flex';
+                     document.getElementById('timePeriodToggleRow').style.display = 'flex';
+                     
+                     // Reset to duration mode when switching to simple tab
+                     document.querySelector('#timeModeToggle .toggle-btn[data-val="duration"]').click();
+                     document.querySelector('#simpleContribToggle .toggle-btn[data-val="none"]').click();
                 }
             });
         });
@@ -1405,7 +1500,7 @@
             });
         });
 
-        // 🌟 ADDITIONAL CONTRIBUTIONS TOGGLE 🌟
+        // 🌟 STANDARD CONTRIBUTIONS TOGGLE 🌟
         const contribBtns = document.querySelectorAll('#contribToggle .toggle-btn');
         let contribType = 'none';
 
@@ -1428,6 +1523,27 @@
                 } else {
                     document.getElementById('depositAmt').value = '';
                     document.getElementById('withdrawalAmt').value = '';
+                }
+            });
+        });
+
+        // 🌟 SIMPLE CONTRIBUTIONS TOGGLE 🌟
+        const simpleContribBtns = document.querySelectorAll('#simpleContribToggle .toggle-btn');
+        let simpleContribType = 'none';
+
+        simpleContribBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                simpleContribBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                simpleContribType = this.getAttribute('data-val');
+                
+                document.getElementById('simpleAdditionsArea').style.display = 'none';
+                document.getElementById('simpleDeductionsArea').style.display = 'none';
+                
+                if(simpleContribType === 'additions') {
+                    document.getElementById('simpleAdditionsArea').style.display = 'block';
+                } else if(simpleContribType === 'deductions') {
+                    document.getElementById('simpleDeductionsArea').style.display = 'block';
                 }
             });
         });
@@ -1545,16 +1661,15 @@
                 totalDeposits = totDep;
             } 
             else {
-                if(years === 0 && months === 0 && days === 0) {
-                    showCustomAlert("Error", "Please enter at least 1 day, month or year.", true);
-                    return;
-                }
-
                 const reinvestRate = parseFloat(document.getElementById('reinvestRate').value) / 100;
                 const skipWeekends = (includeWeekends === 'no');
                 
                 let depAmt = 0; let depFreq = 'monthly';
                 let withAmt = 0; let withFreq = 'monthly';
+
+                // Variables for Simple Tab Contributions
+                let simpleAddAmt = 0; let simpleAddFreq = 'monthly';
+                let simpleDedAmt = 0; let simpleDedFreq = 'monthly';
 
                 if(activeCalcTab !== 'simple') {
                     if(contribType === 'deposits' || contribType === 'both') {
@@ -1565,16 +1680,55 @@
                         withAmt = parseFloat(document.getElementById('withdrawalAmt').value) || 0;
                         withFreq = document.getElementById('withdrawalFreq').value;
                     }
+                } else {
+                    if(simpleContribType === 'additions') {
+                        simpleAddAmt = parseFloat(document.getElementById('simpleAddAmt').value) || 0;
+                        simpleAddFreq = document.getElementById('simpleAddFreq').value;
+                    }
+                    if(simpleContribType === 'deductions') {
+                        simpleDedAmt = parseFloat(document.getElementById('simpleDedAmt').value) || 0;
+                        simpleDedFreq = document.getElementById('simpleDedFreq').value;
+                    }
                 }
 
-                let totalDays = (years * 365) + Math.round(months * 30.4167) + days;
+                let totalDays = 0;
+                let startDate = new Date(document.getElementById('startDate').value);
+
+                // 🔥 Total Days Logic updated for Simple Tab's End Date feature 🔥
+                if (activeCalcTab === 'simple') {
+                    let timeMode = document.querySelector('#timeModeToggle .toggle-btn.active').getAttribute('data-val');
+                    if (timeMode === 'enddate') {
+                        let endDateInput = document.getElementById('endDateInput').value;
+                        if(!endDateInput) {
+                            showCustomAlert("Error", "Please select an end date.", true);
+                            return;
+                        }
+                        let eD = new Date(endDateInput);
+                        const diffTime = eD - startDate;
+                        totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                        if(totalDays <= 0) {
+                            showCustomAlert("Error", "End date must be after Start date.", true);
+                            return;
+                        }
+                    } else {
+                        let weeks = parseInt(document.getElementById('timeWeeks').value) || 0;
+                        totalDays = (years * 365) + Math.round(months * 30.4167) + (weeks * 7) + days;
+                    }
+                } else {
+                    totalDays = (years * 365) + Math.round(months * 30.4167) + days;
+                }
+
+                if(totalDays === 0) {
+                    showCustomAlert("Error", "Please enter at least 1 day, month or year.", true);
+                    return;
+                }
+
                 let dailyRate = rateInput / 100;
                 if(rateType === 'monthly') dailyRate = (rateInput / 100) / 30.4167;
                 if(rateType === 'yearly') dailyRate = (rateInput / 100) / 365;
                 if(rateType === 'weekly') dailyRate = (rateInput / 100) / 7;
                 if(rateType === 'quarterly') dailyRate = (rateInput / 100) / 91.25;
 
-                let startDate = new Date(document.getElementById('startDate').value);
                 let accruedInterest = 0;
                 let compDays = 1;
 
@@ -1619,10 +1773,9 @@
                     let addedToday = 0; let withdrawnToday = 0;
                     
                     if(activeCalcTab !== 'simple') {
-                        // DEPOSIT LOGIC
+                        // COMPOUND/DAILY DEPOSIT LOGIC
                         if(contribType === 'deposits' || contribType === 'both') {
                             if(depAmtCurrent > 0) {
-                                if(depFreq === 'daily') addedToday += depAmtCurrent;
                                 if(depFreq === 'weekly' && i % 7 === 0) addedToday += depAmtCurrent;
                                 if(depFreq === 'biweekly' && i % 14 === 0) addedToday += depAmtCurrent;
                                 if(depFreq === 'monthly' && i % 30 === 0) addedToday += depAmtCurrent; 
@@ -1632,30 +1785,41 @@
                             }
                         } 
                         
-                        // WITHDRAWAL LOGIC (Fixed, % Balance, % Earnings)
+                        // COMPOUND/DAILY WITHDRAWAL LOGIC 
                         if (contribType === 'withdrawals' || contribType === 'both') {
                             if(withAmtCurrent > 0) {
-                                // 1. Fixed Money Withdrawals
                                 if(withFreq === 'monthly' && i % 30 === 0) withdrawnToday += withAmtCurrent;
                                 if(withFreq === 'quarterly' && i % 90 === 0) withdrawnToday += withAmtCurrent;
                                 if(withFreq === 'half-yearly' && i % 180 === 0) withdrawnToday += withAmtCurrent;
                                 if(withFreq === 'yearly' && i % 365 === 0) withdrawnToday += withAmtCurrent;
                                 
-                                // 2. Percentage of Balance
                                 if(withFreq === 'pct_month' && i % 30 === 0) withdrawnToday += (withAmtCurrent / 100) * currentBalance;
                                 if(withFreq === 'pct_quarter' && i % 90 === 0) withdrawnToday += (withAmtCurrent / 100) * currentBalance;
                                 if(withFreq === 'pct_year' && i % 365 === 0) withdrawnToday += (withAmtCurrent / 100) * currentBalance;
 
-                                // 3. Earnings Withdrawals (Extract previous days' interest)
                                 if(withFreq === 'pct_earn_month' && i % 30 === 0) {
                                     withdrawnToday += (withAmtCurrent / 100) * monthlyInterestAccrued;
-                                    monthlyInterestAccrued = 0; // Reset before today's interest
+                                    monthlyInterestAccrued = 0;
                                 }
                                 if(withFreq === 'pct_earn_year' && i % 365 === 0) {
                                     withdrawnToday += (withAmtCurrent / 100) * yearlyInterestAccrued;
-                                    yearlyInterestAccrued = 0; // Reset before today's interest
+                                    yearlyInterestAccrued = 0;
                                 }
                             }
+                        }
+                    } else {
+                        // 🔥 SIMPLE INTEREST CONTRIBUTIONS LOGIC 🔥
+                        if(simpleContribType === 'additions' && simpleAddAmt > 0) {
+                            if(simpleAddFreq === 'monthly' && i % 30 === 0) addedToday += simpleAddAmt; 
+                            if(simpleAddFreq === 'quarterly' && i % 90 === 0) addedToday += simpleAddAmt; 
+                            if(simpleAddFreq === 'half-yearly' && i % 180 === 0) addedToday += simpleAddAmt; 
+                            if(simpleAddFreq === 'yearly' && i % 365 === 0) addedToday += simpleAddAmt; 
+                        }
+                        if(simpleContribType === 'deductions' && simpleDedAmt > 0) {
+                            if(simpleDedFreq === 'monthly' && i % 30 === 0) withdrawnToday += simpleDedAmt; 
+                            if(simpleDedFreq === 'quarterly' && i % 90 === 0) withdrawnToday += simpleDedAmt; 
+                            if(simpleDedFreq === 'half-yearly' && i % 180 === 0) withdrawnToday += simpleDedAmt; 
+                            if(simpleDedFreq === 'yearly' && i % 365 === 0) withdrawnToday += simpleDedAmt; 
                         }
                     }
 
@@ -1671,7 +1835,8 @@
                     let interestToday = 0;
                     if(!skipInterestToday && currentBalance > 0) {
                         if (activeCalcTab === 'simple') {
-                            interestToday = principal * dailyRate;
+                            // Simple interest applies to the current principal but doesn't compound
+                            interestToday = currentBalance * dailyRate;
                             totalInterest += interestToday;
                         } 
                         else if (activeCalcTab === 'compound') {
@@ -1691,13 +1856,10 @@
                         }
                     }
 
-                    // Accumulate interest for Earnings Withdrawal Math
                     monthlyInterestAccrued += interestToday;
                     yearlyInterestAccrued += interestToday;
 
-                    // Annual Step Increases Logic
-                    if (i % 365 === 0) {
-                        // Deposit Increase
+                    if (i % 365 === 0 && activeCalcTab !== 'simple') {
                         let incAmt = parseFloat(document.getElementById('depIncreaseAmt').value) || 0;
                         let incTypeBtn = document.querySelector('#depIncTypeToggle .toggle-btn.active');
                         if (incTypeBtn && incAmt > 0) {
@@ -1709,7 +1871,6 @@
                             }
                         }
                         
-                        // Withdrawal % Increase
                         let withIncAmt = parseFloat(document.getElementById('withIncreaseAmt').value) || 0;
                         if (withIncAmt > 0) {
                             withAmtCurrent += withAmtCurrent * (withIncAmt / 100);
