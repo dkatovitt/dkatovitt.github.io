@@ -730,7 +730,6 @@
                 <div class="calc-section" id="contributionsSection" style="display: block;">
                     <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                     
-                    <!-- 🔥 VIDEO MATCHED: Added "Both" option 🔥 -->
                     <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
                         <button type="button" class="toggle-btn active" data-val="none">None</button>
                         <button type="button" class="toggle-btn" data-val="deposits">Deposits</button>
@@ -738,10 +737,10 @@
                         <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
                     </div>
                     
-                    <!-- 🔥 HIDDEN DEPOSIT BOX (VIDEO MATCHED) 🔥 -->
+                    <!-- 🔥 HIDDEN DEPOSIT BOX 🔥 -->
                     <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 20px;">
+                        <div class="form-input-area" style="margin-bottom: 0px;">
                             <div class="input-box" style="margin-bottom:0; flex:1.2;">
                                 <div class="input-prefix" id="depPrefix">$</div>
                                 <input type="number" id="depositAmt" placeholder="0" step="any">
@@ -754,35 +753,38 @@
                                 <option value="half-yearly">half-yearly</option>
                                 <option value="yearly">yearly</option>
                             </select>
-                            <button type="button" class="help-btn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
+                            <!-- 🔥 ADDED TOGGLE ARROW BUTTON 🔥 -->
+                            <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                         </div>
                         
-                        <!-- 🔥 VIDEO MATCHED: Deposits made at what point? 🔥 -->
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
-                        <div class="form-input-area" style="margin-bottom: 20px;">
-                            <div class="toggle-group" style="margin-bottom:0; width:60%;">
-                                <button type="button" class="toggle-btn active">Beginning</button>
-                                <button type="button" class="toggle-btn">End</button>
+                        <!-- 🔥 HIDDEN ADVANCED DEPOSIT OPTIONS (TOGGLED BY ARROW) 🔥 -->
+                        <div id="advancedDepositOptions" style="display: none; width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
+                            <div class="form-input-area" style="margin-bottom: 20px;">
+                                <div class="toggle-group" style="margin-bottom:0; width:60%;">
+                                    <button type="button" class="toggle-btn active">Beginning</button>
+                                    <button type="button" class="toggle-btn">End</button>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 🔥 VIDEO MATCHED: Annual deposit increase? 🔥 -->
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual deposit increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 0;">
-                            <div class="toggle-group" style="margin-bottom:0; flex:0.4;">
-                                <button type="button" class="toggle-btn active">%</button>
-                                <button type="button" class="toggle-btn">$</button>
-                            </div>
-                            <div class="input-box" style="margin-bottom:0; flex:0.6;">
-                                <input type="number" id="depIncreaseAmt" placeholder="" step="any">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual deposit increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
+                            <div class="form-input-area" style="margin-bottom: 0;">
+                                <div class="toggle-group" style="margin-bottom:0; flex:0.4;">
+                                    <button type="button" class="toggle-btn active">%</button>
+                                    <!-- 🔥 ADDED ID TO CURRENCY BUTTON FOR SYNC 🔥 -->
+                                    <button type="button" class="toggle-btn" id="depIncCurrBtn">$</button>
+                                </div>
+                                <div class="input-box" style="margin-bottom:0; flex:0.6;">
+                                    <input type="number" id="depIncreaseAmt" placeholder="" step="any">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 🔥 HIDDEN WITHDRAWAL BOX (VIDEO MATCHED) 🔥 -->
+                    <!-- 🔥 HIDDEN WITHDRAWAL BOX 🔥 -->
                     <div id="withdrawalArea" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif; padding-top: 15px;">Withdrawal amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 20px;">
+                        <div class="form-input-area" style="margin-bottom: 0px;">
                             <div class="input-box" style="margin-bottom:0; flex:1.2;">
                                 <div class="input-prefix" id="withPrefix">$</div>
                                 <input type="number" id="withdrawalAmt" placeholder="0" step="any">
@@ -795,15 +797,18 @@
                                 <option value="half-yearly">half-yearly</option>
                                 <option value="yearly">yearly</option>
                             </select>
-                            <button type="button" class="help-btn" style="margin-bottom:0;"><i class="fas fa-chevron-down" style="font-size:12px;"></i></button>
+                            <!-- 🔥 ADDED TOGGLE ARROW BUTTON 🔥 -->
+                            <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                         </div>
                         
-                        <!-- 🔥 VIDEO MATCHED: Annual withdrawal % increase? 🔥 -->
-                        <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual withdrawal % increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 0;">
-                            <div class="input-box" style="margin-bottom:0; width: 40%;">
-                                <input type="number" id="withIncreaseAmt" placeholder="" step="any">
-                                <div class="input-suffix">%</div>
+                        <!-- 🔥 HIDDEN ADVANCED WITHDRAWAL OPTIONS (TOGGLED BY ARROW) 🔥 -->
+                        <div id="advancedWithdrawalOptions" style="display: none; width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                            <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual withdrawal % increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
+                            <div class="form-input-area" style="margin-bottom: 0;">
+                                <div class="input-box" style="margin-bottom:0; width: 40%;">
+                                    <input type="number" id="withIncreaseAmt" placeholder="" step="any">
+                                    <div class="input-suffix">%</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -883,7 +888,6 @@
             <h4>Like this? Please share</h4>
             <div class="share-buttons">
                 <button class="share-btn" onclick="window.location.href='mailto:?subject=DK Compound Calculator&body=Check out this awesome Web3 calculator: ' + window.location.href"><i class="fas fa-envelope"></i></button>
-                <!-- Print button allows user to 'Save as PDF' on mobile/PC -->
                 <button class="share-btn" onclick="window.print()" title="Save as PDF / Print"><i class="fas fa-print"></i></button>
                 <button class="share-btn" onclick="copyPageLink()"><i class="far fa-copy"></i> Link</button>
                 <button class="share-btn pinterest-btn" onclick="sharePinterest()"><i class="fab fa-pinterest"></i> Save</button>
@@ -1136,6 +1140,10 @@
             if(depPrefix) depPrefix.innerText = pVal;
             if(withPrefix) withPrefix.innerText = pVal;
             if(forexDepPrefix) forexDepPrefix.innerText = pVal;
+            
+            // 🔥 FIXED: Update the currency symbol in the "Annual deposit increase?" section 🔥
+            let depIncBtn = document.getElementById('depIncCurrBtn');
+            if(depIncBtn) depIncBtn.innerText = pVal;
         }
 
         currBtns.forEach(btn => {
@@ -1169,6 +1177,42 @@
                 document.getElementById('customCompRow').style.display = 'none';
             }
         });
+        
+        // 🔥 FIXED: TOGGLE ARROW FOR ADVANCED DEPOSIT OPTIONS 🔥
+        const toggleAdvDepBtn = document.getElementById('toggleAdvDepBtn');
+        const advDepOpts = document.getElementById('advancedDepositOptions');
+        if(toggleAdvDepBtn && advDepOpts) {
+            toggleAdvDepBtn.addEventListener('click', function() {
+                let icon = this.querySelector('i');
+                if(advDepOpts.style.display === 'none' || advDepOpts.style.display === '') {
+                    advDepOpts.style.display = 'block';
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    advDepOpts.style.display = 'none';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-right');
+                }
+            });
+        }
+        
+        // 🔥 FIXED: TOGGLE ARROW FOR ADVANCED WITHDRAWAL OPTIONS 🔥
+        const toggleAdvWithBtn = document.getElementById('toggleAdvWithBtn');
+        const advWithOpts = document.getElementById('advancedWithdrawalOptions');
+        if(toggleAdvWithBtn && advWithOpts) {
+            toggleAdvWithBtn.addEventListener('click', function() {
+                let icon = this.querySelector('i');
+                if(advWithOpts.style.display === 'none' || advWithOpts.style.display === '') {
+                    advWithOpts.style.display = 'block';
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    advWithOpts.style.display = 'none';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-right');
+                }
+            });
+        }
 
         // 🌟 TAB SWITCHING LOGIC (VIDEO MATCHED) 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
@@ -1195,7 +1239,7 @@
                 dailyOptionsRow.style.display = 'none';
                 extWeekendOpts.style.display = 'none';
                 compIntervalRow.style.display = 'none';
-                document.getElementById('customCompRow').style.display = 'none'; // Custom row hide on tab switch
+                document.getElementById('customCompRow').style.display = 'none'; 
                 depositArea.style.display = 'none';
                 withdrawalArea.style.display = 'none';
                 forexCompRow.style.display = 'none';
@@ -1217,7 +1261,6 @@
                     if(contribSection) contribSection.style.display = 'block';
                     compIntervalRow.style.display = 'flex';
                     
-                    // Agar wapas tab pe aayein aur custom select tha toh wapas show ho
                     if (document.getElementById('compInterval').value === 'custom') {
                         document.getElementById('customCompRow').style.display = 'flex';
                     }
@@ -1319,7 +1362,7 @@
         const depTimingBtns = document.querySelectorAll('#extendedDepositOptions .toggle-group .toggle-btn');
         depTimingBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                if(this.innerText === '%' || this.innerText === '$') return; // Skip the other toggle
+                if(this.innerText === '%' || this.innerText === '$' || this.innerText === '€' || this.innerText === '£' || this.innerText === '₹' || this.innerText === '¥') return; 
                 this.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
             });
