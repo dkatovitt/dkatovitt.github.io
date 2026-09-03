@@ -602,7 +602,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. 🔥 COMPOUND FREQUENCY DROPDOWN (UPDATED) 🔥 -->
+                    <!-- 4. 🔥 COMPOUND FREQUENCY DROPDOWN 🔥 -->
                     <div class="form-row-side" id="compIntervalRow" style="display: flex;">
                         <div class="form-label">Compound<br>frequency:</div>
                         <div class="form-input-area">
@@ -625,7 +625,7 @@
                     </div>
                     <div id="helpCompFreq" class="inline-help-text">Compound frequency is the number of times interest is compounded per year.</div>
 
-                    <!-- 🔥 NEW: Custom Compound Input Box (Hidden By Default) 🔥 -->
+                    <!-- 🔥 Custom Compound Input Box (Hidden By Default) 🔥 -->
                     <div class="form-row-side" id="customCompRow" style="display: none;">
                         <div class="form-label">Compounds<br>per year:</div>
                         <div class="form-input-area">
@@ -737,10 +737,11 @@
                         <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
                     </div>
                     
-                    <!-- 🔥 HIDDEN DEPOSIT BOX 🔥 -->
+                    <!-- 🔥 HIDDEN DEPOSIT BOX (PERFECTLY MATCHED) 🔥 -->
                     <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
-                        <div class="form-input-area" style="margin-bottom: 0px;">
+                        
+                        <div class="form-input-area" style="margin-bottom: 0px;"> <!-- Margin 0 ensures arrow drops content directly below -->
                             <div class="input-box" style="margin-bottom:0; flex:1.2;">
                                 <div class="input-prefix" id="depPrefix">$</div>
                                 <input type="number" id="depositAmt" placeholder="0" step="any">
@@ -753,29 +754,35 @@
                                 <option value="half-yearly">half-yearly</option>
                                 <option value="yearly">yearly</option>
                             </select>
-                            <!-- 🔥 ADDED TOGGLE ARROW BUTTON 🔥 -->
+                            <!-- 🔥 FIXED: ARROW BUTTON ONLY TOGGLES DEPOSIT TIMING 🔥 -->
                             <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                         </div>
                         
-                        <!-- 🔥 HIDDEN ADVANCED DEPOSIT OPTIONS (TOGGLED BY ARROW) 🔥 -->
-                        <div id="advancedDepositOptions" style="display: none; width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                        <!-- 🔥 HIDDEN ADVANCED DEPOSIT TIMING OPTIONS (TOGGLED BY ARROW) 🔥 -->
+                        <div id="advancedDepositOptions" style="display: none; width: 100%; margin-top: 15px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
-                            <div class="form-input-area" style="margin-bottom: 20px;">
-                                <div class="toggle-group" style="margin-bottom:0; width:60%;">
+                            <div class="form-input-area" style="margin-bottom: 0px;">
+                                <div class="toggle-group" id="depTimingToggle" style="margin-bottom:0; width:60%;">
                                     <button type="button" class="toggle-btn active">Beginning</button>
                                     <button type="button" class="toggle-btn">End</button>
                                 </div>
                             </div>
+                        </div>
 
+                        <!-- 🔥 FIXED: ANNUAL DEPOSIT INCREASE (ALWAYS VISIBLE WHEN DEPOSITS IS ACTIVE) 🔥 -->
+                        <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual deposit increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0;">
-                                <div class="toggle-group" style="margin-bottom:0; flex:0.4;">
-                                    <button type="button" class="toggle-btn active">%</button>
-                                    <!-- 🔥 ADDED ID TO CURRENCY BUTTON FOR SYNC 🔥 -->
-                                    <button type="button" class="toggle-btn" id="depIncCurrBtn">$</button>
+                                <div class="toggle-group" id="depIncTypeToggle" style="margin-bottom:0; flex:0.4;">
+                                    <button type="button" class="toggle-btn active" data-type="percent">%</button>
+                                    <!-- ID Added for Dynamic Currency Update -->
+                                    <button type="button" class="toggle-btn" id="depIncCurrBtn" data-type="currency">$</button> 
                                 </div>
                                 <div class="input-box" style="margin-bottom:0; flex:0.6;">
+                                    <!-- Dynamic Prefix/Suffix injected here via JS -->
+                                    <div class="input-prefix" id="depIncPrefix" style="display:none; border-right: 1px solid #333;">$</div>
                                     <input type="number" id="depIncreaseAmt" placeholder="" step="any">
+                                    <div class="input-suffix" id="depIncSuffix" style="display:flex; border-left: 1px solid #333;">%</div>
                                 </div>
                             </div>
                         </div>
@@ -797,12 +804,10 @@
                                 <option value="half-yearly">half-yearly</option>
                                 <option value="yearly">yearly</option>
                             </select>
-                            <!-- 🔥 ADDED TOGGLE ARROW BUTTON 🔥 -->
-                            <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                         </div>
                         
-                        <!-- 🔥 HIDDEN ADVANCED WITHDRAWAL OPTIONS (TOGGLED BY ARROW) 🔥 -->
-                        <div id="advancedWithdrawalOptions" style="display: none; width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
+                        <!-- ALWAYS VISIBLE WHEN WITHDRAWALS IS ACTIVE -->
+                        <div style="width: 100%; border-top: 1px dashed #333; margin-top: 15px; padding-top: 15px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual withdrawal % increase? <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0;">
                                 <div class="input-box" style="margin-bottom:0; width: 40%;">
@@ -1144,6 +1149,8 @@
             // 🔥 FIXED: Update the currency symbol in the "Annual deposit increase?" section 🔥
             let depIncBtn = document.getElementById('depIncCurrBtn');
             if(depIncBtn) depIncBtn.innerText = pVal;
+            let depIncPrefix = document.getElementById('depIncPrefix');
+            if(depIncPrefix) depIncPrefix.innerText = pVal;
         }
 
         currBtns.forEach(btn => {
@@ -1196,23 +1203,27 @@
             });
         }
         
-        // 🔥 FIXED: TOGGLE ARROW FOR ADVANCED WITHDRAWAL OPTIONS 🔥
-        const toggleAdvWithBtn = document.getElementById('toggleAdvWithBtn');
-        const advWithOpts = document.getElementById('advancedWithdrawalOptions');
-        if(toggleAdvWithBtn && advWithOpts) {
-            toggleAdvWithBtn.addEventListener('click', function() {
-                let icon = this.querySelector('i');
-                if(advWithOpts.style.display === 'none' || advWithOpts.style.display === '') {
-                    advWithOpts.style.display = 'block';
-                    icon.classList.remove('fa-chevron-right');
-                    icon.classList.add('fa-chevron-down');
+        // 🔥 FIXED: % / $ TOGGLE FOR DEPOSIT INCREASE 🔥
+        const depIncTypeBtns = document.querySelectorAll('#depIncTypeToggle .toggle-btn');
+        const depIncPrefix = document.getElementById('depIncPrefix');
+        const depIncSuffix = document.getElementById('depIncSuffix');
+
+        depIncTypeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons in the group
+                depIncTypeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active'); // Add active to clicked button
+                
+                let type = this.getAttribute('data-type');
+                if (type === 'percent') {
+                    if(depIncPrefix) depIncPrefix.style.display = 'none';
+                    if(depIncSuffix) depIncSuffix.style.display = 'flex';
                 } else {
-                    advWithOpts.style.display = 'none';
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-right');
+                    if(depIncPrefix) depIncPrefix.style.display = 'flex';
+                    if(depIncSuffix) depIncSuffix.style.display = 'none';
                 }
             });
-        }
+        });
 
         // 🌟 TAB SWITCHING LOGIC (VIDEO MATCHED) 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
@@ -1359,20 +1370,10 @@
         });
         
         // 🌟 TOGGLE FOR DEPOSIT TIMING (Beginning / End) 🌟
-        const depTimingBtns = document.querySelectorAll('#extendedDepositOptions .toggle-group .toggle-btn');
+        const depTimingBtns = document.querySelectorAll('#depTimingToggle .toggle-btn');
         depTimingBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                if(this.innerText === '%' || this.innerText === '$' || this.innerText === '€' || this.innerText === '£' || this.innerText === '₹' || this.innerText === '¥') return; 
-                this.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        
-        // 🌟 TOGGLE FOR DEPOSIT INCREASE (% / $) 🌟
-        const depIncBtns = document.querySelectorAll('#extendedDepositOptions .toggle-group:nth-of-type(2) .toggle-btn');
-        depIncBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.parentElement.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                depTimingBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
             });
         });
