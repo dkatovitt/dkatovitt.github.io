@@ -147,7 +147,8 @@
         }
         
         .form-label {
-            flex: 0 0 35%; /* Takes 35% of the row for the label */
+            flex: 0 0 38%; /* Fixed width for labels to keep layout perfectly aligned */
+            max-width: 38%;
             padding-right: 10px;
             color: #ccc;
             font-size: 14px;
@@ -158,10 +159,10 @@
         }
 
         .form-input-area {
-            flex: 1; /* Takes remaining 65% for inputs */
+            flex: 1; /* Takes remaining space safely */
             display: flex;
             gap: 10px;
-            min-width: 0;
+            min-width: 0; /* Prevents overflow */
             align-items: center;
         }
 
@@ -173,20 +174,54 @@
             text-align: left;
         }
 
-        /* CURRENCY BUTTONS */
-        .currency-row { display: flex; width: 100%; border: 1px solid #333; border-radius: 6px; overflow: hidden; background: #0a0a0a;}
-        .curr-btn { flex: 1; background: transparent; color: #888; border: none; border-right: 1px solid #333; padding: 12px 0; font-size: 15px; cursor: pointer; font-family: Arial, sans-serif; transition: 0.3s;}
+        /* 🔥 BUG FIX: PERFECT CURRENCY BUTTONS ROW 🔥 */
+        .currency-row { 
+            display: flex; 
+            width: 100%; 
+            border: 1px solid #333; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            background: #0a0a0a;
+        }
+        .curr-btn { 
+            flex: 1 1 0; /* Ensures all buttons take EXACTLY equal width */
+            background: transparent; 
+            color: #888; 
+            border: none; 
+            border-right: 1px solid #333; 
+            padding: 0; 
+            height: 46px; /* Fixed height instead of padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px; 
+            cursor: pointer; 
+            font-family: Arial, sans-serif; 
+            transition: 0.3s;
+        }
         .curr-btn:last-child { border-right: none; }
         .curr-btn:hover { color: #fff; }
         .curr-btn.active { background: #e6c875; color: #000; font-weight: bold;}
-        .curr-custom { flex: 1; background: transparent; border: none; color: #fff; text-align: center; font-size: 13px; outline: none; padding: 0; font-weight: bold;}
+        .curr-custom { 
+            flex: 1 1 0; /* Ensures input box is equal to buttons */
+            background: transparent; 
+            border: none; 
+            color: #fff; 
+            text-align: center; 
+            font-size: 13px; 
+            outline: none; 
+            padding: 0; 
+            font-weight: bold;
+            min-width: 0; /* THIS STOPS THE INPUT FROM CRUSHING THE BUTTONS */
+            height: 46px;
+        }
         .curr-custom:focus, .curr-custom.active-custom { background: #e6c875; color: #000; }
 
         /* INPUT FIELDS */
         .input-box { display: flex; background: #1a1a1a; border: 1px solid #333; border-radius: 6px; overflow: hidden; transition: 0.3s; height: 46px; box-sizing: border-box; width: 100%; }
         .input-box:focus-within { border-color: #e6c875; box-shadow: 0 0 5px rgba(230, 200, 117, 0.4); }
         .input-prefix { background: #1a1a1a; color: #ccc; padding: 0 15px; font-size: 15px; display: flex; align-items: center; border-right: 1px solid #333; font-family: Arial, sans-serif; font-weight: bold;}
-        .input-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 0 15px; font-size: 16px; outline: none; width: 100%; font-family: Arial, sans-serif;}
+        .input-box input { flex: 1; background: transparent; border: none; color: #fff; padding: 0 15px; font-size: 16px; outline: none; width: 100%; font-family: Arial, sans-serif; min-width: 0;}
         .input-suffix { background: #1a1a1a; color: #888; padding: 0 15px; font-size: 15px; display: flex; align-items: center; border-left: 1px solid #333; font-weight: bold;}
         
         .rate-select, .date-input, .reinvest-select { height: 46px; box-sizing: border-box; }
@@ -201,7 +236,7 @@
         .toggle-btn.active { background: #e6c875; color: #000; font-weight: bold;}
         
         /* 🔥 HELP BUTTON [?] 🔥 */
-        .help-btn { background: #1a1a1a; color: #888; border: 1px solid #333; border-radius: 6px; padding: 0 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.3s; font-size: 16px; flex-shrink: 0; height: 46px; box-sizing: border-box;}
+        .help-btn { background: #1a1a1a; color: #888; border: 1px solid #333; border-radius: 6px; padding: 0; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.3s; font-size: 16px; flex-shrink: 0; height: 46px; box-sizing: border-box;}
         .help-btn:hover { background: #e6c875; color: #000; border-color: #e6c875;}
         
         /* 🔥 INLINE HELP TEXT BOX 🔥 */
@@ -240,25 +275,31 @@
         .calc-table td:first-child { text-align: left;}
         .text-green { color: #25d366 !important; font-weight: bold;}
 
-        /* 🔥 MOBILE RESPONSIVE FIX (Keep Side-by-Side!) 🔥 */
+        /* 🔥 MOBILE RESPONSIVE FIX (Keep Side-by-Side & Fix Squishing) 🔥 */
         @media (max-width: 768px) {
             .calc-container { padding-top: 100px; padding-bottom: 20px;}
             .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #2a3341;}
             .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
             .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
-            .calc-body { padding: 15px 15px; }
+            .calc-body { padding: 15px 10px; }
             
             /* Crucial Mobile Form Group Tweaks */
-            .form-row-side { margin-bottom: 15px; }
-            .form-label { flex: 0 0 35%; font-size: 12px; padding-right: 5px; }
-            .input-box, .rate-select, .reinvest-select, .date-input, .help-btn { height: 40px; }
-            .curr-btn { font-size: 14px; padding: 10px 0; }
-            .input-box input { font-size: 14px; padding: 0 10px; }
+            .form-row-side { margin-bottom: 15px; align-items: center;}
+            .form-label { flex: 0 0 38%; max-width: 38%; font-size: 13px; padding-right: 5px; }
+            .form-input-area { flex: 1; gap: 6px; min-width: 0; }
+            .input-box, .rate-select, .reinvest-select, .date-input, .help-btn { height: 42px; }
+            .help-btn { width: 42px; }
+            
+            /* Currency Row Safety for Mobile */
+            .curr-btn { height: 42px; font-size: 14px; }
+            .curr-custom { height: 42px; font-size: 13px; }
+            
+            .input-box input { font-size: 14px; padding: 0 8px; }
             .input-prefix, .input-suffix { padding: 0 10px; font-size: 14px; }
-            .tiny-label { font-size: 11px; }
+            .tiny-label { font-size: 11px; margin-bottom: 3px;}
             .toggle-btn { padding: 10px 0; font-size: 12px; }
             
-            .calc-section { padding: 15px 10px; margin-bottom: 15px; }
+            .calc-section { padding: 15px 12px; margin-bottom: 15px; }
             .seo-article { padding: 25px 15px; border-radius: 15px; margin: 0 10px 40px 10px;}
             .seo-article h2 { font-size: 22px; }
         }
@@ -1062,8 +1103,6 @@
                 if(contribSection) contribSection.style.display = 'none'; // Hide UI box wrapper initially
                 
                 document.getElementById('colTimeWrap').style.display = 'flex';
-                document.getElementById('colDays').style.display = 'flex';
-                document.getElementById('colStartDate').style.display = 'flex';
                 
                 document.getElementById('resultsArea').style.display = 'none';
                 document.getElementById('resultsLabel').style.display = 'block';
@@ -1084,6 +1123,8 @@
                 else if(activeCalcTab === 'daily') {
                     if(contribSection) contribSection.style.display = 'block';
                     dailyOptionsRow.style.display = 'block';
+                    document.getElementById('colDays').style.display = 'flex';
+                    document.getElementById('colStartDate').style.display = 'flex';
                     
                     if(contribType === 'deposits') depositArea.style.display = 'block';
                     if(contribType === 'withdrawals') withdrawalArea.style.display = 'block';
@@ -1093,12 +1134,16 @@
                 else if (activeCalcTab === 'compound') {
                     if(contribSection) contribSection.style.display = 'block';
                     compIntervalRow.style.display = 'flex';
+                    document.getElementById('colDays').style.display = 'flex';
+                    document.getElementById('colStartDate').style.display = 'flex';
 
                     if(contribType === 'deposits') depositArea.style.display = 'block';
                     if(contribType === 'withdrawals') withdrawalArea.style.display = 'block';
                 } 
                 else if (activeCalcTab === 'simple') {
                      if(contribSection) contribSection.style.display = 'none'; // Simple interest may not need contributions in some designs
+                     document.getElementById('colDays').style.display = 'flex';
+                     document.getElementById('colStartDate').style.display = 'flex';
                 }
             });
         });
