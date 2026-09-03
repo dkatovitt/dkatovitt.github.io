@@ -137,7 +137,7 @@
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* 🔥 SIDE BY SIDE LAYOUT CSS (LIKE REFERENCE IMAGE) 🔥 */
+        /* 🔥 SIDE BY SIDE LAYOUT CSS 🔥 */
         .form-row-side {
             display: flex;
             flex-direction: row;
@@ -146,23 +146,25 @@
             width: 100%;
         }
         
+        /* 🚀 NEW FIX: Label chhota kiya hai taaki inputs ko zyada jagah mile */
         .form-label {
-            flex: 0 0 38%; /* Fixed width for labels to keep layout perfectly aligned */
-            max-width: 38%;
-            padding-right: 10px;
+            flex: 0 0 28%; /* Takes 28% of the row */
+            max-width: 28%;
+            padding-right: 8px;
             color: #ccc;
             font-size: 14px;
             font-weight: normal;
             line-height: 1.3;
             font-family: Arial, sans-serif;
             box-sizing: border-box;
+            word-wrap: break-word; /* Prevents text from pushing width */
         }
 
         .form-input-area {
-            flex: 1; /* Takes remaining space safely */
+            flex: 1; /* Takes remaining 72% for inputs (MAKES BOXES BIGGER) */
             display: flex;
             gap: 10px;
-            min-width: 0; /* Prevents overflow */
+            min-width: 0; 
             align-items: center;
         }
 
@@ -174,7 +176,7 @@
             text-align: left;
         }
 
-        /* 🔥 BUG FIX: PERFECT CURRENCY BUTTONS ROW 🔥 */
+        /* CURRENCY BUTTONS */
         .currency-row { 
             display: flex; 
             width: 100%; 
@@ -184,13 +186,13 @@
             background: #0a0a0a;
         }
         .curr-btn { 
-            flex: 1 1 0; /* Ensures all buttons take EXACTLY equal width */
+            flex: 1 1 0; 
             background: transparent; 
             color: #888; 
             border: none; 
             border-right: 1px solid #333; 
             padding: 0; 
-            height: 46px; /* Fixed height instead of padding */
+            height: 46px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -203,7 +205,7 @@
         .curr-btn:hover { color: #fff; }
         .curr-btn.active { background: #e6c875; color: #000; font-weight: bold;}
         .curr-custom { 
-            flex: 1 1 0; /* Ensures input box is equal to buttons */
+            flex: 1 1 0; 
             background: transparent; 
             border: none; 
             color: #fff; 
@@ -212,7 +214,7 @@
             outline: none; 
             padding: 0; 
             font-weight: bold;
-            min-width: 0; /* THIS STOPS THE INPUT FROM CRUSHING THE BUTTONS */
+            min-width: 0; 
             height: 46px;
         }
         .curr-custom:focus, .curr-custom.active-custom { background: #e6c875; color: #000; }
@@ -285,7 +287,16 @@
             
             /* Crucial Mobile Form Group Tweaks */
             .form-row-side { margin-bottom: 15px; align-items: center;}
-            .form-label { flex: 0 0 38%; max-width: 38%; font-size: 13px; padding-right: 5px; }
+            
+            /* 🚀 2-LINE LABEL FIX FOR MOBILE 🚀 */
+            .form-label { 
+                flex: 0 0 28%; 
+                max-width: 28%; 
+                font-size: 12px; 
+                padding-right: 5px; 
+                word-wrap: break-word;
+            }
+            
             .form-input-area { flex: 1; gap: 6px; min-width: 0; }
             .input-box, .rate-select, .reinvest-select, .date-input, .help-btn { height: 42px; }
             .help-btn { width: 42px; }
@@ -557,7 +568,7 @@
                     </div>
 
                     <div class="form-row-side">
-                        <div class="form-label" id="lblPrincipal">Initial investment:</div>
+                        <div class="form-label" id="lblPrincipal">Initial<br>investment:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0;">
                                 <div class="input-prefix" id="mainPrefix">$</div>
@@ -567,7 +578,7 @@
                     </div>
 
                     <div class="form-row-side">
-                        <div class="form-label" id="lblRate">Interest rate:</div>
+                        <div class="form-label" id="lblRate">Interest<br>rate:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0; flex: 1.2;">
                                 <input type="number" id="interestRate" placeholder="0" min="0" step="any" required>
@@ -583,7 +594,7 @@
                     </div>
 
                     <div class="form-row-side" id="compIntervalRow" style="display: none;">
-                        <div class="form-label">Compound frequency:</div>
+                        <div class="form-label">Compound<br>frequency:</div>
                         <div class="form-input-area">
                             <select class="reinvest-select" id="compInterval" style="width: 100%;">
                                 <option value="yearly">Yearly</option>
@@ -595,7 +606,7 @@
                     </div>
 
                     <div class="form-row-side" id="forexCompRow" style="display: none;">
-                        <div class="form-label">Compound frequency:</div>
+                        <div class="form-label">Compound<br>frequency:</div>
                         <div class="form-input-area">
                             <select class="rate-select" id="forexCompFreq" style="width: 100%;">
                                 <option value="365">Daily (365/yr)</option>
@@ -612,7 +623,7 @@
                     </div>
 
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
-                        <div class="form-label" style="padding-bottom: 10px;">Time period:</div>
+                        <div class="form-label" style="padding-bottom: 10px;">Time<br>period:</div>
                         <div class="form-input-area">
                             <div class="flex-col">
                                 <span class="tiny-label">Years</span>
@@ -631,7 +642,7 @@
 
                     <div id="dailyOptionsRow" style="display: block; width: 100%; margin-top: 15px;">
                         <div class="form-row-side">
-                            <div class="form-label">Include all days?</div>
+                            <div class="form-label">Include all<br>days?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="includeDaysToggle" style="margin-bottom:0;">
                                     <button type="button" class="toggle-btn active" data-val="yes">Yes</button>
@@ -640,7 +651,7 @@
                             </div>
                         </div>
                         <div class="form-row-side">
-                            <div class="form-label">Daily reinvest rate:</div>
+                            <div class="form-label">Daily reinvest<br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
                                     </select>
@@ -654,7 +665,7 @@
 
                     <div id="extendedWeekendOptions" style="display: none; width: 100%;">
                         <div class="form-row-side">
-                            <div class="form-label">Exclude holidays?</div>
+                            <div class="form-label">Exclude<br>holidays?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="excludeHolidaysToggle" style="margin-bottom:0;">
                                     <button type="button" class="toggle-btn active" data-val="no">No</button>
@@ -663,7 +674,7 @@
                             </div>
                         </div>
                         <div class="form-row-side">
-                            <div class="form-label">Days to include:</div>
+                            <div class="form-label">Days to<br>include:</div>
                             <div class="form-input-area">
                                 <div class="days-toggle-group" id="daysToInclude">
                                     <button type="button" class="day-btn active" data-day="1">M</button>
@@ -751,7 +762,7 @@
                     </div>
                 </div> <div class="calc-section" style="background: transparent; border: none; box-shadow: none; padding: 0; margin-bottom: 0;">
                     <div class="form-row-side" id="colStartDate" style="align-items: flex-end;">
-                        <div class="form-label" style="padding-bottom: 12px;">Start date? <br><a href="javascript:void(0)" style="color:#e6c875; text-decoration: underline; font-size: 11px;" onclick="document.getElementById('startDate').valueAsDate = new Date()">today</a></div>
+                        <div class="form-label" style="padding-bottom: 12px;">Start<br>date? <br><a href="javascript:void(0)" style="color:#e6c875; text-decoration: underline; font-size: 11px;" onclick="document.getElementById('startDate').valueAsDate = new Date()">today</a></div>
                         <div class="form-input-area">
                             <input type="date" class="date-input" id="startDate" required>
                         </div>
@@ -1107,14 +1118,17 @@
                 document.getElementById('resultsArea').style.display = 'none';
                 document.getElementById('resultsLabel').style.display = 'block';
 
-                document.getElementById('lblPrincipal').innerText = 'Initial investment:';
-                document.getElementById('lblRate').innerText = 'Interest rate:';
+                // 🔥 JS Update: Use innerHTML so <br> stays intact on tab switch 🔥
+                document.getElementById('lblPrincipal').innerHTML = 'Initial<br>investment:';
+                document.getElementById('lblRate').innerHTML = 'Interest<br>rate:';
 
                 // 🔥 FOREX LAYOUT ACTIVATION 🔥
                 if (activeCalcTab === 'forex') {
                     if(contribSection) contribSection.style.display = 'block';
-                    document.getElementById('lblPrincipal').innerText = 'Start balance:';
-                    document.getElementById('lblRate').innerText = 'Percentage:';
+                    // 🔥 JS Update: Use innerHTML for Forex too 🔥
+                    document.getElementById('lblPrincipal').innerHTML = 'Start<br>balance:';
+                    document.getElementById('lblRate').innerHTML = 'Percentage:';
+                    
                     document.getElementById('colDays').style.display = 'none';
                     forexCompRow.style.display = 'flex';
                     forexContribRow.style.display = 'block';
