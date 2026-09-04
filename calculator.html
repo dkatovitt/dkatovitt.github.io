@@ -653,7 +653,7 @@
                         </div>
                     </div>
 
-                    <!-- 🔥 NEW: START DATE MOVED HERE FOR SIMPLE TAB (Will be moved by flex order/display but placed logically here) 🔥 -->
+                    <!-- START DATE (For Simple Tab mostly) -->
                     <div class="form-row-side" id="startDateSection" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">Start date?<br><span style="color:#888; font-size:11px;">(optional)</span></div>
                         <div class="form-input-area">
@@ -661,7 +661,7 @@
                         </div>
                     </div>
 
-                    <!-- 🔥 NEW: TIME PERIOD OR END DATE TOGGLE (Only for Simple Tab) 🔥 -->
+                    <!-- TIME PERIOD OR END DATE TOGGLE (Only for Simple Tab) -->
                     <div class="form-row-side" id="timePeriodToggleRow" style="display: none;">
                         <div class="form-label">Time period<br>or end date?</div>
                         <div class="form-input-area">
@@ -672,7 +672,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Time Boxes (Years, Months, Weeks, Days) (Side-by-Side) -->
+                    <!-- 5. Time Boxes (Years, Months, Weeks, Days) -->
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
                         <div class="form-label" style="padding-bottom: 10px;">Time<br>period:</div>
                         <div class="form-input-area">
@@ -684,7 +684,7 @@
                                 <span class="tiny-label">Months:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeMonths" value="0" min="0" class="time-col"></div>
                             </div>
-                            <!-- 🔥 NEW: Weeks Input (Only for Simple Tab) 🔥 -->
+                            <!-- Weeks Input (Only for Simple Tab) -->
                             <div class="flex-col" id="colWeeks" style="display: none;">
                                 <span class="tiny-label">Weeks:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeWeeks" value="0" min="0" class="time-col"></div>
@@ -697,7 +697,7 @@
                         </div>
                     </div>
 
-                    <!-- 🔥 NEW: END DATE INPUT ROW (Only for Simple Tab when End Date is selected) 🔥 -->
+                    <!-- END DATE INPUT ROW (Only for Simple Tab when End Date is selected) -->
                     <div class="form-row-side" id="endDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">End date?</div>
                         <div class="form-input-area">
@@ -741,7 +741,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row-side">
+                        
+                        <!-- 🔥 FIXED: DAYS TO INCLUDE SECTION (NOW TOGGLES CORRECTLY) 🔥 -->
+                        <div class="form-row-side" id="daysToIncludeSection" style="display: none;">
                             <div class="form-label">Days to<br>include:</div>
                             <div class="form-input-area">
                                 <div class="days-toggle-group" id="daysToInclude">
@@ -853,8 +855,8 @@
                                 <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Withdrawals made at what point in period?</div>
                                 <div class="form-input-area" style="margin-bottom: 0px;">
                                     <div class="toggle-group" id="withTimingToggle" style="margin-bottom:0; width:60%;">
-                                        <button type="button" class="toggle-btn active">Beginning</button>
-                                        <button type="button" class="toggle-btn">End</button>
+                                        <button type="button" class="toggle-btn">Beginning</button>
+                                        <button type="button" class="toggle-btn active">End</button>
                                     </div>
                                 </div>
                             </div>
@@ -888,7 +890,7 @@
                         </div>
                     </div> <!-- End Standard Contrib Wrapper -->
 
-                    <!-- 🔥 NEW: SIMPLE INTEREST CONTRIBUTIONS (No Advanced Options) 🔥 -->
+                    <!-- 🔥 SIMPLE INTEREST CONTRIBUTIONS (No Advanced Options) 🔥 -->
                     <div id="simpleContribWrapper" style="display: none; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         <div class="toggle-group" id="simpleContribToggle" style="margin-bottom:20px;">
@@ -1233,13 +1235,11 @@
             if(withPrefix) withPrefix.innerText = pVal;
             if(forexDepPrefix) forexDepPrefix.innerText = pVal;
             
-            // 🔥 UPDATE CURRENCY IN ANNUAL INCREASE BOX 🔥
             let depIncBtn = document.getElementById('depIncCurrBtn');
             if(depIncBtn) depIncBtn.innerText = pVal;
             let depIncPrefix = document.getElementById('depIncPrefix');
             if(depIncPrefix) depIncPrefix.innerText = pVal;
 
-            // 🔥 UPDATE CURRENCY IN WITHDRAWAL DROPDOWN OPTIONS 🔥
             let optWithMonth = document.getElementById('optWithMonth');
             if(optWithMonth) optWithMonth.text = `monthly ${pVal}`;
             let optWithQuarter = document.getElementById('optWithQuarter');
@@ -1249,7 +1249,6 @@
             let optWithYear = document.getElementById('optWithYear');
             if(optWithYear) optWithYear.text = `yearly ${pVal}`;
 
-            // 🔥 UPDATE CURRENCY IN SIMPLE INTEREST TAB 🔥
             document.querySelectorAll('.simple-curr-prefix').forEach(el => {
                 el.innerText = pVal;
             });
@@ -1399,7 +1398,6 @@
                 this.classList.add('active');
                 activeCalcTab = this.getAttribute('data-tab');
 
-                // Reset Extra Rows Visibility
                 dailyOptionsRow.style.display = 'none';
                 extWeekendOpts.style.display = 'none';
                 compIntervalRow.style.display = 'none';
@@ -1441,7 +1439,7 @@
                 else if(activeCalcTab === 'daily') {
                     standardContribWrapper.style.display = 'block';
                     dailyOptionsRow.style.display = 'block';
-                    startDateSection.style.display = 'flex'; // Changed to flex for row styling
+                    startDateSection.style.display = 'flex'; 
                     document.getElementById('colDays').style.display = 'flex';
                     document.getElementById('bothToggleBtn').style.display = 'none'; 
                     
@@ -1467,9 +1465,24 @@
                      startDateSection.style.display = 'flex';
                      document.getElementById('timePeriodToggleRow').style.display = 'flex';
                      
-                     // Reset to duration mode when switching to simple tab
                      document.querySelector('#timeModeToggle .toggle-btn[data-val="duration"]').click();
                      document.querySelector('#simpleContribToggle .toggle-btn[data-val="none"]').click();
+                }
+            });
+        });
+
+        // 🌟 EXCLUDE HOLIDAYS YES/NO TOGGLE (FIXED) 🌟
+        const excludeHolidaysBtns = document.querySelectorAll('#excludeHolidaysToggle .toggle-btn');
+        excludeHolidaysBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                excludeHolidaysBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active'); 
+                
+                const daysToIncludeSection = document.getElementById('daysToIncludeSection');
+                if (this.getAttribute('data-val') === 'yes') {
+                    daysToIncludeSection.style.display = 'flex';
+                } else {
+                    daysToIncludeSection.style.display = 'none';
                 }
             });
         });
@@ -1486,6 +1499,7 @@
                 
                 if(includeWeekends === 'no') {
                     extWeekendOpts.style.display = 'block';
+                    document.querySelector('#excludeHolidaysToggle .toggle-btn[data-val="no"]').click();
                 } else {
                     extWeekendOpts.style.display = 'none';
                 }
@@ -1667,7 +1681,6 @@
                 let depAmt = 0; let depFreq = 'monthly';
                 let withAmt = 0; let withFreq = 'monthly';
 
-                // Variables for Simple Tab Contributions
                 let simpleAddAmt = 0; let simpleAddFreq = 'monthly';
                 let simpleDedAmt = 0; let simpleDedFreq = 'monthly';
 
@@ -1694,7 +1707,6 @@
                 let totalDays = 0;
                 let startDate = new Date(document.getElementById('startDate').value);
 
-                // 🔥 Total Days Logic updated for Simple Tab's End Date feature 🔥
                 if (activeCalcTab === 'simple') {
                     let timeMode = document.querySelector('#timeModeToggle .toggle-btn.active').getAttribute('data-val');
                     if (timeMode === 'enddate') {
@@ -1751,7 +1763,6 @@
                     else compDays = 365 / compInt; 
                 }
 
-                // Initializing tracking variables for advanced math
                 let monthlyInterestAccrued = 0;
                 let yearlyInterestAccrued = 0;
                 let depAmtCurrent = depAmt;
@@ -1760,7 +1771,7 @@
                 for (let i = 1; i <= totalDays; i++) {
                     let currentDate = new Date(startDate);
                     currentDate.setDate(startDate.getDate() + i);
-                    let currentDayNum = currentDate.getDay(); // 0=Sun, 6=Sat
+                    let currentDayNum = currentDate.getDay(); 
 
                     let skipInterestToday = false;
                     if (activeCalcTab === 'daily' && skipWeekends) {
@@ -1773,7 +1784,6 @@
                     let addedToday = 0; let withdrawnToday = 0;
                     
                     if(activeCalcTab !== 'simple') {
-                        // COMPOUND/DAILY DEPOSIT LOGIC
                         if(contribType === 'deposits' || contribType === 'both') {
                             if(depAmtCurrent > 0) {
                                 if(depFreq === 'weekly' && i % 7 === 0) addedToday += depAmtCurrent;
@@ -1785,7 +1795,6 @@
                             }
                         } 
                         
-                        // COMPOUND/DAILY WITHDRAWAL LOGIC 
                         if (contribType === 'withdrawals' || contribType === 'both') {
                             if(withAmtCurrent > 0) {
                                 if(withFreq === 'monthly' && i % 30 === 0) withdrawnToday += withAmtCurrent;
@@ -1808,7 +1817,6 @@
                             }
                         }
                     } else {
-                        // 🔥 SIMPLE INTEREST CONTRIBUTIONS LOGIC 🔥
                         if(simpleContribType === 'additions' && simpleAddAmt > 0) {
                             if(simpleAddFreq === 'monthly' && i % 30 === 0) addedToday += simpleAddAmt; 
                             if(simpleAddFreq === 'quarterly' && i % 90 === 0) addedToday += simpleAddAmt; 
@@ -1823,7 +1831,6 @@
                         }
                     }
 
-                    // Apply to current balance
                     currentBalance += addedToday;
                     currentBalance -= withdrawnToday;
                     if(currentBalance < 0) currentBalance = 0; 
@@ -1831,11 +1838,9 @@
                     totalDeposits += addedToday;
                     totalDeposits -= withdrawnToday; 
 
-                    // Calc Interest for TODAY
                     let interestToday = 0;
                     if(!skipInterestToday && currentBalance > 0) {
                         if (activeCalcTab === 'simple') {
-                            // Simple interest applies to the current principal but doesn't compound
                             interestToday = currentBalance * dailyRate;
                             totalInterest += interestToday;
                         } 
