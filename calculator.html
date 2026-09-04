@@ -137,9 +137,13 @@
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
-        /* 🔥 ACTION ROW CLASSES 🔥 */
+        /* 🔥 ACTION ROW CLASSES FOR SIDE-BY-SIDE MOBILE MATCH 🔥 */
         .action-row-section {
-            display: flex; gap: 15px; align-items: flex-end; width: 100%;
+            display: flex !important; 
+            flex-direction: row !important; 
+            gap: 15px; 
+            align-items: flex-end; 
+            width: 100%;
         }
         .action-row-simple {
             background: transparent !important;
@@ -325,9 +329,11 @@
             
             .calc-section { padding: 15px 12px; margin-bottom: 15px; }
             
-            /* Preserve padding for action row on mobile if needed */
-            #actionRowSection { padding: 15px !important; }
+            /* 🔥 FORCE SIDE-BY-SIDE START DATE AND CALCULATE BUTTON ON MOBILE 🔥 */
+            .action-row-section { gap: 10px !important; padding: 15px 12px !important;}
             .action-row-simple { padding: 0 !important; }
+            #bottomStartDateAnchor, #calcBtnWrap { flex: 1; min-width: 0; }
+            #bottomStartDateAnchor input, #calcBtnWrap button { height: 42px !important; font-size: 14px !important; }
 
             .seo-article { padding: 25px 15px; border-radius: 15px; margin: 0 10px 40px 10px;}
             .seo-article h2 { font-size: 22px; }
@@ -610,16 +616,16 @@
                                 <div class="input-suffix" style="border-left: 1px solid #333;">%</div>
                             </div>
                             <select class="rate-select" id="rateType" style="flex: 1;">
+                                <!-- 🔥 FIXED: QUARTERLY OPTION REMOVED 🔥 -->
                                 <option value="daily">daily</option>
                                 <option value="weekly">weekly</option>
                                 <option value="monthly">monthly</option>
-                                <option value="quarterly">quarterly</option>
                                 <option value="yearly" selected>yearly</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- 🔥 TOP START DATE (For Simple Tab) 🔥 -->
+                    <!-- 🔥 TOP START DATE (For Simple Tab Only) 🔥 -->
                     <div class="form-row-side" id="topStartDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">Start date?<br><span style="color:#888; font-size:11px;">(optional)</span></div>
                         <div class="form-input-area">
@@ -952,14 +958,14 @@
                     </div> <!-- End Simple Contrib Wrapper -->
                 </div> <!-- End Main Input Section -->
                 
-                <!-- 🔥 ACTION ROW (Bottom Start Date & Calculate Button MATCHED 100%) 🔥 -->
+                <!-- 🔥 ACTION ROW (FIXED SIDE-BY-SIDE) 🔥 -->
                 <div class="calc-section action-row-section" id="actionRowSection">
-                    <div id="bottomStartDateAnchor" style="flex: 1;">
+                    <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
-                        <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px;">
+                        <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
                     </div>
-                    <div id="calcBtnWrap" style="flex: 1;">
-                        <button type="submit" class="btn-calc" style="margin-top: 0; width: 100%; height: 50px; font-size: 16px;"><i class="fas fa-calculator"></i> Calculate</button>
+                    <div id="calcBtnWrap" style="flex: 1; min-width: 0;">
+                        <button type="submit" class="btn-calc" style="margin-top: 0; width: 100%; height: 50px; font-size: 16px; box-sizing: border-box;"><i class="fas fa-calculator"></i> Calculate</button>
                     </div>
                 </div>
 
@@ -1526,7 +1532,7 @@
             });
         });
 
-        // 🌟 EXCLUDE HOLIDAYS YES/NO TOGGLE (FIXED) 🌟
+        // 🌟 EXCLUDE HOLIDAYS YES/NO TOGGLE (FIXED FOR VIDEO) 🌟
         const excludeHolidaysBtns = document.querySelectorAll('#excludeHolidaysToggle .toggle-btn');
         excludeHolidaysBtns.forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1675,7 +1681,6 @@
             let totalDeposits = principal;
             let tableData = [];
 
-            // Get the correct start date based on the active tab
             let startDateVal = (activeCalcTab === 'simple') ? document.getElementById('startDateTop').value : document.getElementById('startDateBottom').value;
             if (!startDateVal) {
                 showCustomAlert("Error", "Please select a start date.", true);
@@ -1801,7 +1806,6 @@
                 if(rateType === 'monthly') dailyRate = (rateInput / 100) / 30.4167;
                 if(rateType === 'yearly') dailyRate = (rateInput / 100) / 365;
                 if(rateType === 'weekly') dailyRate = (rateInput / 100) / 7;
-                if(rateType === 'quarterly') dailyRate = (rateInput / 100) / 91.25;
 
                 let accruedInterest = 0;
                 let compDays = 1;
