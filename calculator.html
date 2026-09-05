@@ -331,12 +331,56 @@
             
             /* 🔥 FORCE SIDE-BY-SIDE START DATE AND CALCULATE BUTTON ON MOBILE 🔥 */
             .action-row-section { gap: 10px !important; padding: 15px 12px !important;}
+            .action-row-section .form-label { margin-bottom: 0 !important; }
             .action-row-simple { padding: 0 !important; }
             #bottomStartDateAnchor, #calcBtnWrap { flex: 1; min-width: 0; }
             #bottomStartDateAnchor input, #calcBtnWrap button { height: 42px !important; font-size: 14px !important; }
 
             .seo-article { padding: 25px 15px; border-radius: 15px; margin: 0 10px 40px 10px;}
             .seo-article h2 { font-size: 22px; }
+        }
+        
+        /* 🔥 NEW RULE ADDED: DAILY COMPOUND ONLY - STACKED LAYOUT TO MATCH REFERENCE 1ST PHOTO 🔥 */
+        .daily-stacked-layout .form-row-side {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            margin-bottom: 18px !important;
+        }
+        .daily-stacked-layout .form-label {
+            flex: 0 0 auto !important;
+            max-width: 100% !important;
+            padding-bottom: 8px !important;
+            padding-right: 0 !important;
+            text-align: left !important;
+            font-size: 13px !important;
+        }
+        /* Hides the break tag specifically in Daily tab so labels like "Initial investment" appear on single line */
+        .daily-stacked-layout .form-label br {
+            display: none !important;
+        }
+        .daily-stacked-layout .form-input-area {
+            width: 100% !important;
+        }
+        /* Keeps "Include all days of week" & "Daily reinvest rate" side-by-side inside Daily Options */
+        .daily-stacked-layout #dailyOptionsRow {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .daily-stacked-layout #dailyOptionsRow .form-row-side {
+            flex: 1;
+            margin-bottom: 0 !important;
+        }
+        /* Keeps action row (Start Date & Calculate) side-by-side */
+        .daily-stacked-layout .action-row-section {
+            flex-direction: row !important;
+            align-items: flex-end !important;
+        }
+        @media (max-width: 768px) {
+            .daily-stacked-layout #dailyOptionsRow {
+                gap: 10px;
+            }
         }
 
         /* 🔥 SHARE & TOC SECTION CSS 🔥 */
@@ -576,6 +620,7 @@
             </div>
 
             <!-- 🌟 MAIN FORM BODY 🌟 -->
+            <!-- 🔥 NOTE: Added id="compoundForm" which will receive ".daily-stacked-layout" via JS when Daily tab is active 🔥 -->
             <form id="compoundForm" class="calc-body">
                 
                 <!-- 🔥 MAIN INPUTS SECTION 🔥 -->
@@ -1440,6 +1485,13 @@
                 calcTabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 activeCalcTab = this.getAttribute('data-tab');
+
+                // 🔥 MAIN LOGIC FOR DAILY STACKED LAYOUT ONLY 🔥
+                if (activeCalcTab === 'daily') {
+                    document.getElementById('compoundForm').classList.add('daily-stacked-layout');
+                } else {
+                    document.getElementById('compoundForm').classList.remove('daily-stacked-layout');
+                }
 
                 // Reset Extra Rows Visibility
                 dailyOptionsRow.style.display = 'none';
