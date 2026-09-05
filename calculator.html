@@ -643,7 +643,8 @@
 
                     <!-- 2. Principal Amount (Side-by-Side) -->
                     <div class="form-row-side">
-                        <div class="form-label" id="lblPrincipal">Initial<br>investment:</div>
+                        <!-- Space added before <br> so it doesn't join words -->
+                        <div class="form-label" id="lblPrincipal">Initial <br>investment:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0;">
                                 <div class="input-prefix" id="mainPrefix" style="border-right: 1px solid #333;">$</div>
@@ -654,7 +655,8 @@
 
                     <!-- 3. Rate (%) Row (Side-by-Side) -->
                     <div class="form-row-side">
-                        <div class="form-label" id="lblRate">Interest<br>rate:</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label" id="lblRate">Interest <br>rate:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0; flex: 1.2;">
                                 <input type="number" id="interestRate" placeholder="10" min="0" step="any" required>
@@ -680,7 +682,8 @@
 
                     <!-- TIME PERIOD OR END DATE TOGGLE (Only for Simple Tab) -->
                     <div class="form-row-side" id="timePeriodToggleRow" style="display: none;">
-                        <div class="form-label">Time period<br>or end date?</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label">Time period <br>or end date?</div>
                         <div class="form-input-area">
                             <div class="toggle-group" id="timeModeToggle" style="margin-bottom:0; width: 100%;">
                                 <button type="button" class="toggle-btn active" data-val="duration">Time period</button>
@@ -691,7 +694,8 @@
 
                     <!-- 4. 🔥 COMPOUND FREQUENCY DROPDOWN 🔥 -->
                     <div class="form-row-side" id="compIntervalRow" style="display: flex;">
-                        <div class="form-label">Compound<br>frequency:</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="reinvest-select" id="compInterval" style="width: 100%;">
                                 <option value="365">Daily (365/yr)</option>
@@ -714,7 +718,8 @@
 
                     <!-- Custom Compound Input Box (Hidden By Default) -->
                     <div class="form-row-side" id="customCompRow" style="display: none;">
-                        <div class="form-label">Compounds<br>per year:</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label">Compounds <br>per year:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom:0; width: 100%;">
                                 <input type="number" id="customCompInterval" placeholder="e.g. 365" min="1" step="any">
@@ -724,7 +729,8 @@
 
                     <!-- 4b. Forex Compounding Row (For Forex tab) -->
                     <div class="form-row-side" id="forexCompRow" style="display: none;">
-                        <div class="form-label">Compound<br>frequency:</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="rate-select" id="forexCompFreq" style="width: 100%;">
                                 <option value="365">Daily (365/yr)</option>
@@ -742,7 +748,8 @@
 
                     <!-- 5. Time Boxes (Years, Months, Weeks, Days) -->
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
-                        <div class="form-label" style="padding-bottom: 10px;">Time<br>period:</div>
+                        <!-- Space added before <br> -->
+                        <div class="form-label" style="padding-bottom: 10px;">Time <br>period:</div>
                         <div class="form-input-area">
                             <div class="flex-col">
                                 <span class="tiny-label">Years:</span>
@@ -776,7 +783,8 @@
                     <!-- 6. Weekend & Reinvest Row (Wrapped in Block for Daily Tab) -->
                     <div id="dailyOptionsRow" style="display: none; width: 100%; margin-top: 15px;">
                         <div class="form-row-side">
-                            <div class="form-label">Include all<br>days?</div>
+                            <!-- 🔥 Changed to exact match: "Include all days of week?" 🔥 -->
+                            <div class="form-label">Include all days <br>of week?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="includeDaysToggle" style="margin-bottom:0;">
                                     <button type="button" class="toggle-btn active" data-val="yes">Yes</button>
@@ -785,7 +793,8 @@
                             </div>
                         </div>
                         <div class="form-row-side">
-                            <div class="form-label">Daily reinvest<br>rate:</div>
+                            <!-- Space added before <br> -->
+                            <div class="form-label">Daily reinvest <br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
                                     <!-- JS will populate 100% to 0% -->
@@ -801,7 +810,8 @@
                     <!-- 🔥 EXTENDED WEEKEND OPTIONS (Shows when Include days = No) 🔥 -->
                     <div id="extendedWeekendOptions" style="display: none; width: 100%;">
                         <div class="form-row-side">
-                            <div class="form-label">Exclude<br>holidays?</div>
+                            <!-- 🔥 Changed to exact match: "Exclude U.S. holidays & weekends?" 🔥 -->
+                            <div class="form-label">Exclude U.S. holidays <br>& weekends?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="excludeHolidaysToggle" style="margin-bottom:0;">
                                     <button type="button" class="toggle-btn active" data-val="no">No</button>
@@ -812,7 +822,8 @@
                         
                         <!-- 🔥 FIXED: DAYS TO INCLUDE SECTION (NOW TOGGLES CORRECTLY) 🔥 -->
                         <div class="form-row-side" id="daysToIncludeSection" style="display: none;">
-                            <div class="form-label">Days to<br>include:</div>
+                            <!-- Space added before <br> -->
+                            <div class="form-label">Days to <br>include:</div>
                             <div class="form-input-area">
                                 <div class="days-toggle-group" id="daysToInclude">
                                     <button type="button" class="day-btn active" data-day="1">M</button>
@@ -1516,8 +1527,8 @@
                 document.getElementById('resultsArea').style.display = 'none';
                 document.getElementById('resultsLabel').style.display = 'block';
 
-                document.getElementById('lblPrincipal').innerHTML = 'Initial<br>investment:';
-                document.getElementById('lblRate').innerHTML = 'Interest<br>rate:';
+                document.getElementById('lblPrincipal').innerHTML = 'Initial <br>investment:';
+                document.getElementById('lblRate').innerHTML = 'Interest <br>rate:';
 
                 if (activeCalcTab === 'compound') {
                     standardContribWrapper.style.display = 'block';
@@ -1557,7 +1568,7 @@
                 }
                 else if (activeCalcTab === 'forex') {
                     standardContribWrapper.style.display = 'block';
-                    document.getElementById('lblPrincipal').innerHTML = 'Start<br>balance:';
+                    document.getElementById('lblPrincipal').innerHTML = 'Start <br>balance:';
                     document.getElementById('lblRate').innerHTML = 'Percentage:';
                     forexCompRow.style.display = 'flex';
                     forexContribRow.style.display = 'block';
