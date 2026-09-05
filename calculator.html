@@ -74,6 +74,15 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
+        /* 🔥 SMOOTH EXPAND ANIMATION FOR ALL TOGGLES 🔥 */
+        @keyframes slideDownFade {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .smooth-expand {
+            animation: slideDownFade 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
         /* 🔥 VIP SIDE MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
@@ -573,7 +582,7 @@
                 <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
             </a>
             
-            <div id="upcomingProjectsList" class="upcoming-list">
+            <div id="upcomingProjectsList" class="upcoming-list smooth-expand" style="display: none;">
                 <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
@@ -601,7 +610,6 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 EXACT MATCH ADVANCED CALCULATOR CSS (DK Black & Gold Theme) 🔥 -->
     <section class="calc-container">
         <div id="particles-js"></div>
         
@@ -611,7 +619,6 @@
         </div>
 
         <div class="calc-wrapper">
-            <!-- 🌟 4 TABS (Top Area) 🌟 -->
             <div class="calc-tabs">
                 <div class="calc-tab active" data-tab="compound">Compound<br>Interest</div>
                 <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
@@ -619,14 +626,10 @@
                 <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
-            <!-- 🌟 MAIN FORM BODY 🌟 -->
-            <!-- 🔥 NOTE: Added id="compoundForm" which will receive ".daily-stacked-layout" via JS when Daily tab is active 🔥 -->
             <form id="compoundForm" class="calc-body">
                 
-                <!-- 🔥 MAIN INPUTS SECTION 🔥 -->
                 <div class="calc-section" id="mainInputSection">
                     
-                    <!-- 1. Currency Selection (Side-by-Side) -->
                     <div class="form-row-side">
                         <div class="form-label">Currency:</div>
                         <div class="form-input-area">
@@ -641,9 +644,7 @@
                         </div>
                     </div>
 
-                    <!-- 2. Principal Amount (Side-by-Side) -->
                     <div class="form-row-side">
-                        <!-- Space added before <br> so it doesn't join words -->
                         <div class="form-label" id="lblPrincipal">Initial <br>investment:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0;">
@@ -653,9 +654,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Rate (%) Row (Side-by-Side) -->
                     <div class="form-row-side">
-                        <!-- Space added before <br> -->
                         <div class="form-label" id="lblRate">Interest <br>rate:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom: 0; flex: 1.2;">
@@ -663,7 +662,6 @@
                                 <div class="input-suffix" style="border-left: 1px solid #333;">%</div>
                             </div>
                             <select class="rate-select" id="rateType" style="flex: 1;">
-                                <!-- 🔥 FIXED: QUARTERLY OPTION REMOVED 🔥 -->
                                 <option value="daily">daily</option>
                                 <option value="weekly">weekly</option>
                                 <option value="monthly">monthly</option>
@@ -672,17 +670,14 @@
                         </div>
                     </div>
 
-                    <!-- 🔥 TOP START DATE (For Simple Tab Only) 🔥 -->
-                    <div class="form-row-side" id="topStartDateRow" style="display: none; align-items: flex-end;">
+                    <div class="form-row-side smooth-expand" id="topStartDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">Start date?<br><span style="color:#888; font-size:11px;">(optional)</span></div>
                         <div class="form-input-area">
                             <input type="date" class="date-input" id="startDateTop" style="width: 100%;">
                         </div>
                     </div>
 
-                    <!-- TIME PERIOD OR END DATE TOGGLE (Only for Simple Tab) -->
-                    <div class="form-row-side" id="timePeriodToggleRow" style="display: none;">
-                        <!-- Space added before <br> -->
+                    <div class="form-row-side smooth-expand" id="timePeriodToggleRow" style="display: none;">
                         <div class="form-label">Time period <br>or end date?</div>
                         <div class="form-input-area">
                             <div class="toggle-group" id="timeModeToggle" style="margin-bottom:0; width: 100%;">
@@ -692,9 +687,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. 🔥 COMPOUND FREQUENCY DROPDOWN 🔥 -->
-                    <div class="form-row-side" id="compIntervalRow" style="display: flex;">
-                        <!-- Space added before <br> -->
+                    <div class="form-row-side smooth-expand" id="compIntervalRow" style="display: flex;">
                         <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="reinvest-select" id="compInterval" style="width: 100%;">
@@ -714,11 +707,9 @@
                             <button type="button" class="help-btn" onclick="toggleHelp('helpCompFreq')">?</button>
                         </div>
                     </div>
-                    <div id="helpCompFreq" class="inline-help-text">Compound frequency is the number of times interest is compounded per year.</div>
+                    <div id="helpCompFreq" class="inline-help-text smooth-expand">Compound frequency is the number of times interest is compounded per year.</div>
 
-                    <!-- Custom Compound Input Box (Hidden By Default) -->
-                    <div class="form-row-side" id="customCompRow" style="display: none;">
-                        <!-- Space added before <br> -->
+                    <div class="form-row-side smooth-expand" id="customCompRow" style="display: none;">
                         <div class="form-label">Compounds <br>per year:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom:0; width: 100%;">
@@ -727,9 +718,7 @@
                         </div>
                     </div>
 
-                    <!-- 4b. Forex Compounding Row (For Forex tab) -->
-                    <div class="form-row-side" id="forexCompRow" style="display: none;">
-                        <!-- Space added before <br> -->
+                    <div class="form-row-side smooth-expand" id="forexCompRow" style="display: none;">
                         <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="rate-select" id="forexCompFreq" style="width: 100%;">
@@ -746,9 +735,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. Time Boxes (Years, Months, Weeks, Days) -->
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
-                        <!-- Space added before <br> -->
                         <div class="form-label" style="padding-bottom: 10px;">Time <br>period:</div>
                         <div class="form-input-area">
                             <div class="flex-col">
@@ -759,31 +746,26 @@
                                 <span class="tiny-label">Months:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeMonths" value="0" min="0" class="time-col"></div>
                             </div>
-                            <!-- Weeks Input (Only for Simple Tab) -->
-                            <div class="flex-col" id="colWeeks" style="display: none;">
+                            <div class="flex-col smooth-expand" id="colWeeks" style="display: none;">
                                 <span class="tiny-label">Weeks:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeWeeks" value="0" min="0" class="time-col"></div>
                             </div>
-                            <!-- Days Hidden by Default for Compound Tab, visible for Daily Tab & Simple Tab -->
-                            <div class="flex-col" id="colDays" style="display: none;">
+                            <div class="flex-col smooth-expand" id="colDays" style="display: none;">
                                 <span class="tiny-label">Days:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeDays" value="0" min="0" class="time-col"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- END DATE INPUT ROW (Only for Simple Tab when End Date is selected) -->
-                    <div class="form-row-side" id="endDateRow" style="display: none; align-items: flex-end;">
+                    <div class="form-row-side smooth-expand" id="endDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">End date?</div>
                         <div class="form-input-area">
                             <input type="date" class="date-input" id="endDateInput" style="width: 100%;">
                         </div>
                     </div>
 
-                    <!-- 6. Weekend & Reinvest Row (Wrapped in Block for Daily Tab) -->
-                    <div id="dailyOptionsRow" style="display: none; width: 100%; margin-top: 15px;">
+                    <div id="dailyOptionsRow" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
                         <div class="form-row-side">
-                            <!-- 🔥 Changed to exact match: "Include all days of week?" 🔥 -->
                             <div class="form-label">Include all days <br>of week?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="includeDaysToggle" style="margin-bottom:0;">
@@ -793,24 +775,20 @@
                             </div>
                         </div>
                         <div class="form-row-side">
-                            <!-- Space added before <br> -->
                             <div class="form-label">Daily reinvest <br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
-                                    <!-- JS will populate 100% to 0% -->
-                                </select>
+                                    </select>
                                 <button type="button" class="help-btn" onclick="toggleHelp('helpReinvest')">?</button>
                             </div>
                         </div>
-                        <div id="helpReinvest" class="inline-help-text">
+                        <div id="helpReinvest" class="inline-help-text smooth-expand">
                             The daily reinvest rate is the % figure that you wish to keep in the investment for future compounding. As an example, you may wish to reinvest 80% of the daily earnings you receive and withdraw the other 20% in cash.
                         </div>
                     </div>
 
-                    <!-- 🔥 EXTENDED WEEKEND OPTIONS (Shows when Include days = No) 🔥 -->
-                    <div id="extendedWeekendOptions" style="display: none; width: 100%;">
+                    <div id="extendedWeekendOptions" class="smooth-expand" style="display: none; width: 100%;">
                         <div class="form-row-side">
-                            <!-- 🔥 Changed to exact match: "Exclude U.S. holidays & weekends?" 🔥 -->
                             <div class="form-label">Exclude U.S. holidays <br>& weekends?</div>
                             <div class="form-input-area">
                                 <div class="toggle-group" id="excludeHolidaysToggle" style="margin-bottom:0;">
@@ -820,9 +798,7 @@
                             </div>
                         </div>
                         
-                        <!-- 🔥 FIXED: DAYS TO INCLUDE SECTION (NOW TOGGLES CORRECTLY) 🔥 -->
-                        <div class="form-row-side" id="daysToIncludeSection" style="display: none;">
-                            <!-- Space added before <br> -->
+                        <div class="form-row-side smooth-expand" id="daysToIncludeSection" style="display: none;">
                             <div class="form-label">Days to <br>include:</div>
                             <div class="form-input-area">
                                 <div class="days-toggle-group" id="daysToInclude">
@@ -837,13 +813,9 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- End Main Input Section -->
-
-                <!-- 🔥 ADDITIONAL CONTRIBUTIONS SECTION 🔥 -->
-                <div class="calc-section" id="contributionsSection" style="display: block;">
+                </div> <div class="calc-section" id="contributionsSection" style="display: block;">
                     
-                    <!-- STANDARD CONTRIBUTIONS (For Compound, Daily, Forex) -->
-                    <div id="standardContribWrapper" style="display: block; width: 100%;">
+                    <div id="standardContribWrapper" class="smooth-expand" style="display: block; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         
                         <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
@@ -853,8 +825,7 @@
                             <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
                         </div>
                         
-                        <!-- DEPOSIT BOX -->
-                        <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
+                        <div id="extendedDepositOptions" class="smooth-expand" style="display:none; padding-top: 10px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             
                             <div class="form-input-area" style="margin-bottom: 0px;">
@@ -873,7 +844,7 @@
                                 <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                             </div>
                             
-                            <div id="advancedDepositOptions" style="display: none; width: 100%; margin-top: 15px;">
+                            <div id="advancedDepositOptions" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
                                 <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
                                 <div class="form-input-area" style="margin-bottom: 0px;">
                                     <div class="toggle-group" id="depTimingToggle" style="margin-bottom:0; width:60%;">
@@ -899,8 +870,7 @@
                             </div>
                         </div>
 
-                        <!-- WITHDRAWAL BOX -->
-                        <div id="withdrawalArea" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
+                        <div id="withdrawalArea" class="smooth-expand" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif; padding-top: 15px;">Withdrawal amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -930,7 +900,7 @@
                                 <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                             </div>
 
-                            <div id="advancedWithdrawalOptions" style="display: none; width: 100%; margin-top: 15px;">
+                            <div id="advancedWithdrawalOptions" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
                                 <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Withdrawals made at what point in period?</div>
                                 <div class="form-input-area" style="margin-bottom: 0px;">
                                     <div class="toggle-group" id="withTimingToggle" style="margin-bottom:0; width:60%;">
@@ -951,8 +921,7 @@
                             </div>
                         </div>
                         
-                        <!-- FOREX CONTRIBUTIONS -->
-                        <div id="forexContribRow" style="display: none; padding-top: 10px;">
+                        <div id="forexContribRow" class="smooth-expand" style="display: none; padding-top: 10px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -967,10 +936,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div> <!-- End Standard Contrib Wrapper -->
-
-                    <!-- 🔥 SIMPLE INTEREST CONTRIBUTIONS (No Advanced Options) 🔥 -->
-                    <div id="simpleContribWrapper" style="display: none; width: 100%;">
+                    </div> <div id="simpleContribWrapper" class="smooth-expand" style="display: none; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         <div class="toggle-group" id="simpleContribToggle" style="margin-bottom:20px;">
                             <button type="button" class="toggle-btn active" data-val="none">None</button>
@@ -978,8 +944,7 @@
                             <button type="button" class="toggle-btn" data-val="deductions">Deductions</button>
                         </div>
 
-                        <!-- Additions Box -->
-                        <div id="simpleAdditionsArea" style="display:none;">
+                        <div id="simpleAdditionsArea" class="smooth-expand" style="display:none;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Additions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -995,8 +960,7 @@
                             </div>
                         </div>
 
-                        <!-- Deductions Box -->
-                        <div id="simpleDeductionsArea" style="display:none;">
+                        <div id="simpleDeductionsArea" class="smooth-expand" style="display:none;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Deductions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -1011,11 +975,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div> <!-- End Simple Contrib Wrapper -->
-                </div> <!-- End Main Input Section -->
-                
-                <!-- 🔥 ACTION ROW (FIXED SIDE-BY-SIDE) 🔥 -->
-                <div class="calc-section action-row-section" id="actionRowSection">
+                    </div> </div> <div class="calc-section action-row-section" id="actionRowSection">
                     <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
@@ -1028,7 +988,6 @@
                 <div class="results-label" id="resultsLabel">Results will appear here</div>
             </form>
 
-            <!-- 🌟 RESULTS SECTION 🌟 -->
             <div id="resultsArea">
                 <div class="results-grid">
                     <div class="result-card">
@@ -1057,14 +1016,12 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- JS will inject rows here -->
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- 🔥 NEW SHARE, DISCLAIMER & TABLE OF CONTENTS SECTION 🔥 -->
         <div class="share-section">
             <h4>Like this? Please share</h4>
             <div class="share-buttons">
@@ -1088,7 +1045,6 @@
             </div>
         </div>
         
-        <!-- 🔥 VIP SEO ARTICLE & FAQ SECTION 🔥 -->
         <div class="seo-article">
             <h2>Questions about our calculator</h2>
             <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
@@ -1127,7 +1083,6 @@
         
     </section>
 
-    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -1229,7 +1184,6 @@
         </div>
     </footer>
 
-    <!-- APP DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -1241,7 +1195,6 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -1253,7 +1206,6 @@
         </div>
     </div>
 
-    <!-- UPCOMING MODAL CSS -->
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
@@ -1270,7 +1222,6 @@
         </div>
     </div>
     
-    <!-- CHATBOT OVERLAY -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -1292,7 +1243,6 @@
         </div>
     </div>
 
-    <!-- 🔥 DYNAMIC TAB & CALCULATOR LOGIC 🔥 -->
     <script>
         // Set today's date
         window.setToday = function() {
