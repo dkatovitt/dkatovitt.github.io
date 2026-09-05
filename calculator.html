@@ -134,6 +134,15 @@
         /* 🌟 MAIN FORM BODY 🌟 */
         .calc-body { padding: 25px 20px; background: #111; }
 
+        /* 🔥 TAB REFRESH ANIMATION CSS 🔥 */
+        @keyframes formRefresh {
+            0% { opacity: 0; transform: scale(0.98) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .form-fade-in {
+            animation: formRefresh 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
         /* 🔥 GROUPED BACKGROUND SECTIONS 🔥 */
         .calc-section {
             border-radius: 10px;
@@ -620,7 +629,6 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 EXACT MATCH ADVANCED CALCULATOR CSS (DK Black & Gold Theme) 🔥 -->
     <section class="calc-container">
         <div id="particles-js"></div>
         
@@ -639,8 +647,9 @@
             </div>
 
             <!-- 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 -->
+            <!-- 🔥 Added id="mainFormWrap" to apply refresh animation here 🔥 -->
             <form id="compoundForm" class="calc-body">
-                
+              <div id="mainFormWrap">
                 <!-- 🔥 GROUP 1: BASE INPUTS (DARK BACKGROUND) 🔥 -->
                 <div class="calc-section group-main" id="baseInputGroup">
                     
@@ -722,7 +731,6 @@
                         </div>
                     </div>
                     
-                    <!-- 🔥 FIX: GUARANTEED HIDDEN ON PAGE LOAD 🔥 -->
                     <div id="helpCompFreq" class="inline-help-text" style="display: none;">Compound frequency is the number of times interest is compounded per year.</div>
 
                     <div class="form-row-side" id="customCompRow" style="display: none;">
@@ -805,7 +813,6 @@
                         </div>
                     </div>
                     
-                    <!-- 🔥 FIX: GUARANTEED HIDDEN ON PAGE LOAD 🔥 -->
                     <div id="helpReinvest" class="inline-help-text" style="display: none;">
                         The daily reinvest rate is the % figure that you wish to keep in the investment for future compounding. As an example, you may wish to reinvest 80% of the daily earnings you receive and withdraw the other 20% in cash.
                     </div>
@@ -1007,7 +1014,7 @@
                 </div>
 
                 <!-- 🔥 GROUP 4: ACTION ROW (LIGHT BACKGROUND) 🔥 -->
-                <div class="calc-section action-row-section" id="actionRowSection">
+                <div class="calc-section group-light action-row-section" id="actionRowSection">
                     <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
@@ -1018,6 +1025,7 @@
                 </div>
 
                 <div class="results-label" id="resultsLabel" style="padding: 15px 20px 0 20px;">Results will appear here</div>
+              </div>
             </form>
 
             <!-- 🌟 RESULTS SECTION 🌟 -->
@@ -1496,7 +1504,7 @@
             });
         });
 
-        // 🌟 TAB SWITCHING LOGIC 🌟
+        // 🌟 TAB SWITCHING LOGIC (WITH REFRESH EFFECT) 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
         let activeCalcTab = 'compound';
 
@@ -1506,14 +1514,22 @@
                 this.classList.add('active');
                 activeCalcTab = this.getAttribute('data-tab');
 
-                // 🔥 MAIN LOGIC FOR DAILY STACKED LAYOUT ONLY 🔥
+                // 🔥 Trigger form visual refresh animation 🔥
+                let mainForm = document.getElementById('mainFormWrap');
+                mainForm.classList.remove('form-fade-in');
+                void mainForm.offsetWidth; // trigger reflow
+                mainForm.classList.add('form-fade-in');
+
+                // 🔥 Scroll to top of calculator slightly 🔥
+                document.querySelector('.calc-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
                 if (activeCalcTab === 'daily') {
                     document.getElementById('compoundForm').classList.add('daily-stacked-layout');
                 } else {
                     document.getElementById('compoundForm').classList.remove('daily-stacked-layout');
                 }
 
-                // Reset Extra Rows Visibility (Instantly when switching tabs)
+                // Reset Extra Rows Visibility Instantly
                 document.getElementById('dailyExtraGroup').style.display = 'none';
                 document.getElementById('extendedWeekendOptions').style.display = 'none';
                 document.getElementById('daysToIncludeSection').style.display = 'none';
