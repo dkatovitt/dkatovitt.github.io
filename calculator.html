@@ -74,15 +74,6 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
-        /* 🔥 SMOOTH EXPAND ANIMATION FOR ALL TOGGLES 🔥 */
-        @keyframes slideDownFade {
-            0% { opacity: 0; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .smooth-expand {
-            animation: slideDownFade 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
-        }
-
         /* 🔥 VIP SIDE MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
@@ -134,16 +125,27 @@
         .calc-tab:hover { background: #1a1a1a; color: #e6c875; }
         .calc-tab.active { background: #e6c875; color: #000; }
         
-        /* 🌟 MAIN FORM BODY 🌟 */
-        .calc-body { padding: 25px 20px; }
-
-        .calc-section {
-            background: #131313;
-            border: 1px solid #2a2a2a;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
+        /* 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 */
+        #compoundForm {
+            background: #111;
+            overflow: hidden;
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* 🔥 NEW GROUPED BACKGROUND SYSTEM TO MATCH REFERENCE VIDEO 🔥 */
+        .calc-group {
+            padding: 25px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            transition: background-color 0.3s ease;
+        }
+        .calc-group:last-child {
+            border-bottom: none;
+        }
+        .group-dark { background: #0f0f0f; }
+        .group-light { background: #181818; }
+
+        .calc-group > .form-row-side:last-child {
+            margin-bottom: 0 !important;
         }
 
         /* 🔥 ACTION ROW CLASSES FOR SIDE-BY-SIDE MOBILE MATCH 🔥 */
@@ -153,13 +155,6 @@
             gap: 15px; 
             align-items: flex-end; 
             width: 100%;
-        }
-        .action-row-simple {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-            margin-bottom: 0 !important;
         }
 
         /* 🔥 SIDE BY SIDE LAYOUT CSS 🔥 */
@@ -270,9 +265,6 @@
         .help-btn { background: #1a1a1a; color: #888; border: 1px solid #333; border-radius: 6px; padding: 0; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.3s; font-size: 16px; flex-shrink: 0; height: 46px; box-sizing: border-box;}
         .help-btn:hover { background: #e6c875; color: #000; border-color: #e6c875;}
         
-        /* 🔥 INLINE HELP TEXT BOX 🔥 */
-        .inline-help-text { display: none; background: #1a1a1a; color: #ccc; padding: 15px; border-radius: 6px; font-size: 13px; line-height: 1.5; margin-bottom: 20px; border-left: 3px solid #e6c875; font-family: Arial, sans-serif; animation: fadeIn 0.3s ease;}
-
         /* 🔥 M T W T F S S ROW 🔥 */
         .days-toggle-group { display: flex; gap: 4px; width: 100%;}
         .day-btn { flex: 1; background: #0a0a0a; color: #888; border: 1px solid #333; padding: 10px 0; border-radius: 6px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: center; font-family: Arial, sans-serif; font-size: 12px;}
@@ -312,7 +304,8 @@
             .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #2a3341;}
             .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
             .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
-            .calc-body { padding: 15px 10px; }
+            
+            .calc-group { padding: 15px 12px; }
             
             .form-row-side { margin-bottom: 15px; align-items: center;}
             
@@ -336,12 +329,9 @@
             .tiny-label { font-size: 11px; margin-bottom: 3px;}
             .toggle-btn { padding: 10px 0; font-size: 12px; }
             
-            .calc-section { padding: 15px 12px; margin-bottom: 15px; }
-            
             /* 🔥 FORCE SIDE-BY-SIDE START DATE AND CALCULATE BUTTON ON MOBILE 🔥 */
-            .action-row-section { gap: 10px !important; padding: 15px 12px !important;}
+            .action-row-section { gap: 10px !important;}
             .action-row-section .form-label { margin-bottom: 0 !important; }
-            .action-row-simple { padding: 0 !important; }
             #bottomStartDateAnchor, #calcBtnWrap { flex: 1; min-width: 0; }
             #bottomStartDateAnchor input, #calcBtnWrap button { height: 42px !important; font-size: 14px !important; }
 
@@ -349,7 +339,7 @@
             .seo-article h2 { font-size: 22px; }
         }
         
-        /* 🔥 NEW RULE ADDED: DAILY COMPOUND ONLY - STACKED LAYOUT TO MATCH REFERENCE 1ST PHOTO 🔥 */
+        /* 🔥 DAILY COMPOUND ONLY - STACKED LAYOUT TO MATCH REFERENCE 1ST PHOTO 🔥 */
         .daily-stacked-layout .form-row-side {
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -363,33 +353,27 @@
             text-align: left !important;
             font-size: 13px !important;
         }
-        /* Hides the break tag specifically in Daily tab so labels like "Initial investment" appear on single line */
-        .daily-stacked-layout .form-label br {
-            display: none !important;
-        }
-        .daily-stacked-layout .form-input-area {
-            width: 100% !important;
-        }
+        .daily-stacked-layout .form-label br { display: none !important; }
+        .daily-stacked-layout .form-input-area { width: 100% !important; }
+        
         /* Keeps "Include all days of week" & "Daily reinvest rate" side-by-side inside Daily Options */
         .daily-stacked-layout #dailyOptionsRow {
             display: flex !important;
             flex-direction: row !important;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
+            width: 100%;
         }
         .daily-stacked-layout #dailyOptionsRow .form-row-side {
             flex: 1;
             margin-bottom: 0 !important;
         }
-        /* Keeps action row (Start Date & Calculate) side-by-side */
         .daily-stacked-layout .action-row-section {
             flex-direction: row !important;
             align-items: flex-end !important;
         }
         @media (max-width: 768px) {
-            .daily-stacked-layout #dailyOptionsRow {
-                gap: 10px;
-            }
+            .daily-stacked-layout #dailyOptionsRow { gap: 10px; }
         }
 
         /* 🔥 SHARE & TOC SECTION CSS 🔥 */
@@ -541,7 +525,6 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <div class="side-menu" id="sideMenu">
-        
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
 
         <div class="custom-translate">
@@ -582,7 +565,7 @@
                 <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
             </a>
             
-            <div id="upcomingProjectsList" class="upcoming-list smooth-expand" style="display: none;">
+            <div id="upcomingProjectsList" class="upcoming-list" style="display: none;">
                 <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
@@ -628,7 +611,7 @@
 
             <form id="compoundForm" class="calc-body">
                 
-                <div class="calc-section" id="mainInputSection">
+                <div class="calc-group group-dark" id="baseInputGroup">
                     
                     <div class="form-row-side">
                         <div class="form-label">Currency:</div>
@@ -670,14 +653,14 @@
                         </div>
                     </div>
 
-                    <div class="form-row-side smooth-expand" id="topStartDateRow" style="display: none; align-items: flex-end;">
+                    <div class="form-row-side" id="topStartDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">Start date?<br><span style="color:#888; font-size:11px;">(optional)</span></div>
                         <div class="form-input-area">
                             <input type="date" class="date-input" id="startDateTop" style="width: 100%;">
                         </div>
                     </div>
 
-                    <div class="form-row-side smooth-expand" id="timePeriodToggleRow" style="display: none;">
+                    <div class="form-row-side" id="timePeriodToggleRow" style="display: none;">
                         <div class="form-label">Time period <br>or end date?</div>
                         <div class="form-input-area">
                             <div class="toggle-group" id="timeModeToggle" style="margin-bottom:0; width: 100%;">
@@ -687,7 +670,7 @@
                         </div>
                     </div>
 
-                    <div class="form-row-side smooth-expand" id="compIntervalRow" style="display: flex;">
+                    <div class="form-row-side" id="compIntervalRow" style="display: flex;">
                         <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="reinvest-select" id="compInterval" style="width: 100%;">
@@ -707,9 +690,9 @@
                             <button type="button" class="help-btn" onclick="toggleHelp('helpCompFreq')">?</button>
                         </div>
                     </div>
-                    <div id="helpCompFreq" class="inline-help-text smooth-expand">Compound frequency is the number of times interest is compounded per year.</div>
+                    <div id="helpCompFreq" class="inline-help-text">Compound frequency is the number of times interest is compounded per year.</div>
 
-                    <div class="form-row-side smooth-expand" id="customCompRow" style="display: none;">
+                    <div class="form-row-side" id="customCompRow" style="display: none;">
                         <div class="form-label">Compounds <br>per year:</div>
                         <div class="form-input-area">
                             <div class="input-box" style="margin-bottom:0; width: 100%;">
@@ -718,7 +701,7 @@
                         </div>
                     </div>
 
-                    <div class="form-row-side smooth-expand" id="forexCompRow" style="display: none;">
+                    <div class="form-row-side" id="forexCompRow" style="display: none;">
                         <div class="form-label">Compound <br>frequency:</div>
                         <div class="form-input-area">
                             <select class="rate-select" id="forexCompFreq" style="width: 100%;">
@@ -746,25 +729,28 @@
                                 <span class="tiny-label">Months:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeMonths" value="0" min="0" class="time-col"></div>
                             </div>
-                            <div class="flex-col smooth-expand" id="colWeeks" style="display: none;">
+                            <div class="flex-col" id="colWeeks" style="display: none;">
                                 <span class="tiny-label">Weeks:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeWeeks" value="0" min="0" class="time-col"></div>
                             </div>
-                            <div class="flex-col smooth-expand" id="colDays" style="display: none;">
+                            <div class="flex-col" id="colDays" style="display: none;">
                                 <span class="tiny-label">Days:</span>
                                 <div class="input-box" style="margin-bottom:0;"><input type="number" id="timeDays" value="0" min="0" class="time-col"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-row-side smooth-expand" id="endDateRow" style="display: none; align-items: flex-end;">
+                    <div class="form-row-side" id="endDateRow" style="display: none; align-items: flex-end;">
                         <div class="form-label" style="padding-bottom: 12px;">End date?</div>
                         <div class="form-input-area">
                             <input type="date" class="date-input" id="endDateInput" style="width: 100%;">
                         </div>
                     </div>
+                </div>
 
-                    <div id="dailyOptionsRow" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
+                <div class="calc-group group-light" id="dailyExtraGroup" style="display: none;">
+                    
+                    <div id="dailyOptionsRow" style="display: flex; flex-direction: column; width: 100%;">
                         <div class="form-row-side">
                             <div class="form-label">Include all days <br>of week?</div>
                             <div class="form-input-area">
@@ -782,12 +768,12 @@
                                 <button type="button" class="help-btn" onclick="toggleHelp('helpReinvest')">?</button>
                             </div>
                         </div>
-                        <div id="helpReinvest" class="inline-help-text smooth-expand">
-                            The daily reinvest rate is the % figure that you wish to keep in the investment for future compounding. As an example, you may wish to reinvest 80% of the daily earnings you receive and withdraw the other 20% in cash.
-                        </div>
+                    </div>
+                    <div id="helpReinvest" class="inline-help-text">
+                        The daily reinvest rate is the % figure that you wish to keep in the investment for future compounding. As an example, you may wish to reinvest 80% of the daily earnings you receive and withdraw the other 20% in cash.
                     </div>
 
-                    <div id="extendedWeekendOptions" class="smooth-expand" style="display: none; width: 100%;">
+                    <div id="extendedWeekendOptions" style="display: none; width: 100%;">
                         <div class="form-row-side">
                             <div class="form-label">Exclude U.S. holidays <br>& weekends?</div>
                             <div class="form-input-area">
@@ -798,7 +784,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-row-side smooth-expand" id="daysToIncludeSection" style="display: none;">
+                        <div class="form-row-side" id="daysToIncludeSection" style="display: none;">
                             <div class="form-label">Days to <br>include:</div>
                             <div class="form-input-area">
                                 <div class="days-toggle-group" id="daysToInclude">
@@ -813,9 +799,11 @@
                             </div>
                         </div>
                     </div>
-                </div> <div class="calc-section" id="contributionsSection" style="display: block;">
+                </div>
+
+                <div class="calc-group group-dark" id="contributionsGroup">
                     
-                    <div id="standardContribWrapper" class="smooth-expand" style="display: block; width: 100%;">
+                    <div id="standardContribWrapper" style="display: block; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         
                         <div class="toggle-group" id="contribToggle" style="margin-bottom:20px;">
@@ -825,7 +813,7 @@
                             <button type="button" class="toggle-btn" data-val="both" id="bothToggleBtn" style="border-left: 1px solid #333;">Both</button>
                         </div>
                         
-                        <div id="extendedDepositOptions" class="smooth-expand" style="display:none; padding-top: 10px;">
+                        <div id="extendedDepositOptions" style="display:none; padding-top: 10px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             
                             <div class="form-input-area" style="margin-bottom: 0px;">
@@ -844,7 +832,7 @@
                                 <button type="button" class="help-btn" id="toggleAdvDepBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                             </div>
                             
-                            <div id="advancedDepositOptions" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
+                            <div id="advancedDepositOptions" style="display: none; width: 100%; margin-top: 15px;">
                                 <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposits made at what point in period?</div>
                                 <div class="form-input-area" style="margin-bottom: 0px;">
                                     <div class="toggle-group" id="depTimingToggle" style="margin-bottom:0; width:60%;">
@@ -870,7 +858,7 @@
                             </div>
                         </div>
 
-                        <div id="withdrawalArea" class="smooth-expand" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
+                        <div id="withdrawalArea" style="display:none; padding-top: 10px; margin-top: 15px; border-top: 1px dashed #333;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif; padding-top: 15px;">Withdrawal amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -900,7 +888,7 @@
                                 <button type="button" class="help-btn" id="toggleAdvWithBtn" style="margin-bottom:0;"><i class="fas fa-chevron-right" style="font-size:12px;"></i></button>
                             </div>
 
-                            <div id="advancedWithdrawalOptions" class="smooth-expand" style="display: none; width: 100%; margin-top: 15px;">
+                            <div id="advancedWithdrawalOptions" style="display: none; width: 100%; margin-top: 15px;">
                                 <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Withdrawals made at what point in period?</div>
                                 <div class="form-input-area" style="margin-bottom: 0px;">
                                     <div class="toggle-group" id="withTimingToggle" style="margin-bottom:0; width:60%;">
@@ -921,7 +909,7 @@
                             </div>
                         </div>
                         
-                        <div id="forexContribRow" class="smooth-expand" style="display: none; padding-top: 10px;">
+                        <div id="forexContribRow" style="display: none; padding-top: 10px;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px; font-family: Arial, sans-serif;">Deposit amount: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -936,7 +924,9 @@
                                 </select>
                             </div>
                         </div>
-                    </div> <div id="simpleContribWrapper" class="smooth-expand" style="display: none; width: 100%;">
+                    </div> 
+
+                    <div id="simpleContribWrapper" style="display: none; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                         <div class="toggle-group" id="simpleContribToggle" style="margin-bottom:20px;">
                             <button type="button" class="toggle-btn active" data-val="none">None</button>
@@ -944,7 +934,7 @@
                             <button type="button" class="toggle-btn" data-val="deductions">Deductions</button>
                         </div>
 
-                        <div id="simpleAdditionsArea" class="smooth-expand" style="display:none;">
+                        <div id="simpleAdditionsArea" style="display:none;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Additions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -960,7 +950,7 @@
                             </div>
                         </div>
 
-                        <div id="simpleDeductionsArea" class="smooth-expand" style="display:none;">
+                        <div id="simpleDeductionsArea" style="display:none;">
                             <div style="color: #ccc; font-size: 14px; margin-bottom: 8px;">Deductions: <span style="color:#888; font-size:12px;">(optional)</span></div>
                             <div class="form-input-area" style="margin-bottom: 0px;">
                                 <div class="input-box" style="margin-bottom:0; flex:1.2;">
@@ -975,7 +965,10 @@
                                 </select>
                             </div>
                         </div>
-                    </div> </div> <div class="calc-section action-row-section" id="actionRowSection">
+                    </div> 
+                </div>
+
+                <div class="calc-group group-light action-row-section" id="actionRowSection">
                     <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
@@ -985,7 +978,7 @@
                     </div>
                 </div>
 
-                <div class="results-label" id="resultsLabel">Results will appear here</div>
+                <div class="results-label" id="resultsLabel" style="padding: 15px 20px 0 20px;">Results will appear here</div>
             </form>
 
             <div id="resultsArea">
@@ -1244,13 +1237,64 @@
     </div>
 
     <script>
+        // 🌟 NEW SMOOTH ANIMATION LOGIC (SLIDE DOWN / UP) 🌟
+        const animSpeed = 300; 
+        
+        window.showSmooth = function(id, displayType = 'block') {
+            let el = document.getElementById(id);
+            if(!el || el.style.display === displayType) return;
+            
+            if(el.hideTimeout) clearTimeout(el.hideTimeout);
+            if(el.showTimeout) clearTimeout(el.showTimeout);
+            
+            el.style.display = displayType;
+            el.style.overflow = 'hidden';
+            el.style.maxHeight = '0px';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-10px)';
+            
+            void el.offsetWidth; // Force CSS reflow
+            
+            el.style.transition = `max-height ${animSpeed}ms ease, opacity ${animSpeed}ms ease, transform ${animSpeed}ms ease`;
+            el.style.maxHeight = '800px'; // Bada size expand ke liye
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            
+            el.showTimeout = setTimeout(() => {
+                el.style.maxHeight = 'none';
+                el.style.overflow = 'visible';
+            }, animSpeed);
+        };
+
+        window.hideSmooth = function(id) {
+            let el = document.getElementById(id);
+            if(!el || el.style.display === 'none') return;
+            
+            if(el.hideTimeout) clearTimeout(el.hideTimeout);
+            if(el.showTimeout) clearTimeout(el.showTimeout);
+            
+            el.style.overflow = 'hidden';
+            el.style.maxHeight = el.scrollHeight + 'px'; // Start from current height
+            
+            void el.offsetWidth; // Force CSS reflow
+            
+            el.style.transition = `max-height ${animSpeed}ms ease, opacity ${animSpeed}ms ease, transform ${animSpeed}ms ease`;
+            el.style.maxHeight = '0px';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-10px)';
+            
+            el.hideTimeout = setTimeout(() => {
+                el.style.display = 'none';
+            }, animSpeed);
+        };
+
         // Set today's date
         window.setToday = function() {
             let d = new Date();
             document.getElementById('startDateTop').valueAsDate = d;
             document.getElementById('startDateBottom').valueAsDate = d;
         };
-        setToday(); // Initialize on load
+        setToday(); 
 
         // Sync top and bottom date inputs
         document.getElementById('startDateTop').addEventListener('change', function() {
@@ -1330,24 +1374,24 @@
         // 🌟 CUSTOM COMPOUND FREQUENCY TOGGLE 🌟
         document.getElementById('compInterval').addEventListener('change', function() {
             if (this.value === 'custom') {
-                document.getElementById('customCompRow').style.display = 'flex';
+                showSmooth('customCompRow', 'flex');
             } else {
-                document.getElementById('customCompRow').style.display = 'none';
+                hideSmooth('customCompRow');
             }
         });
         
         // 🔥 TOGGLE ARROW FOR ADVANCED DEPOSIT OPTIONS 🔥
         const toggleAdvDepBtn = document.getElementById('toggleAdvDepBtn');
-        const advDepOpts = document.getElementById('advancedDepositOptions');
-        if(toggleAdvDepBtn && advDepOpts) {
+        if(toggleAdvDepBtn) {
             toggleAdvDepBtn.addEventListener('click', function() {
                 let icon = this.querySelector('i');
+                let advDepOpts = document.getElementById('advancedDepositOptions');
                 if(advDepOpts.style.display === 'none' || advDepOpts.style.display === '') {
-                    advDepOpts.style.display = 'block';
+                    showSmooth('advancedDepositOptions', 'block');
                     icon.classList.remove('fa-chevron-right');
                     icon.classList.add('fa-chevron-down');
                 } else {
-                    advDepOpts.style.display = 'none';
+                    hideSmooth('advancedDepositOptions');
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-right');
                 }
@@ -1356,16 +1400,16 @@
 
         // 🔥 TOGGLE ARROW FOR ADVANCED WITHDRAWAL OPTIONS 🔥
         const toggleAdvWithBtn = document.getElementById('toggleAdvWithBtn');
-        const advWithOpts = document.getElementById('advancedWithdrawalOptions');
-        if(toggleAdvWithBtn && advWithOpts) {
+        if(toggleAdvWithBtn) {
             toggleAdvWithBtn.addEventListener('click', function() {
                 let icon = this.querySelector('i');
+                let advWithOpts = document.getElementById('advancedWithdrawalOptions');
                 if(advWithOpts.style.display === 'none' || advWithOpts.style.display === '') {
-                    advWithOpts.style.display = 'block';
+                    showSmooth('advancedWithdrawalOptions', 'block');
                     icon.classList.remove('fa-chevron-right');
                     icon.classList.add('fa-chevron-down');
                 } else {
-                    advWithOpts.style.display = 'none';
+                    hideSmooth('advancedWithdrawalOptions');
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-right');
                 }
@@ -1418,27 +1462,17 @@
                 this.classList.add('active');
                 
                 if (this.getAttribute('data-val') === 'enddate') {
-                    document.getElementById('colTimeWrap').style.display = 'none';
-                    document.getElementById('endDateRow').style.display = 'flex';
+                    hideSmooth('colTimeWrap');
+                    showSmooth('endDateRow', 'flex');
                 } else {
-                    document.getElementById('colTimeWrap').style.display = 'flex';
-                    document.getElementById('endDateRow').style.display = 'none';
+                    showSmooth('colTimeWrap', 'flex');
+                    hideSmooth('endDateRow');
                 }
             });
         });
 
         // 🌟 TAB SWITCHING LOGIC 🌟
         const calcTabs = document.querySelectorAll('.calc-tab');
-        const dailyOptionsRow = document.getElementById('dailyOptionsRow');
-        const extWeekendOpts = document.getElementById('extendedWeekendOptions');
-        const compIntervalRow = document.getElementById('compIntervalRow');
-        const standardContribWrapper = document.getElementById('standardContribWrapper');
-        const simpleContribWrapper = document.getElementById('simpleContribWrapper');
-        const depositArea = document.getElementById('extendedDepositOptions');
-        const withdrawalArea = document.getElementById('withdrawalArea');
-        const forexCompRow = document.getElementById('forexCompRow');
-        const forexContribRow = document.getElementById('forexContribRow');
-        
         let activeCalcTab = 'compound';
 
         calcTabs.forEach(tab => {
@@ -1454,23 +1488,24 @@
                     document.getElementById('compoundForm').classList.remove('daily-stacked-layout');
                 }
 
-                // Reset Extra Rows Visibility
-                dailyOptionsRow.style.display = 'none';
-                extWeekendOpts.style.display = 'none';
-                compIntervalRow.style.display = 'none';
+                // Reset Extra Rows Visibility (Instantly when switching tabs)
+                document.getElementById('dailyExtraGroup').style.display = 'none';
+                document.getElementById('extendedWeekendOptions').style.display = 'none';
+                document.getElementById('daysToIncludeSection').style.display = 'none';
+                document.getElementById('compIntervalRow').style.display = 'none';
                 document.getElementById('customCompRow').style.display = 'none'; 
-                depositArea.style.display = 'none';
-                withdrawalArea.style.display = 'none';
-                forexCompRow.style.display = 'none';
-                forexContribRow.style.display = 'none';
+                document.getElementById('extendedDepositOptions').style.display = 'none';
+                document.getElementById('withdrawalArea').style.display = 'none';
+                document.getElementById('forexCompRow').style.display = 'none';
+                document.getElementById('forexContribRow').style.display = 'none';
                 
                 document.getElementById('colWeeks').style.display = 'none';
                 document.getElementById('colDays').style.display = 'none';
                 document.getElementById('timePeriodToggleRow').style.display = 'none';
                 document.getElementById('endDateRow').style.display = 'none';
 
-                standardContribWrapper.style.display = 'none'; 
-                simpleContribWrapper.style.display = 'none'; 
+                document.getElementById('standardContribWrapper').style.display = 'none'; 
+                document.getElementById('simpleContribWrapper').style.display = 'none'; 
                 
                 document.getElementById('colTimeWrap').style.display = 'flex';
                 
@@ -1481,55 +1516,59 @@
                 document.getElementById('lblRate').innerHTML = 'Interest <br>rate:';
 
                 if (activeCalcTab === 'compound') {
-                    standardContribWrapper.style.display = 'block';
-                    compIntervalRow.style.display = 'flex';
+                    document.getElementById('standardContribWrapper').style.display = 'block';
+                    document.getElementById('compIntervalRow').style.display = 'flex';
                     
                     if (document.getElementById('compInterval').value === 'custom') {
                         document.getElementById('customCompRow').style.display = 'flex';
                     }
                     
                     document.getElementById('bothToggleBtn').style.display = 'block';
-                    if(contribType === 'deposits' || contribType === 'both') depositArea.style.display = 'block';
-                    if(contribType === 'withdrawals' || contribType === 'both') withdrawalArea.style.display = 'block';
+                    if(contribType === 'deposits' || contribType === 'both') document.getElementById('extendedDepositOptions').style.display = 'block';
+                    if(contribType === 'withdrawals' || contribType === 'both') document.getElementById('withdrawalArea').style.display = 'block';
 
-                    // Bottom start date active
                     document.getElementById('topStartDateRow').style.display = 'none';
                     document.getElementById('bottomStartDateAnchor').style.display = 'block';
                     document.getElementById('actionRowSection').classList.remove('action-row-simple');
                 } 
                 else if(activeCalcTab === 'daily') {
-                    standardContribWrapper.style.display = 'block';
-                    dailyOptionsRow.style.display = 'block';
+                    document.getElementById('standardContribWrapper').style.display = 'block';
+                    document.getElementById('dailyExtraGroup').style.display = 'block'; // Show group 2
                     document.getElementById('colDays').style.display = 'flex';
                     document.getElementById('bothToggleBtn').style.display = 'none'; 
                     
-                    if(contribType === 'deposits') depositArea.style.display = 'block';
-                    if(contribType === 'withdrawals') withdrawalArea.style.display = 'block';
+                    if(contribType === 'deposits') document.getElementById('extendedDepositOptions').style.display = 'block';
+                    if(contribType === 'withdrawals') document.getElementById('withdrawalArea').style.display = 'block';
                     if(contribType === 'both') {
                         document.querySelector('#contribToggle .toggle-btn[data-val="none"]').click();
                     }
                     
-                    document.querySelector('#includeDaysToggle .toggle-btn[data-val="yes"]').click();
+                    // Maintain previously set toggle state visually
+                    if(includeWeekends === 'no') {
+                        document.getElementById('extendedWeekendOptions').style.display = 'block';
+                        let excludeHolidayVal = document.querySelector('#excludeHolidaysToggle .toggle-btn.active').getAttribute('data-val');
+                        if(excludeHolidayVal === 'yes') {
+                             document.getElementById('daysToIncludeSection').style.display = 'flex';
+                        }
+                    }
 
-                    // Bottom start date active
                     document.getElementById('topStartDateRow').style.display = 'none';
                     document.getElementById('bottomStartDateAnchor').style.display = 'block';
                     document.getElementById('actionRowSection').classList.remove('action-row-simple');
                 }
                 else if (activeCalcTab === 'forex') {
-                    standardContribWrapper.style.display = 'block';
+                    document.getElementById('standardContribWrapper').style.display = 'block';
                     document.getElementById('lblPrincipal').innerHTML = 'Start <br>balance:';
                     document.getElementById('lblRate').innerHTML = 'Percentage:';
-                    forexCompRow.style.display = 'flex';
-                    forexContribRow.style.display = 'block';
+                    document.getElementById('forexCompRow').style.display = 'flex';
+                    document.getElementById('forexContribRow').style.display = 'block';
 
-                    // Bottom start date active
                     document.getElementById('topStartDateRow').style.display = 'none';
                     document.getElementById('bottomStartDateAnchor').style.display = 'block';
                     document.getElementById('actionRowSection').classList.remove('action-row-simple');
                 }
                 else if (activeCalcTab === 'simple') {
-                     simpleContribWrapper.style.display = 'block';
+                     document.getElementById('simpleContribWrapper').style.display = 'block';
                      document.getElementById('colWeeks').style.display = 'flex';
                      document.getElementById('colDays').style.display = 'flex';
                      document.getElementById('timePeriodToggleRow').style.display = 'flex';
@@ -1537,7 +1576,6 @@
                      document.querySelector('#timeModeToggle .toggle-btn[data-val="duration"]').click();
                      document.querySelector('#simpleContribToggle .toggle-btn[data-val="none"]').click();
 
-                     // Top start date active, bottom hides
                      document.getElementById('topStartDateRow').style.display = 'flex';
                      document.getElementById('bottomStartDateAnchor').style.display = 'none';
                      document.getElementById('actionRowSection').classList.add('action-row-simple');
@@ -1545,23 +1583,22 @@
             });
         });
 
-        // 🌟 EXCLUDE HOLIDAYS YES/NO TOGGLE (FIXED FOR VIDEO) 🌟
+        // 🌟 EXCLUDE HOLIDAYS YES/NO TOGGLE (SMOOTH ANIMATION) 🌟
         const excludeHolidaysBtns = document.querySelectorAll('#excludeHolidaysToggle .toggle-btn');
         excludeHolidaysBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 excludeHolidaysBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active'); 
                 
-                const daysToIncludeSection = document.getElementById('daysToIncludeSection');
                 if (this.getAttribute('data-val') === 'yes') {
-                    daysToIncludeSection.style.display = 'flex';
+                    showSmooth('daysToIncludeSection', 'flex');
                 } else {
-                    daysToIncludeSection.style.display = 'none';
+                    hideSmooth('daysToIncludeSection');
                 }
             });
         });
 
-        // 🌟 WEEKEND YES/NO TOGGLE 🌟
+        // 🌟 WEEKEND YES/NO TOGGLE (SMOOTH ANIMATION) 🌟
         const includeDaysBtns = document.querySelectorAll('#includeDaysToggle .toggle-btn');
         let includeWeekends = 'yes';
         
@@ -1572,10 +1609,10 @@
                 includeWeekends = this.getAttribute('data-val');
                 
                 if(includeWeekends === 'no') {
-                    extWeekendOpts.style.display = 'block';
+                    showSmooth('extendedWeekendOptions', 'block');
                     document.querySelector('#excludeHolidaysToggle .toggle-btn[data-val="no"]').click();
                 } else {
-                    extWeekendOpts.style.display = 'none';
+                    hideSmooth('extendedWeekendOptions');
                 }
             });
         });
@@ -1588,7 +1625,7 @@
             });
         });
 
-        // 🌟 STANDARD CONTRIBUTIONS TOGGLE 🌟
+        // 🌟 STANDARD CONTRIBUTIONS TOGGLE (SMOOTH ANIMATION) 🌟
         const contribBtns = document.querySelectorAll('#contribToggle .toggle-btn');
         let contribType = 'none';
 
@@ -1598,24 +1635,25 @@
                 this.classList.add('active');
                 contribType = this.getAttribute('data-val');
                 
-                depositArea.style.display = 'none';
-                withdrawalArea.style.display = 'none';
-                
                 if(contribType === 'deposits') {
-                    depositArea.style.display = 'block';
+                    showSmooth('extendedDepositOptions', 'block');
+                    hideSmooth('withdrawalArea');
                 } else if(contribType === 'withdrawals') {
-                    withdrawalArea.style.display = 'block';
+                    showSmooth('withdrawalArea', 'block');
+                    hideSmooth('extendedDepositOptions');
                 } else if (contribType === 'both') {
-                    depositArea.style.display = 'block';
-                    withdrawalArea.style.display = 'block';
+                    showSmooth('extendedDepositOptions', 'block');
+                    showSmooth('withdrawalArea', 'block');
                 } else {
+                    hideSmooth('extendedDepositOptions');
+                    hideSmooth('withdrawalArea');
                     document.getElementById('depositAmt').value = '';
                     document.getElementById('withdrawalAmt').value = '';
                 }
             });
         });
 
-        // 🌟 SIMPLE CONTRIBUTIONS TOGGLE 🌟
+        // 🌟 SIMPLE CONTRIBUTIONS TOGGLE (SMOOTH ANIMATION) 🌟
         const simpleContribBtns = document.querySelectorAll('#simpleContribToggle .toggle-btn');
         let simpleContribType = 'none';
 
@@ -1625,13 +1663,15 @@
                 this.classList.add('active');
                 simpleContribType = this.getAttribute('data-val');
                 
-                document.getElementById('simpleAdditionsArea').style.display = 'none';
-                document.getElementById('simpleDeductionsArea').style.display = 'none';
-                
                 if(simpleContribType === 'additions') {
-                    document.getElementById('simpleAdditionsArea').style.display = 'block';
+                    showSmooth('simpleAdditionsArea', 'block');
+                    hideSmooth('simpleDeductionsArea');
                 } else if(simpleContribType === 'deductions') {
-                    document.getElementById('simpleDeductionsArea').style.display = 'block';
+                    showSmooth('simpleDeductionsArea', 'block');
+                    hideSmooth('simpleAdditionsArea');
+                } else {
+                    hideSmooth('simpleAdditionsArea');
+                    hideSmooth('simpleDeductionsArea');
                 }
             });
         });
@@ -1655,11 +1695,11 @@
         });
 
         window.toggleHelp = function(id) {
-            const el = document.getElementById(id);
+            let el = document.getElementById(id);
             if(el.style.display === 'none' || el.style.display === '') {
-                el.style.display = 'block';
+                showSmooth(id, 'block');
             } else {
-                el.style.display = 'none';
+                hideSmooth(id);
             }
         };
 
@@ -1971,7 +2011,7 @@
                         if(i % 30 === 0 || i === totalDays) tableData.push({ day: `Month ${Math.ceil(i/30)}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
                     }
                 }
-            } // End of Math Logic
+            } 
 
             // 🌟 RENDER FINAL RESULTS 🌟
             let finalBal = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
@@ -2003,8 +2043,8 @@
                 tbody.appendChild(tr);
             });
 
-            document.getElementById('resultsArea').style.display = 'block';
-            setTimeout(() => { document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+            showSmooth('resultsArea');
+            setTimeout(() => { document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
         });
 
         // ------------------ UNIVERSAL SCRIPT BLOCK ------------------
@@ -2165,9 +2205,9 @@
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
             if (list.style.display === "none" || list.style.display === "") {
-                list.style.display = "block"; arrow.style.transform = "rotate(180deg)"; 
+                showSmooth("upcomingProjectsList", "block"); arrow.style.transform = "rotate(180deg)"; 
             } else {
-                list.style.display = "none"; arrow.style.transform = "rotate(0deg)"; 
+                hideSmooth("upcomingProjectsList"); arrow.style.transform = "rotate(0deg)"; 
             }
         };
 
@@ -2320,7 +2360,7 @@
                         <a href="javascript:void(0)" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-calculator"></i> DK Calculator</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         
                         <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
-                        <div id="upcomingProjectsList" class="upcoming-list">
+                        <div id="upcomingProjectsList" class="upcoming-list" style="display: none;">
                             <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                             <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
