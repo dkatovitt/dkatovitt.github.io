@@ -74,6 +74,12 @@
             .profile-name-btn { padding: 6px 12px; font-size: 11px; }
         }
 
+        /* 🔥 SMOOTH EXPAND ANIMATION FOR ALL TOGGLES 🔥 */
+        @keyframes slideDownFade {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
         /* 🔥 VIP SIDE MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
@@ -125,26 +131,31 @@
         .calc-tab:hover { background: #1a1a1a; color: #e6c875; }
         .calc-tab.active { background: #e6c875; color: #000; }
         
-        /* 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 */
-        #compoundForm {
-            background: #111;
-            overflow: hidden;
+        /* 🌟 MAIN FORM BODY 🌟 */
+        .calc-body { padding: 25px 20px; background: #111; }
+
+        /* 🔥 GROUPED BACKGROUND SECTIONS 🔥 */
+        .calc-section {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .group-main {
+            background: #131313;
+            border: 1px solid #2a2a2a;
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
-
-        /* 🔥 NEW GROUPED BACKGROUND SYSTEM TO MATCH REFERENCE VIDEO 🔥 */
-        .calc-group {
-            padding: 25px 20px;
-            border-bottom: 1px solid #2a2a2a;
-            transition: background-color 0.3s ease;
+        .group-daily {
+            background: #1a1a1a; /* Lighter background for Daily Extra options */
+            border: 1px solid #333;
         }
-        .calc-group:last-child {
-            border-bottom: none;
+        .group-contrib {
+            background: #131313;
+            border: 1px solid #2a2a2a;
         }
-        .group-dark { background: #0f0f0f; }
-        .group-light { background: #181818; }
-
-        .calc-group > .form-row-side:last-child {
+        
+        .calc-section > .form-row-side:last-child {
             margin-bottom: 0 !important;
         }
 
@@ -155,6 +166,17 @@
             gap: 15px; 
             align-items: flex-end; 
             width: 100%;
+            padding: 0;
+            background: transparent;
+            border: none;
+            margin-bottom: 0;
+        }
+        .action-row-simple {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin-bottom: 0 !important;
         }
 
         /* 🔥 SIDE BY SIDE LAYOUT CSS 🔥 */
@@ -265,6 +287,9 @@
         .help-btn { background: #1a1a1a; color: #888; border: 1px solid #333; border-radius: 6px; padding: 0; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.3s; font-size: 16px; flex-shrink: 0; height: 46px; box-sizing: border-box;}
         .help-btn:hover { background: #e6c875; color: #000; border-color: #e6c875;}
         
+        /* 🔥 INLINE HELP TEXT BOX (Fixed visibility bug) 🔥 */
+        .inline-help-text { background: #1a1a1a; color: #ccc; padding: 15px; border-radius: 6px; font-size: 13px; line-height: 1.5; margin-bottom: 20px; border-left: 3px solid #e6c875; font-family: Arial, sans-serif;}
+
         /* 🔥 M T W T F S S ROW 🔥 */
         .days-toggle-group { display: flex; gap: 4px; width: 100%;}
         .day-btn { flex: 1; background: #0a0a0a; color: #888; border: 1px solid #333; padding: 10px 0; border-radius: 6px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: center; font-family: Arial, sans-serif; font-size: 12px;}
@@ -279,8 +304,7 @@
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
         /* 🌟 RESULTS AREA 🌟 */
-        #resultsArea { display: none; padding: 25px 20px; background: #0a0a0a; animation: fadeIn 0.5s ease;}
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        #resultsArea { display: none; padding: 25px 20px; background: #0a0a0a; animation: slideDownFade 0.5s ease;}
         
         .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
         .result-card { background: #111; border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
@@ -304,8 +328,9 @@
             .calc-wrapper { max-width: 100%; border-radius: 0; border: none; border-top: 1px solid #2a3341;}
             .calc-tabs { flex-wrap: nowrap; overflow-x: auto; }
             .calc-tab { font-size: 11px; padding: 12px 2px; white-space: nowrap; flex: 1 0 auto; min-width: 80px;}
+            .calc-body { padding: 15px 10px; }
             
-            .calc-group { padding: 15px 12px; }
+            .calc-section { padding: 15px 12px; margin-bottom: 15px; }
             
             .form-row-side { margin-bottom: 15px; align-items: center;}
             
@@ -332,6 +357,7 @@
             /* 🔥 FORCE SIDE-BY-SIDE START DATE AND CALCULATE BUTTON ON MOBILE 🔥 */
             .action-row-section { gap: 10px !important;}
             .action-row-section .form-label { margin-bottom: 0 !important; }
+            .action-row-simple { padding: 0 !important; }
             #bottomStartDateAnchor, #calcBtnWrap { flex: 1; min-width: 0; }
             #bottomStartDateAnchor input, #calcBtnWrap button { height: 42px !important; font-size: 14px !important; }
 
@@ -339,7 +365,7 @@
             .seo-article h2 { font-size: 22px; }
         }
         
-        /* 🔥 DAILY COMPOUND ONLY - STACKED LAYOUT TO MATCH REFERENCE 1ST PHOTO 🔥 */
+        /* 🔥 DAILY COMPOUND ONLY - STACKED LAYOUT 🔥 */
         .daily-stacked-layout .form-row-side {
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -525,6 +551,7 @@
     <div id="google_translate_element" style="display:none;"></div>
 
     <div class="side-menu" id="sideMenu">
+        
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
 
         <div class="custom-translate">
@@ -593,6 +620,7 @@
     </div>
     <div id="overlay"></div>
 
+    <!-- 🔥 EXACT MATCH ADVANCED CALCULATOR CSS (DK Black & Gold Theme) 🔥 -->
     <section class="calc-container">
         <div id="particles-js"></div>
         
@@ -602,6 +630,7 @@
         </div>
 
         <div class="calc-wrapper">
+            <!-- 🌟 4 TABS 🌟 -->
             <div class="calc-tabs">
                 <div class="calc-tab active" data-tab="compound">Compound<br>Interest</div>
                 <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
@@ -609,9 +638,11 @@
                 <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
+            <!-- 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 -->
             <form id="compoundForm" class="calc-body">
                 
-                <div class="calc-group group-dark" id="baseInputGroup">
+                <!-- 🔥 GROUP 1: BASE INPUTS (DARK BACKGROUND) 🔥 -->
+                <div class="calc-section group-main" id="baseInputGroup">
                     
                     <div class="form-row-side">
                         <div class="form-label">Currency:</div>
@@ -690,7 +721,9 @@
                             <button type="button" class="help-btn" onclick="toggleHelp('helpCompFreq')">?</button>
                         </div>
                     </div>
-                    <div id="helpCompFreq" class="inline-help-text">Compound frequency is the number of times interest is compounded per year.</div>
+                    
+                    <!-- 🔥 FIX: GUARANTEED HIDDEN ON PAGE LOAD 🔥 -->
+                    <div id="helpCompFreq" class="inline-help-text" style="display: none;">Compound frequency is the number of times interest is compounded per year.</div>
 
                     <div class="form-row-side" id="customCompRow" style="display: none;">
                         <div class="form-label">Compounds <br>per year:</div>
@@ -748,7 +781,8 @@
                     </div>
                 </div>
 
-                <div class="calc-group group-light" id="dailyExtraGroup" style="display: none;">
+                <!-- 🔥 GROUP 2: DAILY EXTRA (LIGHT BACKGROUND) 🔥 -->
+                <div class="calc-section group-daily" id="dailyExtraGroup" style="display: none;">
                     
                     <div id="dailyOptionsRow" style="display: flex; flex-direction: column; width: 100%;">
                         <div class="form-row-side">
@@ -764,12 +798,15 @@
                             <div class="form-label">Daily reinvest <br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
-                                    </select>
+                                    <!-- JS will populate -->
+                                </select>
                                 <button type="button" class="help-btn" onclick="toggleHelp('helpReinvest')">?</button>
                             </div>
                         </div>
                     </div>
-                    <div id="helpReinvest" class="inline-help-text">
+                    
+                    <!-- 🔥 FIX: GUARANTEED HIDDEN ON PAGE LOAD 🔥 -->
+                    <div id="helpReinvest" class="inline-help-text" style="display: none;">
                         The daily reinvest rate is the % figure that you wish to keep in the investment for future compounding. As an example, you may wish to reinvest 80% of the daily earnings you receive and withdraw the other 20% in cash.
                     </div>
 
@@ -801,7 +838,8 @@
                     </div>
                 </div>
 
-                <div class="calc-group group-dark" id="contributionsGroup">
+                <!-- 🔥 GROUP 3: CONTRIBUTIONS (DARK BACKGROUND) 🔥 -->
+                <div class="calc-section group-contrib" id="contributionsGroup">
                     
                     <div id="standardContribWrapper" style="display: block; width: 100%;">
                         <div style="color: #ccc; font-size: 14px; margin-bottom: 10px; font-family: Arial, sans-serif;">Regular contributions: <span style="color:#888; font-size:12px;">(optional)</span></div>
@@ -968,7 +1006,8 @@
                     </div> 
                 </div>
 
-                <div class="calc-group group-light action-row-section" id="actionRowSection">
+                <!-- 🔥 GROUP 4: ACTION ROW (LIGHT BACKGROUND) 🔥 -->
+                <div class="calc-section action-row-section" id="actionRowSection">
                     <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
@@ -981,6 +1020,7 @@
                 <div class="results-label" id="resultsLabel" style="padding: 15px 20px 0 20px;">Results will appear here</div>
             </form>
 
+            <!-- 🌟 RESULTS SECTION 🌟 -->
             <div id="resultsArea">
                 <div class="results-grid">
                     <div class="result-card">
@@ -1009,12 +1049,14 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            </tbody>
+                            <!-- JS will inject rows here -->
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
+        <!-- 🔥 NEW SHARE, DISCLAIMER & TABLE OF CONTENTS SECTION 🔥 -->
         <div class="share-section">
             <h4>Like this? Please share</h4>
             <div class="share-buttons">
@@ -1038,6 +1080,7 @@
             </div>
         </div>
         
+        <!-- 🔥 VIP SEO ARTICLE & FAQ SECTION 🔥 -->
         <div class="seo-article">
             <h2>Questions about our calculator</h2>
             <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
@@ -1076,6 +1119,7 @@
         
     </section>
 
+    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -1177,6 +1221,7 @@
         </div>
     </footer>
 
+    <!-- APP DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -1188,6 +1233,7 @@
         </div>
     </div>
 
+    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -1199,6 +1245,7 @@
         </div>
     </div>
 
+    <!-- UPCOMING MODAL CSS -->
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
@@ -1215,6 +1262,7 @@
         </div>
     </div>
     
+    <!-- CHATBOT OVERLAY -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -1236,56 +1284,33 @@
         </div>
     </div>
 
+    <!-- 🔥 DYNAMIC TAB, ANIMATION & CALCULATOR LOGIC 🔥 -->
     <script>
-        // 🌟 NEW SMOOTH ANIMATION LOGIC (SLIDE DOWN / UP) 🌟
-        const animSpeed = 300; 
-        
-        window.showSmooth = function(id, displayType = 'block') {
+        // 🌟 NEW BULLETPROOF ANIMATION LOGIC 🌟
+        function setDisplay(id, show, displayType = 'block') {
             let el = document.getElementById(id);
-            if(!el || el.style.display === displayType) return;
-            
-            if(el.hideTimeout) clearTimeout(el.hideTimeout);
-            if(el.showTimeout) clearTimeout(el.showTimeout);
-            
-            el.style.display = displayType;
-            el.style.overflow = 'hidden';
-            el.style.maxHeight = '0px';
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(-10px)';
-            
-            void el.offsetWidth; // Force CSS reflow
-            
-            el.style.transition = `max-height ${animSpeed}ms ease, opacity ${animSpeed}ms ease, transform ${animSpeed}ms ease`;
-            el.style.maxHeight = '800px'; // Bada size expand ke liye
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-            
-            el.showTimeout = setTimeout(() => {
-                el.style.maxHeight = 'none';
-                el.style.overflow = 'visible';
-            }, animSpeed);
-        };
-
-        window.hideSmooth = function(id) {
-            let el = document.getElementById(id);
-            if(!el || el.style.display === 'none') return;
-            
-            if(el.hideTimeout) clearTimeout(el.hideTimeout);
-            if(el.showTimeout) clearTimeout(el.showTimeout);
-            
-            el.style.overflow = 'hidden';
-            el.style.maxHeight = el.scrollHeight + 'px'; // Start from current height
-            
-            void el.offsetWidth; // Force CSS reflow
-            
-            el.style.transition = `max-height ${animSpeed}ms ease, opacity ${animSpeed}ms ease, transform ${animSpeed}ms ease`;
-            el.style.maxHeight = '0px';
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(-10px)';
-            
-            el.hideTimeout = setTimeout(() => {
+            if(!el) return;
+            if(show) {
+                if(el.style.display === 'none' || el.style.display === '') {
+                    el.style.display = displayType;
+                    el.style.animation = 'slideDownFade 0.3s ease forwards';
+                }
+            } else {
                 el.style.display = 'none';
-            }, animSpeed);
+                el.style.animation = '';
+            }
+        }
+
+        window.toggleHelp = function(id) {
+            let el = document.getElementById(id);
+            if(!el) return;
+            if(el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+                el.style.animation = 'slideDownFade 0.3s ease forwards';
+            } else {
+                el.style.display = 'none';
+                el.style.animation = '';
+            }
         };
 
         // Set today's date
@@ -1374,9 +1399,9 @@
         // 🌟 CUSTOM COMPOUND FREQUENCY TOGGLE 🌟
         document.getElementById('compInterval').addEventListener('change', function() {
             if (this.value === 'custom') {
-                showSmooth('customCompRow', 'flex');
+                setDisplay('customCompRow', true, 'flex');
             } else {
-                hideSmooth('customCompRow');
+                setDisplay('customCompRow', false);
             }
         });
         
@@ -1387,11 +1412,11 @@
                 let icon = this.querySelector('i');
                 let advDepOpts = document.getElementById('advancedDepositOptions');
                 if(advDepOpts.style.display === 'none' || advDepOpts.style.display === '') {
-                    showSmooth('advancedDepositOptions', 'block');
+                    setDisplay('advancedDepositOptions', true, 'block');
                     icon.classList.remove('fa-chevron-right');
                     icon.classList.add('fa-chevron-down');
                 } else {
-                    hideSmooth('advancedDepositOptions');
+                    setDisplay('advancedDepositOptions', false);
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-right');
                 }
@@ -1405,11 +1430,11 @@
                 let icon = this.querySelector('i');
                 let advWithOpts = document.getElementById('advancedWithdrawalOptions');
                 if(advWithOpts.style.display === 'none' || advWithOpts.style.display === '') {
-                    showSmooth('advancedWithdrawalOptions', 'block');
+                    setDisplay('advancedWithdrawalOptions', true, 'block');
                     icon.classList.remove('fa-chevron-right');
                     icon.classList.add('fa-chevron-down');
                 } else {
-                    hideSmooth('advancedWithdrawalOptions');
+                    setDisplay('advancedWithdrawalOptions', false);
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-right');
                 }
@@ -1462,11 +1487,11 @@
                 this.classList.add('active');
                 
                 if (this.getAttribute('data-val') === 'enddate') {
-                    hideSmooth('colTimeWrap');
-                    showSmooth('endDateRow', 'flex');
+                    setDisplay('colTimeWrap', false);
+                    setDisplay('endDateRow', true, 'flex');
                 } else {
-                    showSmooth('colTimeWrap', 'flex');
-                    hideSmooth('endDateRow');
+                    setDisplay('colTimeWrap', true, 'flex');
+                    setDisplay('endDateRow', false);
                 }
             });
         });
@@ -1533,7 +1558,7 @@
                 } 
                 else if(activeCalcTab === 'daily') {
                     document.getElementById('standardContribWrapper').style.display = 'block';
-                    document.getElementById('dailyExtraGroup').style.display = 'block'; // Show group 2
+                    document.getElementById('dailyExtraGroup').style.display = 'block'; 
                     document.getElementById('colDays').style.display = 'flex';
                     document.getElementById('bothToggleBtn').style.display = 'none'; 
                     
@@ -1591,9 +1616,9 @@
                 this.classList.add('active'); 
                 
                 if (this.getAttribute('data-val') === 'yes') {
-                    showSmooth('daysToIncludeSection', 'flex');
+                    setDisplay('daysToIncludeSection', true, 'flex');
                 } else {
-                    hideSmooth('daysToIncludeSection');
+                    setDisplay('daysToIncludeSection', false);
                 }
             });
         });
@@ -1609,10 +1634,10 @@
                 includeWeekends = this.getAttribute('data-val');
                 
                 if(includeWeekends === 'no') {
-                    showSmooth('extendedWeekendOptions', 'block');
+                    setDisplay('extendedWeekendOptions', true, 'block');
                     document.querySelector('#excludeHolidaysToggle .toggle-btn[data-val="no"]').click();
                 } else {
-                    hideSmooth('extendedWeekendOptions');
+                    setDisplay('extendedWeekendOptions', false);
                 }
             });
         });
@@ -1636,17 +1661,17 @@
                 contribType = this.getAttribute('data-val');
                 
                 if(contribType === 'deposits') {
-                    showSmooth('extendedDepositOptions', 'block');
-                    hideSmooth('withdrawalArea');
+                    setDisplay('extendedDepositOptions', true, 'block');
+                    setDisplay('withdrawalArea', false);
                 } else if(contribType === 'withdrawals') {
-                    showSmooth('withdrawalArea', 'block');
-                    hideSmooth('extendedDepositOptions');
+                    setDisplay('withdrawalArea', true, 'block');
+                    setDisplay('extendedDepositOptions', false);
                 } else if (contribType === 'both') {
-                    showSmooth('extendedDepositOptions', 'block');
-                    showSmooth('withdrawalArea', 'block');
+                    setDisplay('extendedDepositOptions', true, 'block');
+                    setDisplay('withdrawalArea', true, 'block');
                 } else {
-                    hideSmooth('extendedDepositOptions');
-                    hideSmooth('withdrawalArea');
+                    setDisplay('extendedDepositOptions', false);
+                    setDisplay('withdrawalArea', false);
                     document.getElementById('depositAmt').value = '';
                     document.getElementById('withdrawalAmt').value = '';
                 }
@@ -1664,14 +1689,14 @@
                 simpleContribType = this.getAttribute('data-val');
                 
                 if(simpleContribType === 'additions') {
-                    showSmooth('simpleAdditionsArea', 'block');
-                    hideSmooth('simpleDeductionsArea');
+                    setDisplay('simpleAdditionsArea', true, 'block');
+                    setDisplay('simpleDeductionsArea', false);
                 } else if(simpleContribType === 'deductions') {
-                    showSmooth('simpleDeductionsArea', 'block');
-                    hideSmooth('simpleAdditionsArea');
+                    setDisplay('simpleDeductionsArea', true, 'block');
+                    setDisplay('simpleAdditionsArea', false);
                 } else {
-                    hideSmooth('simpleAdditionsArea');
-                    hideSmooth('simpleDeductionsArea');
+                    setDisplay('simpleAdditionsArea', false);
+                    setDisplay('simpleDeductionsArea', false);
                 }
             });
         });
@@ -1693,15 +1718,6 @@
                 this.classList.add('active');
             });
         });
-
-        window.toggleHelp = function(id) {
-            let el = document.getElementById(id);
-            if(el.style.display === 'none' || el.style.display === '') {
-                showSmooth(id, 'block');
-            } else {
-                hideSmooth(id);
-            }
-        };
 
         window.copyPageLink = function() {
             navigator.clipboard.writeText(window.location.href);
@@ -2043,7 +2059,7 @@
                 tbody.appendChild(tr);
             });
 
-            showSmooth('resultsArea');
+            setDisplay('resultsArea', true, 'block');
             setTimeout(() => { document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
         });
 
@@ -2205,9 +2221,9 @@
             var list = document.getElementById("upcomingProjectsList");
             var arrow = document.getElementById("upcomingArrow");
             if (list.style.display === "none" || list.style.display === "") {
-                showSmooth("upcomingProjectsList", "block"); arrow.style.transform = "rotate(180deg)"; 
+                setDisplay("upcomingProjectsList", true, "block"); arrow.style.transform = "rotate(180deg)"; 
             } else {
-                hideSmooth("upcomingProjectsList"); arrow.style.transform = "rotate(0deg)"; 
+                setDisplay("upcomingProjectsList", false); arrow.style.transform = "rotate(0deg)"; 
             }
         };
 
