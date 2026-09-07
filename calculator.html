@@ -760,7 +760,10 @@
                     </div>
 
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
-                        <div class="form-label" style="padding-bottom: 10px;">Time <br>period:</div>
+                        <div class="form-label" style="padding-bottom: 10px; display: flex; align-items: center;">
+                            <!-- DK Atovitt Logo -->
+                            <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 55px; height: 55px; border-radius: 50%; mix-blend-mode: screen; object-fit: cover; border: 1px solid #333; padding: 2px;"></video>
+                        </div>
                         <div class="form-input-area">
                             <div class="flex-col">
                                 <span class="tiny-label">Years:</span>
@@ -1019,8 +1022,8 @@
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
                     </div>
-                    <div id="calcBtnWrap" style="flex: 1; min-width: 0;">
-                        <button type="submit" class="btn-calc" style="margin-top: 0; width: 100%; height: 50px; font-size: 16px; box-sizing: border-box;"><i class="fas fa-calculator"></i> Calculate</button>
+                    <div id="calcBtnWrap" style="flex: 1; min-width: 0; display: flex; justify-content: flex-end;">
+                        <button type="submit" class="btn-calc" style="margin-top: 0; width: 100%; max-width: 180px; height: 50px; font-size: 16px; box-sizing: border-box;"><i class="fas fa-calculator"></i> Calculate</button>
                     </div>
                 </div>
 
@@ -1569,7 +1572,7 @@
                     if(contribType === 'withdrawals' || contribType === 'both') document.getElementById('withdrawalArea').style.display = 'block';
 
                     document.getElementById('topStartDateRow').style.display = 'none';
-                    document.getElementById('bottomStartDateAnchor').style.display = 'block';
+                    document.getElementById('bottomStartDateAnchor').style.display = 'none';
                     document.getElementById('actionRowSection').classList.remove('action-row-simple');
                 } 
                 else if(activeCalcTab === 'daily') {
