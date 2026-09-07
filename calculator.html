@@ -313,32 +313,33 @@
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
         /* 🌟 NEW EXACT MATCH RESULTS CSS 🌟 */
-        #resultsArea { display: none; padding: 25px 20px; background: #131313; border: 1px solid #2a2a2a; border-radius: 10px; margin-top: 20px; animation: slideDownFade 0.5s ease; text-align: left; }
+        #resultsArea { display: none; padding: 25px 20px; background: #1a1a1a; border: 1px solid #333; border-radius: 10px; margin-top: 20px; animation: slideDownFade 0.5s ease; text-align: left; }
         
-        .res-summary-box { display: flex; flex-direction: column; margin-bottom: 25px; }
-        .res-summary-item { margin-bottom: 15px; }
-        @media(min-width:768px) { 
-            .res-summary-box { flex-direction: row; justify-content: space-between; flex-wrap: wrap; } 
-            .res-summary-item { margin-bottom: 0; }
-        }
+        .res-summary-box { display: flex; flex-direction: column; margin-bottom: 25px; gap: 20px;}
+        @media(min-width:768px) { .res-summary-box { flex-direction: row; justify-content: space-between; gap: 0;} }
         
-        .res-extra-stats { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; border-top: 1px solid #333; padding-top: 15px; }
-        @media(min-width:768px) { 
-            .res-extra-stats { flex-direction: row; justify-content: space-between; } 
-        }
+        .res-extra-stats { display: flex; flex-direction: column; gap: 20px; margin-bottom: 25px; border-top: 1px solid #333; padding-top: 25px; }
+        @media(min-width:768px) { .res-extra-stats { flex-direction: row; justify-content: space-between; } }
 
-        .table-responsive { width: 100%; overflow-x: auto; background: #111; border-radius: 8px; border: 1px solid #333; }
-        .calc-table { width: 100%; border-collapse: collapse; text-align: right; font-size: 13px; min-width: 600px; font-family: Arial, sans-serif;}
+        .breakdown-toggle { display: inline-flex; background: #111; border-radius: 20px; border: 1px solid #333; overflow: hidden; }
+        .brk-btn { background: transparent; color: #aaa; border: none; padding: 8px 20px; font-size: 13px; cursor: pointer; transition: 0.3s; font-family: Arial, sans-serif; }
+        .brk-btn.active { background: #f39c12; color: #fff; font-weight: bold; }
+
+        .table-responsive { width: 100%; overflow-x: auto; background: #111; border-radius: 0; border: 1px solid #444; -webkit-overflow-scrolling: touch; }
+        .calc-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 550px; font-family: Arial, sans-serif; margin: 0; }
         
-        .calc-table th { padding: 12px 15px; font-weight: bold; border-bottom: 1px solid #333; }
-        .calc-table th.th-dark { background-color: #222 !important; color: #ccc !important; text-align: center; }
-        .calc-table th.th-orange { background-color: #ff9800 !important; color: #000 !important; }
-        .calc-table th.th-green { background-color: #25d366 !important; color: #000 !important; }
+        .calc-table th { padding: 12px 15px; font-weight: bold; border: 1px solid #444; }
+        .calc-table th.th-dark { background-color: #555 !important; color: #fff !important; border-color: #666 !important; }
+        .calc-table th.th-orange { background-color: #e67e22 !important; color: #fff !important; border-color: #d35400 !important; }
+        .calc-table th.th-green { background-color: #689f38 !important; color: #fff !important; border-color: #558b2f !important; }
         
-        .calc-table td { padding: 12px 15px; border-bottom: 1px solid #222; color: #ccc; }
-        .calc-table td.td-center { text-align: center; }
-        .row-highlight { background-color: rgba(230, 200, 117, 0.15) !important; }
-        .text-green { color: #25d366 !important; font-weight: bold;}
+        .calc-table td { padding: 12px 15px; border: 1px solid #444; color: #ddd; }
+        .calc-table td.td-center, .calc-table th.td-center { text-align: center; }
+        
+        .calc-table tr:nth-child(even) { background-color: #222; }
+        .calc-table tr:nth-child(odd) { background-color: #2a2a2a; }
+        
+        .row-highlight, .row-highlight td { background-color: #fdfad9 !important; color: #000 !important; font-weight: bold; border-color: #ddd !important; }
 
         /* 🔥 MOBILE RESPONSIVE FIX 🔥 */
         @media (max-width: 768px) {
@@ -766,9 +767,7 @@
                     </div>
 
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
-                        <div class="form-label" style="padding-bottom: 10px; display: flex; align-items: center;">
-                            <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 55px; height: 55px; border-radius: 50%; mix-blend-mode: screen; object-fit: cover; border: 1px solid #333; padding: 2px;"></video>
-                        </div>
+                        <div class="form-label" style="padding-bottom: 10px;">Time <br>period:</div>
                         <div class="form-input-area">
                             <div class="flex-col">
                                 <span class="tiny-label">Years:</span>
@@ -1033,49 +1032,49 @@
             </form>
 
             <div id="resultsArea">
-                <h2 id="resMainTitle" style="color: #e6c875; font-size: 20px; margin: 0 0 20px 0; border-bottom: 1px solid #333; padding-bottom: 12px; font-family: Arial, sans-serif;">Interest calculation</h2>
+                <h2 id="resMainTitle" style="color: #f39c12; font-size: 22px; font-weight: bold; margin: 0 0 25px 0; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: Arial, sans-serif;">Interest calculation</h2>
                 
                 <div class="res-summary-box">
                     <div class="res-summary-item">
-                        <span style="color:#888; font-size:13px;">Future investment value</span><br>
-                        <span id="resTotal" style="color:#25d366; font-size:28px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
+                        <span style="color:#aaa; font-size:13px;">Future investment value</span><br>
+                        <span id="resTotal" style="color:#689f38; font-size:28px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
                     <div class="res-summary-item">
-                        <span style="color:#888; font-size:13px;">Total interest earned</span><br>
-                        <span id="resInterest" style="color:#ff9800; font-size:24px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
+                        <span style="color:#aaa; font-size:13px;">Total interest earned</span><br>
+                        <span id="resInterest" style="color:#f39c12; font-size:28px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
                     <div class="res-summary-item">
-                        <span style="color:#888; font-size:13px;">Initial balance</span><br>
-                        <span id="resPrincipal" style="color:#00a8ff; font-size:24px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
+                        <span style="color:#aaa; font-size:13px;">Initial balance</span><br>
+                        <span id="resPrincipal" style="color:#00a8ff; font-size:28px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
                 </div>
 
                 <div class="res-extra-stats">
                     <div class="res-summary-item">
-                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">Yearly rate &rarr; Compounded rate</span><br>
-                        <span style="font-size: 22px; color: #ccc; font-family: Arial, sans-serif; font-weight: bold;"><span id="resYearlyRate">0%</span> <span style="font-size: 16px; color:#666;">&rarr;</span> <span id="resCompRate" style="color:#ff9800;">0%</span></span>
+                        <span style="color:#aaa; font-size:13px; font-family: Arial, sans-serif;">Yearly rate &rarr; Compounded rate</span><br>
+                        <span style="font-size: 24px; color: #fff; font-family: Arial, sans-serif; font-weight: bold;"><span id="resYearlyRate">0%</span> <span style="font-size: 18px; color:#666;">&rarr;</span> <span id="resCompRate" style="color:#f39c12;">0%</span></span>
                     </div>
                     <div class="res-summary-item">
-                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">All-time rate of return (RoR)</span><br>
-                        <span style="font-size: 22px; color: #25d366; font-weight:bold; font-family: Arial, sans-serif;"><i class="fas fa-arrow-up" style="font-size: 16px;"></i> <span id="resRoR">0.00%</span></span>
+                        <span style="color:#aaa; font-size:13px; font-family: Arial, sans-serif;">All-time rate of return (RoR)</span><br>
+                        <span style="font-size: 24px; color: #689f38; font-weight:bold; font-family: Arial, sans-serif;"><i class="fas fa-arrow-up" style="font-size: 18px;"></i> <span id="resRoR">0.00%</span></span>
                     </div>
                     <div class="res-summary-item" id="doubleTimeWrap">
-                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">Time needed to double investment</span><br>
-                        <span id="resDoubleTime" style="font-size: 22px; color: #ccc; font-weight:bold; font-family: Arial, sans-serif;">0 years, 0 months</span>
+                        <span style="color:#aaa; font-size:13px; font-family: Arial, sans-serif;">Time needed to double investment</span><br>
+                        <span id="resDoubleTime" style="font-size: 24px; color: #fff; font-weight:bold; font-family: Arial, sans-serif;">0 years, 0 months</span>
                     </div>
                 </div>
 
                 <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; margin-top: 25px;">
                     <div>
-                        <span style="color:#888; font-size:11px; display:block; margin-bottom:5px; font-family: Arial, sans-serif;">Breakdown choice</span>
-                        <div class="toggle-group" style="width: auto; display: inline-flex;">
-                            <button type="button" class="toggle-btn" id="btnBreakdownMonthly" onclick="renderTable('monthly')" style="padding: 6px 15px; font-size: 12px;">monthly</button>
-                            <button type="button" class="toggle-btn active" id="btnBreakdownYearly" onclick="renderTable('yearly')" style="padding: 6px 15px; font-size: 12px;">yearly</button>
+                        <span style="color:#aaa; font-size:12px; display:block; margin-bottom:8px; font-family: Arial, sans-serif;">Breakdown choice</span>
+                        <div class="breakdown-toggle">
+                            <button type="button" class="brk-btn" id="btnBreakdownMonthly" onclick="renderTable('monthly')">monthly</button>
+                            <button type="button" class="brk-btn active" id="btnBreakdownYearly" onclick="renderTable('yearly')">yearly</button>
                         </div>
                     </div>
                     <div style="text-align: right;">
-                        <span style="color:#888; font-size:11px; display:block; margin-bottom:5px; font-family: Arial, sans-serif;">Table / Chart / Summary</span>
-                        <div style="display: flex; gap: 12px; color: #444; font-size: 22px;">
+                        <span style="color:#aaa; font-size:12px; display:block; margin-bottom:8px; font-family: Arial, sans-serif;">Table / Chart / Summary</span>
+                        <div style="display: flex; gap: 12px; color: #555; font-size: 24px; justify-content: flex-end;">
                             <i class="fas fa-table" style="color: #00a8ff; cursor: pointer;"></i>
                             <i class="fas fa-chart-bar" style="cursor: not-allowed;"></i>
                             <i class="fas fa-list" style="cursor: not-allowed;"></i>
@@ -1084,13 +1083,13 @@
                     </div>
                 </div>
 
-                <h3 id="tableBreakdownTitle" style="color: #ff9800; font-size: 16px; margin: 0 0 10px 0; font-family: Arial, sans-serif;">Yearly breakdown</h3>
+                <h3 id="tableBreakdownTitle" style="color: #f39c12; font-size: 18px; margin: 20px 0 10px 0; font-family: Arial, sans-serif; font-weight: normal;">Yearly breakdown</h3>
 
                 <div class="table-responsive">
-                    <table class="calc-table" id="dataTable" style="margin-bottom: 0;">
+                    <table class="calc-table" id="dataTable">
                         <thead>
                             <tr>
-                                <th class="th-dark" id="thPeriod">Year</th>
+                                <th class="th-dark td-center" id="thPeriod">Year</th>
                                 <th class="th-dark">Interest</th>
                                 <th class="th-orange">Accrued<br>Interest</th>
                                 <th class="th-green">Balance</th>
