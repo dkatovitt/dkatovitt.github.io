@@ -312,7 +312,7 @@
 
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
-        /* 🌟 NEW EXACT MATCH RESULTS CSS (Updated from User Feedback) 🌟 */
+        /* 🌟 NEW EXACT MATCH RESULTS CSS (Updated for Full Mobile View) 🌟 */
         #resultsArea { display: none; padding: 25px 20px; background: transparent; animation: slideDownFade 0.5s ease; text-align: left; }
         
         #resMainTitle { color: #f39c12; font-size: 24px; font-weight: normal; margin: 0 0 25px 0; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: Arial, sans-serif;}
@@ -344,8 +344,9 @@
 
         #tableBreakdownTitle { color: #f39c12; font-size: 18px; margin: 20px 0 10px 0; font-weight: normal; font-family: Arial, sans-serif;}
 
+        /* 🔥 FIX: REMOVED min-width SO IT FITS ON MOBILE PERFECTLY 🔥 */
         .table-responsive { width: 100%; overflow-x: auto; background: transparent; border-radius: 0; border: none; -webkit-overflow-scrolling: touch; }
-        .calc-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 500px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #444; font-family: Arial, sans-serif;}
+        .calc-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #444; font-family: Arial, sans-serif;}
         
         .calc-table th { padding: 12px 10px; font-weight: bold; border-right: 1px solid #444; border-bottom: 1px solid #444; }
         .calc-table th:last-child { border-right: none; }
@@ -405,6 +406,10 @@
             .seo-article h2 { font-size: 22px; }
             
             .breakdown-toggle-wrap { flex-direction: row; }
+            
+            /* 🔥 PERFECT 4 COLUMN FIT FOR MOBILE 🔥 */
+            .calc-table th, .calc-table td { padding: 12px 6px; font-size: 12px; }
+            .calc-table th.th-orange { line-height: 1.2; }
         }
         
         /* 🔥 DAILY COMPOUND ONLY - STACKED LAYOUT 🔥 */
@@ -671,7 +676,6 @@
         </div>
 
         <div class="calc-wrapper">
-            <!-- 🌟 4 TABS 🌟 -->
             <div class="calc-tabs">
                 <div class="calc-tab active" data-tab="compound">Compound<br>Interest</div>
                 <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
@@ -679,10 +683,8 @@
                 <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
-            <!-- 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 -->
             <form id="compoundForm" class="calc-body">
               <div id="mainFormWrap">
-                <!-- 🔥 GROUP 1: BASE INPUTS (DARK BACKGROUND) 🔥 -->
                 <div class="calc-section group-main" id="baseInputGroup">
                     
                     <div class="form-row-side">
@@ -792,7 +794,6 @@
                         </div>
                     </div>
 
-                    <!-- 🔥 Reverted back to Time period Text here 🔥 -->
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
                         <div class="form-label" style="padding-bottom: 10px;">Time <br>period:</div>
                         <div class="form-input-area">
@@ -823,7 +824,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 GROUP 2: DAILY EXTRA (LIGHT BACKGROUND) 🔥 -->
                 <div class="calc-section group-daily" id="dailyExtraGroup" style="display: none;">
                     
                     <div id="dailyOptionsRow" style="display: flex; flex-direction: column; width: 100%;">
@@ -840,8 +840,7 @@
                             <div class="form-label">Daily reinvest <br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
-                                    <!-- JS will populate -->
-                                </select>
+                                    </select>
                                 <button type="button" class="help-btn" onclick="toggleHelp('helpReinvest')">?</button>
                             </div>
                         </div>
@@ -879,7 +878,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 GROUP 3: CONTRIBUTIONS (DARK BACKGROUND) 🔥 -->
                 <div class="calc-section group-contrib" id="contributionsGroup">
                     
                     <div id="standardContribWrapper" style="display: block; width: 100%;">
@@ -1047,7 +1045,6 @@
                     </div> 
                 </div>
 
-                <!-- 🔥 GROUP 4: ACTION ROW (LIGHT BACKGROUND) 🔥 -->
                 <div class="calc-section group-light action-row-section" id="actionRowSection">
                     <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0; display: none;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
@@ -1062,7 +1059,6 @@
               </div>
             </form>
 
-            <!-- 🌟 🔥 NEW EXACT MATCH RESULTS SECTION 🔥 🌟 -->
             <div id="resultsArea">
                 <h2 id="resMainTitle">Calculation for 1 year</h2>
                 
@@ -1130,8 +1126,7 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- JS will inject rows here -->
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
                 
@@ -1141,7 +1136,6 @@
             </div>
         </div>
 
-        <!-- 🔥 NEW SHARE, DISCLAIMER & TABLE OF CONTENTS SECTION 🔥 -->
         <div class="share-section">
             <h4>Like this? Please share</h4>
             <div class="share-buttons">
@@ -1165,7 +1159,6 @@
             </div>
         </div>
         
-        <!-- 🔥 VIP SEO ARTICLE & FAQ SECTION 🔥 -->
         <div class="seo-article">
             <h2>Questions about our calculator</h2>
             <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
@@ -1204,7 +1197,6 @@
         
     </section>
 
-    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -1306,7 +1298,6 @@
         </div>
     </footer>
 
-    <!-- APP DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -1318,7 +1309,6 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -1330,7 +1320,6 @@
         </div>
     </div>
 
-    <!-- UPCOMING MODAL CSS -->
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
@@ -1347,7 +1336,6 @@
         </div>
     </div>
     
-    <!-- CHATBOT OVERLAY -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -1369,7 +1357,6 @@
         </div>
     </div>
 
-    <!-- 🔥 DYNAMIC TAB, ANIMATION & CALCULATOR LOGIC 🔥 -->
     <script>
         // 🌟 NEW BULLETPROOF ANIMATION LOGIC 🌟
         function setDisplay(id, show, displayType = 'block') {
