@@ -312,23 +312,32 @@
 
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
-        /* 🌟 RESULTS AREA 🌟 */
-        #resultsArea { display: none; padding: 25px 20px; background: #0a0a0a; animation: slideDownFade 0.5s ease;}
+        /* 🌟 NEW EXACT MATCH RESULTS CSS 🌟 */
+        #resultsArea { display: none; padding: 25px 20px; background: #131313; border: 1px solid #2a2a2a; border-radius: 10px; margin-top: 20px; animation: slideDownFade 0.5s ease; text-align: left; }
         
-        .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
-        .result-card { background: #111; border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
-        .result-card h4 { color: #888; font-size: 12px; margin: 0 0 8px 0; font-family: Arial, sans-serif; font-weight: normal;}
-        .result-card h2 { color: #fff; font-size: 20px; margin: 0; font-family: Arial, sans-serif; }
-        .result-card.profit h2 { color: #25d366; }
-        .result-card.final { grid-column: span 2; border-color: #e6c875; background: rgba(230, 200, 117, 0.05); }
-        .result-card.final h2 { color: #e6c875; font-size: 26px;}
+        .res-summary-box { display: flex; flex-direction: column; margin-bottom: 25px; }
+        .res-summary-item { margin-bottom: 15px; }
+        @media(min-width:768px) { 
+            .res-summary-box { flex-direction: row; justify-content: space-between; flex-wrap: wrap; } 
+            .res-summary-item { margin-bottom: 0; }
+        }
+        
+        .res-extra-stats { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; border-top: 1px solid #333; padding-top: 15px; }
+        @media(min-width:768px) { 
+            .res-extra-stats { flex-direction: row; justify-content: space-between; } 
+        }
 
         .table-responsive { width: 100%; overflow-x: auto; background: #111; border-radius: 8px; border: 1px solid #333; }
         .calc-table { width: 100%; border-collapse: collapse; text-align: right; font-size: 13px; min-width: 600px; font-family: Arial, sans-serif;}
-        .calc-table th { background: #1a1a1a; color: #e6c875; padding: 12px 15px; font-weight: normal; border-bottom: 1px solid #333;}
-        .calc-table th:first-child { text-align: left; }
+        
+        .calc-table th { padding: 12px 15px; font-weight: bold; border-bottom: 1px solid #333; }
+        .calc-table th.th-dark { background-color: #222 !important; color: #ccc !important; text-align: center; }
+        .calc-table th.th-orange { background-color: #ff9800 !important; color: #000 !important; }
+        .calc-table th.th-green { background-color: #25d366 !important; color: #000 !important; }
+        
         .calc-table td { padding: 12px 15px; border-bottom: 1px solid #222; color: #ccc; }
-        .calc-table td:first-child { text-align: left;}
+        .calc-table td.td-center { text-align: center; }
+        .row-highlight { background-color: rgba(230, 200, 117, 0.15) !important; }
         .text-green { color: #25d366 !important; font-weight: bold;}
 
         /* 🔥 MOBILE RESPONSIVE FIX 🔥 */
@@ -638,7 +647,6 @@
         </div>
 
         <div class="calc-wrapper">
-            <!-- 🌟 4 TABS 🌟 -->
             <div class="calc-tabs">
                 <div class="calc-tab active" data-tab="compound">Compound<br>Interest</div>
                 <div class="calc-tab" data-tab="simple">Simple<br>Interest</div>
@@ -646,11 +654,8 @@
                 <div class="calc-tab" data-tab="forex">Forex<br>Compound</div>
             </div>
 
-            <!-- 🌟 MAIN FORM BODY (GROUPED DESIGN) 🌟 -->
-            <!-- 🔥 Added id="mainFormWrap" to apply refresh animation here 🔥 -->
             <form id="compoundForm" class="calc-body">
               <div id="mainFormWrap">
-                <!-- 🔥 GROUP 1: BASE INPUTS (DARK BACKGROUND) 🔥 -->
                 <div class="calc-section group-main" id="baseInputGroup">
                     
                     <div class="form-row-side">
@@ -688,7 +693,8 @@
                                 <option value="daily">daily</option>
                                 <option value="weekly">weekly</option>
                                 <option value="monthly">monthly</option>
-                                <option value="yearly" selected>yearly</option>
+                                <option value="quarterly">quarterly</option>
+                                <option value="yearly" selected>annual</option>
                             </select>
                         </div>
                     </div>
@@ -761,7 +767,6 @@
 
                     <div class="form-row-side" style="align-items: flex-end;" id="colTimeWrap">
                         <div class="form-label" style="padding-bottom: 10px; display: flex; align-items: center;">
-                            <!-- DK Atovitt Logo -->
                             <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 55px; height: 55px; border-radius: 50%; mix-blend-mode: screen; object-fit: cover; border: 1px solid #333; padding: 2px;"></video>
                         </div>
                         <div class="form-input-area">
@@ -792,7 +797,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 GROUP 2: DAILY EXTRA (LIGHT BACKGROUND) 🔥 -->
                 <div class="calc-section group-daily" id="dailyExtraGroup" style="display: none;">
                     
                     <div id="dailyOptionsRow" style="display: flex; flex-direction: column; width: 100%;">
@@ -809,8 +813,7 @@
                             <div class="form-label">Daily reinvest <br>rate:</div>
                             <div class="form-input-area">
                                 <select class="reinvest-select" id="reinvestRate" style="flex:1;">
-                                    <!-- JS will populate -->
-                                </select>
+                                    </select>
                                 <button type="button" class="help-btn" onclick="toggleHelp('helpReinvest')">?</button>
                             </div>
                         </div>
@@ -848,7 +851,6 @@
                     </div>
                 </div>
 
-                <!-- 🔥 GROUP 3: CONTRIBUTIONS (DARK BACKGROUND) 🔥 -->
                 <div class="calc-section group-contrib" id="contributionsGroup">
                     
                     <div id="standardContribWrapper" style="display: block; width: 100%;">
@@ -1016,9 +1018,8 @@
                     </div> 
                 </div>
 
-                <!-- 🔥 GROUP 4: ACTION ROW (LIGHT BACKGROUND) 🔥 -->
                 <div class="calc-section group-light action-row-section" id="actionRowSection">
-                    <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0;">
+                    <div id="bottomStartDateAnchor" style="flex: 1; min-width: 0; display: none;">
                         <div style="color: #ccc; font-size: 13px; margin-bottom: 6px;">Start date? <a href="javascript:void(0)" style="color:#e6c875; text-decoration:underline;" onclick="setToday()">today</a></div>
                         <input type="date" class="date-input" id="startDateBottom" style="width: 100%; height: 50px; font-size: 15px; box-sizing: border-box;">
                     </div>
@@ -1031,43 +1032,77 @@
               </div>
             </form>
 
-            <!-- 🌟 RESULTS SECTION 🌟 -->
             <div id="resultsArea">
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h4>Total Principal</h4>
-                        <h2 id="resPrincipal">$0.00</h2>
+                <h2 id="resMainTitle" style="color: #e6c875; font-size: 20px; margin: 0 0 20px 0; border-bottom: 1px solid #333; padding-bottom: 12px; font-family: Arial, sans-serif;">Interest calculation</h2>
+                
+                <div class="res-summary-box">
+                    <div class="res-summary-item">
+                        <span style="color:#888; font-size:13px;">Future investment value</span><br>
+                        <span id="resTotal" style="color:#25d366; font-size:28px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
-                    <div class="result-card profit">
-                        <h4>Total Interest</h4>
-                        <h2 id="resInterest">+$0.00</h2>
+                    <div class="res-summary-item">
+                        <span style="color:#888; font-size:13px;">Total interest earned</span><br>
+                        <span id="resInterest" style="color:#ff9800; font-size:24px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
-                    <div class="result-card final">
-                        <h4>Total Balance</h4>
-                        <h2 id="resTotal">$0.00</h2>
-                        <p id="resAPY" style="color:#888; font-size:12px; margin:5px 0 0 0;">Net Profit: 0.00%</p>
+                    <div class="res-summary-item">
+                        <span style="color:#888; font-size:13px;">Initial balance</span><br>
+                        <span id="resPrincipal" style="color:#00a8ff; font-size:24px; font-weight:bold; font-family: Arial, sans-serif;">$0.00</span>
                     </div>
                 </div>
 
+                <div class="res-extra-stats">
+                    <div class="res-summary-item">
+                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">Yearly rate &rarr; Compounded rate</span><br>
+                        <span style="font-size: 22px; color: #ccc; font-family: Arial, sans-serif; font-weight: bold;"><span id="resYearlyRate">0%</span> <span style="font-size: 16px; color:#666;">&rarr;</span> <span id="resCompRate" style="color:#ff9800;">0%</span></span>
+                    </div>
+                    <div class="res-summary-item">
+                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">All-time rate of return (RoR)</span><br>
+                        <span style="font-size: 22px; color: #25d366; font-weight:bold; font-family: Arial, sans-serif;"><i class="fas fa-arrow-up" style="font-size: 16px;"></i> <span id="resRoR">0.00%</span></span>
+                    </div>
+                    <div class="res-summary-item" id="doubleTimeWrap">
+                        <span style="color:#888; font-size:12px; font-family: Arial, sans-serif;">Time needed to double investment</span><br>
+                        <span id="resDoubleTime" style="font-size: 22px; color: #ccc; font-weight:bold; font-family: Arial, sans-serif;">0 years, 0 months</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; margin-top: 25px;">
+                    <div>
+                        <span style="color:#888; font-size:11px; display:block; margin-bottom:5px; font-family: Arial, sans-serif;">Breakdown choice</span>
+                        <div class="toggle-group" style="width: auto; display: inline-flex;">
+                            <button type="button" class="toggle-btn" id="btnBreakdownMonthly" onclick="renderTable('monthly')" style="padding: 6px 15px; font-size: 12px;">monthly</button>
+                            <button type="button" class="toggle-btn active" id="btnBreakdownYearly" onclick="renderTable('yearly')" style="padding: 6px 15px; font-size: 12px;">yearly</button>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="color:#888; font-size:11px; display:block; margin-bottom:5px; font-family: Arial, sans-serif;">Table / Chart / Summary</span>
+                        <div style="display: flex; gap: 12px; color: #444; font-size: 22px;">
+                            <i class="fas fa-table" style="color: #00a8ff; cursor: pointer;"></i>
+                            <i class="fas fa-chart-bar" style="cursor: not-allowed;"></i>
+                            <i class="fas fa-list" style="cursor: not-allowed;"></i>
+                            <i class="fas fa-chart-pie" style="cursor: not-allowed;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="tableBreakdownTitle" style="color: #ff9800; font-size: 16px; margin: 0 0 10px 0; font-family: Arial, sans-serif;">Yearly breakdown</h3>
+
                 <div class="table-responsive">
-                    <table class="calc-table" id="dataTable">
+                    <table class="calc-table" id="dataTable" style="margin-bottom: 0;">
                         <thead>
                             <tr>
-                                <th>Period</th>
-                                <th>Contributions</th>
-                                <th>Interest</th>
-                                <th>Balance</th>
+                                <th class="th-dark" id="thPeriod">Year</th>
+                                <th class="th-dark">Interest</th>
+                                <th class="th-orange">Accrued<br>Interest</th>
+                                <th class="th-green">Balance</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- JS will inject rows here -->
-                        </tbody>
+                            </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- 🔥 NEW SHARE, DISCLAIMER & TABLE OF CONTENTS SECTION 🔥 -->
         <div class="share-section">
             <h4>Like this? Please share</h4>
             <div class="share-buttons">
@@ -1091,7 +1126,6 @@
             </div>
         </div>
         
-        <!-- 🔥 VIP SEO ARTICLE & FAQ SECTION 🔥 -->
         <div class="seo-article">
             <h2>Questions about our calculator</h2>
             <p>Here are some frequently asked questions about our daily compounding calculator, designed specifically for your Web3 and crypto investments.</p>
@@ -1130,7 +1164,6 @@
         
     </section>
 
-    <!-- FOOTER -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -1232,7 +1265,6 @@
         </div>
     </footer>
 
-    <!-- APP DOWNLOAD MODAL -->
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
@@ -1244,7 +1276,6 @@
         </div>
     </div>
 
-    <!-- CUSTOM ALERT OVERLAY -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box">
             <div class="custom-alert-logo">
@@ -1256,7 +1287,6 @@
         </div>
     </div>
 
-    <!-- UPCOMING MODAL CSS -->
     <div class="upcoming-modal-overlay" id="upcomingProjectModalOverlay">
         <div class="upcoming-modal-box">
             <button class="upcoming-modal-close" onclick="closeUpcomingProject()">&times;</button>
@@ -1273,7 +1303,6 @@
         </div>
     </div>
     
-    <!-- CHATBOT OVERLAY -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer">
             <div class="chatbot-header">
@@ -1295,7 +1324,6 @@
         </div>
     </div>
 
-    <!-- 🔥 DYNAMIC TAB, ANIMATION & CALCULATOR LOGIC 🔥 -->
     <script>
         // 🌟 NEW BULLETPROOF ANIMATION LOGIC 🌟
         function setDisplay(id, show, displayType = 'block') {
@@ -1750,6 +1778,55 @@
 
         function triggerHaptic() { if (navigator.vibrate) navigator.vibrate(50); }
 
+        // 🔥 GLOBALS FOR NEW TABLE DESIGN 🔥
+        window.globalMonthlyData = [];
+        window.globalYearlyData = [];
+        window.breakdownChoice = 'yearly';
+
+        const formatCash = (num) => {
+            let sCurr = (selectedCurr === 'ATVT') ? '' : selectedCurr;
+            let sSuf = (selectedCurr === 'ATVT') ? ' ATVT' : '';
+            return sCurr + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + sSuf;
+        };
+
+        window.renderTable = function(choice) {
+            window.breakdownChoice = choice;
+            document.getElementById('btnBreakdownMonthly').classList.remove('active');
+            document.getElementById('btnBreakdownYearly').classList.remove('active');
+            
+            if(choice === 'monthly') {
+                document.getElementById('btnBreakdownMonthly').classList.add('active');
+                document.getElementById('tableBreakdownTitle').innerText = "Monthly breakdown";
+                document.getElementById('thPeriod').innerText = "Month";
+            } else {
+                document.getElementById('btnBreakdownYearly').classList.add('active');
+                document.getElementById('tableBreakdownTitle').innerText = "Yearly breakdown";
+                document.getElementById('thPeriod').innerText = "Year";
+            }
+
+            let data = (choice === 'monthly') ? window.globalMonthlyData : window.globalYearlyData;
+            let tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach((row) => {
+                let tr = document.createElement('tr');
+                if(choice === 'monthly' && row.period > 0 && row.period % 12 === 0) {
+                    tr.classList.add('row-highlight');
+                }
+                
+                let intStr = row.period === 0 ? "-" : formatCash(row.interest);
+                let accStr = row.period === 0 ? "-" : formatCash(row.accrued);
+                
+                tr.innerHTML = `
+                    <td class="td-center">${row.period}</td>
+                    <td>${intStr}</td>
+                    <td>${accStr}</td>
+                    <td>${formatCash(row.balance)}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        };
+
         // 🔥🔥🔥 100% ADVANCED MATH CALCULATION LOGIC 🔥🔥🔥
         document.getElementById('compoundForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1767,14 +1844,24 @@
             let currentBalance = principal;
             let totalInterest = 0;
             let totalDeposits = principal;
-            let tableData = [];
+            
+            window.globalMonthlyData = [];
+            window.globalYearlyData = [];
+            let interestThisMonth = 0;
+            let interestThisYear = 0;
+            let accruedInterestTotal = 0;
+            let currentMonthNum = 0;
+            let currentYearNum = 0;
+
+            window.globalMonthlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
+            window.globalYearlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
 
             let startDateVal = (activeCalcTab === 'simple') ? document.getElementById('startDateTop').value : document.getElementById('startDateBottom').value;
-            if (!startDateVal) {
+            if (!startDateVal && (activeCalcTab === 'simple' || document.getElementById('bottomStartDateAnchor').style.display !== 'none')) {
                 showCustomAlert("Error", "Please select a start date.", true);
                 return;
             }
-            let startDate = new Date(startDateVal);
+            let startDate = startDateVal ? new Date(startDateVal) : new Date();
 
             if (activeCalcTab === 'forex') {
                 if(years === 0 && months === 0) {
@@ -1786,6 +1873,7 @@
                 if (rateType === 'daily') r_annual *= 365;
                 if (rateType === 'weekly') r_annual *= 52;
                 if (rateType === 'monthly') r_annual *= 12;
+                if (rateType === 'quarterly') r_annual *= 4; // ADDED QUARTERLY CALC
 
                 let n = parseInt(document.getElementById('forexCompFreq').value) || 12;
                 
@@ -1802,7 +1890,6 @@
                 let currentBal = principal;
                 let totDep = principal;
                 let totInt = 0;
-                let accruedInterest = 0;
                 
                 for(let i=1; i<=totalMonthsLoop; i++) {
                     if (pmt > 0) {
@@ -1823,7 +1910,14 @@
                     totInt += intEarned;
                     currentBal += intEarned;
 
-                    tableData.push({ day: `Month ${i}`, deposits: totDep, interest: totInt, balance: currentBal });
+                    interestThisYear += intEarned;
+                    window.globalMonthlyData.push({ period: i, interest: intEarned, accrued: totInt, balance: currentBal });
+                    
+                    if(i % 12 === 0 || i === totalMonthsLoop) {
+                        currentYearNum++;
+                        window.globalYearlyData.push({ period: currentYearNum, interest: interestThisYear, accrued: totInt, balance: currentBal });
+                        interestThisYear = 0;
+                    }
                 }
                 
                 currentBalance = currentBal;
@@ -1892,6 +1986,7 @@
 
                 let dailyRate = rateInput / 100;
                 if(rateType === 'monthly') dailyRate = (rateInput / 100) / 30.4167;
+                if(rateType === 'quarterly') dailyRate = (rateInput / 100) / 91.25; // ADDED QUARTERLY CALC
                 if(rateType === 'yearly') dailyRate = (rateInput / 100) / 365;
                 if(rateType === 'weekly') dailyRate = (rateInput / 100) / 7;
 
@@ -2017,6 +2112,10 @@
 
                     monthlyInterestAccrued += interestToday;
                     yearlyInterestAccrued += interestToday;
+                    
+                    interestThisMonth += interestToday;
+                    interestThisYear += interestToday;
+                    accruedInterestTotal += interestToday;
 
                     if (i % 365 === 0 && activeCalcTab !== 'simple') {
                         let incAmt = parseFloat(document.getElementById('depIncreaseAmt').value) || 0;
@@ -2035,48 +2134,59 @@
                             withAmtCurrent += withAmtCurrent * (withIncAmt / 100);
                         }
                     }
-
+                    
                     let displayBalance = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
-                    if(totalDays <= 31) {
-                        tableData.push({ day: `Day ${i}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
-                    } else if(totalDays <= 365) {
-                        if(i % 7 === 0 || i === totalDays) tableData.push({ day: `Week ${Math.ceil(i/7)}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
-                    } else {
-                        if(i % 30 === 0 || i === totalDays) tableData.push({ day: `Month ${Math.ceil(i/30)}`, deposits: totalDeposits, interest: totalInterest, balance: displayBalance });
+                    if (i % 30 === 0 || i === totalDays) {
+                        currentMonthNum++;
+                        window.globalMonthlyData.push({ period: currentMonthNum, interest: interestThisMonth, accrued: accruedInterestTotal, balance: displayBalance });
+                        interestThisMonth = 0;
+                    }
+                    if (i % 365 === 0 || i === totalDays) {
+                        currentYearNum++;
+                        window.globalYearlyData.push({ period: currentYearNum, interest: interestThisYear, accrued: accruedInterestTotal, balance: displayBalance });
+                        interestThisYear = 0;
                     }
                 }
             } 
 
-            // 🌟 RENDER FINAL RESULTS 🌟
+            // 🌟 RENDER FINAL RESULTS IN NEW UI 🌟
             let finalBal = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
-            const formatCash = (num) => {
-                let sCurr = (selectedCurr === 'ATVT') ? '' : selectedCurr;
-                let sSuf = (selectedCurr === 'ATVT') ? ' ATVT' : '';
-                return sCurr + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + sSuf;
-            };
+            let titleYears = years > 0 ? years : (totalDays / 365).toFixed(1);
+            document.getElementById('resMainTitle').innerText = `Interest calculation for ${titleYears} years`;
 
             document.getElementById('resPrincipal').innerText = formatCash(totalDeposits);
-            document.getElementById('resInterest').innerText = "+" + formatCash(totalInterest);
+            document.getElementById('resInterest').innerText = formatCash(totalInterest);
             document.getElementById('resTotal').innerText = formatCash(finalBal);
             
-            let profitPercent = ((finalBal - totalDeposits) / totalDeposits) * 100;
-            if(isNaN(profitPercent) || !isFinite(profitPercent)) profitPercent = 0;
-            document.getElementById('resAPY').innerText = `Net Profit: ${profitPercent.toLocaleString('en-US', {maximumFractionDigits: 2})}%`;
+            document.getElementById('resYearlyRate').innerText = rateInput + "%";
+            
+            let compIntVal = document.getElementById('compInterval').value;
+            let nForApy = (compIntVal === 'custom') ? (parseFloat(document.getElementById('customCompInterval').value) || 1) : parseFloat(compIntVal);
+            if(activeCalcTab === 'simple') nForApy = 1;
+            
+            let apyCalc = (Math.pow(1 + (rateInput/100)/nForApy, nForApy) - 1) * 100;
+            if(activeCalcTab === 'simple') apyCalc = rateInput;
+            document.getElementById('resCompRate').innerText = apyCalc.toFixed(2) + "%";
+            
+            let profitPercent = 0;
+            if(totalDeposits > 0) profitPercent = ((finalBal - totalDeposits) / totalDeposits) * 100;
+            document.getElementById('resRoR').innerText = profitPercent.toLocaleString('en-US', {maximumFractionDigits: 2}) + "%";
 
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = '';
-            tableData.forEach(row => {
-                let tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${row.day}</td>
-                    <td>${formatCash(row.deposits)}</td>
-                    <td class="text-green">+${formatCash(row.interest)}</td>
-                    <td>${formatCash(row.balance)}</td>
-                `;
-                tbody.appendChild(tr);
-            });
+            let doubleTimeWrap = document.getElementById('doubleTimeWrap');
+            if(apyCalc > 0 && activeCalcTab !== 'simple') {
+                doubleTimeWrap.style.display = 'block';
+                let yearsToDouble = Math.log(2) / Math.log(1 + (apyCalc/100));
+                let dYears = Math.floor(yearsToDouble);
+                let dMonths = Math.round((yearsToDouble - dYears) * 12);
+                if(dMonths === 12) { dYears++; dMonths = 0; }
+                document.getElementById('resDoubleTime').innerText = `${dYears} years, ${dMonths} months`;
+            } else {
+                doubleTimeWrap.style.display = 'none';
+            }
+
+            renderTable(window.breakdownChoice || 'yearly');
 
             setDisplay('resultsArea', true, 'block');
             setTimeout(() => { document.getElementById('resultsArea').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
