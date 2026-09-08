@@ -312,24 +312,18 @@
 
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
-        /* 🌟 EXACT MATCH RESULTS CSS (Updated for Full Mobile View) 🌟 */
+        /* 🌟 EXACT MATCH RESULTS CSS (Updated Layout) 🌟 */
         #resultsArea { display: none; padding: 25px 20px; background: transparent; animation: slideDownFade 0.5s ease; text-align: left; }
         
-        #resMainTitle { color: #f39c12; font-size: 24px; font-weight: normal; margin: 0 0 25px 0; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: Arial, sans-serif;}
+        #resMainTitle { color: #f39c12; font-size: 26px; font-weight: bold; margin: 0 0 25px 0; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: Arial, sans-serif;}
 
         .res-summary-item { margin-bottom: 20px; position: relative; }
         .res-summary-label { color: #ccc; font-size: 14px; margin-bottom: 2px; display: block; font-family: Arial, sans-serif;}
         .res-summary-value { font-size: 32px; font-weight: bold; line-height: 1.1; font-family: Arial, sans-serif;}
         .res-summary-value.val-green { color: #689f38; }
         .res-summary-value.val-orange { color: #f39c12; }
-        .res-summary-value.val-blue { color: #00a8ff; }
         
         .res-copy-icon { position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: #555; font-size: 20px; cursor: pointer; }
-        
-        .res-extra-stats { margin-top: 30px; border-top: 1px solid #333; padding-top: 25px; }
-        .res-extra-item { margin-bottom: 20px; }
-        .res-extra-label { color: #ccc; font-size: 14px; display: block; margin-bottom: 4px; font-family: Arial, sans-serif;}
-        .res-extra-value { font-size: 24px; color: #fff; font-weight: bold; font-family: Arial, sans-serif;}
         
         .breakdown-toggle-wrap { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; margin-bottom: 15px; }
         .breakdown-choice-label { color: #ccc; font-size: 13px; margin-bottom: 6px; display: block; font-family: Arial, sans-serif;}
@@ -342,16 +336,15 @@
         .table-icons-row { display: flex; gap: 15px; color: #555; font-size: 24px; justify-content: flex-end; }
         .table-icons-row i.active { color: #00a8ff; }
 
-        #tableBreakdownTitle { color: #f39c12; font-size: 18px; margin: 20px 0 10px 0; font-weight: normal; font-family: Arial, sans-serif;}
+        #tableBreakdownTitle { color: #f39c12; font-size: 18px; margin: 20px 0 10px 0; font-weight: bold; font-family: Arial, sans-serif;}
 
-        /* 🔥 FIX: PERFECT MATCH CUSTOM TABLE COLORS 🔥 */
+        /* 🔥 CUSTOM TABLE COLORS 🔥 */
         .table-responsive { width: 100%; overflow-x: auto; background: transparent; border-radius: 0; border: none; -webkit-overflow-scrolling: touch; }
         .calc-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #444; font-family: Arial, sans-serif;}
         
         .calc-table th { padding: 12px 10px; font-weight: bold; border-right: 1px solid #444; border-bottom: 1px solid #444; }
         .calc-table th:last-child { border-right: none; }
         
-        /* Image Exact Match Headers */
         .calc-table th.th-blue { background-color: #2196F3 !important; color: #fff !important; }
         .calc-table th.th-grey { background-color: #757575 !important; color: #fff !important; }
         .calc-table th.th-orange { background-color: #FFA000 !important; color: #fff !important; }
@@ -378,13 +371,7 @@
             
             .form-row-side { margin-bottom: 15px; align-items: center;}
             
-            .form-label { 
-                flex: 0 0 28%; 
-                max-width: 28%; 
-                font-size: 12px; 
-                padding-right: 5px; 
-                word-wrap: break-word;
-            }
+            .form-label { flex: 0 0 28%; max-width: 28%; font-size: 12px; padding-right: 5px; word-wrap: break-word;}
             
             .form-input-area { flex: 1; gap: 6px; min-width: 0; }
             .input-box, .rate-select, .reinvest-select, .date-input, .help-btn { height: 42px; }
@@ -398,7 +385,6 @@
             .tiny-label { font-size: 11px; margin-bottom: 3px;}
             .toggle-btn { padding: 10px 0; font-size: 12px; }
             
-            /* 🔥 FORCE SIDE-BY-SIDE START DATE AND CALCULATE BUTTON ON MOBILE 🔥 */
             .action-row-section { gap: 10px !important;}
             .action-row-section .form-label { margin-bottom: 0 !important; }
             .action-row-simple { padding: 0 !important; }
@@ -410,47 +396,20 @@
             
             .breakdown-toggle-wrap { flex-direction: row; }
             
-            /* 🔥 PERFECT 4 COLUMN FIT FOR MOBILE 🔥 */
             .calc-table th, .calc-table td { padding: 12px 6px; font-size: 12px; }
             .calc-table th.th-orange { line-height: 1.2; }
         }
         
         /* 🔥 DAILY COMPOUND ONLY - STACKED LAYOUT 🔥 */
-        .daily-stacked-layout .form-row-side {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            margin-bottom: 18px !important;
-        }
-        .daily-stacked-layout .form-label {
-            flex: 0 0 auto !important;
-            max-width: 100% !important;
-            padding-bottom: 8px !important;
-            padding-right: 0 !important;
-            text-align: left !important;
-            font-size: 13px !important;
-        }
+        .daily-stacked-layout .form-row-side { flex-direction: column !important; align-items: flex-start !important; margin-bottom: 18px !important; }
+        .daily-stacked-layout .form-label { flex: 0 0 auto !important; max-width: 100% !important; padding-bottom: 8px !important; padding-right: 0 !important; text-align: left !important; font-size: 13px !important; }
         .daily-stacked-layout .form-label br { display: none !important; }
         .daily-stacked-layout .form-input-area { width: 100% !important; }
         
-        /* Keeps "Include all days of week" & "Daily reinvest rate" side-by-side inside Daily Options */
-        .daily-stacked-layout #dailyOptionsRow {
-            display: flex !important;
-            flex-direction: row !important;
-            gap: 15px;
-            margin-bottom: 0;
-            width: 100%;
-        }
-        .daily-stacked-layout #dailyOptionsRow .form-row-side {
-            flex: 1;
-            margin-bottom: 0 !important;
-        }
-        .daily-stacked-layout .action-row-section {
-            flex-direction: row !important;
-            align-items: flex-end !important;
-        }
-        @media (max-width: 768px) {
-            .daily-stacked-layout #dailyOptionsRow { gap: 10px; }
-        }
+        .daily-stacked-layout #dailyOptionsRow { display: flex !important; flex-direction: row !important; gap: 15px; margin-bottom: 0; width: 100%; }
+        .daily-stacked-layout #dailyOptionsRow .form-row-side { flex: 1; margin-bottom: 0 !important; }
+        .daily-stacked-layout .action-row-section { flex-direction: row !important; align-items: flex-end !important; }
+        @media (max-width: 768px) { .daily-stacked-layout #dailyOptionsRow { gap: 10px; } }
 
         /* 🔥 SHARE & TOC SECTION CSS 🔥 */
         .share-section { position: relative; z-index: 10; max-width: 600px; margin: 25px auto 40px auto; text-align: left; padding: 0 15px;}
@@ -494,7 +453,6 @@
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         
-        /* 🔥 NEW 8 ICONS SOCIAL ROW CSS 🔥 */
         .footer-social-row { display: grid; grid-template-columns: repeat(4, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); box-shadow: 0 0 15px rgba(230,200,117,0.4);}
@@ -571,37 +529,20 @@
         @media print {
             @page { size: auto; margin: 10mm; }
             body { background-color: #111 !important; color: #eee !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            
-            /* Hide UI elements not needed in PDF */
-            .header, .side-menu, #overlay, .share-section, .seo-article, .tseries-footer, .app-modal-overlay, .upcoming-modal-overlay, .chatbot-overlay, #particles-js, .breakdown-toggle-wrap, .help-btn, .custom-translate, .calc-tabs { 
-                display: none !important; 
-            }
-            
-            /* Adjust container for full page */
+            .header, .side-menu, #overlay, .share-section, .seo-article, .tseries-footer, .app-modal-overlay, .upcoming-modal-overlay, .chatbot-overlay, #particles-js, .breakdown-toggle-wrap, .help-btn, .custom-translate, .calc-tabs { display: none !important; }
             .calc-container { padding: 0 !important; margin: 0 !important; }
             .calc-wrapper { box-shadow: none !important; border: none !important; max-width: 100% !important; width: 100% !important; margin: 0 !important; }
-            
-            /* Expand table to show all rows (remove scroll) */
             .table-responsive { overflow: visible !important; display: block !important; width: 100% !important; }
             .calc-table { width: 100% !important; border-collapse: collapse !important; }
             .calc-table th, .calc-table td { page-break-inside: avoid !important; }
-            
-            /* Print colors force */
             .calc-table th.th-blue { background-color: #2196F3 !important; color: #fff !important; }
             .calc-table th.th-grey { background-color: #757575 !important; color: #fff !important; }
             .calc-table th.th-orange { background-color: #FFA000 !important; color: #fff !important; }
             .calc-table th.th-green { background-color: #7CB342 !important; color: #fff !important; }
             .row-highlight td { background-color: #fdfad9 !important; color: #000 !important; font-weight: bold !important; }
-            
-            /* Prevent awkward page breaks */
-            .calc-section, .res-summary-box, .res-extra-stats, tr { page-break-inside: avoid !important; }
-            
-            /* Form inputs look clean */
-            .input-box, .rate-select, .reinvest-select, .date-input, .toggle-group, .currency-row, .days-toggle-group { 
-                border: 1px solid #555 !important; background: #222 !important; color: #fff !important; 
-            }
+            .calc-section, .res-summary-box, tr { page-break-inside: avoid !important; }
+            .input-box, .rate-select, .reinvest-select, .date-input, .toggle-group, .currency-row, .days-toggle-group { border: 1px solid #555 !important; background: #222 !important; color: #fff !important; }
             input, select, button { color: #fff !important; }
-            
             #resultsArea { page-break-before: auto !important; }
         }
     </style>
@@ -1101,37 +1042,50 @@
             </form>
 
             <div id="resultsArea">
-                <h2 id="resMainTitle">Calculation for 1 year</h2>
+                <h2 id="resMainTitle">Projection for 1 year</h2>
                 
                 <div class="res-summary-box">
                     <div class="res-summary-item">
-                        <span class="res-summary-label">Future investment value</span>
+                        <span class="res-summary-label">Investment value</span>
                         <span id="resTotal" class="res-summary-value val-green">$0.00</span>
                         <i class="far fa-copy res-copy-icon"></i>
                     </div>
                     <div class="res-summary-item">
-                        <span class="res-summary-label">Total interest earned</span>
+                        <span class="res-summary-label">Total interest / earnings</span>
                         <span id="resInterest" class="res-summary-value val-orange">$0.00</span>
                         <i class="far fa-copy res-copy-icon"></i>
                     </div>
-                    <div class="res-summary-item" style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 0;">
-                        <span class="res-summary-label">Initial balance</span>
-                        <span id="resPrincipal" class="res-summary-value val-blue">$0.00</span>
+                    <div class="res-summary-item" style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
+                        <span class="res-summary-label">Percentage profit</span>
+                        <span id="resRoRTop" class="res-summary-value val-orange" style="font-size: 32px;">0.0%</span>
                     </div>
                 </div>
 
-                <div class="res-extra-stats">
-                    <div class="res-extra-item">
-                        <span class="res-extra-label" id="lblYearlyRateMode">Daily rate &rarr; Yearly compounded</span>
-                        <span class="res-extra-value"><span id="resYearlyRate">0%</span> <span style="font-size: 16px; color:#666;">&rarr;</span> <span id="resCompRate" style="color:#f39c12;">0%</span> <i class="far fa-question-circle" style="color:#555; font-size:14px;"></i></span>
+                <div style="font-size: 13px; color: #ccc; margin-bottom: 25px; line-height: 1.5; font-family: Arial, sans-serif;">
+                    Note: This calculator is for illustrative purposes only and does not constitute financial advice. We do not offer investment opportunities, promise returns, or endorse any financial products. <a href="terms.html" style="color:#f39c12; text-decoration:underline;">Terms & conditions</a>.
+                </div>
+
+                <div class="res-extra-stats" style="border-top: 1px solid #333; padding-top: 25px; margin-top: 0;">
+                    <span class="res-extra-label">Total days / Business days</span>
+                    <div class="res-summary-value" style="color: #fff; margin-bottom: 20px;"><span id="resTotalDays">0</span> / <span id="resBusinessDays">0</span></div>
+
+                    <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                        <div style="flex: 1; background: #2a2a2a; border-radius: 8px; padding: 15px 10px; text-align: center; border: 1px solid #333;">
+                            <div style="color: #888; font-size: 12px; margin-bottom: 8px; font-family: Arial, sans-serif;">Daily Interest Rate</div>
+                            <div style="color: #fff; font-size: 22px; font-weight: bold; font-family: Arial, sans-serif;" id="resDailyRateBox">0%</div>
+                        </div>
+                        <div style="flex: 1; background: #2a2a2a; border-radius: 8px; padding: 15px 10px; text-align: center; border: 1px solid #333;">
+                            <div style="color: #888; font-size: 12px; margin-bottom: 8px; font-family: Arial, sans-serif;">Annual Percentage Yield</div>
+                            <div style="color: #ccc; font-size: 22px; font-weight: bold; font-family: Arial, sans-serif;"><span id="resCompRateBox">0%</span> <i class="far fa-question-circle" style="color:#f39c12; font-size: 14px;"></i></div>
+                        </div>
                     </div>
-                    <div class="res-extra-item">
-                        <span class="res-extra-label">All-time rate of return (RoR)</span>
-                        <span class="res-extra-value" style="color: #689f38;"><i class="fas fa-arrow-up" style="background: #689f38; color: #fff; border-radius: 50%; padding: 4px; font-size: 14px;"></i> <span id="resRoR">0.00%</span> <i class="far fa-question-circle" style="color:#555; font-size:14px;"></i></span>
-                    </div>
-                    <div class="res-extra-item" id="doubleTimeWrap">
-                        <span class="res-extra-label">Investment doubled after</span>
-                        <span id="resDoubleTime" class="res-extra-value">0 months</span>
+
+                    <div style="margin-bottom: 30px;">
+                        <span style="color: #888; font-size: 14px; font-family: Arial, sans-serif;">End date</span>
+                        <div style="color: #ccc; font-size: 26px; font-weight: bold; margin-bottom: 15px; font-family: Arial, sans-serif;" id="resEndDateDisplay">Date</div>
+
+                        <span style="color: #ccc; font-size: 13px; font-family: Arial, sans-serif;" id="resInitialBalLabel">Initial balance on Start Date</span>
+                        <div style="color: #00a8ff; font-size: 32px; font-weight: bold; font-family: Arial, sans-serif;" id="resPrincipalDisplay">$0.00</div>
                     </div>
                 </div>
 
@@ -1986,6 +1940,9 @@
             }
             let startDate = startDateVal ? new Date(startDateVal) : new Date();
 
+            let totalDays = 0;
+            let calcBusinessDays = 0;
+
             if (activeCalcTab === 'forex') {
                 if(years === 0 && months === 0) {
                     showCustomAlert("Error", "Please enter at least 1 month or year.", true);
@@ -2009,6 +1966,11 @@
 
                 let totalMonthsLoop = (years * 12) + months;
                 if (totalMonthsLoop === 0) totalMonthsLoop = 1; 
+
+                let endDateObj = new Date(startDate);
+                endDateObj.setMonth(startDate.getMonth() + totalMonthsLoop);
+                totalDays = Math.ceil((endDateObj - startDate) / (1000 * 60 * 60 * 24));
+                calcBusinessDays = totalDays; 
 
                 let currentBal = principal;
                 let totDep = principal;
@@ -2082,8 +2044,6 @@
                     }
                 }
 
-                let totalDays = 0;
-
                 if (activeCalcTab === 'simple') {
                     let timeMode = document.querySelector('#timeModeToggle .toggle-btn.active').getAttribute('data-val');
                     if (timeMode === 'enddate') {
@@ -2156,6 +2116,10 @@
                         if(dayBtn && !dayBtn.classList.contains('active')) {
                             skipInterestToday = true;
                         }
+                    }
+
+                    if (!skipInterestToday) {
+                        calcBusinessDays++;
                     }
 
                     let addedToday = 0; let withdrawnToday = 0;
@@ -2291,21 +2255,20 @@
                 }
             } 
 
-            // 🌟 RENDER FINAL RESULTS IN NEW UI 🌟
+            // 🌟 RENDER FINAL RESULTS IN EXACT MATCH UI 🌟
             let finalBal = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
             let titleYears = years > 0 ? years : (totalDays / 365).toFixed(1);
             let titleText = titleYears == 1 ? "1 year" : titleYears + " years";
-            document.getElementById('resMainTitle').innerText = "Calculation for " + titleText;
+            document.getElementById('resMainTitle').innerText = "Projection for " + titleText;
 
-            let baseType = rateType.charAt(0).toUpperCase() + rateType.slice(1);
-            document.getElementById('lblYearlyRateMode').innerHTML = baseType + ' rate &rarr; Yearly compounded';
-
-            document.getElementById('resPrincipal').innerText = formatCash(totalDeposits);
+            document.getElementById('resPrincipalDisplay').innerText = formatCash(totalDeposits);
             document.getElementById('resInterest').innerText = formatCash(totalInterest);
             document.getElementById('resTotal').innerText = formatCash(finalBal);
             
-            document.getElementById('resYearlyRate').innerText = rateInput + "%";
+            let profitPercent = 0;
+            if(totalDeposits > 0) profitPercent = ((finalBal - totalDeposits) / totalDeposits) * 100;
+            document.getElementById('resRoRTop').innerText = profitPercent.toLocaleString('en-US', {maximumFractionDigits: 1}) + "%";
             
             let compIntVal = document.getElementById('compInterval').value;
             let nForApy = (compIntVal === 'custom') ? (parseFloat(document.getElementById('customCompInterval').value) || 1) : parseFloat(compIntVal);
@@ -2313,29 +2276,25 @@
             
             let apyCalc = (Math.pow(1 + (rateInput/100)/nForApy, nForApy) - 1) * 100;
             if(activeCalcTab === 'simple') apyCalc = rateInput;
-            document.getElementById('resCompRate').innerText = apyCalc.toFixed(2) + "%";
-            
-            let profitPercent = 0;
-            if(totalDeposits > 0) profitPercent = ((finalBal - totalDeposits) / totalDeposits) * 100;
-            document.getElementById('resRoR').innerText = profitPercent.toLocaleString('en-US', {maximumFractionDigits: 2}) + "%";
+            document.getElementById('resCompRateBox').innerText = apyCalc.toLocaleString('en-US', {maximumFractionDigits: 3}) + "%";
 
-            let doubleTimeWrap = document.getElementById('doubleTimeWrap');
-            if(apyCalc > 0 && activeCalcTab !== 'simple') {
-                doubleTimeWrap.style.display = 'block';
-                let yearsToDouble = Math.log(2) / Math.log(1 + (apyCalc/100));
-                let dYears = Math.floor(yearsToDouble);
-                let dMonths = Math.round((yearsToDouble - dYears) * 12);
-                if(dMonths === 12) { dYears++; dMonths = 0; }
-                
-                let doubleText = "";
-                if (dYears === 0) doubleText = `${dMonths} months`;
-                else if (dMonths === 0) doubleText = `${dYears} years`;
-                else doubleText = `${dYears} years, ${dMonths} months`;
-                
-                document.getElementById('resDoubleTime').innerText = doubleText;
-            } else {
-                doubleTimeWrap.style.display = 'none';
-            }
+            let dRateDisplay = (dailyRate * 100).toLocaleString('en-US', {maximumFractionDigits: 4}) + "%";
+            if (activeCalcTab === 'daily' || rateType === 'daily') dRateDisplay = rateInput + "%";
+            document.getElementById('resDailyRateBox').innerText = dRateDisplay;
+
+            document.getElementById('resTotalDays').innerText = totalDays;
+            document.getElementById('resBusinessDays').innerText = calcBusinessDays > 0 ? calcBusinessDays : totalDays;
+
+            const formatLongDate = (d) => {
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${monthNames[d.getMonth()]} ${day}, ${d.getFullYear()}`;
+            };
+
+            let finalDateObj = new Date(startDate);
+            finalDateObj.setDate(startDate.getDate() + totalDays);
+            document.getElementById('resEndDateDisplay').innerText = formatLongDate(finalDateObj);
+            document.getElementById('resInitialBalLabel').innerText = "Initial balance on " + formatLongDate(startDate);
 
             renderTable(window.breakdownChoice || 'yearly');
 
