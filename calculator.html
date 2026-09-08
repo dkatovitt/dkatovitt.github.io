@@ -312,7 +312,7 @@
 
         .results-label { text-align: right; color: #888; font-size: 13px; margin-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #222; font-family: Arial, sans-serif;}
 
-        /* 🌟 NEW EXACT MATCH RESULTS CSS (Updated for Full Mobile View) 🌟 */
+        /* 🌟 EXACT MATCH RESULTS CSS (Updated for Full Mobile View) 🌟 */
         #resultsArea { display: none; padding: 25px 20px; background: transparent; animation: slideDownFade 0.5s ease; text-align: left; }
         
         #resMainTitle { color: #f39c12; font-size: 24px; font-weight: normal; margin: 0 0 25px 0; border-bottom: 1px solid #333; padding-bottom: 15px; font-family: Arial, sans-serif;}
@@ -334,7 +334,7 @@
         .breakdown-toggle-wrap { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; margin-bottom: 15px; }
         .breakdown-choice-label { color: #ccc; font-size: 13px; margin-bottom: 6px; display: block; font-family: Arial, sans-serif;}
         .breakdown-toggle { display: inline-flex; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid #333;}
-        .brk-btn { background: transparent; color: #aaa; border: none; padding: 8px 18px; font-size: 14px; cursor: pointer; transition: 0.3s; font-family: Arial, sans-serif;}
+        .brk-btn { background: transparent; color: #aaa; border: none; padding: 8px 10px; font-size: 13px; cursor: pointer; transition: 0.3s; font-family: Arial, sans-serif;}
         .brk-btn.active { background: #f39c12; color: #fff; }
 
         .table-icons { text-align: right; }
@@ -344,15 +344,18 @@
 
         #tableBreakdownTitle { color: #f39c12; font-size: 18px; margin: 20px 0 10px 0; font-weight: normal; font-family: Arial, sans-serif;}
 
-        /* 🔥 FIX: REMOVED min-width SO IT FITS ON MOBILE PERFECTLY 🔥 */
+        /* 🔥 FIX: PERFECT MATCH CUSTOM TABLE COLORS 🔥 */
         .table-responsive { width: 100%; overflow-x: auto; background: transparent; border-radius: 0; border: none; -webkit-overflow-scrolling: touch; }
         .calc-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; margin: 0; border-top: 1px solid #444; border-bottom: 1px solid #444; font-family: Arial, sans-serif;}
         
         .calc-table th { padding: 12px 10px; font-weight: bold; border-right: 1px solid #444; border-bottom: 1px solid #444; }
         .calc-table th:last-child { border-right: none; }
-        .calc-table th.th-dark { background-color: #333 !important; color: #fff !important; }
-        .calc-table th.th-orange { background-color: #f39c12 !important; color: #fff !important; }
-        .calc-table th.th-green { background-color: #689f38 !important; color: #fff !important; }
+        
+        /* Image Exact Match Headers */
+        .calc-table th.th-blue { background-color: #2196F3 !important; color: #fff !important; }
+        .calc-table th.th-grey { background-color: #757575 !important; color: #fff !important; }
+        .calc-table th.th-orange { background-color: #FFA000 !important; color: #fff !important; }
+        .calc-table th.th-green { background-color: #7CB342 !important; color: #fff !important; }
         
         .calc-table td { padding: 12px 10px; border-right: 1px solid #444; border-bottom: 1px solid #444; color: #ddd; }
         .calc-table td:last-child { border-right: none; }
@@ -1121,9 +1124,9 @@
                     <table class="calc-table" id="dataTable">
                         <thead>
                             <tr>
-                                <th class="th-dark td-center" id="thPeriod">Year</th>
-                                <th class="th-dark">Interest</th>
-                                <th class="th-orange">Accrued<br>Interest</th>
+                                <th class="th-blue td-center" id="thPeriod">Date / <span style="color:#ffeb3b;">Day</span></th>
+                                <th class="th-grey">Earnings</th>
+                                <th class="th-orange">Total Earnings</th>
                                 <th class="th-green">Balance</th>
                             </tr>
                         </thead>
@@ -1826,6 +1829,20 @@
             return sCurr + num.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + sSuf;
         };
 
+        // Date formatter generator for new columns
+        function formatTableDate(d, type) {
+            const day = String(d.getDate()).padStart(2, '0');
+            const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = monthNames[d.getMonth()];
+            const yearFull = d.getFullYear();
+            const yearShort = String(yearFull).slice(-2);
+
+            if (type === 'daily' || type === 'weekly') return `${day} ${month} '${yearShort}`;
+            if (type === 'monthly') return `${month} ${yearFull}`;
+            if (type === 'yearly') return `${yearFull}`;
+            return '';
+        }
+
         window.renderTable = function(choice) {
             window.breakdownChoice = choice;
             document.getElementById('btnBreakdownDaily').classList.remove('active');
@@ -1833,22 +1850,23 @@
             document.getElementById('btnBreakdownMonthly').classList.remove('active');
             document.getElementById('btnBreakdownYearly').classList.remove('active');
             
+            // Image Exact Match Custom Headers Logic
             if(choice === 'daily') {
                 document.getElementById('btnBreakdownDaily').classList.add('active');
                 document.getElementById('tableBreakdownTitle').innerText = "Daily breakdown";
-                document.getElementById('thPeriod').innerText = "Day";
+                document.getElementById('thPeriod').innerHTML = 'Date / <span style="color:#ffeb3b;">Day</span>';
             } else if(choice === 'weekly') {
                 document.getElementById('btnBreakdownWeekly').classList.add('active');
                 document.getElementById('tableBreakdownTitle').innerText = "Weekly breakdown";
-                document.getElementById('thPeriod').innerText = "Week";
+                document.getElementById('thPeriod').innerHTML = 'Date / <span style="color:#ffeb3b;">Week</span>';
             } else if(choice === 'monthly') {
                 document.getElementById('btnBreakdownMonthly').classList.add('active');
                 document.getElementById('tableBreakdownTitle').innerText = "Monthly breakdown";
-                document.getElementById('thPeriod').innerText = "Month";
+                document.getElementById('thPeriod').innerHTML = 'Month';
             } else {
                 document.getElementById('btnBreakdownYearly').classList.add('active');
                 document.getElementById('tableBreakdownTitle').innerText = "Yearly breakdown";
-                document.getElementById('thPeriod').innerText = "Year";
+                document.getElementById('thPeriod').innerHTML = 'Year';
             }
 
             let data;
@@ -1870,11 +1888,14 @@
                     tr.classList.add('row-highlight');
                 }
                 
+                let periodDisplay = row.dateStr || row.period; 
+                if(row.period === 0) periodDisplay = "-";
+
                 let intStr = row.period === 0 ? "-" : formatCash(row.interest);
                 let accStr = row.period === 0 ? "-" : formatCash(row.accrued);
                 
                 tr.innerHTML = `
-                    <td class="td-center">${row.period}</td>
+                    <td class="td-center">${periodDisplay}</td>
                     <td>${intStr}</td>
                     <td>${accStr}</td>
                     <td>${formatCash(row.balance)}</td>
@@ -1915,10 +1936,10 @@
             let currentMonthNum = 0;
             let currentYearNum = 0;
 
-            window.globalDailyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
-            window.globalWeeklyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
-            window.globalMonthlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
-            window.globalYearlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
+            window.globalDailyData.push({ period: 0, dateStr: "-", interest: 0, accrued: 0, balance: principal });
+            window.globalWeeklyData.push({ period: 0, dateStr: "-", interest: 0, accrued: 0, balance: principal });
+            window.globalMonthlyData.push({ period: 0, dateStr: "-", interest: 0, accrued: 0, balance: principal });
+            window.globalYearlyData.push({ period: 0, dateStr: "-", interest: 0, accrued: 0, balance: principal });
 
             let startDateVal = (activeCalcTab === 'simple') ? document.getElementById('startDateTop').value : document.getElementById('startDateBottom').value;
             if (!startDateVal && (activeCalcTab === 'simple' || document.getElementById('bottomStartDateAnchor').style.display !== 'none')) {
@@ -1937,7 +1958,7 @@
                 if (rateType === 'daily') r_annual *= 365;
                 if (rateType === 'weekly') r_annual *= 52;
                 if (rateType === 'monthly') r_annual *= 12;
-                if (rateType === 'quarterly') r_annual *= 4; // ADDED QUARTERLY CALC
+                if (rateType === 'quarterly') r_annual *= 4; 
 
                 let n = parseInt(document.getElementById('forexCompFreq').value) || 12;
                 
@@ -1956,6 +1977,9 @@
                 let totInt = 0;
                 
                 for(let i=1; i<=totalMonthsLoop; i++) {
+                    let fDate = new Date(startDate);
+                    fDate.setMonth(startDate.getMonth() + i);
+
                     if (pmt > 0) {
                         if (pmtFreq === 12) {
                             currentBal += pmt; totDep += pmt;
@@ -1975,11 +1999,11 @@
                     currentBal += intEarned;
 
                     interestThisYear += intEarned;
-                    window.globalMonthlyData.push({ period: i, interest: intEarned, accrued: totInt, balance: currentBal });
+                    window.globalMonthlyData.push({ period: i, dateStr: formatTableDate(fDate, 'monthly'), interest: intEarned, accrued: totInt, balance: currentBal });
                     
                     if(i % 12 === 0 || i === totalMonthsLoop) {
                         currentYearNum++;
-                        window.globalYearlyData.push({ period: currentYearNum, interest: interestThisYear, accrued: totInt, balance: currentBal });
+                        window.globalYearlyData.push({ period: currentYearNum, dateStr: formatTableDate(fDate, 'yearly'), interest: interestThisYear, accrued: totInt, balance: currentBal });
                         interestThisYear = 0;
                     }
                 }
@@ -2052,7 +2076,7 @@
 
                 let dailyRate = rateInput / 100;
                 if(rateType === 'monthly') dailyRate = (rateInput / 100) / 30.4167;
-                if(rateType === 'quarterly') dailyRate = (rateInput / 100) / 91.25; // ADDED QUARTERLY CALC
+                if(rateType === 'quarterly') dailyRate = (rateInput / 100) / 91.25; 
                 if(rateType === 'yearly') dailyRate = (rateInput / 100) / 365;
                 if(rateType === 'weekly') dailyRate = (rateInput / 100) / 7;
 
@@ -2204,26 +2228,26 @@
                     
                     let displayBalance = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
-                    // Daily Data Push
-                    window.globalDailyData.push({ period: i, interest: interestToday, accrued: accruedInterestTotal, balance: displayBalance });
+                    // Daily Data Push (Exact format calculation)
+                    window.globalDailyData.push({ period: i, dateStr: formatTableDate(currentDate, 'daily'), interest: interestToday, accrued: accruedInterestTotal, balance: displayBalance });
 
                     // Weekly Data Push
                     if (i % 7 === 0 || i === totalDays) {
                         currentWeekNum++;
-                        window.globalWeeklyData.push({ period: currentWeekNum, interest: interestThisWeek, accrued: accruedInterestTotal, balance: displayBalance });
+                        window.globalWeeklyData.push({ period: currentWeekNum, dateStr: formatTableDate(currentDate, 'weekly'), interest: interestThisWeek, accrued: accruedInterestTotal, balance: displayBalance });
                         interestThisWeek = 0;
                     }
 
                     // Monthly Data Push
                     if (i % 30 === 0 || i === totalDays) {
                         currentMonthNum++;
-                        window.globalMonthlyData.push({ period: currentMonthNum, interest: interestThisMonth, accrued: accruedInterestTotal, balance: displayBalance });
+                        window.globalMonthlyData.push({ period: currentMonthNum, dateStr: formatTableDate(currentDate, 'monthly'), interest: interestThisMonth, accrued: accruedInterestTotal, balance: displayBalance });
                         interestThisMonth = 0;
                     }
                     // Yearly Data Push
                     if (i % 365 === 0 || i === totalDays) {
                         currentYearNum++;
-                        window.globalYearlyData.push({ period: currentYearNum, interest: interestThisYear, accrued: accruedInterestTotal, balance: displayBalance });
+                        window.globalYearlyData.push({ period: currentYearNum, dateStr: formatTableDate(currentDate, 'yearly'), interest: interestThisYear, accrued: accruedInterestTotal, balance: displayBalance });
                         interestThisYear = 0;
                     }
                 }
