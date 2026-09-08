@@ -1098,8 +1098,10 @@
                     <div>
                         <span class="breakdown-choice-label">Breakdown choice</span>
                         <div class="breakdown-toggle">
-                            <button type="button" class="brk-btn" id="btnBreakdownMonthly" onclick="renderTable('monthly')">monthly</button>
-                            <button type="button" class="brk-btn active" id="btnBreakdownYearly" onclick="renderTable('yearly')">yearly</button>
+                            <button type="button" class="brk-btn" id="btnBreakdownDaily" onclick="renderTable('daily')" style="padding: 8px 10px; font-size: 13px;">daily</button>
+                            <button type="button" class="brk-btn" id="btnBreakdownWeekly" onclick="renderTable('weekly')" style="padding: 8px 10px; font-size: 13px;">weekly</button>
+                            <button type="button" class="brk-btn" id="btnBreakdownMonthly" onclick="renderTable('monthly')" style="padding: 8px 10px; font-size: 13px;">monthly</button>
+                            <button type="button" class="brk-btn active" id="btnBreakdownYearly" onclick="renderTable('yearly')" style="padding: 8px 10px; font-size: 13px;">yearly</button>
                         </div>
                     </div>
                     <div class="table-icons">
@@ -1812,6 +1814,8 @@
         function triggerHaptic() { if (navigator.vibrate) navigator.vibrate(50); }
 
         // 🔥 GLOBALS FOR NEW TABLE DESIGN 🔥
+        window.globalDailyData = [];
+        window.globalWeeklyData = [];
         window.globalMonthlyData = [];
         window.globalYearlyData = [];
         window.breakdownChoice = 'yearly';
@@ -1824,10 +1828,20 @@
 
         window.renderTable = function(choice) {
             window.breakdownChoice = choice;
+            document.getElementById('btnBreakdownDaily').classList.remove('active');
+            document.getElementById('btnBreakdownWeekly').classList.remove('active');
             document.getElementById('btnBreakdownMonthly').classList.remove('active');
             document.getElementById('btnBreakdownYearly').classList.remove('active');
             
-            if(choice === 'monthly') {
+            if(choice === 'daily') {
+                document.getElementById('btnBreakdownDaily').classList.add('active');
+                document.getElementById('tableBreakdownTitle').innerText = "Daily breakdown";
+                document.getElementById('thPeriod').innerText = "Day";
+            } else if(choice === 'weekly') {
+                document.getElementById('btnBreakdownWeekly').classList.add('active');
+                document.getElementById('tableBreakdownTitle').innerText = "Weekly breakdown";
+                document.getElementById('thPeriod').innerText = "Week";
+            } else if(choice === 'monthly') {
                 document.getElementById('btnBreakdownMonthly').classList.add('active');
                 document.getElementById('tableBreakdownTitle').innerText = "Monthly breakdown";
                 document.getElementById('thPeriod').innerText = "Month";
@@ -1837,13 +1851,22 @@
                 document.getElementById('thPeriod').innerText = "Year";
             }
 
-            let data = (choice === 'monthly') ? window.globalMonthlyData : window.globalYearlyData;
+            let data;
+            if(choice === 'daily') data = window.globalDailyData;
+            else if(choice === 'weekly') data = window.globalWeeklyData;
+            else if(choice === 'monthly') data = window.globalMonthlyData;
+            else data = window.globalYearlyData;
+
             let tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
             
             data.forEach((row) => {
                 let tr = document.createElement('tr');
                 if(choice === 'monthly' && row.period > 0 && row.period % 12 === 0) {
+                    tr.classList.add('row-highlight');
+                } else if(choice === 'weekly' && row.period > 0 && row.period % 52 === 0) {
+                    tr.classList.add('row-highlight');
+                } else if(choice === 'daily' && row.period > 0 && row.period % 365 === 0) {
                     tr.classList.add('row-highlight');
                 }
                 
@@ -1878,14 +1901,22 @@
             let totalInterest = 0;
             let totalDeposits = principal;
             
+            window.globalDailyData = [];
+            window.globalWeeklyData = [];
             window.globalMonthlyData = [];
             window.globalYearlyData = [];
+            
+            let interestThisWeek = 0;
             let interestThisMonth = 0;
             let interestThisYear = 0;
             let accruedInterestTotal = 0;
+            
+            let currentWeekNum = 0;
             let currentMonthNum = 0;
             let currentYearNum = 0;
 
+            window.globalDailyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
+            window.globalWeeklyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
             window.globalMonthlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
             window.globalYearlyData.push({ period: 0, interest: 0, accrued: 0, balance: principal });
 
@@ -1956,6 +1987,8 @@
                 currentBalance = currentBal;
                 totalInterest = totInt;
                 totalDeposits = totDep;
+                window.globalDailyData = [...window.globalMonthlyData];
+                window.globalWeeklyData = [...window.globalMonthlyData];
             } 
             else {
                 const reinvestRate = parseFloat(document.getElementById('reinvestRate').value) / 100;
@@ -2146,6 +2179,7 @@
                     monthlyInterestAccrued += interestToday;
                     yearlyInterestAccrued += interestToday;
                     
+                    interestThisWeek += interestToday;
                     interestThisMonth += interestToday;
                     interestThisYear += interestToday;
                     accruedInterestTotal += interestToday;
@@ -2170,11 +2204,23 @@
                     
                     let displayBalance = (activeCalcTab === 'simple') ? (totalDeposits + totalInterest) : currentBalance;
 
+                    // Daily Data Push
+                    window.globalDailyData.push({ period: i, interest: interestToday, accrued: accruedInterestTotal, balance: displayBalance });
+
+                    // Weekly Data Push
+                    if (i % 7 === 0 || i === totalDays) {
+                        currentWeekNum++;
+                        window.globalWeeklyData.push({ period: currentWeekNum, interest: interestThisWeek, accrued: accruedInterestTotal, balance: displayBalance });
+                        interestThisWeek = 0;
+                    }
+
+                    // Monthly Data Push
                     if (i % 30 === 0 || i === totalDays) {
                         currentMonthNum++;
                         window.globalMonthlyData.push({ period: currentMonthNum, interest: interestThisMonth, accrued: accruedInterestTotal, balance: displayBalance });
                         interestThisMonth = 0;
                     }
+                    // Yearly Data Push
                     if (i % 365 === 0 || i === totalDays) {
                         currentYearNum++;
                         window.globalYearlyData.push({ period: currentYearNum, interest: interestThisYear, accrued: accruedInterestTotal, balance: displayBalance });
