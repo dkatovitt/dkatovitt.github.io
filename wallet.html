@@ -106,7 +106,7 @@
         .wallet-dropdown-list { display: none; background: transparent; }
         .wallet-dropdown-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
         .wallet-dropdown-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); color: #e6c875;}
-        .wallet-dropdown-list a.normal-link.active { padding-left: 40px; background: rgba(230,200,117,0.1); color: #e6c875; font-weight: 900;}
+        .wallet-dropdown-list a.normal-link.active { padding-left: 40px; background: rgba(230,200,117,0.1); color: #e6c875; font-weight: 900; border-left: 3px solid #e6c875;}
 
         /* 🌟 WALLET PAGE CSS & TABS 🌟 */
         .wallet-section { padding: 130px 20px 60px 20px; max-width: 900px; margin: 0 auto; min-height: 70vh; }
@@ -396,30 +396,54 @@
             <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
         </div>
         
+        <!-- 🔥 STATIC SIDEBAR MENU (UPDATED EXACT ORDER) 🔥 -->
         <div class="sidebar-menu">
             <div class="menu-heading">Main</div>
             
-            <!-- 🔥 TOGGLE FIX: My ATVT Wallet Dropdown 🔥 -->
+            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+            
+            <!-- My ATVT Wallet Dropdown -->
             <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer; color: #e6c875;">
                 <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
-                <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+                <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px; transform: rotate(180deg);"></i>
             </a>
             
-            <div id="walletMenuList" class="wallet-dropdown-list">
+            <div id="walletMenuList" class="wallet-dropdown-list" style="display: block;">
                 <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-tachometer-alt"></i> Dashboard</div></a>
                 <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
                 <a href="javascript:void(0)" onclick="switchTab('tab-receive')" class="normal-link wallet-menu-link" id="link-tab-receive"><div class="link-text"><i class="fas fa-qrcode"></i> Received</div></a>
                 <a href="javascript:void(0)" onclick="switchTab('tab-history')" class="normal-link wallet-menu-link" id="link-tab-history"><div class="link-text"><i class="fas fa-history"></i> Trans. History</div></a>
-                <!-- Added Reward Option to Wallet Dropdown -->
-                <a href="reward.html" class="normal-link"><div class="link-text"><i class="fas fa-cube"></i> DK ATVT Coin Reward</div></a>
             </div>
+
+            <!-- Reward & Referrals Outside Dropdown -->
+            <a href="reward.html" class="normal-link"><div class="link-text"><i class="fas fa-cube"></i> DK ATVT Coin Reward</div></a>
+            <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
 
             <div class="menu-divider"></div>
             <div class="menu-heading">Explore Ecosystem</div>
             <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
-            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+            <a href="search.html" class="normal-link"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+            <a href="calculator.html" class="normal-link"><div class="link-text"><i class="fas fa-calculator"></i> DK Calculator</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
             
+            <!-- Upcoming Projects Dropdown -->
+            <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;">
+                <div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div>
+                <i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
+            </a>
+            <div id="upcomingProjectsList" class="upcoming-list" style="display: none;">
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+            </div>
+
             <div class="menu-divider"></div>
             <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
             <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
@@ -746,7 +770,7 @@
                 <button id="closeChatbot">&times;</button>
             </div>
             <div class="chatbot-body" id="chatbotBody">
-                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में কার্যকলাপ स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
             </div>
             <div class="chatbot-options">
                 <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
@@ -1121,6 +1145,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, collection, query, where, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAo0NKae4xEElyITxPyzKN0sdDaThyX5PA",
@@ -1133,36 +1158,96 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // Fetch User Name and Photo
+        onAuthStateChanged(auth, async (user) => {
+            if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
+                
                 let fullName = user.displayName || "VIP Member";
-                let userName = fullName.trim().split(' ')[0]; // Only first name
+                let userName = fullName.trim().split(' ')[0]; 
                 let userPhoto = user.photoURL ? user.photoURL : 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
-                // 🔥 GENERATE 10-CHARACTER MIXED CASE DK ID 🔥
-                let uidSnippet = "";
-                if (user.uid) {
-                    uidSnippet = user.uid.substring(0, 10);
-                } else {
-                    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                    for(let i=0; i<10; i++) uidSnippet += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
+                let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
-                // Update Sidebar Profile
                 document.getElementById('sidebarProfileName').innerText = fullName;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
-                document.getElementById('sidebarDkId').innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
-                document.getElementById('sidebarVipBadge').style.display = 'inline-block';
                 
-                // Show Logout, Hide Login, Show Sidebar Wallet
-                document.getElementById('sidebarLogoutBtn').style.display = 'flex';
-                document.getElementById('sidebarLoginBtn').style.display = 'none';
-                if(document.getElementById('sidebarWalletArea')) document.getElementById('sidebarWalletArea').style.display = 'block';
+                const dkIdBadge = document.getElementById('sidebarDkId');
+                if(dkIdBadge) {
+                    dkIdBadge.innerHTML = `<i class="fas fa-id-card"></i> ${userDkId}`;
+                    dkIdBadge.style.display = 'inline-block';
+                }
+                
+                const vipBadge = document.getElementById('sidebarVipBadge');
+                if(vipBadge) vipBadge.style.display = 'inline-block';
+                
+                const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+                const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+                const sidebarFooterArea = document.getElementById('sidebarFooterArea');
+                
+                if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
+                if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
+                if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
 
-                // Ensure Top Header Shows Dropdown Properly
+                let adminButtonHTML = "";
+                if (user.email === "dipakceo@dkatovitt.com") {
+                    adminButtonHTML = `
+                        <a href="admin-panel.html" class="normal-link" style="color: #ff4d4d; background: rgba(255,77,77,0.1); border-left: 3px solid #ff4d4d; margin-top: 5px;">
+                            <div class="link-text"><i class="fas fa-user-shield" style="color: #ff4d4d;"></i> <span style="font-weight: 900; letter-spacing: 1px;">SUPER ADMIN</span></div>
+                        </a>
+                    `;
+                }
+
+                const sidebarMenu = document.querySelector('.sidebar-menu');
+                if (sidebarMenu) {
+                    sidebarMenu.innerHTML = `
+                        <div class="menu-heading">Main</div>
+                        <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                        
+                        <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer; color: #e6c875;">
+                            <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
+                            <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px; transform: rotate(180deg);"></i>
+                        </a>
+                        
+                        <div id="walletMenuList" class="wallet-dropdown-list" style="display: block;">
+                            <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-tachometer-alt"></i> Dashboard</div></a>
+                            <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
+                            <a href="javascript:void(0)" onclick="switchTab('tab-receive')" class="normal-link wallet-menu-link" id="link-tab-receive"><div class="link-text"><i class="fas fa-qrcode"></i> Received</div></a>
+                            <a href="javascript:void(0)" onclick="switchTab('tab-history')" class="normal-link wallet-menu-link" id="link-tab-history"><div class="link-text"><i class="fas fa-history"></i> Trans. History</div></a>
+                        </div>
+
+                        <a href="reward.html" class="normal-link"><div class="link-text"><i class="fas fa-cube"></i> DK ATVT Coin Reward</div></a>
+                        <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
+                        ${adminButtonHTML}
+                        <div class="menu-divider"></div>
+                        <div class="menu-heading">Explore Ecosystem</div>
+                        <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a href="search.html" class="normal-link"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        <a href="calculator.html" class="normal-link"><div class="link-text"><i class="fas fa-calculator"></i> DK Calculator</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
+                        
+                        <a class="normal-link" onclick="toggleUpcomingProjects()" style="cursor: pointer;"><div class="link-text"><i class="fas fa-rocket"></i> Upcoming Projects</div><i class="fas fa-chevron-down" id="upcomingArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i></a>
+                        <div id="upcomingProjectsList" class="upcoming-list" style="display: none;">
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
+                            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                        </div>
+                        <div class="menu-divider"></div>
+                        <a href="ceo.html" class="normal-link"><div class="link-text"><i class="fas fa-user-tie"></i> CEO</div></a>
+                        <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
+                        <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
+                        <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                    `;
+                }
+
                 const headerRightArea = document.getElementById('headerRightArea');
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
@@ -1185,11 +1270,15 @@
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                <a href="reward.html"><i class="fas fa-cube" style="color:#e6c875; width:16px;"></i> Reward System</a>
                                 <a href="wallet.html" style="color:#e6c875;"><i class="fas fa-wallet" style="width:16px;"></i> My Wallet</a>
+                                <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
                                 <div class="dropdown-divider"></div>
                                 <div class="section-title">Ecosystem Quick Links</div>
                                 <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
                                 <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
+                                <a href="search.html"><i class="fas fa-search" style="color:#00a8ff; width:16px;"></i> DK Search (Live)</a>
+                                <a href="calculator.html"><i class="fas fa-calculator" style="color:#e6c875; width:16px;"></i> DK Calculator (Live)</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout Securely</a>
                             </div>
@@ -1197,25 +1286,19 @@
                     `;
                 }
 
-                // Update Dashboard Extended Wallet Address AND QR CODE
-                if(document.getElementById('dashInputDkId')) {
-                    document.getElementById('dashInputDkId').value = userDkId;
-                    // Dynamically generate QR code for DK-ID
-                    document.getElementById('receiveQrCode').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${userDkId}&color=111111&bgcolor=ffffff`;
-                }
-
-                // Enable Logout Action anywhere it's placed
-                document.querySelectorAll('.logout-action').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
-                            signOut(auth).then(() => {
-                                window.location.href = "auth.html";
-                            });
-                        }
+                setTimeout(() => {
+                    document.querySelectorAll('.logout-action').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
+                                signOut(auth).then(() => {
+                                    window.location.href = "auth.html";
+                                });
+                            }
+                        });
                     });
-                });
+                }, 500);
+
             } else {
-                // If not logged in, redirect to login page for safety
                 window.location.href = "auth.html";
             }
         });
