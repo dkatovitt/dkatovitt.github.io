@@ -220,7 +220,10 @@
         .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
+        
+        /* 🔥 FOOTER TEXT CENTER FIX 🔥 */
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
+        .tseries-footer-bottom p { text-align: center; margin: 0; width: 100%; }
 
         /* ==========================================================
            🔥 EXACT SAME CHATBOT & FLOATING BUTTONS CSS (FROM WALLET.HTML) 🔥
@@ -235,6 +238,7 @@
         @keyframes pulse-whatsapp { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @keyframes bounce-chat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
+        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
         /* 🔥 MOBILE VIEW OVERRIDES - FIX: EXACT 50px FLOATING BUTTONS 🔥 */
         @media (max-width: 768px) {
@@ -280,7 +284,6 @@
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         /* 🔥 VIP CHATBOT OVERLAY CSS 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
@@ -507,7 +510,6 @@
                 <p class="card-desc">Calculate your daily compound interest, crypto APY, and staking rewards.</p>
             </a>
 
-            <!-- 🔥 UPDATED TO MATCH WALLET.HTML's showUpcomingProjectAlert() 🔥 -->
             <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-link"></i></div>
@@ -578,7 +580,22 @@
                 <p class="card-desc">Play-to-earn crypto gaming platform. Play thrilling games and earn ATVT.</p>
             </a>
 
-            <!-- 🔥 DK MEDIA HOUSE CARD ADDED TO DASHBOARD GRID 🔥 -->
+            <!-- 🔥 NEW GRID CARD: DK RIDES 🔥 -->
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-car"></i></div>
+                <h3 class="card-title">DK Rides</h3>
+                <p class="card-desc">A revolutionary smart ride-sharing and cab-booking platform ensuring safe travel.</p>
+            </a>
+
+            <!-- 🔥 NEW GRID CARD: DK DEALPAKKI 🔥 -->
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="card-title">DK DealPakki</h3>
+                <p class="card-desc">A smart peer-to-peer marketplace to buy, sell, or trade items seamlessly.</p>
+            </a>
+
             <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')" class="business-card soon-card">
                 <div class="card-badge">Soon</div>
                 <div class="card-icon"><i class="fas fa-tv"></i></div>
@@ -632,7 +649,6 @@
                     </ul>
                 </div>
                 
-                <!-- 🔥 MY ACCOUNT SECTION MOVED HERE 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>My Account</h4>
                     <ul>
@@ -675,7 +691,6 @@
                     </ul>
                 </div>
 
-                <!-- 🔥 CONNECT WITH US SECTION MOVED HERE 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
                     <div class="footer-social-row">
@@ -691,6 +706,7 @@
             
         </div>
         
+        <!-- 🔥 FIX: TEXT-ALIGN CENTER FOR FOOTER TEXT WRAING 🔥 -->
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK ATOVITT Global Tech and Entertainment Empire</span>. All Rights Reserved.</p>
         </div>
@@ -1195,13 +1211,11 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                     `;
                 }
 
-                // 🔥 FIREBASE SIDEBAR MENU INJECTION (MATCHES WALLET EXACTLY) 🔥
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">My Account</div>
-                        
-                        <a href="index.html" class="normal-link active" style="background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                        <a href="index.html" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         
                         <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer;">
                             <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
@@ -1218,9 +1232,8 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                         <a href="reward.html" class="normal-link"><div class="link-text"><i class="fas fa-cube"></i> DK ATVT Coin Reward</div></a>
                         <a href="referral.html" class="normal-link"><div class="link-text"><i class="fas fa-network-wired"></i> My Referrals</div></a>
                         ${adminButtonHTML}
-                        
                         <div class="menu-divider"></div>
-                        <div class="menu-heading" style="margin-top: 8px;">Explore Ecosystem</div>
+                        <div class="menu-heading">Explore Ecosystem</div>
                         <a href="movie.html" class="normal-link"><div class="link-text"><i class="fas fa-film"></i> DK Film Production</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="social.html" class="normal-link"><div class="link-text"><i class="fas fa-users"></i> DK Connect (Social)</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
                         <a href="search.html" class="normal-link"><div class="link-text"><i class="fas fa-search"></i> DK Search</div><span class="live-tag"><i class="fas fa-circle" style="font-size:6px; color:#25d366;"></i> LIVE</span></a>
@@ -1272,7 +1285,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
-                                <a href="reward.html"><i class="fas fa-cube" style="width:16px;"></i> Reward System</a>
+                                <a href="reward.html"><i class="fas fa-cube" style="color:#e6c875; width:16px;"></i> Reward System</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
                                 <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
                                 <div class="dropdown-divider"></div>
