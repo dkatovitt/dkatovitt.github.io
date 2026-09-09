@@ -208,7 +208,7 @@
         .chatbot-toggler { position: fixed; bottom: 115px; right: 40px; background: #e6c875; color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10000; transition: 0.3s; }
         .chatbot-toggler:hover { transform: scale(1.1); }
         .floating-install-btn { position: fixed; width: 60px; height: 60px; bottom: 190px; right: 40px; background-color: #00a8ff; color: #FFF; border-radius: 50px; text-align: center; font-size: 26px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; text-decoration: none; transition: 0.3s; }
-        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); }
+        .floating-install-btn:hover { background-color: #008cd9; color: #fff; transform: scale(1.1); animation: none; }
 
         @media (max-width: 768px) { 
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
@@ -508,8 +508,8 @@
 
     <!-- 🔥 REWARD DIGIT & 50% SPEED BOOST LOGIC 🔥 -->
     <script>
-        // Parameters:
-        const BASE_RATE = 0.0000001; // Rate per second (offline)
+        // Parameters: (SPEED HALVED AS REQUESTED)
+        const BASE_RATE = 0.00000005; // Base Rate per second (offline speed)
         const BOOST_RATE = BASE_RATE * 1.5; // +50% rate per second when user is actively browsing
         const DURATION_24H = 24 * 60 * 60 * 1000; // 24 Hours in ms
 
