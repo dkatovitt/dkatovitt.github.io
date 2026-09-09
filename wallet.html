@@ -61,17 +61,14 @@
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
         
-        /* Updated Menu Close Button from index.html */
         .close-menu-btn { position: absolute; top: 12px; right: 15px; background: #222; border: 1px solid #444; width: 32px; height: 32px; border-radius: 50%; color: #ccc; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 10; display: flex; align-items: center; justify-content: center; }
         .close-menu-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: rotate(90deg); }
         
-        /* Updated Menu Translate Style from index.html */
         .custom-translate { padding: 10px 55px 10px 20px; border-bottom: 1px solid #222; }
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 6px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        /* Updated Menu Profile Area Style from index.html */
         .sidebar-profile { padding: 12px 20px 12px 20px; text-align: center; border-bottom: 1px solid #222; background: #111; position: relative; }
         
         .sidebar-profile img { width: 60px; height: 60px; border-radius: 50%; border: 3px solid #e6c875; padding: 3px; object-fit: cover; margin-bottom: 4px; box-shadow: 0 0 15px rgba(230,200,117,0.3); }
@@ -83,7 +80,6 @@
         .profile-login-btn { background: #e6c875; border: none; color: #000; padding: 8px 20px; border-radius: 30px; font-size: 12px; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; text-decoration: none; margin-top: 4px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(230,200,117,0.4); }
         .profile-login-btn:hover { background: #d4b561; transform: scale(1.05); }
 
-        /* Updated Menu List Area from index.html */
         .sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0 80px 0; overscroll-behavior-y: none; }
         .sidebar-menu::-webkit-scrollbar { width: 4px; }
         .sidebar-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -1002,6 +998,9 @@
                 botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
                 botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+                // 🔥 DK SEARCH & CALCULATOR ADDED HERE 🔥
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='search.html'"><i class="fas fa-search"></i> DK Search</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='calculator.html'"><i class="fas fa-calculator"></i> DK Calculator</button>`;
             } 
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
