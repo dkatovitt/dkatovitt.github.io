@@ -402,13 +402,13 @@
             
             <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
             
-            <!-- My ATVT Wallet Dropdown -->
+            <!-- My ATVT Wallet Dropdown (FIXED DEFAULT OPEN ISSUE) -->
             <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer; color: #e6c875;">
                 <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
-                <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px; transform: rotate(180deg);"></i>
+                <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
             </a>
             
-            <div id="walletMenuList" class="wallet-dropdown-list" style="display: block;">
+            <div id="walletMenuList" class="wallet-dropdown-list" style="display: none;">
                 <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-tachometer-alt"></i> Dashboard</div></a>
                 <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
                 <a href="javascript:void(0)" onclick="switchTab('tab-receive')" class="normal-link wallet-menu-link" id="link-tab-receive"><div class="link-text"><i class="fas fa-qrcode"></i> Received</div></a>
@@ -794,16 +794,29 @@
     </div>
 
     <script>
-        // 🔥 TOGGLE LOGIC FOR WALLET MENU 🔥
+        // 🔥 TOGGLE LOGIC FOR WALLET MENU (FIXED) 🔥
         window.toggleWalletMenu = function() {
             var list = document.getElementById("walletMenuList");
             var arrow = document.getElementById("walletMenuArrow");
             if (list.style.display === "none" || list.style.display === "") {
                 list.style.display = "block"; 
-                arrow.style.transform = "rotate(180deg)"; 
+                if(arrow) arrow.style.transform = "rotate(180deg)"; 
             } else {
                 list.style.display = "none"; 
-                arrow.style.transform = "rotate(0deg)"; 
+                if(arrow) arrow.style.transform = "rotate(0deg)"; 
+            }
+        };
+
+        // 🔥 TOGGLE LOGIC FOR UPCOMING PROJECTS (ADDED NEWLY) 🔥
+        window.toggleUpcomingProjects = function() {
+            var list = document.getElementById("upcomingProjectsList");
+            var arrow = document.getElementById("upcomingArrow");
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block"; 
+                if(arrow) arrow.style.transform = "rotate(180deg)"; 
+            } else {
+                list.style.display = "none"; 
+                if(arrow) arrow.style.transform = "rotate(0deg)"; 
             }
         };
 
@@ -1201,16 +1214,17 @@
 
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
+                    // YAHAN PAR BHI WALLET DROPDOWN KO FIX KIYA GAYA HAI (DISPLAY: NONE)
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">Main</div>
                         <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         
                         <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer; color: #e6c875;">
                             <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
-                            <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px; transform: rotate(180deg);"></i>
+                            <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
                         </a>
                         
-                        <div id="walletMenuList" class="wallet-dropdown-list" style="display: block;">
+                        <div id="walletMenuList" class="wallet-dropdown-list" style="display: none;">
                             <a href="javascript:void(0)" onclick="switchTab('tab-home')" class="normal-link wallet-menu-link active" id="link-tab-home"><div class="link-text"><i class="fas fa-tachometer-alt"></i> Dashboard</div></a>
                             <a href="javascript:void(0)" onclick="switchTab('tab-send')" class="normal-link wallet-menu-link" id="link-tab-send"><div class="link-text"><i class="fas fa-paper-plane"></i> Send ATVT</div></a>
                             <a href="javascript:void(0)" onclick="switchTab('tab-receive')" class="normal-link wallet-menu-link" id="link-tab-receive"><div class="link-text"><i class="fas fa-qrcode"></i> Received</div></a>
