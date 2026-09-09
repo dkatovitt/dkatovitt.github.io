@@ -59,6 +59,21 @@
         .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
         .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
 
+        @media (max-width: 768px) {
+            .header { height: 70px !important; }
+            .header .container { padding-left: 8px !important; padding-right: 8px !important; }
+            .header-left { gap: 8px !important; }
+            .desktop-logo-img { height: 50px !important; transform: scale(1.7); margin-right: 15px !important; }
+            .desktop-logo-text { font-size: 18px !important; letter-spacing: 0px !important; }
+            .desktop-logo-sub { font-size: 7px !important; letter-spacing: 0.5px !important; display: block !important; white-space: nowrap; }
+            #menuBtn { font-size: 22px !important; }
+            .login-btn-header { font-size: 12px !important; padding: 5px 12px !important; }
+            .hide-on-mobile { display: none !important; }
+            .show-on-mobile { display: inline !important; }
+            .profile-dropdown-container { max-width: 120px; }
+            .profile-name-btn { padding: 6px 12px; font-size: 11px; }
+        }
+
         /* 🔥 VIP SIDE MENU CSS 🔥 */
         .side-menu { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; background: #111; z-index: 100000; transition: 0.3s; display: flex; flex-direction: column; box-shadow: 2px 0 15px rgba(0,0,0,0.9); border-right: 1px solid #e6c875; }
         .side-menu.active { left: 0; }
@@ -223,6 +238,9 @@
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+
+            /* 🔥 FIX FOR FLOATING BUTTONS HIDING FOOTER ICONS 🔥 */
+            .tseries-footer { padding-bottom: 220px !important; }
         }
 
         /* 🔥 UPCOMING PROJECTS MODAL (FROM WALLET.HTML) 🔥 */
@@ -232,6 +250,8 @@
         .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
         .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
         .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
         .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
         .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
         .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
@@ -370,17 +390,17 @@
             </a>
             
             <div id="upcomingProjectsList" class="upcoming-list">
-                <a href="javascript:void(0)" onclick="showUpcomingProject('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProject('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProject('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProject('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProject('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProject('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-link" style="color: #666;"></i> DK Atovitt Chain / Scan</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comment-dots" style="color: #666;"></i> DK Connect Messenger</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-comments" style="color: #666;"></i> DK Chat</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-gamepad" style="color: #666;"></i> DK Games</div><span class="soon-tag">(Soon)</span></a>
+                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-tv" style="color: #666;"></i> DK Media House</div><span class="soon-tag">(Soon)</span></a>
             </div>
 
             <div class="menu-divider"></div>
@@ -520,6 +540,47 @@
                 </div>
                 
                 <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>My Account</h4>
+                    <ul>
+                        <li><a href="index.html">VIP Dashboard</a></li>
+                        <li><a href="wallet.html">My Wallet</a></li>
+                        <li><a href="referral.html" style="color: #e6c875;">My Referrals</a></li>
+                        <li><a href="auth.html">Login / Signup</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-links-col">
+                <div class="tseries-footer-col">
+                    <h4>Live Ecosystem</h4>
+                    <ul style="margin-bottom: 25px;">
+                        <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
+                        <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
+                        <li><a href="search.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Search</a></li>
+                        <li><a href="calculator.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Calculator</a></li>
+                    </ul>
+                </div>
+                
+                <div class="tseries-footer-col" style="margin-top: 30px;">
+                    <h4>Upcoming Projects</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')">DK Rides (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')">DK DealPakki (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')">DK Media House (Soon)</a></li>
+                    </ul>
+                </div>
+
+                <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Connect With Us</h4>
                     <div class="footer-social-row">
                         <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
@@ -532,46 +593,10 @@
                 </div>
             </div>
             
-            <div class="footer-links-col">
-                <div class="tseries-footer-col">
-                    <h4>Live Ecosystem</h4>
-                    <ul style="margin-bottom: 25px;">
-                        <li><a href="movie.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Film</a></li>
-                        <li><a href="social.html"><i class="fas fa-circle" style="color:#25d366; font-size:7px;"></i> DK Connect</a></li>
-                    </ul>
-                </div>
-                
-                <div class="tseries-footer-col" style="margin-top: 30px;">
-                    <h4>Upcoming Projects</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')">DK Browser (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
-                    </ul>
-                </div>
-                
-                <div class="tseries-footer-col" style="margin-top: 30px;">
-                    <h4>My Account</h4>
-                    <ul>
-                        <li><a href="index.html">VIP Dashboard</a></li>
-                        <li><a href="wallet.html">My Wallet</a></li>
-                        <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
-                    </ul>
-                </div>
-            </div>
-            
         </div>
         
         <div class="tseries-footer-bottom">
-            <p>&copy; 2026 <span class="notranslate">DK Atovitt Production House</span>. All Rights Reserved.</p>
+            <p>&copy; 2026 <span class="notranslate">DK ATOVITT Global Tech and Entertainment Empire</span>. All Rights Reserved.</p>
         </div>
     </footer>
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
@@ -701,7 +726,10 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
             'msg': { name: 'DK Connect Messenger', icon: 'fas fa-comment-dots', eng: 'A highly encrypted and seamless messaging app to stay connected with your loved ones.', hin: 'अपने प्रियजनों से जुड़े रहने के लिए एक अत्यधिक एन्क्रिप्टेड और सहज मैसेजिंग ऐप।' },
             'chat': { name: 'DK Chat', icon: 'fas fa-comments', eng: 'A vibrant community chat platform designed for global networking and entertainment.', hin: 'ग्लोबल नेटवर्किंग और मनोरंजन के लिए डिज़ाइन किया गया एक शानदार कम्युनिटी चैट प्लेटफॉर्म।' },
-            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' }
+            'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' },
+            'rides': { name: 'DK Rides', icon: 'fas fa-car', eng: 'A revolutionary smart ride-sharing and cab-booking platform ensuring safe, fast, and affordable travel.', hin: 'सुरक्षित, तेज़ और किफायती यात्रा सुनिश्चित करने वाला एक क्रांतिकारी स्मार्ट राइड-शेयरिंग और कैब-बुकिंग प्लेटफॉर्म।' },
+            'dealpakki': { name: 'DK DealPakki', icon: 'fas fa-handshake', eng: 'A smart peer-to-peer marketplace to buy, sell, or trade items seamlessly like never before.', hin: 'एक स्मार्ट P2P मार्केटप्लेस जहां आप अपने पुराने या नए सामानों को आसानी से खरीद, बेच या बदल सकते हैं।' },
+            'mediahouse': { name: 'DK Media House', icon: 'fas fa-tv', eng: 'Get ready for the ultimate digital media revolution! DK Media House is gearing up to bring you world-class entertainment, viral news, and exclusive content like never before.', hin: 'सबसे बड़े डिजिटल मीडिया रिवोल्यूशन के लिए तैयार हो जाइए! DK Media House जल्द ही आपके लिए विश्वस्तरीय मनोरंजन, वायरल खबरें और एक्सक्लूसिव कंटेंट लेकर आ रहा है।' }
         };
 
         function showUpcomingProjectAlert(id) {
@@ -715,6 +743,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             
             document.getElementById('customAlertOverlay').classList.add('active');
             document.body.style.overflow = 'hidden'; 
+            document.documentElement.style.overflow = 'hidden'; 
             
             const sideMenu = document.getElementById('sideMenu');
             const overlay = document.getElementById('overlay');
@@ -726,11 +755,13 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; 
+            document.documentElement.style.overflow = ''; 
         });
         document.getElementById('customAlertOverlay').addEventListener('click', (e) => {
             if(e.target === document.getElementById('customAlertOverlay')) {
                 document.getElementById('customAlertOverlay').classList.remove('active');
                 document.body.style.overflow = '';
+                document.documentElement.style.overflow = ''; 
             }
         });
 
@@ -850,9 +881,9 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
             const appModalOverlay = document.getElementById('appModalOverlay');
             const closeAppModal = document.getElementById('closeAppModal');
             if(openAppModal && appModalOverlay) {
-                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; });
-                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; });
-                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; } });
+                openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';});
+                closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; document.documentElement.style.overflow = '';});
+                appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; document.documentElement.style.overflow = '';} });
             }
         });
 
@@ -916,6 +947,8 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 botReply = "शानदार! DK ATOVITT Ecosystem में अभी यह प्रोजेक्ट्स 🔴 **LIVE** हैं। जानकारी के लिए नीचे क्लिक करें:<br><br>";
                 botReply += `<button class="bot-inline-btn" onclick="window.location.href='movie.html'"><i class="fas fa-film"></i> DK Film Production</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='social.html'"><i class="fas fa-users"></i> DK Connect (Social)</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='search.html'"><i class="fas fa-search"></i> DK Search</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="window.location.href='calculator.html'"><i class="fas fa-calculator"></i> DK Calculator</button>`;
             } 
             else if(type === 'Upcoming') {
                 userText = "Upcoming projects कौन से हैं?";
@@ -924,13 +957,15 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('rides')"><i class="fas fa-car"></i> DK Rides</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('dealpakki')"><i class="fas fa-handshake"></i> DK DealPakki</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mediahouse')"><i class="fas fa-tv"></i> DK Media House</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
