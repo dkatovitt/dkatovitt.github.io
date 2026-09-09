@@ -883,7 +883,10 @@
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
             document.getElementById('customAlertOverlay').classList.add('active');
+            
+            // 🔥 SCROLLING FIX: body and html both blocked
             document.body.style.overflow = 'hidden'; 
+            document.documentElement.style.overflow = 'hidden';
             
             // Close side menu if open
             const sideMenu = document.getElementById('sideMenu');
@@ -892,15 +895,17 @@
             if (overlay) overlay.classList.remove('active');
         }
 
-        // Close Upcoming Project Popups
+        // Close Upcoming Project Popups (🔥 SCROLLING FIX: body and html both released)
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; 
+            document.documentElement.style.overflow = '';
         });
         document.getElementById('customAlertOverlay').addEventListener('click', (e) => {
             if(e.target === document.getElementById('customAlertOverlay')) {
                 document.getElementById('customAlertOverlay').classList.remove('active');
                 document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
             }
         });
 
@@ -954,15 +959,15 @@
         closeMenu.addEventListener('click', closeSideMenu); 
         overlay.addEventListener('click', closeSideMenu);
 
-        // App Modal Logic
+        // App Modal Logic (🔥 Added safe scroll lock release for consistency)
         const openAppModal = document.getElementById('openAppModal');
         const appModalOverlay = document.getElementById('appModalOverlay');
         const closeAppModal = document.getElementById('closeAppModal');
 
         if(openAppModal && appModalOverlay) {
-            openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); document.body.style.overflow = 'hidden';});
-            closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); document.body.style.overflow = '';});
-            appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; }});
+            openAppModal.addEventListener('click', (e) => { e.preventDefault(); appModalOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; document.documentElement.style.overflow = 'hidden';});
+            closeAppModal.addEventListener('click', () => { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; document.documentElement.style.overflow = '';});
+            appModalOverlay.addEventListener('click', (e) => { if(e.target === appModalOverlay) { appModalOverlay.classList.remove('active'); document.body.style.overflow = ''; document.documentElement.style.overflow = ''; }});
         }
 
         // ======================================================================
