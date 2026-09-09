@@ -449,12 +449,14 @@
             <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
             <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
             <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
-        </div>
-        
-        <div class="sidebar-footer" id="sidebarFooterArea" style="display: none;">
-            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
-                <i class="fas fa-sign-out-alt"></i> Logout Securely
-            </button>
+
+            <!-- LOGOUT MOVED HERE (Under Contact Us) -->
+            <div class="sidebar-footer" id="sidebarFooterArea" style="display: none; border-top: none; padding-top: 10px;">
+                <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout Securely
+                </button>
+            </div>
+            
         </div>
     </div>
     <div id="overlay"></div>
@@ -1214,7 +1216,6 @@
 
                 const sidebarMenu = document.querySelector('.sidebar-menu');
                 if (sidebarMenu) {
-                    // YAHAN PAR BHI WALLET DROPDOWN KO FIX KIYA GAYA HAI (DISPLAY: NONE)
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">Main</div>
                         <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
@@ -1259,6 +1260,12 @@
                         <a href="company.html" class="normal-link"><div class="link-text"><i class="fas fa-building"></i> Company</div></a>
                         <a href="news.html" class="normal-link"><div class="link-text"><i class="fas fa-newspaper"></i> News</div></a>
                         <a href="contact.html" class="normal-link"><div class="link-text"><i class="fas fa-phone-alt"></i> Contact Us</div></a>
+                        
+                        <div class="sidebar-footer" id="sidebarFooterArea" style="display: block; border-top: none; padding-top: 10px;">
+                            <button class="logout-btn-menu logout-action" id="sidebarLogoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout Securely
+                            </button>
+                        </div>
                     `;
                 }
 
