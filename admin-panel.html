@@ -16,8 +16,18 @@
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
-        /* 🔥 ADMIN LAYOUT 🔥 */
-        #adminMainScreen { height: 100vh; display: flex; flex-direction: column; }
+        /* 🔥 LOGIN OVERLAY CSS 🔥 */
+        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.7); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: 0.4s ease; }
+        .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.9); position: relative;}
+        .login-box h2 { color: #e6c875; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        .login-box input:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
+        .login-box button { width: 100%; background: #e6c875; color: #000; padding: 14px; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-size: 14px; }
+        .login-box button:hover { background: #d4b561; transform: translateY(-2px); }
+
+        /* 🔥 MAIN ADMIN LAYOUT 🔥 */
+        #adminMainScreen { height: 100vh; display: flex; flex-direction: column; filter: blur(10px); pointer-events: none; transition: filter 0.4s ease; user-select: none; }
+        #adminMainScreen.unlocked { filter: blur(0); pointer-events: all; user-select: auto; }
         
         /* 🔥 HEADER 🔥 */
         .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
@@ -25,15 +35,6 @@
         .hamburger-btn { background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
         .brand-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 18px; line-height: 1.1; font-weight: 900; letter-spacing: 1px;}
         .header-right { display: flex; align-items: center; gap: 12px; }
-        
-        /* LANGUAGE DROPDOWN */
-        .lang-wrapper { position: relative; }
-        .lang-btn { background: transparent; border: 1px solid #555; color: #ccc; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; }
-        .lang-btn:hover { border-color: #e6c875; color: #e6c875; }
-        .lang-menu { position: absolute; top: 35px; right: 0; background: #111; border: 1px solid #333; border-radius: 12px; width: 150px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); display: none; overflow: hidden; z-index: 1000;}
-        .lang-menu.show { display: block; }
-        .lang-option { padding: 10px 15px; color: #ccc; font-size: 13px; font-weight: bold; cursor: pointer; border-bottom: 1px solid #222; transition: 0.3s;}
-        .lang-option:hover { background: #1a1a1a; color: #e6c875; padding-left: 20px; }
 
         .root-badge { background: #ff4d4d; color: #fff; padding: 5px 12px; border-radius: 8px; text-align: center; font-size: 10px; font-weight: 900; line-height: 1.2; display: flex; flex-direction: column; align-items: center; cursor: pointer; box-shadow: 0 4px 10px rgba(255,77,77,0.3); }
 
@@ -42,8 +43,14 @@
         .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; }
         .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid #222; text-align: center; }
         .sidebar-brand h2 { margin: 0; color: #e6c875; font-size: 22px; font-family: 'Playfair Display', serif;}
-        .sidebar-brand p { margin: 5px 0 0 0; color: #ff4d4d; font-size: 10px; font-weight: bold; letter-spacing: 2px;}
+        .sidebar-brand p { margin: 5px 0 0 0; color: #ff4d4d; font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;}
         
+        /* 🔥 CUSTOM TRANSLATOR IN SIDEBAR 🔥 */
+        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; background: #111; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
+        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+
         .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto;}
         .admin-menu::-webkit-scrollbar { width: 4px; }
         .admin-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
@@ -93,254 +100,274 @@
 
         #sidebarOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 98; display: none; backdrop-filter: blur(2px);}
         #sidebarOverlay.active { display: block; }
+
+        /* DASHBOARD CARDS */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px;}
+        .stat-card { background: #111; border: 1px solid #222; padding: 25px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .stat-info h2 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; }
+        .stat-info p { margin: 0; color: #888; font-size: 11px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;}
+        .stat-icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        
+        .card-users h2 { color: #fff; } .card-users .stat-icon-box { background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid #333;}
+        .card-coins h2 { color: #25d366; } .card-coins .stat-icon-box { background: rgba(37,211,102,0.1); color: #25d366; border: 1px solid rgba(37,211,102,0.3);}
+        .card-auditions h2 { color: #e6c875; } .card-auditions .stat-icon-box { background: rgba(230,200,117,0.1); color: #e6c875; border: 1px solid rgba(230,200,117,0.3);}
+        .card-flagged h2 { color: #ff4d4d; } .card-flagged .stat-icon-box { background: rgba(255,77,77,0.1); color: #ff4d4d; border: 1px solid rgba(255,77,77,0.3);}
+
         @media (max-width: 900px) { .admin-sidebar { position: fixed; left: -300px; height: 100%; box-shadow: 5px 0 20px rgba(0,0,0,0.9); } .admin-sidebar.open { left: 0; } }
 
     </style>
 </head>
 <body>
 
-    <!-- 🔥 HEADER 🔥 -->
-    <header class="admin-header">
-        <div class="header-left">
-            <button class="hamburger-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-            <div class="brand-title">Command<br>Center</div>
+    <div id="loginOverlay">
+        <div class="login-box">
+            <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 70px; mix-blend-mode: screen; margin-bottom: 10px; border-radius: 10px; border: 1px solid #333;"></video>
+            <h2><i class="fas fa-shield-alt"></i> Command Login</h2>
+            <p style="color:#888; font-size:12px; margin-bottom:20px;">Use ID: <b>Admin</b> | Pass: <b>Admin</b></p>
+            <input type="text" id="adminId" placeholder="Admin ID">
+            <input type="password" id="adminPass" placeholder="Password">
+            <button onclick="checkLogin()"><i class="fas fa-unlock-alt"></i> Access Panel</button>
+            <p id="loginError" style="color: #ff4d4d; font-size: 12px; margin-top: 15px; display: none;">Invalid Credentials! Access Denied.</p>
         </div>
-        <div class="header-right">
-            <div class="lang-wrapper">
-                <button class="lang-btn" onclick="toggleLangMenu()"><i class="fas fa-globe"></i> <span class="notranslate">Language</span></button>
-                <div class="lang-menu" id="langMenuDrop">
-                    <div class="lang-option notranslate" onclick="translatePage('en')">English</div>
-                    <div class="lang-option notranslate" onclick="translatePage('hi')">हिन्दी (Hindi)</div>
-                    <div class="lang-option notranslate" onclick="translatePage('bn')">বাংলা (Bengali)</div>
-                </div>
-            </div>
-            <div class="root-badge" onclick="alert('Super Admin Logged In')"><i class="fas fa-shield-alt"></i> ROOT<br>ADMIN</div>
-        </div>
-    </header>
-
-    <div class="admin-body-wrapper">
-        
-        <!-- 🔥 SIDEBAR MENU 🔥 -->
-        <aside class="admin-sidebar" id="sidebar">
-            <div class="sidebar-brand">
-                <h2>DK ATOVITT</h2>
-                <p>Super Admin Control</p>
-            </div>
-            
-            <div class="admin-menu">
-                <!-- Core Admin Features -->
-                <button class="menu-btn-item active" onclick="switchTab('dashboardTab', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
-                <button class="menu-btn-item" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
-                <button class="menu-btn-item" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
-                
-                <!-- 🔥 SUB ADMIN CREATION 🔥 -->
-                <button class="menu-btn-item" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield" style="color:#ff4d4d;"></i> Sub-Admins Control</button>
-
-                <div style="height: 1px; background: #222; margin: 15px 20px;"></div>
-                
-                <!-- 🔥 MEGA PROJECTS DROPDOWN 🔥 -->
-                <button class="menu-btn-item" id="projectDropBtn" onclick="toggleProjectsMenu()"><i class="fas fa-project-diagram" style="color:#e6c875;"></i> Mega Projects <i class="fas fa-chevron-down" id="projArrow" style="margin-left:auto; font-size:12px; transition:0.3s;"></i></button>
-                
-                <div class="sub-menu-container" id="projectsSubMenu">
-                    <!-- Project Links -->
-                    <button class="sub-menu-item" onclick="switchTab('filmAdminTab', this, true)"><i class="fas fa-film"></i> DK Film Production</button>
-                    <button class="sub-menu-item" onclick="switchTab('connectAdminTab', this, true)"><i class="fas fa-share-alt"></i> DK Connect (Social)</button>
-                    <button class="sub-menu-item" onclick="switchTab('searchAdminTab', this, true)"><i class="fas fa-search"></i> DK Search</button>
-                    <button class="sub-menu-item" onclick="switchTab('walletAdminTab', this, true)"><i class="fas fa-wallet"></i> ATVT Wallet & Coins</button>
-                    <button class="sub-menu-item" onclick="switchTab('martAdminTab', this, true)"><i class="fas fa-shopping-cart"></i> DK Mart</button>
-                    <!-- Baaki ke projects yahan asani se add ho sakte hain -->
-                </div>
-            </div>
-        </aside>
-        <div id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-        <!-- 🔥 CONTENT AREA 🔥 -->
-        <main class="admin-content">
-            
-            <!-- 1. DASHBOARD TAB -->
-            <div id="dashboardTab" class="tab-section active">
-                <div class="project-header">
-                    <div class="project-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div>
-                        <h2>Main Dashboard</h2>
-                        <p>Welcome to the DK Atovitt Master Control Center.</p>
-                    </div>
-                </div>
-                <div class="table-box" style="padding: 40px; text-align: center; color: #888;">
-                    <i class="fas fa-chart-line fa-3x" style="color:#e6c875; margin-bottom:15px;"></i>
-                    <h3 style="color:#fff;">Analytics Overview</h3>
-                    <p>Total users, coin circulation, and system health will be displayed here.</p>
-                </div>
-            </div>
-
-            <!-- 2. SUB-ADMIN TAB (Naya aur Bada) -->
-            <div id="subAdminTab" class="tab-section">
-                <div class="project-header" style="border-color: #ff4d4d;">
-                    <div class="project-icon" style="background: rgba(255,77,77,0.1); color: #ff4d4d; border-color: rgba(255,77,77,0.3);"><i class="fas fa-user-shield"></i></div>
-                    <div>
-                        <h2>Sub-Admin Control</h2>
-                        <p>Create managers and assign them specific project permissions.</p>
-                    </div>
-                </div>
-                
-                <div class="table-box" style="padding: 25px; margin-bottom: 30px;">
-                    <h3 style="color: #e6c875; margin-top: 0; margin-bottom: 20px; text-transform: uppercase;">Create New Sub-Admin</h3>
-                    
-                    <div class="form-grid">
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Full Name</label>
-                            <input type="text" id="saName" class="form-input" placeholder="Manager Name">
-                        </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Login ID (Email)</label>
-                            <input type="text" id="saEmail" class="form-input" placeholder="admin@dkatovitt.com">
-                        </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Temporary Password</label>
-                            <input type="password" id="saPass" class="form-input" placeholder="Set Password">
-                        </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Assign Project Role</label>
-                            <select id="saRole" class="form-input">
-                                <option value="All Projects">Super Admin (All Access)</option>
-                                <option value="DK Film Manager">DK Film Manager</option>
-                                <option value="Social Media Moderator">DK Connect Moderator</option>
-                                <option value="Wallet Manager">Wallet & Token Manager</option>
-                                <option value="KYC Team">KYC Approvals Only</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button onclick="createSubAdmin()" style="background: #ff4d4d; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition:0.3s;"><i class="fas fa-plus-circle"></i> Create Sub-Admin Account</button>
-                </div>
-
-                <div class="table-box">
-                    <table>
-                        <thead>
-                            <tr><th>Name</th><th>Login ID</th><th>Assigned Role</th><th>Action</th></tr>
-                        </thead>
-                        <tbody id="subAdminTableBody">
-                            <tr id="sa-row-1">
-                                <td style="color:#fff; font-weight:bold;">DK Casting Team</td>
-                                <td>casting@dkatovitt.com</td>
-                                <td style="color:#e6c875;">DK Film Manager</td>
-                                <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-1')">Revoke Access</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- ============================================== -->
-            <!-- 🔥 PROJECT SPECIFIC ADMIN PAGES (FROM MENU) 🔥 -->
-            <!-- ============================================== -->
-
-            <!-- 3. DK FILM ADMIN PAGE -->
-            <div id="filmAdminTab" class="tab-section">
-                <div class="project-header">
-                    <div class="project-icon" style="color: #ff4d4d;"><i class="fas fa-film"></i></div>
-                    <div>
-                        <h2>DK Film Production</h2>
-                        <p>Upload new movies, trailers, and manage audition applications.</p>
-                    </div>
-                </div>
-                <div class="form-grid">
-                    <div class="table-box" style="padding: 25px; text-align: center;">
-                        <i class="fas fa-cloud-upload-alt fa-2x" style="color:#e6c875; margin-bottom:10px;"></i>
-                        <h3 style="color:#fff; margin:0 0 10px 0;">Upload New Movie</h3>
-                        <button class="action-btn btn-approve" style="width:100%; padding:12px;">Add Movie/Trailer</button>
-                    </div>
-                    <div class="table-box" style="padding: 25px; text-align: center;">
-                        <i class="fas fa-users fa-2x" style="color:#e6c875; margin-bottom:10px;"></i>
-                        <h3 style="color:#fff; margin:0 0 10px 0;">Auditions</h3>
-                        <button class="action-btn btn-approve" style="width:100%; padding:12px; background:#e6c875; color:#000;">View 312 Applications</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. DK CONNECT ADMIN PAGE -->
-            <div id="connectAdminTab" class="tab-section">
-                <div class="project-header">
-                    <div class="project-icon" style="color: #1877F2;"><i class="fas fa-share-alt"></i></div>
-                    <div>
-                        <h2>DK Connect (Social)</h2>
-                        <p>Monitor posts, moderate short videos, and manage flagged content.</p>
-                    </div>
-                </div>
-                <div class="table-box" style="padding: 40px; text-align: center; color: #888;">
-                    <i class="fas fa-flag fa-3x" style="color:#ff4d4d; margin-bottom:15px;"></i>
-                    <h3 style="color:#fff;">Content Moderation Room</h3>
-                    <p>Reported posts and flagged shorts will appear here for review.</p>
-                </div>
-            </div>
-
-            <!-- 5. DK SEARCH ADMIN PAGE -->
-            <div id="searchAdminTab" class="tab-section">
-                <div class="project-header">
-                    <div class="project-icon" style="color: #00a8ff;"><i class="fas fa-search"></i></div>
-                    <div>
-                        <h2>DK Search Engine</h2>
-                        <p>Manage search algorithms, ads placement, and keyword tracking.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6. WALLET ADMIN PAGE -->
-            <div id="walletAdminTab" class="tab-section">
-                <div class="project-header">
-                    <div class="project-icon" style="color: #25d366;"><i class="fas fa-wallet"></i></div>
-                    <div>
-                        <h2>ATVT Wallet & Economy</h2>
-                        <p>Monitor coin circulation, withdrawals, and manage tokenomics.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dummy Placeholders for others -->
-            <div id="usersTab" class="tab-section"><div class="project-header"><h2>All Users</h2></div></div>
-            <div id="kycTab" class="tab-section"><div class="project-header"><h2>Pending KYC</h2></div></div>
-            <div id="martAdminTab" class="tab-section"><div class="project-header"><h2>DK Mart Control</h2></div></div>
-
-        </main>
     </div>
 
-    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
+    <div id="adminMainScreen">
+        
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <div class="brand-title">Command<br>Center</div>
+            </div>
+            <div class="header-right">
+                <div class="root-badge" onclick="logout()" title="Click to Logout">
+                    <i class="fas fa-shield-alt"></i> ROOT<br>ADMIN
+                </div>
+            </div>
+        </header>
+
+        <div class="admin-body-wrapper">
+            
+            <aside class="admin-sidebar" id="sidebar">
+                <div class="sidebar-brand">
+                    <h2>DK ATOVITT</h2>
+                    <p>Super Admin Control</p>
+                </div>
+                
+                <div class="custom-translate">
+                    <select id="lang-admin" class="notranslate" onchange="translatePage(this.value)">
+                        <option value="">🌐 Select Language</option>
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                    </select>
+                </div>
+                
+                <div class="admin-menu">
+                    <button class="menu-btn-item active" onclick="switchTab('dashboardTab', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+                    <button class="menu-btn-item" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
+                    <button class="menu-btn-item" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
+                    
+                    <button class="menu-btn-item" onclick="switchTab('editProfileTab', this)"><i class="fas fa-user-edit" style="color: #00a8ff;"></i> Edit Profile</button>
+                    
+                    <button class="menu-btn-item" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield" style="color:#ff4d4d;"></i> Sub-Admins</button>
+
+                    <div style="height: 1px; background: #222; margin: 15px 20px;"></div>
+                    
+                    <button class="menu-btn-item" id="projectDropBtn" onclick="toggleProjectsMenu()"><i class="fas fa-project-diagram" style="color:#e6c875;"></i> Mega Projects <i class="fas fa-chevron-down" id="projArrow" style="margin-left:auto; font-size:12px; transition:0.3s;"></i></button>
+                    
+                    <div class="sub-menu-container" id="projectsSubMenu">
+                        <button class="sub-menu-item" onclick="switchTab('filmAdminTab', this, true)"><i class="fas fa-film"></i> DK Film Production</button>
+                        <button class="sub-menu-item" onclick="switchTab('connectAdminTab', this, true)"><i class="fas fa-share-alt"></i> DK Connect (Social)</button>
+                        <button class="sub-menu-item" onclick="switchTab('searchAdminTab', this, true)"><i class="fas fa-search"></i> DK Search</button>
+                        <button class="sub-menu-item" onclick="switchTab('walletAdminTab', this, true)"><i class="fas fa-wallet"></i> ATVT Wallet & Coins</button>
+                        <button class="sub-menu-item" onclick="switchTab('martAdminTab', this, true)"><i class="fas fa-shopping-cart"></i> DK Mart</button>
+                    </div>
+                </div>
+            </aside>
+            <div id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+            <main class="admin-content">
+                
+                <div id="dashboardTab" class="tab-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card card-users"><div class="stat-info"><h2>14,205</h2><p>Registered Users</p></div><div class="stat-icon-box"><i class="fas fa-users"></i></div></div>
+                        <div class="stat-card card-coins"><div class="stat-info"><h2>245.5K</h2><p>Coins In Circulation</p></div><div class="stat-icon-box"><i class="fas fa-coins"></i></div></div>
+                        <div class="stat-card card-auditions"><div class="stat-info"><h2>312</h2><p>Pending Auditions</p></div><div class="stat-icon-box"><i class="fas fa-clipboard-list"></i></div></div>
+                        <div class="stat-card card-flagged"><div class="stat-info"><h2>45</h2><p>Flagged Videos</p></div><div class="stat-icon-box"><i class="fas fa-flag"></i></div></div>
+                    </div>
+                    <div class="project-header">
+                        <div class="project-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <div>
+                            <h2>Main Dashboard</h2>
+                            <p>Welcome to the DK Atovitt Master Control Center.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="editProfileTab" class="tab-section">
+                    <div class="project-header" style="border-color: #00a8ff;">
+                        <div class="project-icon" style="background: rgba(0, 168, 255, 0.1); color: #00a8ff; border-color: rgba(0, 168, 255, 0.3);"><i class="fas fa-user-edit"></i></div>
+                        <div>
+                            <h2>Edit Admin Profile</h2>
+                            <p>Update your personal information and security settings.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="table-box" style="padding: 30px; max-width: 600px;">
+                        <div class="form-grid" style="grid-template-columns: 1fr;">
+                            <div>
+                                <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Profile Picture URL</label>
+                                <input type="text" id="editProfilePic" class="form-input" placeholder="https://..." value="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+                            </div>
+                            <div>
+                                <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Full Name</label>
+                                <input type="text" id="editFullName" class="form-input" placeholder="Admin Name" value="Dipak Super Admin">
+                            </div>
+                            <div>
+                                <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Email Address (Read-Only)</label>
+                                <input type="email" id="editEmail" class="form-input" value="dipakceo@dkatovitt.com" readonly style="background:#111; color:#888; cursor:not-allowed;">
+                            </div>
+                            <div>
+                                <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Update Password</label>
+                                <input type="password" id="editPassword" class="form-input" placeholder="Leave blank to keep current password">
+                            </div>
+                        </div>
+                        <button onclick="saveAdminProfile()" style="background: #e6c875; color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition:0.3s; margin-top: 15px;"><i class="fas fa-save"></i> Save Changes</button>
+                    </div>
+                </div>
+
+                <div id="kycTab" class="tab-section">
+                    <div class="project-header">
+                        <div class="project-icon" style="color: #e6c875;"><i class="fas fa-id-card"></i></div>
+                        <div><h2>Pending KYC Approvals</h2><p>Approve users to unlock their withdrawal and credit 5 ATVT to their upline.</p></div>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead><tr><th>DK-ID</th><th>User Name</th><th>Govt ID Details</th><th>Upline DK-ID</th><th>Action</th></tr></thead>
+                            <tbody id="kycTableBody">
+                                <tr id="row-1">
+                                    <td class="text-yellow"><strong>DK-HMXHMG82VA</strong></td><td>Aizuddin Ahmed</td><td>ID: [Aadhaar Redacted] <br><span class="view-doc">View Front</span> | <span class="view-doc">View Back</span></td><td class="text-dim">DK-ABCDE12345</td>
+                                    <td><button class="action-btn btn-approve" onclick="approveUser('row-1', 'Aizuddin Ahmed', 'DK-ABCDE12345')">Approve</button> <button class="action-btn btn-reject" onclick="rejectUser('row-1')">Reject</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="subAdminTab" class="tab-section">
+                    <div class="project-header" style="border-color: #ff4d4d;">
+                        <div class="project-icon" style="background: rgba(255,77,77,0.1); color: #ff4d4d; border-color: rgba(255,77,77,0.3);"><i class="fas fa-user-shield"></i></div>
+                        <div><h2>Sub-Admin Control</h2><p>Create managers and assign them specific project permissions.</p></div>
+                    </div>
+                    
+                    <div class="table-box" style="padding: 25px; margin-bottom: 30px;">
+                        <h3 style="color: #e6c875; margin-top: 0; margin-bottom: 20px; text-transform: uppercase;">Create New Sub-Admin</h3>
+                        <div class="form-grid">
+                            <div><label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Full Name</label><input type="text" id="saName" class="form-input" placeholder="Manager Name"></div>
+                            <div><label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Login ID (Email)</label><input type="text" id="saEmail" class="form-input" placeholder="admin@dkatovitt.com"></div>
+                            <div><label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Temp Password</label><input type="password" id="saPass" class="form-input" placeholder="Set Password"></div>
+                            <div>
+                                <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Assign Project Role</label>
+                                <select id="saRole" class="form-input">
+                                    <option value="All Projects">Super Admin (All Access)</option>
+                                    <option value="DK Film Manager">DK Film Manager</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button onclick="createSubAdmin()" style="background: #ff4d4d; color: #fff; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition:0.3s;"><i class="fas fa-plus-circle"></i> Create Sub-Admin Account</button>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead><tr><th>Name</th><th>Login ID</th><th>Assigned Role</th><th>Action</th></tr></thead>
+                            <tbody id="subAdminTableBody">
+                                <tr id="sa-row-1"><td style="color:#fff; font-weight:bold;">DK Casting Team</td><td>casting@dkatovitt.com</td><td style="color:#e6c875;">DK Film Manager</td><td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-1')">Revoke</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="filmAdminTab" class="tab-section">
+                    <div class="project-header">
+                        <div class="project-icon" style="color: #ff4d4d;"><i class="fas fa-film"></i></div>
+                        <div><h2>DK Film Production</h2><p>Upload new movies, trailers, and manage audition applications.</p></div>
+                    </div>
+                </div>
+
+                <div id="connectAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #1877F2;"><i class="fas fa-share-alt"></i></div><div><h2>DK Connect (Social)</h2><p>Moderate posts and short videos.</p></div></div></div>
+                <div id="searchAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #00a8ff;"><i class="fas fa-search"></i></div><div><h2>DK Search Engine</h2><p>Manage search algorithms.</p></div></div></div>
+                <div id="walletAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #25d366;"><i class="fas fa-wallet"></i></div><div><h2>ATVT Wallet & Economy</h2><p>Manage tokenomics.</p></div></div></div>
+                <div id="martAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #ffc107;"><i class="fas fa-shopping-cart"></i></div><div><h2>DK Mart</h2><p>Manage E-commerce store.</p></div></div></div>
+                <div id="usersTab" class="tab-section"><div class="project-header"><div class="project-icon"><i class="fas fa-users"></i></div><div><h2>All Users</h2><p>Manage User Database.</p></div></div></div>
+
+            </main>
+        </div>
+    </div>
+    
+    <div id="google_translate_element" style="display:none;"></div>
+
     <script>
-        // SIDEBAR DROPDOWN LOGIC
+        // SESSION LOCK LOGIC
+        window.onload = function() {
+            if(sessionStorage.getItem("adminLoggedIn") === "true") {
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('adminMainScreen').classList.add('unlocked');
+            } else {
+                document.getElementById('loginOverlay').style.display = 'flex';
+                document.getElementById('adminMainScreen').classList.remove('unlocked');
+            }
+        };
+
+        // LOGIN / LOGOUT
+        function checkLogin() {
+            let id = document.getElementById('adminId').value;
+            let pass = document.getElementById('adminPass').value;
+
+            if(id === 'Admin' && pass === 'Admin') {
+                sessionStorage.setItem("adminLoggedIn", "true");
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('adminMainScreen').classList.add('unlocked');
+                document.getElementById('loginError').style.display = 'none';
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem("adminLoggedIn");
+            document.getElementById('adminId').value = '';
+            document.getElementById('adminPass').value = '';
+            document.getElementById('loginOverlay').style.display = 'flex';
+            document.getElementById('adminMainScreen').classList.remove('unlocked');
+            switchTab('dashboardTab', document.querySelector('.menu-btn-item'));
+        }
+
+        // SIDEBAR & DROPDOWN LOGIC
         function toggleProjectsMenu() {
             const subMenu = document.getElementById('projectsSubMenu');
             const arrow = document.getElementById('projArrow');
             const parentBtn = document.getElementById('projectDropBtn');
 
             subMenu.classList.toggle('open');
-            
             if(subMenu.classList.contains('open')) {
-                arrow.style.transform = 'rotate(180deg)';
-                parentBtn.style.color = '#e6c875';
+                arrow.style.transform = 'rotate(180deg)'; parentBtn.style.color = '#e6c875';
             } else {
-                arrow.style.transform = 'rotate(0deg)';
-                parentBtn.style.color = '#888';
+                arrow.style.transform = 'rotate(0deg)'; parentBtn.style.color = '#888';
             }
         }
 
-        // TAB SWITCHING LOGIC (With Parent/Child tracking)
         function switchTab(tabId, btnElement, isSubMenu = false) {
-            // Hide all tabs
             document.querySelectorAll('.tab-section').forEach(tab => tab.classList.remove('active'));
-            // Remove active from ALL buttons
             document.querySelectorAll('.menu-btn-item').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.sub-menu-item').forEach(btn => btn.classList.remove('active'));
             
-            // Show Target Tab
             document.getElementById(tabId).classList.add('active');
-            
-            // Highlight the clicked button
             btnElement.classList.add('active');
 
-            // If a submenu item was clicked, keep the parent "Mega Projects" highlighted
-            if(isSubMenu) {
-                document.getElementById('projectDropBtn').classList.add('active');
-            }
-            
+            if(isSubMenu) { document.getElementById('projectDropBtn').classList.add('active'); }
             if(window.innerWidth <= 900) { toggleSidebar(); }
         }
 
@@ -349,43 +376,77 @@
             document.getElementById('sidebarOverlay').classList.toggle('active');
         }
 
-        function toggleLangMenu() {
-            document.getElementById('langMenuDrop').classList.toggle('show');
+        // PROFILE EDIT LOGIC
+        function saveAdminProfile() {
+            let name = document.getElementById('editFullName').value;
+            let pass = document.getElementById('editPassword').value;
+            if(name.trim() === '') { alert('Name cannot be empty!'); return; }
+            alert('✅ Profile updated successfully!');
+            document.getElementById('editPassword').value = '';
         }
-        window.onclick = function(event) {
-            if (!event.target.closest('.lang-wrapper')) {
-                document.querySelectorAll(".lang-menu").forEach(d => d.classList.remove('show'));
+
+        // KYC & SUB-ADMIN LOGIC
+        function approveUser(rowId, userName, uplineId) {
+            if(confirm(`Approve KYC for ${userName}?`)) {
+                document.getElementById(rowId).style.display = 'none';
+                alert(`✅ KYC Approved for ${userName}!\n🎁 5 ATVT Coins credited to Upline (${uplineId}).`);
             }
         }
-
-        // SUB ADMIN LOGIC
+        function rejectUser(rowId) {
+            if(confirm('Reject this document?')) { document.getElementById(rowId).style.display = 'none'; alert('Document Rejected.'); }
+        }
         function createSubAdmin() {
-            let name = document.getElementById('saName').value;
-            let email = document.getElementById('saEmail').value;
-            let pass = document.getElementById('saPass').value;
-            let role = document.getElementById('saRole').value;
-
+            let name = document.getElementById('saName').value; let email = document.getElementById('saEmail').value; let pass = document.getElementById('saPass').value; let role = document.getElementById('saRole').value;
             if(name === "" || email === "" || pass === "") { alert("Please fill all details!"); return; }
-
             let newRowId = 'sa-row-' + Math.floor(Math.random() * 1000);
-            let newRow = `
-                <tr id="${newRowId}">
-                    <td style="color:#fff; font-weight:bold;">${name}</td><td>${email}</td><td style="color:#e6c875;">${role}</td>
-                    <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('${newRowId}')">Revoke</button></td>
-                </tr>
-            `;
+            let newRow = `<tr id="${newRowId}"><td style="color:#fff; font-weight:bold;">${name}</td><td>${email}</td><td style="color:#e6c875;">${role}</td><td><button class="action-btn btn-reject" onclick="revokeSubAdmin('${newRowId}')">Revoke</button></td></tr>`;
             document.getElementById('subAdminTableBody').insertAdjacentHTML('beforeend', newRow);
-            alert(`✅ Sub-Admin '${name}' created for project: ${role}.`);
-            
+            alert(`✅ Sub-Admin '${name}' created!`);
             document.getElementById('saName').value = ""; document.getElementById('saEmail').value = ""; document.getElementById('saPass').value = "";
         }
-
         function revokeSubAdmin(rowId) {
-            if(confirm("Are you sure you want to revoke access?")) {
-                document.getElementById(rowId).remove();
-                alert("Access Revoked.");
+            if(confirm("Revoke access for this sub-admin?")) { document.getElementById(rowId).remove(); alert("Access Revoked."); }
+        }
+
+        // 🔥 TRANSLATOR LOGIC 🔥
+        window.translatePage = function(lang) {
+            if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) { document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";"; });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.reload(); return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                window.location.reload();
             }
         }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var adminLang = document.getElementById('lang-admin');
+                if(adminLang && currentLang && currentLang !== "auto") adminLang.value = currentLang;
+            }, 1000);
+        });
     </script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'auto', includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
