@@ -9,16 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 CORE CSS 🔥 */
-        body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; height: 100vh; overflow: hidden; }
+        /* 🔥 CORE CSS (FIXED SCROLLING) 🔥 */
+        html, body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         /* 🔥 LOGIN OVERLAY CSS 🔥 */
-        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.7); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: 0.4s ease; }
-        .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.9); position: relative;}
+        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.7); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: 0.4s ease; overflow-y: auto; padding: 20px; box-sizing: border-box; -webkit-overflow-scrolling: touch;}
+        .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 100%; max-width: 350px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.9); position: relative; margin: auto;}
         .login-box h2 { color: #e6c875; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
         .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; transition: 0.3s; }
         .login-box input:focus { border-color: #e6c875; box-shadow: 0 0 10px rgba(230,200,117,0.2); }
@@ -26,11 +26,11 @@
         .login-box button:hover { background: #d4b561; transform: translateY(-2px); }
 
         /* 🔥 MAIN ADMIN LAYOUT 🔥 */
-        #adminMainScreen { height: 100vh; display: flex; flex-direction: column; filter: blur(10px); pointer-events: none; transition: filter 0.4s ease; user-select: none; }
+        #adminMainScreen { height: 100%; width: 100%; display: flex; flex-direction: column; filter: blur(10px); pointer-events: none; transition: filter 0.4s ease; user-select: none; }
         #adminMainScreen.unlocked { filter: blur(0); pointer-events: all; user-select: auto; }
         
         /* 🔥 HEADER 🔥 */
-        .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-shrink: 0; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .hamburger-btn { background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
         .brand-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 18px; line-height: 1.1; font-weight: 900; letter-spacing: 1px;}
@@ -38,20 +38,20 @@
 
         .root-badge { background: #ff4d4d; color: #fff; padding: 5px 12px; border-radius: 8px; text-align: center; font-size: 10px; font-weight: 900; line-height: 1.2; display: flex; flex-direction: column; align-items: center; cursor: pointer; box-shadow: 0 4px 10px rgba(255,77,77,0.3); }
 
-        /* 🔥 BODY WRAPPER & SIDEBAR 🔥 */
-        .admin-body-wrapper { display: flex; flex: 1; overflow: hidden; position: relative; }
-        .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; }
-        .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid #222; text-align: center; }
+        /* 🔥 BODY WRAPPER & SIDEBAR (FIXED MIN-HEIGHT 0) 🔥 */
+        .admin-body-wrapper { display: flex; flex: 1; overflow: hidden; position: relative; min-height: 0; }
+        .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; flex-shrink: 0; }
+        .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid #222; text-align: center; flex-shrink: 0;}
         .sidebar-brand h2 { margin: 0; color: #e6c875; font-size: 22px; font-family: 'Playfair Display', serif;}
         .sidebar-brand p { margin: 5px 0 0 0; color: #ff4d4d; font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;}
         
         /* 🔥 CUSTOM TRANSLATOR IN SIDEBAR 🔥 */
-        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; background: #111; }
+        .custom-translate { padding: 15px 20px; border-bottom: 1px solid #222; background: #111; flex-shrink: 0;}
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select:hover { background: rgba(230,200,117,0.1); }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto;}
+        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 80px;}
         .admin-menu::-webkit-scrollbar { width: 4px; }
         .admin-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
 
@@ -67,8 +67,8 @@
         .sub-menu-item:hover, .sub-menu-item.active { color: #fff; background: #111; border-left: 3px solid #fff;}
         .sub-menu-item i { font-size: 14px; width: 15px; }
 
-        /* CONTENT AREA */
-        .admin-content { flex: 1; overflow-y: auto; padding: 25px; background: #050505; position: relative; }
+        /* 🔥 CONTENT AREA (FIXED SCROLLING) 🔥 */
+        .admin-content { flex: 1; overflow-y: auto; padding: 25px; background: #050505; position: relative; -webkit-overflow-scrolling: touch; padding-bottom: 120px; }
         .admin-content::-webkit-scrollbar { width: 6px; }
         .admin-content::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
@@ -78,9 +78,9 @@
 
         /* PROJECT SPECIFIC HEADERS */
         .project-header { background: #111; border: 1px solid #333; padding: 25px; border-radius: 12px; margin-bottom: 25px; display: flex; align-items: center; gap: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .project-icon { width: 60px; height: 60px; background: rgba(230,200,117,0.1); color: #e6c875; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; border: 1px solid rgba(230,200,117,0.3);}
-        .project-header h2 { margin: 0 0 5px 0; color: #fff; font-size: 22px; text-transform: uppercase; letter-spacing: 1px;}
-        .project-header p { margin: 0; color: #888; font-size: 13px; }
+        .project-icon { width: 60px; height: 60px; background: rgba(230,200,117,0.1); color: #e6c875; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; border: 1px solid rgba(230,200,117,0.3); flex-shrink: 0;}
+        .project-header h2 { margin: 0 0 5px 0; color: #fff; font-size: 20px; text-transform: uppercase; letter-spacing: 1px;}
+        .project-header p { margin: 0; color: #888; font-size: 13px; line-height: 1.4; }
 
         /* GENERAL TABLES & CARDS */
         .table-box { background: #111; border: 1px solid #222; border-radius: 12px; overflow-x: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.5); margin-bottom: 30px;}
@@ -106,7 +106,7 @@
         .stat-card { background: #111; border: 1px solid #222; padding: 25px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .stat-info h2 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; }
         .stat-info p { margin: 0; color: #888; font-size: 11px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;}
-        .stat-icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .stat-icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;}
         
         .card-users h2 { color: #fff; } .card-users .stat-icon-box { background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid #333;}
         .card-coins h2 { color: #25d366; } .card-coins .stat-icon-box { background: rgba(37,211,102,0.1); color: #25d366; border: 1px solid rgba(37,211,102,0.3);}
@@ -119,6 +119,7 @@
 </head>
 <body>
 
+    <!-- 🔥 1. LOGIN OVERLAY 🔥 -->
     <div id="loginOverlay">
         <div class="login-box">
             <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 70px; mix-blend-mode: screen; margin-bottom: 10px; border-radius: 10px; border: 1px solid #333;"></video>
@@ -131,8 +132,10 @@
         </div>
     </div>
 
+    <!-- 🔥 2. MAIN ADMIN PANEL 🔥 -->
     <div id="adminMainScreen">
         
+        <!-- HEADER -->
         <header class="admin-header">
             <div class="header-left">
                 <button class="hamburger-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
@@ -147,12 +150,14 @@
 
         <div class="admin-body-wrapper">
             
+            <!-- SIDEBAR MENU -->
             <aside class="admin-sidebar" id="sidebar">
                 <div class="sidebar-brand">
                     <h2>DK ATOVITT</h2>
                     <p>Super Admin Control</p>
                 </div>
                 
+                <!-- 🔥 LANGUAGE TRANSLATOR 🔥 -->
                 <div class="custom-translate">
                     <select id="lang-admin" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
@@ -167,16 +172,19 @@
                 </div>
                 
                 <div class="admin-menu">
+                    <!-- Core Admin Features -->
                     <button class="menu-btn-item active" onclick="switchTab('dashboardTab', this)"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
                     <button class="menu-btn-item" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
                     <button class="menu-btn-item" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
                     
+                    <!-- 🔥 EDIT PROFILE BUTTON 🔥 -->
                     <button class="menu-btn-item" onclick="switchTab('editProfileTab', this)"><i class="fas fa-user-edit" style="color: #00a8ff;"></i> Edit Profile</button>
                     
                     <button class="menu-btn-item" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield" style="color:#ff4d4d;"></i> Sub-Admins</button>
 
                     <div style="height: 1px; background: #222; margin: 15px 20px;"></div>
                     
+                    <!-- 🔥 MEGA PROJECTS DROPDOWN 🔥 -->
                     <button class="menu-btn-item" id="projectDropBtn" onclick="toggleProjectsMenu()"><i class="fas fa-project-diagram" style="color:#e6c875;"></i> Mega Projects <i class="fas fa-chevron-down" id="projArrow" style="margin-left:auto; font-size:12px; transition:0.3s;"></i></button>
                     
                     <div class="sub-menu-container" id="projectsSubMenu">
@@ -190,8 +198,10 @@
             </aside>
             <div id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
+            <!-- CONTENT AREA -->
             <main class="admin-content">
                 
+                <!-- 1. DASHBOARD TAB -->
                 <div id="dashboardTab" class="tab-section active">
                     <div class="stats-grid">
                         <div class="stat-card card-users"><div class="stat-info"><h2>14,205</h2><p>Registered Users</p></div><div class="stat-icon-box"><i class="fas fa-users"></i></div></div>
@@ -208,6 +218,7 @@
                     </div>
                 </div>
 
+                <!-- 🔥 2. EDIT PROFILE TAB 🔥 -->
                 <div id="editProfileTab" class="tab-section">
                     <div class="project-header" style="border-color: #00a8ff;">
                         <div class="project-icon" style="background: rgba(0, 168, 255, 0.1); color: #00a8ff; border-color: rgba(0, 168, 255, 0.3);"><i class="fas fa-user-edit"></i></div>
@@ -240,6 +251,7 @@
                     </div>
                 </div>
 
+                <!-- 3. PENDING KYC TAB -->
                 <div id="kycTab" class="tab-section">
                     <div class="project-header">
                         <div class="project-icon" style="color: #e6c875;"><i class="fas fa-id-card"></i></div>
@@ -258,6 +270,7 @@
                     </div>
                 </div>
 
+                <!-- 4. SUB-ADMIN TAB -->
                 <div id="subAdminTab" class="tab-section">
                     <div class="project-header" style="border-color: #ff4d4d;">
                         <div class="project-icon" style="background: rgba(255,77,77,0.1); color: #ff4d4d; border-color: rgba(255,77,77,0.3);"><i class="fas fa-user-shield"></i></div>
@@ -275,6 +288,8 @@
                                 <select id="saRole" class="form-input">
                                     <option value="All Projects">Super Admin (All Access)</option>
                                     <option value="DK Film Manager">DK Film Manager</option>
+                                    <option value="Social Media Moderator">DK Connect Moderator</option>
+                                    <option value="Wallet Manager">Wallet & Token Manager</option>
                                 </select>
                             </div>
                         </div>
@@ -290,13 +305,27 @@
                     </div>
                 </div>
 
+                <!-- 5. DK FILM ADMIN PAGE -->
                 <div id="filmAdminTab" class="tab-section">
                     <div class="project-header">
                         <div class="project-icon" style="color: #ff4d4d;"><i class="fas fa-film"></i></div>
                         <div><h2>DK Film Production</h2><p>Upload new movies, trailers, and manage audition applications.</p></div>
                     </div>
+                    <div class="form-grid">
+                        <div class="table-box" style="padding: 25px; text-align: center;">
+                            <i class="fas fa-cloud-upload-alt fa-2x" style="color:#e6c875; margin-bottom:10px;"></i>
+                            <h3 style="color:#fff; margin:0 0 10px 0;">Upload New Movie</h3>
+                            <button class="action-btn btn-approve" style="width:100%; padding:12px;">Add Movie/Trailer</button>
+                        </div>
+                        <div class="table-box" style="padding: 25px; text-align: center;">
+                            <i class="fas fa-users fa-2x" style="color:#e6c875; margin-bottom:10px;"></i>
+                            <h3 style="color:#fff; margin:0 0 10px 0;">Auditions</h3>
+                            <button class="action-btn btn-approve" style="width:100%; padding:12px; background:#e6c875; color:#000;">View Applications</button>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- OTHER PROJECT TABS (Placeholders) -->
                 <div id="connectAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #1877F2;"><i class="fas fa-share-alt"></i></div><div><h2>DK Connect (Social)</h2><p>Moderate posts and short videos.</p></div></div></div>
                 <div id="searchAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #00a8ff;"><i class="fas fa-search"></i></div><div><h2>DK Search Engine</h2><p>Manage search algorithms.</p></div></div></div>
                 <div id="walletAdminTab" class="tab-section"><div class="project-header"><div class="project-icon" style="color: #25d366;"><i class="fas fa-wallet"></i></div><div><h2>ATVT Wallet & Economy</h2><p>Manage tokenomics.</p></div></div></div>
@@ -307,8 +336,10 @@
         </div>
     </div>
     
+    <!-- GOOGLE TRANSLATOR COMPONENT -->
     <div id="google_translate_element" style="display:none;"></div>
 
+    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
         // SESSION LOCK LOGIC
         window.onload = function() {
