@@ -169,7 +169,7 @@
         .ceo-hero { padding: 160px 20px 60px 20px; text-align: center; background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%); }
         .ceo-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 45px; border-radius: 15px; border: 1px solid #333; box-shadow: 0 10px 40px rgba(0,0,0,0.9); }
         
-        .ceo-header-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 35px; }
+        .ceo-header-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
         
         .ceo-avatar-wrapper { border: 3px solid #e6c875; border-radius: 20px; padding: 8px; display: inline-block; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.9); background: #111; }
         .ceo-avatar-wrapper img { width: 100%; max-width: 320px; height: auto; border-radius: 12px; display: block; object-fit: cover; }
@@ -177,6 +177,94 @@
         .ceo-name { font-family: 'Playfair Display', serif; font-size: 32px; color: #e6c875; margin: 0 0 10px 0; letter-spacing: 1px; }
         .ceo-role { font-size: 16px; color: #fff; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; margin: 0 0 5px 0; }
         .ceo-alias { font-size: 14px; color: #888; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
+
+        /* 🔥 NAYA CEO CONTACT BAR CSS 🔥 */
+        .ceo-contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 30px;
+            background: #161616;
+            padding: 15px 25px;
+            border-radius: 50px;
+            border: 1px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ceo-contact-link {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .ceo-contact-link i { color: #e6c875; font-size: 16px; }
+        .ceo-contact-link:hover { color: #fff; transform: scale(1.05); }
+        
+        .ceo-social-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 2px solid #333;
+            padding-left: 18px;
+        }
+        .ceo-social-icon {
+            width: 35px;
+            height: 35px;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .ceo-social-icon:hover {
+            background: #e6c875;
+            color: #000;
+            border-color: #e6c875;
+            transform: scale(1.15);
+        }
+        .ceo-social-icon.email-highlight {
+            background: rgba(230,200,117,0.1);
+            color: #e6c875;
+            border-color: #e6c875;
+        }
+        .ceo-social-icon.email-highlight:hover {
+            background: #e6c875;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .ceo-contact-bar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                border-radius: 20px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .ceo-social-group {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid #333;
+                padding-top: 15px;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
 
         .ceo-content-box { text-align: justify; font-size: 15px; color: #bbb; line-height: 1.8; margin-bottom: 30px; }
         .ceo-content-box p { margin-bottom: 18px; }
@@ -438,7 +526,7 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🌟 CEO PAGE MAIN CONTENT (UNCHANGED) 🌟 -->
+    <!-- 🌟 CEO PAGE MAIN CONTENT (UNCHANGED EXCEPT NEW CONTACT BAR) 🌟 -->
     <section class="ceo-hero">
         <div class="ceo-container reveal">
             
@@ -449,6 +537,21 @@
                 <h1 class="ceo-name notranslate">Mr. Dipak Kumar Gupta</h1>
                 <p class="ceo-role notranslate">FOUNDER & CEO</p>
                 <p class="ceo-alias notranslate">( DK SIR )</p>
+            </div>
+
+            <!-- 🔥 NEW CEO CONTACT BAR 🔥 -->
+            <div class="ceo-contact-bar">
+                <a href="tel:+919330332929" class="ceo-contact-link"><i class="fas fa-phone-alt"></i> +91 933 033 2929</a>
+                <a href="tel:+919830332929" class="ceo-contact-link"><i class="fas fa-phone-alt"></i> +91 983 033 2929</a>
+                
+                <div class="ceo-social-group">
+                    <a href="https://wa.me/919830332929" target="_blank" class="ceo-social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="ceo-social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="ceo-social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="ceo-social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="ceo-social-icon"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="mailto:dipakceo@dkatovitt.com" class="ceo-social-icon email-highlight" title="Email CEO"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
 
             <div class="quote-box">
