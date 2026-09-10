@@ -113,7 +113,7 @@
         #overlay.active { display: block; }
         
         /* 🔥 UPCOMING PROJECTS DROPDOWN CSS 🔥 */
-        .upcoming-list { display: none; background: transparent; transition: all 0.3s ease;}
+        .upcoming-list { display: none; background: transparent; }
         .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
         .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); }
 
@@ -163,7 +163,7 @@
         .explore-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; text-decoration: none; transition: 0.3s; border-bottom: 1px solid #1a1a1a; cursor: pointer; }
         .explore-item:hover { background: #111; padding-left: 20px; }
         .eco-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 14px; color: #fff; flex-shrink: 0; }
-        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-browser { background: #003262; } .bg-eco { background: #e6c875; color: #000; }
+        .bg-movie { background: #ff4d4d; } .bg-connect { background: #1877F2; } .bg-eco { background: #e6c875; color: #000; }
         .eco-details { flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .eco-details .title { font-size: 13px; font-weight: bold; color: #ccc; margin-bottom: 3px; display: flex; align-items: center; justify-content: space-between; }
         .eco-details .status { font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 12px; width: fit-content; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
@@ -266,10 +266,13 @@
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+            
+            /* 🔥 FIX FOR FLOATING BUTTONS PADDING 🔥 */
+            .tseries-footer { padding-bottom: 220px !important; }
         }
 
         /* ==========================================================
-           🔥 EXACT SAME 6-COLUMN MEGA FOOTER CSS AS MOVIE.HTML 🔥
+           🔥 EXACT SAME 6-COLUMN MEGA FOOTER CSS AS WALLET.HTML 🔥
            ========================================================== */
            
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
@@ -288,12 +291,9 @@
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
 
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
+        /* 🔥 FOOTER COPYRIGHT TEXT CENTER CSS 🔥 */
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center;}
         .tseries-footer-bottom p { text-align: center; margin: 0; width: 100%; }
-
-        @media (max-width: 768px) {
-            .tseries-footer { padding-bottom: 220px !important; }
-        }
 
         /* APK MODAL CSS */
         .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100005 !important; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
@@ -327,6 +327,7 @@
                     </div>
                 </a>
             </div>
+            <!-- TOP RIGHT HEADER (LOGIN BUTTON) -->
             <div class="header-icons" id="headerRightArea">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
@@ -406,7 +407,6 @@
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-chart-line" style="color: #666;"></i> DK Crypto Exchange</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-cube" style="color: #666;"></i> DK ATVT Coin</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-wallet" style="color: #666;"></i> DK Decentralised Wallet</div><span class="soon-tag">(Soon)</span></a>
-                <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-globe" style="color: #666;"></i> DK Browser</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-shopping-cart" style="color: #666;"></i> DK Mart</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-bullhorn" style="color: #666;"></i> DK Digital Ads</div><span class="soon-tag">(Soon)</span></a>
                 <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="normal-link" style="color: #888;"><div class="link-text"><i class="fas fa-map-marker-alt" style="color: #666;"></i> DK GPS Tracker</div><span class="soon-tag">(Soon)</span></a>
@@ -535,12 +535,6 @@
                         <div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div>
                         <div class="eco-details">
                             <div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
-                        </div>
-                    </a>
-                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="explore-item">
-                        <div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div>
-                        <div class="eco-details">
-                            <div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span>
                         </div>
                     </a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="explore-item">
@@ -699,7 +693,6 @@
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="explore-item"><div class="eco-icon" style="background:#20c997;"><i class="fas fa-chart-line"></i></div><div class="eco-details"><div class="title">DK Exchange</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="explore-item"><div class="eco-icon" style="background:#5c2a9d;"><i class="fas fa-cube"></i></div><div class="eco-details"><div class="title">DK ATVT Coin</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="explore-item"><div class="eco-icon" style="background:#3498db;"><i class="fas fa-wallet"></i></div><div class="eco-details"><div class="title">DK Decentralised Wallet</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
-                    <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')" class="explore-item"><div class="eco-icon bg-browser"><i class="fas fa-compass"></i></div><div class="eco-details"><div class="title">DK Browser</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="explore-item"><div class="eco-icon" style="background:#ffc107;"><i class="fas fa-shopping-cart"></i></div><div class="eco-details"><div class="title">DK Mart</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="explore-item"><div class="eco-icon" style="background:#e67e22;"><i class="fas fa-bullhorn"></i></div><div class="eco-details"><div class="title">DK Digital Ads</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
                     <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="explore-item"><div class="eco-icon" style="background:#e74c3c;"><i class="fas fa-map-marker-alt"></i></div><div class="eco-details"><div class="title">DK GPS Tracker</div><span class="status coming"><i class="fas fa-clock"></i> SOON</span></div></a>
@@ -719,7 +712,7 @@
     </section>
 
     <!-- ======================================================================
-         🔥 6-COLUMN MEGA FOOTER (EXACTLY AS REPLACED FROM MOVIE.HTML) 🔥
+         🔥 6-COLUMN MEGA FOOTER (EXACTLY AS REPLACED FROM WALLET.HTML) 🔥
          ====================================================================== -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
@@ -764,17 +757,16 @@
                     </ul>
                 </div>
                 
-                <!-- 🔥 CONNECT WITH US 🔥 -->
+                <!-- 🔥 MY ACCOUNT SECTION 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
-                    <h4>Connect With Us</h4>
-                    <div class="footer-social-row">
-                        <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
-                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
-                    </div>
+                    <h4>My Account</h4>
+                    <ul>
+                        <li><a href="index.html">VIP Dashboard</a></li>
+                        <li><a href="reward.html">DK ATVT Coin Reward</a></li>
+                        <li><a href="wallet.html">My Wallet</a></li>
+                        <li><a href="referral.html">My Referrals</a></li>
+                        <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
+                    </ul>
                 </div>
             </div>
             
@@ -797,7 +789,6 @@
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('browser')">DK Browser (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
@@ -810,18 +801,23 @@
                     </ul>
                 </div>
                 
+                <!-- 🔥 CONNECT WITH US 🔥 -->
                 <div class="tseries-footer-col" style="margin-top: 30px;">
-                    <h4>My Account</h4>
-                    <ul>
-                        <li><a href="index.html">VIP Dashboard</a></li>
-                        <li><a href="wallet.html">My Wallet</a></li>
-                        <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
-                    </ul>
+                    <h4>Connect With Us</h4>
+                    <div class="footer-social-row">
+                        <a href="https://wa.me/919830332929" target="_blank" class="footer-icon-btn"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/17KaFnAURu/" target="_blank" class="footer-icon-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dk_atovitt" target="_blank" class="footer-icon-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@DKATOVITT" target="_blank" class="footer-icon-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/+Tt44e_TXxwY2MzVl" target="_blank" class="footer-icon-btn"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="mailto:info@dkatovitt.com" class="footer-icon-btn"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
             
         </div>
         
+        <!-- 🔥 FIX: TEXT-ALIGN CENTER FOR FOOTER TEXT WRAP 🔥 -->
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK ATOVITT Global Tech and Entertainment Empire</span>. All Rights Reserved.</p>
         </div>
@@ -829,7 +825,7 @@
     <!-- ====================================================================== -->
 
     <!-- ======================================================================
-         🔥 FLOATING BUTTONS (EXACTLY AS REPLACED FROM MOVIE.HTML) 🔥
+         🔥 FLOATING BUTTONS (EXACTLY AS WALLET.HTML) 🔥
          ====================================================================== -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     
@@ -882,7 +878,7 @@
     </div>
 
     <!-- ======================================================================
-         🤖 🔥 DK ATOVITT AI CHATBOT WINDOW (EXACTLY AS REPLACED FROM MOVIE.HTML) 🔥 🤖
+         🤖 🔥 DK ATOVITT AI CHATBOT WINDOW (EXACTLY AS WALLET.HTML) 🔥 🤖
          ====================================================================== -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer" style="display:flex;">
@@ -929,7 +925,6 @@
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
             'coin': { name: 'DK ATVT Coin', icon: 'fas fa-cube', eng: 'The core utility coin of the DK Atovitt ecosystem empowering transactions globally.', hin: 'DK Atovitt इकोसिस्टम का मुख्य यूटिलिटी कॉइन जो विश्व स्तर पर लेनदेन को सशक्त बनाता है।' },
             'wallet': { name: 'DK Web3 Wallet', icon: 'fas fa-wallet', eng: 'Your ultimate decentralized Web3 wallet to securely store, swap, and manage digital assets.', hin: 'डिजिटल संपत्तियों को सुरक्षित रूप से स्टोर और प्रबंधित करने के लिए आपका अंतिम विकेन्द्रीकृत वॉलेट।' },
-            'browser': { name: 'DK Browser', icon: 'fas fa-globe', eng: 'A privacy-focused, incredibly fast web browser that rewards you for surfing the internet.', hin: 'एक गोपनीयता-केंद्रित और तेज़ वेब ब्राउज़र जो आपको इंटरनेट सर्फिंग के लिए पुरस्कृत करता है।' },
             'mart': { name: 'DK Mart', icon: 'fas fa-shopping-cart', eng: 'The next-generation smart e-commerce platform bringing blockchain technology to online shopping.', hin: 'अगली पीढ़ी का स्मार्ट ई-कॉमर्स प्लेटफॉर्म जो ऑनलाइन शॉपिंग में ब्लॉकचेन तकनीक लाता है।' },
             'ads': { name: 'DK Digital Ads', icon: 'fas fa-bullhorn', eng: 'A transparent and highly rewarding digital advertising platform for creators and businesses.', hin: 'रचनाकारों और व्यवसायों के लिए एक पारदर्शी और अत्यधिक फायदेमंद digital विज्ञापन मंच।' },
             'gps': { name: 'DK GPS Tracker', icon: 'fas fa-map-marker-alt', eng: 'Advanced, real-time GPS tracking solutions with uncompromised accuracy and security.', hin: 'सटीकता और सुरक्षा के साथ उन्नत, वास्तविक समय जीपीएस ट्रैकिंग समाधान।' },
@@ -954,6 +949,8 @@
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
             document.getElementById('customAlertOverlay').classList.add('active');
+            
+            // 🔥 SCROLLING FIX: body and html both blocked
             document.body.style.overflow = 'hidden'; 
             document.documentElement.style.overflow = 'hidden';
             
@@ -1156,7 +1153,7 @@
         };
 
         // ======================================================================
-        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY (EXACTLY AS MOVIE.HTML) 🔥
+        // 🔥 VIP CHATBOT LOGIC WITH CENTER MODAL OVERLAY (EXACTLY AS WALLET.HTML) 🔥
         // ======================================================================
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
@@ -1213,7 +1210,6 @@
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('exchange')"><i class="fas fa-chart-line"></i> DK Crypto Exchange</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('browser')"><i class="fas fa-compass"></i> DK Browser</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
@@ -1389,8 +1385,6 @@
                                 <div class="section-title">Ecosystem Quick Links</div>
                                 <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
                                 <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
-                                <a href="search.html"><i class="fas fa-search" style="color:#00a8ff; width:16px;"></i> DK Search (Live)</a>
-                                <a href="calculator.html"><i class="fas fa-calculator" style="color:#e6c875; width:16px;"></i> DK Calculator (Live)</a>
                                 <div class="dropdown-divider"></div>
                                 <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-out-alt" style="width:16px;"></i> Logout Securely</a>
                             </div>
