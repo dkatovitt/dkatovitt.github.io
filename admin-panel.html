@@ -10,17 +10,21 @@
     <style>
         /* 🔥 CORE CSS 🔥 */
         body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; height: 100vh; overflow: hidden; }
-        
+        .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
+        body { top: 0px !important; position: static !important; } 
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
         /* 🔥 LOGIN SCREEN CSS 🔥 */
         #loginScreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 999999; display: flex; align-items: center; justify-content: center; }
         .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .login-box h2 { color: #e6c875; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; }
-        .login-box input:focus { border-color: #e6c875; }
+        .login-box input, .login-box select { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; }
+        .login-box input:focus, .login-box select:focus { border-color: #e6c875; }
         .login-box button { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .login-box button:hover { background: #d4b561; }
 
-        /* 🔥 MAIN ADMIN LAYOUT (Fixed CSS Bug) 🔥 */
+        /* 🔥 MAIN ADMIN LAYOUT 🔥 */
         #adminMainScreen { display: none; height: 100vh; } 
         
         /* SIDEBAR */
@@ -29,7 +33,13 @@
         .admin-brand h2 { margin: 0; color: #e6c875; font-size: 20px; letter-spacing: 1px; font-weight: 900;}
         .admin-brand p { margin: 0; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;}
         
-        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto;}
+        /* TRANSLATOR STYLE */
+        .custom-translate { padding: 15px; border-bottom: 1px solid #222; }
+        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
+        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+
+        .admin-menu { flex: 1; padding: 10px 0; overflow-y: auto;}
         .admin-menu::-webkit-scrollbar { width: 4px; }
         .admin-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
 
@@ -87,9 +97,16 @@
         .status-active { background: rgba(37,211,102,0.1); color: #25d366; border: 1px solid #25d366; }
         .status-soon { background: rgba(255,255,255,0.1); color: #aaa; border: 1px solid #555; }
 
+        /* FORM INPUTS FOR SUB-ADMIN */
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;}
+        .form-input { padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; width: 100%; box-sizing: border-box; outline: none; }
+        .form-input:focus { border-color: #e6c875; }
+
     </style>
 </head>
 <body>
+
+    <div id="google_translate_element" style="display:none;"></div>
 
     <!-- 🔥 1. LOGIN SCREEN 🔥 -->
     <div id="loginScreen">
@@ -113,12 +130,28 @@
                 <h2>DK ATOVITT</h2>
                 <p>Control Panel</p>
             </div>
+            
+            <!-- 🔥 LANGUAGE TRANSLATOR 🔥 -->
+            <div class="custom-translate">
+                <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                    <option value="">🌐 Select Language</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="en">English</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                </select>
+            </div>
+
             <div class="admin-menu">
                 <button class="menu-btn active" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
                 <button class="menu-btn" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
-                
-                <!-- ECOSYSTEM MANAGEMENT MENU -->
                 <button class="menu-btn" onclick="switchTab('ecosystemTab', this)"><i class="fas fa-globe"></i> Manage Ecosystem</button>
+                
+                <!-- 🔥 SUB ADMIN MENU 🔥 -->
+                <button class="menu-btn" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield"></i> Sub-Admins</button>
             </div>
             <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Logout Admin</button>
         </aside>
@@ -145,7 +178,6 @@
                             </tr>
                         </thead>
                         <tbody id="kycTableBody">
-                            <!-- Dummy Data Row 1 -->
                             <tr id="row-1">
                                 <td style="color:#e6c875; font-weight:bold;">DK-HMXHMG82VA</td>
                                 <td>Aizuddin Ahmed</td>
@@ -156,7 +188,6 @@
                                     <button class="action-btn btn-reject" onclick="rejectUser('row-1')">Reject</button>
                                 </td>
                             </tr>
-                            <!-- Dummy Data Row 2 -->
                             <tr id="row-2">
                                 <td style="color:#e6c875; font-weight:bold;">DK-XYZ9876543</td>
                                 <td>Rahul Sharma</td>
@@ -182,209 +213,145 @@
                 </div>
             </div>
 
-            <!-- ECOSYSTEM TAB (ALL 17 PROJECTS) -->
+            <!-- ECOSYSTEM TAB -->
             <div id="ecosystemTab" class="tab-section">
                 <h2 class="header-title"><i class="fas fa-globe"></i> Ecosystem Projects Control</h2>
                 <p style="color:#888; font-size:14px; margin-bottom:20px;">
-                    Yahan se aap apne sabhi Live aur Upcoming projects ki settings, links aur status manage kar sakte hain.
+                    Yahan se aap apne sabhi Live aur Upcoming projects ki settings manage kar sakte hain.
                 </p>
 
                 <!-- LIVE PROJECTS (4) -->
                 <h3 style="color: #25d366; margin-top: 30px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-circle" style="font-size: 10px; vertical-align: middle; margin-right: 5px;"></i> Live Active Projects
+                    <i class="fas fa-circle" style="font-size: 10px; margin-right: 5px;"></i> Live Active Projects
                 </h3>
                 <div class="stats-grid">
-                    
                     <div class="eco-card live">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-film"></i></div>
-                            <span class="status-badge status-active">LIVE</span>
-                        </div>
+                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-film"></i></div><span class="status-badge status-active">LIVE</span></div>
                         <h3 class="eco-title">DK Film Production</h3>
                         <a href="movie.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
                     </div>
-
                     <div class="eco-card live">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-users"></i></div>
-                            <span class="status-badge status-active">LIVE</span>
-                        </div>
+                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-users"></i></div><span class="status-badge status-active">LIVE</span></div>
                         <h3 class="eco-title">DK Connect (Social)</h3>
                         <a href="social.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
                     </div>
-
                     <div class="eco-card live">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-search"></i></div>
-                            <span class="status-badge status-active">LIVE</span>
-                        </div>
+                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-search"></i></div><span class="status-badge status-active">LIVE</span></div>
                         <h3 class="eco-title">DK Search</h3>
                         <a href="search.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
                     </div>
-
                     <div class="eco-card live">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-calculator"></i></div>
-                            <span class="status-badge status-active">LIVE</span>
-                        </div>
+                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-calculator"></i></div><span class="status-badge status-active">LIVE</span></div>
                         <h3 class="eco-title">DK Calculator</h3>
                         <a href="calculator.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
                     </div>
-
                 </div>
 
                 <!-- UPCOMING PROJECTS (13) -->
                 <h3 style="color: #aaa; margin-top: 40px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-clock" style="font-size: 12px; vertical-align: middle; margin-right: 5px;"></i> Upcoming Projects
+                    <i class="fas fa-clock" style="font-size: 12px; margin-right: 5px;"></i> Upcoming Projects
                 </h3>
                 <div class="stats-grid">
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-link"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Atovitt Chain</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-chart-line"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Crypto Exchange</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-cube"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK ATVT Coin</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-wallet"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Wallet</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-shopping-cart"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Mart</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-bullhorn"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Digital Ads</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-map-marker-alt"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK GPS Tracker</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-comment-dots"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Messenger</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-comments"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Chat</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-gamepad"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Games</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-car"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Rides</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-handshake"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK DealPakki</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-tv"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Media House</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
+                </div>
+            </div>
+
+            <!-- 🔥 SUB-ADMIN TAB 🔥 -->
+            <div id="subAdminTab" class="tab-section">
+                <h2 class="header-title"><i class="fas fa-user-shield"></i> Sub-Admin Management</h2>
+                
+                <div class="table-box" style="padding: 25px; margin-bottom: 30px;">
+                    <h3 style="color: #e6c875; margin-top: 0; margin-bottom: 20px; text-transform: uppercase;">Create New Sub-Admin</h3>
                     
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-link"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
+                    <div class="form-grid">
+                        <div>
+                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Full Name</label>
+                            <input type="text" id="saName" class="form-input" placeholder="Enter Name">
                         </div>
-                        <h3 class="eco-title">DK Atovitt Chain / Scan</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
+                        <div>
+                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Email / Login ID</label>
+                            <input type="text" id="saEmail" class="form-input" placeholder="admin@dkatovitt.com">
+                        </div>
+                        <div>
+                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Temporary Password</label>
+                            <input type="password" id="saPass" class="form-input" placeholder="Set Password">
+                        </div>
+                        <div>
+                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Assign Role</label>
+                            <select id="saRole" class="form-input">
+                                <option value="KYC Manager">KYC Manager (Only Approvals)</option>
+                                <option value="Content Manager">Content Manager (Only Updates)</option>
+                                <option value="Support Team">Support Team (View Only)</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-chart-line"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Crypto Exchange</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
+                    <button onclick="createSubAdmin()" style="background: #e6c875; color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition:0.3s;"><i class="fas fa-plus-circle"></i> Create Account</button>
+                </div>
 
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-cube"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK ATVT Coin</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-wallet"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Decentralised Wallet</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-shopping-cart"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Mart</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-bullhorn"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Digital Ads</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK GPS Tracker</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-comment-dots"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Connect Messenger</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-comments"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Chat</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-gamepad"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Games</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-car"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Rides</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-handshake"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK DealPakki</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
-                    <div class="eco-card soon">
-                        <div class="eco-header">
-                            <div class="eco-icon"><i class="fas fa-tv"></i></div>
-                            <span class="status-badge status-soon">UPCOMING</span>
-                        </div>
-                        <h3 class="eco-title">DK Media House</h3>
-                        <a href="javascript:void(0)" onclick="alert('Launch settings locked.')" class="eco-link">Edit Settings <i class="fas fa-cog"></i></a>
-                    </div>
-
+                <div class="table-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Login ID</th>
+                                <th>Assigned Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subAdminTableBody">
+                            <tr id="sa-row-1">
+                                <td style="color:#fff; font-weight:bold;">DK Tech Team</td>
+                                <td>tech@dkatovitt.com</td>
+                                <td style="color:#e6c875;">Content Manager</td>
+                                <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-1')">Revoke Access</button></td>
+                            </tr>
+                            <tr id="sa-row-2">
+                                <td style="color:#fff; font-weight:bold;">Aizuddin Support</td>
+                                <td>support@dkatovitt.com</td>
+                                <td style="color:#e6c875;">KYC Manager</td>
+                                <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-2')">Revoke Access</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
         </main>
     </div>
 
+    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
-        // 🔥 PAGE LOAD CHECK LOGIC 🔥
+        // SESSION LOCK LOGIC
         window.onload = function() {
-            // Agar pehle se login kiya hua hai, toh direct admin page dikhao
             if(sessionStorage.getItem("adminLoggedIn") === "true") {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminMainScreen').style.display = 'flex';
             } else {
-                // Warna sirf login screen dikhao, baaki sab chupa do
                 document.getElementById('loginScreen').style.display = 'flex';
                 document.getElementById('adminMainScreen').style.display = 'none';
             }
         };
 
-        // 🔥 LOGIN LOGIC 🔥
+        // LOGIN / LOGOUT LOGIC
         function checkLogin() {
             let id = document.getElementById('adminId').value;
             let pass = document.getElementById('adminPass').value;
 
             if(id === 'Admin' && pass === 'Admin') {
-                // Session store kar lo, taaki refresh hone pe bahar na phek de
                 sessionStorage.setItem("adminLoggedIn", "true");
-                
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminMainScreen').style.display = 'flex';
                 document.getElementById('loginError').style.display = 'none';
@@ -397,27 +364,22 @@
             sessionStorage.removeItem("adminLoggedIn");
             document.getElementById('adminId').value = '';
             document.getElementById('adminPass').value = '';
-            
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('adminMainScreen').style.display = 'none';
         }
 
-        // 🔥 TAB SWITCHING LOGIC 🔥
+        // TAB SWITCHING LOGIC
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-section').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-            
             document.getElementById(tabId).classList.add('active');
             btnElement.classList.add('active');
         }
 
-        // 🔥 APPROVAL LOGIC (5 COIN REWARD SIMULATION) 🔥
+        // KYC APPROVAL LOGIC
         function approveUser(rowId, userName, uplineId) {
             if(confirm(`Are you sure you want to approve KYC for ${userName}?`)) {
-                
                 document.getElementById(rowId).style.display = 'none';
-                
-                // Show Success Alert
                 alert(`✅ KYC Approved for ${userName}!\n\n🔓 Withdrawal Unlocked.\n🎁 5 ATVT Coins successfully credited to Upline (${uplineId}).`);
             }
         }
@@ -428,6 +390,94 @@
                 alert('Document Rejected.');
             }
         }
+
+        // SUB-ADMIN LOGIC
+        function createSubAdmin() {
+            let name = document.getElementById('saName').value;
+            let email = document.getElementById('saEmail').value;
+            let pass = document.getElementById('saPass').value;
+            let role = document.getElementById('saRole').value;
+
+            if(name === "" || email === "" || pass === "") {
+                alert("Please fill all details to create a Sub-Admin.");
+                return;
+            }
+
+            // Create a new random ID for the row
+            let newRowId = 'sa-row-' + Math.floor(Math.random() * 1000);
+
+            // Add HTML row to the table
+            let newRow = `
+                <tr id="${newRowId}">
+                    <td style="color:#fff; font-weight:bold;">${name}</td>
+                    <td>${email}</td>
+                    <td style="color:#e6c875;">${role}</td>
+                    <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('${newRowId}')">Revoke Access</button></td>
+                </tr>
+            `;
+            
+            document.getElementById('subAdminTableBody').insertAdjacentHTML('beforeend', newRow);
+            
+            alert(`✅ Sub-Admin '${name}' created successfully with role: ${role}.`);
+            
+            // Clear inputs
+            document.getElementById('saName').value = "";
+            document.getElementById('saEmail').value = "";
+            document.getElementById('saPass').value = "";
+        }
+
+        function revokeSubAdmin(rowId) {
+            if(confirm("Are you sure you want to revoke access for this Sub-Admin?")) {
+                document.getElementById(rowId).remove();
+                alert("Access Revoked Successfully.");
+            }
+        }
+
+        // 🔥 GOOGLE TRANSLATE LOGIC 🔥
+        window.translatePage = function(lang) {
+            if (lang === "") {
+                var d = window.location.hostname;
+                var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
+                domains.forEach(function(domain) {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+                });
+                document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                window.location.reload(); return;
+            }
+            var googleSelect = document.querySelector('select.goog-te-combo');
+            if (googleSelect) {
+                googleSelect.value = lang; googleSelect.dispatchEvent(new Event('change'));
+            } else {
+                var domainStr = window.location.hostname.replace(/^www\./i, '');
+                document.cookie = "googtrans=/auto/" + lang + "; path=/; domain=." + domainStr + ";";
+                document.cookie = "googtrans=/auto/" + lang + "; path=/;";
+                window.location.reload();
+            }
+        }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var desktopLang = document.getElementById('lang-desktop');
+                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
+            }, 1000);
+        });
     </script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'auto', 
+                includedLanguages: 'en,hi,bn,mr,ta,te,gu,kn,ml,pa,es,fr,ar,ru', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
