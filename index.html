@@ -57,6 +57,25 @@
         .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
         .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
 
+        /* 🔥 VIP VERIFIED BADGE CSS 🔥 */
+        .vip-verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, #e6c875, #b8860b);
+            color: #000;
+            font-size: 10px;
+            font-weight: 900;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(230, 200, 117, 0.4);
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+        .vip-verified-badge i { font-size: 9px; }
+
         @media (max-width: 768px) {
             .header { height: 70px !important; }
             .header .container { padding-left: 8px !important; padding-right: 8px !important; }
@@ -137,6 +156,16 @@
         .welcome-banner h1 { margin: 0 0 10px 0; color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; }
         .welcome-banner h1 span { color: #e6c875; }
         .welcome-banner p { margin: 0; color: #aaa; font-size: 16px; line-height: 1.6; }
+
+        /* 🔥 MANUAL KYC VERIFICATION CSS 🔥 */
+        .kyc-card { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .kyc-card h3 { color: #e6c875; margin-top: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .kyc-card p { color: #aaa; font-size: 13px; margin-bottom: 20px; }
+        .form-group-kyc { margin-bottom: 15px; }
+        .form-group-kyc label { display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase; }
+        .form-group-kyc input { width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; }
+        .auth-btn-kyc { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .auth-btn-kyc:hover { background: #d4b561; }
 
         .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 25px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
         .wallet-left { display: flex; align-items: center; gap: 20px; }
@@ -340,7 +369,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -366,13 +395,16 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
         <div class="sidebar-profile" id="sidebarProfileArea">
             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile Photo" id="sidebarProfileImg">
-            <h3 id="sidebarProfileName" title="VIP Member">Guest User</h3>
+            <h3 id="sidebarProfileName" title="VIP Member">
+                Guest User
+                <span class="vip-verified-badge" id="verifiedBadgeSidebar" style="display: none;"><i class="fas fa-check-circle"></i> DK ATVT</span>
+            </h3>
             <span class="vip-badge" id="sidebarVipBadge" style="display:none;"><i class="fas fa-crown"></i> VIP MEMBER</span><br>
             <span class="dk-id-badge" id="sidebarDkId" style="display:none;" onclick="copyDkId()" title="Click to Copy"><i class="fas fa-id-card"></i></span>
             <a href="auth.html" class="profile-login-btn" id="sidebarLoginBtn"><i class="fas fa-user-circle"></i> Login / Sign Up</a>
@@ -447,6 +479,86 @@
             <h1>Welcome back, <span id="welcomeNameText">VIP</span> 👋</h1>
             <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
         </div>
+
+        <!-- 🔥 MANUAL KYC VERIFICATION SECTION 🔥 -->
+        <div class="kyc-card reveal" id="kycSection" style="background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <h3 style="color: #e6c875; margin-top: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-id-card"></i> Aadhaar KYC Verification
+            </h3>
+            <p id="kycStatusDesc" style="color: #aaa; font-size: 13px; margin-bottom: 20px;">
+                Withdrawal unlock karne aur upline reward paane ke liye apna [Aadhaar Redacted] verify karein.
+            </p>
+
+            <div id="kycFormBox">
+                <div class="form-group-kyc" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase;">Full Name (As per [Aadhaar Redacted])</label>
+                    <input type="text" id="kycName" placeholder="Enter full name" style="width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-group-kyc" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase;">[Aadhaar Redacted] Number</label>
+                    <input type="text" id="kycNumber" placeholder="Enter 12-digit number" maxlength="12" style="width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box;">
+                </div>
+
+                <button type="button" class="auth-btn-kyc" onclick="submitKyc()" style="width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;">
+                    <i class="fas fa-upload"></i> Submit for Verification
+                </button>
+            </div>
+
+            <!-- Pending Status Box (Hidden by default) -->
+            <div id="kycPendingBox" style="display: none; text-align: center; padding: 20px; background: rgba(230,200,117,0.05); border: 1px dashed #e6c875; border-radius: 10px;">
+                <i class="fas fa-clock fa-2x" style="color: #e6c875; margin-bottom: 10px;"></i>
+                <h4 style="color: #fff; margin: 0 0 5px 0;">Verification Pending</h4>
+                <p style="color: #aaa; font-size: 13px; margin: 0;">Aapki KYC details admin review ke liye bhej di gayi hain. Jald hi verify ho jayegi.</p>
+            </div>
+            
+            <!-- Verified Status Box (Hidden by default) -->
+            <div id="kycVerifiedBox" style="display: none; text-align: center; padding: 20px; background: rgba(37, 211, 102, 0.05); border: 1px dashed #25d366; border-radius: 10px;">
+                <i class="fas fa-check-circle fa-2x" style="color: #25d366; margin-bottom: 10px;"></i>
+                <h4 style="color: #25d366; margin: 0 0 5px 0;">Account Verified <span class="vip-verified-badge"><i class="fas fa-check-circle"></i> DK ATVT</span></h4>
+                <p style="color: #aaa; font-size: 13px; margin: 0;">Badhai ho! Aapka account verify ho chuka hai aur withdrawal unlock ho gaya hai.</p>
+            </div>
+        </div>
+        
+        <script>
+            function submitKyc() {
+                const name = document.getElementById('kycName').value.trim();
+                const number = document.getElementById('kycNumber').value.trim();
+
+                if(!name || number.length !== 12 || isNaN(number)) {
+                    alert('Kripya sahi naam aur 12-digit ID darj karein.');
+                    return;
+                }
+
+                // Temporary LocalStorage Logic for testing UI
+                localStorage.setItem('dk_kyc_status', 'pending');
+                
+                document.getElementById('kycFormBox').style.display = 'none';
+                document.getElementById('kycPendingBox').style.display = 'block';
+                document.getElementById('kycStatusDesc').innerText = "Status: Under Review";
+                showCustomAlert('Submitted', 'Aadhaar details successfully submitted for review.', false);
+            }
+            
+            // Check KYC Status on Load
+            window.addEventListener('load', () => {
+                const status = localStorage.getItem('dk_kyc_status');
+                if(status === 'pending') {
+                    document.getElementById('kycFormBox').style.display = 'none';
+                    document.getElementById('kycPendingBox').style.display = 'block';
+                    document.getElementById('kycStatusDesc').innerText = "Status: Under Review";
+                } else if(status === 'verified') {
+                    document.getElementById('kycFormBox').style.display = 'none';
+                    document.getElementById('kycVerifiedBox').style.display = 'block';
+                    document.getElementById('kycStatusDesc').style.display = 'none';
+                    
+                    // Show Badge in Side Menu & Header
+                    document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
+                    if(document.getElementById('verifiedBadgeHeader')) {
+                        document.getElementById('verifiedBadgeHeader').style.display = 'inline-flex';
+                    }
+                }
+            });
+        </script>
 
         <div class="wallet-banner reveal">
             <div class="wallet-left">
@@ -1023,6 +1135,15 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
                 if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
             }, 1000);
+            
+            // Check KYC Status on Load (For Dashboard View update)
+            const status = localStorage.getItem('dk_kyc_status');
+            if(status === 'verified') {
+                document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
+                if(document.getElementById('verifiedBadgeHeader')) {
+                    document.getElementById('verifiedBadgeHeader').style.display = 'inline-flex';
+                }
+            }
         });
         
         // App Modal Logic
@@ -1182,8 +1303,13 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 let uidSnippet = user.uid ? user.uid.substring(0, 10).toUpperCase() : "..........";
                 let userDkId = "DK-" + uidSnippet;
 
-                document.getElementById('sidebarProfileName').innerText = fullName;
+                document.getElementById('sidebarProfileName').innerHTML = `${fullName} <span class="vip-verified-badge" id="verifiedBadgeSidebar" style="display: none;"><i class="fas fa-check-circle"></i> DK ATVT</span>`;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
+                
+                // Show badge if verified in local storage
+                if(localStorage.getItem('dk_kyc_status') === 'verified') {
+                    document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
+                }
                 
                 const dkIdBadge = document.getElementById('sidebarDkId');
                 if(dkIdBadge) {
@@ -1264,6 +1390,7 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                 }
 
                 const headerRightArea = document.getElementById('headerRightArea');
+                let headerBadgeStyle = localStorage.getItem('dk_kyc_status') === 'verified' ? 'display: inline-flex;' : 'display: none;';
                 if(headerRightArea) {
                     headerRightArea.innerHTML = `
                         <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
@@ -1284,6 +1411,9 @@ Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *AT
                                 <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;">${userName}</span> <i class="fas fa-caret-down"></i>
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
+                                <div style="padding: 10px 18px; border-bottom: 1px solid #222; text-align: center;">
+                                    <span class="vip-verified-badge" id="verifiedBadgeHeader" style="${headerBadgeStyle} margin: 0;"><i class="fas fa-check-circle"></i> DK ATVT Verified</span>
+                                </div>
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
                                 <a href="reward.html"><i class="fas fa-cube" style="color:#e6c875; width:16px;"></i> Reward System</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
