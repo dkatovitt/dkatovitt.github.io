@@ -9,15 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🔥 CORE CSS (FIXED SCROLLING) 🔥 */
-        html, body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
+        /* 🔥 CORE CSS (NATIVE SCROLLING FOR PULL-TO-REFRESH) 🔥 */
+        html, body { background-color: #050505; color: #ccc; font-family: Arial, sans-serif; margin: 0; padding: 0; min-height: 100vh; }
         .goog-te-banner-frame.skiptranslate, .skiptranslate iframe { display: none !important; } 
         body { top: 0px !important; position: static !important; } 
         #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
         .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
         /* 🔥 LOGIN OVERLAY CSS 🔥 */
-        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.7); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: 0.4s ease; overflow-y: auto; padding: 20px; box-sizing: border-box; -webkit-overflow-scrolling: touch;}
+        #loginOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 5, 5, 0.7); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: 0.4s ease; overflow-y: auto; padding: 20px; box-sizing: border-box; }
         .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 100%; max-width: 350px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.9); position: relative; margin: auto;}
         .login-box h2 { color: #e6c875; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
         .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; transition: 0.3s; }
@@ -26,20 +26,20 @@
         .login-box button:hover { background: #d4b561; transform: translateY(-2px); }
 
         /* 🔥 MAIN ADMIN LAYOUT 🔥 */
-        #adminMainScreen { height: 100%; width: 100%; display: flex; flex-direction: column; filter: blur(10px); pointer-events: none; transition: filter 0.4s ease; user-select: none; }
+        #adminMainScreen { min-height: 100vh; width: 100%; display: flex; flex-direction: column; filter: blur(10px); pointer-events: none; transition: filter 0.4s ease; user-select: none; }
         #adminMainScreen.unlocked { filter: blur(0); pointer-events: all; user-select: auto; }
         
-        /* 🔥 HEADER 🔥 */
-        .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; flex-shrink: 0; }
+        /* 🔥 STICKY HEADER 🔥 */
+        .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; position: sticky; top: 0; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .hamburger-btn { background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
         .brand-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 18px; line-height: 1.1; font-weight: 900; letter-spacing: 1px;}
         .header-right { display: flex; align-items: center; gap: 12px; }
         .root-badge { background: #ff4d4d; color: #fff; padding: 5px 12px; border-radius: 8px; text-align: center; font-size: 10px; font-weight: 900; line-height: 1.2; display: flex; flex-direction: column; align-items: center; cursor: pointer; box-shadow: 0 4px 10px rgba(255,77,77,0.3); }
 
-        /* 🔥 BODY WRAPPER & SIDEBAR 🔥 */
-        .admin-body-wrapper { display: flex; flex: 1; overflow: hidden; position: relative; min-height: 0; }
-        .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; flex-shrink: 0; }
+        /* 🔥 BODY WRAPPER & STICKY SIDEBAR 🔥 */
+        .admin-body-wrapper { display: flex; flex: 1; position: relative; }
+        .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; flex-shrink: 0; position: sticky; top: 65px; height: calc(100vh - 65px); }
         .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid #222; text-align: center; flex-shrink: 0;}
         .sidebar-brand h2 { margin: 0; color: #e6c875; font-size: 22px; font-family: 'Playfair Display', serif;}
         .sidebar-brand p { margin: 5px 0 0 0; color: #ff4d4d; font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;}
@@ -48,7 +48,7 @@
         .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 0; }
         .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
 
-        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 80px;}
+        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto; padding-bottom: 80px;}
         .admin-menu::-webkit-scrollbar { width: 4px; }
         .admin-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
 
@@ -63,11 +63,9 @@
         
         .soon-tag { font-size: 8px; background: #222; color: #888; padding: 2px 6px; border-radius: 10px; border: 1px solid #444; letter-spacing: 1px;}
 
-        /* 🔥 CONTENT AREA 🔥 */
-        .admin-content { flex: 1; overflow-y: auto; padding: 25px; background: #050505; position: relative; -webkit-overflow-scrolling: touch; padding-bottom: 120px; }
-        .admin-content::-webkit-scrollbar { width: 6px; }
-        .admin-content::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-
+        /* 🔥 CONTENT AREA (NATIVE SCROLL) 🔥 */
+        .admin-content { flex: 1; padding: 25px; background: #050505; position: relative; padding-bottom: 120px; }
+        
         .tab-section { display: none; animation: fadeIn 0.4s ease; }
         .tab-section.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -111,7 +109,7 @@
         .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 20px; cursor: pointer;}
         .modal-close:hover { color: #fff; }
 
-        #sidebarOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 98; display: none; backdrop-filter: blur(2px);}
+        #sidebarOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9998; display: none; backdrop-filter: blur(2px);}
         #sidebarOverlay.active { display: block; }
         
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px;}
@@ -121,7 +119,10 @@
         .stat-icon-box { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;}
         .card-users h2 { color: #fff; } .card-users .stat-icon-box { background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid #333;}
 
-        @media (max-width: 900px) { .admin-sidebar { position: fixed; left: -300px; height: 100%; box-shadow: 5px 0 20px rgba(0,0,0,0.9); } .admin-sidebar.open { left: 0; } }
+        @media (max-width: 900px) { 
+            .admin-sidebar { position: fixed; top: 0; left: -300px; height: 100vh; box-shadow: 5px 0 20px rgba(0,0,0,0.9); z-index: 9999; } 
+            .admin-sidebar.open { left: 0; } 
+        }
     </style>
 </head>
 <body>
@@ -164,6 +165,9 @@
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="bn">বাংলা (Bengali)</option>
                         <option value="mr">मराठी (Marathi)</option>
+                        <option value="te">తెలుగు (Telugu)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                        <option value="gu">ગુજરાતી (Gujarati)</option>
                     </select>
                 </div>
                 
@@ -172,7 +176,6 @@
                     <button class="menu-btn-item" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
                     <button class="menu-btn-item" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
                     <button class="menu-btn-item" onclick="switchTab('editProfileTab', this)"><i class="fas fa-user-edit" style="color: #00a8ff;"></i> Edit Profile</button>
-                    
                     <button class="menu-btn-item" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield" style="color:#ff4d4d;"></i> Sub-Admins</button>
 
                     <div style="height: 1px; background: #222; margin: 15px 20px;"></div>
@@ -389,7 +392,6 @@
             
             if(!name || !email || !pass) { alert("Please fill all details!"); return; }
 
-            // Get selected permissions
             let selectedPerms = [];
             document.querySelectorAll('#createPermGrid input[type="checkbox"]:checked').forEach(cb => {
                 selectedPerms.push(cb.value);
@@ -406,7 +408,6 @@
             renderSubAdmins();
             alert(`✅ Sub-Admin '${name}' created successfully!`);
             
-            // Clear form
             document.getElementById('saName').value = ""; document.getElementById('saEmail').value = ""; document.getElementById('saPass').value = "";
             document.getElementById('permBox').classList.remove('active');
         }
@@ -424,9 +425,8 @@
             if(!sa) return;
             
             document.getElementById('editSaId').value = sa.id;
-            document.getElementById('editSaPass').value = ''; // Clear password field
+            document.getElementById('editSaPass').value = ''; 
             
-            // Check correct checkboxes
             document.querySelectorAll('#editPermGrid input[type="checkbox"]').forEach(cb => {
                 cb.checked = sa.perms.includes(cb.value);
             });
@@ -451,14 +451,13 @@
             if(saIndex > -1) {
                 subAdminsList[saIndex].perms = selectedPerms;
                 let msg = "Permissions Updated Successfully!";
-                if(newPass.trim() !== '') { msg += "\nPassword has been changed."; }
+                if(newPass.trim() !== '') { msg += "\\nPassword has been changed."; }
                 alert("✅ " + msg);
                 renderSubAdmins();
                 closeEditModal();
             }
         }
 
-        // Initialize Table
         renderSubAdmins();
 
         // 🔥 TRANSLATOR LOGIC 🔥
@@ -470,6 +469,18 @@
             document.cookie = "googtrans=/auto/" + lang + "; path=/;";
             window.location.reload();
         }
+        
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var adminLang = document.getElementById('lang-admin');
+                if(adminLang && currentLang && currentLang !== "auto") adminLang.value = currentLang;
+            }, 1000);
+        });
     </script>
     
     <script type="text/javascript">
