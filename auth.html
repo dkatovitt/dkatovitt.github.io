@@ -171,13 +171,27 @@
         .divider { display: flex; align-items: center; text-align: center; margin: 20px 0; color: #888; font-size: 12px; text-transform: uppercase; }
         .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #333; }
         
-        .auth-switch { text-align: center; margin-top: 25px; color: #888; font-size: 14px; position: relative;}
+        .auth-switch { text-align: center; margin-top: 25px; color: #888; font-size: 14px; }
         .auth-switch a { color: #e6c875; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; margin-left: 5px; }
         .auth-switch a:hover { text-decoration: underline; color: #fff; }
 
-        /* 🔥 ADMIN LOGIN BUTTON (HIDDEN IN CORNER) 🔥 */
-        .admin-login-link { position: absolute; right: 0; top: 0; color: #444; font-size: 11px; text-decoration: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .admin-login-link:hover { color: #e6c875; }
+        /* 🔥 ADMIN LOGIN BUTTON (FIXED CSS - Bottom Centered) 🔥 */
+        .admin-login-link { 
+            display: inline-block; 
+            margin-top: 25px; 
+            color: #555; 
+            font-size: 11px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            padding: 5px 15px;
+            border: 1px solid transparent;
+            border-radius: 20px;
+        }
+        .admin-login-link:hover { color: #ff4d4d; border-color: #ff4d4d; background: rgba(255,77,77,0.05); }
 
         /* 🔥 EXPLORE WITHOUT LOGIN DROPDOWN MENU 🔥 */
         .explore-menu { display: none; flex-direction: column; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; overflow: hidden; margin-top: 10px; margin-bottom: 20px; animation: slideDown 0.3s ease; text-align: left; }
@@ -358,7 +372,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -383,7 +397,7 @@
                 <option value="mr">मराठी (Marathi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
                 <option value="ta">தமிழ் (Tamil)</option>
-                <option value="gu">ગુજરાતી (Gujarati)</option>
+                <option value="gu">ગુજરાती (Gujarati)</option>
             </select>
         </div>
 
@@ -614,8 +628,10 @@
 
                 <div class="auth-switch">
                     Don't have an account? <a onclick="toggleAuth('register')">Sign Up Here</a>
-                    <!-- 🔥 SECRET ADMIN BUTTON IN CORNER 🔥 -->
-                    <a onclick="openAdminModal()" class="admin-login-link">[ Admin ]</a>
+                </div>
+
+                <div style="text-align: center; margin-top: 15px;">
+                    <a onclick="openAdminModal()" class="admin-login-link"><i class="fas fa-user-shield"></i> Root Admin</a>
                 </div>
             </div>
 
@@ -726,11 +742,14 @@
                 <div class="auth-switch">
                     Already have an account? <a onclick="toggleAuth('login')">Login Here</a>
                 </div>
+
+                <div style="text-align: center;">
+                    <a onclick="openAdminModal()" class="admin-login-link"><i class="fas fa-user-shield"></i> Root Admin</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 🔥 SECRET ADMIN AUTHENTICATION MODAL 🔥 -->
     <div class="admin-modal-overlay" id="secretAdminModal">
         <div class="admin-modal-box">
             <button class="admin-modal-close" onclick="closeAdminModal()">&times;</button>
@@ -738,6 +757,8 @@
             <input type="text" id="secAdminId" placeholder="Admin ID">
             <input type="password" id="secAdminPass" placeholder="Password">
             <button class="admin-modal-btn" id="secAdminBtn" onclick="verifySecretAdmin()"><i class="fas fa-sign-in-alt"></i> Authorize</button>
+            
+            <a href="javascript:void(0)" onclick="forgotAdminPassword()" style="display: block; margin-top: 15px; color: #888; font-size: 12px; text-decoration: underline; transition: 0.3s;" onmouseover="this.style.color='#e6c875'" onmouseout="this.style.color='#888'">Forgot Admin Password?</a>
         </div>
     </div>
 
@@ -926,7 +947,7 @@
             }
         }
 
-        // 🔥 SECRET ADMIN MODAL LOGIC 🔥
+        // 🔥 SECRET ADMIN MODAL LOGIC WITH FORGOT PASSWORD 🔥
         function openAdminModal() {
             document.getElementById('secretAdminModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -952,6 +973,18 @@
                 }, 1000);
             } else {
                 alert("ACCESS DENIED: Invalid Admin Credentials.");
+            }
+        }
+
+        // 🔥 NEW: FORGOT ADMIN PASSWORD LOGIC 🔥
+        function forgotAdminPassword() {
+            let email = prompt("To reset the Root Admin password, please enter the registered CEO Email Address:");
+            
+            if(email === "dipakceo@dkatovitt.com") {
+                alert("✅ Verification Successful!\nA highly secure password reset link has been sent to your CEO email inbox.\n\nPlease follow the instructions in the email to regain access.");
+                closeAdminModal();
+            } else if (email !== null && email.trim() !== "") {
+                alert("❌ ACCESS DENIED: Unrecognized Email Address.");
             }
         }
 
@@ -1462,7 +1495,7 @@
                                 <option value="mr">मराठी (Marathi)</option>
                                 <option value="te">తెలుగు (Telugu)</option>
                                 <option value="ta">தமிழ் (Tamil)</option>
-                                <option value="gu">ગુજરાતી (Gujarati)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
                             </select>
                         </div>
                         <a href="auth.html" class="login-btn-header">
