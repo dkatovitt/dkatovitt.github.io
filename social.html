@@ -96,13 +96,23 @@
         .cs-badge { background: linear-gradient(135deg, #D4AF37, #f1c40f); color: #fff; padding: 10px 25px; border-radius: 30px; font-size: 16px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         .cs-desc { color: #65676b; font-size: 16px; max-width: 350px; line-height: 1.5; margin-top: 20px; }
-        /* SMART DROPDOWN PROFILE MENU */
-        .dropdown-menu { display: none; position: absolute; right: 10px; top: 50px; background-color: #ffffff; min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.15); z-index: 10000; border-radius: 8px; border: 1px solid #ddd; overflow: hidden; }
-        .dropdown-menu.show { display: block; animation: dropFade 0.2s ease; }
-        @keyframes dropFade { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .dropdown-menu a { color: #050505; padding: 12px 16px; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: bold; transition: 0.3s; }
-        .dropdown-menu a:hover { background: #f2f2f2; }
-        .dropdown-menu a i { color: #D4AF37; width: 20px; text-align: center; }
+
+        /* 🔥 VIP PROFILE DROPDOWN CSS (From index.html) 🔥 */
+        .profile-dropdown-container { position: relative; display: inline-block; max-width: 150px; }
+        .profile-name-btn { background: transparent; border: 1.5px solid #e6c875; color: #e6c875; border-radius: 30px; padding: 6px 16px; font-size: 14px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; box-shadow: 0 4px 10px rgba(230,200,117,0.2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; box-sizing: border-box;}
+        .profile-name-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .profile-name-btn:hover { background: #e6c875; color: #000; }
+        
+        .topbarDropdown-content { display: none; position: absolute; right: 0; top: 45px; background: #111; min-width: 220px; border-radius: 12px; border: 1px solid #333; z-index: 100000; box-shadow: 0px 10px 30px rgba(0,0,0,0.9); overflow: hidden; animation: slideDown 0.3s ease; text-align: left;}
+        .topbarDropdown-content.show { display: block; }
+        .topbarDropdown-content a { color: #ccc; padding: 12px 18px; text-decoration: none; display: flex; align-items: center; gap:12px; font-size: 13px; font-weight:bold; transition: 0.3s; border-bottom: 1px solid #1a1a1a; }
+        .topbarDropdown-content a:hover { background-color: #1a1a1a; color: #fff; padding-left: 25px; }
+        .topbarDropdown-content .dropdown-divider { height: 1px; background: #222; }
+        .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
+
+        .vip-verified-badge { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(230, 200, 117, 0.4); vertical-align: middle; margin-left: 6px; }
+        .vip-verified-badge i { font-size: 9px; }
+
         /* 🔥 MAIN APP GRID (3 COLUMNS) 🔥 */
         .app-container { display: grid; grid-template-columns: 320px minmax(400px, 1fr) 300px; gap: 20px; max-width: 1250px; margin: 0 auto; padding: 0 10px; }
         /* 🔥 WHITE SIDEBAR MENU 🔥 */
@@ -679,15 +689,31 @@
                     <span class="badge" id="notifBadge">7</span>
                 </div>
             </a>
-            <div class="fb-tab">
-                <img src="1001120580.jpg" id="topbarProfileImg" class="current-user-avatar" onerror="this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png'" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
-                <div class="dropdown-menu" id="profileDropdown">
-                    <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                    <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
-                    <a href="wallet.html"><i class="fas fa-wallet"></i> My Wallet</a>
-                    <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt"></i> Login / Sign Up</a>
+            
+            <!-- 🔥 INDEX.HTML STYLE BLACK-GOLD PREMIUM DROPDOWN 🔥 -->
+            <div class="fb-tab" style="position: relative;">
+                <div class="profile-name-btn" onclick="document.getElementById('profileDropdown').classList.toggle('show')">
+                    <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70px; display: inline-block; vertical-align: middle;" class="current-user-name">Guest User</span> <i class="fas fa-caret-down"></i>
+                </div>
+                <div id="profileDropdown" class="topbarDropdown-content" style="top: 55px; right: 10px; width: 220px; z-index: 100000;">
+                    <div style="padding: 10px 18px; border-bottom: 1px solid #222; text-align: center;">
+                        <span class="vip-verified-badge" id="verifiedBadgeHeader" style="display: none; margin: 0;"><i class="fas fa-check-circle"></i> DK ATVT Verified</span>
+                    </div>
+                    <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                    <a href="reward.html"><i class="fas fa-cube" style="color:#e6c875; width:16px;"></i> Reward System</a>
+                    <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
+                    <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="section-title">Ecosystem Quick Links</div>
+                    <a href="movie.html"><i class="fas fa-film" style="color:#ff4d4d; width:16px;"></i> DK Film (Live)</a>
+                    <a href="social.html"><i class="fas fa-users" style="color:#1877F2; width:16px;"></i> DK Connect (Live)</a>
+                    <a href="search.html"><i class="fas fa-search" style="color:#00a8ff; width:16px;"></i> DK Search (Live)</a>
+                    <a href="calculator.html"><i class="fas fa-calculator" style="color:#e6c875; width:16px;"></i> DK Calculator (Live)</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="javascript:void(0)" class="logout-action" style="color: #ff4d4d;"><i class="fas fa-sign-in-alt" style="width:16px;"></i> Login / Sign Up</a>
                 </div>
             </div>
+            
         </div>
     </header>
     <div class="app-container">
@@ -850,6 +876,12 @@
                 let nb = document.getElementById('notifBadge');
                 if(nb) nb.style.display = 'none';
             }
+            
+            // Check KYC Status on Load for Menu Badge
+            if(localStorage.getItem('dk_kyc_status') === 'verified') {
+                let badge = document.getElementById('verifiedBadgeHeader');
+                if(badge) badge.style.display = 'inline-flex';
+            }
         });
         function openComingSoon(title, bgClass, iconClass) {
             document.getElementById('csTitle').innerText = title;
@@ -866,6 +898,8 @@
             event.stopPropagation();
             const eco = document.getElementById('ecosystemMenu');
             if(eco) eco.classList.remove('show');
+            const profileMenu = document.getElementById('profileDropdown');
+            if(profileMenu) profileMenu.classList.remove('show');
             const menu = document.getElementById('friendRequestsMenu');
             menu.classList.toggle('show');
             const badge = document.querySelector('#friendBadgeContainer .badge');
@@ -878,6 +912,8 @@
             event.stopPropagation();
             const fr = document.getElementById('friendRequestsMenu');
             if(fr) fr.classList.remove('show');
+            const profileMenu = document.getElementById('profileDropdown');
+            if(profileMenu) profileMenu.classList.remove('show');
             const menu = document.getElementById('ecosystemMenu');
             menu.classList.toggle('show');
         }
@@ -888,12 +924,19 @@
                 localStorage.setItem('dk_notif_badge_read', 'true');
             }
         }
-        window.addEventListener('click', () => {
+        
+        // 🔥 GLOBAL CLICK CLOSER UPDATED FOR NEW DROPDOWN 🔥
+        window.addEventListener('click', (e) => {
             const frMenu = document.getElementById('friendRequestsMenu');
-            if(frMenu && frMenu.classList.contains('show')) frMenu.classList.remove('show');
+            if(frMenu && frMenu.classList.contains('show') && !e.target.closest('#friendRequestsMenu') && !e.target.closest('.fb-tab')) frMenu.classList.remove('show');
+            
             const ecoMenu = document.getElementById('ecosystemMenu');
-            if(ecoMenu && ecoMenu.classList.contains('show')) ecoMenu.classList.remove('show');
+            if(ecoMenu && ecoMenu.classList.contains('show') && !e.target.closest('#ecosystemMenu') && !e.target.closest('.fb-tab')) ecoMenu.classList.remove('show');
+            
+            const profileMenu = document.getElementById('profileDropdown');
+            if(profileMenu && profileMenu.classList.contains('show') && !e.target.closest('.profile-name-btn') && !e.target.closest('.profile-dropdown-container')) profileMenu.classList.remove('show');
         });
+        
         function handleFriendAction(btn, action) {
             const item = btn.closest('.fr-item');
             if(action === 'Confirm') {
@@ -1739,9 +1782,18 @@
                 currentUserPhoto = localStorage.getItem('dk_user_dp') || user.photoURL || "1001120580.jpg";
                 updateAvatars();
                 document.querySelectorAll('.current-user-name').forEach(el => { el.innerText = currentUserName; });
+                
+                // 🔥 LOGOUT SECURELY TEXT FIX 🔥
                 document.querySelectorAll('.logout-action').forEach(btn => {
-                    btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
-                    btn.addEventListener('click', () => { if(confirm("Logout?")) signOut(auth).then(() => window.location.reload()); });
+                    btn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout Securely';
+                    // Event listener update to avoid duplicates
+                    let newBtn = btn.cloneNode(true);
+                    btn.parentNode.replaceChild(newBtn, btn);
+                    newBtn.addEventListener('click', () => { 
+                        if(confirm("Are you sure you want to Logout from DK Atovitt?")) {
+                            signOut(auth).then(() => window.location.reload()); 
+                        }
+                    });
                 });
             } else {
                 isGuest = true;
@@ -1749,7 +1801,9 @@
                 updateAvatars();
                 document.querySelectorAll('.logout-action').forEach(btn => {
                     btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login / Sign Up';
-                    btn.addEventListener('click', () => { window.location.href = "auth.html"; });
+                    let newBtn = btn.cloneNode(true);
+                    btn.parentNode.replaceChild(newBtn, btn);
+                    newBtn.addEventListener('click', () => { window.location.href = "auth.html"; });
                 });
             }
         });
