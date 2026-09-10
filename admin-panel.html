@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK ATOVITT - Super Admin Panel</title>
+    <title>Command Center - DK ATOVITT</title>
     <meta name="theme-color" content="#0a0a0a">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
         /* 🔥 CORE CSS 🔥 */
@@ -19,88 +20,111 @@
         #loginScreen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050505; z-index: 999999; display: flex; align-items: center; justify-content: center; }
         .login-box { background: #111; border: 1.5px solid #e6c875; padding: 40px 30px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .login-box h2 { color: #e6c875; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .login-box input, .login-box select { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; }
-        .login-box input:focus, .login-box select:focus { border-color: #e6c875; }
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; outline: none; }
+        .login-box input:focus { border-color: #e6c875; }
         .login-box button { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .login-box button:hover { background: #d4b561; }
 
         /* 🔥 MAIN ADMIN LAYOUT 🔥 */
-        #adminMainScreen { display: none; height: 100vh; } 
+        #adminMainScreen { display: none; height: 100vh; display: flex; flex-direction: column; }
         
-        /* SIDEBAR */
-        .admin-sidebar { width: 260px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; }
-        .admin-brand { padding: 20px; text-align: center; border-bottom: 1px solid #222; background: #111;}
-        .admin-brand h2 { margin: 0; color: #e6c875; font-size: 20px; letter-spacing: 1px; font-weight: 900;}
-        .admin-brand p { margin: 0; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;}
+        /* 🔥 HEADER (COMMAND CENTER) 🔥 */
+        .admin-header { background: #0a0a0a; border-bottom: 1px solid #222; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .hamburger-btn { background: none; border: none; color: #e6c875; font-size: 24px; cursor: pointer; }
+        .brand-title { font-family: 'Playfair Display', serif; color: #e6c875; font-size: 18px; line-height: 1.1; font-weight: 900; letter-spacing: 1px;}
         
-        /* TRANSLATOR STYLE */
-        .custom-translate { padding: 15px; border-bottom: 1px solid #222; }
-        .custom-translate select { width: 100%; background: transparent; color: #e6c875; border: 1px solid #e6c875; padding: 8px 12px; border-radius: 20px; outline: none; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .custom-translate select:hover { background: rgba(230,200,117,0.1); }
-        .custom-translate select option { background: #111; color: #fff; font-weight: normal; }
+        .header-right { display: flex; align-items: center; gap: 12px; }
+        
+        /* CUSTOM LANGUAGE DROPDOWN */
+        .lang-wrapper { position: relative; }
+        .lang-btn { background: transparent; border: 1px solid #555; color: #ccc; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.3s; }
+        .lang-btn:hover { border-color: #e6c875; color: #e6c875; }
+        .lang-btn i.fa-globe { color: #00a8ff; font-size: 14px; }
+        
+        .lang-menu { position: absolute; top: 35px; right: 0; background: #111; border: 1px solid #333; border-radius: 12px; width: 150px; box-shadow: 0 10px 25px rgba(0,0,0,0.8); display: none; overflow: hidden; z-index: 1000; animation: slideDown 0.3s ease;}
+        .lang-menu.show { display: block; }
+        .lang-option { padding: 10px 15px; color: #ccc; font-size: 13px; font-weight: bold; cursor: pointer; border-bottom: 1px solid #222; transition: 0.3s;}
+        .lang-option:hover { background: #1a1a1a; color: #e6c875; padding-left: 20px; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .admin-menu { flex: 1; padding: 10px 0; overflow-y: auto;}
+        /* ROOT ADMIN BADGE */
+        .root-badge { background: #ff4d4d; color: #fff; padding: 5px 12px; border-radius: 8px; text-align: center; font-size: 10px; font-weight: 900; line-height: 1.2; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255,77,77,0.3); cursor: pointer; }
+        .root-badge i { font-size: 14px; margin-bottom: 2px; }
+
+        /* 🔥 CONTENT & SIDEBAR WRAPPER 🔥 */
+        .admin-body-wrapper { display: flex; flex: 1; overflow: hidden; position: relative; }
+
+        /* SIDEBAR MENU */
+        .admin-sidebar { width: 280px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; transition: 0.3s; z-index: 99; }
+        .sidebar-brand { padding: 25px 20px; border-bottom: 1px solid #222; text-align: center; }
+        .sidebar-brand h2 { margin: 0; color: #e6c875; font-size: 22px; font-family: 'Playfair Display', serif; letter-spacing: 1px;}
+        .sidebar-brand p { margin: 5px 0 0 0; color: #ff4d4d; font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;}
+        
+        .admin-menu { flex: 1; padding: 15px 0; overflow-y: auto;}
         .admin-menu::-webkit-scrollbar { width: 4px; }
         .admin-menu::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
 
-        .menu-btn { width: 100%; display: flex; align-items: center; gap: 15px; padding: 15px 25px; background: transparent; border: none; color: #888; font-size: 14px; font-weight: bold; cursor: pointer; text-align: left; border-left: 3px solid transparent; transition: 0.3s;}
-        .menu-btn:hover, .menu-btn.active { background: rgba(230,200,117,0.1); color: #e6c875; border-left: 3px solid #e6c875; }
-        .menu-btn i { width: 20px; text-align: center; font-size: 18px; }
-        
-        .logout-btn { padding: 15px; background: #ff4d4d; color: #fff; text-align: center; cursor: pointer; font-weight: bold; border: none; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px;}
-        .logout-btn:hover { background: #cc0000; }
+        .menu-btn-item { width: 100%; display: flex; align-items: center; gap: 15px; padding: 15px 25px; background: transparent; border: none; color: #888; font-size: 14px; font-weight: bold; cursor: pointer; text-align: left; border-left: 3px solid transparent; transition: 0.3s;}
+        .menu-btn-item:hover, .menu-btn-item.active { background: rgba(230,200,117,0.05); color: #e6c875; border-left: 3px solid #e6c875; }
+        .menu-btn-item i { width: 20px; text-align: center; font-size: 18px; }
 
         /* CONTENT AREA */
-        .admin-content { flex: 1; overflow-y: auto; padding: 30px; background: #050505; }
+        .admin-content { flex: 1; overflow-y: auto; padding: 25px; background: #050505; position: relative; }
         .admin-content::-webkit-scrollbar { width: 6px; }
-        .admin-content::-webkit-scrollbar-thumb { background: #e6c875; border-radius: 10px; }
-
-        .header-title { color: #fff; font-size: 24px; margin: 0 0 20px 0; border-bottom: 2px solid #222; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;}
-
-        /* TABLE CSS */
-        .table-box { background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { background: #1a1a1a; color: #888; padding: 15px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;}
-        td { padding: 15px; border-bottom: 1px solid #222; color: #ccc; font-size: 14px; }
-        tr:hover td { background: #161616; }
-        
-        .action-btn { padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
-        .btn-approve { background: #25d366; color: #111; }
-        .btn-approve:hover { background: #128c7e; color: #fff;}
-        .btn-reject { background: #ff4d4d; color: #fff; margin-left: 5px; }
-        .btn-reject:hover { background: #cc0000; }
-        .view-doc { color: #e6c875; text-decoration: underline; cursor: pointer; font-size: 12px; }
+        .admin-content::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
         .tab-section { display: none; animation: fadeIn 0.4s ease; }
         .tab-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 🔥 ECOSYSTEM PROJECTS CSS 🔥 */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px;}
-        .eco-card { background: #111; border: 1px solid #333; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; transition: 0.3s; }
-        .eco-card:hover { border-color: #e6c875; transform: translateY(-5px); background: #161616;}
+        /* 🔥 DASHBOARD CARDS (From Video) 🔥 */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 30px;}
+        .stat-card { background: #111; border: 1px solid #222; padding: 25px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .stat-info h2 { margin: 0 0 5px 0; font-size: 28px; font-weight: 900; }
+        .stat-info p { margin: 0; color: #888; font-size: 11px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;}
+        .stat-icon-box { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
         
-        .eco-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; width: 100%;}
-        .eco-icon { width: 50px; height: 50px; border-radius: 10px; background: rgba(230,200,117,0.1); color: #e6c875; display: flex; align-items: center; justify-content: center; font-size: 22px; border: 1px solid rgba(230,200,117,0.3);}
+        /* Card Colors */
+        .card-users h2 { color: #fff; }
+        .card-users .stat-icon-box { background: rgba(255,255,255,0.05); color: #aaa; border: 1px solid #333;}
         
-        .eco-card.live .eco-icon { background: rgba(37,211,102,0.1); color: #25d366; border-color: rgba(37,211,102,0.3);}
-        .eco-card.soon { opacity: 0.7; }
-        .eco-card.soon .eco-icon { background: #222; color: #888; border-color: #444;}
+        .card-coins h2 { color: #25d366; }
+        .card-coins .stat-icon-box { background: rgba(37,211,102,0.1); color: #25d366; border: 1px solid rgba(37,211,102,0.3);}
         
-        .eco-title { color: #fff; font-size: 15px; margin: 0 0 5px 0; font-weight: bold; letter-spacing: 0.5px; }
-        .eco-link { color: #e6c875; font-size: 12px; text-decoration: none; font-weight: bold; margin-top: auto; display: inline-block; transition: 0.3s; padding-top: 10px;}
-        .eco-link:hover { color: #fff; }
-        .eco-card.soon .eco-link { color: #888; }
-        .eco-card.soon .eco-link:hover { color: #fff; }
+        .card-auditions h2 { color: #e6c875; }
+        .card-auditions .stat-icon-box { background: rgba(230,200,117,0.1); color: #e6c875; border: 1px solid rgba(230,200,117,0.3);}
+        
+        .card-flagged h2 { color: #ff4d4d; }
+        .card-flagged .stat-icon-box { background: rgba(255,77,77,0.1); color: #ff4d4d; border: 1px solid rgba(255,77,77,0.3);}
 
-        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 9px; font-weight: bold; letter-spacing: 1px; }
-        .status-active { background: rgba(37,211,102,0.1); color: #25d366; border: 1px solid #25d366; }
-        .status-soon { background: rgba(255,255,255,0.1); color: #aaa; border: 1px solid #555; }
+        /* 🔥 DATA TABLES (From Video) 🔥 */
+        .section-header { color: #e6c875; font-size: 16px; margin: 30px 0 15px 0; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; font-weight: bold;}
+        
+        .table-box { background: #111; border: 1px solid #222; border-radius: 12px; overflow-x: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.5); margin-bottom: 30px;}
+        table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap; }
+        th { background: transparent; color: #888; padding: 15px 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #333;}
+        td { padding: 15px 20px; border-bottom: 1px solid #222; color: #ccc; font-size: 14px; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
 
-        /* FORM INPUTS FOR SUB-ADMIN */
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;}
-        .form-input { padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; width: 100%; box-sizing: border-box; outline: none; }
-        .form-input:focus { border-color: #e6c875; }
+        .text-yellow { color: #e6c875; }
+        .text-dim { color: #888; font-size: 12px;}
+
+        /* Mobile Sidebar Overlay */
+        #sidebarOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 98; display: none; backdrop-filter: blur(2px);}
+        #sidebarOverlay.active { display: block; }
+
+        @media (max-width: 900px) {
+            .admin-sidebar { position: fixed; left: -300px; height: 100%; box-shadow: 5px 0 20px rgba(0,0,0,0.9); }
+            .admin-sidebar.open { left: 0; }
+            .header-title { font-size: 20px; }
+        }
+        
+        /* Action buttons for Pending KYC */
+        .action-btn { padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; border: none; transition: 0.3s; }
+        .btn-approve { background: #25d366; color: #111; }
+        .btn-reject { background: #ff4d4d; color: #fff; margin-left: 5px; }
 
     </style>
 </head>
@@ -108,231 +132,225 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 1. LOGIN SCREEN 🔥 -->
     <div id="loginScreen">
         <div class="login-box">
             <video src="images/logo/logo.mp4" autoplay loop muted playsinline style="width: 70px; mix-blend-mode: screen; margin-bottom: 10px; border-radius: 10px;"></video>
-            <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
+            <h2><i class="fas fa-shield-alt"></i> Command Login</h2>
             <p style="color:#888; font-size:12px; margin-bottom:20px;">Use ID: <b>Admin</b> | Pass: <b>Admin</b></p>
             <input type="text" id="adminId" placeholder="Admin ID">
             <input type="password" id="adminPass" placeholder="Password">
-            <button onclick="checkLogin()"><i class="fas fa-sign-in-alt"></i> Login to Panel</button>
-            <p id="loginError" style="color: #ff4d4d; font-size: 12px; margin-top: 15px; display: none;">Invalid ID or Password!</p>
+            <button onclick="checkLogin()"><i class="fas fa-sign-in-alt"></i> Access Panel</button>
+            <p id="loginError" style="color: #ff4d4d; font-size: 12px; margin-top: 15px; display: none;">Invalid Credentials!</p>
         </div>
     </div>
 
-    <!-- 🔥 2. MAIN ADMIN PANEL 🔥 -->
     <div id="adminMainScreen">
         
-        <!-- SIDEBAR -->
-        <aside class="admin-sidebar">
-            <div class="admin-brand">
-                <h2>DK ATOVITT</h2>
-                <p>Control Panel</p>
+        <header class="admin-header">
+            <div class="header-left">
+                <button class="hamburger-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <div class="brand-title">Command<br>Center</div>
             </div>
-            
-            <!-- 🔥 LANGUAGE TRANSLATOR 🔥 -->
-            <div class="custom-translate">
-                <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
-                    <option value="">🌐 Select Language</option>
-                    <option value="hi">हिन्दी (Hindi)</option>
-                    <option value="en">English</option>
-                    <option value="bn">বাংলা (Bengali)</option>
-                    <option value="mr">मराठी (Marathi)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                    <option value="ta">தமிழ் (Tamil)</option>
-                    <option value="gu">ગુજરાતી (Gujarati)</option>
-                </select>
-            </div>
-
-            <div class="admin-menu">
-                <button class="menu-btn active" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
-                <button class="menu-btn" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
-                <button class="menu-btn" onclick="switchTab('ecosystemTab', this)"><i class="fas fa-globe"></i> Manage Ecosystem</button>
+            <div class="header-right">
                 
-                <!-- 🔥 SUB ADMIN MENU 🔥 -->
-                <button class="menu-btn" onclick="switchTab('subAdminTab', this)"><i class="fas fa-user-shield"></i> Sub-Admins</button>
-            </div>
-            <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Logout Admin</button>
-        </aside>
+                <div class="lang-wrapper">
+                    <button class="lang-btn" onclick="toggleLangMenu()"><i class="fas fa-globe"></i> <span class="notranslate">Language</span> <i class="fas fa-chevron-down" style="font-size:10px; margin-left:2px;"></i></button>
+                    <div class="lang-menu" id="langMenuDrop">
+                        <div class="lang-option notranslate" onclick="translatePage('en')">English</div>
+                        <div class="lang-option notranslate" onclick="translatePage('hi')">हिन्दी (Hindi)</div>
+                        <div class="lang-option notranslate" onclick="translatePage('bn')">বাংলা (Bengali)</div>
+                        <div class="lang-option notranslate" onclick="translatePage('gu')">ગુજરાતી (Gujarati)</div>
+                        <div class="lang-option notranslate" onclick="translatePage('mr')">मराठी (Marathi)</div>
+                    </div>
+                </div>
 
-        <!-- CONTENT AREA -->
-        <main class="admin-content">
+                <div class="root-badge" onclick="logout()" title="Click to Logout">
+                    <i class="fas fa-shield-alt"></i> ROOT<br>ADMIN
+                </div>
+            </div>
+        </header>
+
+        <div class="admin-body-wrapper">
             
-            <!-- KYC TAB -->
-            <div id="kycTab" class="tab-section active">
-                <h2 class="header-title"><i class="fas fa-user-check"></i> Pending KYC Approvals</h2>
-                <p style="color:#888; font-size:14px; margin-bottom:20px;">
-                    Approve karne par user ka withdrawal unlock hoga aur uske Upline ko automatic <b>5 ATVT</b> reward mil jayenge.
-                </p>
-
-                <div class="table-box">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>DK-ID</th>
-                                <th>User Name</th>
-                                <th>Govt ID Details</th>
-                                <th>Upline DK-ID</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="kycTableBody">
-                            <tr id="row-1">
-                                <td style="color:#e6c875; font-weight:bold;">DK-HMXHMG82VA</td>
-                                <td>Aizuddin Ahmed</td>
-                                <td>ID: [Aadhaar Redacted] <br><span class="view-doc">View Front</span> | <span class="view-doc">View Back</span></td>
-                                <td style="color:#888;">DK-ABCDE12345</td>
-                                <td>
-                                    <button class="action-btn btn-approve" onclick="approveUser('row-1', 'Aizuddin Ahmed', 'DK-ABCDE12345')">Approve</button>
-                                    <button class="action-btn btn-reject" onclick="rejectUser('row-1')">Reject</button>
-                                </td>
-                            </tr>
-                            <tr id="row-2">
-                                <td style="color:#e6c875; font-weight:bold;">DK-XYZ9876543</td>
-                                <td>Rahul Sharma</td>
-                                <td>ID: [Aadhaar Redacted] <br><span class="view-doc">View Front</span> | <span class="view-doc">View Back</span></td>
-                                <td style="color:#888;">DK-MASTER999</td>
-                                <td>
-                                    <button class="action-btn btn-approve" onclick="approveUser('row-2', 'Rahul Sharma', 'DK-MASTER999')">Approve</button>
-                                    <button class="action-btn btn-reject" onclick="rejectUser('row-2')">Reject</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <aside class="admin-sidebar" id="sidebar">
+                <div class="sidebar-brand">
+                    <h2>DK ATOVITT</h2>
+                    <p>Super Admin Control</p>
                 </div>
-            </div>
-
-            <!-- USERS TAB -->
-            <div id="usersTab" class="tab-section">
-                <h2 class="header-title"><i class="fas fa-users"></i> All Registered Users</h2>
-                <div class="table-box" style="padding: 40px; text-align: center; color: #888;">
-                    <i class="fas fa-database fa-3x" style="color:#e6c875; margin-bottom:15px;"></i>
-                    <h3 style="color:#fff;">User database is connecting...</h3>
-                    <p>Live user list will appear here once connected to Firebase.</p>
-                </div>
-            </div>
-
-            <!-- ECOSYSTEM TAB -->
-            <div id="ecosystemTab" class="tab-section">
-                <h2 class="header-title"><i class="fas fa-globe"></i> Ecosystem Projects Control</h2>
-                <p style="color:#888; font-size:14px; margin-bottom:20px;">
-                    Yahan se aap apne sabhi Live aur Upcoming projects ki settings manage kar sakte hain.
-                </p>
-
-                <!-- LIVE PROJECTS (4) -->
-                <h3 style="color: #25d366; margin-top: 30px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-circle" style="font-size: 10px; margin-right: 5px;"></i> Live Active Projects
-                </h3>
-                <div class="stats-grid">
-                    <div class="eco-card live">
-                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-film"></i></div><span class="status-badge status-active">LIVE</span></div>
-                        <h3 class="eco-title">DK Film Production</h3>
-                        <a href="movie.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="eco-card live">
-                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-users"></i></div><span class="status-badge status-active">LIVE</span></div>
-                        <h3 class="eco-title">DK Connect (Social)</h3>
-                        <a href="social.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="eco-card live">
-                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-search"></i></div><span class="status-badge status-active">LIVE</span></div>
-                        <h3 class="eco-title">DK Search</h3>
-                        <a href="search.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="eco-card live">
-                        <div class="eco-header"><div class="eco-icon"><i class="fas fa-calculator"></i></div><span class="status-badge status-active">LIVE</span></div>
-                        <h3 class="eco-title">DK Calculator</h3>
-                        <a href="calculator.html" target="_blank" class="eco-link">Manage Portal <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- UPCOMING PROJECTS (13) -->
-                <h3 style="color: #aaa; margin-top: 40px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">
-                    <i class="fas fa-clock" style="font-size: 12px; margin-right: 5px;"></i> Upcoming Projects
-                </h3>
-                <div class="stats-grid">
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-link"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Atovitt Chain</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-chart-line"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Crypto Exchange</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-cube"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK ATVT Coin</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-wallet"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Wallet</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-shopping-cart"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Mart</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-bullhorn"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Digital Ads</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-map-marker-alt"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK GPS Tracker</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-comment-dots"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Messenger</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-comments"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Chat</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-gamepad"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Games</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-car"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Rides</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-handshake"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK DealPakki</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                    <div class="eco-card soon"><div class="eco-header"><div class="eco-icon"><i class="fas fa-tv"></i></div><span class="status-badge status-soon">UPCOMING</span></div><h3 class="eco-title">DK Media House</h3><a href="javascript:void(0)" class="eco-link">Settings Locked</a></div>
-                </div>
-            </div>
-
-            <!-- 🔥 SUB-ADMIN TAB 🔥 -->
-            <div id="subAdminTab" class="tab-section">
-                <h2 class="header-title"><i class="fas fa-user-shield"></i> Sub-Admin Management</h2>
                 
-                <div class="table-box" style="padding: 25px; margin-bottom: 30px;">
-                    <h3 style="color: #e6c875; margin-top: 0; margin-bottom: 20px; text-transform: uppercase;">Create New Sub-Admin</h3>
+                <div class="admin-menu">
+                    <button class="menu-btn-item active" onclick="switchTab('overviewTab', this)"><i class="fas fa-tachometer-alt"></i> Overview</button>
+                    <button class="menu-btn-item" onclick="switchTab('manageUsersTab', this)"><i class="fas fa-user-friends"></i> Manage Users</button>
+                    <button class="menu-btn-item" onclick="switchTab('castingTab', this)"><i class="fas fa-video"></i> Casting / Auditions</button>
+                    <button class="menu-btn-item" onclick="switchTab('shortsTab', this)"><i class="fas fa-play-circle"></i> ATVT Shorts Moderation</button>
+                    <button class="menu-btn-item" onclick="switchTab('economyTab', this)"><i class="fas fa-coins"></i> ATVT Economy</button>
+                    <button class="menu-btn-item" onclick="switchTab('shopTab', this)"><i class="fas fa-shopping-bag"></i> Shop Orders</button>
+                    <button class="menu-btn-item" onclick="switchTab('settingsTab', this)"><i class="fas fa-cog"></i> System Settings</button>
                     
-                    <div class="form-grid">
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Full Name</label>
-                            <input type="text" id="saName" class="form-input" placeholder="Enter Name">
+                    <div style="height: 1px; background: #222; margin: 10px 20px;"></div>
+                    <button class="menu-btn-item" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card" style="color:#e6c875;"></i> Pending KYC</button>
+                    <button class="menu-btn-item" onclick="switchTab('ecosystemTab', this)"><i class="fas fa-globe" style="color:#00a8ff;"></i> Ecosystem Links</button>
+                </div>
+            </aside>
+            <div id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+            <main class="admin-content">
+                
+                <div id="overviewTab" class="tab-section active">
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card card-users">
+                            <div class="stat-info">
+                                <h2>14,205</h2>
+                                <p>Total Registered Users</p>
+                            </div>
+                            <div class="stat-icon-box"><i class="fas fa-users"></i></div>
                         </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Email / Login ID</label>
-                            <input type="text" id="saEmail" class="form-input" placeholder="admin@dkatovitt.com">
+
+                        <div class="stat-card card-coins">
+                            <div class="stat-info">
+                                <h2>245.5K</h2>
+                                <p>ATVT Coins In Circulation</p>
+                            </div>
+                            <div class="stat-icon-box"><i class="fas fa-coins"></i></div>
                         </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Temporary Password</label>
-                            <input type="password" id="saPass" class="form-input" placeholder="Set Password">
+
+                        <div class="stat-card card-auditions">
+                            <div class="stat-info">
+                                <h2>312</h2>
+                                <p>Pending Auditions</p>
+                            </div>
+                            <div class="stat-icon-box"><i class="fas fa-clipboard-list"></i></div>
                         </div>
-                        <div>
-                            <label style="color:#aaa; font-size:12px; margin-bottom:5px; display:block;">Assign Role</label>
-                            <select id="saRole" class="form-input">
-                                <option value="KYC Manager">KYC Manager (Only Approvals)</option>
-                                <option value="Content Manager">Content Manager (Only Updates)</option>
-                                <option value="Support Team">Support Team (View Only)</option>
-                            </select>
+
+                        <div class="stat-card card-flagged">
+                            <div class="stat-info">
+                                <h2>45</h2>
+                                <p>Flagged Videos</p>
+                            </div>
+                            <div class="stat-icon-box"><i class="fas fa-flag"></i></div>
                         </div>
                     </div>
 
-                    <button onclick="createSubAdmin()" style="background: #e6c875; color: #000; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition:0.3s;"><i class="fas fa-plus-circle"></i> Create Account</button>
+                    <h3 class="section-header">🎭 Recent Audition Applications</h3>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Applicant Name</th>
+                                    <th>Role Applied</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>Male Lead (Yakshini)</td>
+                                    <td class="text-dim">Today, 10:30 AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Priya Singh</td>
+                                    <td>Dancer / Chorus</td>
+                                    <td class="text-dim">Yesterday</td>
+                                </tr>
+                                <tr>
+                                    <td>Amit Verma</td>
+                                    <td>Supporting Actor</td>
+                                    <td class="text-dim">Yesterday</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="section-header"><i class="fas fa-user-plus"></i> New Users</h3>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Referred By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Sneha Das</strong><br>
+                                        <span class="text-dim">sneha@email.com</span>
+                                    </td>
+                                    <td class="text-dim">DK8472</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Vikram K.</strong><br>
+                                        <span class="text-dim">vikram@email.com</span>
+                                    </td>
+                                    <td class="text-dim">Organic</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Rohan Roy</strong><br>
+                                        <span class="text-dim">rohan@email.com</span>
+                                    </td>
+                                    <td class="text-dim">DK9912</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <div class="table-box">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Login ID</th>
-                                <th>Assigned Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="subAdminTableBody">
-                            <tr id="sa-row-1">
-                                <td style="color:#fff; font-weight:bold;">DK Tech Team</td>
-                                <td>tech@dkatovitt.com</td>
-                                <td style="color:#e6c875;">Content Manager</td>
-                                <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-1')">Revoke Access</button></td>
-                            </tr>
-                            <tr id="sa-row-2">
-                                <td style="color:#fff; font-weight:bold;">Aizuddin Support</td>
-                                <td>support@dkatovitt.com</td>
-                                <td style="color:#e6c875;">KYC Manager</td>
-                                <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('sa-row-2')">Revoke Access</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                <div id="kycTab" class="tab-section">
+                    <h3 class="section-header"><i class="fas fa-id-card"></i> Pending KYC Approvals</h3>
+                    <p style="color:#888; font-size:13px; margin-top:-10px; margin-bottom:20px;">Approve users to unlock their withdrawal and credit 5 ATVT to their upline.</p>
 
-        </main>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>DK-ID</th>
+                                    <th>User Name</th>
+                                    <th>Govt ID Details</th>
+                                    <th>Upline DK-ID</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="row-1">
+                                    <td class="text-yellow"><strong>DK-HMXHMG82VA</strong></td>
+                                    <td>Aizuddin Ahmed</td>
+                                    <td>ID: [Aadhaar Redacted] <br><span class="view-doc">View Front</span> | <span class="view-doc">View Back</span></td>
+                                    <td class="text-dim">DK-ABCDE12345</td>
+                                    <td>
+                                        <button class="action-btn btn-approve" onclick="approveUser('row-1', 'Aizuddin Ahmed', 'DK-ABCDE12345')">Approve</button>
+                                        <button class="action-btn btn-reject" onclick="rejectUser('row-1')">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr id="row-2">
+                                    <td class="text-yellow"><strong>DK-XYZ9876543</strong></td>
+                                    <td>Rahul Sharma</td>
+                                    <td>ID: [Aadhaar Redacted] <br><span class="view-doc">View Front</span> | <span class="view-doc">View Back</span></td>
+                                    <td class="text-dim">DK-MASTER999</td>
+                                    <td>
+                                        <button class="action-btn btn-approve" onclick="approveUser('row-2', 'Rahul Sharma', 'DK-MASTER999')">Approve</button>
+                                        <button class="action-btn btn-reject" onclick="rejectUser('row-2')">Reject</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="manageUsersTab" class="tab-section"><h2 class="header-title">Manage Users</h2><p>Database linking required.</p></div>
+                <div id="castingTab" class="tab-section"><h2 class="header-title">Casting / Auditions</h2><p>All audition profiles will appear here.</p></div>
+                <div id="shortsTab" class="tab-section"><h2 class="header-title">ATVT Shorts Moderation</h2><p>Review flagged and reported short videos.</p></div>
+                <div id="economyTab" class="tab-section"><h2 class="header-title">ATVT Economy</h2><p>Tokenomics, minting, and burn controls.</p></div>
+                <div id="shopTab" class="tab-section"><h2 class="header-title">Shop Orders</h2><p>E-commerce order tracking.</p></div>
+                <div id="settingsTab" class="tab-section"><h2 class="header-title">System Settings</h2><p>API Keys and App maintenance modes.</p></div>
+                <div id="ecosystemTab" class="tab-section"><h2 class="header-title">Ecosystem Links</h2><p>Manage URLs for all 17 projects.</p></div>
+
+            </main>
+        </div>
     </div>
 
-    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
     <script>
         // SESSION LOCK LOGIC
         window.onload = function() {
@@ -345,7 +363,7 @@
             }
         };
 
-        // LOGIN / LOGOUT LOGIC
+        // LOGIN / LOGOUT
         function checkLogin() {
             let id = document.getElementById('adminId').value;
             let pass = document.getElementById('adminPass').value;
@@ -368,12 +386,36 @@
             document.getElementById('adminMainScreen').style.display = 'none';
         }
 
-        // TAB SWITCHING LOGIC
+        // SIDEBAR TOGGLE (Mobile)
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        // TAB SWITCHING
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-section').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.menu-btn-item').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             btnElement.classList.add('active');
+            
+            // Auto close sidebar on mobile after clicking
+            if(window.innerWidth <= 900) { toggleSidebar(); }
+        }
+
+        // LANGUAGE DROPDOWN TOGGLE
+        function toggleLangMenu() {
+            document.getElementById('langMenuDrop').classList.toggle('show');
+        }
+
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.closest('.lang-wrapper')) {
+                var dropdowns = document.querySelectorAll(".lang-menu");
+                dropdowns.forEach(d => d.classList.remove('show'));
+            }
         }
 
         // KYC APPROVAL LOGIC
@@ -391,50 +433,9 @@
             }
         }
 
-        // SUB-ADMIN LOGIC
-        function createSubAdmin() {
-            let name = document.getElementById('saName').value;
-            let email = document.getElementById('saEmail').value;
-            let pass = document.getElementById('saPass').value;
-            let role = document.getElementById('saRole').value;
-
-            if(name === "" || email === "" || pass === "") {
-                alert("Please fill all details to create a Sub-Admin.");
-                return;
-            }
-
-            // Create a new random ID for the row
-            let newRowId = 'sa-row-' + Math.floor(Math.random() * 1000);
-
-            // Add HTML row to the table
-            let newRow = `
-                <tr id="${newRowId}">
-                    <td style="color:#fff; font-weight:bold;">${name}</td>
-                    <td>${email}</td>
-                    <td style="color:#e6c875;">${role}</td>
-                    <td><button class="action-btn btn-reject" onclick="revokeSubAdmin('${newRowId}')">Revoke Access</button></td>
-                </tr>
-            `;
-            
-            document.getElementById('subAdminTableBody').insertAdjacentHTML('beforeend', newRow);
-            
-            alert(`✅ Sub-Admin '${name}' created successfully with role: ${role}.`);
-            
-            // Clear inputs
-            document.getElementById('saName').value = "";
-            document.getElementById('saEmail').value = "";
-            document.getElementById('saPass').value = "";
-        }
-
-        function revokeSubAdmin(rowId) {
-            if(confirm("Are you sure you want to revoke access for this Sub-Admin?")) {
-                document.getElementById(rowId).remove();
-                alert("Access Revoked Successfully.");
-            }
-        }
-
         // 🔥 GOOGLE TRANSLATE LOGIC 🔥
         window.translatePage = function(lang) {
+            document.getElementById('langMenuDrop').classList.remove('show');
             if (lang === "") {
                 var d = window.location.hostname;
                 var domains = [d, '.' + d, d.replace(/^www\./i, ''), '.' + d.replace(/^www\./i, '')];
@@ -454,18 +455,6 @@
                 window.location.reload();
             }
         }
-        
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
-                var currentLang = "";
-                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
-                var googleSelect = document.querySelector('select.goog-te-combo');
-                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
-                var desktopLang = document.getElementById('lang-desktop');
-                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
-            }, 1000);
-        });
     </script>
     
     <script type="text/javascript">
