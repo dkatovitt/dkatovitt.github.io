@@ -20,8 +20,8 @@
         .login-box button { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .login-box button:hover { background: #d4b561; }
 
-        /* 🔥 MAIN ADMIN LAYOUT 🔥 */
-        #adminMainScreen { display: none; height: 100vh; display: flex; } 
+        /* 🔥 MAIN ADMIN LAYOUT (Fixed CSS Bug) 🔥 */
+        #adminMainScreen { display: none; height: 100vh; } 
         
         /* SIDEBAR */
         .admin-sidebar { width: 260px; background: #0a0a0a; border-right: 1px solid #222; display: flex; flex-direction: column; }
@@ -111,13 +111,13 @@
         <aside class="admin-sidebar">
             <div class="admin-brand">
                 <h2>DK ATOVITT</h2>
-                <p>Global Tech Empire</p>
+                <p>Control Panel</p>
             </div>
             <div class="admin-menu">
                 <button class="menu-btn active" onclick="switchTab('kycTab', this)"><i class="fas fa-id-card"></i> Pending KYC</button>
                 <button class="menu-btn" onclick="switchTab('usersTab', this)"><i class="fas fa-users"></i> All Users</button>
                 
-                <!-- 🔥 NEW: ECOSYSTEM MANAGEMENT MENU 🔥 -->
+                <!-- ECOSYSTEM MANAGEMENT MENU -->
                 <button class="menu-btn" onclick="switchTab('ecosystemTab', this)"><i class="fas fa-globe"></i> Manage Ecosystem</button>
             </div>
             <button class="logout-btn" onclick="logout()"><i class="fas fa-power-off"></i> Logout Admin</button>
@@ -182,7 +182,7 @@
                 </div>
             </div>
 
-            <!-- 🔥 ECOSYSTEM TAB (ALL 17 PROJECTS) 🔥 -->
+            <!-- ECOSYSTEM TAB (ALL 17 PROJECTS) -->
             <div id="ecosystemTab" class="tab-section">
                 <h2 class="header-title"><i class="fas fa-globe"></i> Ecosystem Projects Control</h2>
                 <p style="color:#888; font-size:14px; margin-bottom:20px;">
@@ -363,12 +363,28 @@
     </div>
 
     <script>
-        // 🔥 1. SIMPLE LOGIN LOGIC 🔥
+        // 🔥 PAGE LOAD CHECK LOGIC 🔥
+        window.onload = function() {
+            // Agar pehle se login kiya hua hai, toh direct admin page dikhao
+            if(sessionStorage.getItem("adminLoggedIn") === "true") {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('adminMainScreen').style.display = 'flex';
+            } else {
+                // Warna sirf login screen dikhao, baaki sab chupa do
+                document.getElementById('loginScreen').style.display = 'flex';
+                document.getElementById('adminMainScreen').style.display = 'none';
+            }
+        };
+
+        // 🔥 LOGIN LOGIC 🔥
         function checkLogin() {
             let id = document.getElementById('adminId').value;
             let pass = document.getElementById('adminPass').value;
 
             if(id === 'Admin' && pass === 'Admin') {
+                // Session store kar lo, taaki refresh hone pe bahar na phek de
+                sessionStorage.setItem("adminLoggedIn", "true");
+                
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminMainScreen').style.display = 'flex';
                 document.getElementById('loginError').style.display = 'none';
@@ -378,13 +394,15 @@
         }
 
         function logout() {
+            sessionStorage.removeItem("adminLoggedIn");
             document.getElementById('adminId').value = '';
             document.getElementById('adminPass').value = '';
+            
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('adminMainScreen').style.display = 'none';
         }
 
-        // 🔥 2. TAB SWITCHING LOGIC 🔥
+        // 🔥 TAB SWITCHING LOGIC 🔥
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-section').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
@@ -393,7 +411,7 @@
             btnElement.classList.add('active');
         }
 
-        // 🔥 3. APPROVAL LOGIC (5 COIN REWARD SIMULATION) 🔥
+        // 🔥 APPROVAL LOGIC (5 COIN REWARD SIMULATION) 🔥
         function approveUser(rowId, userName, uplineId) {
             if(confirm(`Are you sure you want to approve KYC for ${userName}?`)) {
                 
@@ -401,7 +419,6 @@
                 
                 // Show Success Alert
                 alert(`✅ KYC Approved for ${userName}!\n\n🔓 Withdrawal Unlocked.\n🎁 5 ATVT Coins successfully credited to Upline (${uplineId}).`);
-                
             }
         }
 
