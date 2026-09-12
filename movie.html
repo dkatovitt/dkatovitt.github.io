@@ -103,20 +103,20 @@
         
         .sidebar-menu { padding-bottom: 120px; }
         
-        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX 🔥 */
+        /* 🔥 PERFECT ZIG-ZAG MENU ALIGNMENT FIX & FONT MATCH WITH FAQ.HTML 🔥 */
         .sidebar-menu a.normal-link, .sidebar-menu a.menu-dropdown-btn { 
             display: flex !important; 
             justify-content: space-between !important; 
             align-items: center !important; 
             width: 100%; 
             box-sizing: border-box; 
-            padding: 15px 20px; 
-            border-bottom: 1px solid #1a1a1a; 
+            padding: 12px 20px; /* Matched from faq.html */
             color: #ccc; 
-            font-size: 15px; 
+            font-size: 14px; /* Matched from faq.html */
+            font-weight: bold; /* Matched from faq.html */
             transition: 0.3s; 
             text-decoration: none; 
-            border-left: 4px solid transparent; 
+            border-left: 3px solid transparent; /* Matched from faq.html */
             cursor: pointer; 
         }
         .sidebar-menu a.normal-link span, .sidebar-menu a.menu-dropdown-btn span { 
@@ -126,22 +126,34 @@
             overflow: hidden; 
             text-overflow: ellipsis; 
             max-width: 90%; 
+            gap: 12px; /* Matched gap from faq.html */
         }
-        /* Strict 26px width for icon ensures perfectly straight vertical line */
+        
         .sidebar-menu a.normal-link span i:first-child, 
         .sidebar-menu a.menu-dropdown-btn span i:first-child { 
             display: inline-flex !important;
             justify-content: center !important;
             align-items: center !important;
-            width: 26px !important; 
-            min-width: 26px !important;
+            width: 20px !important; /* Matched from faq.html */
             font-size: 16px !important; 
             color: #e6c875 !important; 
-            margin-right: 15px !important; 
             flex-shrink: 0 !important; 
+            text-align: center; /* Matched from faq.html */
         }
-        .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { background: #1a1a1a; color: #e6c875; }
-        .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { background: #1a1a1a; color: #e6c875; border-left: 4px solid #e6c875; font-weight: bold; }
+        
+        .sidebar-menu a.normal-link:hover, .sidebar-menu a.menu-dropdown-btn:hover { 
+            background: rgba(230,200,117,0.1); /* Matched from faq.html */
+            color: #fff; /* Matched from faq.html */
+            padding-left: 25px; /* Matched from faq.html */
+            border-left: 3px solid #e6c875; /* Matched from faq.html */
+        }
+        
+        .sidebar-menu a.normal-link.active, .sidebar-menu a.menu-dropdown-btn.active { 
+            background: rgba(230,200,117,0.1); 
+            color: #fff; 
+            padding-left: 25px; 
+            border-left: 3px solid #e6c875; 
+        }
         
         .dropdown-icon { font-size: 14px; transition: transform 0.3s; color: #ccc; flex-shrink: 0; margin-left: 10px; }
         .dropdown-icon.rotate { transform: rotate(180deg); color: #e6c875; }
@@ -505,7 +517,7 @@
                         <option value="mr">मराठी (Marathi)</option>
                         <option value="te">తెలుగు (Telugu)</option>
                         <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાતી (Gujarati)</option>
+                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <div id="headerAuthBtn">
@@ -823,7 +835,7 @@
                     <h3 class="trailer-title">🌙 शाम ढले जब पानी डोले | Hindi Horror Song</h3>
                     <div class="btn-group-3">
                         <a href="https://youtu.be/7qFB_8WtAxE" target="_blank" class="smart-btn yt-smart-btn" title="Watch on YouTube"><i class="fab fa-youtube"></i> YOUTUBE</a>
-                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले যখন पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
+                        <button class="smart-btn mp3-smart-btn" onclick="playSong('shaam-dhale.mp3', 'शाम ढले जब पानी डोले')" title="Play Audio"><i class="fas fa-music"></i> MP3 PLAY</button>
                         <a href="shaam-dhale.mp3" download class="smart-btn dl-smart-btn" title="Download MP3"><i class="fas fa-download"></i> MP3 DOWNLOAD</a>
                     </div>
                     <div class="social-action-bar">
@@ -1140,19 +1152,19 @@
                 <div class="tseries-footer-col" style="margin-top: 30px;">
                     <h4>Upcoming Projects</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('exchange')">DK Crypto Exchange (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('coin')">DK ATVT Coin (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('wallet')">DK Decentralised Wallet (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('mart')">DK Mart (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('ads')">DK Digital Ads (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('gps')">DK GPS Tracker (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('msg')">DK Connect Messenger (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('chat')">DK Chat (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('games')">DK Games (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('rides')">DK Rides (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('dealpakki')">DK DealPakki (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProject('mediahouse')">DK Media House (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')">DK ATOVITT CHAIN / SCAN (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')">DK Crypto Exchange (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')">DK ATVT Coin (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')">DK Decentralised Wallet (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')">DK Mart (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')">DK Digital Ads (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')">DK GPS Tracker (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')">DK Rides (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')">DK DealPakki (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')">DK Media House (Soon)</a></li>
                     </ul>
                 </div>
 
@@ -1305,7 +1317,7 @@
             'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' },
             'rides': { name: 'DK Rides', icon: 'fas fa-car', eng: 'A revolutionary smart ride-sharing and cab-booking platform ensuring safe travel.', hin: 'सुरक्षित, तेज़ और किफायती यात्रा सुनिश्चित करने वाला एक क्रांतिकारी स्मार्ट राइड-शेयरिंग और कैब-बुकिंग प्लेटफॉर्म।' },
             'dealpakki': { name: 'DK DealPakki', icon: 'fas fa-handshake', eng: 'A smart peer-to-peer marketplace to buy, sell, or trade items seamlessly like never before.', hin: 'एक स्मार्ट P2P मार्केटप्लेस जहां आप अपने पुराने या नए सामानों को आसानी से खरीद, बेच या बदल सकते हैं।' },
-            'mediahouse': { name: 'DK Media House', icon: 'fas fa-tv', eng: 'Get ready for the ultimate digital media revolution! DK Media House is gearing up to bring you world-class entertainment, viral news, and exclusive content like never before.', hin: 'सबसे बड़े डिजिटल मीडिया रिवोल्यूशन के लिए तैयार চরম हो जाइए! DK Media House जल्द ही आपके लिए विश्वस्तरीय मनोरंजन, वायरल खबरें और एक्सक्लूसिव कंटेंट लेकर आ रहा है।' }
+            'mediahouse': { name: 'DK Media House', icon: 'fas fa-tv', eng: 'Get ready for the ultimate digital media revolution! DK Media House is gearing up to bring you world-class entertainment, viral news, and exclusive content like never before.', hin: 'सबसे बड़े डिजिटल मीडिया रिवोल्यूशन के लिए तैयार चरम हो जाइए! DK Media House जल्द ही आपके लिए विश्वस्तरीय मनोरंजन, वायरल खबरें और एक्सक्लूसिव कंटेंट लेकर आ रहा है।' }
         };
 
         function showUpcomingProject(id) {
@@ -1429,14 +1441,14 @@
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('coin')"><i class="fas fa-cube"></i> DK ATVT Coin</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('wallet')"><i class="fas fa-wallet"></i> DK Decentralised Wallet</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('mart')"><i class="fas fa-shopping-cart"></i> DK Mart</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('rides')"><i class="fas fa-car"></i> DK Rides</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('dealpakki')"><i class="fas fa-handshake"></i> DK DealPakki</button>`;
-                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProject('mediahouse')"><i class="fas fa-tv"></i> DK Media House</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('ads')"><i class="fas fa-bullhorn"></i> DK Digital Ads</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('gps')"><i class="fas fa-map-marker-alt"></i> DK GPS Tracker</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('rides')"><i class="fas fa-car"></i> DK Rides</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('dealpakki')"><i class="fas fa-handshake"></i> DK DealPakki</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mediahouse')"><i class="fas fa-tv"></i> DK Media House</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
