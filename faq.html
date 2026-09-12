@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BMGLN6Z9M4"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-BMGLN6Z9M4');
     </script>
-
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407"
-        crossorigin="anonymous"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7503777429388407" crossorigin="anonymous"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DK ATOVITT - VIP Dashboard</title>
@@ -153,31 +148,93 @@
         .upcoming-list a.normal-link { padding-left: 35px; font-size: 13px; border-left: none; }
         .upcoming-list a.normal-link:hover { padding-left: 40px; border-left: none; background: rgba(230,200,117,0.05); color: #e6c875; }
 
-        /* 🌟 FAQ SECTION STYLING 🌟 */
-        .legal-section { padding: 140px 20px 60px 20px; }
-        .legal-container { max-width: 1000px; margin: 0 auto; background: #111; padding: 40px; border-radius: 12px; border: 1px solid #333; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .legal-title { color: #e6c875; font-size: 32px; text-align: center; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #333; padding-bottom: 15px; font-family: 'Playfair Display', serif; }
+        /* 🌟 VIP DASHBOARD SECTION 🌟 */
+        .dashboard-section { padding: 120px 20px 60px 20px; max-width: 1100px; margin: 0 auto; min-height: 60vh; }
         
-        .faq-item { background: #1a1a1a; padding: 20px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid #e6c875; transition: 0.3s; }
-        .faq-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230, 200, 117, 0.1); background: #222; }
-        .faq-question { color: #fff; font-size: 18px; font-weight: bold; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px; letter-spacing: 0.5px; }
-        .faq-question i { color: #e6c875; font-size: 16px; margin-top: 4px; }
-        .faq-answer { font-size: 15px; color: #aaa; padding-left: 28px; text-align: justify; line-height: 1.7; margin: 0; }
-        .legal-container a { color: #e6c875; text-decoration: none; font-weight: bold; }
-        .legal-container a:hover { color: #fff; text-decoration: underline; }
+        .welcome-banner { background: #111; padding: 35px 30px; border-radius: 15px; border: 1px solid #333; margin-bottom: 25px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .welcome-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: #e6c875; }
+        .welcome-banner h1 { margin: 0 0 10px 0; color: #fff; font-size: 32px; font-family: 'Playfair Display', serif; }
+        .welcome-banner h1 span { color: #e6c875; }
+        .welcome-banner p { margin: 0; color: #aaa; font-size: 16px; line-height: 1.6; }
+
+        /* 🔥 MANUAL KYC VERIFICATION CSS 🔥 */
+        .kyc-card { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .kyc-card h3 { color: #e6c875; margin-top: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; }
+        .kyc-card p { color: #aaa; font-size: 13px; margin-bottom: 20px; }
+        .form-group-kyc { margin-bottom: 15px; }
+        .form-group-kyc label { display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase; }
+        .form-group-kyc input { width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box; }
+        .auth-btn-kyc { width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .auth-btn-kyc:hover { background: #d4b561; }
+
+        .wallet-banner { background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); border: 1px solid #333; border-radius: 15px; padding: 25px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); flex-wrap: wrap; gap: 20px;}
+        .wallet-left { display: flex; align-items: center; gap: 20px; }
+        .wallet-icon-large { width: 60px; height: 60px; background: linear-gradient(45deg, #b8860b, #ffd700, #daa520); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 26px; box-shadow: 0 0 20px rgba(230,200,117,0.4); border: 3px solid #111; }
+        .wallet-info p { margin: 0; color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; }
+        .wallet-info h3 { margin: 0; color: #e6c875; font-size: 32px; font-weight: 900; }
+        .wallet-info h3 span { font-size: 16px; color: #fff; }
+        .wallet-action-btn { background: transparent; color: #e6c875; border: 2px solid #e6c875; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.3s; display: flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+        .wallet-action-btn:hover { background: #e6c875; color: #000; box-shadow: 0 5px 20px rgba(230,200,117,0.4); }
+
+        .referral-banner { background: #0a0a0a; border: 1px dashed #e6c875; border-radius: 15px; padding: 25px 30px; margin-bottom: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; }
+        .ref-header { margin-bottom: 15px; }
+        .ref-header h3 { color: #e6c875; margin: 0 0 5px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;}
+        .ref-header p { color: #aaa; font-size: 13px; margin: 0; line-height: 1.5; }
         
+        .ref-link-box { display: flex; flex-direction: column; gap: 15px; background: #111; padding: 15px; border-radius: 12px; border: 1px solid #333; margin-top: 15px; }
+        .ref-link-text { font-size: 14px; color: #25d366; background: #0a0a0a; padding: 12px 15px; border-radius: 8px; border: 1px dashed #25d366; word-break: break-all; text-align: center; font-weight: bold; letter-spacing: 0.5px; user-select: all; margin: 0;}
+        .ref-btn-group { display: flex; gap: 10px; width: 100%; }
+        .ref-btn-group button { flex: 1; padding: 12px; border: none; border-radius: 8px; font-weight: bold; font-size: 14px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase;}
+        .ref-btn-copy { background: #e6c875; color: #000; }
+        .ref-btn-copy:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230,200,117,0.3);}
+        .ref-btn-share { background: #25d366; color: #000; }
+        .ref-btn-share:hover { background: #128c7e; color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37,211,102,0.3);}
+
+        .ref-stats { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #222; }
+        .ref-stats span { color: #ccc; font-size: 14px; display: flex; align-items: center; gap: 8px;}
+        .ref-stats strong { color: #25d366; font-size: 18px; font-weight: 900;}
+        .view-ref-btn { color: #e6c875; text-decoration: none; font-size: 13px; font-weight: bold; display: flex; align-items: center; gap: 5px; transition: 0.3s; background: rgba(230,200,117,0.1); padding: 8px 15px; border-radius: 20px; border: 1px solid #e6c875;}
+        .view-ref-btn:hover { background: #e6c875; color: #000; }
+
+        .section-title { color: #e6c875; font-size: 22px; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid #222; padding-bottom: 10px; font-weight: bold; text-align: center; }
+
+        /* 🔥 GRID FIX: PROJECTS PROPER ALIGNMENT 🔥 */
+        .business-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px; }
+        .business-card { background: #111; border: 1px solid #222; border-radius: 15px; padding: 30px 20px; text-align: center; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5);}
+        .business-card:hover { transform: translateY(-8px); border-color: #e6c875; box-shadow: 0 10px 30px rgba(230,200,117,0.2); background: #161616; }
+        .card-icon { width: 65px; height: 65px; background: #1a1a1a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #e6c875; margin-bottom: 20px; border: 1px solid #333; transition: 0.4s; z-index: 2; }
+        .business-card:hover .card-icon { background: #e6c875; color: #000; box-shadow: 0 0 20px rgba(230,200,117,0.5); }
+        .card-title { color: #fff; font-size: 16px; font-weight: bold; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+        .card-desc { color: #888; font-size: 13px; line-height: 1.6; margin: 0; z-index: 2; }
+        .card-badge { position: absolute; top: 15px; right: -35px; background: #ff4d4d; color: #fff; font-size: 10px; font-weight: bold; padding: 5px 35px; transform: rotate(45deg); text-transform: uppercase; letter-spacing: 1px; z-index: 3; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .card-badge.live { background: #25d366; }
+        .business-card.soon-card { opacity: 0.7; cursor: pointer; }
+        .business-card.soon-card:hover { transform: none; border-color: #222; box-shadow: 0 5px 15px rgba(0,0,0,0.5); background: #111; }
+        .business-card.soon-card:hover .card-icon { background: #1a1a1a; color: #e6c875; box-shadow: none; }
+
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-in-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        @media (max-width: 900px) { .business-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
-            .legal-container { padding: 25px 15px; }
-            .legal-title { font-size: 24px; margin-bottom: 30px; }
-            .faq-question { font-size: 16px; }
-            .faq-answer { font-size: 14px; padding-left: 24px; }
+            .dashboard-section { padding: 110px 15px 40px 15px; }
+            .welcome-banner { padding: 25px 20px; }
+            .welcome-banner h1 { font-size: 24px; }
+            .welcome-banner p { font-size: 14px; }
+            .wallet-banner { padding: 20px; flex-direction: column; align-items: flex-start; }
+            .wallet-action-btn { width: 100%; justify-content: center; margin-top: 10px; }
+            .business-grid { grid-template-columns: 1fr; gap: 20px; }
+            
+            .referral-banner { padding: 20px 15px; }
+            .ref-link-box { padding: 12px; gap: 12px; }
+            .ref-link-text { font-size: 13px; padding: 10px; }
+            .ref-btn-group button { font-size: 12px; padding: 10px; }
+            .ref-stats { flex-direction: column; gap: 15px; align-items: flex-start; }
+            .view-ref-btn { width: 100%; justify-content: center; box-sizing: border-box; }
         }
 
         /* ==========================================================
-           🔥 MASTER MEGA FOOTER CSS 🔥
+           🔥 MASTER MEGA FOOTER CSS (EXACT FROM WALLET.HTML) 🔥
            ========================================================== */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
@@ -193,11 +250,12 @@
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
         
+        /* 🔥 FOOTER TEXT CENTER FIX 🔥 */
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
         .tseries-footer-bottom p { text-align: center; margin: 0; width: 100%; }
 
         /* ==========================================================
-           🔥 CHATBOT & FLOATING BUTTONS CSS 🔥
+           🔥 EXACT SAME CHATBOT & FLOATING BUTTONS CSS (FROM WALLET.HTML) 🔥
            ========================================================== */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
@@ -211,38 +269,24 @@
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
+        /* 🔥 MOBILE VIEW OVERRIDES - FIX: EXACT 50px FLOATING BUTTONS 🔥 */
         @media (max-width: 768px) {
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
+
+            /* 🔥 FIX FOR FLOATING BUTTONS HIDING FOOTER ICONS 🔥 */
             .tseries-footer { padding-bottom: 220px !important; }
         }
 
-        /* 🔥 CUSTOM ALERT MODAL CSS 🔥 */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-        .custom-alert-title.success { color: #e6c875; }
-        .custom-alert-title.error { color: #ff4d4d; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
-
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
-            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
-        }
-        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 10px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; }
-
-        /* 🔥 APK MODAL CSS 🔥 */
-        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        /* CUSTOM APP INSTALL POPUP MODAL CSS (RESTORED SIZE + Z-INDEX FIX) */
+        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100005 !important; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; z-index: 999999; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .app-modal-close:hover { color: #fff; }
+        
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
@@ -251,8 +295,24 @@
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 VIP CHATBOT OVERLAY CSS 🔥 */
+        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow {
+            color: #ff4d4d !important;
+            font-size: 18px !important;
+            font-weight: 900;
+            margin-bottom: 10px !important;
+            letter-spacing: 2px;
+            animation: textGlow 1s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+
+        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
@@ -270,12 +330,10 @@
         .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
         .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
-        
         .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
         .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
         .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
         .bot-inline-btn:hover { background: #e6c875; color: #000; }
-        
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
@@ -283,7 +341,6 @@
 </head>
 <body>
 
-    <!-- 🔥 HEADER (FIXED) 🔥 -->
     <header class="header">
         <div class="container">
             <div class="header-left">
@@ -296,18 +353,12 @@
                     </div>
                 </a>
             </div>
-            
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
-                        <option value="bn">বাংলা (Bengali)</option>
-                        <option value="mr">मराठी (Marathi)</option>
-                        <option value="te">తెలుగు (Telugu)</option>
-                        <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -319,7 +370,7 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- 🔥 EXACT SIDEBAR MENU 🔥 -->
+    <!-- 🔥 EXACT WALLET/INDEX SIDEBAR MENU 🔥 -->
     <div class="side-menu" id="sideMenu">
         
         <button class="close-menu-btn" id="closeMenu" title="Close Menu"><i class="fas fa-times"></i></button>
@@ -351,8 +402,11 @@
         <div class="sidebar-menu">
             <div class="menu-heading">My Account</div>
             
-            <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+            <a href="index.html" class="normal-link active" style="background: rgba(230,200,117,0.1); color: #fff; padding-left: 25px; border-left: 3px solid #e6c875;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
             
+            <!-- 🔥 NEW 'EDIT PROFILE' LINK ADDED HERE IN SIDE MENU 🔥 -->
+            <a href="account.html" class="normal-link" id="sidebarEditProfileBtn" style="display: none;"><div class="link-text"><i class="fas fa-user-edit"></i> Edit Profile Details</div></a>
+
             <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer;">
                 <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
                 <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
@@ -411,44 +465,252 @@
     </div>
     <div id="overlay"></div>
 
-    <!-- 🔥 FAQ CONTENT SECTION (ORIGINAL UNTOUCHED) 🔥 -->
-    <section class="legal-section">
-        <div class="legal-container reveal">
-            <h1 class="legal-title">Help & Frequently Asked Questions</h1>
+    <section class="dashboard-section" style="padding-top: 130px; max-width: 1100px; margin: 0 auto; min-height: 60vh;">
+        
+        <div class="welcome-banner reveal">
+            <h1>Welcome back, <span id="welcomeNameText">VIP</span> 👋</h1>
+            <p>Explore the Mega Ecosystem. Choose your destination below to start exploring or earning ATVT coins.</p>
+        </div>
+
+        <!-- 🔥 MANUAL KYC VERIFICATION SECTION 🔥 -->
+        <div class="kyc-card reveal" id="kycSection" style="background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <h3 style="color: #e6c875; margin-top: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-id-card"></i> Aadhaar KYC Verification
+            </h3>
+            <p id="kycStatusDesc" style="color: #aaa; font-size: 13px; margin-bottom: 20px;">
+                Withdrawal unlock karne aur upline reward paane ke liye apna [Aadhaar Redacted] verify karein.
+            </p>
+
+            <div id="kycFormBox">
+                <div class="form-group-kyc" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase;">Full Name (As per [Aadhaar Redacted])</label>
+                    <input type="text" id="kycName" placeholder="Enter full name" style="width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box;">
+                </div>
+
+                <div class="form-group-kyc" style="margin-bottom: 15px;">
+                    <label style="display: block; color: #ccc; font-size: 12px; margin-bottom: 6px; text-transform: uppercase;">[Aadhaar Redacted] Number</label>
+                    <input type="text" id="kycNumber" placeholder="Enter 12-digit number" maxlength="12" style="width: 100%; padding: 12px; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; box-sizing: border-box;">
+                </div>
+
+                <button type="button" class="auth-btn-kyc" onclick="submitKyc()" style="width: 100%; background: #e6c875; color: #000; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;">
+                    <i class="fas fa-upload"></i> Submit for Verification
+                </button>
+            </div>
+
+            <!-- Pending Status Box (Hidden by default) -->
+            <div id="kycPendingBox" style="display: none; text-align: center; padding: 20px; background: rgba(230,200,117,0.05); border: 1px dashed #e6c875; border-radius: 10px;">
+                <i class="fas fa-clock fa-2x" style="color: #e6c875; margin-bottom: 10px;"></i>
+                <h4 style="color: #fff; margin: 0 0 5px 0;">Verification Pending</h4>
+                <p style="color: #aaa; font-size: 13px; margin: 0;">Aapki KYC details admin review ke liye bhej di gayi hain. Jald hi verify ho jayegi.</p>
+            </div>
             
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> What is <span class="notranslate">DK Atovitt Production House</span>?</div>
-                <div class="faq-answer"><span class="notranslate">DK Atovitt</span> is an official movie production house dedicated to creating Bollywood horror films, romantic dramas, soulful music videos, and unique entertainment content. Our current flagship project is the horror-romance film "यक्षिणी (Yakshini)".</div>
+            <!-- Verified Status Box (Hidden by default) -->
+            <div id="kycVerifiedBox" style="display: none; text-align: center; padding: 20px; background: rgba(37, 211, 102, 0.05); border: 1px dashed #25d366; border-radius: 10px;">
+                <i class="fas fa-check-circle fa-2x" style="color: #25d366; margin-bottom: 10px;"></i>
+                <h4 style="color: #25d366; margin: 0 0 5px 0;">Account Verified <span class="vip-verified-badge"><i class="fas fa-check-circle"></i> DK ATVT</span></h4>
+                <p style="color: #aaa; font-size: 13px; margin: 0;">Badhai ho! Aapka account verify ho chuka hai aur withdrawal unlock ho gaya hai.</p>
             </div>
+        </div>
+        
+        <script>
+            function submitKyc() {
+                const name = document.getElementById('kycName').value.trim();
+                const number = document.getElementById('kycNumber').value.trim();
 
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> How can I apply for upcoming movie auditions?</div>
-                <div class="faq-answer">You can apply for auditions by visiting our <a href="auditions.html">Auditions</a> page or by navigating to the "Audition" tab on our <a href="auth.html">Login/Signup</a> page. We welcome actors, singers, and crew members.</div>
-            </div>
+                if(!name || number.length !== 12 || isNaN(number)) {
+                    alert('Kripya sahi naam aur 12-digit ID darj karein.');
+                    return;
+                }
 
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> Are there any fees for casting or registration?</div>
-                <div class="faq-answer">No! <span class="notranslate">DK Atovitt</span> strictly does not charge any fees for auditions, casting, or talent selection. Beware of fake agents asking for money. Please check our <a href="notice.html">Public Notice</a> page for more details.</div>
-            </div>
+                // Temporary LocalStorage Logic for testing UI
+                localStorage.setItem('dk_kyc_status', 'pending');
+                
+                document.getElementById('kycFormBox').style.display = 'none';
+                document.getElementById('kycPendingBox').style.display = 'block';
+                document.getElementById('kycStatusDesc').innerText = "Status: Under Review";
+                showCustomAlert('Submitted', 'Aadhaar details successfully submitted for review.', false);
+            }
+            
+            // Check KYC Status on Load
+            window.addEventListener('load', () => {
+                const status = localStorage.getItem('dk_kyc_status');
+                if(status === 'pending') {
+                    document.getElementById('kycFormBox').style.display = 'none';
+                    document.getElementById('kycPendingBox').style.display = 'block';
+                    document.getElementById('kycStatusDesc').innerText = "Status: Under Review";
+                } else if(status === 'verified') {
+                    document.getElementById('kycFormBox').style.display = 'none';
+                    document.getElementById('kycVerifiedBox').style.display = 'block';
+                    document.getElementById('kycStatusDesc').style.display = 'none';
+                    
+                    // Show Badge in Side Menu & Header
+                    document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
+                    if(document.getElementById('verifiedBadgeHeader')) {
+                        document.getElementById('verifiedBadgeHeader').style.display = 'inline-flex';
+                    }
+                }
+            });
+        </script>
 
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> Where can I watch <span class="notranslate">DK Atovitt</span> movies and song videos?</div>
-                <div class="faq-answer">All our official trailers, full movies, and music videos are hosted on our platform. You can find them under the <a href="trailers.html">Trailers</a> and <a href="mp3-songs.html">MP3 Audio Songs</a> sections via our main menu.</div>
+        <div class="wallet-banner reveal">
+            <div class="wallet-left">
+                <div class="wallet-icon-large"><i class="fas fa-coins"></i></div>
+                <div class="wallet-info">
+                    <p>Available Balance</p>
+                    <h3 id="walletBalanceDisplay">0.00 <span>ATVT</span></h3>
+                </div>
             </div>
+            <a href="wallet.html" class="wallet-action-btn"><i class="fas fa-wallet"></i> Open Wallet</a>
+        </div>
 
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> How can I partner or collaborate with <span class="notranslate">DK Atovitt</span>?</div>
-                <div class="faq-answer">If you are interested in media partnerships, sponsorships, or the ATVT/Kalpamrit business ecosystem, you can reach out to our team directly via our <a href="contact.html">Contact Us</a> page or email us at <a href="mailto:info@dkatovitt.com">info@dkatovitt.com</a>.</div>
+        <div class="referral-banner reveal" id="referralBanner">
+            <div class="ref-header">
+                <h3><i class="fas fa-network-wired"></i> Share & Earn</h3>
+                <p>Invite friends to DK Atovitt using your VIP Link and build your 10-Level Network.</p>
             </div>
+            <div class="ref-link-box">
+                <div class="ref-link-text" id="myReferralLinkDisplay">Loading...</div>
+                <input type="hidden" id="myReferralLink" value="Loading...">
+                <div class="ref-btn-group">
+                    <button type="button" class="ref-btn-copy" onclick="copyMyReferral()"><i class="fas fa-copy"></i> Copy Link</button>
+                    <button type="button" class="ref-btn-share" onclick="shareMyReferral()"><i class="fas fa-share-alt"></i> Share Now</button>
+                </div>
+            </div>
+            <div class="ref-stats">
+                <span><i class="fas fa-users"></i> Direct Referrals: <strong id="directRefCount">0</strong></span>
+                <a href="referral.html" class="view-ref-btn">View Network <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
 
-            <div class="faq-item">
-                <div class="faq-question"><i class="fas fa-question-circle"></i> How do I contact customer support?</div>
-                <div class="faq-answer">You can write to us anytime at <a href="mailto:info@dkatovitt.com">info@dkatovitt.com</a> for any queries, support, or feedback, or chat with us instantly using the WhatsApp button on the bottom right of your screen.</div>
-            </div>
+        <h2 class="section-title reveal">Our Ecosystem</h2>
+
+        <div class="business-grid reveal">
+            
+            <a href="movie.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-film"></i></div>
+                <h3 class="card-title">DK Film Production</h3>
+                <p class="card-desc">Explore movies, trailers, auditions, and the official production house.</p>
+            </a>
+
+            <a href="social.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3 class="card-title">DK Connect</h3>
+                <p class="card-desc">Like, share, comment, and engage with the community to earn free ATVT coins.</p>
+            </a>
+
+            <a href="search.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-search"></i></div>
+                <h3 class="card-title">DK Search</h3>
+                <p class="card-desc">The Next-Gen Web3 Search Engine. Explore the web and earn ATVT tokens.</p>
+            </a>
+
+            <a href="calculator.html" class="business-card">
+                <div class="card-badge live">Live</div>
+                <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                <h3 class="card-title">DK Calculator</h3>
+                <p class="card-desc">Calculate your daily compound interest, crypto APY, and staking rewards.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chain')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-link"></i></div>
+                <h3 class="card-title" style="line-height: 1.4;">DK ATOVITT CHAIN / SCAN<br>(BLOCKCHAIN)</h3>
+                <p class="card-desc">Our highly secure and ultra-fast official blockchain network & explorer.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('exchange')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="card-title">DK Crypto Exchange</h3>
+                <p class="card-desc">Advanced crypto and ATVT asset trading platform with zero-fee options.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('coin')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-cube"></i></div>
+                <h3 class="card-title">DK ATVT Coin</h3>
+                <p class="card-desc">The official digital currency powering the entire DK Atovitt global ecosystem.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('wallet')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                <h3 class="card-title">DK Web3 Wallet</h3>
+                <p class="card-desc">100% secure, decentralized self-custody wallet for managing all crypto assets.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mart')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                <h3 class="card-title">DK Mart</h3>
+                <p class="card-desc">Global smart e-commerce platform with exclusive ATVT token payment support.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('ads')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+                <h3 class="card-title">DK Digital Ads</h3>
+                <p class="card-desc">Publish global ads across our ecosystem and pay directly with ATVT tokens.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('gps')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3 class="card-title">DK GPS Tracker</h3>
+                <p class="card-desc">Advanced real-time location tracking services for personal and business use.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-comment-dots"></i></div>
+                <h3 class="card-title">DK Connect Msg</h3>
+                <p class="card-desc">End-to-end encrypted messaging, voice, and video calls for the ecosystem.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-comments"></i></div>
+                <h3 class="card-title">DK Chat</h3>
+                <p class="card-desc">AI-powered chatbot assistant for fast support, inquiries, and customer service.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                <h3 class="card-title">DK Games</h3>
+                <p class="card-desc">Play-to-earn crypto gaming platform. Play thrilling games and earn ATVT.</p>
+            </a>
+
+            <!-- 🔥 NEW GRID CARD: DK RIDES 🔥 -->
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-car"></i></div>
+                <h3 class="card-title">DK Rides</h3>
+                <p class="card-desc">A revolutionary smart ride-sharing and cab-booking platform ensuring safe travel.</p>
+            </a>
+
+            <!-- 🔥 NEW GRID CARD: DK DEALPAKKI 🔥 -->
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="card-title">DK DealPakki</h3>
+                <p class="card-desc">A smart peer-to-peer marketplace to buy, sell, or trade items seamlessly.</p>
+            </a>
+
+            <a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')" class="business-card soon-card">
+                <div class="card-badge">Soon</div>
+                <div class="card-icon"><i class="fas fa-tv"></i></div>
+                <h3 class="card-title">DK Media House</h3>
+                <p class="card-desc">Digital media revolution bringing you world-class entertainment & viral news.</p>
+            </a>
+
         </div>
     </section>
 
-    <!-- 🔥 EXACT FULL FOOTER 🔥 -->
+    <!-- 🔥 EXACT WALLET.HTML FOOTER 🔥 -->
     <footer class="tseries-footer" id="contact-footer">
         <div class="tseries-footer-container">
             <div class="tseries-footer-brand">
@@ -548,12 +810,13 @@
             
         </div>
         
+        <!-- 🔥 FIX: TEXT-ALIGN CENTER FOR FOOTER TEXT WRAING 🔥 -->
         <div class="tseries-footer-bottom">
             <p>&copy; 2026 <span class="notranslate">DK ATOVITT Global Tech and Entertainment Empire</span>. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- 🔥 EXACT FLOATING BUTTONS & CHATBOT MODAL 🔥 -->
+    <!-- 🔥 EXACT WALLET.HTML FLOATING BUTTONS 🔥 -->
     <a href="https://wa.me/919830332929" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     
     <div class="chatbot-toggler" id="chatbotToggler">
@@ -574,7 +837,7 @@
         </div>
     </div>
 
-    <!-- 🔥 UPCOMING PROJECTS MODAL 🔥 -->
+    <!-- 🔥 EXACT WALLET.HTML UPCOMING PROJECTS MODAL 🔥 -->
     <div class="custom-alert-overlay" id="customAlertOverlay">
         <div class="custom-alert-box" style="padding: 18px 15px; position: relative; background: #111; border: 1.5px solid #e6c875; max-width: 380px; border-radius: 18px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
             <button class="app-modal-close" id="closeCustomAlert" style="position: absolute; top: 8px; right: 8px; margin: 0; padding: 0; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; z-index: 999999;">&times;</button>
@@ -601,7 +864,19 @@
         </div>
     </div>
 
-    <!-- 🔥 CHATBOT MODAL 🔥 -->
+    <!-- 🔥 EXACT WALLET.HTML SIMPLE ALERT MODAL 🔥 -->
+    <div class="custom-alert-overlay" id="simpleAlertOverlay" style="z-index: 1000000;">
+        <div class="custom-alert-box" style="padding: 20px;">
+            <div class="custom-alert-logo" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                <video src="images/logo/logo.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <h3 class="custom-alert-title" id="simpleAlertTitle" style="font-size: 18px;">Alert</h3>
+            <p class="custom-alert-msg" id="simpleAlertMsg" style="margin-bottom: 15px;">Message goes here.</p>
+            <button class="custom-alert-btn" id="closeSimpleAlert" style="padding: 8px 25px; font-size: 12px;">OK</button>
+        </div>
+    </div>
+
+    <!-- 🔥 EXACT WALLET.HTML CHATBOT MODAL 🔥 -->
     <div class="chatbot-overlay" id="chatbotOverlay">
         <div class="chatbot-container" id="chatbotContainer" style="display:flex;">
             <div class="chatbot-header">
@@ -614,7 +889,7 @@
                 <button id="closeChatbot">&times;</button>
             </div>
             <div class="chatbot-body" id="chatbotBody">
-                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में আসতেा स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
+                <div class="bot-msg">🙏 नमस्ते! <strong class="notranslate">DK ATOVITT</strong> - Global Tech & Entertainment Empire में आपका स्वागत है। मैं आपकी कैसे मदद कर सकता हूँ?</div>
             </div>
             <div class="chatbot-options">
                 <button class="chat-opt-btn" onclick="sendChat('Live')"><i class="fas fa-circle" style="color:#ff4d4d; font-size:8px;"></i> LIVE Projects</button>
@@ -625,7 +900,34 @@
         </div>
     </div>
 
+    <div id="shareMsgTemplate" style="position: absolute; left: -9999px; top: -9999px; white-space: pre-wrap; opacity: 0; pointer-events: none;">🌟 *DK ATOVITT - The Biggest Global Ecosystem!* 🌟
+
+Ab 13 Mega Projects ek hi platform par! Aaj hi free me VIP Member banein aur *ATVT Coins* kamayein. Mera VIP link use karein, apna 10-Level Network banayein aur life-time passive income shuru karein! 👇
+
+🔗 <span class="notranslate">{LINK}</span>
+
+🎁 Registration bilkul FREE hai, abhi join karein aur *Signup Bonus free me paye!*
+
+🔥 ⬇️ *HAMARE 13 MEGA PROJECTS* ⬇️ 🔥
+🎬 DK Film Production house
+👥 DK Connect Social media
+🔗 DK ATOVITT CHAIN / SCAN
+📈 DK Crypto Exchange
+🪙 DK ATVT Coin
+💳 DK Decentralised Wallet
+🔍 DK Search
+🛒 DK Mart
+📢 DK Digital Ads
+📍 DK GPS Tracker
+💬 DK Connect Messenger
+💬 DK Chat
+🎮 DK Games
+
+👉 *Abhi Join Karein & Apna Bonus Claim Karein:*
+🔗 <span class="notranslate">{LINK}</span></div>
+
     <script>
+        // 🔥 EXACT WALLET.HTML TOGGLE LOGIC 🔥
         window.toggleWalletMenu = function() {
             var list = document.getElementById("walletMenuList");
             var arrow = document.getElementById("walletMenuArrow");
@@ -650,6 +952,7 @@
             }
         };
 
+        /* 🔥 DYNAMIC UPCOMING PROJECTS ENGINE (FROM WALLET.HTML) 🔥 */
         const upcomingProjectsData = {
             'chain': { name: 'DK ATOVITT CHAIN / SCAN', icon: 'fas fa-link', eng: 'A revolutionary blockchain network designed for high speed and ultimate security.', hin: 'तेज़ गति और सुरक्षा के लिए डिज़ाइन किया गया एक क्रांतिकारी ब्लॉकचेन नेटवर्क।' },
             'exchange': { name: 'DK Crypto Exchange', icon: 'fas fa-chart-line', eng: 'A highly secure and lightning-fast cryptocurrency exchange for all your trading needs.', hin: 'आपकी सभी ट्रेडिंग जरूरतों के लिए एक अत्यधिक सुरक्षित और तेज़ क्रिप्टोकरेंसी एक्सचेंज।' },
@@ -676,15 +979,19 @@
             document.getElementById('customAlertHinDesc').innerText = data.hin;
             
             document.getElementById('customAlertOverlay').classList.add('active');
+            
+            // 🔥 SCROLLING FIX: body and html both blocked
             document.body.style.overflow = 'hidden'; 
             document.documentElement.style.overflow = 'hidden';
             
+            // Close side menu if open
             const sideMenu = document.getElementById('sideMenu');
             const overlay = document.getElementById('overlay');
             if (sideMenu) sideMenu.classList.remove('active');
             if (overlay) overlay.classList.remove('active');
         }
 
+        // Close Upcoming Project Popups
         document.getElementById('closeCustomAlert').addEventListener('click', () => {
             document.getElementById('customAlertOverlay').classList.remove('active');
             document.body.style.overflow = ''; 
@@ -697,6 +1004,40 @@
                 document.documentElement.style.overflow = '';
             }
         });
+
+        // 🔥 WALLET SPECIFIC SIMPLE ALERTS 🔥
+        function showCustomAlert(title, message, isError = false) {
+            const overlay = document.getElementById('simpleAlertOverlay');
+            const titleEl = document.getElementById('simpleAlertTitle');
+            const msgEl = document.getElementById('simpleAlertMsg');
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            if (isError) { titleEl.style.color = "#ff4d4d"; } else { titleEl.style.color = "#e6c875"; }
+            overlay.classList.add('active');
+        }
+
+        document.getElementById('closeSimpleAlert').addEventListener('click', () => {
+            document.getElementById('simpleAlertOverlay').classList.remove('active');
+        });
+
+        window.copyMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            navigator.clipboard.writeText(link);
+            showCustomAlert('Copied!', 'Referral Link Copied Successfully!', false);
+        };
+
+        window.shareMyReferral = function() {
+            const link = document.getElementById('myReferralLink').value;
+            if(link.includes('Loading')) return;
+            let shareText = document.getElementById('shareMsgTemplate').innerText;
+            shareText = shareText.replace(/{LINK}/g, link);
+            if (navigator.share) {
+                navigator.share({ text: shareText }).catch(err => console.log('Error sharing:', err));
+            } else {
+                window.copyMyReferral();
+            }
+        };
 
         const menuBtn = document.getElementById('menuBtn'); 
         const sideMenu = document.getElementById('sideMenu'); 
@@ -738,6 +1079,7 @@
             var copyText = document.getElementById("sidebarDkId").innerText.trim();
             if(copyText.includes('Loading') || copyText.includes('Login')) return;
             navigator.clipboard.writeText(copyText);
+            showCustomAlert("Copied!", "DK ID Copied: " + copyText, false);
         }
 
         function reveal() { 
@@ -773,6 +1115,30 @@
             }
         }
         
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var match = document.cookie.match(/(^|;) ?googtrans=([^;]*)(;|$)/);
+                var currentLang = "";
+                if (match && match[2]) { var parts = match[2].split('/'); currentLang = parts[parts.length - 1]; }
+                var googleSelect = document.querySelector('select.goog-te-combo');
+                if (googleSelect && googleSelect.value) { currentLang = googleSelect.value; }
+                var sidebarLang = document.getElementById('lang-mobile');
+                var desktopLang = document.getElementById('lang-desktop');
+                if(sidebarLang && currentLang && currentLang !== "auto") sidebarLang.value = currentLang;
+                if(desktopLang && currentLang && currentLang !== "auto") desktopLang.value = currentLang;
+            }, 1000);
+            
+            // Check KYC Status on Load (For Dashboard View update)
+            const status = localStorage.getItem('dk_kyc_status');
+            if(status === 'verified') {
+                document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
+                if(document.getElementById('verifiedBadgeHeader')) {
+                    document.getElementById('verifiedBadgeHeader').style.display = 'inline-flex';
+                }
+            }
+        });
+        
+        // App Modal Logic
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
             const appModalOverlay = document.getElementById('appModalOverlay');
@@ -800,6 +1166,7 @@
             }
         });
 
+        // 🔥 VIP CHATBOT LOGIC (EXACTLY AS WALLET.HTML) 🔥
         const chatbotToggler = document.getElementById('chatbotToggler');
         const chatbotOverlay = document.getElementById('chatbotOverlay');
         const closeChatbot = document.getElementById('closeChatbot');
@@ -931,6 +1298,7 @@
                 document.getElementById('sidebarProfileName').innerHTML = `${fullName} <span class="vip-verified-badge" id="verifiedBadgeSidebar" style="display: none;"><i class="fas fa-check-circle"></i> DK ATVT</span>`;
                 document.getElementById('sidebarProfileImg').src = userPhoto;
                 
+                // Show badge if verified in local storage
                 if(localStorage.getItem('dk_kyc_status') === 'verified') {
                     document.getElementById('verifiedBadgeSidebar').style.display = 'inline-flex';
                 }
@@ -948,6 +1316,10 @@
                 const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
                 const sidebarFooterArea = document.getElementById('sidebarFooterArea');
                 
+                // 🔥 NEW LOGIC: SHOW "EDIT PROFILE" LINK IN SIDEBAR IF LOGGED IN 🔥
+                const sidebarEditProfileBtn = document.getElementById('sidebarEditProfileBtn');
+                if(sidebarEditProfileBtn) sidebarEditProfileBtn.style.display = 'flex';
+
                 if(sidebarLogoutBtn) sidebarLogoutBtn.style.display = 'flex';
                 if(sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
                 if(sidebarFooterArea) sidebarFooterArea.style.display = 'block';
@@ -965,8 +1337,11 @@
                 if (sidebarMenu) {
                     sidebarMenu.innerHTML = `
                         <div class="menu-heading">My Account</div>
-                        <a href="index.html" class="normal-link"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
+                        <a href="index.html" class="normal-link active" style="color: #e6c875; background: rgba(230,200,117,0.1); border-left: 3px solid #e6c875; padding-left: 25px;"><div class="link-text"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</div></a>
                         
+                        <!-- 🔥 NEW "EDIT PROFILE" LINK IN MAIN MENU OVERWRITE 🔥 -->
+                        <a href="account.html" class="normal-link"><div class="link-text"><i class="fas fa-user-edit"></i> Edit Profile Details</div></a>
+
                         <a class="normal-link" onclick="toggleWalletMenu()" style="cursor: pointer;">
                             <div class="link-text"><i class="fas fa-wallet"></i> My ATVT Wallet</div>
                             <i class="fas fa-chevron-down" id="walletMenuArrow" style="color: #fff !important; font-size: 14px; transition: 0.3s; width: auto; margin-right: 5px;"></i>
@@ -1045,7 +1420,11 @@
                                 <div style="padding: 10px 18px; border-bottom: 1px solid #222; text-align: center;">
                                     <span class="vip-verified-badge" id="verifiedBadgeHeader" style="${headerBadgeStyle} margin: 0;"><i class="fas fa-check-circle"></i> DK ATVT Verified</span>
                                 </div>
-                                <a href="index.html"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                
+                                <!-- 🔥 NEW "EDIT PROFILE" LINK ADDED TO TOP DROPDOWN 🔥 -->
+                                <a href="account.html"><i class="fas fa-user-edit" style="color:#00a8ff; width:16px;"></i> Edit Profile</a>
+
                                 <a href="reward.html"><i class="fas fa-cube" style="color:#e6c875; width:16px;"></i> Reward System</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
                                 <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
@@ -1062,6 +1441,32 @@
                     `;
                 }
 
+                if(document.getElementById('welcomeNameText')) {
+                    document.getElementById('welcomeNameText').innerText = userName;
+                }
+                
+                if(document.getElementById('walletBalanceDisplay')) {
+                    document.getElementById('walletBalanceDisplay').innerHTML = '150.00 <span>ATVT</span>';
+                }
+
+                const refBanner = document.getElementById('referralBanner');
+                const refInput = document.getElementById('myReferralLink');
+                if(refBanner && refInput) {
+                    refBanner.style.display = 'block';
+                    const fullLink = `https://dkatovitt.com/auth.html?ref=${userDkId}`;
+                    refInput.value = fullLink;
+                    document.getElementById('myReferralLinkDisplay').innerText = fullLink;
+                    
+                    try {
+                        const usersRef = collection(db, "users");
+                        const q = query(usersRef, where("referred_by", "==", userDkId));
+                        const snapshot = await getCountFromServer(q);
+                        document.getElementById('directRefCount').innerText = snapshot.data().count;
+                    } catch(e) {
+                        console.log("Could not fetch referral count:", e);
+                    }
+                }
+
                 setTimeout(() => {
                     document.querySelectorAll('.logout-action').forEach(btn => {
                         btn.addEventListener('click', () => {
@@ -1072,6 +1477,31 @@
                     });
                 }, 500);
 
+            } else {
+                if(document.getElementById('walletBalanceDisplay')) {
+                    document.getElementById('walletBalanceDisplay').innerHTML = '0.00 <span>ATVT</span>';
+                }
+                
+                const headerRightArea = document.getElementById('headerRightArea');
+                if(headerRightArea) {
+                    headerRightArea.innerHTML = `
+                        <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
+                            <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
+                                <option value="">🌐 Select Language</option>
+                                <option value="hi">हिन्दी (Hindi)</option>
+                                <option value="en">English</option>
+                                <option value="bn">বাংলা (Bengali)</option>
+                                <option value="mr">मराठी (Marathi)</option>
+                                <option value="te">తెలుగు (Telugu)</option>
+                                <option value="ta">தமிழ் (Tamil)</option>
+                                <option value="gu">ગુજરાती (Gujarati)</option>
+                            </select>
+                        </div>
+                        <a href="auth.html" class="login-btn-header">
+                            <i class="fas fa-user"></i> <span class="hide-on-mobile">Login / Signup</span><span class="show-on-mobile">Login</span>
+                        </a>
+                    `;
+                }
             }
         });
     </script>
