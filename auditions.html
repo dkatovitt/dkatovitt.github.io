@@ -268,7 +268,7 @@
         .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; width: 100%; text-align: center; }
 
         /* 🔥 FOOTER HORIZONTAL SOCIAL ICONS STYLING 🔥 */
         .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
@@ -298,6 +298,7 @@
         
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
         .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
         
@@ -341,6 +342,19 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
+
+        /* CUSTOM ALERT MODAL CSS */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -366,8 +380,8 @@
                     </select>
                 </div>
                 <div id="headerAuthBtn">
-                    <!-- Updated header login link to point to auditionauth.html for audition context -->
-                    <a href="auditionauth.html" class="login-btn-header">
+                    <!-- 🔥 SMART LINK APPLIED HERE 🔥 -->
+                    <a href="auth.html?redirect=audition" class="login-btn-header">
                         <i class="fas fa-user"></i> 
                         <span class="hide-on-mobile">Login / Signup</span>
                         <span class="show-on-mobile">Login</span>
@@ -393,14 +407,12 @@
         <div id="menuProfileArea"></div> 
         
         <div class="sidebar-menu">
-            <!-- 🔥 DK ATOVITT ECOSYSTEM MAIN DROPDOWN 🔥 -->
             <a class="menu-dropdown-btn" onclick="toggleSubMenu('mainEcoSub')">
                 <span class="menu-text-wrap"><i class="fas fa-globe"></i> DK ATOVITT Ecosystem</span>
                 <i class="fas fa-chevron-down dropdown-icon" id="mainEcoIcon"></i>
             </a>
             
             <div class="sub-menu" id="mainEcoSub">
-                <!-- 1. LIVE PROJECTS NESTED DROPDOWN -->
                 <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('liveEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
                     <span class="menu-text-wrap"><i class="fas fa-circle" style="color: #25d366; font-size: 10px !important;"></i> Live Projects</span>
                     <i class="fas fa-chevron-down dropdown-icon" id="liveEcoIcon"></i>
@@ -412,7 +424,6 @@
                     <a href="calculator.html"><div><i class="fas fa-calculator" style="color: #e6c875;"></i> DK Calculator</div> <span class="eco-tag live">LIVE</span></a>
                 </div>
                 
-                <!-- 2. UPCOMING PROJECTS NESTED DROPDOWN -->
                 <a class="menu-dropdown-btn nested-btn" onclick="toggleNestedMenu('upcomingEcoSub', event)" style="padding-left: 35px; border-bottom: 1px solid #1a1a1a;">
                     <span class="menu-text-wrap"><i class="fas fa-rocket" style="color: #e6c875;"></i> Upcoming Projects</span>
                     <i class="fas fa-chevron-down dropdown-icon" id="upcomingEcoIcon"></i>
@@ -436,8 +447,8 @@
                 </div>
             </div>
 
-            <!-- REST OF THE MENU ITEMS -->
-            <a href="auditionauth.html" id="sideMenuAuthBtn" class="normal-link">
+            <!-- 🔥 SMART LINK APPLIED HERE 🔥 -->
+            <a href="auth.html?redirect=audition" id="sideMenuAuthBtn" class="normal-link">
                 <span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span>
             </a>
             
@@ -569,8 +580,9 @@
             <i class="fas fa-lock cta-icon"></i>
             <h3>Exclusive Audition Portal</h3>
             <p>To maintain privacy and ensure we only connect with serious artists, our official audition submission form is available exclusively to registered members. Create your free talent account to access the application form.</p>
-            <!-- 🔥 UPDATED CTA LINK TO AUDITION AUTH 🔥 -->
-            <a href="auditionauth.html" class="smart-login-btn">Login / Sign Up to Apply</a>
+            
+            <!-- 🔥 SMART LINK APPLIED HERE 🔥 -->
+            <a href="auth.html?redirect=audition" class="smart-login-btn" id="mainCtaBtn">Login / Sign Up to Apply</a>
         </div>
     </section>
 
@@ -656,6 +668,9 @@
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')">DK Rides (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')">DK DealPakki (Soon)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')">DK Media House (Soon)</a></li>
                     </ul>
                 </div>
                 
@@ -664,8 +679,9 @@
                     <ul>
                         <li><a href="index.html">VIP Dashboard</a></li>
                         <li><a href="wallet.html">My Wallet</a></li>
-                        <!-- Updated footer link to auditionauth.html -->
-                        <li><a href="auditionauth.html" style="color: #e6c875;">Login / Signup</a></li>
+                        
+                        <!-- 🔥 SMART LINK APPLIED HERE 🔥 -->
+                        <li><a href="auth.html?redirect=audition" style="color: #e6c875;">Login / Signup</a></li>
                     </ul>
                 </div>
             </div>
@@ -1109,7 +1125,7 @@
         });
     </script>
     
-    <!-- 🔥 FIREBASE SMART LOGIN CHECKER (UPDATED: NO REDIRECT TO ACCOUNT.HTML) 🔥 -->
+    <!-- 🔥 FIREBASE SMART LOGIN CHECKER (UPDATED LOGIC FOR AUDITIONS) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1129,10 +1145,16 @@
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
-                // 🛑 FORCE REDIRECT REMOVED: Users will stay on auditions.html even if logged in.
-                
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0]; 
+
+                // 🔥 UPDATE CTA FOR LOGGED-IN USERS 🔥
+                // Agar user pehle se login hai, toh "Login / Sign Up" button "Go to Audition Portal" me badal jayega
+                const ctaBtn = document.getElementById('mainCtaBtn');
+                if(ctaBtn) {
+                    ctaBtn.href = "auditionaccount.html";
+                    ctaBtn.innerHTML = 'Go to Audition Portal <i class="fas fa-arrow-right"></i>';
+                }
                 
                 const loginBtn = document.querySelector('.login-btn-header');
                 if(loginBtn) {
@@ -1144,6 +1166,8 @@
                             </div>
                             <div id="topbarDropdown" class="topbarDropdown-content">
                                 <a href="index.html" style="color:#e6c875;"><i class="fas fa-tachometer-alt" style="width:16px;"></i> VIP Dashboard</a>
+                                <a href="auditionaccount.html"><i class="fas fa-theater-masks" style="color:#00a8ff; width:16px;"></i> Audition Portal</a>
+                                <a href="account.html"><i class="fas fa-user-edit" style="color:#20c997; width:16px;"></i> Edit Profile</a>
                                 <a href="wallet.html"><i class="fas fa-wallet" style="color:#20c997; width:16px;"></i> My Wallet</a>
                                 <a href="referral.html"><i class="fas fa-network-wired" style="color:#ffc107; width:16px;"></i> My Referrals</a>
                                 <div class="dropdown-divider"></div>
@@ -1163,6 +1187,8 @@
                     sideMenuBtn.outerHTML = `
                         <div class="menu-heading" style="margin-top: 15px; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; font-weight: bold; margin-bottom: 5px;">My Account</div>
                         <a href="index.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</span></a>
+                        <a href="auditionaccount.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-theater-masks"></i> Audition Portal</span></a>
+                        <a href="account.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-user-edit"></i> Edit Profile Details</span></a>
                         <a href="wallet.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-wallet"></i> My ATVT Wallet</span></a>
                         <a href="referral.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-network-wired"></i> My Referrals</span></a>
                         <div style="height: 1px; background: #222; margin: 10px 20px;"></div>
