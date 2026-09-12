@@ -361,18 +361,12 @@
                     </div>
                 </a>
             </div>
-            
             <div class="header-icons" id="headerRightArea" style="display: flex; gap: 15px; align-items: center; flex-shrink: 0;">
                 <div class="custom-translate hide-on-mobile" style="margin-right: 15px;">
                     <select id="lang-desktop" class="notranslate" onchange="translatePage(this.value)">
                         <option value="">🌐 Select Language</option>
                         <option value="hi">हिन्दी (Hindi)</option>
                         <option value="en">English</option>
-                        <option value="bn">বাংলা (Bengali)</option>
-                        <option value="mr">मराठी (Marathi)</option>
-                        <option value="te">తెలుగు (Telugu)</option>
-                        <option value="ta">தமிழ் (Tamil)</option>
-                        <option value="gu">ગુજરાती (Gujarati)</option>
                     </select>
                 </div>
                 <a href="auth.html" class="login-btn-header">
@@ -1331,6 +1325,11 @@
         const googleProvider = new GoogleAuthProvider(); 
         const facebookProvider = new FacebookAuthProvider();
 
+        // 🔥 SMART ROUTING LOGIC VARIABLES 🔥
+        const globalUrlParams = new URLSearchParams(window.location.search);
+        const isAuditionRedirect = globalUrlParams.get('redirect') === 'audition';
+        const targetUrl = isAuditionRedirect ? 'auditionaccount.html' : 'index.html';
+
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const refIdFromUrl = urlParams.get('ref');
@@ -1383,6 +1382,12 @@
         onAuthStateChanged(auth, async (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
+                // 🔥 NEW SMART REDIRECT LOGIC 🔥
+                if (targetUrl === 'auditionaccount.html') {
+                    window.location.replace("auditionaccount.html");
+                    return; 
+                }
+
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0];
                 let userPhoto = user.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
@@ -1530,7 +1535,7 @@
 
                     sendWelcomeMessage(result.user);
                     alert("Google Login Successful!");
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                    setTimeout(() => { window.location.href = targetUrl; }, 1500);
                 }).catch((error) => { alert("Login Failed: " + error.message); btn.innerHTML = originalText; });
             });
         });
@@ -1559,7 +1564,7 @@
 
                     sendWelcomeMessage(result.user);
                     alert("Facebook Login Successful!");
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                    setTimeout(() => { window.location.href = targetUrl; }, 1500); 
                 }).catch((error) => {
                     if (error.code === 'auth/account-exists-with-different-credential') {
                         alert("This email is already registered. Please login with Google or Email.");
@@ -1637,7 +1642,7 @@
                     alert("Your email is not verified yet!");
                     await auth.signOut(); loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login'; return;
                 }
-                sendWelcomeMessage(userCred.user); alert("Login Successful!"); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                sendWelcomeMessage(userCred.user); alert("Login Successful!"); setTimeout(() => { window.location.href = targetUrl; }, 1500); 
             } catch (error) { alert("Invalid Email or Password!"); loginSubmitEmailBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Secure Login'; }
         });
 
@@ -1646,7 +1651,7 @@
             if(!code) { alert("Please enter OTP"); return; }
             loginVerifyOtpBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying...';
             loginConfirmationResult.confirm(code).then((result) => {
-                sendWelcomeMessage(result.user); alert("Login Successful!"); setTimeout(() => { window.location.href = "index.html"; }, 1500); 
+                sendWelcomeMessage(result.user); alert("Login Successful!"); setTimeout(() => { window.location.href = targetUrl; }, 1500); 
             }).catch((err) => { alert("Invalid OTP Code!"); loginVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Login'; });
         });
 
@@ -1759,7 +1764,7 @@
 
                 sendWelcomeMessage(result.user); 
                 alert("Account Created Successfully!"); 
-                setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                setTimeout(() => { window.location.href = targetUrl; }, 1500);
             }).catch((err) => { alert("Invalid OTP Code!"); signupVerifyOtpBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verify & Sign Up'; });
         });
     </script>
