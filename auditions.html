@@ -268,7 +268,7 @@
         .tseries-footer-col ul li { margin-bottom: 12px; overflow: hidden; } 
         .tseries-footer-col ul li a { color: #aaa; text-decoration: none; font-size: 13px; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .tseries-footer-col ul li a:hover { color: #fff; padding-left: 5px; }
-        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; width: 100%; text-align: center; }
+        .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; }
 
         /* 🔥 FOOTER HORIZONTAL SOCIAL ICONS STYLING 🔥 */
         .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
@@ -298,7 +298,6 @@
         
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
         .app-modal-subtitle { color: #aaa; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 20px 0; font-weight: bold; }
         
@@ -342,26 +341,6 @@
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
-
-        @media (max-width: 768px) { 
-            .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
-            .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
-            .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-            .tseries-footer { padding-bottom: 220px !important; }
-        }
-
-        /* CUSTOM ALERT MODAL CSS */
-        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
-        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
-        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
-        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
-        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
-        .custom-alert-title.success { color: #e6c875; }
-        .custom-alert-title.error { color: #ff4d4d; }
-        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
-        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -387,7 +366,8 @@
                     </select>
                 </div>
                 <div id="headerAuthBtn">
-                    <a href="auth.html" class="login-btn-header">
+                    <!-- Updated header login link to point to auditionauth.html for audition context -->
+                    <a href="auditionauth.html" class="login-btn-header">
                         <i class="fas fa-user"></i> 
                         <span class="hide-on-mobile">Login / Signup</span>
                         <span class="show-on-mobile">Login</span>
@@ -457,7 +437,7 @@
             </div>
 
             <!-- REST OF THE MENU ITEMS -->
-            <a href="auth.html" id="sideMenuAuthBtn" class="normal-link">
+            <a href="auditionauth.html" id="sideMenuAuthBtn" class="normal-link">
                 <span class="menu-text-wrap"><i class="fas fa-user-circle"></i> Login / Sign Up</span>
             </a>
             
@@ -589,7 +569,8 @@
             <i class="fas fa-lock cta-icon"></i>
             <h3>Exclusive Audition Portal</h3>
             <p>To maintain privacy and ensure we only connect with serious artists, our official audition submission form is available exclusively to registered members. Create your free talent account to access the application form.</p>
-            <a href="auth.html" class="smart-login-btn">Login / Sign Up to Apply</a>
+            <!-- 🔥 UPDATED CTA LINK TO AUDITION AUTH 🔥 -->
+            <a href="auditionauth.html" class="smart-login-btn">Login / Sign Up to Apply</a>
         </div>
     </section>
 
@@ -675,9 +656,6 @@
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('msg')">DK Connect Messenger (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('chat')">DK Chat (Soon)</a></li>
                         <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('games')">DK Games (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('rides')">DK Rides (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('dealpakki')">DK DealPakki (Soon)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showUpcomingProjectAlert('mediahouse')">DK Media House (Soon)</a></li>
                     </ul>
                 </div>
                 
@@ -686,7 +664,8 @@
                     <ul>
                         <li><a href="index.html">VIP Dashboard</a></li>
                         <li><a href="wallet.html">My Wallet</a></li>
-                        <li><a href="auth.html" style="color: #e6c875;">Login / Signup</a></li>
+                        <!-- Updated footer link to auditionauth.html -->
+                        <li><a href="auditionauth.html" style="color: #e6c875;">Login / Signup</a></li>
                     </ul>
                 </div>
             </div>
@@ -805,7 +784,7 @@
             'games': { name: 'DK Games', icon: 'fas fa-gamepad', eng: 'An ultimate gaming hub featuring play-to-earn mechanics and breathtaking gameplay.', hin: 'एक बेहतरीन गेमिंग हब जिसमें प्ले-टू-अर्न मैकेनिक्स और शानदार गेमप्ले शामिल है।' },
             'rides': { name: 'DK Rides', icon: 'fas fa-car', eng: 'A revolutionary smart ride-sharing and cab-booking platform ensuring safe travel.', hin: 'सुरक्षित, तेज़ और किफायती यात्रा सुनिश्चित करने वाला एक क्रांतिकारी स्मार्ट राइड-शेयरिंग और कैब-बुकिंग प्लेटफॉर्म।' },
             'dealpakki': { name: 'DK DealPakki', icon: 'fas fa-handshake', eng: 'A smart peer-to-peer marketplace to buy, sell, or trade items seamlessly like never before.', hin: 'एक स्मार्ट P2P मार्केटप्लेस जहां आप अपने पुराने या नए सामानों को आसानी से खरीद, बेच या बदल सकते हैं।' },
-            'mediahouse': { name: 'DK Media House', icon: 'fas fa-tv', eng: 'Get ready for the ultimate digital media revolution! DK Media House is gearing up to bring you world-class entertainment, viral news, and exclusive content like never before.', hin: 'सबसे बड़े डिजिटल मीडिया रिवोल्यूशन के लिए तैयार चरम हो जाइए! DK Media House जल्द ही आपके लिए विश्वस्तरीय मनोरंजन, वायरल खबरें और एक्सक्लूसिव कंटेंट लेकर आ रहा है।' }
+            'mediahouse': { name: 'DK Media House', icon: 'fas fa-tv', eng: 'Get ready for the ultimate digital media revolution! DK Media House is gearing up to bring you world-class entertainment, viral news, and exclusive content like never before.', hin: 'सबसे बड़े डिजिटल मीडिया रिवोल्यूशन के लिए तैयार हो जाइए! DK Media House जल्द ही आपके लिए विश्वस्तरीय मनोरंजन, वायरल खबरें और एक्सक्लूसिव कंटेंट लेकर आ रहा है।' }
         };
 
         function showUpcomingProjectAlert(id) {
@@ -850,15 +829,6 @@
             }
         });
 
-        /* 🔥 ANTI-CACHE SCRIPT (FORCES BROWSER TO LOAD NEW HTML) 🔥 */
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
-                }
-            });
-        }
-        
         /* 🔥 APP INSTALL MODAL LOGIC 🔥 */
         document.addEventListener('DOMContentLoaded', () => {
             const openAppModal = document.getElementById('openAppModal');
@@ -942,6 +912,9 @@
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('msg')"><i class="fas fa-comment-dots"></i> DK Connect Messenger</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('chat')"><i class="fas fa-comments"></i> DK Chat</button>`;
                 botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('games')"><i class="fas fa-gamepad"></i> DK Games</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('rides')"><i class="fas fa-car"></i> DK Rides</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('dealpakki')"><i class="fas fa-handshake"></i> DK DealPakki</button>`;
+                botReply += `<button class="bot-inline-btn" style="margin-top:8px;" onclick="showUpcomingProjectAlert('mediahouse')"><i class="fas fa-tv"></i> DK Media House</button>`;
             }
             else if(type === 'Audition') {
                 userText = "मुझे Audition देना है।";
@@ -966,7 +939,7 @@
             }, 800);
         }
 
-        /* 🔥 BULLETPROOF TRANSLATOR LOGIC (HARDCORE COOKIE KILLER) 🔥 */
+        /* 🔥 TRANSLATOR LOGIC 🔥 */
         function translatePage(lang) {
             if (lang === "") {
                 var d = window.location.hostname;
@@ -1136,7 +1109,7 @@
         });
     </script>
     
-    <!-- 🔥 FIREBASE SMART LOGIN CHECKER & REDIRECT FOR AUDITIONS PAGE 🔥 -->
+    <!-- 🔥 FIREBASE SMART LOGIN CHECKER (UPDATED: NO REDIRECT TO ACCOUNT.HTML) 🔥 -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
@@ -1156,13 +1129,11 @@
         onAuthStateChanged(auth, (user) => {
             if (user && (user.emailVerified || user.phoneNumber || (user.providerData && user.providerData.length > 0))) {
                 
-                // 🛑 VIP REDIRECT RULE: If logged in, don't show this page, send to Dashboard!
-                window.location.replace("account.html");
+                // 🛑 FORCE REDIRECT REMOVED: Users will stay on auditions.html even if logged in.
                 
                 let fullName = user.displayName || "VIP Member";
                 let userName = fullName.trim().split(' ')[0]; 
                 
-                // (Optional: Fallback UI update just in case redirect takes a split second)
                 const loginBtn = document.querySelector('.login-btn-header');
                 if(loginBtn) {
                     const dropdownHTML = `
@@ -1191,7 +1162,7 @@
                 if(sideMenuBtn) {
                     sideMenuBtn.outerHTML = `
                         <div class="menu-heading" style="margin-top: 15px; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; font-weight: bold; margin-bottom: 5px;">My Account</div>
-                        <a href="account.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</span></a>
+                        <a href="index.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-tachometer-alt"></i> VIP Dashboard</span></a>
                         <a href="wallet.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-wallet"></i> My ATVT Wallet</span></a>
                         <a href="referral.html" class="normal-link"><span class="menu-text-wrap"><i class="fas fa-network-wired"></i> My Referrals</span></a>
                         <div style="height: 1px; background: #222; margin: 10px 20px;"></div>
@@ -1218,9 +1189,6 @@
                         }
                     });
                 });
-            } else {
-                // If not logged in, show the page normally (Remove the body display:none)
-                document.body.style.display = 'block';
             }
         });
     </script>
