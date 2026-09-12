@@ -58,22 +58,7 @@
         .topbarDropdown-content .section-title { padding: 6px 18px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; background: #0a0a0a; }
 
         /* 🔥 VIP VERIFIED BADGE CSS 🔥 */
-        .vip-verified-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: linear-gradient(135deg, #e6c875, #b8860b);
-            color: #000;
-            font-size: 10px;
-            font-weight: 900;
-            padding: 2px 8px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(230, 200, 117, 0.4);
-            vertical-align: middle;
-            margin-left: 6px;
-        }
+        .vip-verified-badge { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg, #e6c875, #b8860b); color: #000; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(230, 200, 117, 0.4); vertical-align: middle; margin-left: 6px; }
         .vip-verified-badge i { font-size: 9px; }
 
         @media (max-width: 768px) {
@@ -234,7 +219,7 @@
         }
 
         /* ==========================================================
-           🔥 MASTER MEGA FOOTER CSS (EXACT FROM WALLET.HTML) 🔥
+           🔥 MASTER MEGA FOOTER CSS 🔥
            ========================================================== */
         .tseries-footer { background-color: #111; color: #aaa; padding: 40px 20px 20px 20px; border-top: 2px solid #333; font-family: Arial, sans-serif; }
         .tseries-footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 30px; padding-bottom: 30px; border-bottom: 1px solid #222; }
@@ -249,13 +234,11 @@
         .footer-social-row { display: grid; grid-template-columns: repeat(3, auto); gap: 15px; margin-top: 15px; width: fit-content; }
         .footer-icon-btn { width: 38px; height: 38px; background: #1a1a1a; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #e6c875; font-size: 15px; text-decoration: none; transition: 0.3s; }
         .footer-icon-btn:hover { background: #e6c875; color: #000; border-color: #e6c875; transform: scale(1.1); }
-        
-        /* 🔥 FOOTER TEXT CENTER FIX 🔥 */
         .tseries-footer-bottom { max-width: 1200px; margin: 20px auto 0 auto; display: flex; justify-content: center; align-items: center; font-size: 13px; color: #777; text-align: center; }
         .tseries-footer-bottom p { text-align: center; margin: 0; width: 100%; }
 
         /* ==========================================================
-           🔥 EXACT SAME CHATBOT & FLOATING BUTTONS CSS (FROM WALLET.HTML) 🔥
+           🔥 CHATBOT & FLOATING BUTTONS CSS 🔥
            ========================================================== */
         .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 35px; box-shadow: 2px 2px 10px rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse-whatsapp 2s infinite; }
         .whatsapp-float:hover { background-color: #128C7E; color: white; transform: scale(1.1); }
@@ -269,24 +252,39 @@
         @keyframes pulse-install { 0% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(0, 168, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 168, 255, 0); } }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
 
-        /* 🔥 MOBILE VIEW OVERRIDES - FIX: EXACT 50px FLOATING BUTTONS 🔥 */
         @media (max-width: 768px) {
             .whatsapp-float { width: 50px !important; height: 50px !important; bottom: 20px !important; right: 20px !important; font-size: 28px !important; }
             .chatbot-toggler { bottom: 85px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 24px !important; }
             .floating-install-btn { bottom: 150px !important; right: 20px !important; width: 50px !important; height: 50px !important; font-size: 20px !important; }
-
-            /* 🔥 FIX FOR FLOATING BUTTONS HIDING FOOTER ICONS 🔥 */
             .tseries-footer { padding-bottom: 220px !important; }
         }
 
-        /* CUSTOM APP INSTALL POPUP MODAL CSS (RESTORED SIZE + Z-INDEX FIX) */
-        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100005 !important; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
+        /* 🔥 CUSTOM ALERT MODAL CSS (THIS WAS MISSING BEFORE!) 🔥 */
+        .custom-alert-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999999; display: none; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+        .custom-alert-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
+        .custom-alert-box { background: #111; border: 1.5px solid #e6c875; width: 90%; max-width: 380px; border-radius: 18px; padding: 35px 25px; text-align: center; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
+        .custom-alert-logo { width: 75px; height: 75px; margin: 0 auto 20px auto; border-radius: 15px; overflow: hidden; background: #000; border: 1px solid #333; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(230,200,117,0.3); }
+        .custom-alert-logo video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
+        .custom-alert-title { font-size: 22px; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px; font-family: 'Playfair Display', serif; }
+        .custom-alert-title.success { color: #e6c875; }
+        .custom-alert-title.error { color: #ff4d4d; }
+        .custom-alert-msg { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+        .custom-alert-btn { background: #e6c875; color: #000; padding: 12px 35px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); }
+        .custom-alert-btn:hover { background: #d4b561; transform: scale(1.05); }
+
+        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
+            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
+        }
+        .coming-soon-glow { color: #ff4d4d !important; font-size: 18px !important; font-weight: 900; margin-bottom: 10px !important; letter-spacing: 2px; animation: textGlow 1s ease-in-out infinite alternate; display: inline-block; }
+
+        /* 🔥 APK MODAL CSS 🔥 */
+        .app-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .app-modal-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .app-modal-box { background: #0f0f0f; border: 1.5px solid #e6c875; width: 90%; max-width: 340px; border-radius: 15px; padding: 30px 20px; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: Arial, sans-serif; }
-        
         .app-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 22px; cursor: pointer; transition: 0.3s; z-index: 999999; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .app-modal-close:hover { color: #fff; }
-        
         .app-modal-logo-wrap { width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid #333; box-shadow: 0 5px 15px rgba(230,200,117,0.3); display: flex; align-items: center; justify-content: center; }
         .app-modal-logo-wrap video { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen; transform: scale(1.4); }
         .app-modal-title { color: #e6c875; font-size: 22px; font-weight: 900; margin: 0 0 5px 0; font-family: 'Playfair Display', serif; letter-spacing: 1px; text-transform: uppercase; }
@@ -295,24 +293,8 @@
         .app-modal-desc span { color: #e6c875; font-weight: bold; }
         .app-modal-btn { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; box-sizing: border-box; background: #e6c875; color: #000; padding: 14px; border-radius: 30px; font-weight: 900; font-size: 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; text-decoration: none; box-shadow: 0 5px 15px rgba(230, 200, 117, 0.4); margin-top: 20px;}
         .app-modal-btn:hover { background: #d4b561; transform: scale(1.02); }
-        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        /* 🔥 GLOWING EFFECT FOR "COMING SOON" TEXT 🔥 */
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff4d4d, 0 0 15px #ff4d4d; transform: scale(1); }
-            100% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d, 0 0 40px #ff4d4d; transform: scale(1.05); }
-        }
-        .coming-soon-glow {
-            color: #ff4d4d !important;
-            font-size: 18px !important;
-            font-weight: 900;
-            margin-bottom: 10px !important;
-            letter-spacing: 2px;
-            animation: textGlow 1s ease-in-out infinite alternate;
-            display: inline-block;
-        }
-
-        /* 🔥 VIP CHATBOT CSS WITH RECTANGULAR LOGO (CENTER MODAL STYLE) 🔥 */
+        /* 🔥 VIP CHATBOT OVERLAY CSS 🔥 */
         .chatbot-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px); touch-action: none; overscroll-behavior: contain; }
         .chatbot-overlay.active { display: flex; animation: fadeInModal 0.3s ease; }
         .chatbot-container { width: 90%; max-width: 360px; background: #0a0a0a; border: 1.5px solid #e6c875; border-radius: 15px; position: relative; display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.9); overflow: hidden; animation: popInCenter 0.3s ease; }
@@ -330,10 +312,12 @@
         .chatbot-body { padding: 20px 15px; height: 320px; max-height: 55vh; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #0a0a0a; overscroll-behavior-y: contain; }
         .chatbot-body::-webkit-scrollbar { width: 4px; }
         .chatbot-body::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        
         .bot-msg { background: #1a1a1a; color: #ddd; padding: 12px 16px; border-radius: 0 15px 15px 15px; font-size: 13px; max-width: 90%; align-self: flex-start; border: 1px solid #333; line-height: 1.5; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
         .user-msg { background: #e6c875; color: #000; padding: 12px 16px; border-radius: 15px 0 15px 15px; font-size: 13px; max-width: 85%; align-self: flex-end; font-weight: bold; box-shadow: -2px 5px 15px rgba(0,0,0,0.3); }
         .bot-inline-btn { background: #222; color: #e6c875; border: 1px solid #e6c875; padding: 10px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; text-align: left; display: flex; align-items: center; gap: 8px; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.5);}
         .bot-inline-btn:hover { background: #e6c875; color: #000; }
+        
         .chatbot-options { padding: 15px; background: #111; border-top: 1px solid #222; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .chat-opt-btn { background: #1a1a1a; color: #ccc; border: 1px solid #333; padding: 10px; border-radius: 8px; font-size: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .chat-opt-btn:hover { background: rgba(230, 200, 117, 0.1); border-color: #e6c875; color: #e6c875; }
@@ -826,6 +810,7 @@
     <button class="floating-install-btn" id="openAppModal" title="Install Official App">
         <i class="fas fa-download"></i>
     </button>
+    
     <div class="app-modal-overlay" id="appModalOverlay">
         <div class="app-modal-box">
             <button class="app-modal-close" id="closeAppModal">&times;</button>
